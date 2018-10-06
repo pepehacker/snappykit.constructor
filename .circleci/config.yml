@@ -19,10 +19,10 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
-      - run: # run tests
-          name: Run Test and Coverage
-          command: |
-            yarn test --coverage
+      # - run: # run tests
+      #     name: Run Test and Coverage
+      #     command: |
+      #       yarn test -- --coverage
       - deploy:
           name: "deploy develop to beta"
           command: |
@@ -35,5 +35,5 @@ jobs:
               python3.4 get-pip.py --user
               ~/.local/bin/pip install awscli --upgrade --user
               ~/.local/bin/aws s3 sync ~/project/build s3://any-services.snappykit.constructor --delete
-              ~/.local/bin/aws cloudfront create-invalidation --distribution-id E3NPWGOQ2PMPOC --paths '/*'
+              ~/.local/bin/aws cloudfront create-invalidation --distribution-id E2NW1D0XBGXS0P --paths '/*'
             fi
