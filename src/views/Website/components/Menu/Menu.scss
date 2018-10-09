@@ -1,0 +1,7 @@
+.Root {
+  max-width: 320px;
+
+  & > *:not(:first-child) {
+    margin: 24px 0 0;
+  }
+}
