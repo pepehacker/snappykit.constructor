@@ -1,0 +1,125 @@
+.Root {
+  align-items: center;
+  box-shadow: none;
+  display: flex;
+  height: 40px;
+  padding: 0 16px 0 60px;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 100%;
+
+  &:hover:not(&Active) {
+    cursor: pointer;
+
+    .Icon {
+      background: #8e8ad8;
+    }
+
+    .Title {
+      color: #8e8ad8;
+    }
+  }
+
+  &Active {
+    box-shadow: inset 4px 0 0 #7e7acc;
+
+    .Cover {
+      filter: drop-shadow(8px 10px 8px rgba(126, 122, 204, .5));
+    }
+
+    .Icon {
+      background: #7e7acc;
+    }
+
+    .Title {
+      color: #7e7acc;
+    }
+  }
+
+  &Icon {
+    &Background {
+      .Icon {
+        mask-image: url('../assets/background.svg');
+      }
+    }
+
+    &Domain {
+      .Icon {
+        mask-image: url('../assets/domain.svg');
+      }
+    }
+
+    &Icon {
+      .Icon {
+        mask-image: url('../assets/icon.svg');
+      }
+    }
+
+    &Screenshots {
+      .Icon {
+        mask-image: url('../assets/screenshots.svg');
+      }
+    }
+
+    &Smartphone {
+      .Icon {
+        mask-image: url('../assets/smartphone.svg');
+      }
+    }
+
+    &Social {
+      .Icon {
+        mask-image: url('../assets/social.svg');
+      }
+    }
+
+    &Store {
+      .Icon {
+        mask-image: url('../assets/store.svg');
+      }
+    }
+
+    &Templates {
+      .Icon {
+        mask-image: url('../assets/templates.svg');
+      }
+    }
+
+    &Text {
+      .Icon {
+        mask-image: url('../assets/text.svg');
+      }
+    }
+  }
+}
+
+.Cover {
+  flex: 0 0 20px;
+  height: 20px;
+  width: 20px;
+}
+
+.Icon {
+  background: #bfbfc7;
+  height: 100%;
+  mask: no-repeat center center;
+  mask-size: contain;
+  width: 100%;
+}
+
+.Title {
+  color: #bfbfc7;
+  flex: 1 1 auto;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  margin: 0 0 0 40px;
+}
+
+// Animations
+.Root,
+.Cover,
+.Icon,
+.Title {
+  transition: all .2s;
+}
