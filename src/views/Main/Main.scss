@@ -1,5 +1,17 @@
+.Root {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.Container {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
 .Header {
-  height: 86px;
+  height: 100px;
   position: relative;
   width: 100%;
 
@@ -15,9 +27,10 @@
 
   &Shadow {
     background: #7e7acc;
-    border-radius: 100% / 32px;
-    filter: blur(25px);
-    height: 100%;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+    filter: blur(40px);
+    height: 130px;
     left: 0;
     opacity: .2;
     position: absolute;

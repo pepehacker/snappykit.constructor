@@ -5,10 +5,10 @@ import url from 'url';
 // Views
 import Main from './views/Main';
 
-import './App.scss';
+import styles from './App.scss';
 
 const App = ({ match }) => (
-  <div>
+  <div className={styles.Root}>
     <Switch>
       <Route path={url.resolve(match.url, '/')} component={Main} />
     </Switch>
