@@ -1,0 +1,102 @@
+.Root {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  display: flex;
+  margin: 0;
+  padding: 12px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .Icon {
+      background: #8e8ad8;
+    }
+
+    .Title {
+      color: #8e8ad8;
+    }
+  }
+
+  &Icon {
+    &Desktop {
+      .Cover {
+        flex: 0 0 23px;
+        width: 23px;
+      }
+
+      .Icon {
+        mask-image: url('../assets/desktop.svg');
+      }
+    }
+
+    &Mobile {
+      .Cover {
+        flex: 0 0 12px;
+        width: 12px;
+      }
+
+      .Icon {
+        mask-image: url('../assets/mobile.svg');
+      }
+    }
+
+    &Tablet {
+      .Cover {
+        flex: 0 0 15px;
+        width: 15px;
+      }
+
+      .Icon {
+        mask-image: url('../assets/tablet.svg');
+      }
+    }
+  }
+
+  &Is {
+    &Active {
+      .Cover {
+        filter: drop-shadow(8px 10px 8px rgba(126, 122, 204, .4));
+      }
+
+      .Icon {
+        background: #7e7acc;
+      }
+
+      .Title {
+        color: #7e7acc;
+      }
+    }
+  }
+}
+
+.Cover {
+  height: 20px;
+}
+
+.Icon {
+  background: #bfbfc7;
+  height: 100%;
+  mask: no-repeat center center;
+  width: 100%;
+}
+
+.Title {
+  color: #bfbfc7;
+  font-size: 12px;
+  letter-spacing: .6px;
+  margin: 0 0 0 14px;
+  text-transform: uppercase;
+}
+
+// Animations
+.Root,
+.Cover,
+.Icon,
+.Title {
+  transition: all .2s;
+}

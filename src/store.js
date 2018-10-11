@@ -6,10 +6,12 @@ import thunkMiddleware from 'redux-thunk';
 
 // Reducers
 import { reducer as form } from 'redux-form';
+import views from 'views/reducer';
 
 const reducer = combineReducers({
   form,
   router,
+  views,
 });
 
 export default (history: Object) => createStore(reducer, compose(

@@ -2,11 +2,14 @@
   align-items: center;
   display: flex;
   height: 100%;
+  justify-content: center;
   width: 100%;
 }
 
 .List {
+  display: flex;
+
   & > *:not(:first-child) {
-    margin: 24px 0 0;
+    margin: 0 0 0 24px;
   }
 }
