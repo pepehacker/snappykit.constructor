@@ -1,0 +1,31 @@
+.Root {
+  display: flex;
+  width: 100%;
+}
+
+.Container {
+  align-items: center;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Devices {
+  flex: 0 0 120px;
+  width: 100%;
+}
+
+.Sidebar {
+  flex: 0 0 272px;
+  margin: 0 24px;
+}
+
+.View {
+  align-items: center;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}

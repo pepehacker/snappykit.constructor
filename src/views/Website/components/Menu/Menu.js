@@ -10,9 +10,11 @@ import styles from './Menu.scss';
 
 const WebsiteMenu = () => (
   <div className={styles.Root}>
-    {generateMenu(1).map(({ id, ...item }) => (
-      <Item {...item} key={id} />
-    ))}
+    <div className={styles.List}>
+      {generateMenu(1).map(({ id, ...item }) => (
+        <Item {...item} key={id} />
+      ))}
+    </div>
   </div>
 );
 

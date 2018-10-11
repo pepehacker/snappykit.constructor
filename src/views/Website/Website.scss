@@ -3,7 +3,26 @@
   flex: 1 1 auto;
 }
 
+.Container {
+  display: flex;
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+.Copyright {
+  align-items: center;
+  color: #d7d7dd;
+  display: flex;
+  flex: 0 0 120px;
+  font-size: 12px;
+  justify-content: center;
+  letter-spacing: .2px;
+}
+
 .Menu {
   align-items: center;
   display: flex;
+  flex: 0 0 296px;
+  flex-direction: column;
+  margin: 0 24px 0 0;
 }
