@@ -1,0 +1,35 @@
+.Root {
+  background: #fff;
+  border-radius: 4px;
+  opacity: .6;
+  overflow: hidden;
+  padding: 57% 0 0;
+  position: relative;
+  transition: all .2s;
+  width: 100%;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 20px 60px -30px rgba(0, 0, 0, .4);
+    opacity: 1;
+    transform: scale(1.05);
+
+    .Control {
+      transform: translateY(0);
+    }
+  }
+}
+
+.Control {
+  background-color: #ffffff;
+  border-radius: 100%;
+  bottom: 20px;
+  box-shadow: 0 7px 14px 0 rgba(0, 0, 0, 0.2);
+  height: 32px;
+  left: 50%;
+  margin: 0 0 0 -18px;
+  position: absolute;
+  transform: translateY(56px);
+  transition: all .2s;
+  width: 32px;
+}

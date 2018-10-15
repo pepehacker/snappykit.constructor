@@ -9,16 +9,17 @@
   flex: 1 1 auto;
   flex-direction: column;
   justify-content: center;
+  max-width: calc(100% - 320px);
 }
 
 .Devices {
-  flex: 0 0 120px;
+  flex: 0 0 160px;
   width: 100%;
 }
 
 .Sidebar {
   flex: 0 0 272px;
-  margin: 0 24px;
+  margin: -56px 24px 0;
 }
 
 .View {
