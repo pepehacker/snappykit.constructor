@@ -18,8 +18,11 @@
 }
 
 .Sidebar {
+  align-items: center;
+  display: flex;
   flex: 0 0 272px;
-  margin: -56px 24px 0;
+  margin: 0 24px 160px;
+  width: 100%;
 }
 
 .View {

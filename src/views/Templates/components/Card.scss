@@ -1,9 +1,9 @@
 .Root {
   background: #fff;
   border-radius: 4px;
+  height: 155px;
   opacity: .6;
   overflow: hidden;
-  padding: 57% 0 0;
   position: relative;
   transition: all .2s;
   width: 100%;
@@ -14,18 +14,67 @@
     opacity: 1;
     transform: scale(1.05);
 
-    .Control {
+    .State {
       transform: translateY(0);
+    }
+  }
+
+  &Is {
+    &Active {
+      box-shadow: 0 20px 60px -30px rgba(0, 0, 0, .4);
+      opacity: 1;
+      transform: scale(1.05);
+
+      .Check {
+        background: #8e8ad8;
+      }
+
+      .State {
+        transform: translateY(0);
+      }
     }
   }
 }
 
-.Control {
+.Check {
+  background: #aeb2ba;
+  height: 10px;
+  mask: url('../assets/check.svg') no-repeat center center;
+  mask-size: contain;
+  transition: all .2s;
+  width: 13px;
+}
+
+.Image {
+  height: 100%;
+  width: 100%;
+}
+
+.Pro {
+  background: rgba(0, 0, 0, .2);
+  border-radius: 4px;
+  color: rgba(255, 255, 255, .8);
+  font-size: 12px;
+  font-weight: 400;
+  padding: 4px 6px;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+
+  &:hover {
+    background:rgba(216, 216, 216, .4);
+  }
+}
+
+.State {
+  align-items: center;
   background-color: #ffffff;
   border-radius: 100%;
   bottom: 20px;
   box-shadow: 0 7px 14px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
   height: 32px;
+  justify-content: center;
   left: 50%;
   margin: 0 0 0 -18px;
   position: absolute;
