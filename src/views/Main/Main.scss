@@ -10,33 +10,3 @@
   flex-direction: column;
   margin: 120px 0 0;
 }
-
-.Header {
-  height: 100px;
-  position: relative;
-  width: 100%;
-
-  &Container {
-    background: #fff;
-    border-bottom: 1px solid #f8f8fc;
-    height: 100%;
-    padding: 0 30px;
-    position: relative;
-    width: 100%;
-    z-index: 2;
-  }
-
-  &Shadow {
-    background: #7e7acc;
-    border-bottom-left-radius: 100%;
-    border-bottom-right-radius: 100%;
-    filter: blur(40px);
-    height: 130px;
-    left: 0;
-    opacity: .2;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-  }
-}

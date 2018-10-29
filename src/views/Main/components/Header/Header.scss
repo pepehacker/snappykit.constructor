@@ -1,0 +1,53 @@
+.Root {
+  height: 100px;
+  position: relative;
+  width: 100%;
+}
+
+.Container {
+  align-items: center;
+  background: #fff;
+  border-bottom: 1px solid #f8f8fc;
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  padding: 0 30px;
+  position: relative;
+  width: 100%;
+  z-index: 2;
+}
+
+.Logo {
+  flex: 0 0 36px;
+  height: 36px;
+  width: 36px;
+
+  &Image {
+    background: url('../../assets/logo.svg') no-repeat center center;
+    background-size: contain;
+    height: 28px;
+    width: 28px;
+  }
+
+  &Link {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+.Shadow {
+  background: #7e7acc;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+  filter: blur(40px);
+  height: 130px;
+  left: 0;
+  opacity: .2;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
