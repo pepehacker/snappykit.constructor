@@ -4,6 +4,10 @@
   position: relative;
   width: 186px;
 
+  &:focus {
+    outline: none;
+  }
+
   &Opened {
     .Dropdown {
       opacity: 1;

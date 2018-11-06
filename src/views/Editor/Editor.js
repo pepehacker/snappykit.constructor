@@ -8,6 +8,7 @@ import Devices from './components/Devices';
 import View from './components/View';
 
 // Views
+import Screenshots from 'views/Screenshots';
 import Templates from 'views/Templates';
 
 import styles from './Editor.scss';
@@ -26,6 +27,7 @@ const Editor = ({ match }) => (
 
     <div className={styles.Sidebar}>
       <Switch>
+        <Route path={url(match.url, '/screenshots')} component={Screenshots} />
         <Route path={url(match.url, '/templates')} component={Templates} />
       </Switch>
     </div>

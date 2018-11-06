@@ -1,0 +1,75 @@
+.Root {
+  width: 100%;
+}
+
+.Container {
+  margin: 20px 0 0;
+}
+
+.Create {
+  align-items: center;
+  background: #e8e8e8;
+  border: 0;
+  border-radius: 3px;
+  display: flex;
+  height: 228px;
+  justify-content: center;
+  transition: all .2s;
+
+  &:active,
+  &:focus {
+    outline: none;
+
+    .Icon {
+      background: #8e8ad8;
+    }
+  }
+
+  &:hover {
+    // @todo - нормальные тени
+    background: #ffffff;
+    box-shadow: 0 24px 40px -20px rgba(0, 0, 0, 0.32);
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+}
+
+.Header {
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Icon {
+  background: #c8cbd0;
+  mask: url('./assets/upload.svg') no-repeat center center;
+  mask-size: contain;
+  height: 16px;
+  width: 16px;
+}
+
+.List {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -8px;
+
+  & > * {
+    flex: 0 0 128px;
+    height: 228px;
+    margin: 8px;
+    width: 128px;
+  }
+}
+
+.Resolution {
+  color: #c5c9ce;
+  font-size: 12px;
+  letter-spacing: .6px;
+  line-height: 20px;
+}
+
+.Title {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -.9px;
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
+import Steps from './components/Steps';
 import User from './components/User';
 
 import logo from '../../assets/logo.svg';
@@ -18,6 +19,14 @@ const MainHeader = () => (
             src={logo}
           />
         </Link>
+      </div>
+
+      <div className={styles.Title}>
+        Instagram App
+      </div>
+
+      <div className={styles.Steps}>
+        <Steps />
       </div>
 
       <div className={styles.User}>
