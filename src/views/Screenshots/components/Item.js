@@ -18,7 +18,6 @@ const ScreenshotsItem = ({
 
     <button
       className={styles.Delete}
-      onClick={console.log}
       type="button"
     >
       <div className={styles.Icon} />

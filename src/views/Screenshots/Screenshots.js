@@ -22,7 +22,6 @@ const Container = ({
 
     <button
       className={styles.Create}
-      onClick={console.log}
       type="button"
     >
       <div className={styles.Icon} />

@@ -1,0 +1,17 @@
+.Root {
+  &:not(:first-child) {
+    margin: 36px 0 0;
+  }
+}
+
+.Control {
+  margin: 12px 0 0;
+}
+
+.Label {
+  color: #c5c9ce;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+}

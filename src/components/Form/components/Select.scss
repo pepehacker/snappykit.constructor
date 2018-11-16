@@ -1,0 +1,84 @@
+.Root {
+  position: relative;
+
+  &:focus {
+    outline: none;
+  }
+
+  &Is {
+    &Opened {
+      .Dropdown {
+        opacity: 1;
+        transform: translateY(52px);
+        visibility: visible;
+      }
+    }
+  }
+}
+
+.Dropdown {
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  overflow: hidden;
+  padding: 20px 0;
+  position: absolute;
+  top: 0;
+  transform: translateY(44px);
+  transition: all .2s;
+  visibility: hidden;
+  width: 100%;
+}
+
+.Item {
+  align-items: center;
+  color: #aeb2ba;
+  display: flex;
+  font-size: 14px;
+  height: 36px;
+  letter-spacing: .4px;
+  padding: 0 16px 0 32px;
+  transition: all .2s;
+
+  &:hover {
+    background: #f9f9f9;
+    cursor: pointer;
+  }
+
+  &Is {
+    &Current {
+      box-shadow: inset 2px 0 0 #9e9ae2;
+    }
+  }
+}
+
+.List {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+}
+
+.Placeholder {
+  color: #c5c9ce;
+  font-size: 12px;
+  letter-spacing: .8px;
+  margin: 0 20px;
+  text-transform: uppercase;
+}
+
+.Trigger {
+  align-items: center;
+  background: #f0f1f1;
+  border-radius: 4px;
+  display: flex;
+  color: #aeb2ba;
+  font-size: 14px;
+  height: 40px;
+  letter-spacing: .6px;
+  padding: 0 16px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

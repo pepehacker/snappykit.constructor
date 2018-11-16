@@ -1,0 +1,53 @@
+.Root {
+  display: flex;
+  justify-content: space-between;
+  margin: -6px;
+}
+
+.Style {
+  background: #f0f1f1;
+  border: 0;
+  border-radius: 4px;
+  color: #c5c9ce;
+  height: 52px;
+  font-size: 28px;
+  letter-spacing: 1.2px;
+  margin: 6px;
+  transition: all .2s;
+  width: 52px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background: #ffffff;
+    cursor: pointer;
+  }
+
+  &Is {
+    &Current {
+      background: #ffffff;
+      box-shadow: 0 4px 16px 0 rgba(0, 0, 0, .06);
+      pointer-events: none;
+    }
+  }
+
+  &Variant {
+    &Bold {
+      font-weight: 700;
+    }
+
+    &Light {
+      font-weight: 300;
+    }
+
+    &Medium {
+      font-weight: 500;
+    }
+
+    &Regular {
+      font-weight: 400;
+    }
+  }
+}

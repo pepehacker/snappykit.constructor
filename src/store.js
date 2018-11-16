@@ -6,11 +6,13 @@ import thunkMiddleware from 'redux-thunk';
 
 // Reducers
 import { reducer as form } from 'redux-form';
+import services from 'services/reducer';
 import views from 'views/reducer';
 
 const reducer = combineReducers({
   form,
   router,
+  services,
   views,
 });
 

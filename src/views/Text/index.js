@@ -1,5 +1,4 @@
-export { default } from './Editor';
-export { default as Title } from './components/Title';
+export { default } from './Text';
 
 // Ducks
 export { default as reducer } from './ducks/reducer';

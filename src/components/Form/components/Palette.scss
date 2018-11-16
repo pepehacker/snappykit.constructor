@@ -1,0 +1,78 @@
+.Root {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -8px;
+}
+
+.Color {
+  border: 0;
+
+  &:hover {
+    transform: scale(1.3);
+  }
+
+  &Is {
+    &Current {
+      // @todo - Make correct shadows
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      pointer-events: none;
+      transform: scale(1.3);
+    }
+  }
+}
+
+.Create {
+  align-items: center;
+  background: transparent;
+  border: 1px solid #d8d8d8;
+  display: flex;
+  justify-content: center;
+
+  &:active {
+    border-color: #a6a2e9;
+    opacity: .6;
+
+    &:before {
+      background: #a6a2e9;
+    }
+  }
+
+  &:before {
+    background: #d8d8d8;
+    content: '';
+    display: block;
+    height: 12px;
+    mask: url('components/Icon/assets/plus.svg') no-repeat center center;
+    mask-size: contain;
+    position: relative;
+    top: 1px;
+    transition: all .2s;
+    width: 12px;
+  }
+
+  &:hover {
+    border-color: #a6a2e9;
+
+    &:before {
+      background: #a6a2e9;
+    }
+  }
+}
+
+.Color,
+.Create {
+  border-radius: 100%;
+  height: 24px;
+  margin: 8px;
+  padding: 0;
+  transition: all .2s;
+  width: 24px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
