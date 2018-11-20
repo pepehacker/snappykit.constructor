@@ -40,6 +40,8 @@ const FormSelect = ({
 
           return itemValue === value && itemLabel;
         })}
+
+        <button className={styles.TriggerButton} type="button" />
       </div>
 
       <div className={styles.Dropdown}>
