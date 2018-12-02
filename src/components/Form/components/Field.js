@@ -27,7 +27,10 @@ const FormField = ({
           </label>
 
           <div className={styles.Control}>
-            {cloneElement(children, { ...props, id })}
+            {typeof children === 'function'
+              ? children({ ...props, id })
+              : cloneElement(children, { ...props, id })
+            }
           </div>
         </div>
       )}
@@ -36,7 +39,10 @@ const FormField = ({
 };
 
 FormField.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.node,
+  ]).isRequired,
   className: PropTypes.string,
   label: PropTypes.string,
   info: PropTypes.string,

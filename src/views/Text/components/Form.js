@@ -2,7 +2,7 @@ import React from 'react';
 import { reduxForm } from 'redux-form';
 
 // Components
-import Form, { Palette, Select } from 'components/Form';
+import Form, { Color, Palette, Select } from 'components/Form';
 import Style from './Style';
 
 const TextForm = ({
@@ -16,6 +16,7 @@ const TextForm = ({
     </Select>
 
     <Style label="Style" name="style" />
+    <Color label="Color" name="color" />
     <Palette label="Palette" name="color" />
   </Form>
 );

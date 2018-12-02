@@ -10,6 +10,7 @@ import View from './components/View';
 // Views
 import Screenshots from 'views/Screenshots';
 import Smartphone from 'views/Smartphone';
+import Social from 'views/Social';
 import Templates from 'views/Templates';
 import Text from 'views/Text';
 
@@ -31,6 +32,7 @@ const Editor = ({ match }) => (
       <Switch>
         <Route path={url(match.url, '/screenshots')} component={Screenshots} />
         <Route path={url(match.url, '/smartphone')} component={Smartphone} />
+        <Route path={url(match.url, '/social')} component={Social} />
         <Route path={url(match.url, '/templates')} component={Templates} />
         <Route path={url(match.url, '/text')} component={Text} />
       </Switch>
