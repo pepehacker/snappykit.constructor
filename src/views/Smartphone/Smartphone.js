@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Components
-import { Title } from 'views/Editor';
+import { Container, Title } from 'views/Editor';
 import Form from './components/Form';
 
 import styles from './Smartphone.scss';
@@ -10,9 +10,9 @@ const Smarthpone = () => (
   <div className={styles.Root}>
     <Title title="Smartphone" />
 
-    <div>
+    <Container>
       <Form onSubmit={console.log} />
-    </div>
+    </Container>
   </div>
 );
 

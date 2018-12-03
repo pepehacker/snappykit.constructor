@@ -8,11 +8,12 @@ import { compose, withHandlers } from 'recompose';
 import { setScreenshots } from 'views/Screenshots';
 
 // Components
+import { Container, Title } from 'views/Editor';
 import Screenshot from './components/Item';
 
 import styles from './Screenshots.scss';
 
-const Container = ({
+const SortContainer = ({
   screenshots,
 }) => (
   <div className={styles.List}>
@@ -29,26 +30,22 @@ const Container = ({
   </div>
 );
 
-const ComposedContainer = SortableContainer(Container);
+const ComposedSortContainer = SortableContainer(SortContainer);
 
 const Screenshots = ({
   handleSort,
   screenshots,
 }) => (
   <div className={styles.Root}>
-    <div className={styles.Header}>
-      <div className={styles.Title}>
-        Screenshots
-      </div>
+    <Title info="720x1440" title="Screenshots" />
 
-      <div className={styles.Resolution}>
-        720x1440
-      </div>
-    </div>
-
-    <div className={styles.Container}>
-      <ComposedContainer axis="xy" screenshots={screenshots} onSortEnd={handleSort} />
-    </div>
+    <Container>
+      <ComposedSortContainer
+        axis="xy"
+        onSortEnd={handleSort}
+        screenshots={screenshots}
+      />
+    </Container>
   </div>
 );
 

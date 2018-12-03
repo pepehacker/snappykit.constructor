@@ -2,7 +2,10 @@ import React from 'react';
 import { reduxForm } from 'redux-form';
 
 // Components
-import Form, { Color, Palette, Select } from 'components/Form';
+import Form, {
+  Color, Palette, Select,
+  COLOR_DEFAULT,
+} from 'components/Form';
 import Style from './Style';
 
 const TextForm = ({
@@ -24,6 +27,7 @@ const TextForm = ({
 export default reduxForm({
   form: 'textForm',
   initialValues: {
+    color: COLOR_DEFAULT,
     font: 'roboto',
     style: 'light',
   },

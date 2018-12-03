@@ -26,7 +26,8 @@
 .Root {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
   min-width: 1280px;
+  overflow: hidden;
   // min-width: 100vw;
 }

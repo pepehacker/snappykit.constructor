@@ -3,30 +3,69 @@
   width: 100%;
 }
 
+.Alpha {
+  height: 8px;
+  margin: 24px 12px 0;
+  position: relative;
+  width: calc(100% - 24px);
+
+  & > div > div:nth-child(2) {
+    border-radius: 4px;
+  }
+
+  & > div > div:nth-child(3) > div {
+    top: -1px;
+  }
+}
+
 .Color {
   border: 6px solid #f0f1f1;
   border-radius: 100%;
   height: 80px;
+  position: relative;
   width: 80px;
+
+  &:before {
+    background: inherit;
+    border-radius: 100%;
+    content: '';
+    display: block;
+    filter: blur(4px);
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+}
+
+.Hex {
+  margin: 16px 0 0;
 }
 
 .Hue {
-  border-radius: 4px;
   height: 8px;
-  margin: 24px 0 0;
-  overflow: hidden;
+  margin: 24px 12px 0;
   position: relative;
-  width: 100%;
-}
+  width: calc(100% - 24px);
 
-.Picker {
-  flex: 0 0 136px;
-  width: 136px;
+  :global .hue-horizontal {
+    border-radius: 4px;
+
+    & > div {
+      top: -1px;
+    }
+  }
 }
 
 .Preview {
-  flex: 0 0 136px;
-  width: 136px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 136px;
+  justify-content: center;
+  width: 100%;
 }
 
 .Saturation {
@@ -36,4 +75,15 @@
   overflow: hidden;
   position: relative;
   width: 136px;
+}
+
+.Section {
+  flex: 0 0 136px;
+  width: 136px;
+
+  &:first-child {
+    flex: 0 0 calc(136px - 16px);
+    margin: 0 16px 0 0;
+    width: calc(136px - 16px);
+  }
 }

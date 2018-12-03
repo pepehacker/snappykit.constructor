@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 // Components
+import { Container, Title } from 'views/Editor';
 import Card from './components/Card';
 
 import screen from './assets/screen.jpg';
@@ -14,24 +15,24 @@ const Templates = ({
   items,
 }) => (
   <div className={styles.Root}>
-    <div className={styles.Title}>
-      Templates
-    </div>
+    <Title title="Templates" />
 
-    {items && items.length > 0 && (
-      <div className={styles.List}>
-        {items.map(id => (
-          <Card
-            image={screen}
-            isActive={id === currentTemplate}
-            id={id}
-            isPro={id === 3}
-            key={id}
-            title={`Template #${id}`}
-          />
-        ))}
-      </div>
-    )}
+    <Container>
+      {items && items.length > 0 && (
+        <div className={styles.List}>
+          {items.map(id => (
+            <Card
+              image={screen}
+              isActive={id === currentTemplate}
+              id={id}
+              isPro={id === 3}
+              key={id}
+              title={`Template #${id}`}
+            />
+          ))}
+        </div>
+      )}
+    </Container>
   </div>
 );
 
