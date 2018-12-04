@@ -1,11 +1,17 @@
 import React from 'react';
 
 // Components
-import { Title } from 'views/Editor';
+import { Container, Title } from 'views/Editor';
+import Form from './components/Form';
+
+import styles from './Social.scss';
 
 const Social = () => (
-  <div>
+  <div className={styles.Root}>
     <Title title="Social" />
+    <Container>
+      <Form onSubmit={console.log} />
+    </Container>
   </div>
 );
 

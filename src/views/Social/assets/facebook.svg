@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="9px" height="20px" viewBox="0 0 9 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>icon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="KIT" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Social-Networks---Desktop" transform="translate(-1635.000000, -264.000000)" fill="#CCCED3">
+            <g id="Settings-Panel" transform="translate(1610.000000, 186.000000)">
+                <g id="Social-Networks" transform="translate(10.000000, 68.000000)">
+                    <g id="Facebook">
+                        <path d="M15,17 L17,17 L17,15 C16.8390194,13.5388056 17.0536703,12.4650033 18,12 C18.2085063,10.5137481 19.3495657,9.94292713 21,10 C21.7079858,9.95866443 22.8734501,10.0833586 24,10 L24,13 C23.0129801,13.2960168 22.4895842,13.2154532 22,13 C21.6258021,13.1285652 21.2749118,13.2080549 21,13 C20.7292032,13.6271577 20.5617559,13.9457501 21,14 L21,17 L24,17 L23,20 L21,20 L21,30 L17,30 L17,20 L15,20 L15,17 Z" id="icon"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
