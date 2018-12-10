@@ -11,7 +11,7 @@ const Text = () => (
     <Title title="Text" />
 
     <Container>
-      <Form onSubmit={console.log} />
+      <Form onSubmit={values => console.log() /* eslint-disable-line */} />
     </Container>
   </div>
 );

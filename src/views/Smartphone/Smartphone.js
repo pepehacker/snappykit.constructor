@@ -11,7 +11,7 @@ const Smarthpone = () => (
     <Title title="Smartphone" />
 
     <Container>
-      <Form onSubmit={console.log} />
+      <Form onSubmit={values => console.log() /* eslint-disable-line */} />
     </Container>
   </div>
 );

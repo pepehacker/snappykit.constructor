@@ -4,11 +4,11 @@ import React from 'react';
 import { Container, Title } from 'views/Editor';
 import Form from './components/Form';
 
-import styles from './Social.scss';
+import styles from './Icon.scss';
 
-const Social = () => (
+const Icon = () => (
   <div className={styles.Root}>
-    <Title title="Social" />
+    <Title title="Icon" />
 
     <Container>
       <Form onSubmit={values => console.log() /* eslint-disable-line */} />
@@ -16,4 +16,4 @@ const Social = () => (
   </div>
 );
 
-export default Social;
+export default Icon;

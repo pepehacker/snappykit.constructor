@@ -1,0 +1,71 @@
+.Root {
+  align-items: center;
+  display: flex;
+}
+
+.Icon {
+  max-width: 100%;
+  max-width: 100%;
+}
+
+.Input {
+  display: none;
+}
+
+.Label {
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  &:hover {
+    cursor: pointer;
+
+    .Refresh {
+      &:before {
+        background: #9e9ae2;
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+.Preview {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, .1);
+  height: 80px;
+  position: relative;
+  width: 80px;
+}
+
+.Refresh {
+  align-items: center;
+  background: #ffffff;
+  border-radius: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .1);
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  position: absolute;
+  right: -16px;
+  top: calc(50% - 16px);
+  width: 32px;
+
+  &:before {
+    background: #aeb2ba;
+    content: '';
+    display: block;
+    height: 16px;
+    mask: url('components/Icon/assets/refresh.svg') no-repeat center center;
+    mask-size: contain;
+    transition: all .2s;
+    width: 14px;
+  }
+}
+
+.Title {
+  color: #bec1c7;
+  font-size: 14px;
+  letter-spacing: .3px;
+  margin: 0 0 0 28px;
+}

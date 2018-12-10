@@ -8,6 +8,7 @@ import Devices from './components/Devices';
 import View from './components/View';
 
 // Views
+import Icon from 'views/Icon';
 import Screenshots from 'views/Screenshots';
 import Smartphone from 'views/Smartphone';
 import Social from 'views/Social';
@@ -30,6 +31,7 @@ const Editor = ({ match }) => (
 
     <div className={styles.Sidebar}>
       <Switch>
+        <Route path={url(match.url, '/icon')} component={Icon} />
         <Route path={url(match.url, '/screenshots')} component={Screenshots} />
         <Route path={url(match.url, '/smartphone')} component={Smartphone} />
         <Route path={url(match.url, '/social')} component={Social} />

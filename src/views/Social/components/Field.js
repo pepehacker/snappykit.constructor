@@ -1,7 +1,6 @@
 import classNames from 'classnames';
-import { uniqueId } from 'lodash';
 import PropTypes from 'prop-types';
-import React, { createRef } from 'react';
+import React from 'react';
 import { compose, withHandlers, withState } from 'recompose';
 
 // Components
@@ -13,7 +12,6 @@ import { capitalize } from 'utils/string';
 import styles from './Field.scss';
 
 const SocialField = ({
-  dropdownRef,
   handleDropdownBlur,
   handleKeyDown,
   handleTriggerClick,
@@ -22,6 +20,7 @@ const SocialField = ({
   label,
   name,
   onChange,
+  registerDropdown,
   value,
 }) => (
   <div
@@ -67,8 +66,8 @@ const SocialField = ({
       <div
         className={styles.Dropdown}
         onBlur={handleDropdownBlur}
-        ref={dropdownRef}
-        role="dropdown"
+        ref={registerDropdown}
+        role="listbox"
         tabIndex={0}
       >
         {isOpened && (
@@ -95,22 +94,28 @@ SocialField.propTypes = {
 };
 
 const ComposedSocialField = compose(
-  withState('dropdownRef', 'setDropdownRef', createRef()),
   withState('isBusied', 'setBusy', false),
   withState('isOpened', 'setOpen', false),
-  withHandlers({
-    handleDropdownBlur: ({ dropdownRef, setBusy, setOpen }) => event => {
-      if (!dropdownRef.current.contains(event.relatedTarget)) {
-        setBusy(true);
-        setOpen(false);
+  withHandlers(() => {
+    let dropdownRef;
 
-        setTimeout(() => setBusy(false), 200);
-      }
-    },
-    handleKeyDown: ({ setOpen }) => event =>
-      event.keyCode === 13 && setOpen(false),
-    handleTriggerClick: ({ isBusied, isOpened, isPro, setOpen }) => () =>
-      !isBusied && !isPro && setOpen(!isOpened),
+    return {
+      handleDropdownBlur: ({ setBusy, setOpen }) => (event: Object) => {
+        if (!dropdownRef.contains(event.relatedTarget)) {
+          setBusy(true);
+          setOpen(false);
+
+          setTimeout(() => setBusy(false), 200);
+        }
+      },
+      handleKeyDown: ({ setOpen }) => event =>
+        event.keyCode === 13 && setOpen(false),
+      handleTriggerClick: ({ isBusied, isOpened, isPro, setOpen }) => () =>
+        !isBusied && !isPro && setOpen(!isOpened),
+      registerDropdown: () => (node: HTMLElement) => {
+        dropdownRef = node;
+      },
+    };
   }),
 )(SocialField);
 
