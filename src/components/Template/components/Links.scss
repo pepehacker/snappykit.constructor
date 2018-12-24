@@ -1,0 +1,19 @@
+.Root {
+  display: flex;
+}
+
+.Link {
+  color: #ffffff;
+  font-size: 10px;
+  opacity: .6;
+  text-decoration: none;
+  transition: all .2s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:not(:first-child) {
+    margin: 0 0 0 28px;
+  }
+}

@@ -5,6 +5,8 @@ import React, { createRef } from 'react';
 import { connect } from 'react-redux';
 import { compose, lifecycle, withHandlers, withState } from 'recompose';
 
+import Template1 from 'templates/1';
+
 // Types
 import {
   DESKTOP_DEVICE_ID,
@@ -40,7 +42,9 @@ const EditorView = ({
         className={styles.Container}
         // ref={container}
         // style={{ transform: `scale(${scale})` }}
-      />
+      >
+        <Template1 />
+      </div>
     </div>
   );
 };

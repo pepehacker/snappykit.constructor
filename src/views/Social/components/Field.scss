@@ -27,6 +27,14 @@
         background-color: #ffffff;
         box-shadow: 0 5px 16px 0 rgba(0, 0, 0, .06);
       }
+
+      .Plus {
+        box-shadow: 0 5px 16px 0 rgba(0, 0, 0, .06);
+
+        &:before {
+          transform: rotate(45deg);
+        }
+      }
     }
 
     &Opened {
@@ -43,6 +51,7 @@
 
         &:before {
           background: #ffffff;
+          transform: rotate(45deg);
         }
       }
     }

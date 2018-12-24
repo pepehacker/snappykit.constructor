@@ -1,0 +1,43 @@
+.Root {
+  display: flex;
+
+  & > *:not(:first-child) {
+    margin: 0 0 0 28px;
+  }
+}
+
+.Info {
+  flex: 1 1 calc(100% - 24px);
+  margin: 0 0 0 12px;
+}
+
+.Label {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: .6px;
+}
+
+.Link {
+  align-items: center;
+  background: #ffffff;
+  border-radius: 6px;
+  color: #7065fc;
+  display: flex;
+  height: 60px;
+  padding: 0 16px 0 26px;
+  text-decoration: none;
+  width: 192px;
+}
+
+.Logo {
+  flex: 0 0 32px;
+  font-size: 32px;
+  height: 32px;
+  width: 32px;
+}
+
+.Title {
+  font-size: 14px;
+  letter-spacing: .4px;
+  margin: 2px 0 0;
+}
