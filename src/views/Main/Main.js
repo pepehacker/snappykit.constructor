@@ -1,4 +1,6 @@
+import { get } from 'lodash';
 import React from 'react';
+import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import url from 'url';
 
@@ -10,16 +12,28 @@ import Website from 'views/Website';
 
 import styles from './Main.scss';
 
-const Main = ({ match }) => (
+const Main = ({ isFetching, match }) => (
   <div className={styles.Root}>
-    <Header />
+    {isFetching ? (
+      <div className={styles.Loading}>
+        Loading
+      </div>
+    ) : (
+      <div className={styles.Wrapper}>
+        <Header />
 
-    <div className={styles.Container}>
-      <Switch>
-        <Route path={url.resolve(match.url, '/:websiteId')} component={Website} />
-      </Switch>
-    </div>
+        <div className={styles.Container}>
+          <Switch>
+            <Route path={url.resolve(match.url, '/:websiteId')} component={Website} />
+          </Switch>
+        </div>
+      </div>
+    )}
   </div>
 );
 
-export default Main;
+const mapStateToProps = ({ views }) => ({
+  isFetching: get(views, 'main.isFetching'),
+});
+
+export default connect(mapStateToProps)(Main);

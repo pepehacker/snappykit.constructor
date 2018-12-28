@@ -1,8 +1,14 @@
+// @todo - рефаткор
+
 import classNames from 'classnames';
+import { get } from 'lodash';
+import moment from 'moment';
 import React, { createRef } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { compose, withHandlers, withState } from 'recompose';
 
+// Styles
 import styles from './User.scss';
 
 const LINKS = [
@@ -16,10 +22,14 @@ const MainHeaderUser = ({
   handleDropdownBlur,
   isOpened,
   rootRef,
+  user,
 }) => {
   const className = classNames(styles.Root, {
     [styles.RootOpened]: isOpened,
   });
+
+  const expireDate = get(user, 'subscription.expireDate');
+  const daysLeft = moment(expireDate).diff(moment(), 'days');
 
   return (
     <div
@@ -34,25 +44,26 @@ const MainHeaderUser = ({
           onClick={handleClick}
           type="button"
         >
-          vanya095@gmail.com
+          {get(user, 'email')}
         </button>
       </div>
 
-      <div
-        className={styles.Dropdown}
-      >
+      <div className={styles.Dropdown}>
         <div className={styles.DropdownWrapper}>
           <div className={styles.Status}>
-            PRO
+            {get(user, 'subscription.name')}
           </div>
 
           <div className={styles.Expiration}>
             <div className={styles.ExpirationTitle}>
-              4 days left
+              {daysLeft} days left
             </div>
 
             <div className={styles.ExpirationProgress}>
-              <div className={styles.ExpirationProgressBar} />
+              <div
+                className={styles.ExpirationProgressBar}
+                style={{ width: `${(daysLeft * 100) / 365}%`}}
+              />
             </div>
           </div>
 
@@ -83,7 +94,13 @@ const MainHeaderUser = ({
   );
 };
 
+const mapStateToProps = ({ services }) => ({
+  user: get(services, 'session.user', {}),
+});
+
+
 export default compose(
+  connect(mapStateToProps),
   withState('isOpened', 'setOpen', false),
   withState('rootRef', 'setRootRef', createRef()),
   withHandlers({

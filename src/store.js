@@ -1,5 +1,8 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 
+// Api
+import api from 'api';
+
 // Middleware
 import { routerMiddleware, routerReducer as router } from 'react-router-redux';
 import thunkMiddleware from 'redux-thunk';
@@ -19,7 +22,7 @@ const reducer = combineReducers({
 export default (history: Object) => createStore(reducer, compose(
   applyMiddleware(
     routerMiddleware(history),
-    thunkMiddleware,
+    thunkMiddleware.withExtraArgument({ api }),
   ),
   window.devToolsExtension ? window.devToolsExtension() : f => f,
 ));

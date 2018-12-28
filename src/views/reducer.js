@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 
 // Reducers
+import { reducer as main } from './Main';
 import { reducer as editor } from './Editor';
 import { reducer as screenshots } from './Screenshots';
 import { reducer as smartphone } from './Smartphone';
@@ -9,6 +10,7 @@ import { reducer as text } from './Text';
 
 const viewsReducer = combineReducers({
   editor,
+  main,
   screenshots,
   smartphone,
   templates,
