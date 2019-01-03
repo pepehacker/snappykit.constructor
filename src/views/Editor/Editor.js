@@ -36,7 +36,7 @@ const Editor = ({ match }) => (
         <Route path={url(match.url, '/smartphone')} component={Smartphone} />
         <Route path={url(match.url, '/social')} component={Social} />
         <Route path={url(match.url, '/templates')} component={Templates} />
-        <Route path={url(match.url, '/text')} component={Text} />
+        <Route path={url(match.url, '/text/:fieldId')} component={Text} />
       </Switch>
     </div>
   </div>

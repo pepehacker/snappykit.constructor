@@ -5,7 +5,7 @@ import React, { createRef } from 'react';
 import { connect } from 'react-redux';
 import { compose, lifecycle, withHandlers, withState } from 'recompose';
 
-import Template1 from 'templates/1';
+import Template from 'template';
 
 // Types
 import {
@@ -43,7 +43,7 @@ const EditorView = ({
         // ref={container}
         // style={{ transform: `scale(${scale})` }}
       >
-        <Template1 />
+        <Template />
       </div>
     </div>
   );

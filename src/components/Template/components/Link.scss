@@ -1,0 +1,32 @@
+.Root {
+  color: inherit;
+  display: flex;
+  position: relative;
+  text-decoration: none;
+
+  &:hover:not(.RootIsActive) {
+    .Border {
+      border-color: rgba(255, 255, 255, .2);
+    }
+  }
+
+  &Is {
+    &Active {
+      .Border {
+        border-color: rgba(255, 255, 255, .6);
+      }
+    }
+  }
+}
+
+.Border {
+  border: 2px dashed transparent;
+  border-radius: 8px;
+  display: block;
+  height: calc(100% + 16px);
+  left: -12px;
+  position: absolute;
+  transition: .2s all;
+  top: -8px;
+  width: calc(100% + 24px);
+}

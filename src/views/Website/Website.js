@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import{ connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
+import { compose, lifecycle } from 'recompose';
 import url from 'url-join';
 
 // Components
@@ -35,4 +37,6 @@ Website.propTypes = {
   }).isRequired,
 };
 
-export default Website;
+export default compose(
+  lifecycle()
+)(Website);

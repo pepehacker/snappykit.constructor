@@ -10,6 +10,7 @@ import Style from './Style';
 
 const TextForm = ({
   handleSubmit,
+  ...props,
 }) => (
   <Form onSubmit={handleSubmit}>
     <Select label="Font" name="font" placeholder="Choose a font">
@@ -17,7 +18,7 @@ const TextForm = ({
       <option value="raleway">Raleway</option>
       <option value="loto">Loto</option>
     </Select>
-
+    {console.log(props)}
     <Style label="Style" name="style" />
     <Color label="Color" name="color" />
     <Palette label="Palette" name="color" />

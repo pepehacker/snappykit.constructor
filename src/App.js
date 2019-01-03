@@ -26,7 +26,7 @@ const mapStateToProps = ({ services }) =>
   get(services, 'session');
 
 export default compose(
-  connect(mapStateToProps, { fetchProfile }),
+  connect(mapStateToProps, { fetchProfile }, null, { pure: false }),
   lifecycle({
     componentDidMount() {
       const { fetchProfile, token, user } = this.props;

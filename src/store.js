@@ -4,7 +4,6 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import api from 'api';
 
 // Middleware
-import { routerMiddleware, routerReducer as router } from 'react-router-redux';
 import thunkMiddleware from 'redux-thunk';
 
 // Reducers
@@ -14,14 +13,12 @@ import views from 'views/reducer';
 
 const reducer = combineReducers({
   form,
-  router,
   services,
   views,
 });
 
 export default (history: Object) => createStore(reducer, compose(
   applyMiddleware(
-    routerMiddleware(history),
     thunkMiddleware.withExtraArgument({ api }),
   ),
   window.devToolsExtension ? window.devToolsExtension() : f => f,

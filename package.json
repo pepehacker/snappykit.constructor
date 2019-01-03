@@ -51,7 +51,7 @@
     "react-dom": "^16.5.2",
     "react-portal": "^4.1.5",
     "react-redux": "^5.0.7",
-    "react-router-dom": "^4.3.1",
+    "react-router-dom": "4.4.0-beta.6",
     "react-router-redux": "5.0.0-alpha.9",
     "react-sortable-hoc": "^0.8.3",
     "recompose": "^0.30.0",
@@ -68,7 +68,8 @@
     "webpack": "4.19.1",
     "webpack-dev-server": "3.1.9",
     "webpack-manifest-plugin": "2.0.4",
-    "workbox-webpack-plugin": "3.6.2"
+    "workbox-webpack-plugin": "3.6.2",
+    "yup": "^0.26.6"
   },
   "scripts": {
     "start": "node scripts/start.js",

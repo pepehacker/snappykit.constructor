@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
-import { Route } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
 
 // Views
 import App from './App';
@@ -13,13 +13,13 @@ import * as serviceWorker from './utils/serviceWorker';
 import createStore from './store';
 
 const history = createHistory();
-const store = createStore(history);
+const store = createStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
+    <Router history={history}>
       <Route path="/" component={App} />
-    </ConnectedRouter>
+    </Router>
   </Provider>,
   document.getElementById('root')
 );

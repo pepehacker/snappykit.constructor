@@ -1,0 +1,37 @@
+.Root {
+  background-image: linear-gradient(to bottom, #479fff 1%, #7b54fb);
+  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 24px;
+  width: 100%;
+}
+
+.Description {
+  font-size: 12px;
+  letter-spacing: .4px;
+  line-height: 20px;
+  margin: 16px 0 0;
+}
+
+.Footer {
+  align-items: center;
+  display: flex;
+  height: 56px;
+  justify-content: center;
+  margin: 64px 0 0;
+}
+
+.Header {
+  align-items: center;
+  display: flex;
+  height: 32px;
+  width: 100%;
+}
+
+.Title {
+  font-size: 22px;
+  letter-spacing: 1.6px;
+  line-height: 28px;
+}

@@ -5,7 +5,7 @@ import {
 } from './types';
 
 const initialState = {
-  currentDevice: DESKTOP_DEVICE_ID,
+  currentDevice: MOBILE_DEVICE_ID,
 };
 
 export default (state = initialState, action: Object) => {
