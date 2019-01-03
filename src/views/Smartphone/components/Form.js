@@ -1,3 +1,4 @@
+import { get } from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
@@ -7,6 +8,16 @@ import { formValueSelector, reduxForm } from 'redux-form';
 import Form, { Select } from 'components/Form';
 import Mockup from './Mockup';
 
+// Entities
+import { updateTemplate } from 'entities/template/actions';
+import {
+  SMARTPHONE,
+  SMARTPHONE_MOCKUP,
+  SMARTPHONE_MODEL,
+  SMARTPHONE_STYLE,
+} from 'entities/template/constants';
+import { getFieldById } from 'entities/template/selector';
+
 const SmartphoneForm = ({
   handleSubmit,
   model,
@@ -14,31 +25,45 @@ const SmartphoneForm = ({
 }) => (
   <Form onSubmit={handleSubmit}>
     <Select label="Model" name="model" placeholder="Choose a model">
-      <option value="iphone">iPhone 8</option>
-      <option value="pixel">Pixel</option>
+      {get(SMARTPHONE_MODEL, 'values', []).map(({ label, value }) => (
+        <option key={value} value={value}>{label}</option>
+      ))}
     </Select>
 
     <Select label="Style" name="style" placeholder="Choose a style">
-      <option value="classic">Classic</option>
-      <option value="concept">Concept</option>
-      <option value="flat">Flat</option>
+      {get(SMARTPHONE_STYLE, 'values', []).map(({ label, value }) => (
+        <option key={value} value={value}>{label}</option>
+      ))}
     </Select>
 
-    <Mockup model={model} name="mockup" style={style} />
+    <Mockup
+      model={model}
+      name="mockup"
+      style={style}
+    />
   </Form>
 );
 
 const selector = formValueSelector('smartphoneForm');
-const mapStateToProps = state => selector(state, 'model', 'style');
+const mapStateToProps = (state: Object) => ({
+  ...selector(state, 'model', 'style'),
+  initialValues: {
+    mockup: getFieldById(state, SMARTPHONE),
+    model: SMARTPHONE_MODEL.IPHONE,
+    style: SMARTPHONE_STYLE.FLAT,
+  },
+});
 
 export default compose(
-  connect(mapStateToProps),
+  connect(mapStateToProps, { updateTemplate }),
   reduxForm({
     form: 'smartphoneForm',
     initialValues: {
-      mockup: 'classic-iphone-silver',
-      model: 'iphone',
-      style: 'classic'
+      mockup: SMARTPHONE_MOCKUP.FLAT_IPHONE_SILVER,
+      model: SMARTPHONE_MODEL.IPHONE,
+      style: SMARTPHONE_STYLE.FLAT,
     },
+    onChange: ({ mockup }, dispatch: func, { updateTemplate }): void =>
+      updateTemplate(SMARTPHONE, mockup),
   }),
 )(SmartphoneForm)

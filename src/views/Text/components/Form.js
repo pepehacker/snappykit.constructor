@@ -1,24 +1,32 @@
+import { get } from 'lodash';
 import React from 'react';
 import { reduxForm } from 'redux-form';
 
 // Components
-import Form, {
-  Color, Palette, Select,
-  COLOR_DEFAULT,
-} from 'components/Form';
+import Form, { Color, Input, Palette, Select } from 'components/Form';
 import Style from './Style';
+
+// Entities
+import { FONT, STYLE } from 'entities/template/constants';
 
 const TextForm = ({
   handleSubmit,
   ...props,
 }) => (
   <Form onSubmit={handleSubmit}>
+    <Input label="Text" name="text" placeholder="Set Text" />
+
     <Select label="Font" name="font" placeholder="Choose a font">
-      <option value="roboto">Roboto</option>
-      <option value="raleway">Raleway</option>
-      <option value="loto">Loto</option>
+      {get(FONT, 'values', []).map((value: string) => (
+        <option
+          key={value}
+          value={value}
+        >
+          {value}
+        </option>
+      ))}
     </Select>
-    {console.log(props)}
+
     <Style label="Style" name="style" />
     <Color label="Color" name="color" />
     <Palette label="Palette" name="color" />
@@ -28,8 +36,7 @@ const TextForm = ({
 export default reduxForm({
   form: 'textForm',
   initialValues: {
-    color: COLOR_DEFAULT,
-    font: 'roboto',
-    style: 'light',
+    font: FONT.ROBOTO,
+    style: STYLE.LIGHT,
   },
 })(TextForm);

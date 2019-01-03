@@ -4,17 +4,13 @@ import { combineReducers } from 'redux';
 import { reducer as main } from './Main';
 import { reducer as editor } from './Editor';
 import { reducer as screenshots } from './Screenshots';
-import { reducer as smartphone } from './Smartphone';
 import { reducer as templates } from './Templates';
-import { reducer as text } from './Text';
 
 const viewsReducer = combineReducers({
   editor,
   main,
   screenshots,
-  smartphone,
   templates,
-  text,
 });
 
 export default (state = {}, action: Object) => {

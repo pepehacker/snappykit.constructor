@@ -5,7 +5,10 @@ import { Alpha, Hue, Saturation } from 'react-color/lib/components/common';
 import { compose, withHandlers } from 'recompose';
 
 // Components
-import Field from './Field';
+import Field from '../Field';
+
+// Utils
+import { colorFormat, colorParse } from './utils/parser';
 
 import styles from './Color.scss';
 
@@ -29,7 +32,6 @@ const FormColor = ({
             {hex}
           </div>
         </div>
-
 
         <div className={styles.Alpha}>
           <Alpha {...value} onChange={onChange} />
@@ -55,7 +57,10 @@ const FormColor = ({
 const ComposedFormColor = CustomPicker(FormColor);
 
 export default props => (
-  <Field {...props}>
+  <Field {...props}
+    format={colorFormat}
+    parse={colorParse}
+  >
     {({ onChange, ...fieldProps }) => (
       <ComposedFormColor {...fieldProps}
         onChange={onChange}

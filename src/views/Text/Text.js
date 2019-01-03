@@ -1,37 +1,48 @@
 import { get } from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
+import { compose, withHandlers } from 'recompose';
 
 // Components
 import { Container, Title } from 'views/Editor';
 import Form from './components/Form';
 
-// Ducks
-import { getFieldById } from 'entities/template';
+// Entities
+import { updateTemplate } from 'entities/template/actions';
+import { getFieldById } from 'entities/template/selector';
 
-// Template
-import { schema } from 'template';
-
+// Styles
 import styles from './Text.scss';
 
-const Text = (props) => (
+const Text = ({
+  id,
+  initialValues,
+  handleChange,
+}) => (
   <div className={styles.Root}>
     <Title title="Text" />
 
     <Container>
-      <Form onSubmit={values => console.log() /* eslint-disable-line */} />
+      <Form
+        form={id}
+        initialValues={initialValues}
+        key={id}
+        onChange={handleChange}
+      />
     </Container>
   </div>
 );
 
 const mapStateToProps = (state: Object, { match }) => {
   const id = get(match, 'params.fieldId');
-  console.log(id);
-  console.log(getFieldById(state, id));
-  return {
-    form: id,
-    initialValues: getFieldById(state, id),
-  };
+
+  return { id, initialValues: getFieldById(state, id) };
 };
 
-export default connect(mapStateToProps)(Text);
+export default compose(
+  connect(mapStateToProps, { updateTemplate }),
+  withHandlers({
+    handleChange: ({ id, updateTemplate }): func => (value: Object): void =>
+      updateTemplate(id, value),
+  }),
+)(Text);

@@ -4,14 +4,18 @@ import React from 'react';
 import { Container, Title } from 'views/Editor';
 import Form from './components/Form';
 
+// Styles
 import styles from './Smartphone.scss';
 
-const Smarthpone = () => (
+const Smarthpone = ({
+  initialValues,
+  handleChange,
+}) => (
   <div className={styles.Root}>
     <Title title="Smartphone" />
 
     <Container>
-      <Form onSubmit={values => console.log() /* eslint-disable-line */} />
+      <Form onChange={handleChange} />
     </Container>
   </div>
 );

@@ -3,17 +3,19 @@ import React from 'react';
 
 // Components
 import {
+  Smartphone,
   Text,
 } from 'components/Template';
 
 // Ducks
 import {
   DESCRIPTION,
+  SMARTPHONE,
   TITLE,
-} from '../ducks';
+} from '../ducks/constants';
 
 // Styles
-import schema from '../schema';
+import config from '../config';
 import styles from './Mobile.scss';
 
 const Template1Mobile = () => (
@@ -23,11 +25,15 @@ const Template1Mobile = () => (
     </header>
 
     <div className={styles.Container}>
-      <Text {...get(schema, TITLE)} className={styles.Title}>
+      <div className={styles.Slider}>
+        <Smartphone {...get(config, `fields.${SMARTPHONE}`)} className={styles.Smartphone} />
+      </div>
+
+      <Text {...get(config, `fields.${TITLE}`)} className={styles.Title}>
         123
       </Text>
 
-      <Text {...get(schema, DESCRIPTION)} className={styles.Description}>
+      <Text {...get(config, `fields.${DESCRIPTION}`)} className={styles.Description}>
         123
       </Text>
     </div>

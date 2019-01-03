@@ -4,7 +4,6 @@ import { reduxForm } from 'redux-form';
 // Components
 import Form, {
   Color, Palette,
-  COLOR_DEFAULT,
 } from 'components/Form';
 import Social from './Field';
 
@@ -24,7 +23,4 @@ const SocialForm = ({
 
 export default reduxForm({
   form: 'socialForm',
-  initialValues: {
-    color: COLOR_DEFAULT,
-  },
 })(SocialForm);

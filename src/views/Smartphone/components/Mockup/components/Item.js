@@ -12,7 +12,6 @@ const SmartphoneMockupItem = ({
   id,
   isCurrent,
   isLoaded,
-  title,
 }) => {
   const className = classNames(styles.Root, {
     [styles.RootIsCurrent]: isCurrent,
@@ -26,10 +25,10 @@ const SmartphoneMockupItem = ({
       role="button"
     >
       <img
-        alt={title}
+        alt={id}
         className={styles.Preview}
         onLoad={handleLoad}
-        src={require(`views/Smartphone/assets/${id}.png`)}
+        src={require(`assets/mockup/${id}.png`)}
       />
 
       <div className={styles.Current}>
@@ -42,7 +41,6 @@ const SmartphoneMockupItem = ({
 SmartphoneMockupItem.propTypes = {
   id: PropTypes.string,
   isCurrent: PropTypes.bool,
-  title: PropTypes.string,
 };
 
 export default compose(

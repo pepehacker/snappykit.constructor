@@ -2,7 +2,6 @@ import createHistory from 'history/createBrowserHistory';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'react-router-redux';
 import { Router, Route } from 'react-router-dom';
 
 // Views

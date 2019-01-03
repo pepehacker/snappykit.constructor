@@ -10,6 +10,10 @@ import { compose, withHandlers } from 'recompose';
 import { Field } from 'components/Form';
 import Mockup from './components/Item';
 
+// Ducks
+import { MOCKUP_ITEMS } from './ducks/constants';
+
+// Styles
 import styles from './Mockup.scss';
 
 const SmartphoneMockup = ({
@@ -20,10 +24,11 @@ const SmartphoneMockup = ({
   value,
 }) => (
   <div className={styles.Root}>
-    {mockups.map(mockup => (
-      <Mockup {...mockup}
-        isCurrent={mockup.id === value}
-        key={mockup.id}
+    {get(MOCKUP_ITEMS, `${model}.${style}`, []).map((id: string) => (
+      <Mockup
+        id={id}
+        isCurrent={id === value}
+        key={id}
         onClick={handleClick}
       />
     ))}

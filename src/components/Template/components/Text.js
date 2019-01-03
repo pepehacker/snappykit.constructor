@@ -16,9 +16,10 @@ import styles from './Text.scss';
 const TemplateText = ({
   className,
   color,
+  font,
   id,
   isEditor = true,
-  weight: fontWeight,
+  style: fontWeight,
   text,
 }) => {
   const rootClassNames = classNames(className, styles.Root);
@@ -26,7 +27,10 @@ const TemplateText = ({
   return (
     <div
       className={rootClassNames}
-      style={{ color, fontWeight }}
+      style={{
+        color, fontWeight,
+        fontFamily: `'${font}', sans-serif`,
+      }}
     >
       {!isEditor ? text : (
         <Link to={`/1/editor/text/${id}`}>
@@ -39,9 +43,13 @@ const TemplateText = ({
 
 TemplateText.propTypes = {
   className: PropTypes.string,
+  color: PropTypes.string,
   id: PropTypes.string.isRequired,
+  font: PropTypes.string,
+  style: PropTypes.string,
   // eslint-disable-next-line
   schema: PropTypes.instanceOf(object).isRequired,
+  text: PropTypes.string,
 };
 
 const mapStateToProps = (state: Object, { id, schema }) =>
