@@ -1,9 +1,7 @@
 .Root {
   background-image: linear-gradient(to bottom, #479fff 1%, #7b54fb);
-  height: 100%;
-  max-height: 100%;
+  min-height: 100%;
   max-width: 100%;
-  overflow: hidden;
   padding: 24px;
   width: 100%;
 }
@@ -27,16 +25,39 @@
   align-items: center;
   display: flex;
   height: 32px;
+  justify-content: space-between;
   width: 100%;
 }
 
 .Slider {
   margin: 40px 0;
+  position: relative;
+}
+
+.Screenshots {
+  height: 186px;
+  left: 8px;
+  position: absolute;
+  top: 31px;
+  width: 105px;
+  z-index: 2;
+
+  &Item,
+  &Slider {
+    height: 186px;
+    width: 105px;
+  }
 }
 
 .Smartphone {
   height: 247px;
+  position: relative;
   width: 121px;
+  z-index: 1;
+}
+
+.Store {
+  margin: 40px 0 0;
 }
 
 .Title {

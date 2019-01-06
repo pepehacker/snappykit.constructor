@@ -50,6 +50,10 @@ export const SMARTPHONE_STYLE = {
   ],
 };
 
+export const STORE = 'store';
+export const STORE_BACKGROUND = 'background';
+export const STORE_COLOR = 'color';
+
 export const STYLE = {
   LIGHT: '100',
   REGULAR: '400',
@@ -75,4 +79,9 @@ export const STYLE = {
       value: '700',
     },
   ]
+};
+
+export const VIEW = {
+  DESKTOP: 'desktop',
+  MOBILE: 'mobile',
 };

@@ -68,11 +68,3 @@ export default props => (
     )}
   </Field>
 );
-
-export const COLOR_DEFAULT = {
-  hex: '#ffffff',
-  color: { h: 0,   s: 0,   l: 1,   a: 1 },
-  hsl:   { h: 0,   s: 0,   l: 1,   a: 1 },
-  hsv:   { h: 0,   s: 0,   v: 1,   a: 1 },
-  rgb:   { r: 255, g: 255, b: 255, a: 1 },
-};

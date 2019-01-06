@@ -1,0 +1,33 @@
+.Image {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.Item {
+  height: 230px;
+  width: 100px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.Slider {
+  :global .slick-list {
+    .slick-slide {
+      opacity: .3;
+      transform: scale(.9) translateX(30%);
+      transition: all .2s;
+
+      &.slick-active {
+        opacity: 1;
+        transform: scale(1) translateX(0);
+      }
+    }
+
+    .slick-track {
+      display: flex;
+    }
+  }
+}

@@ -1,0 +1,66 @@
+.Root {
+  align-items: center;
+  background: #ffffff;
+  border: 0;
+  border-radius: 6px;
+  display: flex;
+  height: 44px;
+  padding: 0 12px 0 16px;
+  width: 100%;
+
+  &View {
+    &Desktop {
+      height: 60px;
+      padding: 0 16px;
+      width: 178px;
+
+      .Icon {
+        flex: 0 0 24px;
+        font-size: 24px;
+        height: 24px;
+        width: 24px;
+      }
+
+      .Info {
+        margin: 0 0 0 14px;
+      }
+
+      .Title {
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: .4px;
+        margin: 2px 0 0;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+.Download {
+  color: #7065fc;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .6px;
+}
+
+.Icon {
+  align-items: center;
+  color: #7065fc;
+  display: flex;
+  flex: 0 0 20px;
+  font-size: 20px;
+  height: 20px;
+  justify-content: center;
+  width: 20px;
+}
+
+.Info {
+  margin: 0 0 0 6px;
+}
+
+.Title {
+  color: #7065fc;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .34px;
+}

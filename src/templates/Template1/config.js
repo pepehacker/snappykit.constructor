@@ -6,6 +6,7 @@ import {
   COLOR,
   FONT,
   SMARTPHONE_MOCKUP,
+  STORE,
   STYLE,
 } from 'entities/template/constants';
 
@@ -39,6 +40,17 @@ export default {
       schema: string()
         .matches(new RegExp(`/^(${values(SMARTPHONE_MOCKUP).join('|')})$/`), 'Incorrect `smartphone` ID!')
         .default(SMARTPHONE_MOCKUP.FLAT_IPHONE_SILVER),
+    },
+    [STORE]: {
+      id: STORE,
+      schema: object().shape({
+        background: string()
+          .matches(COLOR.regex, 'Incorrect `color`!')
+          .default('rgba(255, 255, 255, 1)'),
+        color: string()
+          .matches(COLOR.regex, 'Incorrect `color`!')
+          .default('rgba(112, 101, 251, 1)'),
+      }),
     },
     [TITLE]: {
       id: TITLE,

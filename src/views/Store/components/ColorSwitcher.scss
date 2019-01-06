@@ -1,0 +1,36 @@
+
+.Example {
+  border: 2px dashed #e6e6e8;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  padding: 10px 32px;
+  position: relative;
+}
+
+.Trigger {
+  background: #ffffff;
+  border: 0;
+  border-radius: 100%;
+  box-shadow: 0 5px 16px 0 rgba(0, 0, 0, .06);
+  height: 32px;
+  position: absolute;
+  top: calc(50% - 16px);
+  width: 32px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &Background {
+    left: 20px;
+  }
+
+  &Text {
+    right: 20px;
+  }
+}
