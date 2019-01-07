@@ -2,22 +2,47 @@ import React from 'react';
 import { reduxForm } from 'redux-form';
 
 // Components
-import Form, {
-  Color, Palette,
-} from 'components/Form';
-import Social from './Field';
+import Form, { Color, Link } from 'components/Form';
+
+// Entities
+import {
+  SOCIAL_FACEBOOK,
+  SOCIAL_INSTAGRAM,
+  SOCIAL_TWITTER,
+  SOCIAL_VK,
+} from 'entities/template/constants';
 
 const SocialForm = ({
   handleSubmit,
 }) => (
   <Form onSubmit={handleSubmit}>
-    <Social label="Facebook" name="facebook" isPro />
-    <Social label="Twitter" name="twitter" isPro />
-    <Social label="Instagram" name="instagram" />
-    <Social label="Vkontakte" name="vk" />
+    <Link
+      icon="fa-facebook"
+      isPro
+      label="Facebook"
+      name={`items.${SOCIAL_FACEBOOK}`}
+    />
+
+    <Link
+      icon="fa-twitter"
+      isPro
+      label="Twitter"
+      name={`items.${SOCIAL_TWITTER}`}
+    />
+
+    <Link
+      icon="fa-instagram"
+      label="Instagram"
+      name={`items.${SOCIAL_INSTAGRAM}`}
+    />
+
+    <Link
+      icon="fa-vk"
+      label="Vkontakte"
+      name={`items.${SOCIAL_VK}`}
+    />
 
     <Color label="Color" name="color" />
-    <Palette label="Palette" name="color" />
   </Form>
 );
 

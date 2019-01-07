@@ -1,12 +1,12 @@
 .Root {
   &Current {
     &Background {
-
+      transform: translateX(0);
     }
 
     &Color {
       .ColorTrack {
-        transform: translateX(calc(-316px));
+        transform: translateX(calc(-50% - 48px));
       }
     }
   }
@@ -21,7 +21,7 @@
     display: flex;
     margin: 0 -24px;
     transition: all .4s;
-    width: 200%;
+    width: calc(200% + 48px);
 
     & > * {
       flex: 0 0 50%;

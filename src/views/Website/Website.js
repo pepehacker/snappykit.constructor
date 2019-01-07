@@ -12,9 +12,6 @@ import Menu from './components/Menu';
 import { fetchTemplate } from 'entities/template';
 import { getCurrentTemplateId } from 'entities/template/selector';
 
-// Templates
-import * as templates from 'templates';
-
 // Views
 import Editor from 'views/Editor';
 

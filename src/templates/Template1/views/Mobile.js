@@ -6,6 +6,7 @@ import {
   Privacy,
   Screenshots,
   Smartphone,
+  Social,
   Store,
   Text,
 } from 'components/Template';
@@ -16,8 +17,6 @@ import {
   SMARTPHONE,
   TITLE,
 } from '../ducks/constants';
-// Entities
-import { STORE } from 'entities/template/constants';
 
 // Styles
 import config from '../config';
@@ -54,7 +53,7 @@ const Template1Mobile = () => (
     </div>
 
     <footer className={styles.Footer}>
-      Footer
+      <Social className={styles.Social} />
     </footer>
   </div>
 );

@@ -29,7 +29,7 @@ export default compose(
   connect(mapStateToProps, { fetchProfile }, null, { pure: false }),
   lifecycle({
     componentDidMount() {
-      const { fetchProfile, token, user } = this.props;
+      const { fetchProfile, token } = this.props;
 
       if (token) {
         axios.defaults.headers.common.Authorization = `JWT ${token}`;

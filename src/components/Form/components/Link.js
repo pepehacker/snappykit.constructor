@@ -6,9 +6,6 @@ import { compose, withHandlers, withState } from 'recompose';
 // Components
 import { Field } from 'components/Form';
 
-// Utils
-import { capitalize } from 'utils/string';
-
 import styles from './Link.scss';
 
 const FormLink = ({

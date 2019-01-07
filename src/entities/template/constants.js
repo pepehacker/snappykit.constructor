@@ -50,6 +50,16 @@ export const SMARTPHONE_STYLE = {
   ],
 };
 
+/* SOCIAL START */
+export const SOCIAL = 'social';
+
+// Social networks
+export const SOCIAL_FACEBOOK = 'facebook';
+export const SOCIAL_INSTAGRAM = 'instagram';
+export const SOCIAL_TWITTER = 'twitter';
+export const SOCIAL_VK = 'vk';
+/* SOCIAL END */
+
 export const STORE = 'store';
 export const STORE_BACKGROUND = 'background';
 export const STORE_COLOR = 'color';

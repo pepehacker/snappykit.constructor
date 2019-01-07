@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import { object } from 'yup';
 
 // Entities
 import { STORE, VIEW } from 'entities/template/constants';
@@ -22,7 +21,6 @@ const StoreButton = ({
   isEditor = true,
   variant = VARIANT.APP_STORE,
   view = VIEW.DESKTOP,
-  ...props,
 }) => {
   const rootClassNames = classNames(styles.Root, {
     [styles.RootVariantAppStore]: variant === VARIANT.APP_STORE,

@@ -6,6 +6,7 @@ import {
   COLOR,
   FONT,
   SMARTPHONE_MOCKUP,
+  SOCIAL,
   STORE,
   STYLE,
 } from 'entities/template/constants';
@@ -41,9 +42,33 @@ export default {
         .matches(new RegExp(`/^(${values(SMARTPHONE_MOCKUP).join('|')})$/`), 'Incorrect `smartphone` ID!')
         .default(SMARTPHONE_MOCKUP.FLAT_IPHONE_SILVER),
     },
+    [SOCIAL]: {
+      id: SOCIAL,
+      schema: object().shape({
+        color: string()
+          .matches(COLOR.regex, 'Incorrect `color`!')
+          .default('rgba(255, 255, 255, 1)'),
+        items: object().shape({
+          instagram: string()
+            .matches(/^([0-9a-zA-Z_]{1,32})$/),
+          facebook: string()
+            .matches(/^([0-9a-zA-Z_]{1,32})$/),
+          twitter: string()
+            .matches(/^([0-9a-zA-Z_]{1,32})$/),
+          vk: string()
+            .matches(/^(id|club)?([0-9a-zA-Z_]{1,32})$/)
+            .default('ivan_vyatkin')
+        }),
+      }),
+    },
     [STORE]: {
       id: STORE,
       schema: object().shape({
+        appStore: string()
+          .matches(/^(id[0-9]{1,16})$/)
+          .default('id564177498'),
+        googlePlay: string()
+          .matches(/(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})/),
         background: string()
           .matches(COLOR.regex, 'Incorrect `color`!')
           .default('rgba(255, 255, 255, 1)'),

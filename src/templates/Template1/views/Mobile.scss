@@ -2,6 +2,7 @@
   background-image: linear-gradient(to bottom, #479fff 1%, #7b54fb);
   min-height: 100%;
   max-width: 100%;
+  overflow: hidden;
   padding: 24px;
   width: 100%;
 }
@@ -29,11 +30,6 @@
   width: 100%;
 }
 
-.Slider {
-  margin: 40px 0;
-  position: relative;
-}
-
 .Screenshots {
   height: 186px;
   left: 8px;
@@ -48,6 +44,12 @@
     width: 105px;
   }
 }
+
+.Slider {
+  margin: 40px 0;
+  position: relative;
+}
+
 
 .Smartphone {
   height: 247px;

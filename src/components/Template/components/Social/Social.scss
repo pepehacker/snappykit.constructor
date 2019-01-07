@@ -1,0 +1,7 @@
+.Container {
+  display: flex;
+
+  & > *:not(:first-child) {
+    margin: 0 0 0 16px;
+  }
+}

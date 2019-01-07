@@ -17,12 +17,13 @@ import styles from './Form.scss';
 const StoreForm = ({
   handleSubmit,
   switcher = STORE_BACKGROUND,
+  ...props,
 }) => {
   const rootClassNames = classNames(styles.Root, {
     [styles.RootCurrentColor]: switcher === STORE_COLOR,
     [styles.RootCurrentBackground]: switcher === STORE_BACKGROUND,
   });
-  console.log(switcher);
+
   return (
     <Form
       className={rootClassNames}

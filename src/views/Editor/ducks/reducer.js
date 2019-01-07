@@ -1,6 +1,6 @@
 import {
   SET_CURRENT_DEVICE,
-  DESKTOP_DEVICE_ID,
+  // DESKTOP_DEVICE_ID,
   MOBILE_DEVICE_ID,
 } from './types';
 
