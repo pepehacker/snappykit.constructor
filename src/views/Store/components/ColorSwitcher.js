@@ -6,10 +6,15 @@ import { compose, withHandlers } from 'recompose';
 
 // Components
 import { Field } from 'components/Form';
-import { StoreButton } from 'components/Template';
+import { StoreItem } from 'components/Template';
 
 // Entities
-import { STORE, STORE_BACKGROUND, STORE_COLOR } from 'entities/template/constants';
+import {
+  STORE,
+  STORE_APP_STORE,
+  STORE_BACKGROUND,
+  STORE_COLOR,
+} from 'entities/template/constants';
 import { getFieldById } from 'entities/template/selector';
 
 // Styles
@@ -33,7 +38,7 @@ const StoreColorSwitcher = ({
           type="button"
         />
 
-        <StoreButton variant={StoreButton.VARIANT.GOOGLE_PLAY} />
+        <StoreItem variant={STORE_APP_STORE} />
 
         <button
           className={textClassNames}

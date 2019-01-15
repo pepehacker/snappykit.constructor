@@ -1,15 +1,21 @@
 import classNames from 'classnames';
 import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
 import Slider from 'react-slick';
 
 // Components
 import Link from './Link';
+
+// Entities
+import { SCREENSHOTS } from 'entities/template/constants';
+import { getFieldById } from 'entities/template/selector';
 
 // Styles
 import styles from './Screenshots.scss';
 
 const SETTINGS = {
   arrows: false,
+  draggable: false,
   dots: false,
   infinite: false,
 };
@@ -23,6 +29,7 @@ const TemplateScreenshots = ({
     slider: sliderClassName,
   },
   isEditor = true,
+  items,
 }) => {
   const rootClassNames = classNames(className, rootClassName, styles.Root);
   const containerClassNames = classNames(containerClassName, styles.Container);
@@ -36,29 +43,15 @@ const TemplateScreenshots = ({
       <LinkComponent {...(isEditor && { to: `/1/editor/screenshots` })}>
         <div className={containerClassNames}>
           <Slider {...SETTINGS} className={sliderClassNames}>
-            <div className={itemClassNames}>
-              <img
-                alt={123}
+            {(items || []).map((image: stirng, index: number) => (
+              <div className={itemClassNames} key={index}>
+                <img
+                  alt="Screenshot"
                 className={styles.Image}
-                src="https://i.pinimg.com/originals/da/e2/0a/dae20ac5ed7d1c1d927ad342f3a8b89c.jpg"
-              />
-            </div>
-
-            <div className={itemClassNames}>
-              <img
-                alt={123}
-                className={styles.Image}
-                src="https://i.pinimg.com/originals/9e/89/0f/9e890fc6f475f43d7ccfee5d19b59832.jpg"
-              />
-            </div>
-
-            <div className={itemClassNames}>
-              <img
-                alt={123}
-                className={styles.Image}
-                src="https://i.pinimg.com/originals/e8/a8/bf/e8a8bfc8bb86ff397a675627797e26f9.jpg"
-              />
-            </div>
+                  src={image}
+                />
+              </div>
+            ))}
           </Slider>
         </div>
       </LinkComponent>
@@ -66,4 +59,7 @@ const TemplateScreenshots = ({
   );
 };
 
-export default TemplateScreenshots;
+const mapStateToProps = (state: Object) =>
+  getFieldById(state, SCREENSHOTS);
+
+export default connect(mapStateToProps)(TemplateScreenshots);

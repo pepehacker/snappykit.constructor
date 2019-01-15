@@ -1,2 +1,2 @@
 export { default } from './Store';
-export { default as StoreButton } from './components/Button';
+export { default as StoreItem } from './components/Item';

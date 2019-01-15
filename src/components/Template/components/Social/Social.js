@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { get } from 'lodash';
 import PropTypes from 'prop-types';
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 // Components
@@ -29,19 +29,18 @@ const TemplateSocial = ({
   isEditor = true,
   view = VIEW.DESKTOP,
 }) => {
-  const rootClassNames = classNames(className, styles.Root);;
-  const LinkComponent = isEditor ? Link : Fragment;
+  const rootClassNames = classNames(className, styles.Root);
 
   return (
     <div className={rootClassNames}>
-      <LinkComponent {...(isEditor && { to: '/1/editor/social' })}>
+      <Link to="/1/editor/social">
         <div className={styles.Container}>
           {get(items, SOCIAL_FACEBOOK) && <Item id={SOCIAL_FACEBOOK} />}
           {get(items, SOCIAL_INSTAGRAM) && <Item id={SOCIAL_INSTAGRAM} />}
           {get(items, SOCIAL_TWITTER) && <Item id={SOCIAL_TWITTER} />}
           {get(items, SOCIAL_VK) && <Item id={SOCIAL_VK} />}
         </div>
-      </LinkComponent>
+      </Link>
     </div>
   );
 };

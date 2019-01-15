@@ -3,16 +3,16 @@ import { reduxForm } from 'redux-form';
 
 // Components
 import Form from 'components/Form';
-import Icon from './File';
+import List from './List';
 
-const IconForm = ({
+const ScreenshotsForm = ({
   handleSubmit,
 }) => (
   <Form onSubmit={handleSubmit}>
-    <Icon name="icon" />
+    <List name="items" />
   </Form>
 );
 
 export default reduxForm({
-  form: 'iconForm',
-})(IconForm);
+  form: 'screenshotsFotm',
+})(ScreenshotsForm);

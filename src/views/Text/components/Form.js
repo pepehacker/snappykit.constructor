@@ -7,7 +7,7 @@ import Form, { Color, Input, Palette, Select } from 'components/Form';
 import Style from './Style';
 
 // Entities
-import { FONT, STYLE } from 'entities/template/constants';
+import { TEXT_FONT, TEXT_STYLE } from 'entities/template/constants';
 
 const TextForm = ({
   handleSubmit,
@@ -17,7 +17,7 @@ const TextForm = ({
     <Input label="Text" name="text" placeholder="Set Text" />
 
     <Select label="Font" name="font" placeholder="Choose a font">
-      {get(FONT, 'values', []).map((value: string) => (
+      {get(TEXT_FONT, 'values', []).map((value: string) => (
         <option
           key={value}
           value={value}
@@ -36,7 +36,7 @@ const TextForm = ({
 export default reduxForm({
   form: 'textForm',
   initialValues: {
-    font: FONT.ROBOTO,
-    style: STYLE.LIGHT,
+    font: TEXT_FONT.ROBOTO,
+    style: TEXT_STYLE.LIGHT,
   },
 })(TextForm);

@@ -1,59 +1,67 @@
 import classNames from 'classnames';
+import { get } from 'lodash';
 import PropTypes from 'prop-types';
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 // Components
-import Button from './components/Button';
+import Item from './components/Item';
 import Link from '../Link';
 
 // Entities
-import { STORE, VIEW } from 'entities/template/constants';
+import {
+  STORE,
+  STORE_APP_STORE,
+  STORE_GOOGLE_PLAY,
+
+  VIEW,
+} from 'entities/template/constants';
 import { getFieldById } from 'entities/template/selector';
 
 // Styles
 import styles from './Store.scss';
 
 const TemplateStore = ({
-  appStore,
   className,
-  googlePlay,
   isEditor = true,
+  items,
   view = VIEW.DESKTOP,
 }) => {
-  const rootClassNames = classNames(className, styles.Root);
-  const LinkComponent = isEditor ? Link : Fragment;
+  const rootClassNames = classNames(className, styles.Root, {
+    [styles.RootViewDesktop]: view === VIEW.DESKTOP,
+    [styles.RootViewMobile]: view === VIEW.MOBILE,
+  });
 
   return (
     <div className={rootClassNames}>
-      <LinkComponent {...(isEditor && { to: '/1/editor/store' })}>
+      <Link to="/1/editor/store">
         <div className={styles.Container}>
-          {appStore && (
-            <Button
-              isEditor={isEditor}
-              variant={Button.VARIANT.APP_STORE}
+          {get(items, STORE_APP_STORE) && (
+            <Item
+              variant={STORE_APP_STORE}
               view={VIEW}
             />
           )}
 
-          {googlePlay && (
-            <Button
-              isEditor={isEditor}
-              variant={Button.VARIANT.GOOGLE_PLAY}
+          {get(items, STORE_GOOGLE_PLAY) && (
+            <Item
+              variant={STORE_GOOGLE_PLAY}
               view={VIEW}
             />
           )}
         </div>
-      </LinkComponent>
+      </Link>
     </div>
   );
 };
 
 TemplateStore.propTypes = {
-  appStore: PropTypes.string,
   className: PropTypes.string,
   isEditor: PropTypes.bool,
-  googlePlay: PropTypes.string,
+  items: PropTypes.shape({
+    [STORE_APP_STORE]: PropTypes.string,
+    [STORE_GOOGLE_PLAY]: PropTypes.string,
+  }),
   view: PropTypes.oneOf([VIEW.DESKTOP, VIEW.MOBILE]),
 };
 

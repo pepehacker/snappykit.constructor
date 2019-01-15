@@ -9,11 +9,12 @@ import styles from './Link.scss';
 const TemplateLink = ({
   children,
   className,
+  isEditor = true,
   to,
 }) => {
   const rootClassNames = classNames(className, styles.Root);
 
-  return (
+  return isEditor ? (
     <NavLink
       activeClassName={styles.RootIsActive}
       className={rootClassNames}
@@ -24,12 +25,13 @@ const TemplateLink = ({
         {children}
       </div>
     </NavLink>
-  );
+  ) : children;
 };
 
 TemplateLink.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  isEditor: PropTypes.bool,
   to: PropTypes.string.isRequired,
 };
 

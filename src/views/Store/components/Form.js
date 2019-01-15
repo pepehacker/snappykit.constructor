@@ -32,13 +32,13 @@ const StoreForm = ({
       <Link
         icon="fa-apple"
         label="App Store"
-        name="appStore"
+        name="items.appStore"
       />
 
       <Link
         icon="fa-google-play"
         label="Google Play"
-        name="googlePlay"
+        name="items.googlePlay"
       />
 
       <ColorSwitcher

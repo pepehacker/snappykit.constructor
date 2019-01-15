@@ -1,14 +1,17 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { object } from 'yup';
 
 // Components
 import Link from './Link';
 
-// Ducks
-import { getFieldById } from 'entities/template';
+// Entities
+import {
+  TEXT_FONT, TEXT_STYLE,
+  VIEW,
+} from 'entities/template/constants';
+import { getFieldById } from 'entities/template/selector';
 
 // Styles
 import styles from './Text.scss';
@@ -21,8 +24,10 @@ const TemplateText = ({
   isEditor = true,
   style: fontWeight,
   text,
+  view = VIEW.DESKTOP,
 }) => {
   const rootClassNames = classNames(className, styles.Root);
+  const LinkComponent = isEditor ? Link : Fragment;
 
   return (
     <div
@@ -32,11 +37,12 @@ const TemplateText = ({
         fontFamily: `'${font}', sans-serif`,
       }}
     >
-      {!isEditor ? text : (
-        <Link to={`/1/editor/text/${id}`}>
-          {text}
-        </Link>
-      )}
+      <LinkComponent
+        isEditor={isEditor}
+        to={`/1/editor/text/${id}`}
+      >
+        {text}
+      </LinkComponent>
     </div>
   );
 };
@@ -45,14 +51,12 @@ TemplateText.propTypes = {
   className: PropTypes.string,
   color: PropTypes.string,
   id: PropTypes.string.isRequired,
-  font: PropTypes.string,
-  style: PropTypes.string,
-  // eslint-disable-next-line
-  schema: PropTypes.instanceOf(object).isRequired,
+  font: PropTypes.oneOf(TEXT_FONT.values),
+  style: PropTypes.oneOf(TEXT_STYLE.values),
   text: PropTypes.string,
 };
 
-const mapStateToProps = (state: Object, { id, schema }) =>
-  schema.cast(getFieldById(state, id));
+const mapStateToProps = (state: Object, { id }) =>
+  getFieldById(state, id);
 
 export default connect(mapStateToProps)(TemplateText);

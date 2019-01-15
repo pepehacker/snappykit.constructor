@@ -4,35 +4,32 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 // Entities
-import { STORE, VIEW } from 'entities/template/constants';
+import {
+  STORE,
+  STORE_APP_STORE,
+  STORE_GOOGLE_PLAY,
+  VIEW,
+} from 'entities/template/constants';
 import { getFieldById } from 'entities/template/selector';
 
 // Styles
-import styles from './Button.scss';
-
-const VARIANT = {
-  APP_STORE: 'appStore',
-  GOOGLE_PLAY: 'googlePlay',
-};
+import styles from './Item.scss';
 
 const StoreButton = ({
   background,
   color,
   isEditor = true,
-  variant = VARIANT.APP_STORE,
+  variant = STORE_APP_STORE,
   view = VIEW.DESKTOP,
 }) => {
   const rootClassNames = classNames(styles.Root, {
-    [styles.RootVariantAppStore]: variant === VARIANT.APP_STORE,
-    [styles.RootVariantGooglePlay]: variant === VARIANT.GOOGLE_PLAY,
-
     [styles.RootViewDesktop]: view === VIEW.DESKTOP,
     [styles.RootViewMobile]: view === VIEW.MOBILE,
   });
 
   const iconClassNames = classNames(styles.Icon, 'fab', {
-    'fa-apple': variant === VARIANT.APP_STORE,
-    'fa-google-play': variant === VARIANT.GOOGLE_PLAY,
+    'fa-apple': variant === STORE_APP_STORE,
+    'fa-google-play': variant === STORE_GOOGLE_PLAY,
   });
 
   const ButtonComponent = isEditor ? 'div' : 'a';
@@ -61,8 +58,8 @@ const StoreButton = ({
           className={styles.Title}
           style={{ color }}
         >
-          {variant === VARIANT.APP_STORE && 'App Store'}
-          {variant === VARIANT.GOOGLE_PLAY && 'Google Play'}
+          {variant === STORE_APP_STORE && 'App Store'}
+          {variant === STORE_GOOGLE_PLAY && 'Google Play'}
         </div>
       </div>
     </ButtonComponent>
@@ -73,10 +70,8 @@ StoreButton.propTypes = {
   background: PropTypes.string,
   color: PropTypes.string,
   isEditor: PropTypes.bool,
-  variant: PropTypes.oneOf([VARIANT.APP_STORE, VARIANT.GOOGLE_PLAY]),
+  variant: PropTypes.oneOf([STORE_APP_STORE, STORE_GOOGLE_PLAY]),
 };
-
-StoreButton.VARIANT = VARIANT;
 
 const mapStateToProps = (state: Object) =>
   getFieldById(state, STORE);

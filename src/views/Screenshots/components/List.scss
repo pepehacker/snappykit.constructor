@@ -1,0 +1,12 @@
+.Root {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -8px;
+
+  & > * {
+    flex: 0 0 124px;
+    height: 220px;
+    margin: 8px;
+    width: 124px;
+  }
+}
