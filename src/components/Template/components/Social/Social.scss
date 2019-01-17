@@ -1,7 +1,29 @@
+.Root {
+  &View {
+    &Desktop {
+      .Container {
+        height: 20px;
+        min-width: 20px;
+
+        & > *:not(:first-child) {
+          margin: 0 0 0 32px;
+        }
+      }
+    }
+
+    &Mobile {
+      .Container {
+        height: 20px;
+        min-width: 20px;
+
+        & > *:not(:first-child) {
+          margin: 0 0 0 16px;
+        }
+      }
+    }
+  }
+}
+
 .Container {
   display: flex;
-
-  & > *:not(:first-child) {
-    margin: 0 0 0 16px;
-  }
 }

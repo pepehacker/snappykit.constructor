@@ -16,7 +16,7 @@ export const fetchTemplate = (id: number): void => (dispatch: func) => {
   if (id) {
     const { config } = getTemplateById(id);
     const data = {};
-    console.log(config);
+
     keys(get(config, 'section', {})).forEach((id: string) => {
       const schema = get(config, `section.${id}.schema`);
 

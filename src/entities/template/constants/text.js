@@ -1,4 +1,4 @@
-import { values } from 'lodash';
+import { get, values } from 'lodash';
 import { object, string } from 'yup';
 
 export const TEXT = 'text';
@@ -35,16 +35,16 @@ export const TEXT_STYLE_VALUES = [
 ];
 
 // Schema
-export const TEXT_SCHEMA = object().shape({
+export const TEXT_SCHEMA = (defaults: Object): Object => object().shape({
   color: string()
     .matches(TEXT_COLOR.regex, 'Incorrect `COLOR`!')
-    .default('rgba(255, 255, 255, 1)'),
+    .default(get(defaults, 'color', 'rgba(255, 255, 255, 1)')),
   font: string()
     .matches(TEXT_FONT.regex, 'Incorrect `FONT` name!')
-    .default(TEXT_FONT.ROBOTO),
+    .default(get(defaults, 'font', TEXT_FONT.ROBOTO)),
   style: string()
     .matches(TEXT_STYLE.regex, 'Incorrect `STYLE` value!')
-    .default(TEXT_STYLE.REGULAR),
+    .default(get(defaults, 'style', TEXT_STYLE.REGULAR)),
   text: string()
-    .default('Title')
+    .default(get(defaults, 'text', 'Text'))
 });

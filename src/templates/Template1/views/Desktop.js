@@ -2,8 +2,8 @@ import React from 'react';
 
 // Components
 import {
-  Links,
-  Logo,
+  Icon,
+  Policy,
   Screenshots,
   Smartphone,
   Social,
@@ -11,59 +11,74 @@ import {
   Text,
 } from 'components/Template';
 
+// Entities
+import {
+  COPYRIGHT,
+  DESCRIPTION,
+  TITLE,
+  VIEW,
+} from 'entities/template/constants';
+
 // Styles
 import styles from './Desktop.scss';
 
-const Template1 = ({
-
-}) => (
+const Template1 = () => (
   <div className={styles.Root}>
     <div className={styles.Wrapper}>
       <header className={styles.Header}>
-        <div className={styles.Logo}>
-          <Logo />
-        </div>
-
-        <div className={styles.Social}>
-          <Social />
-        </div>
+        <Icon view={VIEW.DESKTOP} />
+        <Social view={VIEW.DESKTOP} />
       </header>
 
       <div className={styles.Container}>
-        <div className={styles.Left}>
-          <Text className={styles.Title}>
-            Make cool audio, <br />
-            right from your phone.
-          </Text>
+        <div className={styles.Content}>
+          <Text
+            className={styles.Title}
+            id={TITLE}
+            view={VIEW.DESKTOP}
+          />
 
-          <Text className={styles.Description}>
-            Anchor lets you record or capture ANY audio, right from your phone. <br />
-            It’s the easiest way to make a podcast or radio show, ever. <br />
-            No experience necessary (and it’s 100% free). <br />
-          </Text>
+          <Text
+            className={styles.Description}
+            id={DESCRIPTION}
+            view={VIEW.DESKTOP}
+          />
 
-          <div className={styles.Store}>
-            <Store />
-          </div>
+          <Store
+            className={styles.Store}
+            view={VIEW.DESKTOP}
+          />
         </div>
 
-        <div className={styles.Right}>
-          <Smartphone>
-            <Screenshots />
+        <div className={styles.Slider}>
+          <Smartphone
+            className={styles.Smartphone}
+            classNames={{
+              container: styles.Screenshots,
+            }}
+            view={VIEW.DESKTOP}
+          >
+            <Screenshots
+              classNames={{
+                item: styles.ScreenshotsItem,
+              }}
+              view={VIEW.DESKTOP}
+            />
           </Smartphone>
         </div>
       </div>
 
       <footer className={styles.Footer}>
-        <div className={styles.Links}>
-          <Links />
-        </div>
+        <Policy
+          className={styles.Policy}
+          view={VIEW.DESKTOP}
+        />
 
-        <div className={styles.Copyright}>
-          <Text className={styles.CopyrightText}>
-            © 2018 ANCHOR FM INC
-          </Text>
-        </div>
+        <Text
+          className={styles.Copyright}
+          id={COPYRIGHT}
+          view={VIEW.DESKTOP}
+        />
       </footer>
     </div>
   </div>

@@ -31,17 +31,15 @@
 }
 
 .Screenshots {
-  height: 186px;
-  left: 8px;
+  height: 187px;
+  left: 7px;
   position: absolute;
-  top: 31px;
-  width: 105px;
-  z-index: 2;
+  top: 30px;
+  width: 107px;
 
-  &Item,
-  &Slider {
-    height: 186px;
-    width: 105px;
+  &Item {
+    height: 187px;
+    width: 107px;
   }
 }
 
@@ -50,12 +48,10 @@
   position: relative;
 }
 
-
 .Smartphone {
   height: 247px;
   position: relative;
   width: 121px;
-  z-index: 1;
 }
 
 .Store {

@@ -6,38 +6,29 @@ import { connect } from 'react-redux';
 import { compose } from 'recompose';
 
 // Entities
+import { VIEW } from 'entities/template/constants';
 import { getCurrentTemplateId } from 'entities/template/selector';
 import { getTemplateById } from 'templates';
-
-// Types
-import {
-  DESKTOP_DEVICE_ID,
-  MOBILE_DEVICE_ID,
-  TABLET_DEVICE_ID,
-} from 'views/Editor';
 
 // Styles
 import styles from './View.scss';
 
 const EditorView = ({
   className: classNameProp,
-  // container,
   currentDevice,
   Template,
-  // root,
-  // scale,
 }) => {
   const className = classNames(classNameProp, styles.Root, {
-    [styles.RootDeviceDesktop]: currentDevice === DESKTOP_DEVICE_ID,
-    [styles.RootDeviceMobile]: currentDevice === MOBILE_DEVICE_ID,
-    [styles.RootDeviceTablet]: currentDevice === TABLET_DEVICE_ID,
+    [styles.RootDeviceDesktop]: currentDevice === VIEW.DESKTOP,
+    [styles.RootDeviceMobile]: currentDevice === VIEW.MOBILE,
+    [styles.RootDeviceTablet]: currentDevice === VIEW.TABLET,
   });
 
   return (
     <div className={className}>
       {Template && (
         <div className={styles.Container}>
-          <Template />
+          <Template view={currentDevice} />
         </div>
       )}
     </div>

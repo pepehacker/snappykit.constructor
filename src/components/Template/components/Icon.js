@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 // Components
@@ -19,12 +19,14 @@ const TemplateIcon = ({
   isEditor = true,
   view = VIEW.DESKTOP,
 }) => {
-  const rootClassNames = classNames(className, styles.Root);
-  const LinkComponent = isEditor ? Link : Fragment;
+  const rootClassNames = classNames(className, styles.Root, {
+    [styles.RootViewDesktop]: view === VIEW.DESKTOP,
+    [styles.RootViewMobile]: view === VIEW.MOBILE,
+  });
 
   return (
     <div className={rootClassNames}>
-      <LinkComponent {...(isEditor && { to: '/1/editor/icon' })}>
+      <Link to="/1/editor/icon">
         <div className={styles.Container}>
           <img
             alt="Icon logo"
@@ -32,13 +34,14 @@ const TemplateIcon = ({
             src={icon}
           />
         </div>
-      </LinkComponent>
+      </Link>
     </div>
   );
 }
 
 TemplateIcon.propTypes = {
   className: PropTypes.string,
+  icon: PropTypes.string,
   isEditor: PropTypes.bool,
   view: PropTypes.oneOf([VIEW.DESKTOP, VIEW.MOBILE]),
 };

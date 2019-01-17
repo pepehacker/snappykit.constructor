@@ -3,21 +3,17 @@ import React from 'react';
 // Components
 import Item from './components/Item';
 
-// Types
-import {
-  DESKTOP_DEVICE_ID,
-  MOBILE_DEVICE_ID,
-  TABLET_DEVICE_ID,
-} from 'views/Editor';
+// Entities
+import { VIEW } from 'entities/template/constants';
 
 import styles from './Devices.scss';
 
 const EditorDevices = () => (
   <div className={styles.Root}>
     <div className={styles.List}>
-      <Item id={DESKTOP_DEVICE_ID} title="DESKTOP" />
-      <Item id={TABLET_DEVICE_ID} title="TABLET" />
-      <Item id={MOBILE_DEVICE_ID} title="MOBILE" />
+      <Item id={VIEW.DESKTOP} title="DESKTOP" />
+      <Item id={VIEW.TABLET} title="TABLET" />
+      <Item id={VIEW.MOBILE} title="MOBILE" />
     </div>
   </div>
 );

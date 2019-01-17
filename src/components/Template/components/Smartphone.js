@@ -1,49 +1,75 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { string } from 'yup';
 
 // Components
 import Link from './Link';
 
 // Entities
-import { getFieldById } from 'entities/template';
+import { SMARTPHONE, VIEW } from 'entities/template/constants';
+import { getFieldById } from 'entities/template/selector';
 
 // Styles
 import styles from './Smartphone.scss';
 
 const TemplateSmartphone = ({
+  children,
   className,
-  id,
+  classNames: {
+    root: rootClassName,
+    container: containerClassName,
+    mockup: mockupClassName,
+  } = {},
   isEditor = true,
   mockup,
+  view = VIEW.DESKTOP,
 }) => {
-  const rootClassNames = classNames(className, styles.Root);
-  const LinkComponent = isEditor ? Link : Fragment;
+  const rootClassNames = classNames(className, rootClassName, styles.Root, {
+    [styles.RootViewDesktop]: view === VIEW.DESKTOP,
+    [styles.RootViewMobile]: view === VIEW.MOBILE,
+  });
+
+  const containerClassNames = classNames(containerClassName, styles.Container);
+  const mockupClassNames = classNames(mockupClassName, styles.Mockup);
 
   return (
     <div className={rootClassNames}>
-      <LinkComponent {...(isEditor && { className: styles.Link, to: '/1/editor/smartphone' })}>
+      <Link
+        className={styles.Link}
+        to="/1/editor/smartphone"
+      >
         <div
-          className={styles.Mockup}
-          style={{ backgroundImage: `url(${require(`assets/mockup/${mockup}.png`)})` /* eslint-disable-line */ }}
+          className={mockupClassNames}
+          style={{
+            backgroundImage: `url(${require(`assets/mockup/${mockup}.png`)})`, /* eslint-disable-line */
+          }}
         />
-      </LinkComponent>
+      </Link>
+
+      {children && (
+        <div className={containerClassNames}>
+          {children}
+        </div>
+      )}
     </div>
   );
 };
 
 TemplateSmartphone.propTypes = {
+  children: PropTypes.node,
   className: PropTypes.string,
-  id: PropTypes.string.isRequired,
+  classNames: PropTypes.shape({
+    root: PropTypes.string,
+    container: PropTypes.string,
+    mockup: PropTypes.string,
+  }),
+  isEditor: PropTypes.bool,
   mockup: PropTypes.string,
-  // eslint-disable-next-line
-  schema: PropTypes.instanceOf(string).isRequired,
+  view: PropTypes.oneOf([VIEW.DESKTOP, VIEW.MOBILE]),
 };
 
-const mapStateToProps = (state: Object, { id, schema }) => (id && schema && ({
-  mockup: schema.cast(getFieldById(state, id)),
-}));
+const mapStateToProps = (state: Object) =>
+  getFieldById(state, SMARTPHONE);
 
 export default connect(mapStateToProps)(TemplateSmartphone);

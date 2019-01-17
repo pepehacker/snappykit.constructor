@@ -29,16 +29,19 @@ const TemplateSocial = ({
   isEditor = true,
   view = VIEW.DESKTOP,
 }) => {
-  const rootClassNames = classNames(className, styles.Root);
+  const rootClassNames = classNames(className, styles.Root, {
+    [styles.RootViewDesktop]: view === VIEW.DESKTOP,
+    [styles.RootViewMobile]: view === VIEW.MOBILE,
+  });
 
   return (
     <div className={rootClassNames}>
       <Link to="/1/editor/social">
         <div className={styles.Container}>
-          {get(items, SOCIAL_FACEBOOK) && <Item id={SOCIAL_FACEBOOK} />}
-          {get(items, SOCIAL_INSTAGRAM) && <Item id={SOCIAL_INSTAGRAM} />}
-          {get(items, SOCIAL_TWITTER) && <Item id={SOCIAL_TWITTER} />}
-          {get(items, SOCIAL_VK) && <Item id={SOCIAL_VK} />}
+          {get(items, SOCIAL_FACEBOOK) && <Item id={SOCIAL_FACEBOOK} view={view} />}
+          {get(items, SOCIAL_INSTAGRAM) && <Item id={SOCIAL_INSTAGRAM} view={view} />}
+          {get(items, SOCIAL_TWITTER) && <Item id={SOCIAL_TWITTER} view={view} />}
+          {get(items, SOCIAL_VK) && <Item id={SOCIAL_VK} view={view} />}
         </div>
       </Link>
     </div>

@@ -1,3 +1,8 @@
+.Root {
+  height: 100%;
+  width: 100%;
+}
+
 .Image {
   height: 100%;
   object-fit: cover;
@@ -5,9 +10,6 @@
 }
 
 .Item {
-  height: 230px;
-  width: 100px;
-
   &:focus {
     outline: none;
   }

@@ -18,6 +18,7 @@ const Text = ({
   id,
   initialValues,
   handleChange,
+  withText,
 }) => (
   <div className={styles.Root}>
     <Title title="Text" />
@@ -28,6 +29,7 @@ const Text = ({
         initialValues={initialValues}
         key={id}
         onChange={handleChange}
+        withText={withText}
       />
     </Container>
   </div>
@@ -35,8 +37,12 @@ const Text = ({
 
 const mapStateToProps = (state: Object, { match }) => {
   const id = get(match, 'params.fieldId');
+  const initialValues = getFieldById(state, id);
 
-  return { id, initialValues: getFieldById(state, id) };
+  return {
+    id, initialValues,
+    withText: id && get(initialValues, 'text') !== undefined,
+  };
 };
 
 export default compose(

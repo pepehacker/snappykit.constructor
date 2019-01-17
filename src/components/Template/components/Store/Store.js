@@ -39,14 +39,14 @@ const TemplateStore = ({
           {get(items, STORE_APP_STORE) && (
             <Item
               variant={STORE_APP_STORE}
-              view={VIEW}
+              view={view}
             />
           )}
 
           {get(items, STORE_GOOGLE_PLAY) && (
             <Item
               variant={STORE_GOOGLE_PLAY}
-              view={VIEW}
+              view={view}
             />
           )}
         </div>

@@ -1,8 +1,10 @@
 .Root {
+  display: flex;
+
   &View {
     &Desktop {
       .Container {
-        height: 64px;
+        height: 60px;
       }
     }
 
@@ -19,7 +21,7 @@
   margin: 0 -10px;
 
   & > * {
-    flex: 0 0 calc(50% - 20px);
+    // flex: 0 0 calc(50% - 20px);
     margin: 0 10px;
   }
 }

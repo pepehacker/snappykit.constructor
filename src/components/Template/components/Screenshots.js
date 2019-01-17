@@ -1,5 +1,6 @@
 import classNames from 'classnames';
-import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { connect } from 'react-redux';
 import Slider from 'react-slick';
 
@@ -7,7 +8,7 @@ import Slider from 'react-slick';
 import Link from './Link';
 
 // Entities
-import { SCREENSHOTS } from 'entities/template/constants';
+import { SCREENSHOTS, VIEW } from 'entities/template/constants';
 import { getFieldById } from 'entities/template/selector';
 
 // Styles
@@ -24,39 +25,48 @@ const TemplateScreenshots = ({
   className,
   classNames: {
     root: rootClassName,
-    container: containerClassName,
     item: itemClassName,
-    slider: sliderClassName,
-  },
+  } = {},
   isEditor = true,
   items,
+  view = VIEW.DESKTOP,
 }) => {
-  const rootClassNames = classNames(className, rootClassName, styles.Root);
-  const containerClassNames = classNames(containerClassName, styles.Container);
-  const itemClassNames = classNames(itemClassName, styles.Item);
-  const sliderClassNames = classNames(sliderClassName, styles.Slider);
+  const rootClassNames = classNames(className, rootClassName, styles.Root, {
+    [styles.RootViewDesktop]: view === VIEW.DESKTOP,
+    [styles.RootViewMobile]: view === VIEW.MOBILE,
+  });
 
-  const LinkComponent = isEditor ? Link : Fragment;
+  const itemClassNames = classNames(itemClassName, styles.Item);
 
   return (
     <div className={rootClassNames}>
-      <LinkComponent {...(isEditor && { to: `/1/editor/screenshots` })}>
-        <div className={containerClassNames}>
-          <Slider {...SETTINGS} className={sliderClassNames}>
-            {(items || []).map((image: stirng, index: number) => (
+      <Link to="/1/editor/screenshots">
+        <div className={styles.Container}>
+          <Slider {...SETTINGS} className={styles.Slider}>
+            {(items || []).map((source: stirng, index: number): func => (
               <div className={itemClassNames} key={index}>
                 <img
                   alt="Screenshot"
-                className={styles.Image}
-                  src={image}
+                  className={styles.Image}
+                  src={source}
                 />
               </div>
             ))}
           </Slider>
         </div>
-      </LinkComponent>
+      </Link>
     </div>
   );
+};
+
+TemplateScreenshots.propTypes = {
+  className: PropTypes.string,
+  classNames: PropTypes.shape({
+    root: PropTypes.string,
+  }),
+  isEditor: PropTypes.bool,
+  items: PropTypes.arrayOf(PropTypes.string),
+  view: PropTypes.oneOf([VIEW.DESKTOP, VIEW.MOBILE]),
 };
 
 const mapStateToProps = (state: Object) =>

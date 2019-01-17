@@ -2,6 +2,10 @@
   display: flex;
 }
 
+.Terms {
+  margin: 0 0 0 24px;
+}
+
 .Privacy,
 .Terms {
   color: #ffffff;
@@ -9,8 +13,4 @@
   letter-spacing: .6px;
   opacity: .6;
   transition: all .2s;
-}
-
-.Terms {
-  margin: 0 0 0 24px;
 }

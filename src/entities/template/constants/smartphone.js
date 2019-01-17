@@ -1,3 +1,6 @@
+import { get, values } from 'lodash';
+import { object, string } from 'yup';
+
 export const SMARTPHONE = 'smartphone';
 
 // Mockups
@@ -41,3 +44,10 @@ SMARTPHONE_STYLE.values = [
   { label: 'Concept', value: SMARTPHONE_STYLE.CONCEPT },
   { label: 'Flat', value: SMARTPHONE_STYLE.FLAT },
 ];
+
+// Schema
+export const SMARTPHONE_SCHEMA = (defaults: Object): Object => object().shape({
+  mockup: string()
+    .matches(new RegExp(`/^(${values(SMARTPHONE_MOCKUP).join('|')})$/`), 'Incorrect `SMARTPHONE` ID!')
+    .default(get(defaults, 'mockup', SMARTPHONE_MOCKUP.FLAT_IPHONE_SILVER)),
+});

@@ -33,6 +33,10 @@
         text-transform: uppercase;
       }
     }
+
+    &Mobile {
+      min-width: 128px;
+    }
   }
 }
 

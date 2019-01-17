@@ -8,7 +8,7 @@ import Link from './Link';
 
 // Entities
 import {
-  TEXT_FONT, TEXT_STYLE,
+  TEXT_FONT_VALUES, TEXT_STYLE_VALUES,
   VIEW,
 } from 'entities/template/constants';
 import { getFieldById } from 'entities/template/selector';
@@ -26,8 +26,10 @@ const TemplateText = ({
   text,
   view = VIEW.DESKTOP,
 }) => {
-  const rootClassNames = classNames(className, styles.Root);
-  const LinkComponent = isEditor ? Link : Fragment;
+  const rootClassNames = classNames(className, styles.Root, {
+    [styles.RootViewDesktop]: view === VIEW.DESKTOP,
+    [styles.RootViewMobile]: view === VIEW.MOBILE,
+  });
 
   return (
     <div
@@ -37,12 +39,9 @@ const TemplateText = ({
         fontFamily: `'${font}', sans-serif`,
       }}
     >
-      <LinkComponent
-        isEditor={isEditor}
-        to={`/1/editor/text/${id}`}
-      >
+      <Link to={`/1/editor/text/${id}`}>
         {text}
-      </LinkComponent>
+      </Link>
     </div>
   );
 };
@@ -51,8 +50,8 @@ TemplateText.propTypes = {
   className: PropTypes.string,
   color: PropTypes.string,
   id: PropTypes.string.isRequired,
-  font: PropTypes.oneOf(TEXT_FONT.values),
-  style: PropTypes.oneOf(TEXT_STYLE.values),
+  font: PropTypes.oneOf(TEXT_FONT_VALUES),
+  style: PropTypes.oneOf(TEXT_STYLE_VALUES.map(({ value }) => value)),
   text: PropTypes.string,
 };
 

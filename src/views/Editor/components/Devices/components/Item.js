@@ -5,13 +5,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 // Actions
-import {
-  setCurrentDevice,
+import { setCurrentDevice } from 'views/Editor';
 
-  DESKTOP_DEVICE_ID,
-  MOBILE_DEVICE_ID,
-  TABLET_DEVICE_ID,
-} from 'views/Editor';
+// Entities
+import { VIEW } from 'entities/template/constants';
 
 import styles from './Item.scss';
 
@@ -25,9 +22,9 @@ const EditorDevicesItem = ({
   const className = classNames(classNameProp, styles.Root, {
     [styles.RootIsActive]: !!isActive,
 
-    [styles.RootIconDesktop]: id === DESKTOP_DEVICE_ID,
-    [styles.RootIconMobile]: id === MOBILE_DEVICE_ID,
-    [styles.RootIconTablet]: id === TABLET_DEVICE_ID,
+    [styles.RootIconDesktop]: id === VIEW.DESKTOP,
+    [styles.RootIconMobile]: id === VIEW.MOBILE,
+    [styles.RootIconTablet]: id === VIEW.TABLET,
   });
 
   return (

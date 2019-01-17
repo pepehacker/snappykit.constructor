@@ -1,5 +1,1 @@
 export const SET_CURRENT_DEVICE = 'VIEWS/EDITOR/SET_CURRENT_DEVICE';
-
-export const DESKTOP_DEVICE_ID = 'DESKTOP';
-export const MOBILE_DEVICE_ID = 'MOBILE';
-export const TABLET_DEVICE_ID = 'TABLET';

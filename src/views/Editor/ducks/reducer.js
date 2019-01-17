@@ -1,11 +1,13 @@
+// Entities
+import { VIEW } from 'entities/template/constants';
+
+// Types
 import {
   SET_CURRENT_DEVICE,
-  // DESKTOP_DEVICE_ID,
-  MOBILE_DEVICE_ID,
 } from './types';
 
 const initialState = {
-  currentDevice: MOBILE_DEVICE_ID,
+  currentDevice: VIEW.DESKTOP,
 };
 
 export default (state = initialState, action: Object) => {

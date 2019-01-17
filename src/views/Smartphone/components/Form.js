@@ -48,7 +48,7 @@ const selector = formValueSelector('smartphoneForm');
 const mapStateToProps = (state: Object) => ({
   ...selector(state, 'model', 'style'),
   initialValues: {
-    mockup: getFieldById(state, SMARTPHONE),
+    ...getFieldById(state, SMARTPHONE),
     model: SMARTPHONE_MODEL.IPHONE,
     style: SMARTPHONE_STYLE.FLAT,
   },
@@ -63,7 +63,7 @@ export default compose(
       model: SMARTPHONE_MODEL.IPHONE,
       style: SMARTPHONE_STYLE.FLAT,
     },
-    onChange: ({ mockup }, dispatch: func, { updateTemplate }): void =>
-      updateTemplate(SMARTPHONE, mockup),
+    onChange: (value: Object, dispatch: func, { updateTemplate }): void =>
+      updateTemplate(SMARTPHONE, value),
   }),
 )(SmartphoneForm)
