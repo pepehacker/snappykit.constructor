@@ -21,6 +21,10 @@ import styles from './Policy.scss';
 
 const TemplatePolicy = ({
   className,
+  classNames: {
+    root: rootClassName,
+    container: containerClassName,
+  } = {},
   color,
   font,
   isEditor = true,
@@ -28,17 +32,19 @@ const TemplatePolicy = ({
   style: fontWeight,
   view = VIEW.DESKTOP,
 }) => {
-  const rootClassNames = classNames(className, styles.Root, {
+  const rootClassNames = classNames(className, rootClassName, styles.Root, {
     [styles.RootViewDesktop]: view === VIEW.DESKTOP,
     [styles.RootViewMobile]: view === VIEW.MOBILE,
   });
+
+  const containerClassNames = classNames(containerClassName, styles.Container);
 
   return (
     <div className={rootClassNames}>
       {(get(items, POLICY_PRIVACY) || get(items, POLICY_TERMS)) && (
         <Link to={`/1/editor/text/${POLICY}`}>
           <div
-            className={styles.Container}
+            className={containerClassNames}
             style={{
               color, fontWeight,
               fontFamily: `'${font}', sans-serif`,

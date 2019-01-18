@@ -21,6 +21,17 @@
         }
       }
     }
+
+    &Tablet {
+      .Container {
+        height: 20px;
+        min-width: 20px;
+
+        & > *:not(:first-child) {
+          margin: 0 0 0 24px;
+        }
+      }
+    }
   }
 }
 

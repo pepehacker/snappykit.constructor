@@ -32,6 +32,7 @@ const TemplateSocial = ({
   const rootClassNames = classNames(className, styles.Root, {
     [styles.RootViewDesktop]: view === VIEW.DESKTOP,
     [styles.RootViewMobile]: view === VIEW.MOBILE,
+    [styles.RootViewTablet]: view === VIEW.TABLET,
   });
 
   return (
@@ -51,7 +52,7 @@ const TemplateSocial = ({
 TemplateSocial.propTypes = {
   className: PropTypes.string,
   isEditor: PropTypes.bool,
-  view: PropTypes.oneOf([VIEW.DESKTOP, VIEW.MOBILE]),
+  view: PropTypes.oneOf([VIEW.DESKTOP, VIEW.MOBILE, VIEW.TABLET]),
 };
 
 const mapStateToProps = (state: Object) =>

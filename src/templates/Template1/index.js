@@ -6,6 +6,7 @@ import { VIEW } from 'entities/template/constants';
 // Views
 import Desktop from './views/Desktop';
 import Mobile from './views/Mobile';
+import Tablet from './views/Tablet';
 
 const Template1 = ({
   isEditor = true,
@@ -15,6 +16,7 @@ const Template1 = ({
   <Fragment>
     {view === VIEW.DESKTOP && <Desktop style={style} />}
     {view === VIEW.MOBILE && <Mobile style={style} />}
+    {view === VIEW.TABLET && <Tablet style={style} />}
   </Fragment>
 );
 

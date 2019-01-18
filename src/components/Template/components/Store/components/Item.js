@@ -25,6 +25,7 @@ const StoreButton = ({
   const rootClassNames = classNames(styles.Root, {
     [styles.RootViewDesktop]: view === VIEW.DESKTOP,
     [styles.RootViewMobile]: view === VIEW.MOBILE,
+    [styles.RootViewTablet]: view === VIEW.TABLET,
   });
 
   const iconClassNames = classNames(styles.Icon, 'fab', {
@@ -71,6 +72,7 @@ StoreButton.propTypes = {
   color: PropTypes.string,
   isEditor: PropTypes.bool,
   variant: PropTypes.oneOf([STORE_APP_STORE, STORE_GOOGLE_PLAY]),
+  view: PropTypes.oneOf([VIEW.DESKTOP, VIEW.MOBILE, VIEW.TABLET]),
 };
 
 const mapStateToProps = (state: Object) =>

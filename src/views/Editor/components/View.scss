@@ -11,8 +11,6 @@
       .Container {
         max-height: 768px;
         max-width: 1280px;
-        // height: 768px;
-        // width: 1280px;
       }
     }
 
@@ -20,15 +18,13 @@
       .Container {
         max-height: 568px;
         max-width: 320px;
-        // height: 568px;
-        // width: 320px;
       }
     }
 
     &Tablet {
       .Container {
-        height: 1024px;
-        width: 768px;
+        max-height: 1024px;
+        max-width: 768px;
       }
     }
   }
@@ -36,13 +32,18 @@
 
 .Container {
   background: #d8d8d8;
+  background-image: linear-gradient(to bottom, #479fff 1%, #7b54fb);
   border-radius: 10px;
   box-shadow: 0 20px 60px 0 rgba(0, 0, 0, .15);
   display: flex;
-  flex: 1 1 auto;
+  // flex: 1 1 auto;
   justify-content: center;
-  overflow: scroll;
+  overflow: hidden;
   position: relative;
   transition: all .4s ease-in-out;
   width: 100%;
+
+  & > * {
+    transition: opacity .2s;
+  }
 }

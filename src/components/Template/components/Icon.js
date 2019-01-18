@@ -43,7 +43,7 @@ TemplateIcon.propTypes = {
   className: PropTypes.string,
   icon: PropTypes.string,
   isEditor: PropTypes.bool,
-  view: PropTypes.oneOf([VIEW.DESKTOP, VIEW.MOBILE]),
+  view: PropTypes.oneOf([VIEW.DESKTOP, VIEW.MOBILE, VIEW.TABLET]),
 };
 
 const mapStateToProps = (state: Object) =>

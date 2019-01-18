@@ -3,19 +3,26 @@ import { VIEW } from 'entities/template/constants';
 
 // Types
 import {
-  SET_CURRENT_DEVICE,
+  SET_BUSY,
+  SET_VIEW,
 } from './types';
 
 const initialState = {
-  currentDevice: VIEW.DESKTOP,
+  isBusied: true,
+  view: VIEW.DESKTOP,
 };
 
 export default (state = initialState, action: Object) => {
   switch (action.type) {
-    case SET_CURRENT_DEVICE:
+    case SET_BUSY:
       return {
         ...state,
-        currentDevice: action.deviceId,
+        isBusied: action.busy,
+      };
+    case SET_VIEW:
+      return {
+        ...state,
+        view: action.view,
       };
     default:
       return state;

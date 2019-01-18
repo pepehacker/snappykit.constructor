@@ -49,7 +49,7 @@ TemplateSocialItem.propTypes = {
   color: PropTypes.string,
   id: PropTypes.oneOf([SOCIAL_FACEBOOK, SOCIAL_INSTAGRAM, SOCIAL_TWITTER, SOCIAL_VK]),
   isEditor: PropTypes.bool,
-  view: PropTypes.oneOf([VIEW.DESKTOP, VIEW.MOBILE]),
+  view: PropTypes.oneOf([VIEW.DESKTOP, VIEW.MOBILE, VIEW.TABLET]),
 };
 
 const mapStateToProps = (state: Object, { id }) => {

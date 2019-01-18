@@ -3,9 +3,10 @@ import { get } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
+import { compose, withHandlers } from 'recompose';
 
 // Actions
-import { setCurrentDevice } from 'views/Editor';
+import { setView } from 'views/Editor';
 
 // Entities
 import { VIEW } from 'entities/template/constants';
@@ -53,11 +54,18 @@ EditorDevicesItem.propTypes = {
 };
 
 const mapStateToProps = ({ views }, { id }) => ({
-  isActive: get(views, 'editor.currentDevice') === id,
+  isActive: get(views, 'editor.view') === id,
+  isBusied: get(views, 'editor.isBusied'),
 });
 
-const mapDispatchToProps = (dispatch, { id }) => ({
-  handleClick: () => dispatch(setCurrentDevice(id)),
+const mapDispatchToProps = (dispatch) => ({
+  setView: (id: string): void => dispatch(setView(id)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditorDevicesItem);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withHandlers({
+    handleClick: ({ id, isBusied, setView }): func => (): void =>
+      !isBusied && !!id && setView(id),
+  }),
+)(EditorDevicesItem);

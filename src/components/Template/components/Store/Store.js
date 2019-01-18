@@ -30,6 +30,7 @@ const TemplateStore = ({
   const rootClassNames = classNames(className, styles.Root, {
     [styles.RootViewDesktop]: view === VIEW.DESKTOP,
     [styles.RootViewMobile]: view === VIEW.MOBILE,
+    [styles.RootViewTablet]: view === VIEW.TABLET,
   });
 
   return (
@@ -62,7 +63,7 @@ TemplateStore.propTypes = {
     [STORE_APP_STORE]: PropTypes.string,
     [STORE_GOOGLE_PLAY]: PropTypes.string,
   }),
-  view: PropTypes.oneOf([VIEW.DESKTOP, VIEW.MOBILE]),
+  view: PropTypes.oneOf([VIEW.DESKTOP, VIEW.MOBILE, VIEW.TABLET]),
 };
 
 const mapStateToProps = (state: Object) =>

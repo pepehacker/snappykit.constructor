@@ -34,7 +34,8 @@ export default ({
   section: {
     [COPYRIGHT]: {
       schema: TEXT_SCHEMA({
-        text: '© 2018 Anchor Fm Inc'
+        color: 'rgba(255, 255, 255, .4)',
+        text: '© 2018 ANCHOR FM INC'
       }),
     },
     [DESCRIPTION]: {
