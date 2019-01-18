@@ -22,8 +22,8 @@ import {
 // Styles
 import styles from './Desktop.scss';
 
-const Template1 = () => (
-  <div className={styles.Root}>
+const Template1 = ({ style }) => (
+  <div className={styles.Root} style={style}>
     <div className={styles.Wrapper}>
       <header className={styles.Header}>
         <Icon view={VIEW.DESKTOP} />

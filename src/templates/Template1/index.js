@@ -9,11 +9,12 @@ import Mobile from './views/Mobile';
 
 const Template1 = ({
   isEditor = true,
+  style,
   view = VIEW.DESKTOP,
 }) => (
   <Fragment>
-    {view === VIEW.DESKTOP && <Desktop />}
-    {view === VIEW.MOBILE && <Mobile />}
+    {view === VIEW.DESKTOP && <Desktop style={style} />}
+    {view === VIEW.MOBILE && <Mobile style={style} />}
   </Fragment>
 );
 

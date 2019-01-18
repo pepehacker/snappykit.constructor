@@ -3,7 +3,7 @@ import { get } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import { compose } from 'recompose';
+import { compose, withHandlers, withState } from 'recompose';
 
 // Entities
 import { VIEW } from 'entities/template/constants';
@@ -16,7 +16,11 @@ import styles from './View.scss';
 const EditorView = ({
   className: classNameProp,
   currentDevice,
+  scale,
   Template,
+
+  // Registers
+  registerContainer,
 }) => {
   const className = classNames(classNameProp, styles.Root, {
     [styles.RootDeviceDesktop]: currentDevice === VIEW.DESKTOP,
@@ -27,8 +31,14 @@ const EditorView = ({
   return (
     <div className={className}>
       {Template && (
-        <div className={styles.Container}>
-          <Template view={currentDevice} />
+        <div
+          className={styles.Container}
+          ref={registerContainer}
+        >
+          <Template
+            style={{ transform: `scale(${scale})`}}
+            view={currentDevice}
+          />
         </div>
       )}
     </div>
@@ -51,5 +61,21 @@ const mapStateToProps = ({ views, ...state }) => {
 };
 
 export default compose(
-  connect(mapStateToProps)
+  connect(mapStateToProps),
+  withState('scale', 'setScale', 1),
+  withHandlers(() => {
+    let $container;
+
+    return {
+      handleResize: ({ currentDevice, setScale }) => () => {
+        const containerWidth = $container.clientWidth;
+        alert(123);
+      },
+
+      // Registers
+      registerContainer: ({ handleResize }) => (node: HTMLDivElement) => {
+        $container = node;
+      },
+    };
+  }),
 )(EditorView);

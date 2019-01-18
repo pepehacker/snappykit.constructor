@@ -21,8 +21,8 @@ import {
 // Styles
 import styles from './Mobile.scss';
 
-const Template1Mobile = () => (
-  <div className={styles.Root}>
+const Template1Mobile = ({ style }) => (
+  <div className={styles.Root} style={style}>
     <header className={styles.Header}>
       <Icon className={styles.Icon} view={VIEW.MOBILE} />
       <Policy className={styles.Policy} view={VIEW.MOBILE} />

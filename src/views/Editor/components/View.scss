@@ -2,21 +2,26 @@
   align-items: center;
   display: flex;
   flex: 1 1 auto;
+  flex-direction: column;
   justify-content: center;
   width: 100%;
 
   &Device {
     &Desktop {
       .Container {
-        height: 768px;
-        width: 1280px;
+        max-height: 768px;
+        max-width: 1280px;
+        // height: 768px;
+        // width: 1280px;
       }
     }
 
     &Mobile {
       .Container {
-        height: 568px;
-        width: 320px;
+        max-height: 568px;
+        max-width: 320px;
+        // height: 568px;
+        // width: 320px;
       }
     }
 
@@ -33,6 +38,11 @@
   background: #d8d8d8;
   border-radius: 10px;
   box-shadow: 0 20px 60px 0 rgba(0, 0, 0, .15);
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
   overflow: scroll;
+  position: relative;
   transition: all .4s ease-in-out;
+  width: 100%;
 }
