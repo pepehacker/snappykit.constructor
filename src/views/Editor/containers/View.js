@@ -112,7 +112,7 @@ export default compose(
 
           switch (view) {
             case VIEW.DESKTOP:
-              newHeight = Math.floor(width / 1.6666);
+              newHeight = Math.floor(width / 1.6);
               newScale = width / 1280;
               break;
             case VIEW.TABLET:

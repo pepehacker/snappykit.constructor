@@ -11,6 +11,11 @@
   margin: 100px 0 0;
   position: relative;
 
+  & > * {
+    display: flex;
+    flex: 1 1 auto;
+  }
+
   &Animate {
     &Enter {
       opacity: 0;
@@ -40,8 +45,6 @@
     }
   }
 }
-
-ContainerAnimateExit
 
 .Wrapper {
   display: flex;

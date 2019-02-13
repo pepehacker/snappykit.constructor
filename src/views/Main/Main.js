@@ -1,7 +1,7 @@
 import { get } from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { matchPath, Switch, Route } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { compose, lifecycle } from 'recompose';
 import url from 'url';
@@ -24,11 +24,12 @@ const Main = ({
   isFetching,
   location,
   match,
+  pageId,
 }) => (
   <div className={styles.Root}>
       <div className={styles.Wrapper}>
         <Header />
-
+        {console.log(pageId, location)}
         <div className={styles.Container}>
           <TransitionGroup>
             <CSSTransition
@@ -38,7 +39,7 @@ const Main = ({
                 exit: styles.ContainerAnimateExit,
                 exitActive: styles.ContainerAnimateExitActive,
               }}
-              key={location.key}
+              key={pageId}
               timeout={{ enter: 400, exit: 400 }}
             >
               <Switch location={location}>
@@ -53,9 +54,14 @@ const Main = ({
   </div>
 );
 
-const mapStateToProps = ({ views }) => ({
-  isFetching: get(views, 'main.isFetching'),
-});
+const mapStateToProps = ({ views }, { location }) => {
+  const match = matchPath(get(location, 'pathname'), { path: '/:pageId' });
+
+  return {
+    isFetching: get(views, 'main.isFetching'),
+    pageId: get(match, 'params.pageId', 'main'),
+  }
+};
 
 export default compose(
   connect(mapStateToProps, { fetchWebsites }),
