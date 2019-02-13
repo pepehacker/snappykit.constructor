@@ -58,11 +58,13 @@
     content: '';
     display: block;
     height: 9px;
-    left: 1px;
     mask: url('components/Icon/assets/trash.svg') no-repeat center center;
     mask-size: contain;
-    position: relative;
     width: 9px;
+  }
+
+  &:focus {
+    outline: none;
   }
 
   &:hover {

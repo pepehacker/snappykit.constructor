@@ -22,3 +22,4 @@ const Template1 = ({
 
 export const Component = Template1;
 export { default as config } from './config';
+export { default as preview } from './assets/preview.jpg';

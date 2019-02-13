@@ -46,6 +46,6 @@ FormSelectItem.propTypes = {
 export default compose(
   withHandlers({
     handleClick: ({ label, onClick, value }) => (event: Object) =>
-      onClick && onClick({ label, value }, event),
+      onClick && onClick(value, event),
   }),
 )(FormSelectItem);

@@ -1,5 +1,3 @@
-import { object } from 'yup';
-
 // Entities
 import {
   // Background

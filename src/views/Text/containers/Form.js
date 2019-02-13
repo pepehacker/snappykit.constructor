@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { compose } from 'recompose';
 import { reduxForm } from 'redux-form';
 
 // Components
-import Form, { Color, Palette, Select, Textarea } from 'components/Form';
-import Style from './Style';
+import Form, { Color, Palette, Select, SelectItem, Textarea } from 'components/Form';
+import Style from '../components/Style';
 
 // Entities
 import {
@@ -21,14 +22,17 @@ const TextForm = ({
       <Textarea label="Text" name="text" placeholder="Set Text" />
     )}
 
-    <Select label="Font" name="font" placeholder="Choose a font">
-      {TEXT_FONT_VALUES.map((value: string) => (
-        <option
-          key={value}
-          value={value}
-        >
-          {value}
-        </option>
+    <Select
+      label="Font"
+      name="font"
+      placeholder="Choose a font"
+    >
+      {TEXT_FONT_VALUES.map((name: string): func => (
+        <SelectItem
+          key={name}
+          label={name}
+          value={name}
+        />
       ))}
     </Select>
 
@@ -37,6 +41,10 @@ const TextForm = ({
     <Palette label="Palette" name="color" />
   </Form>
 );
+
+TextForm.propTypes = {
+  withText: PropTypes.bool,
+};
 
 export default compose(
   reduxForm({

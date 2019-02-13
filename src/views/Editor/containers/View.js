@@ -104,15 +104,14 @@ export default compose(
           const width = Math.min($root.clientWidth,
             view === VIEW.DESKTOP
               ? 1280 : view === VIEW.TABLET
-                ? 768 : 320
-          );
+                ? 768 : 320);
 
           let newHeight = 1;
           let newScale = 1;
 
           switch (view) {
             case VIEW.DESKTOP:
-              newHeight = Math.floor(width / 1.6);
+              newHeight = Math.floor(width / 1.7777);
               newScale = width / 1280;
               break;
             case VIEW.TABLET:

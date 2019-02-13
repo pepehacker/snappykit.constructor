@@ -6,6 +6,10 @@ import { connect } from 'react-redux';
 import { Container, Title } from 'views/Editor';
 import Card from './components/Card';
 
+// Templates
+import templates from 'templates';
+
+// Styles
 import screen from './assets/screen.jpg';
 import styles from './Templates.scss';
 
@@ -18,14 +22,13 @@ const Templates = ({
     <Title title="Templates" />
 
     <Container>
-      {items && items.length > 0 && (
+      {templates && templates.length > 0 && (
         <div className={styles.List}>
-          {items.map(id => (
+          {templates.map(({ id, preview }) => (
             <Card
-              image={screen}
-              isActive={id === currentTemplate}
+              image={preview}
+              isActive
               id={id}
-              isPro={id === 3}
               key={id}
               title={`Template #${id}`}
             />

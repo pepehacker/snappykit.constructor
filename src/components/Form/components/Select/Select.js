@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { get, isEmpty } from 'lodash';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Children, cloneElement } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { compose, withHandlers, withState } from 'recompose';
 
@@ -11,6 +11,11 @@ import Field from '../Field';
 // Styles
 import styles from './Select.scss';
 
+const VARIANT = {
+  CONTAINED: 'contained',
+  FLAT: 'flat',
+};
+
 const FormSelect = ({
   // props
   children,
@@ -18,9 +23,10 @@ const FormSelect = ({
   name,
   placeholder,
   value,
-  variant,
+  variant = VARIANT.CONTAINED,
 
   // Handlers
+  getLabel,
   handleBlur,
   handleChange,
   handleCreate,
@@ -39,7 +45,8 @@ const FormSelect = ({
     [styles.RootIsEmpty]: !!isEmpty(value),
 
     // Variant
-    [styles.RootVariantFlat]: true,
+    [styles.RootVariantFlat]: variant === VARIANT.FLAT,
+    [styles.RootVariantContained]: variant === VARIANT.CONTAINED,
   });
 
   return (
@@ -65,11 +72,13 @@ const FormSelect = ({
             type="text"
             value={isFocused
               ? inputValue
-              : get(value, 'label', '')
+              : getLabel()
             }
           />
 
-          {/* <div className={styles.Trigger} />  */}
+          {variant === VARIANT.CONTAINED && (
+            <div className={styles.Trigger} />
+          )}
         </div>
       </div>
 
@@ -92,11 +101,14 @@ const FormSelect = ({
           )}
 
           <div className={styles.List}>
-            {children({
-              value,
+            {typeof children === 'function' ? children({
               inputValue: inputValue.toLowerCase(),
               onClick: handleCreate,
-            })}
+              value: get(value, 'value'),
+            }) : Children.map(children, (child: Object) => cloneElement(child, {
+              isCurrent: get(child, 'props.value') === get(value, 'value', value),
+              onClick: handleCreate,
+            }))}
           </div>
         </div>
       </CSSTransition>
@@ -105,7 +117,10 @@ const FormSelect = ({
 };
 
 FormSelect.propTypes = {
-  children: PropTypes.func,
+  children: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.node,
+  ]),
   id: PropTypes.string,
   name: PropTypes.string,
   placeholder: PropTypes.string,
@@ -132,6 +147,14 @@ const ComposedFormSelect = compose(
     let $root;
 
     return {
+      getLabel: ({ children, value }) => () =>
+        typeof value === 'string'
+          ? Children
+              .map(children, (child: Object) => child)
+              .filter(({ props }) => get(props, 'value') === value)
+              .map(({ props }) => get(props, 'label'))[0]
+          : get(value, 'value'),
+
       // Handlers
       handleBlur: ({ setFocus, setInputValue }) => (event: Object) => {
         if (!$root.contains(event.relatedTarget)) {
@@ -143,7 +166,7 @@ const ComposedFormSelect = compose(
       },
       handleChange: ({ setInputValue }) => (event: Object) =>
         setInputValue(get(event, 'target.value', '')),
-      handleCreate: ({ onChange, setFocus, value }) => (itemValue: Object) => {
+      handleCreate: ({ onChange, setFocus }) => (itemValue: Object) => {
         $input.blur();
         setFocus(false);
 

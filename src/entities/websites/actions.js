@@ -40,6 +40,7 @@ export const fetchWebsites = (): func => (dispatch: func, getState: func, { api,
               }
             });
           } catch(e) {
+            // eslint-disable-next-line
             console.error('This JSON schema is not supported!');
           }
 

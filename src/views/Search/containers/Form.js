@@ -37,18 +37,13 @@ const SearchForm = ({
         placeholder="Choose a country"
         variant={VARIANT.FLAT}
       >
-        {({ inputValue, onClick, value: { value }}) =>
-          countries
-            .filter(({ name = '' }) => name.toLowerCase().indexOf(inputValue) > -1)
-            .map(({ id, name }) => (
-              <SelectItem
-                isCurrent={value === id}
-                key={id}
-                label={name}
-                onClick={onClick}
-                value={id}
-              />
-            ))}
+        {countries.map(({ id, name }) => (
+          <SelectItem
+            key={id}
+            label={name}
+            value={id}
+          />
+        ))}
       </Select>
 
       <Input
@@ -69,7 +64,7 @@ export default compose(
   reduxForm({
     form: SEARCH_FORM_ID,
     initialValues: {
-      country: { label: 'United States', value: 'us' },
+      country: 'US',
       store: STORE_APPLE_ID,
     },
   }),

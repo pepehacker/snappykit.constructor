@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import url from 'url-join';
 
 // Containers
@@ -19,7 +20,7 @@ import Text from 'views/Text';
 
 import styles from './Editor.scss';
 
-const Editor = ({ match }) => (
+const Editor = ({ location, match }) => (
   <div className={styles.Root}>
     <div className={styles.Container}>
       <div className={styles.View}>
@@ -32,17 +33,31 @@ const Editor = ({ match }) => (
     </div>
 
     <div className={styles.Sidebar}>
-      <Switch>
-        <Route path={url(match.url, '/background')} component={Background} />
-        <Route path={url(match.url, '/icon')} component={Icon} />
-        <Route path={url(match.url, '/screenshots')} component={Screenshots} />
-        <Route path={url(match.url, '/smartphone')} component={Smartphone} />
-        <Route path={url(match.url, '/social')} component={Social} />
-        <Route path={url(match.url, '/store')} component={Store} />
-        <Route path={url(match.url, '/templates')} component={Templates} />
-        <Route path={url(match.url, '/text/:fieldId')} component={Text} />
-        <Route path={url(match.url, '/text')} component={Text} />
-      </Switch>
+      <TransitionGroup>
+        <CSSTransition
+          classNames={{
+            enter: styles.SidebarAnimateEnter,
+            enterActive: styles.SidebarAnimateEnterActive,
+            exit: styles.SidebarAnimateExit,
+            exitActive: styles.SidebarAnimateExitActive,
+          }}
+          key={location.key}
+          timeout={800}
+          unmountOnExit
+        >
+          <Switch location={location}>
+            <Route path={url(match.url, '/background')} component={Background} />
+            <Route path={url(match.url, '/icon')} component={Icon} />
+            <Route path={url(match.url, '/screenshots')} component={Screenshots} />
+            <Route path={url(match.url, '/smartphone')} component={Smartphone} />
+            <Route path={url(match.url, '/social')} component={Social} />
+            <Route path={url(match.url, '/store')} component={Store} />
+            <Route path={url(match.url, '/templates')} component={Templates} />
+            <Route path={url(match.url, '/text/:fieldId')} component={Text} />
+            <Route path={url(match.url, '/text')} component={Text} />
+          </Switch>
+        </CSSTransition>
+      </TransitionGroup>
     </div>
   </div>
 );

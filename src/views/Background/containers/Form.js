@@ -4,7 +4,7 @@ import { compose } from 'recompose';
 import { formValueSelector, reduxForm } from 'redux-form';
 
 // Components
-import Form, { Color, Select } from 'components/Form';
+import Form, { Color, Select, SelectItem } from 'components/Form';
 import Gradient from '../components/Gradient';
 
 // Entities
@@ -18,8 +18,8 @@ const BackgroundForm = ({
 }) => (
   <Form onSubmit={handleSubmit}>
     <Select label="Category" name="category" placeholder="Choose a category">
-      <option value="color">Color</option>
-      <option value="gradient">Gradient</option>
+      <SelectItem label="Color" value="color" />
+      <SelectItem label="Gradient" value="gradient" />
     </Select>
 
     {category === 'color' && <Color label="Color"  name="color" />}

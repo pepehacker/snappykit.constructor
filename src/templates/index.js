@@ -8,11 +8,12 @@ type Template = {
   Component: Object<React>,
   config: Object,
   id: number,
+  preview: string,
 };
 
 const TEMPLATES = [Template1]
-  .map(({ Component, config }) => ({
-    Component, config,
+  .map(({ Component, config, preview }) => ({
+    Component, config, preview,
     id: get(config, 'id'),
   }));
 

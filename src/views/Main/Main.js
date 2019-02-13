@@ -29,7 +29,6 @@ const Main = ({
   <div className={styles.Root}>
       <div className={styles.Wrapper}>
         <Header />
-        {console.log(pageId, location)}
         <div className={styles.Container}>
           <TransitionGroup>
             <CSSTransition
@@ -41,6 +40,7 @@ const Main = ({
               }}
               key={pageId}
               timeout={{ enter: 400, exit: 400 }}
+              unmountOnExit
             >
               <Switch location={location}>
                 <Route path={url.resolve(match.url, '/search')} component={Search} />
