@@ -1,5 +1,10 @@
+import { object } from 'yup';
+
 // Entities
 import {
+  // Background
+  BACKGROUND, BACKGROUND_SCHEMA,
+
   // Icon
   ICON, ICON_SCHEMA,
 
@@ -32,6 +37,16 @@ import {
 export default ({
   id: 1,
   section: {
+    [BACKGROUND]: {
+      schema: BACKGROUND_SCHEMA({
+        color: 'rgba(255, 255, 255, 0)',
+        gradient: {
+          angle: 0,
+          from: 'rgba(123, 84, 251, 1)',
+          to: 'rgba(71, 159, 255, 1)',
+        },
+      }),
+    },
     [COPYRIGHT]: {
       schema: TEXT_SCHEMA({
         color: 'rgba(255, 255, 255, .4)',

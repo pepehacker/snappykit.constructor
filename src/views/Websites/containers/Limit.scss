@@ -1,0 +1,29 @@
+.Count {
+  color: #7e7acc;
+}
+
+.Limit {
+  color: #aeb2ba;
+}
+
+.Progress {
+  background: #f0f1f1;
+  border-radius: 6px;
+  height: 4px;
+  margin: 8px 0 0;
+  overflow: hidden;
+  width: 240px;
+
+  &Bar {
+    background-image: linear-gradient(269deg, #5e7adb, #8359c1);
+    border-radius: 6px;
+    height: 100%;
+  }
+}
+
+.Title {
+  color: #545e6f;
+  font-size: 14px;
+  letter-spacing: -.12px;
+  margin: 0 0 0 12px;
+}

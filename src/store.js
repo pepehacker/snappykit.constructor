@@ -2,6 +2,7 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 
 // Api
 import api from 'api';
+import * as schema from 'api/schema';
 
 // Middleware
 import thunkMiddleware from 'redux-thunk';
@@ -21,7 +22,7 @@ const reducer = combineReducers({
 
 export default (history: Object) => createStore(reducer, compose(
   applyMiddleware(
-    thunkMiddleware.withExtraArgument({ api }),
+    thunkMiddleware.withExtraArgument({ api, schema }),
   ),
   window.devToolsExtension ? window.devToolsExtension() : f => f,
 ));

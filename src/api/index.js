@@ -17,7 +17,9 @@ const API = (method: Array<Object>|string, params: Object) => {
         : new Promise((resolve: func, reject: func) => reject(new Error('Undefined method!')));
     });
 
-  return axios.all(batch);
+  return batch.length > 1
+    ? axios.all(batch)
+    : batch[0];
 };
 
 export default API;

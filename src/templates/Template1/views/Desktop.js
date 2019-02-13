@@ -2,6 +2,7 @@ import React from 'react';
 
 // Components
 import {
+  Background,
   Icon,
   Policy,
   Screenshots,
@@ -23,7 +24,7 @@ import {
 import styles from './Desktop.scss';
 
 const Template1 = ({ style }) => (
-  <div className={styles.Root} style={style}>
+  <Background className={styles.Root} style={style}>
     <div className={styles.Wrapper}>
       <header className={styles.Header}>
         <Icon view={VIEW.DESKTOP} />
@@ -81,7 +82,7 @@ const Template1 = ({ style }) => (
         />
       </footer>
     </div>
-  </div>
+  </Background>
 );
 
 export default Template1;

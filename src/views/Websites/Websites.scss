@@ -1,0 +1,92 @@
+.Root {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+}
+
+.Create {
+  align-items: center;
+  background: rgba(158, 154, 226, .7);
+  border-radius: 20px;
+  color: #fff;
+  display: flex;
+  font-size: 14px;
+  height: 40px;
+  justify-content: center;
+  letter-spacing: .2px;
+  position: relative;
+  text-decoration: none;
+  transition: all .2s;
+  width: 100px;
+
+  &:active {
+    background: rgba(142, 138, 216, .7);
+
+    &:before {
+      background: rgba(142, 138, 216, .6);
+      bottom: 0;
+      filter: 6px;
+    }
+  }
+
+  &:after {
+    content: 'Create';
+    position: relative;
+    z-index: 2;
+  }
+
+  &:before {
+    background: rgba(158, 154, 226, 1);
+    border-radius: 20px;
+    content: '';
+    display: block;
+    filter: blur(4px);
+    height: 14px;
+    position: absolute;
+    transition: all .2s;
+    width: 66px;
+    z-index: 1;
+  }
+
+  &:hover:not(:active) {
+    background: rgba(142, 138, 216, .9);
+
+    &:before {
+      background: rgba(142, 138, 216, 1);
+      bottom: 0;
+      filter: 6px;
+    }
+  }
+}
+
+.Header {
+  align-items: center;
+  display: flex;
+}
+
+.Limit {
+  flex: 1 1 auto;
+  margin: 0 0 0 120px;
+}
+
+.List {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 16px -20px 0;
+
+  & > * {
+    flex: 0 0 270px;
+    margin: 20px;
+    max-width: 270px;
+  }
+}
+
+.Title {
+  color: #424c5c;
+  font-size: 30px;
+  letter-spacing: .3px;
+}
+
+.Wrapper {
+  width: 1200px;
+}

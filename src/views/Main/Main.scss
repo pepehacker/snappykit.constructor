@@ -9,10 +9,52 @@
   flex: 1 1 auto;
   flex-direction: column;
   margin: 100px 0 0;
+  position: relative;
+
+  &Animate {
+    &Enter {
+      opacity: 0;
+
+      &Active {
+        opacity: 0;
+      }
+
+      &Done {
+        opacity: 1;
+      }
+    }
+
+    &Exit {
+      left: 0;
+      opacity: 1;
+      position: absolute;
+      top: 0;
+      transition: all .4s;
+      visibility: visible;
+      width: 100%;
+
+      &Active {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  }
 }
+
+ContainerAnimateExit
 
 .Wrapper {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
+}
+
+:global .example {
+  &-enter {
+    opacity: .1;
+
+    &-active {
+      transition: all 10s;
+    }
+  }
 }

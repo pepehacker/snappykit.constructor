@@ -3,11 +3,12 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import url from 'url-join';
 
-// Components
-import Devices from './components/Devices';
-import View from './components/View';
+// Containers
+import Devices from './containers/Devices';
+import View from './containers/View';
 
 // Views
+import Background from 'views/Background';
 import Icon from 'views/Icon';
 import Screenshots from 'views/Screenshots';
 import Smartphone from 'views/Smartphone';
@@ -32,6 +33,7 @@ const Editor = ({ match }) => (
 
     <div className={styles.Sidebar}>
       <Switch>
+        <Route path={url(match.url, '/background')} component={Background} />
         <Route path={url(match.url, '/icon')} component={Icon} />
         <Route path={url(match.url, '/screenshots')} component={Screenshots} />
         <Route path={url(match.url, '/smartphone')} component={Smartphone} />

@@ -1,0 +1,53 @@
+.Root {
+  align-items: center;
+  display: flex;
+
+  &:hover {
+    cursor: pointer;
+
+    .Title {
+      color: #7e7acc;
+    }
+  }
+}
+
+.Description {
+  color: #c5c9ce;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .1px;
+  margin: 4px 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.Left {
+  flex: 0 0 60px;
+  height: 60px;
+  width: 60px;
+}
+
+.Icon {
+  mask: url('../assets/app-store-mask.svg') no-repeat center center;
+  mask-size: contain;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.Right {
+  flex: 1 1 auto;
+  margin: 0 0 0 16px;
+  max-width: calc(100% - 76px);
+}
+
+.Title {
+  color: #aeb2ba;
+  font-size: 12px;
+  letter-spacing: 1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  transition: all .2s;
+  white-space: nowrap;
+}

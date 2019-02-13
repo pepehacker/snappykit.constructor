@@ -1,0 +1,23 @@
+.Root {
+  align-items: center;
+  color: #aeb2ba;
+  display: flex;
+  font-size: 14px;
+  min-height: 36px;
+  letter-spacing: .4px;
+  line-height: 18px;
+  padding: 4px 16px 4px 32px;
+  transition: all .2s;
+
+  &:hover {
+    background: #f9f9f9;
+    cursor: pointer;
+  }
+
+  &Is {
+    &Current {
+      box-shadow: inset 2px 0 0 #9e9ae2;
+      pointer-events: none;
+    }
+  }
+}

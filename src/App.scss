@@ -23,6 +23,24 @@
   }
 }
 
+:global input {
+  &::-webkit-input-placeholder {
+    color: #979797;
+  }
+
+  &::-moz-placeholder {
+    color: #979797;
+  }
+
+  &:-ms-input-placeholder {
+    color: #979797;
+  }
+
+  &:-moz-placeholder {
+    color: #979797;
+  }
+}
+
 .Root {
   display: flex;
   flex-direction: column;

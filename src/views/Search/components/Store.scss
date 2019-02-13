@@ -1,0 +1,80 @@
+.Root {
+  display: flex;
+
+  & > * {
+    flex: 0 0 50%;
+  }
+}
+
+.Icon {
+  background: no-repeat center center;
+  background-size: contain;
+  flex: 0 0 60px;
+  height: 60px;
+  margin: 0 20px 0 0;
+  opacity: .6;
+  transition: all .2s;
+  width: 60px;
+}
+
+.Store {
+  align-items: center;
+  color: #aeb2ba;
+  display: flex;
+  font-size: 14px;
+  height: 100px;
+  justify-content: center;
+  letter-spacing: .3px;
+  transition: all .2s;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background: #fff;
+    cursor: pointer;
+  }
+
+  &Is {
+    &Active {
+      background: #fff;
+
+      &.StoreVariantApple {
+        color: #5d9ef5;
+
+        .Icon {
+          filter: drop-shadow(0 3px 6px rgba(93, 158, 245, .5));
+          opacity: 1;
+        }
+      }
+
+      &.StoreVariantGoogle {
+        color: #ffc200;
+
+        .Icon {
+          filter: drop-shadow(3px 4px 5px rgba(255, 0, 0, .4));
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &Variant {
+    &Apple {
+      border-radius: 10px 0 0 0;
+
+      .Icon {
+        background-image: url('../assets/app-store.png');
+      }
+    }
+
+    &Google {
+      border-radius: 0 10px 0 0;
+
+      .Icon {
+        background-image: url('../assets/google-play.png');
+      }
+    }
+  }
+}

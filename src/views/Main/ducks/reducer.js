@@ -1,21 +1,21 @@
-// Types
+// Entities
 import {
-  FETCH_PROFILE_REQUEST,
-  FETCH_PROFILE_SUCCESS,
-  FETCH_PROFILE_FAILURE,
-} from 'services/session';
+  FETCH_WEBSITES_REQUEST,
+  FETCH_WEBSITES_SUCCESS,
+  FETCH_WEBSITES_FAILURE,
+} from 'entities/websites/types';
 
 const initialValues = {
-  isFetching: false,
+  isFetching: true,
 }
 
 export default (state = initialValues, action: Object) => {
   switch (action.type) {
-    case FETCH_PROFILE_REQUEST:
+    case FETCH_WEBSITES_REQUEST:
       return { ...state, isFetching: true };
 
-    case FETCH_PROFILE_SUCCESS:
-    case FETCH_PROFILE_FAILURE:
+    case FETCH_WEBSITES_SUCCESS:
+    case FETCH_WEBSITES_FAILURE:
       return { ...state, isFetching: false };
 
     default:

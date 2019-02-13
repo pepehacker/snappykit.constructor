@@ -1,3 +1,4 @@
+export * from './background';
 export * from './icon';
 export * from './policy';
 export * from './screenshots';

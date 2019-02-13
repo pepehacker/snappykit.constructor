@@ -14,11 +14,13 @@ import Main from './views/Main';
 
 import styles from './App.scss';
 
-const App = ({ match }) => (
+const App = ({ match, user }) => (
   <div className={styles.Root}>
-    <Switch>
-      <Route path={url.resolve(match.url, '/')} component={Main} />
-    </Switch>
+    {user && (
+      <Switch>
+        <Route path={url.resolve(match.url, '/')} component={Main} />
+      </Switch>
+    )}
   </div>
 );
 
@@ -26,7 +28,7 @@ const mapStateToProps = ({ services }) =>
   get(services, 'session');
 
 export default compose(
-  connect(mapStateToProps, { fetchProfile }, null, { pure: false }),
+  connect(mapStateToProps, { fetchProfile }),
   lifecycle({
     componentDidMount() {
       const { fetchProfile, token } = this.props;

@@ -3,12 +3,14 @@ import { combineReducers } from 'redux';
 // Reducers
 import { reducer as main } from './Main';
 import { reducer as editor } from './Editor';
+import { reducer as search } from './Search';
 import { reducer as screenshots } from './Screenshots';
 import { reducer as templates } from './Templates';
 
 const viewsReducer = combineReducers({
   editor,
   main,
+  search,
   screenshots,
   templates,
 });

@@ -1,3 +1,4 @@
+export { default as Background } from './components/Background';
 export { default as Icon } from './components/Icon';
 export { default as Link } from './components/Link';
 export { default as Policy } from './components/Policy';

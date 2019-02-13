@@ -22,9 +22,11 @@ const FormField = ({
     <Field {...props} component={reduxFieldAdapter}>
       {({ label, ...props }) => (
         <div className={className}>
-          <label className={styles.Label} htmlFor={id}>
-            {label}
-          </label>
+          {label && (
+            <label className={styles.Label} htmlFor={id}>
+              {label}
+            </label>
+          )}
 
           <div className={styles.Control}>
             {typeof children === 'function'
