@@ -1,0 +1,23 @@
+.Root {
+  box-shadow: 0 16px 24px -16px rgba(0, 0, 0, .2);
+  display: flex;
+  height: 52px;
+  padding: 0 24px;
+  position: relative;
+  width: 100%;
+
+  & > * {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.Divider {
+  background-image: linear-gradient(to right, rgba(214, 214, 215, 0), #d6d6d7 52%, rgba(214, 214, 215, 0));
+  bottom: -1px;
+  height: 1px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}

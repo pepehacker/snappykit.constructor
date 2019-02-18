@@ -15,7 +15,8 @@ const initialState = {
           from: 'rgba(123, 84, 251, 1)',
           angle: 0
         },
-        color: 'rgba(255, 255, 255, 0)'
+        color: 'rgba(255, 255, 255, 0)',
+        image: null,
       },
       copyright: {
         text: '© 2018 ANCHOR FM INC',

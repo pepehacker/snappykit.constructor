@@ -23,8 +23,8 @@ import {
 // Styles
 import styles from './Desktop.scss';
 
-const Template1 = ({ style }) => (
-  <Background className={styles.Root} style={style}>
+const Template1 = () => (
+  <Background classNames={{ container: styles.Root}}>
     <div className={styles.Wrapper}>
       <header className={styles.Header}>
         <Icon view={VIEW.DESKTOP} />

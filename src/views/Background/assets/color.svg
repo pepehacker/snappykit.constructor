@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="20px" viewBox="0 0 16 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <g id="KIT" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Style-Guide---KIT-Tablet" transform="translate(-159.000000, -7925.000000)" fill="#D6D6D7" fill-rule="nonzero">
+            <g id="Menu-(States)" transform="translate(42.000000, 7925.000000)">
+                <g id="Image">
+                    <g id="Static">
+                        <g id="Color" transform="translate(117.000000, 0.000000)">
+                            <g id="Static">
+                                <path d="M8,0.237111135 C7.35306953,1.4691103 6.83387657,2.20572608 5.79672979,3.52496419 C3.70277187,6.18814524 0,9.04227406 0,12.3573539 C0,16.5783291 3.58171484,20 8,20 C12.4182852,20 16,16.5783291 16,12.3573539 C16,7.2592027 8.94227298,-1.5573862 8,0.237111135 Z M7.20178865,18.4653152 C6.90434502,18.4653152 6.66303909,18.2348396 6.66303909,17.9506311 C6.66303909,17.6664741 6.90434502,17.4359471 7.20178865,17.4359471 C10.5970423,17.4359471 13.3592651,14.7971106 13.3592651,11.5535718 C13.3592651,11.2694148 13.6005711,11.0388878 13.8980147,11.0388878 C14.1954583,11.0388878 14.4367643,11.2694148 14.4367643,11.5535718 C14.4368181,15.3646012 11.1911214,18.4653152 7.20178865,18.4653152 Z" id="Shape"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,39 @@
+.Root {
+  background: transparent;
+  border: 0;
+  height: 100%;
+  padding: 0;
+  position: relative;
+  transition: all .2s;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &Is {
+    &Selected {
+      box-shadow: 0 16px 24px -16px #a29fd9;
+
+      .Divider {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
+
+.Divider {
+  background-image: linear-gradient(to left, rgba(162, 159, 217, 0), #a29fd9 49%, rgba(162, 159, 217, 0));
+  bottom: -1px;
+  height: 1px;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  transition: all .2s;
+  visibility: hidden;
+  width: 100%;
+}

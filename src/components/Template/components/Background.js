@@ -16,16 +16,22 @@ import styles from './Background.scss';
 
 const TemplateBackground = ({
   className,
+  classNames: {
+    root: rootClassName,
+    container: containerClassName,
+  } = {},
   children,
   id,
 }) => (
   <TemplateContext.Consumer>
     {({ data, view, websiteId }) => {
-      const rootClassNames = classNames(className, styles.Root, {
+      const rootClassNames = classNames(className, rootClassName, styles.Root, {
         [styles.RootViewDesktop]: view === VIEW.DESKTOP,
         [styles.RootViewMobile]: view === VIEW.MOBILE,
         [styles.RootViewTablet]: view === VIEW.TABLET,
       });
+
+      const containerClassNames = classNames(containerClassName, styles.Container);
 
       const {
         color,
@@ -33,18 +39,43 @@ const TemplateBackground = ({
           angle,
           from,
           to,
-        } = {}
+        } = {},
+        image,
       } = getSectionById(data, id || BACKGROUND);
 
       return (
-        <div
-          className={rootClassNames}
-          style={{
-            backgroundColor: color,
-            backgroundImage: `linear-gradient(${angle}deg, ${from}, ${to})`,
-          }}
-        >
-          {children}
+        <div className={rootClassNames}>
+          {image && (
+            <div
+              className={styles.Cover}
+              style={{
+                backgroundImage: `url(${image})`,
+                backgroundSize: 'cover',
+              }}
+            />
+          )}
+
+          {color && (
+            <div
+              className={styles.Cover}
+              style={{
+                backgroundColor: color,
+              }}
+            />
+          )}
+
+          {(from && to) && (
+            <div
+              className={styles.Cover}
+              style={{
+                backgroundImage: `linear-gradient(${angle}deg, ${from}, ${to})`,
+              }}
+            />
+          )}
+
+          <div className={containerClassNames}>
+            {children}
+          </div>
         </div>
       );
     }}
