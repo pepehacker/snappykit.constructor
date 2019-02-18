@@ -30,7 +30,6 @@ const Template1 = ({ style }) => (
         <Icon view={VIEW.DESKTOP} />
         <Social view={VIEW.DESKTOP} />
       </header>
-
       <div className={styles.Container}>
         <div className={styles.Content}>
           <Text

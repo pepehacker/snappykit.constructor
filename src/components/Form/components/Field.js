@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import { uniqueId } from 'lodash';
 import PropTypes from 'prop-types';
 import React, { cloneElement } from 'react';
 import { compose, withState } from 'recompose';
@@ -53,5 +52,5 @@ FormField.propTypes = {
 };
 
 export default compose(
-  withState('id', 'setId', uniqueId('field_')),
+  withState('id', 'setId', ({ name }) => name),
 )(FormField);

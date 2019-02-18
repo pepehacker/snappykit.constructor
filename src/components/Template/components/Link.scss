@@ -12,6 +12,8 @@
 
   &Is {
     &Active {
+      pointer-events: none;
+
       .Border {
         border-color: rgba(255, 255, 255, .6);
       }
@@ -21,7 +23,7 @@
 
 .Border {
   border: 2px dashed transparent;
-  border-radius: 8px;
+  border-radius: 10px;
   display: block;
   height: calc(100% + 16px);
   left: -12px;

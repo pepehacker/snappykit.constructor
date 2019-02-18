@@ -1,8 +1,10 @@
+import { get } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
-import { compose, lifecycle } from 'recompose';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
+import { compose, lifecycle, withState } from 'recompose';
 import url from 'url-join';
 
 // Components
@@ -10,7 +12,7 @@ import Menu from './components/Menu';
 
 // Entities
 import { fetchTemplate } from 'entities/template';
-import { getCurrentTemplateId } from 'entities/template/selector';
+import { isEditable } from 'entities/websites/selector';
 
 // Views
 import Editor from 'views/Editor';
@@ -18,26 +20,44 @@ import Editor from 'views/Editor';
 import styles from './Website.scss';
 
 const Website = ({
+  // Props
   match,
   templateId,
+  websiteId,
+
+  // State
+  isEditable,
+  isMounted,
 }) => (
-  <div className={styles.Root}>
-    <div className={styles.Menu}>
-      <Menu />
+  <CSSTransition
+    classNames={{
+      enter: styles.RootAnimateEnter,
+      enterActive: styles.RootAnimateEnterActive,
+    }}
+    in={isMounted}
+    timeout={1200}
+    unmountOnExit
+  >
+    <div className={styles.Root}>
+      {!isEditable && <Redirect to="/" />}
 
-      <div className={styles.Copyright}>
-        © 2018 Snappykit. All rights reserved
+      <div className={styles.Menu}>
+        <Menu websiteId={websiteId} />
+
+        <div className={styles.Copyright}>
+          © 2018 Snappykit. All rights reserved
+        </div>
       </div>
+
+      {isEditable && websiteId && (
+        <div className={styles.Container}>
+          <Switch>
+            <Route path={url(match.url, '/editor')} component={Editor} />
+          </Switch>
+        </div>
+      )}
     </div>
-
-    {templateId && (
-      <div className={styles.Container}>
-        <Switch>
-          <Route path={url(match.url, '/editor')} component={Editor} />
-        </Switch>
-      </div>
-    )}
-  </div>
+  </CSSTransition>
 );
 
 Website.propTypes = {
@@ -46,15 +66,22 @@ Website.propTypes = {
   }).isRequired,
 };
 
-const mapStateToProps = (state: Object) => ({
-  templateId: getCurrentTemplateId(state),
-});
+const mapStateToProps = (state: Object, { match }) => {
+  const websiteId = get(match, 'params.websiteId', 0);
+
+  return {
+    websiteId,
+    isEditable: isEditable(state, websiteId),
+  };
+};
 
 export default compose(
   connect(mapStateToProps, { fetchTemplate }),
+  withState('isMounted', 'setMounted', false),
   lifecycle({
     componentDidMount() {
       this.props.fetchTemplate(1);
+      this.props.setMounted(true);
     }
   })
 )(Website);

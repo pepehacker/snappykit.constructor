@@ -4,6 +4,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { compose, withHandlers, withState } from 'recompose';
 
+// Entities
+import {
+  SMARTPHONE,
+  SMARTPHONE_MODEL,
+  SMARTPHONE_STYLE,
+} from 'entities/template/constants';
+
+// Styles
 import styles from './Item.scss';
 
 const SmartphoneMockupItem = ({
@@ -12,10 +20,14 @@ const SmartphoneMockupItem = ({
   id,
   isCurrent,
   isLoaded,
+  model,
 }) => {
   const className = classNames(styles.Root, {
     [styles.RootIsCurrent]: isCurrent,
     [styles.RootIsLoaded]: isLoaded,
+
+    [styles.RootVariantIphone]: model === SMARTPHONE_MODEL.IPHONE,
+    [styles.RootVariantPixel]: model === SMARTPHONE_MODEL.PIXEL,
   });
 
   return (
@@ -28,7 +40,7 @@ const SmartphoneMockupItem = ({
         alt={id}
         className={styles.Preview}
         onLoad={handleLoad}
-        src={require(`assets/mockup/${id}.png`)}
+        src={require(`assets/mockup/${model}/${id}.png`)}
       />
 
       <div className={styles.Current}>

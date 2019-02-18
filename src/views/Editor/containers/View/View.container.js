@@ -1,87 +1,30 @@
-import classNames from 'classnames';
 import { get } from 'lodash';
-import PropTypes from 'prop-types';
-import React from 'react';
 import { connect } from 'react-redux';
+import { matchPath, withRouter } from 'react-router-dom';
 import { compose, lifecycle, withHandlers, withState } from 'recompose';
 
 // Actions
-import { setBusy } from '../ducks/actions';
+import { setBusy } from '../../ducks/actions';
+
+// Components
+import View from './View';
 
 // Entities
 import { VIEW } from 'entities/template/constants';
-import { getCurrentTemplateId } from 'entities/template/selector';
-import { getTemplateById } from 'templates';
+import { getWebsiteById } from 'entities/websites';
 
-// Styles
-import styles from './View.scss';
-
-const EditorView = ({
-  // Props
-  className: classNameProp,
-  height,
-  isBusied,
-  scale,
-  templateHeight,
-  Template,
-  view = VIEW.DESKTOP,
-
-  // Registers
-  registerContainer,
-}) => {
-  const className = classNames(classNameProp, styles.Root, {
-    [styles.RootDeviceDesktop]: view === VIEW.DESKTOP,
-    [styles.RootDeviceMobile]: view === VIEW.MOBILE,
-    [styles.RootDeviceTablet]: view === VIEW.TABLET,
-  });
-
-  return (
-    <div
-      className={className}
-      ref={registerContainer}
-    >
-      {Template && (
-        <div
-          className={styles.Container}
-          style={{ height: view !== VIEW.TABLET && height }}
-        >
-          <Template
-            style={{
-              margin:
-                scale !== 1 &&
-                !!height &&
-                !!templateHeight &&
-                `-${(height - templateHeight * scale) / 2}px 0`,
-              opacity: isBusied ? 0 : 1,
-              transform: !!scale && `scale(${scale})`
-            }}
-            view={view}
-          />
-        </div>
-      )}
-    </div>
-  );
-};
-
-EditorView.propTypes = ({
-  className: PropTypes.string,
-  height: PropTypes.number,
-  scale: PropTypes.number,
-  Template: PropTypes.func,
-  view: PropTypes.string,
-});
-
-const mapStateToProps = ({ views, ...state }) => {
-  const currentTemplateId = getCurrentTemplateId(state);
-  const { Component } = getTemplateById(currentTemplateId);
+const mapStateToProps = ({ views, ...state }, { location }) => {
+  const match = matchPath(get(location, 'pathname'), { path: '/:websiteId'});
+  const websiteId = get(match, 'params.websiteId');
 
   return {
     ...get(views, 'editor'),
-    Template: Component,
-  }
+    website: getWebsiteById(state, websiteId),
+  };
 };
 
-export default compose(
+
+export default withRouter(compose(
   connect(mapStateToProps, { setBusy }),
   withState('height', 'setHeight', 0),
   withState('templateHeight', 'setTemplateHeight', 0),
@@ -111,7 +54,7 @@ export default compose(
 
           switch (view) {
             case VIEW.DESKTOP:
-              newHeight = Math.floor(width / 1.7777);
+              newHeight = Math.floor(width / 1.6666);
               newScale = width / 1280;
               break;
             case VIEW.TABLET:
@@ -161,4 +104,4 @@ export default compose(
       window.removeEventListener('resize', handleResize, true);
     },
   }),
-)(EditorView);
+)(View));

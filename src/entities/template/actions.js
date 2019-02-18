@@ -4,7 +4,7 @@ import { get, keys } from 'lodash';
 import { getCurrentTemplateId } from './selector';
 
 // Templates
-import { getTemplateById } from 'templates';
+import { getTemplateById } from 'template';
 
 // Types
 import {

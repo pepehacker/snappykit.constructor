@@ -1,61 +1,57 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { connect } from 'react-redux';
 
 // Components
 import Link from './Link';
 
 // Entities
+import { TEXT, VIEW } from 'entities/template/constants';
+
+// Template
 import {
-  TEXT_FONT_VALUES, TEXT_STYLE_VALUES,
-  VIEW,
-} from 'entities/template/constants';
-import { getFieldById } from 'entities/template/selector';
+  getSectionById,
+  TemplateContext
+} from 'template';
 
 // Styles
 import styles from './Text.scss';
 
 const TemplateText = ({
   className,
-  color,
-  font,
   id,
-  isEditor = true,
-  style: fontWeight,
-  text,
-  view = VIEW.DESKTOP,
-}) => {
-  const rootClassNames = classNames(className, styles.Root, {
-    [styles.RootViewDesktop]: view === VIEW.DESKTOP,
-    [styles.RootViewMobile]: view === VIEW.MOBILE,
-  });
+}) => (
+  <TemplateContext.Consumer>
+    {({ data, view, websiteId }) => {
+      const rootClassNames = classNames(className, styles.Root, {
+        [styles.RootViewDesktop]: view === VIEW.DESKTOP,
+        [styles.RootViewMobile]: view === VIEW.MOBILE,
+        [styles.RootViewTablet]: view === VIEW.TABLET,
+      });
 
-  return (
-    <div
-      className={rootClassNames}
-      style={{
-        color, fontWeight,
-        fontFamily: `'${font}', sans-serif`,
-      }}
-    >
-      <Link to={`/1/editor/text/${id}`}>
-        {text}
-      </Link>
-    </div>
-  );
-};
+      const { color, font, style, text } = getSectionById(data, id || TEXT);
+
+      return (
+        <div
+          className={rootClassNames}
+          style={{
+            color,
+            fontFamily: `'${font}', sans-serif`,
+            fontWeight: style,
+          }}
+        >
+          <Link to={`/${websiteId}/editor/text${(id && `/${id}`) || ''}`}>
+            {text}
+          </Link>
+        </div>
+      );
+    }}
+  </TemplateContext.Consumer>
+);
 
 TemplateText.propTypes = {
   className: PropTypes.string,
-  color: PropTypes.string,
-  id: PropTypes.string.isRequired,
-  font: PropTypes.oneOf(TEXT_FONT_VALUES),
-  style: PropTypes.oneOf(TEXT_STYLE_VALUES.map(({ value }) => value)),
-  text: PropTypes.string,
+  id: PropTypes.string,
 };
 
-const mapStateToProps = (state: Object, { id }) =>
-  getFieldById(state, id);
-
-export default connect(mapStateToProps)(TemplateText);
+export default TemplateText;

@@ -1,19 +1,16 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { connect } from 'react-redux';
 
 // Entities
 import {
-  STORE,
   STORE_APP_STORE,
   STORE_GOOGLE_PLAY,
   VIEW,
 } from 'entities/template/constants';
-import { getFieldById } from 'entities/template/selector';
 
 // Styles
-import styles from './Item.scss';
+import styles from './Button.scss';
 
 const StoreButton = ({
   background,
@@ -75,7 +72,4 @@ StoreButton.propTypes = {
   view: PropTypes.oneOf([VIEW.DESKTOP, VIEW.MOBILE, VIEW.TABLET]),
 };
 
-const mapStateToProps = (state: Object) =>
-  getFieldById(state, STORE);
-
-export default connect(mapStateToProps)(StoreButton);
+export default StoreButton;

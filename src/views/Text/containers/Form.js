@@ -38,7 +38,7 @@ const TextForm = ({
 
     <Style label="Style" name="style" />
     <Color label="Color" name="color" />
-    <Palette label="Palette" name="color" />
+    {/* <Palette label="Palette" name="color" /> */}
   </Form>
 );
 

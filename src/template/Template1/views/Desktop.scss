@@ -11,6 +11,7 @@
 
 .Container {
   display: flex;
+  flex: 1 1 auto;
   margin: 80px 0 0;
 }
 
@@ -68,6 +69,8 @@
 }
 
 .Slider {
+  align-items: center;
+  display: flex;
   flex: 1 1 auto;
   margin: 0 0 0 120px;
   max-width: calc(100% - 592px);
@@ -90,7 +93,9 @@
 }
 
 .Wrapper {
+  display: flex;
   flex: 1 1 auto;
+  flex-direction: column;
   padding: 0 100px;
   width: 1280px;
 }

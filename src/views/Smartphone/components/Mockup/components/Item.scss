@@ -1,5 +1,4 @@
 .Root {
-  border-radius: 16px;
   height: 100%;
   opacity: .6;
   overflow: hidden;
@@ -68,6 +67,16 @@
       .Preview {
         opacity: 0;
       }
+    }
+  }
+
+  &Variant {
+    &Iphone {
+      border-radius: 16px;
+    }
+
+    &Pixel {
+      border-radius: 8px;
     }
   }
 

@@ -4,14 +4,19 @@ import { normalize } from 'normalizr';
 // Entities
 import { UPDATE_ENTITIES } from 'entities/types';
 
+// Selector
+import { getWebsiteById } from './selector';
+
 // Templates
-import { getTemplateById } from 'templates';
+import { getTemplateById } from 'template';
 
 // Types
 import {
   FETCH_WEBSITES_REQUEST,
   FETCH_WEBSITES_SUCCESS,
   FETCH_WEBSITES_FAILURE,
+
+  UPDATE_WEBSITE_SECTION,
 } from './types';
 
 export const fetchWebsites = (): func => (dispatch: func, getState: func, { api, schema }): Object<Promise> => {
@@ -66,3 +71,16 @@ export const fetchWebsites = (): func => (dispatch: func, getState: func, { api,
     .catch((error: Object) =>
       dispatch({ type: FETCH_WEBSITES_FAILURE, error: get(error, 'message')}));
 };
+
+export const updateWebsite = (websiteId: number|string, sectionId: string, payload: Object): func =>
+  (dispatch: func, getState: func) => {
+    const state = getState();
+    const website = getWebsiteById(state, websiteId);
+    const { config } = getTemplateById(get(website, 'templateId'));
+    const schema = get(config, `section.${sectionId}.schema`);
+
+    schema && dispatch({
+      type: UPDATE_WEBSITE_SECTION, sectionId, websiteId,
+      payload: schema.cast(payload),
+    });
+  };

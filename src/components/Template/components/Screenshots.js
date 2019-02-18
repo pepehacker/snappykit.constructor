@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { connect } from 'react-redux';
 import Slider from 'react-slick';
 
 // Components
@@ -9,7 +8,12 @@ import Link from './Link';
 
 // Entities
 import { SCREENSHOTS, VIEW } from 'entities/template/constants';
-import { getFieldById } from 'entities/template/selector';
+
+// Template
+import {
+  getSectionById,
+  TemplateContext
+} from 'template';
 
 // Styles
 import styles from './Screenshots.scss';
@@ -27,49 +31,49 @@ const TemplateScreenshots = ({
     root: rootClassName,
     item: itemClassName,
   } = {},
-  isEditor = true,
-  items,
-  view = VIEW.DESKTOP,
-}) => {
-  const rootClassNames = classNames(className, rootClassName, styles.Root, {
-    [styles.RootViewDesktop]: view === VIEW.DESKTOP,
-    [styles.RootViewMobile]: view === VIEW.MOBILE,
-  });
+  id,
+}) => (
+  <TemplateContext.Consumer>
+    {({ data, view, websiteId }) => {
+      const { items } = getSectionById(data, id || SCREENSHOTS);
 
-  const itemClassNames = classNames(itemClassName, styles.Item);
+      const rootClassNames = classNames(className, rootClassName, styles.Root, {
+        [styles.RootViewDesktop]: view === VIEW.DESKTOP,
+        [styles.RootViewMobile]: view === VIEW.MOBILE,
+        [styles.RootViewTablet]: view === VIEW.TABLET,
+      });
 
-  return (
-    <div className={rootClassNames}>
-      <Link to="/1/editor/screenshots">
-        <div className={styles.Container}>
-          <Slider {...SETTINGS} className={styles.Slider}>
-            {(items || []).map((source: stirng, index: number): func => (
-              <div className={itemClassNames} key={index}>
-                <img
-                  alt="Screenshot"
-                  className={styles.Image}
-                  src={source}
-                />
-              </div>
-            ))}
-          </Slider>
+      const itemClassNames = classNames(itemClassName, styles.Item);
+
+      return (
+        <div className={rootClassNames}>
+          <Link to={`/${websiteId}/editor/screenshots${(id && `/${id}`) || ''}`}>
+            <div className={styles.Container}>
+              <Slider {...SETTINGS} className={styles.Slider}>
+                {(items || []).map((source: stirng, index: number): func => (
+                  <div className={itemClassNames} key={index}>
+                    <img
+                      alt="Screenshot"
+                      className={styles.Image}
+                      src={source}
+                    />
+                  </div>
+                ))}
+              </Slider>
+            </div>
+          </Link>
         </div>
-      </Link>
-    </div>
-  );
-};
+      );
+    }}
+  </TemplateContext.Consumer>
+);
 
 TemplateScreenshots.propTypes = {
   className: PropTypes.string,
   classNames: PropTypes.shape({
     root: PropTypes.string,
   }),
-  isEditor: PropTypes.bool,
-  items: PropTypes.arrayOf(PropTypes.string),
-  view: PropTypes.oneOf([VIEW.DESKTOP, VIEW.MOBILE]),
+  id: PropTypes.string,
 };
 
-const mapStateToProps = (state: Object) =>
-  getFieldById(state, SCREENSHOTS);
-
-export default connect(mapStateToProps)(TemplateScreenshots);
+export default TemplateScreenshots;

@@ -161,6 +161,10 @@
     width: 8px;
   }
 
+  &:focus {
+    outline: none;
+  }
+
   &:hover {
     cursor: pointer;
   }

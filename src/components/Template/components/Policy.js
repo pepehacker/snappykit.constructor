@@ -2,19 +2,21 @@ import classNames from 'classnames';
 import { get } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { connect } from 'react-redux';
 
 // Components
 import Link from './Link';
 
 // Entities
 import {
-  TEXT_FONT_VALUES,
-  TEXT_STYLE_VALUES,
   POLICY, POLICY_PRIVACY, POLICY_TERMS,
   VIEW,
 } from 'entities/template/constants';
-import { getFieldById } from 'entities/template/selector';
+
+// Template
+import {
+  getSectionById,
+  TemplateContext
+} from 'template';
 
 // Styles
 import styles from './Policy.scss';
@@ -25,57 +27,54 @@ const TemplatePolicy = ({
     root: rootClassName,
     container: containerClassName,
   } = {},
-  color,
-  font,
-  isEditor = true,
-  items,
-  style: fontWeight,
-  view = VIEW.DESKTOP,
-}) => {
-  const rootClassNames = classNames(className, rootClassName, styles.Root, {
-    [styles.RootViewDesktop]: view === VIEW.DESKTOP,
-    [styles.RootViewMobile]: view === VIEW.MOBILE,
-  });
+  id,
+}) => (
+  <TemplateContext.Consumer>
+    {({ data, view, websiteId }) => {
+      const { color, font, items, style } = getSectionById(data, id || POLICY);
 
-  const containerClassNames = classNames(containerClassName, styles.Container);
+      const rootClassNames = classNames(className, rootClassName, styles.Root, {
+        [styles.RootViewDesktop]: view === VIEW.DESKTOP,
+        [styles.RootViewMobile]: view === VIEW.MOBILE,
+      });
 
-  return (
-    <div className={rootClassNames}>
-      {(get(items, POLICY_PRIVACY) || get(items, POLICY_TERMS)) && (
-        <Link to={`/1/editor/text/${POLICY}`}>
-          <div
-            className={containerClassNames}
-            style={{
-              color, fontWeight,
-              fontFamily: `'${font}', sans-serif`,
-            }}
-          >
-            {get(items, POLICY_PRIVACY) && (
-              <div className={styles.Privacy}>
-                PRIVACY
+      const containerClassNames = classNames(containerClassName, styles.Container);
+
+      return (
+        <div className={rootClassNames}>
+          {(get(items, POLICY_PRIVACY) || get(items, POLICY_TERMS)) && (
+            <Link to={`/${websiteId}/editor/text/${(id && `${id}`) || POLICY}`}>
+              <div
+                className={containerClassNames}
+                style={{
+                  color,
+                  fontFamily: `'${font}', sans-serif`,
+                  fontWeight: style,
+                }}
+              >
+                {get(items, POLICY_PRIVACY) && (
+                  <div className={styles.Privacy}>
+                    PRIVACY
+                  </div>
+                )}
+
+                {get(items, POLICY_TERMS) && (
+                  <div className={styles.Terms}>
+                    TERMS
+                  </div>
+                )}
               </div>
-            )}
-
-            {get(items, POLICY_TERMS) && (
-              <div className={styles.Terms}>
-                TERMS
-              </div>
-            )}
-          </div>
-        </Link>
-      )}
-    </div>
-  );
-};
+            </Link>
+          )}
+        </div>
+      );
+    }}
+  </TemplateContext.Consumer>
+);
 
 TemplatePolicy.propTypes = {
   className: PropTypes.string,
-  color: PropTypes.string,
-  font: PropTypes.oneOf(TEXT_FONT_VALUES),
-  style: PropTypes.oneOf(TEXT_STYLE_VALUES.map(({ value }) => value)),
+  id: PropTypes.string,
 };
 
-const mapStateToProps = (state: Object) =>
-  getFieldById(state, POLICY);
-
-export default connect(mapStateToProps)(TemplatePolicy);
+export default TemplatePolicy;

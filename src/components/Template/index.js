@@ -5,5 +5,5 @@ export { default as Policy } from './components/Policy';
 export { default as Screenshots } from './components/Screenshots';
 export { default as Smartphone } from './components/Smartphone';
 export { default as Social } from './components/Social';
-export { default as Store, StoreItem } from './components/Store';
+export { default as Store, StoreButton } from './components/Store';
 export { default as Text } from './components/Text';

@@ -20,6 +20,7 @@ const FormLink = ({
   // Handlers
   handleDropdownBlur,
   handleKeyDown,
+  handleReset,
   handleTriggerClick,
 
   // Registers
@@ -61,31 +62,33 @@ const FormLink = ({
             Pro
           </div>
         ) : (
-          <div className={styles.Plus} />
+          <button
+            className={styles.Plus}
+            onClick={handleReset}
+            type="button"
+          />
         )}
       </div>
 
-      {!isPro && (
-        <div
-          className={styles.Dropdown}
-          onBlur={handleDropdownBlur}
-          ref={registerDropdown}
-          role="listbox"
-          tabIndex={0}
-        >
-          {isOpened && (
-            <input
-              autoFocus
-              className={styles.Input}
-              name={name}
-              onChange={onChange}
-              onKeyDown={handleKeyDown}
-              type="text"
-              value={value}
-            />
-          )}
-        </div>
-      )}
+      <div
+        className={styles.Dropdown}
+        onBlur={handleDropdownBlur}
+        ref={registerDropdown}
+        role="listbox"
+        tabIndex={0}
+      >
+        {isOpened && (
+          <input
+            autoFocus
+            className={styles.Input}
+            name={name}
+            onChange={onChange}
+            onKeyDown={handleKeyDown}
+            type="text"
+            value={value}
+          />
+        )}
+      </div>
     </div>
   );
 };
@@ -104,7 +107,7 @@ const ComposedFormLink = compose(
     let dropdownRef;
 
     return {
-      handleDropdownBlur: ({ setBusy, setOpen }) => (event: Object) => {
+      handleDropdownBlur: ({ setBusy, setOpen }) => (event: Object): void => {
         if (!dropdownRef.contains(event.relatedTarget)) {
           setBusy(true);
           setOpen(false);
@@ -112,11 +115,19 @@ const ComposedFormLink = compose(
           setTimeout(() => setBusy(false), 200);
         }
       },
-      handleKeyDown: ({ setOpen }) => event =>
+      handleKeyDown: ({ setOpen }): func => (event: Object): bool =>
         event.keyCode === 13 && setOpen(false),
-      handleTriggerClick: ({ isBusied, isOpened, isPro, setOpen }) => () =>
+      handleReset: ({ isOpened, onChange, value }) => (event: Object): void => {
+        if (!isOpened && value) {
+          event.stopPropagation();
+          onChange && onChange('');
+        }
+      },
+      handleTriggerClick: ({ isBusied, isOpened, isPro, setOpen }): func => (): bool =>
         !isBusied && !isPro && setOpen(!isOpened),
-      registerDropdown: () => (node: HTMLElement) => {
+
+      // Registers
+      registerDropdown: () => (node: HTMLElement): void => {
         dropdownRef = node;
       },
     };

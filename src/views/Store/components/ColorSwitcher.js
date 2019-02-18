@@ -1,12 +1,14 @@
 import classNames from 'classnames';
+import { get } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
+import { matchPath, withRouter } from 'react-router-dom';
 import { compose, withHandlers } from 'recompose';
 
 // Components
 import { Field } from 'components/Form';
-import { StoreItem } from 'components/Template';
+import { StoreButton } from 'components/Template';
 
 // Entities
 import {
@@ -15,7 +17,7 @@ import {
   STORE_BACKGROUND,
   STORE_COLOR,
 } from 'entities/template/constants';
-import { getFieldById } from 'entities/template/selector';
+import { getSectionById } from 'entities/websites/selector';
 
 // Styles
 import styles from './ColorSwitcher.scss';
@@ -38,7 +40,7 @@ const StoreColorSwitcher = ({
           type="button"
         />
 
-        <StoreItem variant={STORE_APP_STORE} />
+        <StoreButton variant={STORE_APP_STORE} />
 
         <button
           className={textClassNames}
@@ -56,16 +58,27 @@ StoreColorSwitcher.propTypes = {
   color: PropTypes.string,
 };
 
-const mapStateToProps = (state: Object) =>
-  getFieldById(state, STORE);
+const mapStateToProps = (state: Object, { location }): Object => {
+  const match = matchPath(get(location, 'pathname'), {
+    path: '/:websiteId/editor/:sectionId/:id?',
+  });
 
-const ComposedStoreColorSwitcher = compose(
+  const id = get(match, 'params.id');
+  const websiteId = get(match, 'params.websiteId');
+
+  return {
+    ...getSectionById(state, websiteId, id || STORE),
+    id, websiteId,
+  };
+};
+
+const ComposedStoreColorSwitcher = withRouter(compose(
   connect(mapStateToProps),
   withHandlers({
     handleClick: ({ onChange }) => (value: string) =>
       onChange && onChange(value),
   }),
-)(StoreColorSwitcher)
+)(StoreColorSwitcher));
 
 export default (props: Object) => (
   <Field {...props}>

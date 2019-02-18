@@ -6,11 +6,15 @@ import { TEXT_COLOR } from './text';
 
 export const BACKGROUND = 'background';
 
+export const BACKGROUND_COLOR = 'color';
+export const BACKGROUND_GRADIENT = 'gradient';
+export const BACKGROUND_IMAGE = 'image';
+
 export const BACKGROUND_SCHEMA = (defaults: Object): Object => object().shape({
-  color: string()
+  [BACKGROUND_COLOR]: string()
     .matches(TEXT_COLOR.regex, 'Incorrect `COLOR`!')
     .default(get(defaults, 'color', 'rgba(255, 255, 255, 1)')),
-  gradient: object().shape({
+  [BACKGROUND_GRADIENT]: object().shape({
     angle: number()
       .lessThan(360, 'Incorrect gradient angle! Must be less than 360!')
       .moreThan(0, 'Incorrect gradient angle! Must be more than 0!')

@@ -6,7 +6,7 @@ import { formValueSelector, reduxForm } from 'redux-form';
 
 // Components
 import Form, { Color, Link } from 'components/Form';
-import ColorSwitcher from './ColorSwitcher';
+import ColorSwitcher from '../components/ColorSwitcher';
 
 // Entities
 import { STORE_BACKGROUND, STORE_COLOR } from 'entities/template/constants';
@@ -29,17 +29,19 @@ const StoreForm = ({
       className={rootClassNames}
       onSubmit={handleSubmit}
     >
-      <Link
-        icon="fa-apple"
-        label="App Store"
-        name="items.appStore"
-      />
+      <div className={styles.Group}>
+        <Link
+          icon="fa-apple"
+          label="App Store"
+          name="items.appStore"
+        />
 
-      <Link
-        icon="fa-google-play"
-        label="Google Play"
-        name="items.googlePlay"
-      />
+        <Link
+          icon="fa-google-play"
+          label="Google Play"
+          name="items.googlePlay"
+        />
+      </div>
 
       <ColorSwitcher
         label="Color"

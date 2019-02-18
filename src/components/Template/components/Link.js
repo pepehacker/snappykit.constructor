@@ -3,35 +3,40 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+// Template
+import { TemplateContext } from 'template';
+
 // Styles
 import styles from './Link.scss';
 
 const TemplateLink = ({
   children,
   className,
-  isEditor = true,
   to,
-}) => {
-  const rootClassNames = classNames(className, styles.Root);
+}) => (
+  <TemplateContext.Consumer>
+    {({ isEditor }) => {
+      const rootClassNames = classNames(className, styles.Root);
 
-  return isEditor ? (
-    <NavLink
-      activeClassName={styles.RootIsActive}
-      className={rootClassNames}
-      to={to}
-    >
-      <div className={styles.Border} />
-      <div className={styles.Content}>
-        {children}
-      </div>
-    </NavLink>
-  ) : children;
-};
+      return isEditor ? (
+        <NavLink
+          activeClassName={styles.RootIsActive}
+          className={rootClassNames}
+          to={to}
+        >
+          <div className={styles.Border} />
+          <div className={styles.Content}>
+            {children}
+          </div>
+        </NavLink>
+      ) : children;
+    }}
+  </TemplateContext.Consumer>
+);
 
 TemplateLink.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  isEditor: PropTypes.bool,
   to: PropTypes.string.isRequired,
 };
 

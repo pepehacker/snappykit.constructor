@@ -1,14 +1,18 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { connect } from 'react-redux';
 
 // Components
 import Link from './Link';
 
 // Entities
 import { SMARTPHONE, VIEW } from 'entities/template/constants';
-import { getFieldById } from 'entities/template/selector';
+
+// Template
+import {
+  getSectionById,
+  TemplateContext
+} from 'template';
 
 // Styles
 import styles from './Smartphone.scss';
@@ -21,40 +25,45 @@ const TemplateSmartphone = ({
     container: containerClassName,
     mockup: mockupClassName,
   } = {},
-  isEditor = true,
-  mockup,
-  view = VIEW.DESKTOP,
-}) => {
-  const rootClassNames = classNames(className, rootClassName, styles.Root, {
-    [styles.RootViewDesktop]: view === VIEW.DESKTOP,
-    [styles.RootViewMobile]: view === VIEW.MOBILE,
-  });
+  id,
+}) => (
+  <TemplateContext.Consumer>
+    {({ data, view, websiteId }) => {
+      const { mockup, model } = getSectionById(data, id || SMARTPHONE);
 
-  const containerClassNames = classNames(containerClassName, styles.Container);
-  const mockupClassNames = classNames(mockupClassName, styles.Mockup);
+      const rootClassNames = classNames(className, rootClassName, styles.Root, {
+        [styles.RootViewDesktop]: view === VIEW.DESKTOP,
+        [styles.RootViewMobile]: view === VIEW.MOBILE,
+        [styles.RootViewTablet]: view === VIEW.TABLET,
+      });
 
-  return (
-    <div className={rootClassNames}>
-      <Link
-        className={styles.Link}
-        to="/1/editor/smartphone"
-      >
-        <div
-          className={mockupClassNames}
-          style={{
-            backgroundImage: `url(${require(`assets/mockup/${mockup}.png`)})`, /* eslint-disable-line */
-          }}
-        />
-      </Link>
+      const containerClassNames = classNames(containerClassName, styles.Container);
+      const mockupClassNames = classNames(mockupClassName, styles.Mockup);
 
-      {children && (
-        <div className={containerClassNames}>
-          {children}
+      return (
+        <div className={rootClassNames}>
+          <Link
+            className={styles.Link}
+            to={`/${websiteId}/editor/smartphone${(id && `/${id}`) || ''}`}
+          >
+            <div
+              className={mockupClassNames}
+              style={{
+                backgroundImage: `url(${require(`assets/mockup/${model}/${mockup}.png`)})`, /* eslint-disable-line */
+              }}
+            />
+          </Link>
+
+          {children && (
+            <div className={containerClassNames}>
+              {children}
+            </div>
+          )}
         </div>
-      )}
-    </div>
-  );
-};
+      );
+    }}
+  </TemplateContext.Consumer>
+);
 
 TemplateSmartphone.propTypes = {
   children: PropTypes.node,
@@ -64,12 +73,7 @@ TemplateSmartphone.propTypes = {
     container: PropTypes.string,
     mockup: PropTypes.string,
   }),
-  isEditor: PropTypes.bool,
-  mockup: PropTypes.string,
-  view: PropTypes.oneOf([VIEW.DESKTOP, VIEW.MOBILE]),
+  id: PropTypes.string,
 };
 
-const mapStateToProps = (state: Object) =>
-  getFieldById(state, SMARTPHONE);
-
-export default connect(mapStateToProps)(TemplateSmartphone);
+export default TemplateSmartphone;

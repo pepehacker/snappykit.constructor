@@ -2,10 +2,9 @@ import classNames from 'classnames';
 import { get } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { connect } from 'react-redux';
 
 // Components
-import Item from './components/Item';
+import Button from './components/Button';
 import Link from '../Link';
 
 // Entities
@@ -16,57 +15,58 @@ import {
 
   VIEW,
 } from 'entities/template/constants';
-import { getFieldById } from 'entities/template/selector';
+
+// Template
+import {
+  getSectionById,
+  TemplateContext
+} from 'template';
 
 // Styles
 import styles from './Store.scss';
 
 const TemplateStore = ({
   className,
-  isEditor = true,
-  items,
-  view = VIEW.DESKTOP,
-}) => {
-  const rootClassNames = classNames(className, styles.Root, {
-    [styles.RootViewDesktop]: view === VIEW.DESKTOP,
-    [styles.RootViewMobile]: view === VIEW.MOBILE,
-    [styles.RootViewTablet]: view === VIEW.TABLET,
-  });
+  id,
+}) => (
+  <TemplateContext.Consumer>
+    {({ data, view, websiteId }) => {
+      const { items, ...props } = getSectionById(data, id || STORE);
 
-  return (
-    <div className={rootClassNames}>
-      <Link to="/1/editor/store">
-        <div className={styles.Container}>
-          {get(items, STORE_APP_STORE) && (
-            <Item
-              variant={STORE_APP_STORE}
-              view={view}
-            />
-          )}
+      const rootClassNames = classNames(className, styles.Root, {
+        [styles.RootViewDesktop]: view === VIEW.DESKTOP,
+        [styles.RootViewMobile]: view === VIEW.MOBILE,
+        [styles.RootViewTablet]: view === VIEW.TABLET,
+      });
 
-          {get(items, STORE_GOOGLE_PLAY) && (
-            <Item
-              variant={STORE_GOOGLE_PLAY}
-              view={view}
-            />
-          )}
+      return (
+        <div className={rootClassNames}>
+          <Link to={`/${websiteId}/editor/store${(id && `/${id}`) || ''}`}>
+            <div className={styles.Container}>
+              {get(items, STORE_APP_STORE) && (
+                <Button {...props}
+                  variant={STORE_APP_STORE}
+                  view={view}
+                />
+              )}
+
+              {get(items, STORE_GOOGLE_PLAY) && (
+                <Button {...props}
+                  variant={STORE_GOOGLE_PLAY}
+                  view={view}
+                />
+              )}
+            </div>
+          </Link>
         </div>
-      </Link>
-    </div>
-  );
-};
+      );
+    }}
+  </TemplateContext.Consumer>
+);
 
 TemplateStore.propTypes = {
   className: PropTypes.string,
-  isEditor: PropTypes.bool,
-  items: PropTypes.shape({
-    [STORE_APP_STORE]: PropTypes.string,
-    [STORE_GOOGLE_PLAY]: PropTypes.string,
-  }),
-  view: PropTypes.oneOf([VIEW.DESKTOP, VIEW.MOBILE, VIEW.TABLET]),
+  id: PropTypes.string,
 };
 
-const mapStateToProps = (state: Object) =>
-  getFieldById(state, STORE);
-
-export default connect(mapStateToProps)(TemplateStore);
+export default TemplateStore;

@@ -7,7 +7,7 @@ import { Container, Title } from 'views/Editor';
 import Card from './components/Card';
 
 // Templates
-import templates from 'templates';
+import templates from 'template';
 
 // Styles
 import screen from './assets/screen.jpg';

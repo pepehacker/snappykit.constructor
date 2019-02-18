@@ -145,7 +145,7 @@ module.exports = {
       services: path.resolve(__dirname, '../src/services'),
       utils: path.resolve(__dirname, '../src/utils'),
       styles: path.resolve(__dirname, '../src/styles'),
-      templates: path.resolve(__dirname, '../src/templates'),
+      template: path.resolve(__dirname, '../src/template'),
       views: path.resolve(__dirname, '../src/views'),
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/

@@ -1,5 +1,5 @@
 import { get } from 'lodash';
-import React from 'react';
+import React, { createContext } from 'react';
 
 // Templates
 import * as Template1 from './Template1';
@@ -11,7 +11,7 @@ type Template = {
   preview: string,
 };
 
-const TEMPLATES = [Template1]
+export const TEMPLATES = [Template1]
   .map(({ Component, config, preview }) => ({
     Component, config, preview,
     id: get(config, 'id'),
@@ -20,4 +20,9 @@ const TEMPLATES = [Template1]
 export const getTemplateById = (id: number): Object<Template> =>
   TEMPLATES.filter(({ id: templateId }) => templateId === id)[0] || {};
 
-export default TEMPLATES;
+export const TemplateContext = createContext({
+  websiteId: 'new',
+});
+
+export { default } from './Template';
+export * from './ducks';

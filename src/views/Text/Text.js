@@ -1,6 +1,7 @@
 import { get } from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
+import { matchPath } from 'react-router-dom';
 import { compose, withHandlers } from 'recompose';
 
 // Components
@@ -10,8 +11,8 @@ import { Container, Title } from 'views/Editor';
 import Form from './containers/Form';
 
 // Entities
-import { updateTemplate } from 'entities/template/actions';
-import { getFieldById } from 'entities/template/selector';
+import { updateWebsite } from 'entities/websites/actions';
+import { getSectionById } from 'entities/websites/selector';
 
 // Styles
 import styles from './Text.scss';
@@ -37,20 +38,26 @@ const Text = ({
   </div>
 );
 
-const mapStateToProps = (state: Object, { match }) => {
-  const id = get(match, 'params.fieldId');
-  const initialValues = getFieldById(state, id);
+const mapStateToProps = (state: Object, { location }) => {
+  const match = matchPath(get(location, 'pathname'), {
+    path: '/:websiteId/editor/:sectionId/:id?',
+  });
+
+  const id = get(match, 'params.id');
+  const websiteId = get(match, 'params.websiteId');
+  const initialValues = getSectionById(state, websiteId, id);
 
   return {
-    id, initialValues,
+    id, initialValues, websiteId,
     withText: id && get(initialValues, 'text') !== undefined,
   };
 };
 
 export default compose(
-  connect(mapStateToProps, { updateTemplate }),
+  connect(mapStateToProps, { updateWebsite }),
   withHandlers({
-    handleChange: ({ id, updateTemplate }): func => (value: Object): void =>
-      updateTemplate(id, value),
+    handleChange: ({ id, updateWebsite, websiteId }): func =>
+      (value: Object): void =>
+        updateWebsite(websiteId, id, value),
   }),
 )(Text);

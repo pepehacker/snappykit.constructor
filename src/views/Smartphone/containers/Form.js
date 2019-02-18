@@ -71,7 +71,5 @@ export default compose(
   connect(mapStateToProps, { updateTemplate }),
   reduxForm({
     form: 'smartphoneForm',
-    onChange: (value: Object, dispatch: func, { updateTemplate }): void =>
-      updateTemplate(SMARTPHONE, value),
   }),
 )(SmartphoneForm)

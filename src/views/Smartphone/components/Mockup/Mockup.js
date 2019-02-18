@@ -29,6 +29,7 @@ const SmartphoneMockup = ({
         id={id}
         isCurrent={id === value}
         key={id}
+        model={model}
         onClick={handleClick}
       />
     ))}

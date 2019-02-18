@@ -1,0 +1,5 @@
+.Group {
+  & > *:not(:first-child) {
+    margin: 20px 0 0;
+  }
+}

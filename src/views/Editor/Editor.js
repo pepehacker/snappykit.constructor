@@ -42,7 +42,7 @@ const Editor = ({ location, match }) => (
             exitActive: styles.SidebarAnimateExitActive,
           }}
           key={location.key}
-          timeout={800}
+          timeout={{ enter: 600, exit: 400 }}
           unmountOnExit
         >
           <Switch location={location}>

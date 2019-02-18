@@ -1,12 +1,9 @@
 import classNames from 'classnames';
-import { get } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { connect } from 'react-redux';
 
 // Entities
 import {
-  SOCIAL,
   SOCIAL_FACEBOOK,
   SOCIAL_INSTAGRAM,
   SOCIAL_TWITTER,
@@ -14,24 +11,24 @@ import {
 
   VIEW,
 } from 'entities/template/constants';
-import { getFieldById } from 'entities/template/selector';
 
 // Styles
 import styles from './Item.scss';
 
 const TemplateSocialItem = ({
   color,
-  id,
-  isEditor = true,
+  isEditor,
   link,
-  view = VIEW.DESKTOP,
+  variant,
+  view,
 }) => {
   const rootClassNames = classNames(styles.Root, {
     [styles.RootViewDesktop]: view === VIEW.DESKTOP,
     [styles.RootViewMobile]: view === VIEW.MOBILE,
+    [styles.RootViewTablet]: view === VIEW.TABLET,
   });
 
-  const iconClassNames = classNames(styles.Icon, 'fab', `fa-${id}`);
+  const iconClassNames = classNames(styles.Icon, 'fab', `fa-${variant}`);
 
   const ItemComponent = isEditor ? 'div' : 'a';
 
@@ -47,18 +44,10 @@ const TemplateSocialItem = ({
 
 TemplateSocialItem.propTypes = {
   color: PropTypes.string,
-  id: PropTypes.oneOf([SOCIAL_FACEBOOK, SOCIAL_INSTAGRAM, SOCIAL_TWITTER, SOCIAL_VK]),
   isEditor: PropTypes.bool,
+  link: PropTypes.string,
+  variant: PropTypes.oneOf([SOCIAL_FACEBOOK, SOCIAL_INSTAGRAM, SOCIAL_TWITTER, SOCIAL_VK]),
   view: PropTypes.oneOf([VIEW.DESKTOP, VIEW.MOBILE, VIEW.TABLET]),
 };
 
-const mapStateToProps = (state: Object, { id }) => {
-  const social = getFieldById(state, SOCIAL);
-
-  return {
-    color: get(social, 'color'),
-    link: get(social, `items.${id}`),
-  };
-};
-
-export default connect(mapStateToProps)(TemplateSocialItem);
+export default TemplateSocialItem;

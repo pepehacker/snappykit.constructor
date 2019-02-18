@@ -1,12 +1,41 @@
 .Root {
   display: flex;
   flex: 1 1 auto;
+
+  &Animate {
+    &Enter {
+      &Active {
+        .Copyright {
+          opacity: 1 !important;
+          transform: translateY(0) !important;
+          transition: all .4s;
+          transition-delay: .3s;
+        }
+
+        .Menu {
+          opacity: 1 !important;
+          transform: translateX(0) !important;
+          transition: all .4s;
+        }
+      }
+
+      .Copyright {
+        opacity: 0;
+        transform: translateY(120px);
+      }
+
+      .Menu {
+        opacity: 0;
+        transform: translateX(-300px);
+      }
+    }
+  }
 }
 
 .Container {
   display: flex;
   flex: 1 1 auto;
-  width: calc(100% - 296px);
+  width: calc(100% - 336px);
 }
 
 .Copyright {
@@ -24,5 +53,5 @@
   display: flex;
   flex: 0 0 272px;
   flex-direction: column;
-  margin: 0 24px 0 0;
+  margin: 0 64px 0 0;
 }

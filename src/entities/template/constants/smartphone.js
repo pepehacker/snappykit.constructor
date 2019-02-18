@@ -5,20 +5,38 @@ export const SMARTPHONE = 'smartphone';
 
 // Mockups
 export const SMARTPHONE_MOCKUP = {
-  CLASSIC_IPHONE_GRAY: 'classic-iphone-gray',
-  CLASSIC_IPHONE_GOLD: 'classic-iphone-gold',
-  CLASSIC_IPHONE_SILVER: 'classic-iphone-silver',
+  // IPHONE
+  CLASSIC_GRAY: 'classic-gray',
+  CLASSIC_GOLD: 'classic-gold',
+  CLASSIC_SILVER: 'classic-silver',
 
-  CONCEPT_IPHONE_GRAY_GLASS: 'concept-iphone-gray-glass',
-  CONCEPT_IPHONE_GRAY_LINE: 'concept-iphone-gray-line',
-  CONCEPT_IPHONE_GOLD_GLASS: 'concept-iphone-gold-glass',
-  CONCEPT_IPHONE_GOLD_LINE: 'concept-iphone-gold-line',
-  CONCEPT_IPHONE_SILVER_GLASS: 'concept-iphone-silver-glass',
-  CONCEPT_IPHONE_SILVER_LINE: 'concept-iphone-silver-line',
+  CONCEPT_GRAY_GLASS: 'concept-gray-glass',
+  CONCEPT_GRAY_LINE: 'concept-gray-line',
+  CONCEPT_GOLD_GLASS: 'concept-gold-glass',
+  CONCEPT_GOLD_LINE: 'concept-gold-line',
+  CONCEPT_SILVER_GLASS: 'concept-silver-glass',
+  CONCEPT_SILVER_LINE: 'concept-silver-line',
 
-  FLAT_IPHONE_GRAY: 'flat-iphone-gray',
-  FLAT_IPHONE_GOLD: 'flat-iphone-gold',
-  FLAT_IPHONE_SILVER: 'flat-iphone-silver',
+  FLAT_GRAY: 'flat-gray',
+  FLAT_GOLD: 'flat-gold',
+  FLAT_SILVER: 'flat-silver',
+
+  // PIXEL
+  CLASSIC_BLACK: 'classic-black',
+  CLASSIC_BLUE: 'classic-blue',
+  CLASSIC_WHITE: 'classic-white',
+
+  CONCEPT_BLACK_GLASS: 'concept-black-glass',
+  CONCEPT_BLACK_LINE: 'concept-black-line',
+  CONCEPT_BLUE_GLASS: 'concept-blue-glass',
+  CONCEPT_BLUE_LINE: 'concept-blue-line',
+  CONCEPT_WHITE_GLASS: 'concept-white-glass',
+  CONCEPT_WHITE_GLASS_2: 'concept-white-glass-2',
+  CONCEPT_WHITE_LINE: 'concept-white-line',
+
+  FLAT_BLACK: 'flat-black',
+  FLAT_BLUE: 'flat-blue',
+  FLAT_WHITE: 'flat-white',
 };
 
 // Model
@@ -49,5 +67,8 @@ SMARTPHONE_STYLE.values = [
 export const SMARTPHONE_SCHEMA = (defaults: Object): Object => object().shape({
   mockup: string()
     .matches(new RegExp(`/^(${values(SMARTPHONE_MOCKUP).join('|')})$/`), 'Incorrect `SMARTPHONE` ID!')
-    .default(get(defaults, 'mockup', SMARTPHONE_MOCKUP.FLAT_IPHONE_SILVER)),
+    .default(get(defaults, 'mockup', SMARTPHONE_MOCKUP.FLAT_SILVER)),
+  model: string()
+    .matches(new RegExp(`/^(${values(SMARTPHONE_MODEL).join('|')})$/`), 'Incorrect `SMARTPHONE` ID!')
+    .default(get(defaults, 'model', SMARTPHONE_MODEL.IPHONE)),
 });
