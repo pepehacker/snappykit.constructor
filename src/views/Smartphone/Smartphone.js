@@ -12,7 +12,7 @@ import Form from './containers/Form';
 
 // Entities
 import { SMARTPHONE } from 'entities/template/constants';
-import { updateWebsite } from 'entities/websites/actions';
+import { updateWebsiteSection } from 'entities/websites/actions';
 import { getSectionById } from 'entities/websites/selector';
 
 // Styles
@@ -46,11 +46,11 @@ const mapStateToProps = (state: Object, { location }) => {
 };
 
 export default compose(
-  connect(mapStateToProps, { updateWebsite }),
+  connect(mapStateToProps, { updateWebsiteSection }),
   withHandlers({
-    handleChange: ({ id, updateWebsite, websiteId }): func =>
+    handleChange: ({ id, updateWebsiteSection, websiteId }): func =>
       (value, dispatch, props, prevValue): void =>
         get(value, 'mockup') !== get(prevValue, 'mockup') &&
-          updateWebsite(websiteId, id || SMARTPHONE, value),
+          updateWebsiteSection(websiteId, id || SMARTPHONE, value),
   }),
 )(Smarthpone);

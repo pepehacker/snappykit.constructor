@@ -1,0 +1,74 @@
+.Root {
+  min-width: 320px;
+}
+
+.Container {
+  min-height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  padding: 24px;
+  width: 100%;
+}
+
+.Description {
+  font-size: 12px;
+  letter-spacing: .4px;
+  line-height: 20px;
+  margin: 16px 0 0;
+}
+
+.Footer {
+  align-items: center;
+  display: flex;
+  height: 56px;
+  justify-content: center;
+  margin: 64px 0 0;
+}
+
+.Header {
+  align-items: center;
+  display: flex;
+  height: 32px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.Icon {
+  border-radius: 8px;
+  height: 40px;
+  width: 40px;
+}
+
+.Screenshots {
+  height: 187px;
+  left: 7px;
+  position: absolute;
+  top: 30px;
+  width: 107px;
+
+  &Item {
+    height: 187px;
+    width: 107px;
+  }
+}
+
+.Slider {
+  margin: 40px 0;
+  position: relative;
+}
+
+.Smartphone {
+  height: 247px;
+  position: relative;
+  width: 121px;
+}
+
+.Store {
+  margin: 40px 0 0;
+}
+
+.Title {
+  font-size: 22px;
+  letter-spacing: 1.6px;
+  line-height: 28px;
+}

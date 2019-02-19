@@ -1,20 +1,7 @@
 .Root {
-  width: 100%;
-}
-
-.List {
-  align-items: center;
   display: flex;
   flex-direction: column;
-
-  & > *:not(:first-child) {
-    margin: 20px 0 0;
-  }
-}
-
-.Title {
-  font-size: 18px;
-  font-weight: 400;
-  letter-spacing: -.6px;
-  margin: 0 0 32px;
+  justify-content: center;
+  max-width: 100%;
+  width: 100%;
 }

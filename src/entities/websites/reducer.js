@@ -2,6 +2,9 @@ import { get } from 'lodash';
 
 // Types
 import {
+  SET_TEMPLATE_ID,
+
+  UPDATE_WEBSITE,
   UPDATE_WEBSITE_SECTION,
 } from './types';
 
@@ -82,7 +85,7 @@ const initialState = {
     logo: 'https://is4-ssl.mzstatic.com/image/thumb/Purple114/v4/6d/79/17/6d791736-d2c9-3c1e-8133-f306cc46cebf/source/512x512bb.jpg',
     templateId: 1,
     title: 'Test create',
-  }
+  },
 };
 
 export default (state = initialState, action: Object): Object => {
@@ -91,6 +94,23 @@ export default (state = initialState, action: Object): Object => {
   const website = get(state, websiteId);
 
   switch (action.type) {
+    case SET_TEMPLATE_ID:
+      return {
+        ...state,
+        [websiteId]: {
+          ...website,
+          data: action.payload,
+          templateId: action.templateId,
+        },
+      };
+    case UPDATE_WEBSITE:
+      return {
+        ...state,
+        [websiteId]: {
+          ...website,
+          ...action.payload,
+        },
+      };
     case UPDATE_WEBSITE_SECTION:
       return {
         ...state,

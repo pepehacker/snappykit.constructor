@@ -39,33 +39,35 @@ const EditorView = ({
       className={className}
       ref={registerContainer}
     >
-      <div
-        className={styles.Container}
-        style={{ height: view !== VIEW.TABLET && height }}
-      >
-        {website && (
-          <TemplateContext.Provider
-            value={{
-              data: get(website, 'data'),
-              isEditor: true,
-              view,
-              websiteId: 'new',
-            }}
-          >
-            <Template
-              id={1}
-              style={{
-                margin:
-                  scale !== 1 &&
-                  !!height &&
-                  !!templateHeight &&
-                  `-${((height - templateHeight) / scale) / 2}px 0`,
-                opacity: isBusied ? 0 : 1,
-                transform: !!scale && `scale(${scale})`
+      <div className={styles.Container}>
+        <div
+          className={styles.Track}
+          style={{ height: view !== VIEW.TABLET && height }}
+        >
+          {website && (
+            <TemplateContext.Provider
+              value={{
+                data: get(website, 'data'),
+                isEditor: true,
+                view,
+                websiteId: get(website, 'id', 'new'),
               }}
-            />
-          </TemplateContext.Provider>
-        )}
+            >
+              <Template
+                id={get(website, 'templateId', 1)}
+                style={{
+                  margin:
+                    scale !== 1 &&
+                    !!height &&
+                    !!templateHeight &&
+                    `-${((height - templateHeight) / scale) / 2}px 0`,
+                  opacity: isBusied ? 0 : 1,
+                  transform: !!scale && `scale(${scale})`,
+                }}
+              />
+            </TemplateContext.Provider>
+          )}
+        </div>
       </div>
     </div>
   );

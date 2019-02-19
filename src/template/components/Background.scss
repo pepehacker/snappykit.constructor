@@ -1,0 +1,20 @@
+.Root {
+  display: flex;
+  position: relative;
+}
+
+.Container {
+  position: relative;
+  z-index: 5;
+}
+
+.Cover {
+  background: no-repeat center center;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: all .4s;
+  width: 100%;
+  z-index: 1;
+}

@@ -1,44 +1,61 @@
 import { get } from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
+import { matchPath } from 'react-router-dom';
+import { compose, withHandlers } from 'recompose';
 
 // Components
 import { Container, Title } from 'views/Editor';
-import Card from './components/Card';
 
-// Templates
-import templates from 'template';
+// Containers
+import Form from './containers/Form';
+
+// Entities
+import { setTemplateId } from 'entities/websites/actions';
+import { getWebsiteById } from 'entities/websites/selector';
 
 // Styles
-import screen from './assets/screen.jpg';
 import styles from './Templates.scss';
 
 const Templates = ({
-  currentTemplate,
-  handleClick,
-  items,
+  // Props
+  initialValues,
+
+  // Handlers
+  handleChange,
 }) => (
   <div className={styles.Root}>
     <Title title="Templates" />
 
     <Container>
-      {templates && templates.length > 0 && (
-        <div className={styles.List}>
-          {templates.map(({ id, preview }) => (
-            <Card
-              image={preview}
-              isActive
-              id={id}
-              key={id}
-              title={`Template #${id}`}
-            />
-          ))}
-        </div>
-      )}
+      <Form
+        initialValues={initialValues}
+        onChange={handleChange}
+      />
     </Container>
   </div>
 );
 
-const mapStateToProps = ({ views }) => get(views, 'templates', {});
+const mapStateToProps = (state: Object, { location }) => {
+  const match = matchPath(get(location, 'pathname'), {
+    path: '/:websiteId/editor/templates',
+  });
 
-export default connect(mapStateToProps)(Templates);
+  const websiteId = get(match, 'params.websiteId');
+  const website = getWebsiteById(state, websiteId);
+
+  return {
+    websiteId,
+    initialValues: {
+      templateId: get(website, 'templateId'),
+    },
+  };
+};
+
+export default compose(
+  connect(mapStateToProps, { setTemplateId }),
+  withHandlers({
+    handleChange: ({ setTemplateId, websiteId }): func =>
+      ({ templateId }): void => setTemplateId(websiteId, templateId),
+  }),
+)(Templates);

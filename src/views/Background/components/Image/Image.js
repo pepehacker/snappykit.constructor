@@ -22,6 +22,7 @@ const BackgroundImage = ({
           key={index}
           onClick={onChange}
           src={src}
+          value={src}
         />
       ))}
     </div>

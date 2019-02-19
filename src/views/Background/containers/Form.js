@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import React from 'react';
-import { connect } from 'react-redux';
 import { compose, withHandlers, withState } from 'recompose';
 import { reduxForm } from 'redux-form';
 
@@ -12,14 +11,11 @@ import Gradient from '../components/Gradient';
 import Image from '../components/Image';
 
 // Entities
-import { updateTemplate } from 'entities/template/actions';
 import {
-  BACKGROUND,
   BACKGROUND_COLOR,
   BACKGROUND_GRADIENT,
   BACKGROUND_IMAGE,
 } from 'entities/template/constants';
-import { getFieldById } from 'entities/template/selector';
 
 // Styles
 import styles from './Form.scss';
@@ -84,7 +80,7 @@ const BackgroundForm = ({
       <div className={styles.List}>
         <div className={styles.Track}>
           <Image name={BACKGROUND_IMAGE} />
-          <Color label="Color"  name={BACKGROUND_COLOR} />
+          <Color label="Color" name={BACKGROUND_COLOR} />
           <Gradient label="Gradient" name={BACKGROUND_GRADIENT} />
         </div>
       </div>
@@ -92,15 +88,12 @@ const BackgroundForm = ({
   );
 };
 
-const mapStateToProps = (state: Object): Object => ({
-  initialValues: getFieldById(state, BACKGROUND),
-});
-
 export default compose(
-  connect(mapStateToProps, { updateTemplate }),
   withState('tab', 'setTab', BACKGROUND_IMAGE),
   withHandlers({
-    handleChange: ({ setTab }): func => (id: number|string): void => setTab(id),
+    handleChange: ({ setTab }): func =>
+      (value: number|string): void =>
+        setTab(value),
   }),
   reduxForm({
     form: 'backgroundForm',

@@ -12,7 +12,7 @@ import Form from './containers/Form';
 
 // Entities
 import { STORE } from 'entities/template/constants';
-import { updateWebsite } from 'entities/websites/actions';
+import { updateWebsiteSection } from 'entities/websites/actions';
 import { getSectionById } from 'entities/websites/selector';
 
 // Styles
@@ -50,10 +50,10 @@ const mapStateToProps = (state: Object, { location }): Object => {
 };
 
 export default compose(
-  connect(mapStateToProps, { updateWebsite }),
+  connect(mapStateToProps, { updateWebsiteSection }),
   withHandlers({
-    handleChange: ({ id, updateWebsite, websiteId }): func =>
+    handleChange: ({ id, updateWebsiteSection, websiteId }): func =>
       (value: Object): void =>
-        updateWebsite(websiteId, id || STORE, value),
+        updateWebsiteSection(websiteId, id || STORE, value),
   }),
 )(Store);

@@ -12,7 +12,7 @@ import Form from './containers/Form';
 
 // Entities
 import { BACKGROUND } from 'entities/template';
-import { updateWebsite } from 'entities/websites/actions';
+import { updateWebsiteSection } from 'entities/websites/actions';
 import { getSectionById } from 'entities/websites/selector';
 
 // Styles
@@ -56,10 +56,18 @@ const mapStateToProps = (state: Object, { location }) => {
 };
 
 export default compose(
-  connect(mapStateToProps, { updateWebsite }),
+  connect(mapStateToProps, { updateWebsiteSection }),
   withHandlers({
-    handleChange: ({ id, updateWebsite, websiteId }): func =>
-      (value: Object): void =>
-        updateWebsite(websiteId, id || BACKGROUND, value),
+    handleChange: ({ id, updateWebsiteSection, websiteId }): func =>
+      (value: Object, dispatch: func, { change, ...props }, prevValue: Object): void => {
+        updateWebsiteSection(websiteId, id || BACKGROUND, value);
+
+        // @todo - temporary shit
+        if (get(value, 'image') !== get(prevValue, 'image')) {
+          dispatch(change('color', 'rgba(255, 255, 255, 0)'));
+          dispatch(change('gradient', { angle: 0, from: 'rgba(255, 255, 255, 0)', to: 'rgba(255, 255, 255, 0)' }));
+        }
+      },
+
   }),
 )(Background);

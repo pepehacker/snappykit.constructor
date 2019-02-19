@@ -8,7 +8,9 @@ import { compose, withHandlers } from 'recompose';
 
 // Components
 import { Field } from 'components/Form';
-import { StoreButton } from 'components/Template';
+
+// Template
+import { StoreButton } from 'template';
 
 // Entities
 import {

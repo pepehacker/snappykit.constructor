@@ -39,5 +39,5 @@ export const BACKGROUND_SCHEMA = (defaults: Object): Object => object().shape({
       .default(get(defaults, 'gradient.to', 'rgba(255, 255, 255, 1)')),
   }),
   [BACKGROUND_IMAGE]: string()
-    .default(get(defaults, 'iamge', null)),
+    .default(get(defaults, 'image', null)),
 });

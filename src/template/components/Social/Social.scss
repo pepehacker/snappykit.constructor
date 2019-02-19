@@ -1,0 +1,40 @@
+.Root {
+  &View {
+    &Desktop {
+      .Container {
+        height: 20px;
+        min-width: 20px;
+
+        & > *:not(:first-child) {
+          margin: 0 0 0 32px;
+        }
+      }
+    }
+
+    &Mobile {
+      .Container {
+        height: 20px;
+        min-width: 20px;
+
+        & > *:not(:first-child) {
+          margin: 0 0 0 28px;
+        }
+      }
+    }
+
+    &Tablet {
+      .Container {
+        height: 20px;
+        min-width: 20px;
+
+        & > *:not(:first-child) {
+          margin: 0 0 0 24px;
+        }
+      }
+    }
+  }
+}
+
+.Container {
+  display: flex;
+}

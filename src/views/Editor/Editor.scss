@@ -18,7 +18,6 @@
 }
 
 .Sidebar {
-  align-items: center;
   display: flex;
   flex: 0 0 272px;
   margin: 0 24px 24px 64px;
@@ -28,7 +27,11 @@
 
   &Animate {
     &Enter {
+      height: 100%;
+      left: 0;
       opacity: 0;
+      position: absolute;
+      top: 0;
       transform: translateX(160px);
       transition: all .4s;
       transition-delay: .2s;
@@ -36,7 +39,6 @@
       width: 100%;
 
       &Active {
-        height: 100%;
         opacity: 1;
         transform: translateX(0);
         visibility: visible;
@@ -44,6 +46,7 @@
     }
 
     &Exit {
+      height: 100%;
       left: 0;
       opacity: 1;
       position: absolute;

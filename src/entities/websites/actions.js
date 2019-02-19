@@ -16,6 +16,9 @@ import {
   FETCH_WEBSITES_SUCCESS,
   FETCH_WEBSITES_FAILURE,
 
+  SET_TEMPLATE_ID,
+
+  UPDATE_WEBSITE,
   UPDATE_WEBSITE_SECTION,
 } from './types';
 
@@ -72,7 +75,38 @@ export const fetchWebsites = (): func => (dispatch: func, getState: func, { api,
       dispatch({ type: FETCH_WEBSITES_FAILURE, error: get(error, 'message')}));
 };
 
-export const updateWebsite = (websiteId: number|string, sectionId: string, payload: Object): func =>
+export const setTemplateId = (websiteId: number|string, templateId: number|string): func =>
+  (dispatch: func, getState: func) => {
+    const state = getState();
+    const website = getWebsiteById(state, websiteId);
+
+    if (website) {
+      const data = get(website, 'data');
+      const { getExportData } = getTemplateById(get(website, 'templateId'));
+      const { config } = getTemplateById(templateId);
+
+
+      if (data && getExportData) {
+        const oldData = getExportData(data);
+        const newData = {};
+
+        keys(config.section).forEach((sectionId: string): void => {
+          const schema = get(config, `section.${sectionId}.schema`);
+
+          if (schema) {
+            set(newData, sectionId, schema.cast(get(oldData, sectionId)));
+          }
+        });
+
+        dispatch({ type: SET_TEMPLATE_ID, templateId, websiteId, payload: newData });
+      }
+    }
+  };
+
+export const updateWebsite = (websiteId: number|string, payload: Object): Object =>
+  ({ type: UPDATE_WEBSITE, payload });
+
+export const updateWebsiteSection = (websiteId: number|string, sectionId: string, payload: Object): func =>
   (dispatch: func, getState: func) => {
     const state = getState();
     const website = getWebsiteById(state, websiteId);
