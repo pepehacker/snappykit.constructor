@@ -32,6 +32,8 @@ const EditorView = ({
     [styles.RootDeviceDesktop]: view === VIEW.DESKTOP,
     [styles.RootDeviceMobile]: view === VIEW.MOBILE,
     [styles.RootDeviceTablet]: view === VIEW.TABLET,
+
+    [styles.RootIsBusied]: isBusied,
   });
 
   return (
@@ -61,7 +63,6 @@ const EditorView = ({
                     !!height &&
                     !!templateHeight &&
                     `-${((height - templateHeight) / scale) / 2}px 0`,
-                  opacity: isBusied ? 0 : 1,
                   transform: !!scale && `scale(${scale})`,
                 }}
               />

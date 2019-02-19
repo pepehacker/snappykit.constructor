@@ -29,6 +29,7 @@ const Main = ({
   <div className={styles.Root}>
       <div className={styles.Wrapper}>
         <Header />
+
         <div className={styles.Container}>
           <TransitionGroup>
             <CSSTransition

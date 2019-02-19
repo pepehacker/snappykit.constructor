@@ -97,6 +97,55 @@
   width: 80px;
 }
 
+.Link {
+  align-items: center;
+  color: #c4c9d1;
+  display: flex;
+  font-size: 14px;
+  justify-content: center;
+  letter-spacing: .5px;
+  position: relative;
+  text-decoration: none;
+  transition: all .2s;
+
+  &:active {
+    color: #9e9ae2;
+    opacity: .8;
+  }
+
+  &:hover:not(:active) {
+    color: #9e9ae2;
+  }
+
+  &External {
+    color: #9e9ae2;
+
+    &:hover {
+      color: #8e8ad8;
+    }
+  }
+}
+
+.Links {
+  display: flex;
+  height: 32px;
+  width: 100%;
+
+  & > * {
+    flex: 0 0 50%;
+
+    &:first-child:after {
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000 51%, rgba(0, 0, 0, 0));
+      content: '';
+      height: 100%;
+      opacity: .1;
+      position: absolute;
+      right: -1px;
+      width: 2px;
+    }
+  }
+}
+
 .Logo {
   display: flex;
   height: 80px;

@@ -80,10 +80,13 @@
 }
 
 .Smartphone {
-  box-shadow: 0 30px 40px rgba(0, 0, 0, .6);
   height: 353px;
   position: relative;
   width: 173px;
+
+  &Mockup {
+    filter: drop-shadow(0 32px 24px rgba(0, 0, 0, .6));
+  }
 }
 
 .Store {

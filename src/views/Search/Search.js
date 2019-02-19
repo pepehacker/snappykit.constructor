@@ -109,7 +109,7 @@ export default compose(
     const changeThrottle = throttle((values: Object): void => {
       setQuery(get(values, 'name'));
       search(values);
-    }, 1600);
+    }, 2000);
 
     return {
       handleChange: ():func => changeThrottle,

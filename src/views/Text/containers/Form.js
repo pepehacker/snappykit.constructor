@@ -4,7 +4,7 @@ import { compose } from 'recompose';
 import { reduxForm } from 'redux-form';
 
 // Components
-import Form, { Color, Palette, Select, SelectItem, Textarea } from 'components/Form';
+import Form, { Color, Select, SelectItem, Textarea } from 'components/Form';
 import Style from '../components/Style';
 
 // Entities

@@ -35,7 +35,7 @@ const Website = ({
       enterActive: styles.RootAnimateEnterActive,
     }}
     in={isMounted}
-    timeout={1200}
+    timeout={1600}
     unmountOnExit
   >
     <div className={styles.Root}>

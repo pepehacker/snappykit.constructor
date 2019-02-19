@@ -42,6 +42,7 @@ const Template1 = () => (
             classNames={{
               root: styles.Smartphone,
               container: styles.Screenshots,
+              mockup: styles.SmartphoneMockup,
             }}
           >
             <Screenshots classNames={{ item: styles.ScreenshotsItem }} />

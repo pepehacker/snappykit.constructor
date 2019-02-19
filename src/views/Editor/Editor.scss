@@ -1,6 +1,24 @@
 .Root {
   display: flex;
   width: 100%;
+
+  &Animate {
+    &Enter {
+      &Active {
+        .Devices {
+          opacity: 1 !important;
+          transform: translateY(0) !important;
+          transition: all .4s;
+          transition-delay: .3s;
+        }
+      }
+
+      .Devices {
+        opacity: 0;
+        transform: translateY(60px);
+      }
+    }
+  }
 }
 
 .Container {
@@ -76,5 +94,6 @@
   flex: 1 1 auto;
   flex-direction: column;
   justify-content: center;
+  max-height: calc(100% - 160px);
   width: 100%;
 }

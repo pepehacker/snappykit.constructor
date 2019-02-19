@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Styles
 import styles from './Item.scss';
@@ -49,7 +50,23 @@ const WebsitesItem = ({
 
       <div className={styles.Actions}>
         {isSupported ? (
-          <div>123</div>
+          <div className={styles.Links}>
+            <Link
+              className={styles.Link}
+              to={`/${id}/editor/templates`}
+            >
+              Modify
+            </Link>
+
+            <a
+              className={classNames(styles.Link, styles.LinkExternal)}
+              href="http://google.com"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Open
+            </a>
+          </div>
         ) : (
           <div className={styles.NotSupported}>
             Not Supported
@@ -62,7 +79,10 @@ const WebsitesItem = ({
 
 WebsitesItem.propTypes = {
   description: PropTypes.string,
-  id: PropTypes.number,
+  id: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
   isSupported: PropTypes.bool,
   logo: PropTypes.string,
   title: PropTypes.string,

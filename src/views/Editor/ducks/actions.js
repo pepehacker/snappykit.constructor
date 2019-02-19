@@ -8,5 +8,8 @@ export const setBusy = (busy: bool): func =>
 
 export const setView = (view: string): func => (dispatch: func): void => {
   dispatch({ type: SET_BUSY, busy: true });
-  dispatch({ type: SET_VIEW, view });
+
+  setTimeout(() => {
+    dispatch({ type: SET_VIEW, view });
+  }, 200);
 };
