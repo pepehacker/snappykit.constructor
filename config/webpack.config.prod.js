@@ -210,6 +210,7 @@ module.exports = {
     extensions: ['.mjs', '.web.js', '.js', '.json', '.web.jsx', '.jsx'],
     alias: {
       api: path.resolve(__dirname, '../src/api'),
+      assets: path.resolve(__dirname, '../src/assets'),
       components: path.resolve(__dirname, '../src/components'),
       entities: path.resolve(__dirname, '../src/entities'),
       services: path.resolve(__dirname, '../src/services'),
