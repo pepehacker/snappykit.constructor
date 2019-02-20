@@ -40,11 +40,11 @@ export default ({
   section: {
     [BACKGROUND]: {
       schema: BACKGROUND_SCHEMA({
-        color: null,
+        color: '',
         gradient: {
-          angle: null,
-          from: null,
-          to: null,
+          angle: 0,
+          from: '',
+          to: '',
         },
         image: require('assets/backgrounds/d-2.png'),
       }),
@@ -72,20 +72,6 @@ export default ({
           [POLICY_PRIVACY]: '123',
           [POLICY_TERMS]: '456',
         },
-      }),
-    },
-    [SCREENSHOTS]: {
-      schema: SCREENSHOTS_SCHEMA({
-        items: [
-          'https://i.pinimg.com/originals/da/e2/0a/dae20ac5ed7d1c1d927ad342f3a8b89c.jpg',
-          'https://i.pinimg.com/originals/9e/89/0f/9e890fc6f475f43d7ccfee5d19b59832.jpg',
-          'https://i.pinimg.com/originals/e8/a8/bf/e8a8bfc8bb86ff397a675627797e26f9.jpg',
-        ],
-      }),
-    },
-    [SMARTPHONE]: {
-      schema: SMARTPHONE_SCHEMA({
-        mockup: SMARTPHONE_MOCKUP.FLAT_IPHONE_GRAY,
       }),
     },
     [SOCIAL]: {

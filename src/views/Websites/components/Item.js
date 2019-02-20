@@ -1,7 +1,15 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { compose, withHandlers } from 'recompose';
+
+// Ducks
+import { CONFIRM_MODAL_ID } from '../ducks';
+
+// Services
+import { openModal } from 'services/modals';
 
 // Styles
 import styles from './Item.scss';
@@ -9,9 +17,14 @@ import styles from './Item.scss';
 const WebsitesItem = ({
   description,
   id,
-  isSupported,
   logo,
   title,
+
+  // Handlers
+  handleDelete,
+
+  // State
+  isSupported,
 }) => {
   const rootClassNames = classNames(styles.Root, {
     [styles.RootIsNotSupported]: !isSupported,
@@ -25,6 +38,7 @@ const WebsitesItem = ({
         <div className={styles.HeaderRight}>
           <button
             className={styles.Delete}
+            onClick={handleDelete}
             type="button"
           />
         </div>
@@ -88,4 +102,13 @@ WebsitesItem.propTypes = {
   title: PropTypes.string,
 };
 
-export default WebsitesItem;
+export default compose(
+  connect(null, { openModal }),
+  withHandlers({
+    handleDelete: ({ id, openModal }): func =>
+      (event: Object): void =>
+        openModal(CONFIRM_MODAL_ID, {
+          onSubmit: console.log, // eslint-disable-line
+        }),
+  }),
+)(WebsitesItem);

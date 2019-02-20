@@ -19,12 +19,14 @@
 .Copyright {
   font-size: 14px;
   letter-spacing: 1px;
+  word-break: break-word;
 }
 
 .Description {
   font-size: 14px;
   line-height: 30px;
   margin: 20px 0 0;
+  word-break: break-word;
 }
 
 .Footer {
@@ -97,6 +99,7 @@
   font-size: 42px;
   letter-spacing: 3px;
   line-height: 52px;
+  word-break: break-word;
 }
 
 .Wrapper {

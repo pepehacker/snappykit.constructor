@@ -1,0 +1,59 @@
+.Root {
+  &Animate {
+    &Enter {
+      &Active {
+        .Actions {
+          transition-delay: .2s;
+        }
+
+        .Description {
+          transition-delay: .1s;
+        }
+
+        .Actions,
+        .Description,
+        .Title {
+          opacity: 1 !important;
+          transform: translateY(0) !important;
+          transition-duration: .4s;
+          transition-property: all;
+        }
+      }
+
+      .Actions,
+      .Description,
+      .Title {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+    }
+  }
+}
+
+.Actions {
+  display: flex;
+  justify-content: center;
+  margin: 32px 0 0;
+
+  & > *:not(:first-child) {
+    margin: 0 0 0 42px;
+  }
+}
+
+.Description {
+  color: #c5c9ce;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 12px 0 0;
+  text-align: center;
+}
+
+.Submit {
+  opacity: .5;
+}
+
+.Title {
+  color: #aeb2ba;
+  font-size: 20px;
+  text-align: center;
+}

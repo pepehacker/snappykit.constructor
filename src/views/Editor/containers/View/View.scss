@@ -61,8 +61,13 @@
   display: flex;
   justify-content: center;
   opacity: 1;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: overlay;
   position: relative;
   transition: all .4s;
   z-index: 0;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }

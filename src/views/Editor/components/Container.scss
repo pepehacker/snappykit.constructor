@@ -1,18 +1,24 @@
 .Root {
   margin: -12px;
-  max-height: calc(100% - 28px);
-  min-height: 700px;
+  max-height: calc(100% - 64px);
+  min-height: 600px;
   overflow-x: visible;
   overflow-y: scroll;
   padding: 12px 12px 60px;
 
-  // &::-webkit-scrollbar {
-  //   background: transparent;
-  //   width: 4px;
-  // }
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background: #e8e8e8;
+    }
+  }
 
-  // &::-webkit-scrollbar-thumb {
-  //   background: #e8e8e8;
-  //   border-radius: 4px;
-  // }
+  &::-webkit-scrollbar {
+    background: transparent;
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 4px;
+  }
 }

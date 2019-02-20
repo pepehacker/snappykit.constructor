@@ -1,10 +1,18 @@
 import { get, values } from 'lodash';
 
+// Templates
+import { getTemplateById } from 'template';
+
 export const getSectionById = (state: Object, websiteId: number|string, sectionId: string): Object =>
   get(state, `entities.websites.${websiteId}.data.${sectionId}`);
 
 export const getWebsiteCount = (state: Object): number =>
   getWebsiteList(state).length;
+
+export const getWebsiteTemplate = (state: Object, id: number|string): Object => {
+  const website = getWebsiteById(state, id);
+  return getTemplateById(get(website, 'templateId'));
+};
 
 export const getWebsiteById = (state: Object, id: number|string): Array<Object> =>
   get(state, `entities.websites.${id}`);

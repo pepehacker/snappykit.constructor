@@ -19,6 +19,18 @@
       }
     }
   }
+
+  &Is {
+    &NotAvailable {
+      .Sidebar {
+        overflow: hidden;
+
+        & > *:last-child {
+          filter: blur(1px);
+        }
+      }
+    }
+  }
 }
 
 .Container {
@@ -48,6 +60,7 @@
       height: 100%;
       left: 0;
       opacity: 0;
+      pointer-events: none;
       position: absolute;
       top: 0;
       transform: translateX(160px);
@@ -67,6 +80,7 @@
       height: 100%;
       left: 0;
       opacity: 1;
+      pointer-events: none;
       position: absolute;
       top: 0;
       transition: all .4s;
@@ -80,10 +94,11 @@
     }
   }
 
-  & > * {
+  & > *:last-child {
     display: flex;
     max-height: 100%;
     position: relative;
+    transition: filter .2s ease-out .2s;
     width: 100%;
   }
 }

@@ -8,6 +8,7 @@ import { compose, lifecycle, withState } from 'recompose';
 import Item from './components/Item';
 
 // Containers
+import Confirm from './containers/Confirm';
 import Limit from './containers/Limit';
 
 // Entities
@@ -33,6 +34,8 @@ const Websites = ({
   >
     {(state: string) => (
       <div className={styles.Root}>
+        <Confirm />
+
         <div className={styles.Wrapper}>
           <div className={styles.Header}>
             <div className={styles.Title}>

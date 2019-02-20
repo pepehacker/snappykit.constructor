@@ -94,11 +94,13 @@ export const setTemplateId = (websiteId: number|string, templateId: number|strin
           const schema = get(config, `section.${sectionId}.schema`);
 
           if (schema) {
-            set(newData, sectionId, schema.cast(get(oldData, sectionId)));
+            set(newData, sectionId, schema
+              ? schema.cast(get(oldData, sectionId))
+              : oldData[sectionId]);
           }
         });
 
-        dispatch({ type: SET_TEMPLATE_ID, templateId, websiteId, payload: newData });
+        dispatch({ type: SET_TEMPLATE_ID, templateId, websiteId, payload: { ...oldData, ...newData }});
       }
     }
   };

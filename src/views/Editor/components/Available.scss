@@ -1,0 +1,74 @@
+.Root {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  left: 0;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+
+  &Animate {
+    &Enter {
+      opacity: 0;
+
+      &Active {
+        opacity: 1 !important;
+        transition: all .4s;
+        transition-delay: .2s;
+      }
+    }
+
+    &Exit {
+      opacity: 1;
+
+      &Active {
+        opacity: 0 !important;
+        transition: all .2s;
+        transition-delay: .2s;
+      }
+    }
+  }
+}
+
+.Content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 2;
+}
+
+.Cover {
+  background: #f9f9f9;
+  height: 100%;
+  left: 0;
+  opacity: .9;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.Description {
+  color: #a0a9bb;
+  font-size: 14px;
+  line-height: 22px;
+  margin: 12px 0 0;
+  text-align: center;
+}
+
+.Icon {
+  background: url('../assets/available.svg') no-repeat center center;
+  background-size: contain;
+  height: 121px;
+  width: 142px;
+}
+
+.Title {
+  color: #727d8f;
+  font-size: 20px;
+  margin: 16px 0 0;
+  text-align: center;
+}

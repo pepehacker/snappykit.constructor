@@ -1,0 +1,54 @@
+.Root {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 2;
+
+  &Animate {
+    &Enter {
+      opacity: 0;
+
+      &Active {
+        opacity: 1;
+        transition: all .2s;
+      }
+
+      &Done {
+        opacity: 1;
+      }
+
+      .Container {
+        opacity: 0;
+      }
+    }
+
+    &Exit {
+      opacity: 1;
+
+      &Active {
+        opacity: 0;
+        transition: all .2s;
+      }
+    }
+  }
+}
+
+.Backdrop {
+  background: #f9f9f9;
+  height: 100%;
+  left: 0;
+  opacity: .9;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.Container {
+  position: relative;
+  z-index: 1;
+}
