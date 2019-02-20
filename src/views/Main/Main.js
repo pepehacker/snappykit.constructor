@@ -1,10 +1,14 @@
 import { get } from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
+import Responsive from 'react-responsive';
 import { matchPath, Switch, Route } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { compose, lifecycle } from 'recompose';
 import url from 'url';
+
+// Components
+import Oops from './components/Oops';
 
 // Containers
 import Header from './containers/Header';
@@ -27,6 +31,11 @@ const Main = ({
   pageId,
 }) => (
   <div className={styles.Root}>
+    <Responsive maxWidth={1279}>
+      <Oops />
+    </Responsive>
+
+    <Responsive minWidth={1280}>
       <div className={styles.Wrapper}>
         <Header />
 
@@ -52,6 +61,7 @@ const Main = ({
           </TransitionGroup>
         </div>
       </div>
+    </Responsive>
   </div>
 );
 

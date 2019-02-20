@@ -1,0 +1,61 @@
+.Root {
+  align-items: center;
+  background: url('../assets/oops-bg.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+}
+
+.Actions {
+  margin: 36px 0 0;
+}
+
+.Content {
+  align-items: center;
+  color: #b8c2c8;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  position: relative;
+  top: -8%;
+  z-index: 2;
+}
+
+.Link {
+  align-items: center;
+  background-image: linear-gradient(256deg, #5e7adb, #8359c1);
+  border-radius: 30px;
+  color: #fff;
+  display: flex;
+  font-weight: 700;
+  height: 52px;
+  justify-content: center;
+  position: relative;
+  text-decoration: none;
+  width: 144px;
+
+  &:before {
+    background-image: linear-gradient(257deg, #5e7adb, #8359c1);
+    border-radius: 30px;
+    content: '';
+    filter: blur(10px);
+    height: 40px;
+    left: calc(50% - 62px);
+    opacity: .6;
+    position: absolute;
+    top: 20px;
+    width: 124px;
+    z-index: -1;
+  }
+}
+
+.Oops {
+  bottom: 0;
+  height: 80%;
+  position: absolute;
+  z-index: 1;
+}
