@@ -1,4 +1,4 @@
-import { get } from 'lodash';
+import { get, has } from 'lodash';
 import { connect } from 'react-redux';
 import { matchPath, withRouter } from 'react-router-dom';
 import { compose, lifecycle, withHandlers, withState } from 'recompose';
@@ -15,14 +15,13 @@ import { getWebsiteById } from 'entities/websites';
 
 const mapStateToProps = ({ views, ...state }, { location }) => {
   const match = matchPath(get(location, 'pathname'), { path: '/:websiteId'});
-  const websiteId = get(match, 'params.websiteId');
+  const website = getWebsiteById(state, get(match, 'params.websiteId'));
 
   return {
-    ...get(views, 'editor'),
-    website: getWebsiteById(state, websiteId),
+    ...get(views, 'editor'), website,
+    templateId: get(website, 'templateId'),
   };
 };
-
 
 export default withRouter(compose(
   connect(mapStateToProps, { setBusy }),
@@ -31,6 +30,7 @@ export default withRouter(compose(
   withState('scale', 'setScale', 1),
   withHandlers((): Object => {
     let $root;
+    let $track;
 
     return {
       // Handlers
@@ -76,7 +76,10 @@ export default withRouter(compose(
 
           if (newHeight !== height) {
             setHeight(newHeight);
-            setTemplateHeight(newHeight * newScale);
+          }
+
+          if ($track && $track.firstChild) {
+            setTemplateHeight($track.firstChild.clientHeight);
           }
         }
 
@@ -87,6 +90,9 @@ export default withRouter(compose(
       registerContainer: (): func => (node: HTMLDivElement): void => {
         $root = node;
       },
+      registerTrack: (): func => (node: HTMLDivElement): void => {
+        $track = node;
+      },
     };
   }),
   lifecycle({
@@ -95,9 +101,9 @@ export default withRouter(compose(
       window.addEventListener('resize', handleResize, true);
       handleResize();
     },
-    componentDidUpdate({ view: prevView }) {
-      const { handleResize, view } = this.props;
-      prevView !== view && setTimeout(handleResize, 500);
+    componentDidUpdate({ templateId: prevTemplateId, view: prevView }) {
+      const { handleResize, templateId, view } = this.props;
+      (prevView !== view || prevTemplateId !== templateId) && setTimeout(handleResize, 200);
     },
     componentWillUnmount() {
       const { handleResize } = this.props;

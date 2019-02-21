@@ -24,6 +24,7 @@ const EditorView = ({
 
   // Registers
   registerContainer,
+  registerTrack,
 
   // State
   isBusied,
@@ -41,10 +42,13 @@ const EditorView = ({
       className={className}
       ref={registerContainer}
     >
-      <div className={styles.Container}>
+      <div
+        className={styles.Container}
+        style={{ maxHeight: `${height}px` }}
+      >
         <div
           className={styles.Track}
-          style={{ height: view !== VIEW.TABLET && height }}
+          ref={registerTrack}
         >
           {website && (
             <TemplateContext.Provider
@@ -60,10 +64,10 @@ const EditorView = ({
                 style={{
                   margin:
                     scale !== 1 &&
-                    !!height &&
                     !!templateHeight &&
-                    `-${((height - templateHeight) / scale) / 2}px 0`,
+                    `-${(templateHeight - templateHeight * scale) / 2}px 0`,
                   transform: !!scale && `scale(${scale})`,
+                  transition: 'all .2s',
                 }}
               />
             </TemplateContext.Provider>

@@ -11,11 +11,21 @@
           transition: all .4s;
           transition-delay: .3s;
         }
+
+        .View {
+          opacity: 1 !important;
+          transition: all .4s;
+          transition-delay: .3s;
+        }
       }
 
       .Devices {
         opacity: 0;
         transform: translateY(60px);
+      }
+
+      .Devices {
+        opacity: 0;
       }
     }
   }

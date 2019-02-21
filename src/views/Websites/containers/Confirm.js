@@ -36,7 +36,7 @@ const WebsitesConfirm = ({
         timeout={600}
         unmountOnExit
       >
-        <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form onSubmit={() => handleSubmit(onSubmit)}>
           <div className={styles.Title}>
             Website will be deleted
           </div>

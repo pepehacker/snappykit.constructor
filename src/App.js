@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { get } from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
@@ -34,7 +33,6 @@ export default compose(
       const { fetchProfile, token } = this.props;
 
       if (token) {
-        axios.defaults.headers.common.Authorization = `JWT ${token}`;
         fetchProfile(2036);
       }
     },
