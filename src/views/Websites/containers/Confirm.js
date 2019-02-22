@@ -25,6 +25,41 @@ const WebsitesConfirm = ({
   handleClose,
   handleSubmit,
 }) => (
+  <Form onSubmit={handleSubmit}>
+    <div className={styles.Title}>
+      Website will be deleted
+    </div>
+
+    <div className={styles.Description}>
+      Do you really want to continue?
+    </div>
+
+    <div className={styles.Actions}>
+      <Button
+        className={styles.Submit}
+        type="submit"
+      >
+        YES
+      </Button>
+
+      <Button onClick={handleClose}>
+        NO
+      </Button>
+    </div>
+  </Form>
+);
+
+const ComposedWebsitesConfirm = compose(
+  connect(null, { closeModal }),
+  withHandlers({
+    handleClose: ({ closeModal }): func =>
+      (event: Object): void =>
+        closeModal(CONFIRM_MODAL_ID),
+  }),
+  reduxForm({ form: CONFIRM_FORM_ID }),
+)(WebsitesConfirm);
+
+const WebsitesConfirmModal = () => (
   <Modal id={CONFIRM_MODAL_ID}>
     {({ isEntered, onSubmit }) => (
       <CSSTransition
@@ -36,39 +71,10 @@ const WebsitesConfirm = ({
         timeout={600}
         unmountOnExit
       >
-        <Form onSubmit={() => handleSubmit(onSubmit)}>
-          <div className={styles.Title}>
-            Website will be deleted
-          </div>
-
-          <div className={styles.Description}>
-            Do you really want to continue?
-          </div>
-
-          <div className={styles.Actions}>
-            <Button
-              className={styles.Submit}
-              type="submit"
-            >
-              YES
-            </Button>
-
-            <Button onClick={handleClose}>
-              NO
-            </Button>
-          </div>
-        </Form>
+        <ComposedWebsitesConfirm onSubmit={onSubmit} />
       </CSSTransition>
     )}
   </Modal>
 );
 
-export default compose(
-  connect(null, { closeModal }),
-  withHandlers({
-    handleClose: ({ closeModal }): func =>
-      (event: Object): void =>
-        closeModal(CONFIRM_MODAL_ID),
-  }),
-  reduxForm({ form: CONFIRM_FORM_ID }),
-)(WebsitesConfirm);
+export default WebsitesConfirmModal;

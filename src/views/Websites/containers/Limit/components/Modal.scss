@@ -1,0 +1,76 @@
+.Root {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  &Animate {
+    &Enter {
+      &Active {
+        .Actions {
+          transition-delay: .3s;
+        }
+
+        .Description {
+          transition-delay: .1s;
+        }
+
+        .Title {
+          transition-delay: .2s;
+        }
+
+        .Actions,
+        .Description,
+        .Icon,
+        .Title {
+          opacity: 1 !important;
+          transform: translateY(0) !important;
+          transition-duration: .4s;
+          transition-property: all;
+        }
+      }
+
+      .Actions,
+      .Description,
+      .Icon,
+      .Title {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+    }
+  }
+}
+
+.Actions {
+  display: flex;
+  justify-content: center;
+  margin: 36px 0 0;
+}
+
+.Description {
+  color: #a0a9bb;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.Icon {
+  background: url('../../../assets/limit.svg') no-repeat center center;
+  background-size: contain;
+  height: 140px;
+  width: 140px;
+}
+
+.Link {
+  height: 50px;
+  min-width: 144px;
+  opacity: .6;
+}
+
+.Title {
+  color: #727d8f;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: -.2px;
+  margin: 12px 0 0;
+  text-align: center;
+  text-shadow: 0 8px 4px rgba(0, 0, 0, .1);
+}

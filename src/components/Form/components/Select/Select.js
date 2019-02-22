@@ -72,8 +72,7 @@ const FormSelect = ({
             type="text"
             value={isFocused
               ? inputValue
-              : getLabel()
-            }
+              : getLabel()}
           />
 
           {variant === VARIANT.CONTAINED && (
@@ -152,8 +151,8 @@ const ComposedFormSelect = compose(
           ? Children
               .map(children, (child: Object) => child)
               .filter(({ props }) => get(props, 'value') === value)
-              .map(({ props }) => get(props, 'label'))[0]
-          : get(value, 'value'),
+              .map(({ props }) => get(props, 'label'))[0] || ''
+          : get(value, 'value', ''),
 
       // Handlers
       handleBlur: ({ setFocus, setInputValue }) => (event: Object) => {

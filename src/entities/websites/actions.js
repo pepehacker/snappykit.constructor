@@ -7,11 +7,23 @@ import { UPDATE_ENTITIES } from 'entities/types';
 // Selector
 import { getWebsiteById } from './selector';
 
+// Services
+import { closeModal } from 'services/modals';
+
 // Templates
 import { getTemplateById } from 'template';
 
+// Views
+import { CONFIRM_MODAL_ID } from 'views/Websites/ducks';
+
 // Types
 import {
+  // Delete
+  DELETE_WEBSITE_REQUEST,
+  DELETE_WEBSITE_SUCCESS,
+  DELETE_WEBSITE_FAILURE,
+
+  // Fetch
   FETCH_WEBSITES_REQUEST,
   FETCH_WEBSITES_SUCCESS,
   FETCH_WEBSITES_FAILURE,
@@ -22,58 +34,77 @@ import {
   UPDATE_WEBSITE_SECTION,
 } from './types';
 
-export const fetchWebsites = (): func => (dispatch: func, getState: func, { api, schema }): Object<Promise> => {
-  dispatch({ type: FETCH_WEBSITES_REQUEST });
+export const deleteWebsite = ({ appId, id }): func =>
+  (dispatch: func, getState: func, { api }): Object<Promise> => {
+    dispatch({ type: DELETE_WEBSITE_REQUEST, websiteId: id });
+    dispatch(closeModal(CONFIRM_MODAL_ID));
 
-  return api('websites.get')
-    .then(({ data }): void => {
-      const results = get(data, 'results', []).map((result: Object) => {
-        const template = getTemplateById(get(result, 'template_id'));
+    return id === 'new'
+      ? dispatch({ type: DELETE_WEBSITE_SUCCESS, websiteId: id })
+      : api([
+          { method: 'websites.delete', params: { appId, id }},
+          { method: 'websites.deleteApp', params: { appId, id }},
+        ])
+          .then((data: Object): void =>
+            dispatch({ type: DELETE_WEBSITE_SUCCESS, websiteId: id }))
+          .catch((error: Object): void =>
+            dispatch({ type: DELETE_WEBSITE_FAILURE, error: get(error, 'message')}));
+  };
 
-        if (template) {
-          // disable-eslint-next-line
-          const data = {};
-          const { section } = get(template, 'config');
+export const fetchWebsites = (): func =>
+  (dispatch: func, getState: func, { api, schema }): Object<Promise> => {
+    dispatch({ type: FETCH_WEBSITES_REQUEST });
 
-          let json = null;
+    return api('websites.get')
+      .then(({ data }): void => {
+        const results = get(data, 'results', []).map((result: Object) => {
+          const template = getTemplateById(get(result, 'template_id'));
 
-          try {
-            json = JSON.parse(get(result, 'json', ''));
+          if (template) {
+            // disable-eslint-next-line
+            const data = {};
+            const { section } = get(template, 'config');
 
-            keys(section).forEach((sectionId: string): void => {
-              const schema = get(section, `${sectionId}.schema`);
+            let json = null;
 
-              if (schema) {
-                set(data, `section.${sectionId}`, schema.cast(get(json, sectionId)));
-              }
-            });
-          } catch(e) {
-            // eslint-disable-next-line
-            console.error('This JSON schema is not supported!');
+            try {
+              json = JSON.parse(get(result, 'json', ''));
+
+              keys(section).forEach((sectionId: string): void => {
+                const schema = get(section, `${sectionId}.schema`);
+
+                if (schema) {
+                  set(data, `section.${sectionId}`, schema.cast(get(json, sectionId)));
+                }
+              });
+            } catch(e) {
+              // eslint-disable-next-line
+              console.error('This JSON schema is not supported!');
+            }
+
+            return {
+              data,
+              appId: get(result, 'app_id'),
+              description: get(result, 'description'),
+              id: get(result, 'id'),
+              isSupported: !isEmpty(data),
+              logo: isEmpty(data) && get(json, 'logo'),
+              templateId: get(result, 'template_id'),
+              title: get(result, 'title'),
+            };
           }
 
-          return {
-            data,
-            description: get(result, 'description'),
-            id: get(result, 'id'),
-            isSupported: !isEmpty(data),
-            logo: isEmpty(data) && get(json, 'logo'),
-            templateId: get(result, 'template_id'),
-            title: get(result, 'title'),
-          };
-        }
+          return false;
+        });
 
-        return false;
-      });
+        const normalizedData = normalize(results, [schema.website])
 
-      const normalizedData = normalize(results, [schema.website])
-
-      dispatch({ type: UPDATE_ENTITIES, data: normalizedData });
-      dispatch({ type: FETCH_WEBSITES_SUCCESS });
-    })
-    .catch((error: Object) =>
-      dispatch({ type: FETCH_WEBSITES_FAILURE, error: get(error, 'message')}));
-};
+        dispatch({ type: UPDATE_ENTITIES, data: normalizedData });
+        dispatch({ type: FETCH_WEBSITES_SUCCESS });
+      })
+      .catch((error: Object) =>
+        dispatch({ type: FETCH_WEBSITES_FAILURE, error: get(error, 'message')}));
+  };
 
 export const setTemplateId = (websiteId: number|string, templateId: number|string): func =>
   (dispatch: func, getState: func) => {

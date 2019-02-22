@@ -1,7 +1,12 @@
-import { get } from 'lodash';
+import { get, omit } from 'lodash';
 
 // Types
 import {
+    // Delete
+  DELETE_WEBSITE_REQUEST,
+  DELETE_WEBSITE_SUCCESS,
+  DELETE_WEBSITE_FAILURE,
+
   SET_TEMPLATE_ID,
 
   UPDATE_WEBSITE,
@@ -94,6 +99,26 @@ export default (state = initialState, action: Object): Object => {
   const website = get(state, websiteId);
 
   switch (action.type) {
+    // Delete
+    case DELETE_WEBSITE_REQUEST:
+      return {
+        ...state,
+        [websiteId]: {
+          ...website,
+          isFetching: true,
+        },
+      };
+    case DELETE_WEBSITE_SUCCESS:
+      return omit(state, websiteId);
+    case DELETE_WEBSITE_FAILURE:
+      return {
+        ...state,
+        [websiteId]: {
+          ...website,
+          isFetching: false,
+        }
+      };
+
     case SET_TEMPLATE_ID:
       return {
         ...state,

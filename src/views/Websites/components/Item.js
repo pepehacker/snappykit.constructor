@@ -5,8 +5,14 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { compose, withHandlers } from 'recompose';
 
+// Components
+import Spinner from 'components/Spinner';
+
 // Ducks
 import { CONFIRM_MODAL_ID } from '../ducks';
+
+// Entities
+import { deleteWebsite } from 'entities/websites';
 
 // Services
 import { openModal } from 'services/modals';
@@ -24,14 +30,18 @@ const WebsitesItem = ({
   handleDelete,
 
   // State
+  isFetching,
   isSupported,
 }) => {
   const rootClassNames = classNames(styles.Root, {
+    [styles.RootIsFetching]: isFetching,
     [styles.RootIsNotSupported]: !isSupported,
   });
 
   return (
     <div className={rootClassNames}>
+      {isFetching && <Spinner title="Deleting..." />}
+
       <div className={styles.Header}>
         <div className={styles.HeaderLeft} />
 
@@ -103,12 +113,17 @@ WebsitesItem.propTypes = {
 };
 
 export default compose(
-  connect(null, { openModal }),
+  connect(null, { deleteWebsite, openModal }),
   withHandlers({
-    handleDelete: ({ id, openModal }): func =>
+    handleDelete: ({
+      appId,
+      deleteWebsite,
+      id,
+      openModal,
+    }): func =>
       (event: Object): void =>
         openModal(CONFIRM_MODAL_ID, {
-          onSubmit: console.log, // eslint-disable-line
+          onSubmit: () => deleteWebsite({ appId, id }),
         }),
   }),
 )(WebsitesItem);
