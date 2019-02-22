@@ -3,6 +3,51 @@
   height: 100px;
   position: relative;
   width: 100%;
+
+  &With {
+    &Title {
+      .Title {
+        flex: 0 0 160px;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.Center {
+  display: flex;
+  flex: 1 1 auto;
+  max-width: calc(100% - 636px);
+
+  &Animate {
+    &Enter {
+      opacity: 0;
+
+      &Active {
+        opacity: 0;
+      }
+
+      &Done {
+        opacity: 1;
+      }
+    }
+
+    &Exit {
+      height: 100%;
+      left: 0;
+      opacity: 1;
+      position: absolute;
+      top: 0;
+      transition: all .4s;
+      visibility: visible;
+      width: 100%;
+
+      &Active {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  }
 }
 
 .Container {
@@ -20,7 +65,7 @@
 
 .Left {
   display: flex;
-  flex: 0 0 400px;
+  flex: 0 0 306px;
   justify-content: space-between;
 }
 
@@ -45,6 +90,12 @@
   }
 }
 
+.Right {
+  display: flex;
+  flex: 0 0 330px;
+  justify-content: flex-end;
+}
+
 .Shadow {
   background: #7e7acc;
   border-bottom-left-radius: 100%;
@@ -64,8 +115,15 @@
 }
 
 .Title {
+  border-right: 2px solid rgba(0, 0, 0, .05);
   color: #a4a8b0;
+  flex: 0 0 0;
   font-size: 22px;
   font-weight: 400;
   letter-spacing: -.3px;
+  opacity: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all .6s, opacity .4s ease-out .2s;
+  white-space: nowrap;
 }

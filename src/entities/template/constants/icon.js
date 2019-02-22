@@ -5,7 +5,7 @@ export const ICON = 'icon';
 
 // Schema
 export const ICON_SCHEMA = (defaults: Object) => object().shape({
-  icon: string()
+  src: string()
     .matches(/^@(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/)
-    .default(get(defaults, 'icon')),
+    .default(get(defaults, 'src')),
 });

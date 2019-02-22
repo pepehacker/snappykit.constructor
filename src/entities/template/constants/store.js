@@ -8,8 +8,8 @@ export const STORE_BACKGROUND = 'background';
 export const STORE_COLOR = 'color';
 
 // Markets
-export const STORE_APP_STORE = 'appStore';
-export const STORE_GOOGLE_PLAY = 'googlePlay';
+export const STORE_APP_STORE = 'apple';
+export const STORE_GOOGLE_PLAY = 'play';
 
 // Schema
 export const STORE_SCHEMA = (defaults: Object): Object => object().shape({

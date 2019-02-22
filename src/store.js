@@ -22,7 +22,7 @@ const reducer = combineReducers({
 
 export default (history: Object) => createStore(reducer, compose(
   applyMiddleware(
-    thunkMiddleware.withExtraArgument({ api, schema }),
+    thunkMiddleware.withExtraArgument({ api, history, schema }),
   ),
   window.devToolsExtension ? window.devToolsExtension() : f => f,
 ));

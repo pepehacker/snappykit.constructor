@@ -12,7 +12,7 @@ import * as serviceWorker from './utils/serviceWorker';
 import createStore from './store';
 
 const history = createHistory();
-const store = createStore();
+const store = createStore(history);
 
 ReactDOM.render(
   <Provider store={store}>

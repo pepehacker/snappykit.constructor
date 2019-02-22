@@ -13,11 +13,12 @@ import Item from './components/Item';
 import Form from './containers/Form';
 
 // Ducks
-import { search } from './ducks/actions';
+import { search, setQuery } from './ducks/actions';
 import { getSearchView } from './ducks/selector';
 
 // Entities
 import { fetchCountries } from 'entities/countries';
+import { createWebsite } from 'entities/websites';
 
 // Styles
 import styles from './Search.scss';
@@ -29,6 +30,7 @@ const Search = ({
 
   // Handlers
   handleChange,
+  handleCreate,
 
   // State
   appsIsFetching,
@@ -86,7 +88,7 @@ const Search = ({
               {result && result.length > 0 && (
                 <div className={styles.List}>
                   {result.map((item: Object): func => (
-                    <Item {...item} key={item.id} />
+                    <Item {...item} key={item.id} onClick={handleCreate} />
                   ))}
                 </div>
               )}
@@ -102,23 +104,34 @@ const mapStateToProps = (state: Object): Object =>
   getSearchView(state);
 
 export default compose(
-  connect(mapStateToProps, { fetchCountries, search }),
+  connect(mapStateToProps, {
+    createWebsite,
+    fetchCountries,
+    search,
+    setQuery,
+  }),
   withState('isMounted', 'setMounted', false),
-  withState('query', 'setQuery', false),
-  withHandlers(({ search, setQuery }): Object => {
-    const changeThrottle = throttle((values: Object): void => {
-      setQuery(get(values, 'name'));
-      search(values);
-    }, 2000);
+  withHandlers(({ search }): Object => {
+    const changeThrottle = throttle((values: Object): void =>
+      search(values), 2000);
 
     return {
-      handleChange: ():func => changeThrottle,
+      handleChange: ({ setQuery }): func => (values: Object) => {
+        setQuery(get(values, 'name'));
+        return changeThrottle(values);
+      },
+      handleCreate: ({ createWebsite }): func =>
+        (values: string): void =>
+          createWebsite(values),
     }
   }),
   lifecycle({
     componentDidMount() {
       this.props.fetchCountries();
       this.props.setMounted(true);
+    },
+    componentWillUnmount() {
+      this.props.setQuery('');
     },
   }),
 )(Search);

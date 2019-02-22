@@ -2,6 +2,10 @@
   align-items: center;
   display: flex;
 
+  &:focus {
+    outline: none;
+  }
+
   &:hover {
     cursor: pointer;
 

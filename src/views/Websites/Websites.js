@@ -111,7 +111,7 @@ export default compose(
   withState('isMounted', 'setMounted', false),
   withHandlers({
     handleCreate: ({ items, limit, openModal }): func =>
-      (event: Object) => {
+      (event: Object): void => {
         if (items.length >= limit) {
           event.preventDefault();
           openModal(LIMIT_MODAL_ID);

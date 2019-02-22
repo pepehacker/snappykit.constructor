@@ -11,19 +11,25 @@ import { getWebsiteById } from './selector';
 import { closeModal } from 'services/modals';
 
 // Templates
-import { getTemplateById } from 'template';
+import {
+  createTemplateData,
+  getFirstTemplate,
+  getTemplateById,
+} from 'template';
 
 // Views
 import { CONFIRM_MODAL_ID } from 'views/Websites/ducks';
 
 // Types
 import {
+  CREATE_WEBSITE,
+
   // Delete
   DELETE_WEBSITE_REQUEST,
   DELETE_WEBSITE_SUCCESS,
   DELETE_WEBSITE_FAILURE,
 
-  // Fetch
+  // Fetch list
   FETCH_WEBSITES_REQUEST,
   FETCH_WEBSITES_SUCCESS,
   FETCH_WEBSITES_FAILURE,
@@ -33,6 +39,30 @@ import {
   UPDATE_WEBSITE,
   UPDATE_WEBSITE_SECTION,
 } from './types';
+
+export const createWebsite = ({ link, store, ...values }): func =>
+  (dispatch: func, getState: func, { api, history }): Object<Promise> => {
+    const { config, id: templateId } = getFirstTemplate();
+    const { description, logo, title } = values;
+
+    dispatch({
+      type: CREATE_WEBSITE,
+      payload: {
+        description, logo, templateId, title,
+        data: createTemplateData({
+          ...values,
+          store: {
+            items: {
+              [store]: link,
+            },
+          },
+        }, config),
+        isFetching: false,
+      },
+    });
+
+    history.push('/new/editor/templates');
+  };
 
 export const deleteWebsite = ({ appId, id }): func =>
   (dispatch: func, getState: func, { api }): Object<Promise> => {

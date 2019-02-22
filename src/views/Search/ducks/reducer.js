@@ -10,11 +10,14 @@ import {
   SEARCH_REQUEST,
   SEARCH_SUCCESS,
   SEARCH_FAILURE,
+
+  SET_QUERY,
 } from './types';
 
 const initialState = {
   appsIsFetching: false,
   countriesIsFetching: false,
+  query: '',
   result: [],
 };
 
@@ -38,15 +41,21 @@ export default (state = initialState, action: Object): Object => {
         appsIsFetching: true,
       };
     case SEARCH_SUCCESS:
-      return {
+      return action.query === state.query ? {
         ...state,
         appsIsFetching: false,
         result: action.result,
-      };
+      } : state;
     case SEARCH_FAILURE:
       return {
         ...state,
         appsIsFetching: false,
+      };
+
+    case SET_QUERY:
+      return {
+        ...state,
+        query: action.query,
       };
     default:
       return state;

@@ -1,24 +1,21 @@
 import { get } from 'lodash';
-import React, { createContext } from 'react';
+import { createContext } from 'react';
 
 // Templates
 import * as Template1 from './templates/Template1';
 import * as Template2 from './templates/Template2';
 
-type Template = {
-  Component: Object<React>,
-  config: Object,
-  id: number,
-  preview: string,
-};
-
 export const TEMPLATES = [Template1, Template2]
-  .map(({ Component, config, getExportData, preview }) => ({
-    Component, config, getExportData, preview,
+  .map(({ config, ...props }) => ({
+    ...props,
+    config,
     id: get(config, 'id'),
   }));
 
-export const getTemplateById = (id: number): Object<Template> =>
+export const getFirstTemplate = (): Object =>
+  TEMPLATES[0];
+
+export const getTemplateById = (id: number): Object =>
   TEMPLATES.filter(({ id: templateId }) => templateId === id)[0] || {};
 
 export const TemplateContext = createContext({
@@ -40,3 +37,6 @@ export { default as Text } from './components/Text';
 
 // Ducks
 export * from './ducks';
+
+// Utils
+export { default as createTemplateData } from './utils/createTemplateData';

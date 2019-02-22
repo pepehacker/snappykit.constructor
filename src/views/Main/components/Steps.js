@@ -1,33 +1,62 @@
+import classNames from 'classnames';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 
 import styles from './Steps.scss';
 
-const STEPS = [
-  { id: 'search', path: '/search', title: 'Search' },
-  { id: 'editor', path: '/editor', title: 'Editor' },
-  { id: 'launch', path: '/launch', title: 'Launch' },
-];
+const STEPS = ['Search', 'Editor', 'Launch'];
 
-const MainHeaderSteps = () => (
-  <div className={styles.Root}>
-    {STEPS.map(({ id, path, title }, index: number): func => (
-      <NavLink
-        activeClassName={styles.LinkIsActive}
-        className={styles.Link}
-        key={index}
-        to={path}
-      >
-        <div className={styles.Number}>
-          {index + 1}
-        </div>
+const MainHeaderSteps = ({
+  step,
+}) => (
+  <CSSTransition
+    classNames={{
+      enter: styles.RootAnimateEnter,
+      enterActive: styles.RootAnimateEnterActive,
+    }}
+    in={!!step}
+    timeout={400}
+    unmountOnExit
+  >
+    {(state: string) => (
+      <div className={styles.Root}>
+        {STEPS.map((title: string, index: number): func => {
+          const stepClassNames = classNames(styles.Step, {
+            [styles.StepIsFinished]: step > index + 1,
+            [styles.StepIsSelected]: step === index + 1,
+          });
 
-        <div className={styles.Title}>
-          {title}
-        </div>
-      </NavLink>
-    ))}
-  </div>
+          return (
+            <CSSTransition
+              classNames={{
+                enter: styles.StepAnimateEnter,
+                enterActive: styles.StepAnimateEnterActive,
+              }}
+              in={state === 'entered'}
+              key={index}
+              timeout={{ enter: 700, exit: 0 }}
+              unmountOnExit
+            >
+              <div
+                className={stepClassNames}
+                style={{ transitionDelay: `${0.1 * index}s` }}
+              >
+                <div className={styles.Index}>
+                  <div className={styles.IndexContent}>
+                    {index + 1}
+                  </div>
+                </div>
+
+                <div className={styles.Title}>
+                  {title}
+                </div>
+              </div>
+            </CSSTransition>
+          );
+        })}
+      </div>
+    )}
+  </CSSTransition>
 );
 
 export default MainHeaderSteps;

@@ -10,7 +10,6 @@ import {
 
   // POLICY
   POLICY, POLICY_SCHEMA,
-  POLICY_PRIVACY, POLICY_TERMS,
 
   // Screenshots
   SCREENSHOTS, SCREENSHOTS_SCHEMA,
@@ -21,11 +20,9 @@ import {
 
   // Social
   SOCIAL, SOCIAL_SCHEMA,
-  SOCIAL_FACEBOOK, SOCIAL_INSTAGRAM, SOCIAL_TWITTER,
 
   // Store
   STORE, STORE_SCHEMA,
-  STORE_APP_STORE, STORE_GOOGLE_PLAY,
 
   // Common
   COPYRIGHT,
@@ -61,16 +58,11 @@ export default ({
     },
     [ICON]: {
       schema: ICON_SCHEMA({
-        icon: 'https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/44/88/0d/44880de1-a4ca-1c1d-39bb-2ee7548a3e70/source/512x512bb.jpg',
+        src: 'https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/44/88/0d/44880de1-a4ca-1c1d-39bb-2ee7548a3e70/source/512x512bb.jpg',
       }),
     },
     [POLICY]: {
-      schema: POLICY_SCHEMA({
-        items: {
-          [POLICY_PRIVACY]: '123',
-          [POLICY_TERMS]: '456',
-        },
-      }),
+      schema: POLICY_SCHEMA(),
     },
     [SCREENSHOTS]: {
       schema: SCREENSHOTS_SCHEMA({
@@ -87,20 +79,12 @@ export default ({
       }),
     },
     [SOCIAL]: {
-      schema: SOCIAL_SCHEMA({
-        [SOCIAL_FACEBOOK]: '@durov',
-        [SOCIAL_INSTAGRAM]: '@i.vyatkin',
-        [SOCIAL_TWITTER]: '@i.vyatkin',
-      }),
+      schema: SOCIAL_SCHEMA(),
     },
     [STORE]: {
       schema: STORE_SCHEMA({
         background: 'rgba(255, 255, 255, 1)',
         color: 'rgba(112, 101, 252, 1)',
-        items: {
-          [STORE_APP_STORE]: 'appStore',
-          [STORE_GOOGLE_PLAY]: 'googlePlay',
-        },
       }),
     },
     [TITLE]: {

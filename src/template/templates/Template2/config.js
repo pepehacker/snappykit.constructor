@@ -63,7 +63,7 @@ export default ({
     },
     [ICON]: {
       schema: ICON_SCHEMA({
-        icon: 'https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/44/88/0d/44880de1-a4ca-1c1d-39bb-2ee7548a3e70/source/512x512bb.jpg',
+        src: 'https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/44/88/0d/44880de1-a4ca-1c1d-39bb-2ee7548a3e70/source/512x512bb.jpg',
       }),
     },
     [POLICY]: {

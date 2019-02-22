@@ -33,13 +33,13 @@ const StoreForm = ({
         <Link
           icon="fa-apple"
           label="App Store"
-          name="items.appStore"
+          name="items.apple"
         />
 
         <Link
           icon="fa-google-play"
           label="Google Play"
-          name="items.googlePlay"
+          name="items.play"
         />
       </div>
 

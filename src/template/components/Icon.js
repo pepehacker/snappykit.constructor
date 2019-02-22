@@ -27,7 +27,7 @@ const TemplateIcon = ({
 }) => (
   <TemplateContext.Consumer>
     {({ data, view, websiteId }) => {
-      const { icon } = getSectionById(data, id || ICON);
+      const { src } = getSectionById(data, id || ICON);
 
       const rootClassNames = classNames(className, styles.Root, {
         [styles.RootViewDesktop]: view === VIEW.DESKTOP,
@@ -44,7 +44,7 @@ const TemplateIcon = ({
               <img
                 alt="Icon logo"
                 className={iconClassNames}
-                src={icon}
+                src={src}
               />
             </div>
           </Link>
