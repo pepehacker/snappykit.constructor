@@ -1,10 +1,16 @@
 import classNames from 'classnames';
-import { get } from 'lodash';
-import PropTypes from 'prop-types';
+import { get, isEmpty } from 'lodash';
 import React from 'react';
+import { connect } from 'react-redux';
+import { matchPath, withRouter } from 'react-router-dom';
+import { compose, lifecycle, withHandlers, withState } from 'recompose';
+
+// Ducks
+import { setBusy } from '../../ducks/actions';
 
 // Entities
 import { VIEW } from 'entities/template/constants';
+import { getWebsiteById } from 'entities/websites';
 
 // Templates
 import Template, { TemplateContext } from 'template';
@@ -12,77 +18,169 @@ import Template, { TemplateContext } from 'template';
 // Styles
 import styles from './View.scss';
 
-
 const EditorView = ({
-  // Props
-  className: classNameProp,
-  height,
   scale,
-  templateHeight,
+  size,
+  templateSize,
+  templateId,
   view = VIEW.DESKTOP,
   website,
 
-  // Registers
+  // Registes
+  registerRoot,
   registerContainer,
-  registerTrack,
-
-  // State
-  isBusied,
 }) => {
-  const className = classNames(classNameProp, styles.Root, {
-    [styles.RootDeviceDesktop]: view === VIEW.DESKTOP,
-    [styles.RootDeviceMobile]: view === VIEW.MOBILE,
-    [styles.RootDeviceTablet]: view === VIEW.TABLET,
-
-    [styles.RootIsBusied]: isBusied,
+  const rootClassNames = classNames(styles.Root, {
+    [styles.RootVariantDesktop]: view === VIEW.DESKTOP,
+    [styles.RootVariantMobile]: view === VIEW.MOBILE,
+    [styles.RootVariantTablet]: view === VIEW.TABLET,
   });
 
   return (
     <div
-      className={className}
-      ref={registerContainer}
+      className={rootClassNames}
+      ref={registerRoot}
     >
       <div
         className={styles.Container}
-        style={{ maxHeight: `${height}px` }}
+        ref={registerContainer}
+        style={size}
       >
-        <div
-          className={styles.Track}
-          ref={registerTrack}
+        <TemplateContext.Provider
+          value={{
+            data: get(website, 'data'),
+            isEditor: true,
+            view,
+            websiteId: get(website, 'id', 'new'),
+          }}
         >
-          {website && (
-            <TemplateContext.Provider
-              value={{
-                data: get(website, 'data'),
-                isEditor: true,
-                view,
-                websiteId: get(website, 'id', 'new'),
-              }}
-            >
-              <Template
-                id={get(website, 'templateId', 1)}
-                style={{
-                  margin:
-                    scale !== 1 &&
-                    !!templateHeight &&
-                    `-${(templateHeight - templateHeight * scale) / 2}px 0`,
-                  transform: !!scale && `scale(${scale})`,
-                  transition: 'all .2s',
-                }}
-              />
-            </TemplateContext.Provider>
-          )}
-        </div>
+          <Template
+            id={templateId}
+            style={{
+              margin:
+                !isEmpty(templateSize) &&
+                `-${(get(templateSize, 'height') - get(templateSize, 'height') * scale) / 2}px -${(get(templateSize, 'width') - get(templateSize, 'width') * scale) / 2}px`,
+              transform: `scale(${scale})`,
+              width: view === VIEW.DESKTOP
+                ? 1280
+                : view === VIEW.MOBILE
+                  ? 375
+                  : 768
+            }}
+          />
+        </TemplateContext.Provider>
       </div>
     </div>
   );
 };
 
-EditorView.propTypes = ({
-  className: PropTypes.string,
-  height: PropTypes.number,
-  scale: PropTypes.number,
-  view: PropTypes.string,
-});
+const mapStateToProps = ({ views, ...state }, { location }) => {
+  const match = matchPath(get(location, 'pathname'), { path: '/:websiteId' });
+  const website = getWebsiteById(state, get(match, 'params.websiteId'));
 
-export default EditorView;
+  return {
+    ...get(views, 'editor'), website,
+    templateId: get(website, 'templateId'),
+  };
+};
+
+export default withRouter(compose(
+  connect(mapStateToProps, { setBusy }),
+  withState('scale', 'setScale', 1),
+  withState('size', 'setSize', {}),
+  withState('templateSize', 'setTemplateSize', {}),
+  withHandlers(() => {
+    let $root;
+    let $container;
+
+    return {
+      // Updaters
+      handleResize: ({
+        setTemplateSize,
+        setScale,
+        setSize,
+        view,
+      }): func =>
+        (event: Object): void => {
+          if ($root) {
+            let newSize;
+            let newScale;
+
+            const rootHeight = $root.clientHeight;
+            const rootWidth = $root.clientWidth;
+
+            switch (view) {
+              case VIEW.DESKTOP:
+                newSize = {
+                  height: Math.min(720, rootWidth / 16 * 9),
+                  width: Math.min(1280, rootWidth),
+                };
+                newScale = newSize.width / 1280;
+                break;
+              case VIEW.MOBILE:
+                newSize = {
+                  height: Math.min(667, rootHeight),
+                  width: Math.min(375, rootHeight / 16 * 9),
+                };
+                newScale = newSize.width / 375;
+                break;
+              case VIEW.TABLET:
+                newSize = {
+                  height: Math.min(1024, rootHeight),
+                  width: Math.min(768, rootHeight / 16 * 12),
+                };
+                newScale = newSize.width / 768;
+                break;
+              default:
+                newSize = {
+                  height: rootHeight,
+                  width: rootWidth,
+                };
+                newScale = 1;
+                break;
+            }
+
+            setScale(newScale);
+            setSize(newSize);
+          }
+        },
+
+      // Registers
+      registerContainer: (): func =>
+        (node: HTMLDivElement): void => {
+          $container = node;
+        },
+      registerRoot: (): func =>
+        (node: HTMLDivElement): void => {
+          $root = node;
+        },
+
+      // Updaters
+      updateTemplateSize: ({ templateSize, setTemplateSize }): func =>
+        (event: Object) => (
+          get(templateSize, 'width') !== $container.firstChild.clientWidth ||
+          get(templateSize, 'height') !== $container.firstChild.clientHeight
+        ) && setTemplateSize({
+          height: $container.firstChild.clientHeight,
+          width: $container.firstChild.clientWidth,
+        }),
+    }
+  }),
+  lifecycle({
+    componentDidMount() {
+      const { handleResize } = this.props;
+      handleResize();
+      window.addEventListener('resize', handleResize, false);
+    },
+    componentDidUpdate({ view: prevView }) {
+      const { handleResize, updateTemplateSize, view } = this.props;
+      // Update container size
+      view !== prevView && handleResize();
+      // Update template size
+      updateTemplateSize();
+    },
+    componentWillUnmount() {
+      window.removeEventListener('resize', this.props.handleResize, false);
+    },
+  }),
+)(EditorView));

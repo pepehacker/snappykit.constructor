@@ -103,7 +103,7 @@ export const getExportData = (data: Object) => ({
     text: get(data, `${DESCRIPTION}.text`),
   },
   [ICON]: {
-    icon: get(data, `${ICON}.icon`),
+    src: get(data, `${ICON}.src`),
   },
   [POLICY]: {
     items: get(data, `${POLICY}.items`),

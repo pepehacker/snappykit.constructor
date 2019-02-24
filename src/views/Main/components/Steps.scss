@@ -35,7 +35,7 @@
   width: 32px;
 
   &:before {
-    background-image: linear-gradient(225deg, #5e7adb, #8359c1);
+    background-image: linear-gradient(250deg, #5e7adb, #8359c1);
     content: '';
     display: block;
     height: 100%;
@@ -96,8 +96,9 @@
   &Is {
     &Finished {
       .IndexContent {
-        background-image: linear-gradient(225deg, #5e7adb, #8359c1);
+        background-image: linear-gradient(250deg, #5e7adb, #8359c1);
         color: transparent;
+        opacity: .8;
         transform: scale(1);
 
         &:before {

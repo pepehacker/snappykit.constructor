@@ -8,7 +8,6 @@ import styles from './Button.scss';
 
 const VARIANT = {
   GRADIENT: 'gradient',
-  GRADIENT_SECONDARY: 'gradient-secondary',
 };
 
 const Button = ({
@@ -25,8 +24,7 @@ const Button = ({
   variant = VARIANT.GRADIENT,
 }) => {
   const rootClassNames = classNames(className, rootClassName, styles.Root, {
-    [styles.RootVariantGradient]: variant === VARIANT.GRADIENT || variant === VARIANT.GRADIENT_SECONDARY,
-    [styles.RootVariantGradientSecondary]: variant === VARIANT.GRADIENT_SECONDARY,
+    [styles.RootVariantGradient]: variant === VARIANT.GRADIENT,
   });
   const contentClassNames = classNames(contentClassName, styles.Content);
   const iconClassNames = classNames(rootClassName, styles.Icon);

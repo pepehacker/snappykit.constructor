@@ -34,6 +34,11 @@ import {
   FETCH_WEBSITES_SUCCESS,
   FETCH_WEBSITES_FAILURE,
 
+  // Save
+  SAVE_WEBSITE_REQUEST,
+  SAVE_WEBSITE_SUCCESS,
+  SAVE_WEBSITE_FAILURE,
+
   SET_TEMPLATE_ID,
 
   UPDATE_WEBSITE,
@@ -44,13 +49,22 @@ export const createWebsite = ({ link, store, ...values }): func =>
   (dispatch: func, getState: func, { api, history }): Object<Promise> => {
     const { config, id: templateId } = getFirstTemplate();
     const { description, logo, title } = values;
-
+    console.log(createTemplateData({
+          ...values,
+          icon: logo,
+          store: {
+            items: {
+              [store]: link,
+            },
+          },
+        }, config));
     dispatch({
       type: CREATE_WEBSITE,
       payload: {
         description, logo, templateId, title,
         data: createTemplateData({
           ...values,
+          icon: logo,
           store: {
             items: {
               [store]: link,
@@ -64,19 +78,19 @@ export const createWebsite = ({ link, store, ...values }): func =>
     history.push('/new/editor/templates');
   };
 
-export const deleteWebsite = ({ appId, id }): func =>
+export const deleteWebsite = ({ appId, id: websiteId }): func =>
   (dispatch: func, getState: func, { api }): Object<Promise> => {
-    dispatch({ type: DELETE_WEBSITE_REQUEST, websiteId: id });
+    dispatch({ type: DELETE_WEBSITE_REQUEST, websiteId });
     dispatch(closeModal(CONFIRM_MODAL_ID));
 
-    return id === 'new'
-      ? dispatch({ type: DELETE_WEBSITE_SUCCESS, websiteId: id })
+    return websiteId === 'new'
+      ? dispatch({ type: DELETE_WEBSITE_SUCCESS, websiteId })
       : api([
-          { method: 'websites.delete', params: { appId, id }},
-          { method: 'websites.deleteApp', params: { appId, id }},
+          { method: 'websites.deleteTemplate', params: { websiteId }},
+          { method: 'websites.delete', params: { appId }},
         ])
           .then((data: Object): void =>
-            dispatch({ type: DELETE_WEBSITE_SUCCESS, websiteId: id }))
+            dispatch({ type: DELETE_WEBSITE_SUCCESS, websiteId }))
           .catch((error: Object): void =>
             dispatch({ type: DELETE_WEBSITE_FAILURE, error: get(error, 'message')}));
   };
@@ -136,6 +150,24 @@ export const fetchWebsites = (): func =>
         dispatch({ type: FETCH_WEBSITES_FAILURE, error: get(error, 'message')}));
   };
 
+export const saveWebsite = (websiteId: number|string): func =>
+  (dispatch: func, getState: func, { api }) => {
+    const state = getState();
+    const isNew = websiteId === 'new';
+    const website = getWebsiteById(state, websiteId);
+
+    dispatch({ type: SAVE_WEBSITE_REQUEST, websiteId });
+
+    return api(isNew ? 'api.create' : 'api.update', {
+      content: '',
+      description: get(website, 'description', ''),
+      domain: null,
+      json: 'string',
+      provider: 1,
+      title: get(website, 'title', ''),
+    })
+  }
+
 export const setTemplateId = (websiteId: number|string, templateId: number|string): func =>
   (dispatch: func, getState: func) => {
     const state = getState();
@@ -146,11 +178,10 @@ export const setTemplateId = (websiteId: number|string, templateId: number|strin
       const { getExportData } = getTemplateById(get(website, 'templateId'));
       const { config } = getTemplateById(templateId);
 
-
       if (data && getExportData) {
         const oldData = getExportData(data);
         const newData = {};
-
+        console.log(oldData);
         keys(config.section).forEach((sectionId: string): void => {
           const schema = get(config, `section.${sectionId}.schema`);
 
@@ -167,7 +198,7 @@ export const setTemplateId = (websiteId: number|string, templateId: number|strin
   };
 
 export const updateWebsite = (websiteId: number|string, payload: Object): Object =>
-  ({ type: UPDATE_WEBSITE, payload });
+  ({ type: UPDATE_WEBSITE, websiteId, payload });
 
 export const updateWebsiteSection = (websiteId: number|string, sectionId: string, payload: Object): func =>
   (dispatch: func, getState: func) => {

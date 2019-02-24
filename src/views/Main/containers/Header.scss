@@ -4,20 +4,92 @@
   position: relative;
   width: 100%;
 
+  &Is {
+    &Fetching {
+      .Save {
+        pointer-events: none;
+      }
+    }
+  }
+
   &With {
+    &Actions {
+      .Actions {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+      }
+    }
+
     &Title {
       .Title {
-        flex: 0 0 160px;
+        flex: 0 0 200px;
         opacity: 1;
       }
     }
   }
 }
 
+.Actions {
+  display: flex;
+  opacity: 0;
+  transform: translateY(-50%);
+  transition: all .4s;
+  visibility: hidden;
+
+  & > *:not(:first-child) {
+    margin: 0 0 0 24px;
+  }
+}
+
+.Back {
+  align-items: center;
+  color: #c4c9d1;
+  display: flex;
+  font-size: 14px;
+  height: 40px;
+  justify-content: center;
+  letter-spacing: .75px;
+  text-decoration: none;
+  transition: all .2s;
+  width: 100px;
+
+  &:active {
+    color: #8e8ad8;
+    opacity: .8;
+
+    &:before {
+      background: #8e8ad8;
+    }
+  }
+
+  &:before {
+    background: #c4c9d1;
+    content: '';
+    display: block;
+    height: 12px;
+    margin: 0 12px 0 0;
+    mask: url('components/Icon/assets/back.svg') no-repeat center center;
+    mask-size: contain;
+    transition: all .2s;
+    width: 20px;
+  }
+
+  &:hover:not(:active) {
+    color: #8e8ad8;
+
+    &:before {
+      background: #8e8ad8;
+      margin: 0 20px 0 0;
+    }
+  }
+}
+
 .Center {
+  align-items: center;
   display: flex;
   flex: 1 1 auto;
-  max-width: calc(100% - 636px);
+  max-width: calc(100% - 380px);
 
   &Animate {
     &Enter {
@@ -65,7 +137,7 @@
 
 .Left {
   display: flex;
-  flex: 0 0 306px;
+  flex: 0 1 306px;
   justify-content: space-between;
 }
 
@@ -96,6 +168,37 @@
   justify-content: flex-end;
 }
 
+.Save {
+  align-items: center;
+  background-image: linear-gradient(248deg, #5e7adb, #8359c1);
+  border: 0;
+  border-radius: 32px;
+  color: #fff;
+  display: flex;
+  font-size: 14px;
+  height: 40px;
+  justify-content: center;
+  letter-spacing: .75px;
+  opacity: .5;
+  position: relative;
+  text-decoration: none;
+  transition: all .2s;
+  width: 100px;
+
+  &:active {
+    opacity: .7;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover:not(:active) {
+    cursor: pointer;
+    opacity: .9
+  }
+}
+
 .Shadow {
   background: #7e7acc;
   border-bottom-left-radius: 100%;
@@ -111,6 +214,7 @@
 }
 
 .Steps {
+  flex: 1 1 auto;
   height: 100%;
 }
 
@@ -123,6 +227,7 @@
   letter-spacing: -.3px;
   opacity: 0;
   overflow: hidden;
+  padding: 0 24px 0 0;
   text-overflow: ellipsis;
   transition: all .6s, opacity .4s ease-out .2s;
   white-space: nowrap;

@@ -54,13 +54,13 @@ const TemplatePolicy = ({
               >
                 {get(items, POLICY_PRIVACY) && (
                   <div className={styles.Privacy}>
-                    PRIVACY
+                    Privacy
                   </div>
                 )}
 
                 {get(items, POLICY_TERMS) && (
                   <div className={styles.Terms}>
-                    TERMS
+                    Terms
                   </div>
                 )}
               </div>

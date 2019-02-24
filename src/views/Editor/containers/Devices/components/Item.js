@@ -66,6 +66,6 @@ export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   withHandlers({
     handleClick: ({ id, isBusied, setView }): func => (): void =>
-      !isBusied && !!id && setView(id),
+      !!id && setView(id),
   }),
 )(EditorDevicesItem);

@@ -23,14 +23,17 @@ import {
 import styles from './Desktop.scss';
 
 const Template1 = () => (
-  <Background classNames={{ container: styles.Root}}>
+  <Background classNames={{
+    root: styles.Root,
+    // container: styles.Root,
+  }}>
     <div className={styles.Wrapper}>
       <header className={styles.Header}>
         <Icon classNames={{ icon: styles.Icon}} />
         <Social />
       </header>
 
-      <div className={styles.Container}>
+      <div className={styles.Body}>
         <div className={styles.Content}>
           <Text className={styles.Title} id={TITLE} />
           <Text className={styles.Description} id={DESCRIPTION} />

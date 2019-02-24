@@ -2,15 +2,25 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  min-height: 100%;
   overflow-x: hidden;
 
   &Variant {
     &Desktop {
+      min-height: 720px;
+
+      .Container {
+        max-width: 1280px;
+        padding: 48px;
+      }
+
+      .Footer {
+        margin: 0;
+      }
+
       .Icon {
         border-radius: 44px;
-        height: 192px;
-        width: 192px;
+        height: 164px;
+        width: 164px;
       }
 
       .Wrapper {
@@ -20,17 +30,32 @@
     }
 
     &Mobile {
-      .Description {
-        font-size: 12px;
-        line-height: 20px;
-        min-height: 20px;
+      min-height: 667px;
+
+      .Container {
+        padding: 28px;
       }
 
       .Copyright {
-        font-size: 12px;
-        letter-spacing: .6px;
         margin: 28px 0 0;
+
+        &Text {
+          font-size: 12px;
+          letter-spacing: .6px;
+        }
       }
+
+      .Description {
+        margin: 12px 0 0;
+
+        &Text {
+          font-size: 12px;
+          line-height: 20px;
+          min-height: 20px;
+          max-height: 60px;
+        }
+      }
+
 
       .Icon {
         border-radius: 24px;
@@ -45,14 +70,18 @@
       }
 
       .Store {
-        margin: 28px 0 0;
+        margin: 32px 0 0;
       }
 
       .Title {
-        font-size: 18px;
-        line-height: 40px;
         margin: 20px 0 0;
-        min-height: 40px;
+
+        &Text {
+          font-size: 18px;
+          line-height: 32px;
+          margin: 0;
+          min-height: 32px;
+        }
       }
 
       .Wrapper {
@@ -63,10 +92,31 @@
     }
 
     &Tablet {
+      min-height: 1024px;
+
+      .Container {
+        padding: 36px;
+      }
+
+      .Description {
+        margin: 20px 0 0;
+
+        &Text {
+          font-size: 12px;
+          line-height: 28px;
+          min-height: 28px;
+          max-height: 84px;
+        }
+      }
+
       .Icon {
         border-radius: 44px;
         height: 152px;
         width: 152px;
+      }
+
+      .Store {
+        margin: 44px 0 0;
       }
 
       .Wrapper {
@@ -84,13 +134,15 @@
   flex: 1 1 auto;
   flex-direction: column;
   justify-content: center;
-  margin: 100px 0 0;
   max-width: 460px;
 }
 
 .Container {
+  align-items: center;
   display: flex;
   flex: 1 1 auto;
+  flex-direction: column;
+  width: 100%;
 }
 
 .Content {
@@ -102,15 +154,23 @@
 }
 
 .Copyright {
-  font-size: 14px;
-  letter-spacing: 1px;
+  &Text {
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
 }
 
 .Description {
-  font-size: 14px;
-  line-height: 32px;
-  text-align: center;
-  min-height: 32px;
+  margin: 20px 0 0;
+
+  &Text {
+    font-size: 14px;
+    line-height: 32px;
+    min-height: 32px;
+    max-height: 96px;
+    overflow: hidden;
+    text-align: center;
+  }
 }
 
 .Footer {
@@ -144,16 +204,14 @@
 }
 
 .Title {
-  font-size: 28px;
-  line-height: 62px;
   margin: 40px 0 0;
-  min-height: 62px;
-  text-align: center;
-}
 
-.Wrapper {
-  align-items: center;
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
+  &Text {
+    font-size: 28px;
+    line-height: 40px;
+    min-height: 40px;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 }

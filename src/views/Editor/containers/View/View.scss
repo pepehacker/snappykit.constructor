@@ -1,80 +1,30 @@
 .Root {
   align-items: center;
   display: flex;
-  flex: 1 1 auto;
   flex-direction: column;
+  height: 100%;
   justify-content: center;
   max-height: 100%;
   width: 100%;
-
-  &Device {
-    &Desktop {
-      .Container {
-        max-height: 768px;
-        max-width: 1280px;
-      }
-    }
-
-    &Mobile {
-      .Container {
-        max-height: 568px;
-        max-width: 320px;
-      }
-    }
-
-    &Tablet {
-      .Container {
-        max-height: 1024px;
-        max-width: 768px;
-      }
-    }
-  }
-
-  &Is {
-    &Busied {
-      .Track {
-        opacity: 0;
-        transition: all .2s;
-      }
-    }
-  }
 }
 
 .Container {
   background: #d8d8d8;
   border-radius: 10px;
   box-shadow: 0 20px 60px 0 rgba(0, 0, 0, .15);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-height: 100%;
-  overflow: hidden;
-  position: relative;
-  transition: all .4s ease-in-out;
-  width: 100%;
-
-  & > * {
-    display: flex;
-    transition: opacity .2s;
-  }
-}
-
-.Track {
-  align-items: flex-start;
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  left: 0;
-  opacity: 1;
   overflow-x: hidden;
   overflow-y: overlay;
-  top: 0;
-  transition: all .4s;
-  transition-delay: .2s;
-  width: 100%;
-  z-index: 0;
+  transition: all .6s;
+  position: relative;
+  z-index: 1;
+
+  & > * {
+    position: relative;
+    z-index: 0;
+  }
 
   &::-webkit-scrollbar {
     display: none;
+    opacity: 0;
   }
 }

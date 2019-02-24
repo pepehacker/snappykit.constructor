@@ -1,1 +1,1 @@
-export { default } from './View.container';
+export { default } from './View';

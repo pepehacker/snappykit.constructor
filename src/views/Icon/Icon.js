@@ -6,7 +6,9 @@ import { compose, withHandlers } from 'recompose';
 
 // Components
 import { Container, Title } from 'views/Editor';
-import Form from './components/Form';
+
+// Containers
+import Form from './containers/Form';
 
 // Entities
 import { ICON } from 'entities/template/constants';

@@ -38,24 +38,44 @@ const Template2 = () => (
           root: rootClassNames,
           container: styles.Container
         }}>
-          <div className={styles.Wrapper}>
-            <header className={styles.Header}>
-              <div />
-              <Policy className={styles.Policy} />
-            </header>
+          <header className={styles.Header}>
+            <div />
+            <Policy className={styles.Policy} />
+          </header>
 
-            <div className={styles.Body}>
-              <Icon classNames={{ icon: styles.Icon }} />
-              <Text className={styles.Title} id={TITLE} />
-              <Text className={styles.Description} id={DESCRIPTION} />
-              <Store className={styles.Store} />
-            </div>
+          <div className={styles.Body}>
+            <Icon classNames={{ icon: styles.Icon }} />
 
-            <footer className={styles.Footer}>
-              <Social />
-              <Text className={styles.Copyright} id={COPYRIGHT} />
-            </footer>
+            <Text
+              classNames={{
+                root: styles.Title,
+                text: styles.TitleText,
+              }}
+              id={TITLE}
+            />
+
+            <Text
+              classNames={{
+                root: styles.Description,
+                text: styles.DescriptionText,
+              }}
+              id={DESCRIPTION}
+            />
+
+            <Store className={styles.Store} />
           </div>
+
+          <footer className={styles.Footer}>
+            <Social />
+
+            <Text
+              classNames={{
+                root: styles.Copyright,
+                text: styles.CopyrightText,
+              }}
+              id={COPYRIGHT}
+            />
+          </footer>
         </Background>
       );
     }}

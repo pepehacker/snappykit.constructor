@@ -3,13 +3,13 @@ import { reduxForm } from 'redux-form';
 
 // Components
 import Form from 'components/Form';
-import Icon from './File';
+import Icon from '../components/File';
 
 const IconForm = ({
   handleSubmit,
 }) => (
   <Form onSubmit={handleSubmit}>
-    <Icon name="icon" />
+    <Icon name="src" />
   </Form>
 );
 
