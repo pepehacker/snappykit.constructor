@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { get, isEmpty } from 'lodash';
+import { get } from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import { matchPath, withRouter } from 'react-router-dom';
@@ -57,15 +57,10 @@ const EditorView = ({
           <Template
             id={templateId}
             style={{
-              margin:
-                !isEmpty(templateSize) &&
-                `-${(get(templateSize, 'height') - get(templateSize, 'height') * scale) / 2}px -${(get(templateSize, 'width') - get(templateSize, 'width') * scale) / 2}px`,
+              height: size.height / scale,
+              width: size.width / scale,
               transform: `scale(${scale})`,
-              width: view === VIEW.DESKTOP
-                ? 1280
-                : view === VIEW.MOBILE
-                  ? 375
-                  : 768
+              transition: 'all .6s',
             }}
           />
         </TemplateContext.Provider>

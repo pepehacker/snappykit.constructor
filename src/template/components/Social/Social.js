@@ -31,6 +31,8 @@ const TemplateSocial = ({
         [styles.RootViewDesktop]: view === VIEW.DESKTOP,
         [styles.RootViewMobile]: view === VIEW.MOBILE,
         [styles.RootViewTablet]: view === VIEW.TABLET,
+
+        [styles.RootIsNotEditor]: !isEditor,
       });
 
       return (

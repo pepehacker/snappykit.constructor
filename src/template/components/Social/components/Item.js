@@ -26,6 +26,8 @@ const TemplateSocialItem = ({
     [styles.RootViewDesktop]: view === VIEW.DESKTOP,
     [styles.RootViewMobile]: view === VIEW.MOBILE,
     [styles.RootViewTablet]: view === VIEW.TABLET,
+
+    [styles.RootIsNotEditor]: view === isEditor,
   });
 
   const iconClassNames = classNames(styles.Icon, 'fab', `fa-${variant}`);

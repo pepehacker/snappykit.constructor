@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { get } from 'lodash';
 
 // Entities
@@ -24,10 +25,12 @@ import {
   // Store
   STORE, STORE_SCHEMA,
 
+  // Text
+  TEXT_SCHEMA, TEXT_STYLE,
+
   // Common
   COPYRIGHT,
   DESCRIPTION,
-  TEXT_SCHEMA,
   TITLE,
 } from 'entities/template/constants';
 
@@ -36,23 +39,25 @@ export default ({
   section: {
     [BACKGROUND]: {
       schema: BACKGROUND_SCHEMA({
-        color: 'rgba(255, 255, 255, 0)',
+        color: '',
         gradient: {
           angle: 0,
-          from: 'rgba(123, 84, 251, 1)',
-          to: 'rgba(71, 159, 255, 1)',
+          from: '',
+          to: '',
         },
+        image: require('assets/backgrounds/w-1.png'),
       }),
     },
     [COPYRIGHT]: {
       schema: TEXT_SCHEMA({
-        color: 'rgba(255, 255, 255, .4)',
+        color: 'rgba(117, 117, 127, .6)',
+        style: TEXT_STYLE.MEDIUM,
         text: '© 2018 ANCHOR FM INC'
       }),
     },
     [DESCRIPTION]: {
       schema: TEXT_SCHEMA({
-        color: 'rgba(255, 255, 255, .8)',
+        color: 'rgba(117, 117, 127, .8)',
         text: 'Anchor lets you record or capture ANY audio, right from your phone. It’s the easiest way to make a podcast or radio show, ever. No experience necessary (and it’s 100% free).'
       }),
     },
@@ -62,7 +67,9 @@ export default ({
       }),
     },
     [POLICY]: {
-      schema: POLICY_SCHEMA(),
+      schema: POLICY_SCHEMA({
+        color: 'rgba(117, 117, 227, 1)',
+      }),
     },
     [SCREENSHOTS]: {
       schema: SCREENSHOTS_SCHEMA({
@@ -75,7 +82,7 @@ export default ({
     },
     [SMARTPHONE]: {
       schema: SMARTPHONE_SCHEMA({
-        mockup: SMARTPHONE_MOCKUP.FLAT_IPHONE_GRAY,
+        mockup: SMARTPHONE_MOCKUP.FLAT_IPHONE_SILVER,
       }),
     },
     [SOCIAL]: {
@@ -84,11 +91,12 @@ export default ({
     [STORE]: {
       schema: STORE_SCHEMA({
         background: 'rgba(255, 255, 255, 1)',
-        color: 'rgba(112, 101, 252, 1)',
+        color: 'rgba(117, 117, 127, 1)',
       }),
     },
     [TITLE]: {
       schema: TEXT_SCHEMA({
+        color: 'rgba(117, 117, 127, 1)',
         text: 'Make cool audio, right from your phone.'
       }),
     },

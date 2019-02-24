@@ -26,19 +26,23 @@ const TemplatePolicy = ({
   classNames: {
     root: rootClassName,
     container: containerClassName,
+    link: linkClassName,
   } = {},
   id,
 }) => (
   <TemplateContext.Consumer>
-    {({ data, view, websiteId }) => {
+    {({ data, isEditor, view, websiteId }) => {
       const { color, font, items, style } = getSectionById(data, id || POLICY);
 
       const rootClassNames = classNames(className, rootClassName, styles.Root, {
         [styles.RootViewDesktop]: view === VIEW.DESKTOP,
         [styles.RootViewMobile]: view === VIEW.MOBILE,
+
+        [styles.RootIsNotEditor]: !isEditor,
       });
 
       const containerClassNames = classNames(containerClassName, styles.Container);
+      const linkClassNames = classNames(linkClassName, styles.Link);
 
       return (
         <div className={rootClassNames}>
@@ -53,13 +57,13 @@ const TemplatePolicy = ({
                 }}
               >
                 {get(items, POLICY_PRIVACY) && (
-                  <div className={styles.Privacy}>
+                  <div className={linkClassNames}>
                     Privacy
                   </div>
                 )}
 
                 {get(items, POLICY_TERMS) && (
-                  <div className={styles.Terms}>
+                  <div className={linkClassNames}>
                     Terms
                   </div>
                 )}

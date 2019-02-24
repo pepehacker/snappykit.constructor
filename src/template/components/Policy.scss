@@ -1,13 +1,28 @@
+.Root {
+  &Is {
+    &NotEditor {
+      .Link {
+        &:active {
+          opacity: .8;
+        }
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
 .Container {
   display: flex;
+
+  & > *:not(:first-child) {
+    margin: 0 0 0 40px;
+  }
 }
 
-.Terms {
-  margin: 0 0 0 24px;
-}
-
-.Privacy,
-.Terms {
+.Link {
   font-size: 12px;
   letter-spacing: .6px;
   opacity: .6;

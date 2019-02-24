@@ -18,7 +18,7 @@ import {
   Store,
   Text,
 
-  TemplateContext
+  TemplateContext,
 } from 'template';
 
 // Styles

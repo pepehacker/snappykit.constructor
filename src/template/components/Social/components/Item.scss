@@ -1,15 +1,36 @@
 .Root {
   height: 16px;
   width: 16px;
+
+  &Is {
+    &NotEditor {
+      &:active {
+        opacity: .8;
+      }
+
+      &:active,
+      &:hover:not(:active) {
+        cursor: pointer;
+        transform: scale(1.25);
+        transition: all .2s;
+
+        .Icon {
+          filter: drop-shadow(0 10px 16px rgba(0, 0, 0, .15));
+          opacity: 1;
+        }
+      }
+    }
+  }
 }
 
 .Icon {
   align-items: center;
   display: flex;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 300;
   height: 100%;
   justify-items: center;
   opacity: .6;
+  transition: all .2s;
   width: 100%;
 }

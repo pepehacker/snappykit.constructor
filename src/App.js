@@ -9,7 +9,8 @@ import url from 'url';
 import { fetchProfile } from 'services/session';
 
 // Views
-import Main from './views/Main';
+import Main from 'views/Main';
+import Sandbox from 'views/Sandbox';
 
 import styles from './App.scss';
 
@@ -17,6 +18,7 @@ const App = ({ match, user }) => (
   <div className={styles.Root}>
     {user && (
       <Switch>
+        <Route path={url.resolve(match.url, '/sandbox')} component={Sandbox} />
         <Route path={url.resolve(match.url, '/')} component={Main} />
       </Switch>
     )}

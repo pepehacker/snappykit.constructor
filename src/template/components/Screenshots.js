@@ -18,13 +18,6 @@ import {
 // Styles
 import styles from './Screenshots.scss';
 
-const SETTINGS = {
-  arrows: false,
-  draggable: false,
-  dots: false,
-  infinite: false,
-};
-
 const TemplateScreenshots = ({
   className,
   classNames: {
@@ -32,9 +25,10 @@ const TemplateScreenshots = ({
     item: itemClassName,
   } = {},
   id,
+  settings,
 }) => (
   <TemplateContext.Consumer>
-    {({ data, view, websiteId }) => {
+    {({ data, isEditor, view, websiteId }) => {
       const { items } = getSectionById(data, id || SCREENSHOTS);
 
       const rootClassNames = classNames(className, rootClassName, styles.Root, {
@@ -45,11 +39,20 @@ const TemplateScreenshots = ({
 
       const itemClassNames = classNames(itemClassName, styles.Item);
 
+      const sliderSettings = {
+        arrows: false,
+        draggable: false,
+        dots: false,
+        infinite: false,
+        swipe: false,
+        ...settings,
+      };
+
       return (
         <div className={rootClassNames}>
           <Link to={`/${websiteId}/editor/screenshots${(id && `/${id}`) || ''}`}>
             <div className={styles.Container}>
-              <Slider {...SETTINGS} className={styles.Slider}>
+              <Slider {...sliderSettings} className={styles.Slider}>
                 {(items || []).map((source: stirng, index: number): func => (
                   <div className={itemClassNames} key={index}>
                     <img

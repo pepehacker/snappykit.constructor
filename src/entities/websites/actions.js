@@ -36,8 +36,8 @@ import {
 
   // Save
   SAVE_WEBSITE_REQUEST,
-  SAVE_WEBSITE_SUCCESS,
-  SAVE_WEBSITE_FAILURE,
+  // SAVE_WEBSITE_SUCCESS,
+  // SAVE_WEBSITE_FAILURE,
 
   SET_TEMPLATE_ID,
 
@@ -49,15 +49,7 @@ export const createWebsite = ({ link, store, ...values }): func =>
   (dispatch: func, getState: func, { api, history }): Object<Promise> => {
     const { config, id: templateId } = getFirstTemplate();
     const { description, logo, title } = values;
-    console.log(createTemplateData({
-          ...values,
-          icon: logo,
-          store: {
-            items: {
-              [store]: link,
-            },
-          },
-        }, config));
+
     dispatch({
       type: CREATE_WEBSITE,
       payload: {
@@ -181,7 +173,7 @@ export const setTemplateId = (websiteId: number|string, templateId: number|strin
       if (data && getExportData) {
         const oldData = getExportData(data);
         const newData = {};
-        console.log(oldData);
+
         keys(config.section).forEach((sectionId: string): void => {
           const schema = get(config, `section.${sectionId}.schema`);
 

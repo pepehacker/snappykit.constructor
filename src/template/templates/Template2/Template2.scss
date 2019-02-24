@@ -2,11 +2,14 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
 
   &Variant {
     &Desktop {
       min-height: 720px;
+      min-width: 1280px;
 
       .Container {
         max-width: 1280px;
@@ -31,6 +34,7 @@
 
     &Mobile {
       min-height: 667px;
+      min-width: 375px;
 
       .Container {
         padding: 28px;
@@ -93,6 +97,7 @@
 
     &Tablet {
       min-height: 1024px;
+      min-width: 768px;
 
       .Container {
         padding: 36px;
@@ -161,13 +166,13 @@
 }
 
 .Description {
+  min-height: 32px;
   margin: 20px 0 0;
+  max-height: 96px;
 
   &Text {
     font-size: 14px;
     line-height: 32px;
-    min-height: 32px;
-    max-height: 96px;
     overflow: hidden;
     text-align: center;
   }
