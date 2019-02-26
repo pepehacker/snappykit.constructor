@@ -23,11 +23,11 @@ export default {
     url: `${CONFIG.URL}/core/app-template/`,
   },
   update: {
-    method: CONFIG.METHOD.POST,
-    url: ({ id }) => `${CONFIG.URL}/core/app/${id}/`,
+    method: CONFIG.METHOD.PATCH,
+    url: ({ appId }) => `${CONFIG.URL}/core/app/${appId}/`,
   },
   updateTemplate: {
-    method: CONFIG.METHOD.POST,
-    url: ({ id }) => `${CONFIG.URL}/core/app-template/${id}/`,
+    method: CONFIG.METHOD.PATCH,
+    url: ({ websiteId }) => `${CONFIG.URL}/core/app-template/${websiteId}/`,
   },
 }

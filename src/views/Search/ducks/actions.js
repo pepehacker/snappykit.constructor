@@ -37,6 +37,8 @@ export const search = ({ store, ...values }):
             : get(result, 'logo'),
           screenshots: get(result, 'screenshotUrls'),
           store,
+          storeId: get(result, 'trackId'),
+          storeProvider: store === STORE_APPLE_ID ? 1 : 2,
           title: store === STORE_APPLE_ID
             ? get(result, 'trackName')
             : get(result, 'title'),

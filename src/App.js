@@ -5,6 +5,9 @@ import { Route, Switch } from 'react-router-dom';
 import { compose, lifecycle } from 'recompose';
 import url from 'url';
 
+// Components
+import Spinner from 'components/Spinner';
+
 // Ducks
 import { fetchProfile } from 'services/session';
 
@@ -16,6 +19,10 @@ import styles from './App.scss';
 
 const App = ({ match, user }) => (
   <div className={styles.Root}>
+    {!user && (
+      <Spinner title="Fetching user..." />
+    )}
+
     {user && (
       <Switch>
         <Route path={url.resolve(match.url, '/sandbox')} component={Sandbox} />

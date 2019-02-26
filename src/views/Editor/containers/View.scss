@@ -31,3 +31,21 @@
     opacity: 0;
   }
 }
+
+.Scale {
+  background: #fff;
+  border-radius: 0 0 0 12px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .2);
+  font-size: 14px;
+  opacity: .5;
+  padding: 4px 12px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: all .2s;
+  z-index: 1;
+
+  &:hover {
+    opacity: 1;
+  }
+}

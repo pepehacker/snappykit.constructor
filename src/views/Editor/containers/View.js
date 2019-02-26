@@ -6,7 +6,7 @@ import { matchPath, withRouter } from 'react-router-dom';
 import { compose, lifecycle, withHandlers, withState } from 'recompose';
 
 // Ducks
-import { setBusy } from '../../ducks/actions';
+import { setBusy } from '../ducks/actions';
 
 // Entities
 import { VIEW } from 'entities/template/constants';
@@ -46,6 +46,12 @@ const EditorView = ({
         ref={registerContainer}
         style={size}
       >
+        {scale < 1 && (
+          <div className={styles.Scale}>
+            {Math.floor(scale * 100)}%
+          </div>
+        )}
+
         <TemplateContext.Provider
           value={{
             data: get(website, 'data'),
@@ -57,8 +63,6 @@ const EditorView = ({
           <Template
             id={templateId}
             style={{
-              height: size.height / scale,
-              width: size.width / scale,
               transform: `scale(${scale})`,
               transition: 'all .6s',
             }}

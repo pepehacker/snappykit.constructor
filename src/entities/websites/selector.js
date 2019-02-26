@@ -4,7 +4,7 @@ import { get, values } from 'lodash';
 import { getTemplateById } from 'template';
 
 export const getSectionById = (state: Object, websiteId: number|string, sectionId: string): Object =>
-  get(state, `entities.websites.${websiteId}.data.${sectionId}`);
+  get(state, `entities.websites.${websiteId}.data.section.${sectionId}`);
 
 export const getWebsiteCount = (state: Object): number =>
   getWebsiteList(state).length;

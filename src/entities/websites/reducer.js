@@ -9,6 +9,11 @@ import {
   DELETE_WEBSITE_SUCCESS,
   DELETE_WEBSITE_FAILURE,
 
+  // Save
+  SAVE_WEBSITE_REQUEST,
+  SAVE_WEBSITE_SUCCESS,
+  SAVE_WEBSITE_FAILURE,
+
   SET_TEMPLATE_ID,
 
   UPDATE_WEBSITE,
@@ -32,6 +37,7 @@ export default (state = {}, action: Object): Object => {
         },
       };
 
+
     // Delete
     case DELETE_WEBSITE_REQUEST:
       return {
@@ -52,6 +58,35 @@ export default (state = {}, action: Object): Object => {
         }
       };
 
+
+    // Save
+    case SAVE_WEBSITE_REQUEST:
+      return {
+        ...state,
+        [websiteId]: {
+          ...website,
+          isFetching: true,
+        },
+      };
+    case SAVE_WEBSITE_FAILURE:
+      return {
+        ...state,
+        [websiteId]: {
+          ...website,
+          isFetching: false,
+        },
+      };
+    case SAVE_WEBSITE_SUCCESS:
+      return {
+        ...state,
+        [websiteId]: {
+          ...action.payload,
+          isFetching: false,
+        },
+      };
+
+
+    // Other
     case SET_TEMPLATE_ID:
       return {
         ...state,
@@ -76,9 +111,12 @@ export default (state = {}, action: Object): Object => {
           ...website,
           data: {
             ...get(website, 'data'),
-            [sectionId]: {
-              ...get(website, `data.${sectionId}`),
-              ...action.payload,
+            section: {
+              ...get(website, 'data.section'),
+              [sectionId]: {
+                ...get(website, `data.section.${sectionId}`),
+                ...action.payload,
+              },
             },
           },
         },

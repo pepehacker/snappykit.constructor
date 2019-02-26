@@ -2,6 +2,7 @@ export default {
   METHOD: {
     GET: 'get',
     DELETE: 'delete',
+    PATCH: 'patch',
     POST: 'post',
     PUT: 'put',
   },

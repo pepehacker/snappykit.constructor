@@ -100,25 +100,27 @@ export default ({
 });
 
 export const getExportData = (data: Object) => ({
-  [COPYRIGHT]: {
-    text: get(data, `${COPYRIGHT}.text`),
-  },
-  [DESCRIPTION]: {
-    text: get(data, `${DESCRIPTION}.text`),
-  },
-  [ICON]: {
-    src: get(data, `${ICON}.src`),
-  },
-  [POLICY]: {
-    items: get(data, `${POLICY}.items`),
-  },
-  [SCREENSHOTS]: {
-    items: get(data, `${SCREENSHOTS}.items`),
-  },
-  [STORE]: {
-    items: get(data, `${STORE}.items`),
-  },
-  [TITLE]: {
-    text: get(data, `${TITLE}.text`),
+  section: {
+    [COPYRIGHT]: {
+      text: get(data, `section.${COPYRIGHT}.text`),
+    },
+    [DESCRIPTION]: {
+      text: get(data, `section.${DESCRIPTION}.text`),
+    },
+    [ICON]: {
+      src: get(data, `section.${ICON}.src`),
+    },
+    [POLICY]: {
+      items: get(data, `section.${POLICY}.items`),
+    },
+    [SCREENSHOTS]: {
+      items: get(data, `section.${SCREENSHOTS}.items`),
+    },
+    [STORE]: {
+      items: get(data, `section.${STORE}.items`),
+    },
+    [TITLE]: {
+      text: get(data, `section.${TITLE}.text`),
+    },
   },
 });

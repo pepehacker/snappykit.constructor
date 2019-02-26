@@ -21,9 +21,20 @@
       }
     }
 
-    &Title {
+    &Steps {
       .Title {
+        border-right: 2px solid rgba(0, 0, 0, .05);
         flex: 0 0 200px;
+      }
+    }
+
+    &Title {
+      .Steps {
+        flex: 1 1 0;
+      }
+
+      .Title {
+        max-width: calc(100% - 240px);
         opacity: 1;
       }
     }
@@ -32,6 +43,8 @@
 
 .Actions {
   display: flex;
+  flex: 0 0 240px;
+  justify-content: flex-end;
   opacity: 0;
   transform: translateY(-50%);
   transition: all .4s;
@@ -89,7 +102,8 @@
   align-items: center;
   display: flex;
   flex: 1 1 auto;
-  max-width: calc(100% - 380px);
+  max-width: 1280px;
+  width: calc(100% - 380px);
 
   &Animate {
     &Enter {
@@ -164,7 +178,7 @@
 
 .Right {
   display: flex;
-  flex: 0 0 330px;
+  flex: 0 1 330px;
   justify-content: flex-end;
 }
 
@@ -216,12 +230,11 @@
 .Steps {
   flex: 1 1 auto;
   height: 100%;
+  max-width: calc(100% - 440px);
 }
 
 .Title {
-  border-right: 2px solid rgba(0, 0, 0, .05);
   color: #a4a8b0;
-  flex: 0 0 0;
   font-size: 22px;
   font-weight: 400;
   letter-spacing: -.3px;

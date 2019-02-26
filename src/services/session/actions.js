@@ -27,6 +27,7 @@ export const fetchProfile = (id: number) => (dispatch: func, getState: func, { a
         const subscription = subscriptions.filter(({ id }) => id === get(profile, 'subscription_plan_id', 0))[0];
 
         const user = {
+          id,
           email: get(profile, 'email'),
           subscription: {
             expireDate: get(profile, 'next_bill_date'),

@@ -31,6 +31,7 @@ const MainHeader = ({
   const rootClassNames = classNames(styles.Root, {
     [styles.RootIsFetching]: isFetching,
     [styles.RootWithActions]: !!website,
+    [styles.RootWithSteps]: !!step,
     [styles.RootWithTitle]: !!website,
   });
 

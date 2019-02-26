@@ -42,7 +42,11 @@ const StoreColorSwitcher = ({
           type="button"
         />
 
-        <StoreButton variant={STORE_APP_STORE} />
+        <StoreButton
+          background={background}
+          color={color}
+          variant={STORE_APP_STORE}
+        />
 
         <button
           className={textClassNames}

@@ -20,7 +20,7 @@ export default (data: Object, config: Object, callback: func): Object => {
             : field
       : {};
 
-    set(newData, sectionId, schema.cast(fieldData));
+    set(newData, `section.${sectionId}`, schema.cast(fieldData));
   });
 
   return newData;
