@@ -1,10 +1,14 @@
-import { get, keys, set } from 'lodash';
+import { get } from 'lodash';
 
 // Selector
 import { getWebsiteById } from '../selector';
 
 // Templates
-import { getTemplateById } from 'template';
+import {
+  convertTemplateData,
+  getTemplateExportData,
+  getTemplateById,
+} from 'template';
 
 // Types
 import {
@@ -20,28 +24,20 @@ export const setTemplateId = (websiteId: number|string, templateId: number|strin
     const website = getWebsiteById(state, websiteId);
 
     if (website) {
-      const data = get(website, 'data');
-      const { getExportData } = getTemplateById(get(website, 'templateId'));
+      const { config: oldConfig } = getTemplateById(get(website, 'templateId'));
       const { config } = getTemplateById(templateId);
 
-      if (data && getExportData) {
-        const oldData = getExportData(data);
-        const newData = {};
+      if (config && oldConfig) {
+        const oldData = getTemplateExportData(get(website, 'data'), oldConfig);
 
-        keys(config.section).forEach((sectionId: string): void => {
-          const schema = get(config, `section.${sectionId}.schema`);
-
-          if (schema) {
-            set(newData, `section.${sectionId}`, schema
-              ? schema.cast(get(oldData, `section.${sectionId}`))
-              : oldData[sectionId]);
-          }
+        dispatch({
+          templateId, websiteId,
+          type: SET_TEMPLATE_ID,
+          payload: convertTemplateData(oldData, config)
         });
-
-        dispatch({ type: SET_TEMPLATE_ID, templateId, websiteId, payload: { ...oldData, ...newData }});
       }
     }
-  };
+  }
 
 export const updateWebsite = (websiteId: number|string, payload: Object): Object =>
   ({ type: UPDATE_WEBSITE, websiteId, payload });
@@ -57,7 +53,7 @@ export const updateWebsiteSection = (websiteId: number|string, sectionId: string
       type: UPDATE_WEBSITE_SECTION, sectionId, websiteId,
       payload: schema.cast(payload),
     });
-  };
+  }
 
 export { default as createWebsite } from './create';
 export { default as deleteWebsite } from './delete';

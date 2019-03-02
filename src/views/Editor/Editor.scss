@@ -74,14 +74,14 @@
       position: absolute;
       top: 0;
       transform: translateX(160px);
-      transition: all .4s;
-      transition-delay: .2s;
       visibility: hidden;
       width: 100%;
 
       &Active {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateX(0px);
+        transition: all .4s;
+        transition-delay: .2s;
         visibility: visible;
       }
     }
@@ -93,12 +93,12 @@
       pointer-events: none;
       position: absolute;
       top: 0;
-      transition: all .4s;
       visibility: visible;
       width: 100%;
 
       &Active {
         opacity: 0;
+        transition: all .4s;
         visibility: hidden;
       }
     }

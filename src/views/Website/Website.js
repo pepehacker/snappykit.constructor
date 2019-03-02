@@ -15,6 +15,7 @@ import { fetchTemplate } from 'entities/template';
 import { isEditable } from 'entities/websites/selector';
 
 // Views
+import Domain from 'views/Domain';
 import Editor from 'views/Editor';
 
 import styles from './Website.scss';
@@ -52,6 +53,7 @@ const Website = ({
       {isEditable && websiteId && (
         <div className={styles.Container}>
           <Switch>
+            <Route path={url(match.url, '/domain')} component={Domain} />
             <Route path={url(match.url, '/editor')} component={Editor} />
           </Switch>
         </div>

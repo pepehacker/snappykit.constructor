@@ -24,24 +24,28 @@ const SocialForm = ({
         icon="fa-facebook"
         label="Facebook"
         name={`items.${SOCIAL_FACEBOOK}`}
+        prefix="https://facebook.com/"
       />
 
       <Link
         icon="fa-twitter"
         label="Twitter"
         name={`items.${SOCIAL_TWITTER}`}
+        prefix="https://twitter.com/"
       />
 
       <Link
         icon="fa-instagram"
         label="Instagram"
         name={`items.${SOCIAL_INSTAGRAM}`}
+        prefix="https://instagram.com/"
       />
 
       <Link
         icon="fa-vk"
         label="Vkontakte"
         name={`items.${SOCIAL_VK}`}
+        prefix="https://vk.com/"
       />
     </div>
 

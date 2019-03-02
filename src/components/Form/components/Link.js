@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { last } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { compose, withHandlers, withState } from 'recompose';
@@ -15,6 +16,7 @@ const FormLink = ({
   label,
   name,
   onChange,
+  prefix,
   value,
 
   // Handlers
@@ -52,9 +54,16 @@ const FormLink = ({
             {label}
           </div>
 
-          <div className={styles.Value}>
-            {value}
-          </div>
+          {value && (
+            <a
+              className={styles.Link}
+              href={prefix ? `${prefix}${last(value.split('/'))}` : value}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              @{last(value.split('/'))}
+            </a>
+          )}
         </div>
 
         {isPro ? (
@@ -107,12 +116,24 @@ const ComposedFormLink = compose(
     let dropdownRef;
 
     return {
-      handleDropdownBlur: ({ setBusy, setOpen }) => (event: Object): void => {
+      handleDropdownBlur: ({
+        onChange,
+        prefix,
+        setBusy,
+        setOpen,
+        value,
+      }) => (event: Object): void => {
         if (!dropdownRef.contains(event.relatedTarget)) {
           setBusy(true);
           setOpen(false);
 
           setTimeout(() => setBusy(false), 200);
+
+          if (value && onChange) {
+            prefix
+              ? onChange(`${prefix}${last(value.split('/'))}`)
+              : onChange(value);
+          }
         }
       },
       handleKeyDown: ({ setOpen }): func => (event: Object): bool =>

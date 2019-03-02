@@ -14,7 +14,7 @@ export const SOCIAL_VK = 'vk';
 export const SOCIAL_SCHEMA = (defaults: Object) => object().shape({
   color: string()
     .matches(TEXT_COLOR.regex, 'Incorrect `COLOR`!')
-    .default('rgba(255, 255, 255, 1)'),
+    .default(get(defaults, 'color', 'rgba(255, 255, 255, 1)')),
   items: object().shape({
     [SOCIAL_INSTAGRAM]: string()
       .matches(/^(https:\/\/instagram.com\/)?([a-zA-Z0-9_]{2,20})$/, 'Incorrect `Instagram` URL!')

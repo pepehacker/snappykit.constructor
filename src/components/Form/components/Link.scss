@@ -179,13 +179,19 @@
   }
 }
 
-.Value {
-  color: #aeb2ba;
+.Link {
+  color: #bfbfc7;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: .1px;
   line-height: 16px;
   overflow: hidden;
+  text-decoration: none;
   text-overflow: ellipsis;
+  transition: all .2s;
   white-space: nowrap;
+
+  &:hover {
+    color: #7e7acc;
+  }
 }

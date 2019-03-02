@@ -39,4 +39,6 @@ export { default as Text } from './components/Text';
 export * from './ducks';
 
 // Utils
+export { default as convertTemplateData } from './utils/convertTemplateData';
 export { default as createTemplateData } from './utils/createTemplateData';
+export { default as getTemplateExportData } from './utils/getTemplateExportData';

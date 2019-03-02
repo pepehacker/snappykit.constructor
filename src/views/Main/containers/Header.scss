@@ -22,6 +22,10 @@
     }
 
     &Steps {
+      .Steps {
+        display: flex;
+      }
+
       .Title {
         border-right: 2px solid rgba(0, 0, 0, .05);
         flex: 0 0 200px;
@@ -29,10 +33,6 @@
     }
 
     &Title {
-      .Steps {
-        flex: 1 1 0;
-      }
-
       .Title {
         max-width: calc(100% - 240px);
         opacity: 1;
@@ -103,7 +103,8 @@
   display: flex;
   flex: 1 1 auto;
   max-width: 1280px;
-  width: calc(100% - 380px);
+  min-width: 920px;
+  width: calc(100% - 696px);
 
   &Animate {
     &Enter {
@@ -228,6 +229,7 @@
 }
 
 .Steps {
+  display: none;
   flex: 1 1 auto;
   height: 100%;
   max-width: calc(100% - 440px);
@@ -235,6 +237,7 @@
 
 .Title {
   color: #a4a8b0;
+  flex: 1 1 auto;
   font-size: 22px;
   font-weight: 400;
   letter-spacing: -.3px;

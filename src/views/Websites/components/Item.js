@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { compose, withHandlers } from 'recompose';
+import { compose, withHandlers, withProps } from 'recompose';
 
 // Components
 import Spinner from 'components/Spinner';
@@ -23,6 +23,7 @@ import styles from './Item.scss';
 const WebsitesItem = ({
   description,
   id,
+  isNew,
   logo,
   title,
 
@@ -35,6 +36,7 @@ const WebsitesItem = ({
 }) => {
   const rootClassNames = classNames(styles.Root, {
     [styles.RootIsFetching]: isFetching,
+    [styles.RootIsNew]: isNew,
     [styles.RootIsNotSupported]: !isSupported,
   });
 
@@ -79,17 +81,19 @@ const WebsitesItem = ({
               className={styles.Link}
               to={`/${id}/editor/templates`}
             >
-              Modify
+              {isNew ? 'Continue' : 'Modify'}
             </Link>
 
-            <a
-              className={classNames(styles.Link, styles.LinkExternal)}
-              href="http://google.com"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Open
-            </a>
+            {!isNew && (
+              <a
+                className={classNames(styles.Link, styles.LinkExternal)}
+                href="http://google.com"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Open
+              </a>
+            )}
           </div>
         ) : (
           <div className={styles.NotSupported}>
@@ -114,6 +118,9 @@ WebsitesItem.propTypes = {
 
 export default compose(
   connect(null, { deleteWebsite, openModal }),
+  withProps(({ id }) => ({
+    isNew: id === 'new',
+  })),
   withHandlers({
     handleDelete: ({
       appId,

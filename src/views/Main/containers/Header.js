@@ -92,20 +92,22 @@ const mapStateToProps = (state: Object, { location }) => {
   const pathname = get(location, 'pathname');
 
   // Matches
+  const domainMatch = matchPath(pathname, { path: '/new/domain' });
   const editorMatch = matchPath(pathname, { path: '/new/editor' });
   const launchMatch = matchPath(pathname, { path: '/launch/:appId' });
   const searchMatch = matchPath(pathname, { path: '/search' });
 
   // Website
-  const websiteMatch = matchPath(pathname, { path: '/:websiteId/editor'});
-  const websiteId = get(websiteMatch, 'params.websiteId');
+  const websiteDomainMatch = matchPath(pathname, { path: '/:websiteId/domain'});
+  const websiteEditorMatch = matchPath(pathname, { path: '/:websiteId/editor'});
+  const websiteId = get(websiteDomainMatch || websiteEditorMatch, 'params.websiteId');
   const website = getWebsiteById(state, websiteId);
 
   return {
     website, websiteId,
     isFetching: get(website, 'isFetching'),
     step: launchMatch
-      ? 3 : editorMatch
+      ? 3 : (editorMatch || domainMatch)
         ? 2 : searchMatch
           ? 1 : 0,
   };
