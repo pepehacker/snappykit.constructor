@@ -30,7 +30,6 @@ const Search = ({
 
   // Handlers
   handleChange,
-  handleCreate,
 
   // State
   appsIsFetching,
@@ -88,7 +87,7 @@ const Search = ({
               {result && result.length > 0 && (
                 <div className={styles.List}>
                   {result.map((item: Object): func => (
-                    <Item {...item} key={item.id} onClick={handleCreate} />
+                    <Item {...item} key={item.id} />
                   ))}
                 </div>
               )}
@@ -120,10 +119,7 @@ export default compose(
         setQuery(get(values, 'name'));
         return changeThrottle(values);
       },
-      handleCreate: ({ createWebsite }): func =>
-        (values: string): void =>
-          createWebsite(values),
-    }
+    };
   }),
   lifecycle({
     componentDidMount() {

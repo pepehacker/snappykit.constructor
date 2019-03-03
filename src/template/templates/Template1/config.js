@@ -25,6 +25,7 @@ import {
 
 export default ({
   id: 1,
+  // logo: ICON,
   section: {
     [BACKGROUND]: {
       schema: BACKGROUND_SCHEMA({

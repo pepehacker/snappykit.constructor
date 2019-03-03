@@ -20,6 +20,11 @@ export const getWebsiteById = (state: Object, id: number|string): Array<Object> 
 export const getWebsiteList = (state: Object): Array<Object> =>
   values(get(state, 'entities.websites', {}));
 
+export const getWebsiteLogo = (state: Object, id: number|string): string => {
+  const website = getWebsiteById(state, id);
+  return get(website, 'data.section.icon.src');
+};
+
 export const hasWebsite = (state: Object, id: number|string): bool =>
   !!get(state, `entities.websites.${id}`);
 

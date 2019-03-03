@@ -16,7 +16,7 @@ export default (data: Object, config: Object, callback: func): Object => {
             ? { src: field }
             : { text: field }
           : field instanceof Array
-            ? { items: field }
+            ? { items: field.filter(Boolean) }
             : field
       : {};
 

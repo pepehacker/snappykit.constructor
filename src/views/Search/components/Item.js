@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { connect } from 'react-redux';
 import { compose, withHandlers } from 'recompose';
+
+// Ducks
+import { selectApp } from '../ducks';
 
 // Styles
 import styles from './Item.scss';
@@ -44,15 +48,14 @@ SearchItem.propTypes = {
   description: PropTypes.string,
   id: PropTypes.string,
   logo: PropTypes.string,
-  // eslint-disable-next-line
-  onClick: PropTypes.func,
   title: PropTypes.string,
 };
 
 export default compose(
+  connect(null, { selectApp }),
   withHandlers({
-    handleClick: ({ onClick, ...props }): func =>
+    handleClick: ({ id, selectApp }): Function =>
       (event: Object): void =>
-        onClick && onClick(props),
+        selectApp(id),
   }),
 )(SearchItem);

@@ -17,43 +17,32 @@ import {
   SAVE_WEBSITE_FAILURE,
 } from '../types';
 
-export default (websiteId: number|string): func =>
-  (dispatch: func, getState: func, { api, history }) => {
+const createWebsite = (websiteId: number|string, website: Object): Function =>
+  (dispatch: Function, getState: Function, { api, history }) => {
     const state = getState();
-    const isNew = websiteId === 'new';
-    const website = getWebsiteById(state, websiteId);
 
-    dispatch({ type: SAVE_WEBSITE_REQUEST, websiteId });
-
-    return api(isNew ? 'websites.create' : 'websites.update', isNew ? {
-      content: '',
-      description: get(website, 'description', ''),
+    return api('websites.create', {
+      ...website,
       domain: null,
       json: 'string',
-      provider: get(website, 'storeProvider', 1),
-      store_id: `${get(website, 'storeId', 0)}${getUserId(state)}`,
-      title: get(website, 'title', ''),
-    } : { appId: get(website, 'appId'), json: 'string '})
-      .then(({ data }) => {
+      store_id: `${get(website, 'storeId')}${getUserId(state)}`,
+    })
+      .then(({ data }): void => {
         const appId = get(data, 'id');
 
         if (appId) {
-          api(isNew ? 'websites.createTemplate' : 'websites.updateTemplate', isNew ? {
+          api('websites.createTemplate', {
+            ...website,
             app_id: appId,
-            description: get(website, 'description', ''),
-            is_active: true,
-            json: JSON.stringify(get(website, 'data', '{}')),
+            json: JSON.stringify(get(website, 'data')),
             template_id: get(website, 'templateId'),
-            title: get(website, 'title', ''),
-          } : { websiteId: get(website, 'id')})
-            .then(({ data }) => {
+          })
+            .then(({ data }): void => {
               const id = get(data, 'id');
-              dispatch({ type: SAVE_WEBSITE_SUCCESS, websiteId: id, payload: { ...website, appId, id }});
 
-              if (isNew) {
-                dispatch({ type: DELETE_WEBSITE_SUCCESS, websiteId: 'new' });
-                history.push(`/launch/:${id}`);
-              }
+              dispatch({ type: DELETE_WEBSITE_SUCCESS, websiteId: 'new' });
+              dispatch({ type: SAVE_WEBSITE_SUCCESS, websiteId: id, payload: { ...website, appId, id }});
+              history.push(`/launch/:${id}`);
             })
             .catch((error: Object) =>
               dispatch({ type: SAVE_WEBSITE_FAILURE, error: get(error, 'message')}));
@@ -61,4 +50,41 @@ export default (websiteId: number|string): func =>
       })
       .catch((error: Object) =>
         dispatch({ type: SAVE_WEBSITE_FAILURE, error: get(error, 'message')}));
+  }
+
+
+const updateWebsite = (websiteId: number|string, website: Object): Function =>
+  (dispatch: Function, getState: Function, { api }) =>
+    api([
+      {
+        method: 'websites.update',
+        params: {
+          ...website,
+          appId: get(website, 'appId'),
+          json: 'string',
+        },
+      },
+      {
+        method: 'websites.updateTemplate',
+        params: {
+          ...website,
+          json: JSON.stringify(get(website, 'data')),
+        },
+      },
+    ])
+      .then((): void =>
+        dispatch({ type: SAVE_WEBSITE_SUCCESS, websiteId, payload: website }))
+      .catch((error: Object) =>
+        dispatch({ type: SAVE_WEBSITE_FAILURE, error: get(error, 'message')}));
+
+export default (websiteId: number|string): Function =>
+  (dispatch: Function, getState: Function, { api, history }) => {
+    const state: Object = getState();
+
+    const method = websiteId === 'new'
+      ? createWebsite
+      : updateWebsite;
+
+    dispatch({ type: SAVE_WEBSITE_REQUEST, websiteId });
+    dispatch(method(websiteId, getWebsiteById(state, websiteId)));
   }

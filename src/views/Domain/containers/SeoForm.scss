@@ -1,0 +1,15 @@
+.Group {
+  display: flex;
+
+  & > * {
+    flex: 0 0 276px;
+
+    &:not(:first-child) {
+      margin: 0 0 0 32px !important;
+    }
+  }
+}
+
+.Textarea {
+  height: 300px;
+}

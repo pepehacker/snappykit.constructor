@@ -12,7 +12,10 @@ import Spinner from 'components/Spinner';
 import { CONFIRM_MODAL_ID } from '../ducks';
 
 // Entities
-import { deleteWebsite } from 'entities/websites';
+import {
+  deleteWebsite,
+  getWebsiteLogo,
+} from 'entities/websites';
 
 // Services
 import { openModal } from 'services/modals';
@@ -22,6 +25,7 @@ import styles from './Item.scss';
 
 const WebsitesItem = ({
   description,
+  domain,
   id,
   isNew,
   logo,
@@ -87,7 +91,7 @@ const WebsitesItem = ({
             {!isNew && (
               <a
                 className={classNames(styles.Link, styles.LinkExternal)}
-                href="http://google.com"
+                href={`https://${domain}`}
                 rel="noopener noreferrer"
                 target="_blank"
               >
@@ -107,17 +111,23 @@ const WebsitesItem = ({
 
 WebsitesItem.propTypes = {
   description: PropTypes.string,
+  domain: PropTypes.string,
   id: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
   ]),
+  isFetching: PropTypes.bool,
   isSupported: PropTypes.bool,
   logo: PropTypes.string,
   title: PropTypes.string,
 };
 
+const mapStateToProps = (state: Object, { id }): Object => ({
+  logo: getWebsiteLogo(state, id),
+});
+
 export default compose(
-  connect(null, { deleteWebsite, openModal }),
+  connect(mapStateToProps, { deleteWebsite, openModal }),
   withProps(({ id }) => ({
     isNew: id === 'new',
   })),

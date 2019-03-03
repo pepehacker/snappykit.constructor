@@ -16,9 +16,13 @@ export default {
   },
   deleteTemplate: {
     method: CONFIG.METHOD.DELETE,
-    url: ({ websiteId }) => `${CONFIG.URL}/core/app-template/${websiteId}/`,
+    url: ({ id }) => `${CONFIG.URL}/core/app-template/${id}/`,
   },
-  get: {
+  getAppList: {
+    method: CONFIG.METHOD.GET,
+    url: `${CONFIG.URL}/core/app/`,
+  },
+  getTemplateList: {
     method: CONFIG.METHOD.GET,
     url: `${CONFIG.URL}/core/app-template/`,
   },
@@ -28,6 +32,6 @@ export default {
   },
   updateTemplate: {
     method: CONFIG.METHOD.PATCH,
-    url: ({ websiteId }) => `${CONFIG.URL}/core/app-template/${websiteId}/`,
+    url: ({ id }) => `${CONFIG.URL}/core/app-template/${id}/`,
   },
 }

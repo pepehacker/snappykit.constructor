@@ -1,14 +1,14 @@
 // Models
 import countries from './countries';
 import profile from './profile';
-import search from './search';
+import store from './store';
 import subscriptions from './subscriptions';
 import websites from './websites';
 
 export default {
   countries,
   profile,
-  search,
+  store,
   subscriptions,
   websites,
 };

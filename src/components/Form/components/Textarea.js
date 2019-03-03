@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -8,26 +9,36 @@ import Field from './Field';
 import styles from './Textarea.scss';
 
 const FormTextarea = ({
+  classNames: {
+    textarea: textareaClassName,
+  } = {},
   id,
   name,
   onChange,
   type = 'text',
   value,
-}) => (
-  <div className={styles.Root}>
-    <textarea
-      autoComplete="off"
-      className={styles.Textarea}
-      id={id}
-      name={name}
-      onChange={onChange}
-      type={type}
-      value={value}
-    />
-  </div>
-);
+}) => {
+  const textareaClassNames = classNames(textareaClassName, styles.Textarea);
+
+  return (
+    <div className={styles.Root}>
+      <textarea
+        autoComplete="off"
+        className={textareaClassNames}
+        id={id}
+        name={name}
+        onChange={onChange}
+        type={type}
+        value={value}
+      />
+    </div>
+  );
+}
 
 FormTextarea.propTypes = {
+  classNames: PropTypes.shape({
+    textarea: PropTypes.string,
+  }),
   id: PropTypes.string,
   name: PropTypes.string,
   onChange: PropTypes.func,

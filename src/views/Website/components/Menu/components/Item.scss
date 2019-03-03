@@ -22,6 +22,7 @@
 
   &Active {
     box-shadow: inset 4px 0 0 #7e7acc;
+    pointer-events: none;
 
     .Cover {
       filter: drop-shadow(8px 10px 8px rgba(126, 122, 204, .4));

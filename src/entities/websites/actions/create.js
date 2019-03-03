@@ -1,3 +1,6 @@
+// ENTITIES
+import { STORE_APP_STORE } from 'entities/template';
+
 // Templates
 import {
   createTemplateData,
@@ -7,27 +10,27 @@ import {
 // Types
 import { CREATE_WEBSITE } from '../types';
 
-
-export default ({ link, store, storeId, storeProvider, ...values }): func =>
+export default ({ link, storeId, provider, ...values }): func =>
   (dispatch: func, getState: func, { api, history }): Object<Promise> => {
+
     const { config, id: templateId } = getFirstTemplate();
     const { description, logo, title } = values;
 
     dispatch({
       type: CREATE_WEBSITE,
       payload: {
-        description, logo, templateId, title,
-        storeId, storeProvider,
+        description, logo, templateId, storeId, title,
         data: createTemplateData({
           ...values,
-          icon: logo,
+          icon: { src: logo },
           store: {
             items: {
-              [store]: link,
+              'apple': link,
             },
           },
         }, config),
         isFetching: false,
+        provider: provider === STORE_APP_STORE ? 1 : 2,
       },
     });
 
