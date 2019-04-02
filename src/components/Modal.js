@@ -21,7 +21,7 @@ const Modal = ({
   } = {},
   handleClose,
   isOpened,
-  ...props,
+  ...props
 }) => {
   const rootClassNames = classNames(className, rootClassName, styles.Root);
   const backdropClassNames = classNames(backdropClassName, styles.Backdrop);
@@ -43,10 +43,7 @@ const Modal = ({
       {(state: string): func => (
         <Portal>
           <div className={rootClassNames}>
-            <div
-              className={backdropClassNames}
-              onClick={handleClose}
-            />
+            <div className={backdropClassNames} onClick={handleClose} />
 
             <div className={containerClassNames}>
               {typeof children === 'function'
@@ -61,10 +58,7 @@ const Modal = ({
 };
 
 Modal.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.node,
-  ]),
+  children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   handleClose: PropTypes.func,
   isOpened: PropTypes.bool,
 };
@@ -75,11 +69,14 @@ const mapStateToProps = ({ services }, { id }) => {
   return {
     ...modal,
     isOpened: !!modal,
-  }
+  };
 };
 
 const mapDispatchToProps = (dispatch, { id }) => ({
   handleClose: () => dispatch(closeModal(id)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Modal);

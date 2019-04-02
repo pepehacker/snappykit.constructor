@@ -1,0 +1,33 @@
+.Root {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.Description {
+  color: #7a8a9a;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 32px;
+  margin: 16px 0 0;
+}
+
+.Price {
+  margin: 40px 0 0;
+
+  &Title {
+    color: #7a8a9a;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 32px;
+  }
+}
+
+.Title {
+  background: linear-gradient(to right, #5e7adb, #8359c1);
+  background-clip: text;
+  font-size: 46px;
+  font-weight: 900;
+  letter-spacing: -0.2px;
+  -webkit-text-fill-color: transparent;
+}

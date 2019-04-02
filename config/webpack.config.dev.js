@@ -1,4 +1,4 @@
-'use strict';
+
 
 const path = require('path');
 const webpack = require('webpack');
@@ -104,7 +104,7 @@ module.exports = {
     // There are also additional JS chunk files if you use code splitting.
     chunkFilename: 'static/js/[name].chunk.js',
     // This is the URL that app is served from. We use "/" in development.
-    publicPath: publicPath,
+    publicPath,
     // Point sourcemap entries to original disk location (format as URL on Windows)
     devtoolModuleFilenameTemplate: info =>
       path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
@@ -141,6 +141,7 @@ module.exports = {
       api: path.resolve(__dirname, '../src/api'),
       assets: path.resolve(__dirname, '../src/assets'),
       components: path.resolve(__dirname, '../src/components'),
+      containers: path.resolve(__dirname, '../src/containers'),
       entities: path.resolve(__dirname, '../src/entities'),
       services: path.resolve(__dirname, '../src/services'),
       utils: path.resolve(__dirname, '../src/utils'),
@@ -374,7 +375,7 @@ module.exports = {
     // having to parse `index.html`.
     new ManifestPlugin({
       fileName: 'asset-manifest.json',
-      publicPath: publicPath,
+      publicPath,
     }),
   ],
 

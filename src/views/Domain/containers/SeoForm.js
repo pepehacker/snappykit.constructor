@@ -7,9 +7,7 @@ import Form, { Input, Textarea } from 'components/Form';
 // Styles
 import styles from './SeoForm.scss';
 
-const DomainSeoForm = ({
-  handleSubmit,
-}): Function => (
+const DomainSeoForm = ({ handleSubmit }): Function => (
   <Form onSubmit={handleSubmit}>
     <div className={styles.Group}>
       <Input label="Title" name="title" />

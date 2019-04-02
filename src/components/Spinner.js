@@ -7,11 +7,7 @@ import styles from './Spinner.scss';
 
 const Spinner = ({
   className,
-  classNames: {
-    root: rootClassName,
-    spinner: spinnerClassName,
-    title: titleClassName,
-  } = {},
+  classNames: { root: rootClassName, spinner: spinnerClassName, title: titleClassName } = {},
   title,
 }) => {
   const rootClassNames = classNames(className, rootClassName, styles.Root);
@@ -22,11 +18,7 @@ const Spinner = ({
     <div className={rootClassNames}>
       <div className={spinnerClassNames} />
 
-      {title && (
-        <div className={titleClassNames}>
-          {title}
-        </div>
-      )}
+      {title && <div className={titleClassNames}>{title}</div>}
     </div>
   );
 };

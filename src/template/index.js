@@ -5,15 +5,13 @@ import { createContext } from 'react';
 import * as Template1 from './templates/Template1';
 import * as Template2 from './templates/Template2';
 
-export const TEMPLATES = [Template1, Template2]
-  .map(({ config, ...props }) => ({
-    ...props,
-    config,
-    id: get(config, 'id'),
-  }));
+export const TEMPLATES = [Template1, Template2].map(({ config, ...props }) => ({
+  ...props,
+  config,
+  id: get(config, 'id'),
+}));
 
-export const getFirstTemplate = (): Object =>
-  TEMPLATES[0];
+export const getFirstTemplate = (): Object => TEMPLATES[0];
 
 export const getTemplateById = (id: number): Object =>
   TEMPLATES.filter(({ id: templateId }) => templateId === id)[0] || {};

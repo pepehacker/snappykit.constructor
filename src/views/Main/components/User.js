@@ -1,5 +1,4 @@
 // @todo - рефаткор
-
 import classNames from 'classnames';
 import { get } from 'lodash';
 import moment from 'moment';
@@ -8,21 +7,30 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { compose, withHandlers, withState } from 'recompose';
 
+// Containers
+import { PLANS_MODAL_ID } from 'containers/Plans';
+
+// Services
+import { openModal } from 'services/modals';
+
 // Styles
 import styles from './User.scss';
 
 const LINKS = [
   { icon: 'Website', title: 'Your Websites', to: '/' },
-  { icon: 'Plans', title: 'Plans', to: '/plans' },
+  { icon: 'Plans',  title: 'Plans', to: '/plans' },
   { icon: 'Password', title: 'Change Password', to: '/password' },
 ];
 
 const MainHeaderUser = ({
-  handleClick,
-  handleDropdownBlur,
-  isOpened,
   rootRef,
   user,
+  // Handlers
+  handleClick,
+  handleDropdownBlur,
+  handleTriggerPlans,
+  // State
+  isOpened,
 }) => {
   const className = classNames(styles.Root, {
     [styles.RootOpened]: isOpened,
@@ -33,9 +41,9 @@ const MainHeaderUser = ({
 
   return (
     <div
+      ref={rootRef}
       className={className}
       onBlur={handleDropdownBlur}
-      ref={rootRef}
       tabIndex={0}
     >
       <div className={styles.Trigger}>
@@ -68,15 +76,16 @@ const MainHeaderUser = ({
           </div>
 
           <div className={styles.Links}>
-            {LINKS.map(({ icon, title, to }, index) => {
+            {LINKS.map(({ icon, onClick, title, to }, index) => {
               const iconClassName = classNames(styles.LinkIcon, styles[`LinkIcon${icon}`]);
 
               return (
                 <NavLink
+                  key={index}
                   activeClassName={styles.LinkIsActive}
                   className={styles.Link}
                   exact
-                  key={index}
+                  onClick={title === 'Plans' && handleTriggerPlans}
                   to={to}
                 >
                   <span className={iconClassName} />
@@ -106,11 +115,18 @@ const mapStateToProps = ({ services }) => ({
 
 
 export default compose(
-  connect(mapStateToProps),
+  connect(mapStateToProps, { openModal }),
   withState('isOpened', 'setOpen', false),
   withState('rootRef', 'setRootRef', createRef()),
   withHandlers({
-    handleClick: ({ isOpened, setOpen }) => () => setOpen(!isOpened),
-    handleDropdownBlur: ({ rootRef, setOpen }) => event => !rootRef.current.contains(event.relatedTarget) && setOpen(false),
+    handleClick: ({ isOpened, setOpen }) => () =>
+      setOpen(!isOpened),
+    handleDropdownBlur: ({ rootRef, setOpen }) => event =>
+      !rootRef.current.contains(event.relatedTarget) && setOpen(false),
+    handleTriggerPlans: ({ openModal }): Function =>
+      (event: Object): void => {
+        event.preventDefault();
+        openModal(PLANS_MODAL_ID);
+      },
   }),
 )(MainHeaderUser);

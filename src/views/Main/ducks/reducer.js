@@ -7,7 +7,7 @@ import {
 
 const initialValues = {
   isFetching: true,
-}
+};
 
 export default (state = initialValues, action: Object) => {
   switch (action.type) {

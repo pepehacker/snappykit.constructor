@@ -1,5 +1,5 @@
 import { get } from 'lodash';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { compose, lifecycle } from 'recompose';
@@ -7,6 +7,9 @@ import url from 'url';
 
 // Components
 import Spinner from 'components/Spinner';
+
+// Containers
+import Plans from 'containers/Plans';
 
 // Ducks
 import { fetchProfile } from 'services/session';
@@ -24,10 +27,14 @@ const App = ({ match, user }) => (
     )}
 
     {user && (
-      <Switch>
-        <Route path={url.resolve(match.url, '/sandbox')} component={Sandbox} />
-        <Route path={url.resolve(match.url, '/')} component={Main} />
-      </Switch>
+      <Fragment>
+        <Switch>
+          <Route path={url.resolve(match.url, '/sandbox')} component={Sandbox} />
+          <Route path={url.resolve(match.url, '/')} component={Main} />
+        </Switch>
+
+        <Plans />
+      </Fragment>
     )}
   </div>
 );
