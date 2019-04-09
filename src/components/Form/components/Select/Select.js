@@ -51,33 +51,26 @@ const FormSelect = ({
 
   return (
     <div
+      ref={registerRoot}
       className={rootClassNames}
       onBlur={handleBlur}
       onFocus={handleFocus}
-      ref={registerRoot}
       tabIndex={0}
     >
       <div className={styles.Container}>
         <div className={styles.Control}>
           <input
+            ref={registerInput}
             autoComplete="off"
             className={styles.Input}
-            id={id}
-            name={name}
             onChange={handleChange}
-            onFocus={handleFocus}
             placeholder={isEmpty(value) ? placeholder : ''}
-            ref={registerInput}
             size={(inputValue.length || 6) + 2}
             type="text"
-            value={isFocused
-              ? inputValue
-              : getLabel()}
+            value={isFocused ? inputValue : getLabel()}
           />
 
-          {variant === VARIANT.CONTAINED && (
-            <div className={styles.Trigger} />
-          )}
+          {variant === VARIANT.CONTAINED && <div className={styles.Trigger} />}
         </div>
       </div>
 
@@ -93,21 +86,23 @@ const FormSelect = ({
         unmountOnExit
       >
         <div className={styles.Dropdown}>
-          {placeholder && (
-            <div className={styles.Placeholder}>
-              {placeholder}
-            </div>
-          )}
+          {placeholder && <div className={styles.Placeholder}>
+            {placeholder}
+          </div>}
 
           <div className={styles.List}>
-            {typeof children === 'function' ? children({
-              inputValue: inputValue.toLowerCase(),
-              onClick: handleCreate,
-              value: get(value, 'value'),
-            }) : Children.map(children, (child: Object) => cloneElement(child, {
-              isCurrent: get(child, 'props.value') === get(value, 'value', value),
-              onClick: handleCreate,
-            }))}
+            {typeof children === 'function'
+              ? children({
+                inputValue: inputValue.toLowerCase(),
+                onClick: handleCreate,
+                value: get(value, 'value'),
+              })
+              : Children.map(children, (child: Object) =>
+                cloneElement(child, {
+                  isCurrent: get(child, 'props.value') === get(value, 'value', value),
+                  onClick: handleCreate,
+                }),
+              )}
           </div>
         </div>
       </CSSTransition>
@@ -116,10 +111,7 @@ const FormSelect = ({
 };
 
 FormSelect.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.node,
-  ]),
+  children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   id: PropTypes.string,
   name: PropTypes.string,
   placeholder: PropTypes.string,
@@ -128,7 +120,7 @@ FormSelect.propTypes = {
       PropTypes.shape({
         label: PropTypes.string,
         value: PropTypes.string,
-      })
+      }),
     ),
     PropTypes.shape({
       label: PropTypes.string,
@@ -148,10 +140,9 @@ const ComposedFormSelect = compose(
     return {
       getLabel: ({ children, value }) => () =>
         typeof value === 'string'
-          ? Children
-              .map(children, (child: Object) => child)
-              .filter(({ props }) => get(props, 'value') === value)
-              .map(({ props }) => get(props, 'label'))[0] || ''
+          ? Children.map(children, (child: Object) => child)
+            .filter(({ props }) => get(props, 'value') === value)
+            .map(({ props }) => get(props, 'label'))[0] || ''
           : get(value, 'value', ''),
 
       // Handlers
@@ -172,7 +163,7 @@ const ComposedFormSelect = compose(
         onChange && onChange(itemValue);
       },
       handleDelete: ({ onChange, value }) => (itemValue: ?string) =>
-        onChange && onChange(value.filter(({ value }) => value !== itemValue )),
+        onChange && onChange(value.filter(({ value }) => value !== itemValue)),
       handleFocus: ({ setFocus }) => () => {
         $input.focus();
         setFocus(true);

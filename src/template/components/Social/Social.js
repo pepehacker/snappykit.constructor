@@ -11,18 +11,12 @@ import Link from '../Link';
 import { SOCIAL, VIEW } from 'entities/template/constants';
 
 // Template
-import {
-  getSectionById,
-  TemplateContext
-} from 'template';
+import { getSectionById, TemplateContext } from 'template';
 
 // Styles
 import styles from './Social.scss';
 
-const TemplateSocial = ({
-  className,
-  id,
-}) => (
+const TemplateSocial = ({ className, id }) => (
   <TemplateContext.Consumer>
     {({ data, isEditor, view, websiteId }) => {
       const { color, items } = getSectionById(data, id || SOCIAL);
@@ -39,14 +33,16 @@ const TemplateSocial = ({
         <div className={rootClassNames}>
           <Link to={`/${websiteId}/editor/social${(id && `/${id}`) || ''}`}>
             <div className={styles.Container}>
-              {keys(items).map((id: string): func => !!items[id] && (
-                <Item {...items[id]}
-                  color={color}
-                  isEditor={isEditor}
-                  key={id}
-                  variant={id}
-                />
-              ))}
+              {keys(items).map(
+                (id: string): func =>
+                  !!items[id] && (
+                    <Item
+                      {...items[id]} key={id}
+                      color={color} isEditor={isEditor}
+                      variant={id}
+                    />
+                  ),
+              )}
             </div>
           </Link>
         </div>

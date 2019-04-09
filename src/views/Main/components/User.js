@@ -18,7 +18,7 @@ import styles from './User.scss';
 
 const LINKS = [
   { icon: 'Website', title: 'Your Websites', to: '/' },
-  { icon: 'Plans',  title: 'Plans', to: '/plans' },
+  { icon: 'Plans', title: 'Plans', to: '/plans' },
   { icon: 'Password', title: 'Change Password', to: '/password' },
 ];
 
@@ -41,15 +41,12 @@ const MainHeaderUser = ({
 
   return (
     <div
-      ref={rootRef}
-      className={className}
-      onBlur={handleDropdownBlur}
-      tabIndex={0}
+      ref={rootRef} className={className}
+      onBlur={handleDropdownBlur} tabIndex={0}
     >
       <div className={styles.Trigger}>
         <button
-          className={styles.TriggerButton}
-          onClick={handleClick}
+          className={styles.TriggerButton} onClick={handleClick}
           type="button"
         >
           {get(user, 'email')}
@@ -64,13 +61,14 @@ const MainHeaderUser = ({
 
           <div className={styles.Expiration}>
             <div className={styles.ExpirationTitle}>
-              {daysLeft} days left
+              {daysLeft}
+              {' days left'}
             </div>
 
             <div className={styles.ExpirationProgress}>
               <div
                 className={styles.ExpirationProgressBar}
-                style={{ width: `${(daysLeft * 100) / 365}%`}}
+                style={{ width: `${(daysLeft * 100) / 365}%` }}
               />
             </div>
           </div>
@@ -85,7 +83,7 @@ const MainHeaderUser = ({
                   activeClassName={styles.LinkIsActive}
                   className={styles.Link}
                   exact
-                  onClick={title === 'Plans' && handleTriggerPlans}
+                  onClick={title === 'Plans' ? handleTriggerPlans : null}
                   to={to}
                 >
                   <span className={iconClassName} />
@@ -113,20 +111,20 @@ const mapStateToProps = ({ services }) => ({
   user: get(services, 'session.user', {}),
 });
 
-
 export default compose(
-  connect(mapStateToProps, { openModal }),
+  connect(
+    mapStateToProps,
+    { openModal },
+  ),
   withState('isOpened', 'setOpen', false),
   withState('rootRef', 'setRootRef', createRef()),
   withHandlers({
-    handleClick: ({ isOpened, setOpen }) => () =>
-      setOpen(!isOpened),
+    handleClick: ({ isOpened, setOpen }) => () => setOpen(!isOpened),
     handleDropdownBlur: ({ rootRef, setOpen }) => event =>
       !rootRef.current.contains(event.relatedTarget) && setOpen(false),
-    handleTriggerPlans: ({ openModal }): Function =>
-      (event: Object): void => {
-        event.preventDefault();
-        openModal(PLANS_MODAL_ID);
-      },
+    handleTriggerPlans: ({ openModal }): Function => (event: Object): void => {
+      event.preventDefault();
+      openModal(PLANS_MODAL_ID);
+    },
   }),
 )(MainHeaderUser);

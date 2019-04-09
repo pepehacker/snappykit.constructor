@@ -4,9 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 // Styles
 import styles from './Available.scss';
 
-const EditorAvailable = ({
-  isAvailable,
-}) => (
+const EditorAvailable = ({ isAvailable }) => (
   <CSSTransition
     classNames={{
       enter: styles.RootAnimateEnter,
@@ -25,12 +23,11 @@ const EditorAvailable = ({
         <div className={styles.Content}>
           <div className={styles.Icon} />
 
-          <div className={styles.Title}>
-            Section is not Available
-          </div>
+          <div className={styles.Title}>Section is not Available</div>
 
           <div className={styles.Description}>
-            The section is not editable<br />
+            The section is not editable
+            <br />
             in this template
           </div>
         </div>

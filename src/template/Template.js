@@ -5,7 +5,9 @@ import { compose, withProps } from 'recompose';
 import { getTemplateById } from 'template';
 
 const Template = ({ Component, id, style, ...props }) => (
-  <div style={style}>{Component && <Component />}</div>
+  <div style={style}>
+    {Component && <Component />}
+  </div>
 );
 
 export default compose(withProps(({ id }) => getTemplateById(id)))(Template);

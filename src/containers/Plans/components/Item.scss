@@ -1,0 +1,230 @@
+.Root {
+  background-image: linear-gradient(196deg, transparent, transparent);
+  border-radius: 14px;
+  display: flex;
+  height: 425px;
+  position: relative;
+  transition: all .4s;
+  text-align: center;
+
+  &:hover {
+    .Button {
+      background: #fff;
+      border-color: #fff;
+    }
+
+    .Cover {
+      opacity: 1;
+      transform: translateY(0%);
+      visibility: visible;
+    }
+
+    .Title {
+      border-color: rgba(255, 255, 255, .2);
+    }
+
+    .Count,
+    .Item,
+    .Price,
+    .Title,
+    .Unit {
+      color: #fff;
+    }
+  }
+
+  &Variant {
+    &Agency {
+      &:hover {
+        background-image: linear-gradient(196deg, #5b36b7, #b57ae4);
+        box-shadow: 0 20px 40px 0 rgba(170, 113, 222, 0.4);
+
+        .Button {
+          box-shadow: 0 6px 14px 0 rgba(178, 119, 217, 0.4);
+          color: #8455cc;
+        }
+      }
+
+      .Count,
+      .Price,
+      .Unit {
+        color: #8455cc;
+      }
+    }
+
+    &Basic {
+      &:hover {
+        background-image: linear-gradient(196deg, #ff589e, #ffaa67);
+        box-shadow: 0 20px 40px 0 rgba(255, 159, 111, 0.4);
+
+        .Button {
+          box-shadow: 0 6px 14px 0 rgba(255, 163, 107, 0.4);
+          color: #ffa36b;
+        }
+      }
+
+      .Count,
+      .Price,
+      .Unit {
+        color: #e96484;
+      }
+    }
+
+    &Lite {
+      &:hover {
+        background-image: linear-gradient(196deg, #4ce366, #4bd9a5);
+        box-shadow: 0 20px 40px 0 rgba(76, 218, 156, 0.4);
+
+        .Button {
+          box-shadow: 0 6px 14px 0 rgba(87, 214, 157, 0.4);
+          color: #57d69d;
+        }
+      }
+
+      .Count,
+      .Price,
+      .Unit {
+        color: #76dca0;
+      }
+    }
+
+    &Pro {
+      &:hover {
+        background-image: linear-gradient(196deg, #3072ff, #3ecbff);
+        box-shadow: 0 20px 40px 0 rgba(60, 190, 255, 0.4);
+
+        .Button {
+          box-shadow: 0 6px 14px 0 rgba(73, 193, 245, 0.4);
+          color: #49c1f5;
+        }
+      }
+
+      .Count,
+      .Price,
+      .Unit {
+        color: #467cd8;
+      }
+    }
+  }
+}
+
+.Button {
+  background: transparent;
+  border: 2px solid #d9e0eb;
+  border-radius: 32px;
+  bottom: -20px;
+  color: #cfd8e5;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  height: 40px;
+  left: calc(50% - 60px);
+  position: absolute;
+  transition: all .2s;
+  width: 120px;
+  z-index: 10;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.Content {
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.Cover {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(216, 216, 216, 0) 97%);
+  border-radius: 400px / 180px;
+  bottom: -28%;
+  box-shadow: 0 6px 60px 0 rgba(0, 0, 0, 0.14);
+  height: 100%;
+  left: -50%;
+  opacity: 0;
+  position: absolute;
+  transform: translateY(20%);
+  transition: all .2s;
+  visibility: hidden;
+  width: 200%;
+  z-index: 1;
+}
+
+.Count {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .7px;
+  opacity: .6;
+}
+
+.Info {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  z-index: 2;
+}
+
+.Item {
+  color: #919cae;
+  font-size: 12px;
+  letter-spacing: .3px;
+  opacity: .8;
+
+  &:not(:first-child) {
+    margin: 12px 0 0;
+  }
+}
+
+.List {
+  align-items: center;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: center;
+  margin: -16px 0 0;
+}
+
+.Price {
+  color: #fff;
+  font-size: 40px;
+  letter-spacing: -.4px;
+  margin: 24px 0 0;
+}
+
+.Title {
+  border-bottom: 2px solid transparent;
+  color: #7e8899;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  padding: 32px 0 16px;
+}
+
+.Unit {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -.22px;
+  margin: 0 0 0 4px;
+  opacity: .3;
+  position: relative;
+  top: -16px;
+}
+
+.Count,
+.Item,
+.Price,
+.Title,
+.Unit {
+  transition: all .4s;
+}

@@ -1,0 +1,36 @@
+.Root {
+  align-items: center;
+  display: flex;
+  height: 500px;
+  justify-content: space-between;
+  margin: 64px 0 0;
+  max-width: 960px;
+
+  & > * {
+    flex: 0 0 264px;
+  }
+
+  &HasPrice {
+    height: 252px;
+    margin: 0;
+    transition: all .4s;
+  }
+}
+
+.Item {
+  &Animate {
+    &Enter {
+      opacity: 0;
+      transform: translateY(20%);
+      transition: all .4s;
+      visibility: hidden;
+
+
+      &Active {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+      }
+    }
+  }
+}

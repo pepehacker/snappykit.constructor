@@ -8,32 +8,27 @@ import Form, { Color, Select, SelectItem, Textarea } from 'components/Form';
 import Style from '../components/Style';
 
 // Entities
-import {
-  TEXT_FONT, TEXT_FONT_VALUES,
-  TEXT_STYLE,
-} from 'entities/template/constants';
+import { TEXT_FONT, TEXT_FONT_VALUES, TEXT_STYLE } from 'entities/template/constants';
 
-const TextForm = ({
-  handleSubmit,
-  withText,
-}) => (
+const TextForm = ({ handleSubmit, withText }) => (
   <Form onSubmit={handleSubmit}>
-    {withText && (
-      <Textarea label="Text" name="text" placeholder="Set Text" />
-    )}
+    {withText && <Textarea
+      label="Text" name="text"
+      placeholder="Set Text"
+    />}
 
     <Select
-      label="Font"
-      name="font"
+      label="Font" name="font"
       placeholder="Choose a font"
     >
-      {TEXT_FONT_VALUES.map((name: string): func => (
-        <SelectItem
-          key={name}
-          label={name}
-          value={name}
-        />
-      ))}
+      {TEXT_FONT_VALUES.map(
+        (name: string): func => (
+          <SelectItem
+            key={name} label={name}
+            value={name}
+          />
+        ),
+      )}
     </Select>
 
     <Style label="Style" name="style" />
@@ -53,5 +48,5 @@ export default compose(
       font: TEXT_FONT.ROBOTO,
       style: TEXT_STYLE.LIGHT,
     },
-  })
+  }),
 )(TextForm);

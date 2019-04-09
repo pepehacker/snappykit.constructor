@@ -69,26 +69,26 @@ const Editor = ({
 
           <TransitionGroup>
             <CSSTransition
+              key={location.key}
               classNames={{
                 enter: styles.SidebarAnimateEnter,
                 enterActive: styles.SidebarAnimateEnterActive,
                 exit: styles.SidebarAnimateExit,
                 exitActive: styles.SidebarAnimateExitActive,
               }}
-              key={location.key}
               timeout={{ enter: 600, exit: 400 }}
               unmountOnExit
             >
               <Switch location={location}>
-                <Route path={url(match.url, '/background')} component={Background} />
-                <Route path={url(match.url, '/icon')} component={Icon} />
-                <Route path={url(match.url, '/screenshots')} component={Screenshots} />
-                <Route path={url(match.url, '/smartphone')} component={Smartphone} />
-                <Route path={url(match.url, '/social')} component={Social} />
-                <Route path={url(match.url, '/store')} component={Store} />
-                <Route path={url(match.url, '/templates')} component={Templates} />
-                <Route path={url(match.url, '/text/:fieldId')} component={Text} />
-                <Route path={url(match.url, '/text')} component={Text} />
+                <Route component={Background} path={url(match.url, '/background')} />
+                <Route component={Icon} path={url(match.url, '/icon')} />
+                <Route component={Screenshots} path={url(match.url, '/screenshots')} />
+                <Route component={Smartphone} path={url(match.url, '/smartphone')} />
+                <Route component={Social} path={url(match.url, '/social')} />
+                <Route component={Store} path={url(match.url, '/store')} />
+                <Route component={Templates} path={url(match.url, '/templates')} />
+                <Route component={Text} path={url(match.url, '/text/:fieldId')} />
+                <Route component={Text} path={url(match.url, '/text')} />
               </Switch>
             </CSSTransition>
           </TransitionGroup>
@@ -116,9 +116,7 @@ const mapStateToProps = (state: Object, { location }): Object => {
   const { config } = getWebsiteTemplate(state, websiteId);
 
   return {
-    isAvailable:
-      sectionId === 'templates' ||
-      has(config, `section.${id || sectionId}`),
+    isAvailable: sectionId === 'templates' || has(config, `section.${id || sectionId}`),
   };
 };
 

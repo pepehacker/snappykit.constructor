@@ -3,11 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 // Entities
-import {
-  STORE_APP_STORE,
-  STORE_GOOGLE_PLAY,
-  VIEW,
-} from 'entities/template/constants';
+import { STORE_APP_STORE, STORE_GOOGLE_PLAY, VIEW } from 'entities/template/constants';
 
 // Styles
 import styles from './Button.scss';
@@ -33,29 +29,21 @@ const StoreButton = ({
   const ButtonComponent = isEditor ? 'div' : 'a';
 
   return (
-    <ButtonComponent {...(isEditor && { href: '/#' })}
+    <ButtonComponent
+      {...isEditor && { href: '/#' }}
       className={rootClassNames}
       style={{ background }}
     >
-      <i
-        className={iconClassNames}
-        style={{ color }}
-      />
+      <i className={iconClassNames} style={{ color }} />
 
       <div className={styles.Info}>
         {view === VIEW.DESKTOP && (
-          <div
-            className={styles.Download}
-            style={{ color }}
-          >
+          <div className={styles.Download} style={{ color }}>
             Download it from
           </div>
         )}
 
-        <div
-          className={styles.Title}
-          style={{ color }}
-        >
+        <div className={styles.Title} style={{ color }}>
           {variant === STORE_APP_STORE && 'App Store'}
           {variant === STORE_GOOGLE_PLAY && 'Google Play'}
         </div>

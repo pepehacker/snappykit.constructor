@@ -10,21 +10,18 @@ import { BACKGROUND_LIST } from 'entities/template';
 // Styles
 import styles from './Image.scss';
 
-const BackgroundImage = ({
-  onChange,
-  value,
-}) => (
+const BackgroundImage = ({ onChange, value }) => (
   <div className={styles.Root}>
     <div className={styles.List}>
-      {BACKGROUND_LIST.map((src: string, index: number): func => (
-        <Card
-          isSelected={src === value}
-          key={index}
-          onClick={onChange}
-          src={src}
-          value={src}
-        />
-      ))}
+      {BACKGROUND_LIST.map(
+        (src: string, index: number): func => (
+          <Card
+            key={index} isSelected={src === value}
+            onClick={onChange} src={src}
+            value={src}
+          />
+        ),
+      )}
     </div>
   </div>
 );

@@ -38,17 +38,18 @@ const EditorView = ({
 
   return (
     <div
-      className={rootClassNames}
       ref={registerRoot}
+      className={rootClassNames}
     >
       <div
-        className={styles.Container}
         ref={registerContainer}
+        className={styles.Container}
         style={size}
       >
         {scale < 1 && (
           <div className={styles.Scale}>
-            {Math.floor(scale * 100)}%
+            {Math.floor(scale * 100)}
+            %
           </div>
         )}
 

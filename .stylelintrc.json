@@ -9,6 +9,7 @@
       }
     ],
     "indentation": 2,
+    "no-descending-specificity": null,
     "string-quotes": "single",
     "prettier/prettier": [
       true,

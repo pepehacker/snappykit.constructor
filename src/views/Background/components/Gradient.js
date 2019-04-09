@@ -20,7 +20,7 @@ const BackgroundGradient = ({
   value,
 
   // Handlers
-  handleClick
+  handleClick,
 }) => {
   const rootClassNames = classNames(styles.Root, {
     [styles.RootVariantFrom]: variant === VARIANT.FROM,
@@ -35,16 +35,19 @@ const BackgroundGradient = ({
             className={styles.From}
             onClick={() => handleClick(VARIANT.FROM)}
             role="button"
-            tabIndex={0}
             style={{
               background: get(value, 'from'),
             }}
+            tabIndex={0}
           />
 
           <div
             className={styles.Gradient}
             style={{
-              backgroundImage: `linear-gradient(to right, ${get(value, 'from')}, ${get(value, 'to')})`
+              backgroundImage: `linear-gradient(to right, ${get(value, 'from')}, ${get(
+                value,
+                'to',
+              )})`,
             }}
           />
 
@@ -52,10 +55,10 @@ const BackgroundGradient = ({
             className={styles.To}
             onClick={() => handleClick(VARIANT.TO)}
             role="button"
-            tabIndex={0}
             style={{
               background: get(value, 'to'),
             }}
+            tabIndex={0}
           />
         </div>
       </div>
@@ -83,10 +86,9 @@ BackgroundGradient.propTypes = {
 const ComposedBackgroundGradient = compose(
   withState('variant', 'setVariant', VARIANT.FROM),
   withHandlers({
-    handleClick: ({ setVariant }): func => (variant: string): void =>
-      setVariant(variant),
+    handleClick: ({ setVariant }): func => (variant: string): void => setVariant(variant),
   }),
-)(BackgroundGradient)
+)(BackgroundGradient);
 
 export default (props: Object) => (
   <Field {...props} label={undefined}>

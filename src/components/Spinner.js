@@ -18,7 +18,9 @@ const Spinner = ({
     <div className={rootClassNames}>
       <div className={spinnerClassNames} />
 
-      {title && <div className={titleClassNames}>{title}</div>}
+      {title && <div className={titleClassNames}>
+        {title}
+      </div>}
     </div>
   );
 };

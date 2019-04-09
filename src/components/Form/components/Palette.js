@@ -9,12 +9,7 @@ import Field from './Field';
 
 import styles from './Palette.scss';
 
-const FormPalette = ({
-  colors,
-  handleClick,
-  handleCreate,
-  value,
-}) => (
+const FormPalette = ({ colors, handleClick, handleCreate, value }) => (
   <div className={styles.Root}>
     {colors.map((color, index) => {
       const className = classNames(styles.Color, {
@@ -23,8 +18,8 @@ const FormPalette = ({
 
       return (
         <button
-          className={className}
           key={index}
+          className={className}
           onClick={() => handleClick(color)}
           style={{ background: color }}
           type="button"
@@ -33,8 +28,7 @@ const FormPalette = ({
     })}
 
     <button
-      className={styles.Create}
-      onClick={handleCreate}
+      className={styles.Create} onClick={handleCreate}
       type="button"
     />
   </div>
@@ -47,8 +41,7 @@ const mapStateToProps = ({ services }) => ({
 const ComposedFormPalette = compose(
   connect(mapStateToProps),
   withHandlers({
-    handleClick: ({ onChange }) => value =>
-      onChange && onChange(value),
+    handleClick: ({ onChange }) => value => onChange && onChange(value),
     handleCreate: () => () => console.log('Create new color!'), // eslint-disable-line
   }),
 )(FormPalette);

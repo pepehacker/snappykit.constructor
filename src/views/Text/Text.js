@@ -17,20 +17,15 @@ import { getSectionById } from 'entities/websites/selector';
 // Styles
 import styles from './Text.scss';
 
-const Text = ({
-  id,
-  initialValues,
-  handleChange,
-  withText,
-}) => (
+const Text = ({ id, initialValues, handleChange, withText }) => (
   <div className={styles.Root}>
     <Title title="Text" />
 
     <Container>
       <Form
+        key={id}
         form={id}
         initialValues={initialValues}
-        key={id}
         onChange={handleChange}
         withText={withText}
       />
@@ -48,16 +43,20 @@ const mapStateToProps = (state: Object, { location }) => {
   const initialValues = getSectionById(state, websiteId, id);
 
   return {
-    id, initialValues, websiteId,
+    id,
+    initialValues,
+    websiteId,
     withText: id && get(initialValues, 'text') !== undefined,
   };
 };
 
 export default compose(
-  connect(mapStateToProps, { updateWebsiteSection }),
+  connect(
+    mapStateToProps,
+    { updateWebsiteSection },
+  ),
   withHandlers({
-    handleChange: ({ id, updateWebsiteSection, websiteId }): func =>
-      (value: Object): void =>
-        updateWebsiteSection(websiteId, id, value),
+    handleChange: ({ id, updateWebsiteSection, websiteId }): func => (value: Object): void =>
+      updateWebsiteSection(websiteId, id, value),
   }),
 )(Text);

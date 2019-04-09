@@ -16,14 +16,14 @@ const API = (method: Array<string | Object> | string, params: Object, { token } 
 
       return model
         ? axios({
-            ...(get(model, 'method') !== 'delete' && { data: get(request, 'params', params) }),
-            headers: {
-              Authorization: `JWT ${token ||
+          ...(get(model, 'method') !== 'delete' && { data: get(request, 'params', params) }),
+          headers: {
+            Authorization: `JWT ${token ||
                 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbnlhMDk1QGdtYWlsLmNvbSIsInVzZXJuYW1lIjoidmFueWEwOTVAZ21haWwuY29tIiwiZXhwIjoxNTQ1OTAxODAwLCJ1c2VyX2lkIjoyMDM2fQ.-XtWK2DieKLWTWJNjazh5_sFlnk_n5KmkL9tvDar3Ms'}`,
-            },
-            method: get(model, 'method', 'get'),
-            url: typeof url === 'function' ? url(get(request, 'params', params)) : url,
-          })
+          },
+          method: get(model, 'method', 'get'),
+          url: typeof url === 'function' ? url(get(request, 'params', params)) : url,
+        })
         : new Promise((resolve: func, reject: func) => reject(new Error('Undefined method!')));
     });
 

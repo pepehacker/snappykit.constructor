@@ -8,20 +8,13 @@ import {
   SOCIAL_INSTAGRAM,
   SOCIAL_TWITTER,
   SOCIAL_VK,
-
   VIEW,
 } from 'entities/template/constants';
 
 // Styles
 import styles from './Item.scss';
 
-const TemplateSocialItem = ({
-  color,
-  isEditor,
-  link,
-  variant,
-  view,
-}) => {
+const TemplateSocialItem = ({ color, isEditor, link, variant, view }) => {
   const rootClassNames = classNames(styles.Root, {
     [styles.RootViewDesktop]: view === VIEW.DESKTOP,
     [styles.RootViewMobile]: view === VIEW.MOBILE,
@@ -35,8 +28,8 @@ const TemplateSocialItem = ({
   const ItemComponent = isEditor ? 'div' : 'a';
 
   return (
-    <ItemComponent {...(isEditor && { href: '/#' })}
-      className={rootClassNames}
+    <ItemComponent
+      {...isEditor && { href: '/#' }} className={rootClassNames}
       style={{ color }}
     >
       <i className={iconClassNames} />

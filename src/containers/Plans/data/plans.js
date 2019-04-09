@@ -1,22 +1,94 @@
-import { PRICE_AVERAGE, PRICE_MAX, PRICE_MIN } from '../ducks';
+import {
+  // Interval
+  MONTH,
+  YEAR,
+  // Plans
+  PLAN_AGENCY,
+  PLAN_BASIC,
+  PLAN_LITE,
+  PLAN_PRO,
+  // Price
+  PRICE_AVERAGE,
+  PRICE_MAX,
+  PRICE_MIN,
+} from '../ducks';
 
-export default {
-  [PRICE_AVERAGE]: {
-    id: PRICE_AVERAGE,
-    description:
-      'Thank you for appreciating our work, this price, which will allow us to cover our expenses, to develop and create new products for users around the world.',
-    title: 'Average Price',
+const FEATURES = [
+  'All Lite plan features',
+  'All website templates',
+  'Custom domain',
+  'Unlimited traffic',
+  'No Snappykit’s brand ads',
+  'Terms of use',
+  'Privacy policy',
+  'Add the second app link',
+];
+
+export default [
+  {
+    id: PLAN_LITE,
+    count: 1,
+    features: [
+      'App website',
+      '4 website templates',
+      'Search from App Store',
+      'Search from Google Play',
+    ],
+    productIds: 0,
+    title: 'LITE',
   },
-  [PRICE_MAX]: {
-    id: PRICE_MAX,
-    description:
-      'You are a hero! Thank you for your choice, we will send some of this money to charity and try to help those who need it. Let us  make this world better together.',
-    title: 'Maximum Price',
+  {
+    id: PLAN_BASIC,
+    count: 3,
+    features: FEATURES,
+    productIds: {
+      [MONTH]: {
+        [PRICE_MIN]: 551696,
+        [PRICE_AVERAGE]: 551701,
+        [PRICE_MAX]: 551704,
+      },
+      [YEAR]: {
+        [PRICE_MIN]: 551707,
+        [PRICE_AVERAGE]: 551710,
+        [PRICE_MAX]: 551713,
+      },
+    },
+    title: 'BASIC',
   },
-  [PRICE_MIN]: {
-    id: PRICE_MIN,
-    description:
-      'Dear friend, we understand that sometimes developers have hard times. And we are ready to provide the minimum cost of our products to those who really need it.',
-    title: 'Minimum Price',
+  {
+    id: PLAN_PRO,
+    count: 9,
+    features: FEATURES,
+    productIds: {
+      [MONTH]: {
+        [PRICE_MIN]: 551699,
+        [PRICE_AVERAGE]: 551702,
+        [PRICE_MAX]: 551705,
+      },
+      [YEAR]: {
+        [PRICE_MIN]: 551708,
+        [PRICE_AVERAGE]: 551711,
+        [PRICE_MAX]: 551714,
+      },
+    },
+    title: 'PRO',
   },
-};
+  {
+    id: PLAN_AGENCY,
+    count: 45,
+    features: FEATURES,
+    productIds: {
+      [MONTH]: {
+        [PRICE_MIN]: 551700,
+        [PRICE_AVERAGE]: 551703,
+        [PRICE_MAX]: 551706,
+      },
+      [YEAR]: {
+        [PRICE_MIN]: 551709,
+        [PRICE_AVERAGE]: 551712,
+        [PRICE_MAX]: 551715,
+      },
+    },
+    title: 'AGENCY',
+  },
+];

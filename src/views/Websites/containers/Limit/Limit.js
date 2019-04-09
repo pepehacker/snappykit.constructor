@@ -10,22 +10,21 @@ import { getSubscriptionLimit } from 'services/session';
 // Styles
 import styles from './Limit.scss';
 
-const WebsitesLimit = ({
-  count = 30,
-  limit = 45,
-}) => (
+const WebsitesLimit = ({ count = 30, limit = 45 }) => (
   <div className={styles.Root}>
     <div className={styles.Title}>
       Created:&nbsp;
-      <span className={styles.Count}>{count}</span>
-      <span className={styles.Limit}>&nbsp;of&nbsp;{limit}</span>
+      <span className={styles.Count}>
+        {count}
+      </span>
+      <span className={styles.Limit}>
+        &nbsp;of&nbsp;
+        {limit}
+      </span>
     </div>
 
     <div className={styles.Progress}>
-      <div
-        className={styles.ProgressBar}
-        style={{ width: `${count * 100 / limit}%`}}
-      />
+      <div className={styles.ProgressBar} style={{ width: `${(count * 100) / limit}%` }} />
     </div>
   </div>
 );

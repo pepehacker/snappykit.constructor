@@ -16,8 +16,10 @@ const Oops = () => (
       </div>
     </div>
 
-    <img alt="Oops" className={styles.Oops}
-src={oops} />
+    <img
+      alt="Oops" className={styles.Oops}
+      src={oops}
+    />
   </div>
 );
 

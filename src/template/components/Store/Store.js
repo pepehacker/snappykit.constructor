@@ -8,27 +8,15 @@ import Button from './components/Button';
 import Link from '../Link';
 
 // Entities
-import {
-  STORE,
-  STORE_APP_STORE,
-  STORE_GOOGLE_PLAY,
-
-  VIEW,
-} from 'entities/template/constants';
+import { STORE, STORE_APP_STORE, STORE_GOOGLE_PLAY, VIEW } from 'entities/template/constants';
 
 // Template
-import {
-  getSectionById,
-  TemplateContext
-} from 'template';
+import { getSectionById, TemplateContext } from 'template';
 
 // Styles
 import styles from './Store.scss';
 
-const TemplateStore = ({
-  className,
-  id,
-}) => (
+const TemplateStore = ({ className, id }) => (
   <TemplateContext.Consumer>
     {({ data, view, websiteId }) => {
       const { items, ...props } = getSectionById(data, id || STORE);
@@ -44,15 +32,15 @@ const TemplateStore = ({
           <Link to={`/${websiteId}/editor/store${(id && `/${id}`) || ''}`}>
             <div className={styles.Container}>
               {get(items, STORE_APP_STORE) && (
-                <Button {...props}
-                  variant={STORE_APP_STORE}
+                <Button
+                  {...props} variant={STORE_APP_STORE}
                   view={view}
                 />
               )}
 
               {get(items, STORE_GOOGLE_PLAY) && (
-                <Button {...props}
-                  variant={STORE_GOOGLE_PLAY}
+                <Button
+                  {...props} variant={STORE_GOOGLE_PLAY}
                   view={view}
                 />
               )}

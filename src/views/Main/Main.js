@@ -25,12 +25,7 @@ import Websites from 'views/Websites';
 // Styles
 import styles from './Main.scss';
 
-const Main = ({
-  isFetching,
-  location,
-  match,
-  pageId,
-}) => (
+const Main = ({ isFetching, location, match, pageId }) => (
   <Fragment>
     {isFetching ? (
       <Spinner title="Fetching websites..." />
@@ -47,20 +42,20 @@ const Main = ({
             <div className={styles.Container}>
               <TransitionGroup>
                 <CSSTransition
+                  key={pageId}
                   classNames={{
                     enter: styles.ContainerAnimateEnter,
                     enterDone: styles.ContainerAnimateEnterDone,
                     exit: styles.ContainerAnimateExit,
                     exitActive: styles.ContainerAnimateExitActive,
                   }}
-                  key={pageId}
                   timeout={{ enter: 400, exit: 400 }}
                   unmountOnExit
                 >
                   <Switch location={location}>
-                    <Route path={url.resolve(match.url, '/search')} component={Search} />
-                    <Route path={url.resolve(match.url, '/:websiteId')} component={Website} />
-                    <Route path={url.resolve(match.url, '/')} component={Websites} />
+                    <Route component={Search} path={url.resolve(match.url, '/search')} />
+                    <Route component={Website} path={url.resolve(match.url, '/:websiteId')} />
+                    <Route component={Websites} path={url.resolve(match.url, '/')} />
                   </Switch>
                 </CSSTransition>
               </TransitionGroup>
@@ -78,11 +73,14 @@ const mapStateToProps = ({ views }, { location }) => {
   return {
     isFetching: get(views, 'main.isFetching'),
     pageId: get(match, 'params.pageId', 'main'),
-  }
+  };
 };
 
 export default compose(
-  connect(mapStateToProps, { fetchWebsites }),
+  connect(
+    mapStateToProps,
+    { fetchWebsites },
+  ),
   lifecycle({
     componentDidMount() {
       this.props.fetchWebsites();

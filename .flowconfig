@@ -11,6 +11,9 @@
 [lints]
 
 [options]
+; Extensions
+module.file_ext=.scss
+
 module.name_mapper='^api' ->'<PROJECT_ROOT>/src/api'
 module.name_mapper='^assets' ->'<PROJECT_ROOT>/src/assets'
 module.name_mapper='^components' ->'<PROJECT_ROOT>/src/components'

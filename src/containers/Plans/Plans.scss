@@ -2,6 +2,54 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+
+  &Animate {
+    &Enter {
+      &Active {
+        .Choose {
+          transition-delay: .2s;
+        }
+
+        .Description {
+          transition-delay: .1s;
+        }
+
+        .Choose,
+        .Description,
+        .Title {
+          opacity: 1 !important;
+          transform: translateY(0) !important;
+          transition-duration: .4s;
+          transition-property: all;
+        }
+      }
+
+      .Choose,
+      .Description,
+      .Title {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+    }
+  }
+
+  &Has {
+    &Price {
+      .Header {
+        height: 0;
+        opacity: 0;
+        transition: all 4s;
+      }
+    }
+  }
+}
+
+.Choose {
+  color: #7a8a9a;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 32px;
 }
 
 .Description {
@@ -12,15 +60,16 @@
   margin: 16px 0 0;
 }
 
-.Price {
-  margin: 40px 0 0;
+.Header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 140px;
+}
 
-  &Title {
-    color: #7a8a9a;
-    font-size: 24px;
-    font-weight: 900;
-    line-height: 32px;
-  }
+.List {
+  margin: 40px 0 0;
+  width: 1200px;
 }
 
 .Title {

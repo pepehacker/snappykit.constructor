@@ -1,0 +1,29 @@
+.Root {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  margin: 64px 0 0;
+  width: 1200px;
+
+  & > * {
+    flex: 0 0 270px;
+  }
+}
+
+.Item {
+  &Animate {
+    &Enter {
+      opacity: 0;
+      transform: translateY(20%);
+      transition: all .4s;
+      visibility: hidden;
+
+
+      &Active {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+      }
+    }
+  }
+}

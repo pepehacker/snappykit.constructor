@@ -2,24 +2,10 @@ import classNames from 'classnames';
 import React from 'react';
 
 // Entities
-import {
-  COPYRIGHT,
-  DESCRIPTION,
-  TITLE,
-  VIEW,
-} from 'entities/template/constants';
+import { COPYRIGHT, DESCRIPTION, TITLE, VIEW } from 'entities/template/constants';
 
 // Template
-import {
-  Background,
-  Icon,
-  Policy,
-  Social,
-  Store,
-  Text,
-
-  TemplateContext,
-} from 'template';
+import { Background, Icon, Policy, Social, Store, Text, TemplateContext } from 'template';
 
 // Styles
 import styles from './Template2.scss';
@@ -34,10 +20,12 @@ const Template2 = () => (
       });
 
       return (
-        <Background classNames={{
-          root: rootClassNames,
-          container: styles.Container
-        }}>
+        <Background
+          classNames={{
+            root: rootClassNames,
+            container: styles.Container,
+          }}
+        >
           <header className={styles.Header}>
             <div />
             <Policy className={styles.Policy} />

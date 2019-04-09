@@ -31,10 +31,8 @@ const Background = ({
 
     <Container>
       <Form
-        form={id}
-        initialValues={initialValues}
-        key={id}
-        onChange={handleChange}
+        key={id} form={id}
+        initialValues={initialValues} onChange={handleChange}
       />
     </Container>
   </div>
@@ -50,24 +48,38 @@ const mapStateToProps = (state: Object, { location }) => {
   const initialValues = getSectionById(state, websiteId, id || BACKGROUND);
 
   return {
-    id, initialValues, websiteId,
+    id,
+    initialValues,
+    websiteId,
     withText: id && get(initialValues, 'text') !== undefined,
   };
 };
 
 export default compose(
-  connect(mapStateToProps, { updateWebsiteSection }),
+  connect(
+    mapStateToProps,
+    { updateWebsiteSection },
+  ),
   withHandlers({
-    handleChange: ({ id, updateWebsiteSection, websiteId }): func =>
-      (value: Object, dispatch: func, { change, ...props }, prevValue: Object): void => {
-        updateWebsiteSection(websiteId, id || BACKGROUND, value);
+    handleChange: ({ id, updateWebsiteSection, websiteId }): func => (
+      value: Object,
+      dispatch: func,
+      { change, ...props },
+      prevValue: Object,
+    ): void => {
+      updateWebsiteSection(websiteId, id || BACKGROUND, value);
 
-        // @todo - temporary shit
-        if (get(value, 'image') !== get(prevValue, 'image')) {
-          dispatch(change('color', 'rgba(255, 255, 255, 0)'));
-          dispatch(change('gradient', { angle: 0, from: 'rgba(255, 255, 255, 0)', to: 'rgba(255, 255, 255, 0)' }));
-        }
-      },
-
+      // @todo - temporary shit
+      if (get(value, 'image') !== get(prevValue, 'image')) {
+        dispatch(change('color', 'rgba(255, 255, 255, 0)'));
+        dispatch(
+          change('gradient', {
+            angle: 0,
+            from: 'rgba(255, 255, 255, 0)',
+            to: 'rgba(255, 255, 255, 0)',
+          }),
+        );
+      }
+    },
   }),
 )(Background);

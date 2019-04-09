@@ -38,7 +38,10 @@ const SmartphoneForm = ({
         ))}
     </Select>
 
-    <Select label="Style" name="style" placeholder="Choose a style">
+    <Select
+      label="Style" name="style"
+      placeholder="Choose a style"
+    >
       {get(SMARTPHONE_STYLE, 'values', [])
         .map(({ label, value: itemValue }): func => (
           <SelectItem

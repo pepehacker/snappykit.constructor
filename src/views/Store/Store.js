@@ -28,9 +28,9 @@ const Store = ({
 
     <Container>
       <Form
+        key={id}
         form={id}
         initialValues={initialValues}
-        key={id}
         onChange={handleChange}
       />
     </Container>

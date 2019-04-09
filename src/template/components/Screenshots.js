@@ -10,20 +10,14 @@ import Link from './Link';
 import { SCREENSHOTS, VIEW } from 'entities/template/constants';
 
 // Template
-import {
-  getSectionById,
-  TemplateContext
-} from 'template';
+import { getSectionById, TemplateContext } from 'template';
 
 // Styles
 import styles from './Screenshots.scss';
 
 const TemplateScreenshots = ({
   className,
-  classNames: {
-    root: rootClassName,
-    item: itemClassName,
-  } = {},
+  classNames: { root: rootClassName, item: itemClassName } = {},
   id,
   settings,
 }) => (
@@ -53,15 +47,16 @@ const TemplateScreenshots = ({
           <Link to={`/${websiteId}/editor/screenshots${(id && `/${id}`) || ''}`}>
             <div className={styles.Container}>
               <Slider {...sliderSettings} className={styles.Slider}>
-                {(items || []).map((source: stirng, index: number): func => (
-                  <div className={itemClassNames} key={index}>
-                    <img
-                      alt="Screenshot"
-                      className={styles.Image}
-                      src={source}
-                    />
-                  </div>
-                ))}
+                {(items || []).map(
+                  (source: stirng, index: number): func => (
+                    <div key={index} className={itemClassNames}>
+                      <img
+                        alt="Screenshot" className={styles.Image}
+                        src={source}
+                      />
+                    </div>
+                  ),
+                )}
               </Slider>
             </div>
           </Link>

@@ -22,15 +22,13 @@ import styles from './App.scss';
 
 const App = ({ match, user }) => (
   <div className={styles.Root}>
-    {!user && (
-      <Spinner title="Fetching user..." />
-    )}
+    {!user && <Spinner title="Fetching user..." />}
 
     {user && (
       <Fragment>
         <Switch>
-          <Route path={url.resolve(match.url, '/sandbox')} component={Sandbox} />
-          <Route path={url.resolve(match.url, '/')} component={Main} />
+          <Route component={Sandbox} path={url.resolve(match.url, '/sandbox')} />
+          <Route component={Main} path={url.resolve(match.url, '/')} />
         </Switch>
 
         <Plans />
@@ -39,11 +37,13 @@ const App = ({ match, user }) => (
   </div>
 );
 
-const mapStateToProps = ({ services }) =>
-  get(services, 'session');
+const mapStateToProps = ({ services }) => get(services, 'session');
 
 export default compose(
-  connect(mapStateToProps, { fetchProfile }),
+  connect(
+    mapStateToProps,
+    { fetchProfile },
+  ),
   lifecycle({
     componentDidMount() {
       const { fetchProfile, token } = this.props;
@@ -54,3 +54,5 @@ export default compose(
     },
   }),
 )(App);
+
+// bd95e139ac9aed83c895c951bfb947a29ca2d5a9729b5bb8fa

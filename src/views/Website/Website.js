@@ -45,16 +45,14 @@ const Website = ({
       <div className={styles.Menu}>
         <Menu websiteId={websiteId} />
 
-        <div className={styles.Copyright}>
-          © 2018 Snappykit. All rights reserved
-        </div>
+        <div className={styles.Copyright}>© 2018 Snappykit. All rights reserved</div>
       </div>
 
       {isEditable && websiteId && (
         <div className={styles.Container}>
           <Switch>
-            <Route path={url(match.url, '/domain')} component={Domain} />
-            <Route path={url(match.url, '/editor')} component={Editor} />
+            <Route component={Domain} path={url(match.url, '/domain')} />
+            <Route component={Editor} path={url(match.url, '/editor')} />
           </Switch>
         </div>
       )}
@@ -78,12 +76,15 @@ const mapStateToProps = (state: Object, { match }) => {
 };
 
 export default compose(
-  connect(mapStateToProps, { fetchTemplate }),
+  connect(
+    mapStateToProps,
+    { fetchTemplate },
+  ),
   withState('isMounted', 'setMounted', false),
   lifecycle({
     componentDidMount() {
       this.props.fetchTemplate(1);
       this.props.setMounted(true);
-    }
-  })
+    },
+  }),
 )(Website);

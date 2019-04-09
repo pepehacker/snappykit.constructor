@@ -42,10 +42,8 @@ const FormLink = ({
   return (
     <div className={rootClassNames}>
       <div
-        className={styles.Trigger}
-        onClick={handleTriggerClick}
-        role="button"
-        tabIndex={0}
+        className={styles.Trigger} onClick={handleTriggerClick}
+        role="button" tabIndex={0}
       >
         <i className={iconClassNames} />
 
@@ -61,28 +59,26 @@ const FormLink = ({
               rel="noopener noreferrer"
               target="_blank"
             >
-              @{last(value.split('/'))}
+              @
+              {last(value.split('/'))}
             </a>
           )}
         </div>
 
         {isPro ? (
-          <div className={styles.Pro}>
-            Pro
-          </div>
+          <div className={styles.Pro}>Pro</div>
         ) : (
           <button
-            className={styles.Plus}
-            onClick={handleReset}
+            className={styles.Plus} onClick={handleReset}
             type="button"
           />
         )}
       </div>
 
       <div
+        ref={registerDropdown}
         className={styles.Dropdown}
         onBlur={handleDropdownBlur}
-        ref={registerDropdown}
         role="listbox"
         tabIndex={0}
       >
@@ -116,13 +112,9 @@ const ComposedFormLink = compose(
     let dropdownRef;
 
     return {
-      handleDropdownBlur: ({
-        onChange,
-        prefix,
-        setBusy,
-        setOpen,
-        value,
-      }) => (event: Object): void => {
+      handleDropdownBlur: ({ onChange, prefix, setBusy, setOpen, value }) => (
+        event: Object,
+      ): void => {
         if (!dropdownRef.contains(event.relatedTarget)) {
           setBusy(true);
           setOpen(false);
@@ -130,13 +122,11 @@ const ComposedFormLink = compose(
           setTimeout(() => setBusy(false), 200);
 
           if (value && onChange) {
-            prefix
-              ? onChange(`${prefix}${last(value.split('/'))}`)
-              : onChange(value);
+            prefix ? onChange(`${prefix}${last(value.split('/'))}`) : onChange(value);
           }
         }
       },
-      handleKeyDown: ({ setOpen }): func => (event: Object): bool =>
+      handleKeyDown: ({ setOpen }): func => (event: Object): boolean =>
         event.keyCode === 13 && setOpen(false),
       handleReset: ({ isOpened, onChange, value }) => (event: Object): void => {
         if (!isOpened && value) {
@@ -144,7 +134,7 @@ const ComposedFormLink = compose(
           onChange && onChange('');
         }
       },
-      handleTriggerClick: ({ isBusied, isOpened, isPro, setOpen }): func => (): bool =>
+      handleTriggerClick: ({ isBusied, isOpened, isPro, setOpen }): func => (): boolean =>
         !isBusied && !isPro && setOpen(!isOpened),
 
       // Registers
