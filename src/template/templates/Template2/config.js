@@ -4,27 +4,42 @@ import { get } from 'lodash';
 // Entities
 import {
   // Background
-  BACKGROUND, BACKGROUND_SCHEMA,
+  BACKGROUND,
+  BACKGROUND_SCHEMA,
   // Icon
-  ICON, ICON_SCHEMA,
+  ICON,
+  ICON_SCHEMA,
   // POLICY
-  POLICY, POLICY_SCHEMA,
-  POLICY_PRIVACY, POLICY_TERMS,
+  POLICY,
+  POLICY_SCHEMA,
+  POLICY_PRIVACY,
+  POLICY_TERMS,
   // Screenshots
-  SCREENSHOTS, SCREENSHOTS_SCHEMA,
+  SCREENSHOTS,
+  SCREENSHOTS_SCHEMA,
   // Smartphone
-  SMARTPHONE, SMARTPHONE_SCHEMA, SMARTPHONE_MOCKUP,
+  SMARTPHONE,
+  SMARTPHONE_SCHEMA,
+  SMARTPHONE_MOCKUP,
   // Social
-  SOCIAL, SOCIAL_SCHEMA,
-  SOCIAL_FACEBOOK, SOCIAL_INSTAGRAM, SOCIAL_TWITTER,
+  SOCIAL,
+  SOCIAL_SCHEMA,
+  SOCIAL_FACEBOOK,
+  SOCIAL_INSTAGRAM,
+  SOCIAL_TWITTER,
   // Store
-  STORE, STORE_SCHEMA,
-  STORE_APP_STORE, STORE_GOOGLE_PLAY,
+  STORE,
+  STORE_SCHEMA,
+  STORE_APP_STORE,
+  STORE_GOOGLE_PLAY,
   // Common
-  COPYRIGHT, DESCRIPTION, TEXT_SCHEMA, TITLE,
-} from 'entities/template/constants';
+  COPYRIGHT,
+  DESCRIPTION,
+  TEXT_SCHEMA,
+  TITLE,
+} from 'template';
 
-export default ({
+export default {
   id: 2,
   section: {
     [BACKGROUND]: {
@@ -42,20 +57,22 @@ export default ({
       export: ['text'],
       schema: TEXT_SCHEMA({
         color: 'rgba(255, 255, 255, .4)',
-        text: '©2018 Enlight'
+        text: '©2018 Enlight',
       }),
     },
     [DESCRIPTION]: {
       export: ['text'],
       schema: TEXT_SCHEMA({
         color: 'rgba(255, 255, 255, .8)',
-        text: 'The most comprehensive, highest quality photo editing app so powerful and user-friendly it’ll be the last photo app you ever download.'
+        text:
+          'The most comprehensive, highest quality photo editing app so powerful and user-friendly it’ll be the last photo app you ever download.',
       }),
     },
     [ICON]: {
       export: ['src'],
       schema: ICON_SCHEMA({
-        src: 'https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/44/88/0d/44880de1-a4ca-1c1d-39bb-2ee7548a3e70/source/512x512bb.jpg',
+        src:
+          'https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/44/88/0d/44880de1-a4ca-1c1d-39bb-2ee7548a3e70/source/512x512bb.jpg',
       }),
     },
     [POLICY]: {
@@ -85,8 +102,8 @@ export default ({
     [TITLE]: {
       export: ['text'],
       schema: TEXT_SCHEMA({
-        text: 'Enlight Photofox'
+        text: 'Enlight Photofox',
       }),
     },
   },
-});
+};

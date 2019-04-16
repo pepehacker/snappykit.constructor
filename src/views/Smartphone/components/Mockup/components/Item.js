@@ -5,23 +5,12 @@ import React from 'react';
 import { compose, withHandlers, withState } from 'recompose';
 
 // Entities
-import {
-  SMARTPHONE,
-  SMARTPHONE_MODEL,
-  SMARTPHONE_STYLE,
-} from 'entities/template/constants';
+import { SMARTPHONE, SMARTPHONE_MODEL, SMARTPHONE_STYLE } from 'template';
 
 // Styles
 import styles from './Item.scss';
 
-const SmartphoneMockupItem = ({
-  handleClick,
-  handleLoad,
-  id,
-  isCurrent,
-  isLoaded,
-  model,
-}) => {
+const SmartphoneMockupItem = ({ handleClick, handleLoad, id, isCurrent, isLoaded, model }) => {
   const className = classNames(styles.Root, {
     [styles.RootIsCurrent]: isCurrent,
     [styles.RootIsLoaded]: isLoaded,
@@ -31,11 +20,7 @@ const SmartphoneMockupItem = ({
   });
 
   return (
-    <div
-      className={className}
-      onClick={handleClick}
-      role="button"
-    >
+    <div className={className} onClick={handleClick} role="button">
       <img
         alt={id}
         className={styles.Preview}
@@ -58,9 +43,7 @@ SmartphoneMockupItem.propTypes = {
 export default compose(
   withState('isLoaded', 'setLoad', true),
   withHandlers({
-    handleClick: ({ id, onClick }) => () =>
-      onClick && onClick(id),
-    handleLoad: ({ setLoad }) => () =>
-      setLoad && setLoad(false),
+    handleClick: ({ id, onClick }) => () => onClick && onClick(id),
+    handleLoad: ({ setLoad }) => () => setLoad && setLoad(false),
   }),
 )(SmartphoneMockupItem);

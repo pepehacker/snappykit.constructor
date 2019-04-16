@@ -5,7 +5,7 @@ import { Field } from 'components/Form';
 import Card from './components/Card';
 
 // Entities
-import { BACKGROUND_LIST } from 'entities/template';
+import { BACKGROUND_LIST } from 'template/config';
 
 // Styles
 import styles from './Image.scss';

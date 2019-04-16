@@ -11,7 +11,6 @@ import url from 'url-join';
 import Menu from './components/Menu';
 
 // Entities
-import { fetchTemplate } from 'entities/template';
 import { isEditable } from 'entities/websites/selector';
 
 // Views
@@ -76,14 +75,10 @@ const mapStateToProps = (state: Object, { match }) => {
 };
 
 export default compose(
-  connect(
-    mapStateToProps,
-    { fetchTemplate },
-  ),
+  connect(mapStateToProps),
   withState('isMounted', 'setMounted', false),
   lifecycle({
     componentDidMount() {
-      this.props.fetchTemplate(1);
       this.props.setMounted(true);
     },
   }),

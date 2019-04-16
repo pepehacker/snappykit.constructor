@@ -2,13 +2,15 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-// Entities
-import { BACKGROUND, VIEW } from 'entities/template/constants';
-
 // Template
 import {
+  // Constants
+  BACKGROUND,
+  VIEW,
+  // Provider
+  TemplateContext,
+  // Selector
   getSectionById,
-  TemplateContext
 } from 'template';
 
 // Styles
@@ -16,10 +18,7 @@ import styles from './Background.scss';
 
 const TemplateBackground = ({
   className,
-  classNames: {
-    root: rootClassName,
-    container: containerClassName,
-  } = {},
+  classNames: { root: rootClassName, container: containerClassName } = {},
   children,
   id,
 }) => (
@@ -33,15 +32,10 @@ const TemplateBackground = ({
 
       const containerClassNames = classNames(containerClassName, styles.Container);
 
-      const {
-        color,
-        gradient: {
-          angle,
-          from,
-          to,
-        } = {},
-        image,
-      } = getSectionById(data, id || BACKGROUND);
+      const { color, gradient: { angle, from, to } = {}, image } = getSectionById(
+        data,
+        id || BACKGROUND,
+      );
 
       return (
         <div className={rootClassNames}>
@@ -64,7 +58,7 @@ const TemplateBackground = ({
             />
           )}
 
-          {(from && to) && (
+          {from && to && (
             <div
               className={styles.Cover}
               style={{

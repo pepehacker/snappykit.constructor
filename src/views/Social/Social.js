@@ -11,26 +11,22 @@ import { Container, Title } from 'views/Editor';
 import Form from './containers/Form';
 
 // Entities
-import { SOCIAL } from 'entities/template/constants';
 import { updateWebsiteSection } from 'entities/websites/actions';
 import { getSectionById } from 'entities/websites/selector';
 
+// Template
+import { SOCIAL } from 'template';
+
 import styles from './Social.scss';
 
-const Social = ({
-  handleChange,
-  id,
-  initialValues,
-}) => (
+const Social = ({ handleChange, id, initialValues }) => (
   <div className={styles.Root}>
     <Title title="Social" />
 
     <Container>
       <Form
-        key={id}
-        form={id}
-        initialValues={initialValues}
-        onChange={handleChange}
+        key={id} form={id}
+        initialValues={initialValues} onChange={handleChange}
       />
     </Container>
   </div>
@@ -50,10 +46,12 @@ const mapStateToProps = (state: Object, { location }): Object => {
 };
 
 export default compose(
-  connect(mapStateToProps, { updateWebsiteSection }),
+  connect(
+    mapStateToProps,
+    { updateWebsiteSection },
+  ),
   withHandlers({
-    handleChange: ({ id, updateWebsiteSection, websiteId }): func =>
-      (value: Object): void =>
-        updateWebsiteSection(websiteId, id || SOCIAL, value),
+    handleChange: ({ id, updateWebsiteSection, websiteId }): func => (value: Object): void =>
+      updateWebsiteSection(websiteId, id || SOCIAL, value),
   }),
 )(Social);

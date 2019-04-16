@@ -1,11 +1,8 @@
 // Entities
-import { VIEW } from 'entities/template/constants';
+import { VIEW } from 'template';
 
 // Types
-import {
-  SET_BUSY,
-  SET_VIEW,
-} from './types';
+import { SET_BUSY, SET_VIEW } from './types';
 
 const initialState = {
   isBusied: true,

@@ -5,13 +5,15 @@ import React from 'react';
 // Components
 import Link from './Link';
 
-// Entities
-import { SMARTPHONE, VIEW } from 'entities/template/constants';
-
 // Template
 import {
+  // Config
+  SMARTPHONE,
+  VIEW,
+  // Provider
+  TemplateContext,
+  // Selectors
   getSectionById,
-  TemplateContext
 } from 'template';
 
 // Styles
@@ -20,11 +22,7 @@ import styles from './Smartphone.scss';
 const TemplateSmartphone = ({
   children,
   className,
-  classNames: {
-    root: rootClassName,
-    container: containerClassName,
-    mockup: mockupClassName,
-  } = {},
+  classNames: { root: rootClassName, container: containerClassName, mockup: mockupClassName } = {},
   id,
 }) => (
   <TemplateContext.Consumer>
@@ -49,16 +47,14 @@ const TemplateSmartphone = ({
             <div
               className={mockupClassNames}
               style={{
-                backgroundImage: `url(${require(`assets/mockup/${model}/${mockup}.png`)})`, /* eslint-disable-line */
+                backgroundImage: `url(${require(`assets/mockup/${model}/${mockup}.png`)})` /* eslint-disable-line */,
               }}
             />
           </Link>
 
-          {children && (
-            <div className={containerClassNames}>
-              {children}
-            </div>
-          )}
+          {children && <div className={containerClassNames}>
+            {children}
+          </div>}
         </div>
       );
     }}

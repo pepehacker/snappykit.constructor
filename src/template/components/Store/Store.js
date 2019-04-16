@@ -7,11 +7,18 @@ import React from 'react';
 import Button from './components/Button';
 import Link from '../Link';
 
-// Entities
-import { STORE, STORE_APP_STORE, STORE_GOOGLE_PLAY, VIEW } from 'entities/template/constants';
-
 // Template
-import { getSectionById, TemplateContext } from 'template';
+import {
+  // Config
+  STORE,
+  STORE_APP_STORE,
+  STORE_GOOGLE_PLAY,
+  VIEW,
+  // Provider
+  TemplateContext,
+  // Selectors
+  getSectionById,
+} from 'template';
 
 // Styles
 import styles from './Store.scss';

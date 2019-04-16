@@ -11,27 +11,23 @@ import { Container, Title } from 'views/Editor';
 import Form from './containers/Form';
 
 // Entities
-import { STORE } from 'entities/template/constants';
 import { updateWebsiteSection } from 'entities/websites/actions';
 import { getSectionById } from 'entities/websites/selector';
+
+// Template
+import { STORE } from 'template';
 
 // Styles
 import styles from './Store.scss';
 
-const Store = ({
-  handleChange,
-  id,
-  initialValues,
-}) => (
+const Store = ({ handleChange, id, initialValues }) => (
   <div className={styles.Root}>
     <Title title="Store" />
 
     <Container>
       <Form
-        key={id}
-        form={id}
-        initialValues={initialValues}
-        onChange={handleChange}
+        key={id} form={id}
+        initialValues={initialValues} onChange={handleChange}
       />
     </Container>
   </div>
@@ -50,10 +46,12 @@ const mapStateToProps = (state: Object, { location }): Object => {
 };
 
 export default compose(
-  connect(mapStateToProps, { updateWebsiteSection }),
+  connect(
+    mapStateToProps,
+    { updateWebsiteSection },
+  ),
   withHandlers({
-    handleChange: ({ id, updateWebsiteSection, websiteId }): func =>
-      (value: Object): void =>
-        updateWebsiteSection(websiteId, id || STORE, value),
+    handleChange: ({ id, updateWebsiteSection, websiteId }): func => (value: Object): void =>
+      updateWebsiteSection(websiteId, id || STORE, value),
   }),
 )(Store);

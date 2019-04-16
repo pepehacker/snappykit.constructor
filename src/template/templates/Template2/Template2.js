@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React from 'react';
 
 // Entities
-import { COPYRIGHT, DESCRIPTION, TITLE, VIEW } from 'entities/template/constants';
+import { COPYRIGHT, DESCRIPTION, TITLE, VIEW } from 'template/constants';
 
 // Template
 import { Background, Icon, Policy, Social, Store, Text, TemplateContext } from 'template';

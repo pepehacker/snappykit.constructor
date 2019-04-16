@@ -8,45 +8,33 @@ import { formValueSelector, reduxForm } from 'redux-form';
 import Form, { Color, Link } from 'components/Form';
 import ColorSwitcher from '../components/ColorSwitcher';
 
-// Entities
-import { STORE_BACKGROUND, STORE_COLOR } from 'entities/template/constants';
+// Template
+import { STORE_BACKGROUND, STORE_COLOR } from 'template';
 
 // Styles
 import styles from './Form.scss';
 
-const StoreForm = ({
-  handleSubmit,
-  switcher = STORE_BACKGROUND,
-  ...props,
-}) => {
+const StoreForm = ({ handleSubmit, switcher = STORE_BACKGROUND, ...props }) => {
   const rootClassNames = classNames(styles.Root, {
     [styles.RootCurrentColor]: switcher === STORE_COLOR,
     [styles.RootCurrentBackground]: switcher === STORE_BACKGROUND,
   });
 
   return (
-    <Form
-      className={rootClassNames}
-      onSubmit={handleSubmit}
-    >
+    <Form className={rootClassNames} onSubmit={handleSubmit}>
       <div className={styles.Group}>
         <Link
-          icon="fa-apple"
-          label="App Store"
+          icon="fa-apple" label="App Store"
           name="items.apple"
         />
 
         <Link
-          icon="fa-google-play"
-          label="Google Play"
+          icon="fa-google-play" label="Google Play"
           name="items.play"
         />
       </div>
 
-      <ColorSwitcher
-        label="Color"
-        name="switcher"
-      />
+      <ColorSwitcher label="Color" name="switcher" />
 
       <div className={styles.Color}>
         <div className={styles.ColorTrack}>
@@ -65,5 +53,5 @@ const mapStateToProps = (state: Object) => ({
 
 export default compose(
   connect(mapStateToProps),
-  reduxForm({ form: 'storeForm' })
+  reduxForm({ form: 'storeForm' }),
 )(StoreForm);

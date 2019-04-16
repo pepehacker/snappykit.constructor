@@ -2,14 +2,14 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-// Entities
+// Template
 import {
   SOCIAL_FACEBOOK,
   SOCIAL_INSTAGRAM,
   SOCIAL_TWITTER,
   SOCIAL_VK,
   VIEW,
-} from 'entities/template/constants';
+} from 'template/config';
 
 // Styles
 import styles from './Item.scss';

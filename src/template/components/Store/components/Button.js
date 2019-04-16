@@ -2,8 +2,8 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-// Entities
-import { STORE_APP_STORE, STORE_GOOGLE_PLAY, VIEW } from 'entities/template/constants';
+// Template
+import { STORE_APP_STORE, STORE_GOOGLE_PLAY, VIEW } from 'template/config';
 
 // Styles
 import styles from './Button.scss';

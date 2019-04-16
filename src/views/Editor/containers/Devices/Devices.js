@@ -3,8 +3,8 @@ import React from 'react';
 // Components
 import Item from './components/Item';
 
-// Entities
-import { VIEW } from 'entities/template/constants';
+// Template
+import { VIEW } from 'template';
 
 import styles from './Devices.scss';
 

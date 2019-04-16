@@ -6,11 +6,16 @@ import Slider from 'react-slick';
 // Components
 import Link from './Link';
 
-// Entities
-import { SCREENSHOTS, VIEW } from 'entities/template/constants';
-
 // Template
-import { getSectionById, TemplateContext } from 'template';
+import {
+  // Config
+  SCREENSHOTS,
+  VIEW,
+  // Provider
+  TemplateContext,
+  // Selectors
+  getSectionById,
+} from 'template';
 
 // Styles
 import styles from './Screenshots.scss';

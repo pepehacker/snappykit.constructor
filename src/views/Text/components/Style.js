@@ -5,8 +5,8 @@ import { compose, withHandlers } from 'recompose';
 // Components
 import { Field } from 'components/Form';
 
-// Entities
-import { TEXT_STYLE_VALUES } from 'entities/template/constants';
+// Template
+import { TEXT_STYLE_VALUES } from 'template';
 
 // Utils
 import { capitalize } from 'utils/string';

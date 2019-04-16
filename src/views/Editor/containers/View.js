@@ -9,11 +9,10 @@ import { compose, lifecycle, withHandlers, withState } from 'recompose';
 import { setBusy } from '../ducks/actions';
 
 // Entities
-import { VIEW } from 'entities/template/constants';
 import { getWebsiteById } from 'entities/websites';
 
 // Templates
-import Template, { TemplateContext } from 'template';
+import Template, { TemplateContext, VIEW } from 'template';
 
 // Styles
 import styles from './View.scss';
@@ -37,21 +36,15 @@ const EditorView = ({
   });
 
   return (
-    <div
-      ref={registerRoot}
-      className={rootClassNames}
-    >
+    <div ref={registerRoot} className={rootClassNames}>
       <div
-        ref={registerContainer}
-        className={styles.Container}
+        ref={registerContainer} className={styles.Container}
         style={size}
       >
-        {scale < 1 && (
-          <div className={styles.Scale}>
-            {Math.floor(scale * 100)}
-            %
-          </div>
-        )}
+        {scale < 1 && <div className={styles.Scale}>
+          {Math.floor(scale * 100)}
+%
+        </div>}
 
         <TemplateContext.Provider
           value={{
@@ -79,29 +72,30 @@ const mapStateToProps = ({ views, ...state }, { location }) => {
   const website = getWebsiteById(state, get(match, 'params.websiteId'));
 
   return {
-    ...get(views, 'editor'), website,
+    ...get(views, 'editor'),
+    website,
     templateId: get(website, 'templateId'),
   };
 };
 
-export default withRouter(compose(
-  connect(mapStateToProps, { setBusy }),
-  withState('scale', 'setScale', 1),
-  withState('size', 'setSize', {}),
-  withState('templateSize', 'setTemplateSize', {}),
-  withHandlers(() => {
-    let $root;
-    let $container;
+export default withRouter(
+  compose(
+    connect(
+      mapStateToProps,
+      { setBusy },
+    ),
+    withState('scale', 'setScale', 1),
+    withState('size', 'setSize', {}),
+    withState('templateSize', 'setTemplateSize', {}),
+    withHandlers(() => {
+      let $root;
+      let $container;
 
-    return {
-      // Updaters
-      handleResize: ({
-        setTemplateSize,
-        setScale,
-        setSize,
-        view,
-      }): func =>
-        (event: Object): void => {
+      return {
+        // Updaters
+        handleResize: ({ setTemplateSize, setScale, setSize, view }): func => (
+          event: Object,
+        ): void => {
           if ($root) {
             let newSize;
             let newScale;
@@ -112,7 +106,7 @@ export default withRouter(compose(
             switch (view) {
               case VIEW.DESKTOP:
                 newSize = {
-                  height: Math.min(720, rootWidth / 16 * 9),
+                  height: Math.min(720, (rootWidth / 16) * 9),
                   width: Math.min(1280, rootWidth),
                 };
                 newScale = newSize.width / 1280;
@@ -120,14 +114,14 @@ export default withRouter(compose(
               case VIEW.MOBILE:
                 newSize = {
                   height: Math.min(667, rootHeight),
-                  width: Math.min(375, rootHeight / 16 * 9),
+                  width: Math.min(375, (rootHeight / 16) * 9),
                 };
                 newScale = newSize.width / 375;
                 break;
               case VIEW.TABLET:
                 newSize = {
                   height: Math.min(1024, rootHeight),
-                  width: Math.min(768, rootHeight / 16 * 12),
+                  width: Math.min(768, (rootHeight / 16) * 12),
                 };
                 newScale = newSize.width / 768;
                 break;
@@ -145,42 +139,40 @@ export default withRouter(compose(
           }
         },
 
-      // Registers
-      registerContainer: (): func =>
-        (node: HTMLDivElement): void => {
+        // Registers
+        registerContainer: (): func => (node: HTMLDivElement): void => {
           $container = node;
         },
-      registerRoot: (): func =>
-        (node: HTMLDivElement): void => {
+        registerRoot: (): func => (node: HTMLDivElement): void => {
           $root = node;
         },
 
-      // Updaters
-      updateTemplateSize: ({ templateSize, setTemplateSize }): func =>
-        (event: Object) => (
-          get(templateSize, 'width') !== $container.firstChild.clientWidth ||
-          get(templateSize, 'height') !== $container.firstChild.clientHeight
-        ) && setTemplateSize({
-          height: $container.firstChild.clientHeight,
-          width: $container.firstChild.clientWidth,
-        }),
-    }
-  }),
-  lifecycle({
-    componentDidMount() {
-      const { handleResize } = this.props;
-      handleResize();
-      window.addEventListener('resize', handleResize, false);
-    },
-    componentDidUpdate({ view: prevView }) {
-      const { handleResize, updateTemplateSize, view } = this.props;
-      // Update container size
-      view !== prevView && handleResize();
-      // Update template size
-      updateTemplateSize();
-    },
-    componentWillUnmount() {
-      window.removeEventListener('resize', this.props.handleResize, false);
-    },
-  }),
-)(EditorView));
+        // Updaters
+        updateTemplateSize: ({ templateSize, setTemplateSize }): func => (event: Object) =>
+          (get(templateSize, 'width') !== $container.firstChild.clientWidth ||
+            get(templateSize, 'height') !== $container.firstChild.clientHeight) &&
+          setTemplateSize({
+            height: $container.firstChild.clientHeight,
+            width: $container.firstChild.clientWidth,
+          }),
+      };
+    }),
+    lifecycle({
+      componentDidMount() {
+        const { handleResize } = this.props;
+        handleResize();
+        window.addEventListener('resize', handleResize, false);
+      },
+      componentDidUpdate({ view: prevView }) {
+        const { handleResize, updateTemplateSize, view } = this.props;
+        // Update container size
+        view !== prevView && handleResize();
+        // Update template size
+        updateTemplateSize();
+      },
+      componentWillUnmount() {
+        window.removeEventListener('resize', this.props.handleResize, false);
+      },
+    }),
+  )(EditorView),
+);

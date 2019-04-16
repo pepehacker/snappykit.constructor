@@ -7,8 +7,8 @@ import { reduxForm } from 'redux-form';
 import Form, { Color, Select, SelectItem, Textarea } from 'components/Form';
 import Style from '../components/Style';
 
-// Entities
-import { TEXT_FONT, TEXT_FONT_VALUES, TEXT_STYLE } from 'entities/template/constants';
+// Template
+import { TEXT_FONT, TEXT_FONT_VALUES, TEXT_STYLE } from 'template';
 
 const TextForm = ({ handleSubmit, withText }) => (
   <Form onSubmit={handleSubmit}>

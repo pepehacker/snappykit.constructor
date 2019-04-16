@@ -9,27 +9,23 @@ import { Container, Title } from 'views/Editor';
 import Form from './components/Form';
 
 // Entities
-import { SCREENSHOTS } from 'entities/template/constants';
 import { updateWebsiteSection } from 'entities/websites/actions';
 import { getSectionById } from 'entities/websites/selector';
+
+// Template
+import { SCREENSHOTS } from 'template';
 
 // Styles
 import styles from './Screenshots.scss';
 
-const Screenshots = ({
-  handleChange,
-  id,
-  initialValues,
-}) => (
+const Screenshots = ({ handleChange, id, initialValues }) => (
   <div className={styles.Root}>
     <Title info="750x1334" title="Screenshots" />
 
     <Container>
       <Form
-        key={id}
-        form={id}
-        initialValues={initialValues}
-        onChange={handleChange}
+        key={id} form={id}
+        initialValues={initialValues} onChange={handleChange}
       />
     </Container>
   </div>
@@ -48,10 +44,12 @@ const mapStateToProps = (state: Object, { location }): Object => {
 };
 
 export default compose(
-  connect(mapStateToProps, { updateWebsiteSection }),
+  connect(
+    mapStateToProps,
+    { updateWebsiteSection },
+  ),
   withHandlers({
-    handleChange: ({ id, updateWebsiteSection, websiteId }): func =>
-      (value: Object): void =>
-        updateWebsiteSection(websiteId, id || SCREENSHOTS, value),
+    handleChange: ({ id, updateWebsiteSection, websiteId }): func => (value: Object): void =>
+      updateWebsiteSection(websiteId, id || SCREENSHOTS, value),
   }),
 )(Screenshots);

@@ -1,16 +1,9 @@
 import classNames from 'classnames';
 import React from 'react';
 
-// Entities
-import {
-  COPYRIGHT,
-  DESCRIPTION,
-  TITLE,
-  VIEW,
-} from 'entities/template/constants';
-
 // Template
 import {
+  // Components
   Background,
   Icon,
   Policy,
@@ -19,8 +12,12 @@ import {
   Social,
   Store,
   Text,
-
   TemplateContext,
+  // Config
+  COPYRIGHT,
+  DESCRIPTION,
+  TITLE,
+  VIEW,
 } from 'template';
 
 // Styles
@@ -39,7 +36,7 @@ const Template1 = () => (
         <Background
           classNames={{
             root: rootClassNames,
-            container: styles.Container
+            container: styles.Container,
           }}
         >
           <header className={styles.Header}>
@@ -76,9 +73,7 @@ const Template1 = () => (
                   mockup: styles.SmartphoneMockup,
                 }}
               >
-                <Screenshots
-                  classNames={{ item: styles.ScreenshotsItem }}
-                />
+                <Screenshots classNames={{ item: styles.ScreenshotsItem }} />
               </Smartphone>
             </div>
           </div>

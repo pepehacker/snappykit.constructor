@@ -5,13 +5,15 @@ import React from 'react';
 // Components
 import Link from './Link';
 
-// Entities
-import { TEXT, VIEW } from 'entities/template/constants';
-
 // Template
 import {
+  // Config
+  TEXT,
+  VIEW,
+  // Provider
+  TemplateContext,
+  // Selectors
   getSectionById,
-  TemplateContext
 } from 'template';
 
 // Styles
@@ -19,10 +21,7 @@ import styles from './Text.scss';
 
 const TemplateText = ({
   className,
-  classNames: {
-    root: rootClassName,
-    text: textClassName,
-  } = {},
+  classNames: { root: rootClassName, text: textClassName } = {},
   id,
 }) => (
   <TemplateContext.Consumer>

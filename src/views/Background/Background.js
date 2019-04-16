@@ -11,7 +11,7 @@ import { Container, Title } from 'views/Editor';
 import Form from './containers/Form';
 
 // Entities
-import { BACKGROUND } from 'entities/template';
+import { BACKGROUND } from 'template';
 import { updateWebsiteSection } from 'entities/websites/actions';
 import { getSectionById } from 'entities/websites/selector';
 

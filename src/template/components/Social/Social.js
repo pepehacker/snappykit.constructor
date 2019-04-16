@@ -7,11 +7,16 @@ import React from 'react';
 import Item from './components/Item';
 import Link from '../Link';
 
-// Entities
-import { SOCIAL, VIEW } from 'entities/template/constants';
-
 // Template
-import { getSectionById, TemplateContext } from 'template';
+import {
+  // Config
+  SOCIAL,
+  VIEW,
+  // Provider
+  TemplateContext,
+  // Selectors
+  getSectionById,
+} from 'template';
 
 // Styles
 import styles from './Social.scss';

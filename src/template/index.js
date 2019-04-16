@@ -3,9 +3,9 @@ import { createContext } from 'react';
 
 // Templates
 import * as Template1 from './templates/Template1';
-import * as Template2 from './templates/Template2';
+// import * as Template2 from './templates/Template2';
 
-export const TEMPLATES = [Template1, Template2].map(({ config, ...props }) => ({
+export const TEMPLATES = [Template1].map(({ config, ...props }) => ({
   ...props,
   config,
   id: get(config, 'id'),
@@ -33,10 +33,8 @@ export { default as Social } from './components/Social';
 export { default as Store, StoreButton } from './components/Store';
 export { default as Text } from './components/Text';
 
-// Ducks
-export * from './ducks';
+// Config
+export * from './config';
 
 // Utils
-export { default as convertTemplateData } from './utils/convertTemplateData';
-export { default as createTemplateData } from './utils/createTemplateData';
-export { default as getTemplateExportData } from './utils/getTemplateExportData';
+export * from './utils';

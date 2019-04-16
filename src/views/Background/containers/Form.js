@@ -10,12 +10,8 @@ import Tabs, { Tab } from 'components/Tabs';
 import Gradient from '../components/Gradient';
 import Image from '../components/Image';
 
-// Entities
-import {
-  BACKGROUND_COLOR,
-  BACKGROUND_GRADIENT,
-  BACKGROUND_IMAGE,
-} from 'entities/template/constants';
+// Template
+import { BACKGROUND_COLOR, BACKGROUND_GRADIENT, BACKGROUND_IMAGE } from 'template';
 
 // Styles
 import styles from './Form.scss';
@@ -35,14 +31,10 @@ const BackgroundForm = ({
   });
 
   return (
-    <Form
-      className={rootClassNames}
-      onSubmit={handleSubmit}
-    >
+    <Form className={rootClassNames} onSubmit={handleSubmit}>
       <div className={styles.TabsWrapper}>
         <Tabs
-          className={styles.Tabs}
-          onChange={handleChange}
+          className={styles.Tabs} onChange={handleChange}
           value={tab}
         >
           <Tab value={BACKGROUND_IMAGE}>
@@ -91,9 +83,7 @@ const BackgroundForm = ({
 export default compose(
   withState('tab', 'setTab', BACKGROUND_IMAGE),
   withHandlers({
-    handleChange: ({ setTab }): func =>
-      (value: number|string): void =>
-        setTab(value),
+    handleChange: ({ setTab }): func => (value: number | string): void => setTab(value),
   }),
   reduxForm({
     form: 'backgroundForm',

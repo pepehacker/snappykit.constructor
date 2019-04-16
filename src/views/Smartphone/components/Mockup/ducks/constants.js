@@ -1,9 +1,5 @@
 // Entities
-import {
-  SMARTPHONE_MOCKUP,
-  SMARTPHONE_MODEL,
-  SMARTPHONE_STYLE,
-} from 'entities/template/constants';
+import { SMARTPHONE_MOCKUP, SMARTPHONE_MODEL, SMARTPHONE_STYLE } from 'template';
 
 export const MOCKUP_ITEMS = {
   [SMARTPHONE_MODEL.IPHONE]: {

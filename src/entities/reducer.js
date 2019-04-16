@@ -3,7 +3,6 @@ import { combineReducers } from 'redux';
 
 // Reducers
 import countries from './countries';
-import template from './template';
 import websites from './websites';
 
 // Types
@@ -11,7 +10,6 @@ import { UPDATE_ENTITIES } from './types';
 
 const modelsReducer = combineReducers({
   countries,
-  template,
   websites,
 });
 

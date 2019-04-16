@@ -11,17 +11,16 @@ import { Container, Title } from 'views/Editor';
 import Form from './containers/Form';
 
 // Entities
-import { SMARTPHONE } from 'entities/template/constants';
 import { updateWebsiteSection } from 'entities/websites/actions';
 import { getSectionById } from 'entities/websites/selector';
+
+// Template
+import { SMARTPHONE } from 'template';
 
 // Styles
 import styles from './Smartphone.scss';
 
-const Smarthpone = ({
-  initialValues,
-  handleChange,
-}) => (
+const Smarthpone = ({ initialValues, handleChange }) => (
   <div className={styles.Root}>
     <Title title="Smartphone" />
 
@@ -41,16 +40,25 @@ const mapStateToProps = (state: Object, { location }) => {
   const initialValues = getSectionById(state, websiteId, id || SMARTPHONE);
 
   return {
-    id, initialValues, websiteId,
+    id,
+    initialValues,
+    websiteId,
   };
 };
 
 export default compose(
-  connect(mapStateToProps, { updateWebsiteSection }),
+  connect(
+    mapStateToProps,
+    { updateWebsiteSection },
+  ),
   withHandlers({
-    handleChange: ({ id, updateWebsiteSection, websiteId }): func =>
-      (value, dispatch, props, prevValue): void =>
-        get(value, 'mockup') !== get(prevValue, 'mockup') &&
-          updateWebsiteSection(websiteId, id || SMARTPHONE, value),
+    handleChange: ({ id, updateWebsiteSection, websiteId }): func => (
+      value,
+      dispatch,
+      props,
+      prevValue,
+    ): void =>
+      get(value, 'mockup') !== get(prevValue, 'mockup') &&
+      updateWebsiteSection(websiteId, id || SMARTPHONE, value),
   }),
 )(Smarthpone);

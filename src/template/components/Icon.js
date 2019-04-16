@@ -5,13 +5,15 @@ import React from 'react';
 // Components
 import Link from './Link';
 
-// Entities
-import { ICON, VIEW } from 'entities/template/constants';
-
 // Template
 import {
+  // Config
+  ICON,
+  VIEW,
+  // Provider
+  TemplateContext,
+  // Selectors
   getSectionById,
-  TemplateContext
 } from 'template';
 
 // Styles
@@ -19,10 +21,7 @@ import styles from './Icon.scss';
 
 const TemplateIcon = ({
   className,
-  classNames: {
-    root: rootClassName,
-    icon: iconClassName,
-  } = {},
+  classNames: { root: rootClassName, icon: iconClassName } = {},
   id,
 }) => (
   <TemplateContext.Consumer>
@@ -42,8 +41,7 @@ const TemplateIcon = ({
           <Link to={`/${websiteId}/editor/icon${(id && `/${id}`) || ''}`}>
             <div className={styles.Container}>
               <img
-                alt="Icon logo"
-                className={iconClassNames}
+                alt="Icon logo" className={iconClassNames}
                 src={src}
               />
             </div>
@@ -63,4 +61,3 @@ TemplateIcon.propTypes = {
 };
 
 export default TemplateIcon;
-

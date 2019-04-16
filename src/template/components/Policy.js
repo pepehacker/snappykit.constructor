@@ -8,14 +8,15 @@ import Link from './Link';
 
 // Entities
 import {
-  POLICY, POLICY_PRIVACY, POLICY_TERMS,
+  // Config
+  POLICY,
+  POLICY_PRIVACY,
+  POLICY_TERMS,
   VIEW,
-} from 'entities/template/constants';
-
-// Template
-import {
+  // Provider
+  TemplateContext,
+  // Selectors
   getSectionById,
-  TemplateContext
 } from 'template';
 
 // Styles
@@ -23,11 +24,7 @@ import styles from './Policy.scss';
 
 const TemplatePolicy = ({
   className,
-  classNames: {
-    root: rootClassName,
-    container: containerClassName,
-    link: linkClassName,
-  } = {},
+  classNames: { root: rootClassName, container: containerClassName, link: linkClassName } = {},
   id,
 }) => (
   <TemplateContext.Consumer>
@@ -56,17 +53,9 @@ const TemplatePolicy = ({
                   fontWeight: style,
                 }}
               >
-                {get(items, POLICY_PRIVACY) && (
-                  <div className={linkClassNames}>
-                    Privacy
-                  </div>
-                )}
+                {get(items, POLICY_PRIVACY) && <div className={linkClassNames}>Privacy</div>}
 
-                {get(items, POLICY_TERMS) && (
-                  <div className={linkClassNames}>
-                    Terms
-                  </div>
-                )}
+                {get(items, POLICY_TERMS) && <div className={linkClassNames}>Terms</div>}
               </div>
             </Link>
           )}

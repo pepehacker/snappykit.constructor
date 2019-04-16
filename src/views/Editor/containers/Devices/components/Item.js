@@ -9,17 +9,11 @@ import { compose, withHandlers } from 'recompose';
 import { setView } from 'views/Editor';
 
 // Entities
-import { VIEW } from 'entities/template/constants';
+import { VIEW } from 'template';
 
 import styles from './Item.scss';
 
-const EditorDevicesItem = ({
-  className: classNameProp,
-  handleClick,
-  id,
-  isActive,
-  title,
-}) => {
+const EditorDevicesItem = ({ className: classNameProp, handleClick, id, isActive, title }) => {
   const className = classNames(classNameProp, styles.Root, {
     [styles.RootIsActive]: !!isActive,
 
@@ -30,8 +24,7 @@ const EditorDevicesItem = ({
 
   return (
     <button
-      className={className}
-      onClick={handleClick}
+      className={className} onClick={handleClick}
       type="button"
     >
       <div className={styles.Cover}>
@@ -58,14 +51,16 @@ const mapStateToProps = ({ views }, { id }) => ({
   isBusied: get(views, 'editor.isBusied'),
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   setView: (id: string): void => dispatch(setView(id)),
 });
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
   withHandlers({
-    handleClick: ({ id, isBusied, setView }): func => (): void =>
-      !!id && setView(id),
+    handleClick: ({ id, isBusied, setView }): func => (): void => !!id && setView(id),
   }),
 )(EditorDevicesItem);

@@ -9,26 +9,16 @@ import { compose, withHandlers } from 'recompose';
 // Components
 import { Field } from 'components/Form';
 
-// Template
-import { StoreButton } from 'template';
-
 // Entities
-import {
-  STORE,
-  STORE_APP_STORE,
-  STORE_BACKGROUND,
-  STORE_COLOR,
-} from 'entities/template/constants';
 import { getSectionById } from 'entities/websites/selector';
+
+// Template
+import { StoreButton, STORE, STORE_APP_STORE, STORE_BACKGROUND, STORE_COLOR } from 'template';
 
 // Styles
 import styles from './ColorSwitcher.scss';
 
-const StoreColorSwitcher = ({
-  background,
-  color,
-  handleClick,
-}) => {
+const StoreColorSwitcher = ({ background, color, handleClick }) => {
   const backgroundClassNames = classNames(styles.Trigger, styles.TriggerBackground);
   const textClassNames = classNames(styles.Trigger, styles.TriggerText);
 
@@ -43,8 +33,7 @@ const StoreColorSwitcher = ({
         />
 
         <StoreButton
-          background={background}
-          color={color}
+          background={background} color={color}
           variant={STORE_APP_STORE}
         />
 
@@ -74,17 +63,19 @@ const mapStateToProps = (state: Object, { location }): Object => {
 
   return {
     ...getSectionById(state, websiteId, id || STORE),
-    id, websiteId,
+    id,
+    websiteId,
   };
 };
 
-const ComposedStoreColorSwitcher = withRouter(compose(
-  connect(mapStateToProps),
-  withHandlers({
-    handleClick: ({ onChange }) => (value: string) =>
-      onChange && onChange(value),
-  }),
-)(StoreColorSwitcher));
+const ComposedStoreColorSwitcher = withRouter(
+  compose(
+    connect(mapStateToProps),
+    withHandlers({
+      handleClick: ({ onChange }) => (value: string) => onChange && onChange(value),
+    }),
+  )(StoreColorSwitcher),
+);
 
 export default (props: Object) => (
   <Field {...props}>

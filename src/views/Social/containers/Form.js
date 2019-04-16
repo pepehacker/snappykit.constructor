@@ -4,20 +4,13 @@ import { reduxForm } from 'redux-form';
 // Components
 import Form, { Color, Link } from 'components/Form';
 
-// Entities
-import {
-  SOCIAL_FACEBOOK,
-  SOCIAL_INSTAGRAM,
-  SOCIAL_TWITTER,
-  SOCIAL_VK,
-} from 'entities/template/constants';
+// Template
+import { SOCIAL_FACEBOOK, SOCIAL_INSTAGRAM, SOCIAL_TWITTER, SOCIAL_VK } from 'template';
 
 // Styles
 import styles from './Form.scss';
 
-const SocialForm = ({
-  handleSubmit,
-}) => (
+const SocialForm = ({ handleSubmit }) => (
   <Form onSubmit={handleSubmit}>
     <div className={styles.Group}>
       <Link
@@ -42,10 +35,8 @@ const SocialForm = ({
       />
 
       <Link
-        icon="fa-vk"
-        label="Vkontakte"
-        name={`items.${SOCIAL_VK}`}
-        prefix="https://vk.com/"
+        icon="fa-vk" label="Vkontakte"
+        name={`items.${SOCIAL_VK}`} prefix="https://vk.com/"
       />
     </div>
 
