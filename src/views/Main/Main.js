@@ -52,7 +52,7 @@ const Main = ({ isFetching, location, match, pageId }) => (
                   timeout={{ enter: 400, exit: 400 }}
                   unmountOnExit
                 >
-                  <Switch location={location}>
+                  <Switch>
                     <Route component={Search} path={url.resolve(match.url, '/search')} />
                     <Route component={Website} path={url.resolve(match.url, '/:websiteId')} />
                     <Route component={Websites} path={url.resolve(match.url, '/')} />

@@ -20,7 +20,6 @@ import styles from './Templates.scss';
 const Templates = ({
   // Props
   initialValues,
-
   // Handlers
   handleChange,
 }) => (
@@ -28,10 +27,7 @@ const Templates = ({
     <Title title="Templates" />
 
     <Container>
-      <Form
-        initialValues={initialValues}
-        onChange={handleChange}
-      />
+      <Form initialValues={initialValues} onChange={handleChange} />
     </Container>
   </div>
 );
@@ -53,9 +49,12 @@ const mapStateToProps = (state: Object, { location }) => {
 };
 
 export default compose(
-  connect(mapStateToProps, { setTemplateId }),
+  connect(
+    mapStateToProps,
+    { setTemplateId },
+  ),
   withHandlers({
-    handleChange: ({ setTemplateId, websiteId }): func =>
-      ({ templateId }): void => setTemplateId(websiteId, templateId),
+    handleChange: ({ setTemplateId, websiteId }): func => ({ templateId }): void =>
+      setTemplateId(websiteId, templateId),
   }),
 )(Templates);

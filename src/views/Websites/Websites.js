@@ -26,10 +26,8 @@ import styles from './Websites.scss';
 
 const Websites = ({
   items,
-
   // Handlers
   handleCreate,
-
   // State
   isMounted,
 }) => (
@@ -118,7 +116,8 @@ export default compose(
   }),
   lifecycle({
     componentDidMount() {
-      this.props.setMounted(true);
+      const { items, setMounted } = this.props;
+      items && items.length > 0 && setMounted(true);
     },
   }),
 )(Websites);

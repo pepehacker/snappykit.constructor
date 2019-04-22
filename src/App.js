@@ -43,6 +43,8 @@ export default compose(
   connect(
     mapStateToProps,
     { fetchProfile },
+    null,
+    { pure: false },
   ),
   lifecycle({
     componentDidMount() {

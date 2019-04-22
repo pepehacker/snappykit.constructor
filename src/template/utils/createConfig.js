@@ -1,6 +1,5 @@
 // @flow
 import { set } from 'lodash';
-import { object } from 'yup';
 
 // Config
 import {
@@ -41,7 +40,7 @@ export default (id: number, sections: Array<ConfigType> = []): Object => {
   const ALLOW_TYPES = [BACKGROUND, ICON, POLICY, SCREENSHOTS, SMARTPHONE, SOCIAL, STORE, TEXT];
   const section = {};
 
-  sections.forEach(({ id, data, exports, type }) => {
+  sections.forEach(({ id, data, exports = [], type }) => {
     let schema;
 
     // Check type allow
@@ -80,10 +79,9 @@ export default (id: number, sections: Array<ConfigType> = []): Object => {
       id,
       exports,
       schema,
+      type,
     });
   });
-
-  console.log({ id, section });
 
   return {
     id,

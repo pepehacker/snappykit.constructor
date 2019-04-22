@@ -5,10 +5,7 @@ import { normalize } from 'normalizr';
 import { UPDATE_ENTITIES } from 'entities/types';
 
 // Templates
-import {
-  convertTemplateData,
-  getTemplateById,
-} from 'template';
+import { convertTemplateData, getTemplateById } from 'template';
 
 // Types
 import {
@@ -18,12 +15,16 @@ import {
   FETCH_WEBSITES_FAILURE,
 } from '../types';
 
-export default (): Function =>
-  (dispatch: Function, getState: Function, { api, schema }): Object<Promise> => {
-    dispatch({ type: FETCH_WEBSITES_REQUEST });
+export default (): Function => (
+  dispatch: Function,
+  getState: Function,
+  { api, schema },
+): Object<Promise> => {
+  dispatch({ type: FETCH_WEBSITES_REQUEST });
 
-    return api(['websites.getAppList', 'websites.getTemplateList'])
-      .then((res: Object): void => {
+  return api(['websites.getAppList', 'websites.getTemplateList'])
+    .then(
+      (res: Object): void => {
         const appList: Array<Object> = get(res, '0.data.results', []);
         const templateList: Array<Object> = get(res, '1.data.results', []);
 
@@ -37,9 +38,9 @@ export default (): Function =>
             try {
               const json = JSON.parse(get(item, 'json', ''));
               data = convertTemplateData(json, template.config);
-            } catch(e) {
+            } catch (e) {
               // eslint-disable-next-line
-              console.error(`The template (${get(item, 'id')}) is not supported!`)
+              console.error(`The template (${get(item, 'id')}) is not supported!`);
             }
           }
 
@@ -57,11 +58,13 @@ export default (): Function =>
           };
         });
 
-        const normalizedData = normalize(results, [schema.website])
+        const normalizedData = normalize(results, [schema.website]);
 
         dispatch({ type: UPDATE_ENTITIES, data: normalizedData });
         dispatch({ type: FETCH_WEBSITES_SUCCESS });
-      })
-      .catch((error: Object) =>
-        dispatch({ type: FETCH_WEBSITES_FAILURE, error: get(error, 'message')}));
-  };
+      },
+    )
+    .catch((error: Object) =>
+      dispatch({ type: FETCH_WEBSITES_FAILURE, error: get(error, 'message') }),
+    );
+};

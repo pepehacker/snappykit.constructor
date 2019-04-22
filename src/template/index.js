@@ -3,9 +3,9 @@ import { createContext } from 'react';
 
 // Templates
 import * as Template1 from './templates/Template1';
-// import * as Template2 from './templates/Template2';
+import * as Template2 from './templates/Template2';
 
-export const TEMPLATES = [Template1].map(({ config, ...props }) => ({
+export const TEMPLATES = [Template1, Template2].map(({ config, ...props }) => ({
   ...props,
   config,
   id: get(config, 'id'),

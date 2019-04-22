@@ -24,4 +24,6 @@ const TemplatesForm = ({ handleSubmit }) => (
 
 export default reduxForm({
   form: 'templatesForm',
+  destroyOnUnmount: false,
+  // enableReinitialize: true,
 })(TemplatesForm);

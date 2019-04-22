@@ -5,33 +5,23 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose, withHandlers } from 'recompose';
+import { formValueSelector } from 'redux-form';
 
 // Components
 import { Field } from 'components/Form';
 import Mockup from './components/Item';
 
 // Ducks
-import { MOCKUP_ITEMS } from './ducks/constants';
+import { SMARTPHONE_FORM_ID, MOCKUP_ITEMS } from '../../ducks/constants';
 
 // Styles
 import styles from './Mockup.scss';
 
-const SmartphoneMockup = ({
-  handleClick,
-  mockups,
-  model,
-  style,
-  value,
-}) => (
+const SmartphoneMockup = ({ handleClick, model, style, value }) => (
   <div className={styles.Root}>
+    {console.log(MOCKUP_ITEMS, model, style, value)}
     {get(MOCKUP_ITEMS, `${model}.${style}`, []).map((id: string) => (
-      <Mockup
-        id={id}
-        isCurrent={id === value}
-        key={id}
-        model={model}
-        onClick={handleClick}
-      />
+      <Mockup id={id} isCurrent={id === value} key={id} model={model} onClick={handleClick} />
     ))}
   </div>
 );
@@ -41,16 +31,16 @@ SmartphoneMockup.propTypes = {
   style: PropTypes.string,
 };
 
-const mapStateToProps = ({ views }, { model, style }) => ({
-  mockups: get(views, 'smartphone.items', [])
-    .filter(mockup => mockup.model === model && mockup.style === style),
+const selector = formValueSelector(SMARTPHONE_FORM_ID);
+const mapStateToProps = (state, { model, style }) => ({
+  model: selector(state, 'model'),
+  style: selector(state, 'style'),
 });
 
 const ComposedSmartphoneMockup = compose(
   connect(mapStateToProps),
   withHandlers({
-    handleClick: ({ onChange }) => value =>
-      onChange && onChange(value),
+    handleClick: ({ onChange }) => value => onChange && onChange(value),
   }),
 )(SmartphoneMockup);
 

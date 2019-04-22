@@ -6,6 +6,7 @@ import api from 'api';
 import * as schema from 'api/schema';
 
 // Middleware
+import formMiddleware from './formMiddleware';
 import thunkMiddleware from 'redux-thunk';
 
 // Reducers
@@ -33,5 +34,7 @@ const reducer = combineReducers({
 export default (history: Object) =>
   createStore(
     reducer,
-    composeEnhancers(applyMiddleware(thunkMiddleware.withExtraArgument({ api, history, schema }))),
+    composeEnhancers(
+      applyMiddleware(formMiddleware, thunkMiddleware.withExtraArgument({ api, history, schema })),
+    ),
   );

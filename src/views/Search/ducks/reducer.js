@@ -6,17 +6,11 @@ import {
 } from 'entities/countries';
 
 // Types
-import {
-  SEARCH_REQUEST,
-  SEARCH_SUCCESS,
-  SEARCH_FAILURE,
-
-  SET_QUERY,
-} from './types';
+import { SEARCH_REQUEST, SEARCH_SUCCESS, SEARCH_FAILURE, SET_QUERY } from './types';
 
 const initialState = {
   appsIsFetching: false,
-  countriesIsFetching: false,
+  countriesIsFetching: true,
   query: '',
   result: [],
 };
@@ -33,19 +27,20 @@ export default (state = initialState, action: Object): Object => {
       return {
         ...state,
         countriesIsFetching: false,
-      }
-
+      };
     case SEARCH_REQUEST:
       return {
         ...state,
         appsIsFetching: true,
       };
     case SEARCH_SUCCESS:
-      return action.query === state.query ? {
-        ...state,
-        appsIsFetching: false,
-        result: action.result,
-      } : state;
+      return action.query === state.query
+        ? {
+          ...state,
+          appsIsFetching: false,
+          result: action.result,
+        }
+        : state;
     case SEARCH_FAILURE:
       return {
         ...state,
@@ -60,4 +55,4 @@ export default (state = initialState, action: Object): Object => {
     default:
       return state;
   }
-}
+};

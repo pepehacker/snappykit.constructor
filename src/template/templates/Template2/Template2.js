@@ -1,11 +1,23 @@
 import classNames from 'classnames';
 import React from 'react';
 
-// Entities
-import { COPYRIGHT, DESCRIPTION, TITLE, VIEW } from 'template/constants';
-
 // Template
-import { Background, Icon, Policy, Social, Store, Text, TemplateContext } from 'template';
+import {
+  // Components
+  Background,
+  Icon,
+  Policy,
+  Social,
+  Store,
+  Text,
+  // Config
+  COPYRIGHT,
+  DESCRIPTION,
+  TITLE,
+  VIEW,
+  // Provider
+  TemplateContext,
+} from 'template';
 
 // Styles
 import styles from './Template2.scss';

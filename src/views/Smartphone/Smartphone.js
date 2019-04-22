@@ -15,7 +15,7 @@ import { updateWebsiteSection } from 'entities/websites/actions';
 import { getSectionById } from 'entities/websites/selector';
 
 // Template
-import { SMARTPHONE } from 'template';
+import { SMARTPHONE } from 'template/config';
 
 // Styles
 import styles from './Smartphone.scss';
@@ -25,7 +25,7 @@ const Smarthpone = ({ initialValues, handleChange }) => (
     <Title title="Smartphone" />
 
     <Container>
-      <Form onChange={handleChange} />
+      <Form initialValues={initialValues} onChange={handleChange} />
     </Container>
   </div>
 );
@@ -37,11 +37,10 @@ const mapStateToProps = (state: Object, { location }) => {
 
   const id = get(match, 'params.id');
   const websiteId = get(match, 'params.websiteId');
-  const initialValues = getSectionById(state, websiteId, id || SMARTPHONE);
 
   return {
     id,
-    initialValues,
+    initialValues: getSectionById(state, websiteId, id || SMARTPHONE),
     websiteId,
   };
 };
@@ -53,12 +52,12 @@ export default compose(
   ),
   withHandlers({
     handleChange: ({ id, updateWebsiteSection, websiteId }): func => (
-      value,
+      values,
       dispatch,
       props,
       prevValue,
     ): void =>
-      get(value, 'mockup') !== get(prevValue, 'mockup') &&
-      updateWebsiteSection(websiteId, id || SMARTPHONE, value),
+      get(values, 'mockup') !== get(prevValue, 'mockup') &&
+      updateWebsiteSection(websiteId, id || SMARTPHONE, values),
   }),
 )(Smarthpone);

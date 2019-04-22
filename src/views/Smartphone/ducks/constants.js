@@ -1,5 +1,7 @@
 // Entities
-import { SMARTPHONE_MOCKUP, SMARTPHONE_MODEL, SMARTPHONE_STYLE } from 'template';
+import { SMARTPHONE_MOCKUP, SMARTPHONE_MODEL, SMARTPHONE_STYLE } from 'template/config';
+
+export const SMARTPHONE_FORM_ID = 'smartphoneForm';
 
 export const MOCKUP_ITEMS = {
   [SMARTPHONE_MODEL.IPHONE]: {

@@ -6,6 +6,9 @@ import { reduxForm } from 'redux-form';
 import Form, { Select, SelectItem } from 'components/Form';
 import Mockup from '../components/Mockup';
 
+// Ducks
+import { SMARTPHONE_FORM_ID } from '../ducks/constants';
+
 // Template
 import { SMARTPHONE_MODEL, SMARTPHONE_STYLE } from 'template';
 
@@ -39,13 +42,10 @@ const SmartphoneForm = ({ handleSubmit, model, style }) => (
       )}
     </Select>
 
-    <Mockup
-      model={model} name="mockup"
-      style={style}
-    />
+    <Mockup name="mockup" />
   </Form>
 );
 
 export default reduxForm({
-  form: 'smartphoneForm',
+  form: SMARTPHONE_FORM_ID,
 })(SmartphoneForm);

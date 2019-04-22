@@ -64,11 +64,24 @@ SMARTPHONE_STYLE.values = [
 ];
 
 // Schema
-export const SMARTPHONE_SCHEMA = (defaults: Object): Object => object().shape({
-  mockup: string()
-    .matches(new RegExp(`/^(${values(SMARTPHONE_MOCKUP).join('|')})$/`), 'Incorrect `SMARTPHONE` ID!')
-    .default(get(defaults, 'mockup', SMARTPHONE_MOCKUP.FLAT_SILVER)),
-  model: string()
-    .matches(new RegExp(`/^(${values(SMARTPHONE_MODEL).join('|')})$/`), 'Incorrect `SMARTPHONE` ID!')
-    .default(get(defaults, 'model', SMARTPHONE_MODEL.IPHONE)),
-});
+export const SMARTPHONE_SCHEMA = (defaults: Object): Object =>
+  object().shape({
+    mockup: string()
+      .matches(
+        new RegExp(`/^(${values(SMARTPHONE_MOCKUP).join('|')})$/`),
+        'Incorrect `SMARTPHONE` ID!',
+      )
+      .default(get(defaults, 'mockup', SMARTPHONE_MOCKUP.FLAT_SILVER)),
+    model: string()
+      .matches(
+        new RegExp(`/^(${values(SMARTPHONE_MODEL).join('|')})$/`),
+        'Incorrect `SMARTPHONE MODEL` ID!',
+      )
+      .default(get(defaults, 'model', SMARTPHONE_MODEL.IPHONE)),
+    style: string()
+      .matches(
+        new RegExp(`/^(${values(SMARTPHONE_STYLE).join('|')})$/`),
+        'Incorrect `SMARTPHONE STYLE` ID!',
+      )
+      .default(get(defaults, 'style', SMARTPHONE_STYLE.FLAT)),
+  });

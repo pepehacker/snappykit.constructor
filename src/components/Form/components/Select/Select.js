@@ -97,11 +97,17 @@ const FormSelect = ({
                 onClick: handleCreate,
                 value: get(value, 'value'),
               })
-              : Children.map(children, (child: Object) =>
-                cloneElement(child, {
-                  isCurrent: get(child, 'props.value') === get(value, 'value', value),
-                  onClick: handleCreate,
-                }),
+              : Children.map(
+                children,
+                child =>
+                  child &&
+                    get(child, 'props.label')
+                      .toLowerCase()
+                      .indexOf(inputValue.toLowerCase()) > -1 &&
+                    cloneElement(child, {
+                      isCurrent: get(child, 'props.value') === get(value, 'value', value),
+                      onClick: handleCreate,
+                    }),
               )}
           </div>
         </div>

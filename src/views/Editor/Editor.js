@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { get, has } from 'lodash';
+import { get, values } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
@@ -18,16 +18,8 @@ import View from './containers/View';
 // Entities
 import { getWebsiteTemplate } from 'entities/websites';
 
-// Views
-import Background from 'views/Background';
-import Icon from 'views/Icon';
-import Screenshots from 'views/Screenshots';
-import Smartphone from 'views/Smartphone';
-import Social from 'views/Social';
-import Store from 'views/Store';
-import Templates from 'views/Templates';
-import Text from 'views/Text';
-
+// Styles
+import ROUTES from './routes';
 import styles from './Editor.scss';
 
 const Editor = ({
@@ -79,17 +71,17 @@ const Editor = ({
               timeout={{ enter: 600, exit: 400 }}
               unmountOnExit
             >
-              <Switch location={location}>
-                <Route component={Background} path={url(match.url, '/background')} />
-                <Route component={Icon} path={url(match.url, '/icon')} />
-                <Route component={Screenshots} path={url(match.url, '/screenshots')} />
-                <Route component={Smartphone} path={url(match.url, '/smartphone')} />
-                <Route component={Social} path={url(match.url, '/social')} />
-                <Route component={Store} path={url(match.url, '/store')} />
-                <Route component={Templates} path={url(match.url, '/templates')} />
-                <Route component={Text} path={url(match.url, '/text/:fieldId')} />
-                <Route component={Text} path={url(match.url, '/text')} />
-              </Switch>
+              {state => (
+                <Switch location={location}>
+                  {ROUTES.map(({ Component, id, path }) => (
+                    <Route
+                      key={id}
+                      path={url(match.url, path)}
+                      render={props => <Component {...props} state={state} />}
+                    />
+                  ))}
+                </Switch>
+              )}
             </CSSTransition>
           </TransitionGroup>
         </div>
@@ -109,19 +101,25 @@ const mapStateToProps = (state: Object, { location }): Object => {
     path: '/:websiteId/editor/:sectionId/:id?',
   });
 
-  const id = get(match, 'params.id');
   const sectionId = get(match, 'params.sectionId');
   const websiteId = get(match, 'params.websiteId');
 
   const { config } = getWebsiteTemplate(state, websiteId);
 
   return {
-    isAvailable: sectionId === 'templates' || has(config, `section.${id || sectionId}`),
+    isAvailable:
+      sectionId === 'templates' ||
+      values(get(config, 'section')).filter(({ type }) => type === sectionId).length > 0,
   };
 };
 
 export default compose(
-  connect(mapStateToProps),
+  connect(
+    mapStateToProps,
+    null,
+    null,
+    { pure: false },
+  ),
   withState('isMounted', 'setMounted', false),
   lifecycle({
     componentDidMount() {
