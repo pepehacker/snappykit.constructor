@@ -27,6 +27,8 @@ import {
   // Text
   TEXT,
   TEXT_SCHEMA,
+  // Common
+  TITLE,
 } from '../config';
 
 type ConfigType = {
@@ -37,6 +39,8 @@ type ConfigType = {
 };
 
 export default (id: number, sections: Array<ConfigType> = []): Object => {
+  let hasTitle = false;
+
   const ALLOW_TYPES = [BACKGROUND, ICON, POLICY, SCREENSHOTS, SMARTPHONE, SOCIAL, STORE, TEXT];
   const section = {};
 
@@ -46,6 +50,11 @@ export default (id: number, sections: Array<ConfigType> = []): Object => {
     // Check type allow
     if (ALLOW_TYPES.indexOf(type) === -1) {
       throw new Error(`The section type "${type}" is not supporting!`);
+    }
+
+    // Check title exists
+    if (id === TITLE) {
+      hasTitle = true;
     }
 
     switch (type) {
@@ -82,6 +91,10 @@ export default (id: number, sections: Array<ConfigType> = []): Object => {
       type,
     });
   });
+
+  if (!hasTitle) {
+    throw new Error('The section "title" is required!');
+  }
 
   return {
     id,

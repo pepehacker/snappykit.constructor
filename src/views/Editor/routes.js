@@ -49,9 +49,4 @@ export default [
     id: 'text',
     path: '/text/:fieldId',
   },
-  {
-    Component: Text,
-    id: 'text-redirect',
-    path: '/text',
-  },
 ];

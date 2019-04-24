@@ -9,22 +9,29 @@ export const STORE_COLOR = 'color';
 
 // Markets
 export const STORE_APP_STORE = 'apple';
+export const STORE_APP_STORE_PREFIX = 'https://itunes.apple.com/app/id';
+
 export const STORE_GOOGLE_PLAY = 'play';
+export const STORE_GOOGLE_PLAY_PREFIX = 'http://play.google.com/store/apps/details?id=';
 
 // Schema
-export const STORE_SCHEMA = (defaults: Object): Object => object().shape({
-  [STORE_BACKGROUND]: string()
-    .matches(TEXT_COLOR.regex, 'Incorrect `BACKGROUND`!')
-    .default(get(defaults, STORE_BACKGROUND)),
-  [STORE_COLOR]: string()
-    .matches(TEXT_COLOR.regex, 'Incorrect `COLOR`!')
-    .default(get(defaults, STORE_COLOR)),
-  items: object().shape({
-    [STORE_APP_STORE]: string()
-      .matches(/^(id[0-9]{1,16})$/, 'Incorrect `APP STORE` URL!')
-      .default(get(defaults, `items.${STORE_APP_STORE}`)),
-    [STORE_GOOGLE_PLAY]: string()
-      .matches(/(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})/, 'Incorrect `GOOGLE PLAY` URL!')
-      .default(get(defaults, `items.${STORE_GOOGLE_PLAY}`)),
-  }),
-});
+export const STORE_SCHEMA = (defaults: Object): Object =>
+  object().shape({
+    [STORE_BACKGROUND]: string()
+      .matches(TEXT_COLOR.regex, 'Incorrect `BACKGROUND`!')
+      .default(get(defaults, STORE_BACKGROUND)),
+    [STORE_COLOR]: string()
+      .matches(TEXT_COLOR.regex, 'Incorrect `COLOR`!')
+      .default(get(defaults, STORE_COLOR)),
+    items: object().shape({
+      [STORE_APP_STORE]: string()
+        .matches(/^(id[0-9]{1,16})$/, 'Incorrect `APP STORE` URL!')
+        .default(get(defaults, `items.${STORE_APP_STORE}`)),
+      [STORE_GOOGLE_PLAY]: string()
+        .matches(
+          /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})/,
+          'Incorrect `GOOGLE PLAY` URL!',
+        )
+        .default(get(defaults, `items.${STORE_GOOGLE_PLAY}`)),
+    }),
+  });

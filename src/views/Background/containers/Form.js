@@ -4,10 +4,9 @@ import { compose, withHandlers, withState } from 'recompose';
 import { reduxForm } from 'redux-form';
 
 // Components
-import Form, { Color } from 'components/Form';
+import Form, { Color, Gradient } from 'components/Form';
 import Tabs, { Tab } from 'components/Tabs';
 
-import Gradient from '../components/Gradient';
 import Image from '../components/Image';
 
 // Template

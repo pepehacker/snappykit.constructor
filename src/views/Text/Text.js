@@ -17,7 +17,7 @@ import { getSectionById } from 'entities/websites/selector';
 // Styles
 import styles from './Text.scss';
 
-const Text = ({ id, initialValues, handleChange, withText }) => (
+const Text = ({ id, initialValues, handleChange, websiteId, withText }) => (
   <div className={styles.Root}>
     <Title title="Text" />
 

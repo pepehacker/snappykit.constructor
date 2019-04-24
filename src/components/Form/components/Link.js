@@ -38,6 +38,7 @@ const FormLink = ({
   });
 
   const iconClassNames = classNames(styles.Icon, 'fab', icon);
+  const formattedValue = value.replace(prefix, '').replace(/[^0-9a-zA-Z.-]/gi, '');
 
   return (
     <div className={rootClassNames}>
@@ -55,12 +56,11 @@ const FormLink = ({
           {value && (
             <a
               className={styles.Link}
-              href={prefix ? `${prefix}${last(value.split('/'))}` : value}
+              href={`${prefix}${formattedValue}`}
               rel="noopener noreferrer"
               target="_blank"
             >
-              @
-              {last(value.split('/'))}
+              {`@${formattedValue}`}
             </a>
           )}
         </div>
@@ -122,7 +122,9 @@ const ComposedFormLink = compose(
           setTimeout(() => setBusy(false), 200);
 
           if (value && onChange) {
-            prefix ? onChange(`${prefix}${last(value.split('/'))}`) : onChange(value);
+            prefix
+              ? onChange(`${prefix}${value.replace(prefix, '').replace(/[^0-9a-zA-Z.-]/gi, '')}`)
+              : onChange(value);
           }
         }
       },

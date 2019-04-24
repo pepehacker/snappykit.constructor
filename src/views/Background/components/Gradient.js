@@ -6,6 +6,7 @@ import { compose, withHandlers, withState } from 'recompose';
 
 // Components
 import { Color, Field } from 'components/Form';
+import Angle from './Angle';
 
 // Styles
 import styles from './Gradient.scss';
@@ -63,11 +64,13 @@ const BackgroundGradient = ({
         </div>
       </div>
 
+      <div className={styles.Angle}>
+        <Angle />
+      </div>
+
       <div className={styles.List}>
-        <div className={styles.Track}>
-          <Color label="From" name="gradient.from" />
-          <Color label="To" name="gradient.to" />
-        </div>
+        {variant === VARIANT.FROM && <Color label="From" name="gradient.from" />}
+        {variant === VARIANT.TO && <Color label="To" name="gradient.to" />}
       </div>
     </div>
   );

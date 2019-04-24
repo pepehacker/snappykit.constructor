@@ -4,6 +4,8 @@ import {
   createTemplateData,
   // Config
   STORE_APP_STORE,
+  STORE_APP_STORE_PREFIX,
+  STORE_GOOGLE_PLAY_PREFIX,
   // Selectors
   getFirstTemplate,
 } from 'template';
@@ -11,7 +13,7 @@ import {
 // Types
 import { CREATE_WEBSITE } from '../types';
 
-export default ({ link, storeId, provider, ...values }): func => (
+export default ({ storeId, provider, ...values }): func => (
   dispatch: func,
   getState: func,
   { api, history },
@@ -33,7 +35,9 @@ export default ({ link, storeId, provider, ...values }): func => (
           icon: { src: logo },
           store: {
             items: {
-              apple: link,
+              [provider]: `${
+                provider === STORE_APP_STORE ? STORE_APP_STORE_PREFIX : STORE_GOOGLE_PLAY_PREFIX
+              }${storeId}`,
             },
           },
         },

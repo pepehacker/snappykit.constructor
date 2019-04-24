@@ -9,7 +9,12 @@ import Form, { Color, Link } from 'components/Form';
 import ColorSwitcher from '../components/ColorSwitcher';
 
 // Template
-import { STORE_BACKGROUND, STORE_COLOR } from 'template';
+import {
+  STORE_APP_STORE_PREFIX,
+  STORE_GOOGLE_PLAY_PREFIX,
+  STORE_BACKGROUND,
+  STORE_COLOR,
+} from 'template';
 
 // Styles
 import styles from './Form.scss';
@@ -24,13 +29,17 @@ const StoreForm = ({ handleSubmit, switcher = STORE_BACKGROUND, ...props }) => {
     <Form className={rootClassNames} onSubmit={handleSubmit}>
       <div className={styles.Group}>
         <Link
-          icon="fa-apple" label="App Store"
+          icon="fa-apple"
+          label="App Store"
           name="items.apple"
+          prefix={STORE_APP_STORE_PREFIX}
         />
 
         <Link
-          icon="fa-google-play" label="Google Play"
+          icon="fa-google-play"
+          label="Google Play"
           name="items.play"
+          prefix={STORE_GOOGLE_PLAY_PREFIX}
         />
       </div>
 

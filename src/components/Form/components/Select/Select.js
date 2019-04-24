@@ -29,6 +29,7 @@ const FormSelect = ({
   getLabel,
   handleBlur,
   handleChange,
+  handleClose,
   handleCreate,
   handleFocus,
 
@@ -70,7 +71,9 @@ const FormSelect = ({
             value={isFocused ? inputValue : getLabel()}
           />
 
-          {variant === VARIANT.CONTAINED && <div className={styles.Trigger} />}
+          {variant === VARIANT.CONTAINED && (
+            <div className={styles.Trigger} onClick={handleClose} />
+          )}
         </div>
       </div>
 
@@ -162,6 +165,17 @@ const ComposedFormSelect = compose(
       },
       handleChange: ({ setInputValue }) => (event: Object) =>
         setInputValue(get(event, 'target.value', '')),
+      handleClose: ({ isFocused, setFocus, setInputValue }) => (event: Object) => {
+        if (isFocused) {
+          event.preventDefault();
+          event.stopPropagation();
+
+          $input.blur();
+
+          setFocus(false);
+          setInputValue('');
+        }
+      },
       handleCreate: ({ onChange, setFocus }) => (itemValue: Object) => {
         $input.blur();
         setFocus(false);
@@ -172,7 +186,7 @@ const ComposedFormSelect = compose(
         onChange && onChange(value.filter(({ value }) => value !== itemValue)),
       handleFocus: ({ setFocus }) => () => {
         $input.focus();
-        setFocus(true);
+        setTimeout(() => setFocus(true), 100);
       },
 
       // Registers
