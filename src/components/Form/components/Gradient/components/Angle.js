@@ -24,7 +24,7 @@ type GradientAngleType = {
 const GradientAngle = ({
   id,
   lenght = 16,
-  max = 180,
+  max = 360,
   min = 0,
   name,
   onChange,
@@ -49,10 +49,17 @@ const GradientAngle = ({
           );
         })}
       </div>
-    </div>
 
-    <div className={styles.Angle}>
-      {value}
+      <div
+        className={styles.Angle}
+        style={{
+          left: `calc(${(value / max) * 100}% - 1px)`,
+        }}
+      >
+        <div className={styles.AngleValue}>
+          {value}
+        </div>
+      </div>
     </div>
 
     <div className={styles.Control}>
@@ -63,6 +70,9 @@ const GradientAngle = ({
         min={min}
         name={name}
         onChange={onChange}
+        style={{
+          left: `calc(${(value / max) * 100}% - 52px)`,
+        }}
         type="range"
         value={value}
       />

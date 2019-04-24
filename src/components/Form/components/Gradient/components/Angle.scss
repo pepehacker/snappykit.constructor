@@ -1,4 +1,27 @@
-.Root {
+.Angle {
+  background: #a6a2e9;
+  bottom: -12px;
+  height: 24px;
+  left: 9px;
+  position: absolute;
+  width: 2px;
+
+  &Value {
+    background: #f9f9f9;
+    background: linear-gradient(90deg, rgba(0 , 0, 0, 0) 0%, rgba(249,249,249,1) 25%, rgba(249,249,249,1) 75%, rgba(0 , 0, 0, 0) 100%);
+    color: #a6a2e9;
+    font-size: 14px;
+    font-weight: 700;
+    height: 20px;
+    left: calc(50% - 16px);
+    position: absolute;
+    text-align: center;
+    top: -28px;
+    width: 32px;
+  }
+}
+
+.Control {
   position: relative;
 }
 
@@ -6,8 +29,9 @@
   align-items: flex-end;
   display: flex;
   height: 40px;
-  padding: 0 7px 0 10px;
-  width: 100%;
+  margin: 0 6px 0 10px;
+  position: relative;
+  // width: 100%;
 }
 
 .List {
@@ -34,7 +58,21 @@
   background: #ebebeb;
   border-radius: 10px;
   height: 6px;
+  position: static;
   width: 100%;
+
+  // &:after {
+  //   background: #5e7adb;
+  //   background: linear-gradient(to left, rgba(131, 89, 193, 0), #5e7adb 51%, rgba(131, 89, 193, 0));
+  //   content: '';
+  //   display: block;
+  //   height: 6px;
+  //   left: inherit;
+  //   opacity: .6;
+  //   position: absolute;
+  //   top: 10px;
+  //   width: 104px;
+  // }
 
   &:focus {
     outline: none;
@@ -47,15 +85,9 @@
     border-radius: 100%;
     box-shadow: 0 0 2px rgba(0, 0, 0, .1);
     height: 16px;
+    position: relative;
     width: 16px;
-
-    &:after {
-      background: #f00;
-      content: '';
-      display: block;
-      height: 10px;
-      width: 10px;
-    }
+    z-index: 2;
 
     &:hover {
       cursor: pointer;

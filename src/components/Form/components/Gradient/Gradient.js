@@ -1,5 +1,4 @@
 // @flow
-import classNames from 'classnames';
 import { get } from 'lodash';
 import React from 'react';
 import { compose, withHandlers, withState } from 'recompose';
@@ -26,9 +25,42 @@ const Gradient = ({
   currentDirection,
   handleFromClick,
   handleToClick,
+  value,
 }: GradientType): React.Element<'div'> => (
-  <div>
-    <Angle label="Angle" name="gradient.angle" />
+  <div className={styles.Root}>
+    <div className={styles.Preview}>
+      <div
+        className={styles.From}
+        onClick={handleFromClick}
+        role="button"
+        style={{ background: get(value, 'from') }}
+        tabIndex={0}
+      />
+
+      <div
+        className={styles.Gradient}
+        style={{
+          backgroundImage: `linear-gradient(to right, ${get(value, 'from')}, ${get(value, 'to')})`,
+        }}
+      />
+
+      <div
+        className={styles.To}
+        onClick={handleToClick}
+        role="button"
+        style={{ background: get(value, 'to') }}
+        tabIndex={0}
+      />
+    </div>
+
+    <div className={styles.Angle}>
+      <Angle label="Angle" name="gradient.angle" />
+    </div>
+
+    <div className={styles.Colors}>
+      {currentDirection === DIRECTION.FROM && <Color label="From" name="gradient.from" />}
+      {currentDirection === DIRECTION.TO && <Color label="To" name="gradient.to" />}
+    </div>
   </div>
 );
 
