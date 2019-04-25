@@ -1,0 +1,54 @@
+.Root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.Container {
+  flex: 1 1 auto;
+  margin: 0 -24px;
+  max-height: calc(100% - 100px);
+  overflow-x: visible;
+  overflow-y: scroll;
+  padding: 40px 24px;
+  position: relative;
+  z-index: 1;
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background: #bfbfc7;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    background: transparent;
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 4px 0 0 4px;
+  }
+}
+
+.Header {
+  background: #f9f9f9;
+  flex: 0 0 100px;
+  height: 100px;
+  position: relative;
+  z-index: 2;
+}
+
+.Tabs {
+  margin: 20px 0 0;
+  padding: 0 24px;
+}
+
+.Title {
+  color: #545e6f;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.9px;
+  line-height: 28px;
+}

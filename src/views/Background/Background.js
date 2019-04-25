@@ -5,18 +5,18 @@ import { matchPath } from 'react-router-dom';
 import { compose, withHandlers } from 'recompose';
 
 // Components
-import { Container, Title } from 'views/Editor';
+import Sidebar from 'components/Sidebar';
 
 // Containers
-import Form from './containers/Form';
+import ImageForm from './containers/ImageForm';
+
+// Data
+import TABS from './data/tabs';
 
 // Entities
 import { BACKGROUND } from 'template';
 import { updateWebsiteSection } from 'entities/websites/actions';
 import { getSectionById } from 'entities/websites/selector';
-
-// Styles
-import styles from './Background.scss';
 
 const Background = ({
   // Props
@@ -26,16 +26,9 @@ const Background = ({
   // Handlers
   handleChange,
 }) => (
-  <div className={styles.Root}>
-    <Title title="Background" />
-
-    <Container>
-      <Form
-        key={id} form={id}
-        initialValues={initialValues} onChange={handleChange}
-      />
-    </Container>
-  </div>
+  <Sidebar tabs={TABS} title="Background">
+    <ImageForm onChange={handleChange} />
+  </Sidebar>
 );
 
 const mapStateToProps = (state: Object, { location }) => {
