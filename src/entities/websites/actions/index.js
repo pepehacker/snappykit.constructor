@@ -48,7 +48,7 @@ export const updateWebsiteSection = (
   const website = getWebsiteById(state, websiteId);
   const { config } = getTemplateById(get(website, 'templateId'));
   const schema = get(config, `section.${sectionId}.schema`);
-  console.log(payload);
+
   schema &&
     dispatch({
       type: UPDATE_WEBSITE_SECTION,

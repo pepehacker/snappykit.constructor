@@ -2,23 +2,38 @@
 import { get, throttle } from 'lodash';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { compose, lifecycle, withHandlers, withState } from 'recompose';
+import { compose, withHandlers, withState } from 'recompose';
 import { formValueSelector, reduxForm } from 'redux-form';
 
 // Components
 import Form, { Input } from 'components/Form';
 import Image from '../components/Image';
+import Spinner from 'components/Spinner';
 
 // Ducks
 import { BACKGROUND_IMAGE_FORM } from '../ducks/constants';
 
 // Styles
-import styles from './ImageForm.scss';
+import styles from './common.scss';
 
 // Template
 import { BACKGROUND_IMAGE } from 'template';
 
-const BackgroundImageForm = ({ handleChange, handleSubmit, query, result }) => (
+type BackgroundImageFormType = {
+  handleChange: (values: Object) => Function,
+  handleSubmit: (values: Object) => Function,
+  isLoaded: boolean,
+  query: string,
+  result: Array<string>,
+};
+
+const BackgroundImageForm = ({
+  handleChange,
+  handleSubmit,
+  isLoaded,
+  query,
+  result,
+}: BackgroundImageFormType): React.Element<typeof Form> => (
   <Form onSubmit={handleSubmit}>
     <div className={styles.Search}>
       <Input
@@ -29,7 +44,13 @@ const BackgroundImageForm = ({ handleChange, handleSubmit, query, result }) => (
       />
     </div>
 
-    <Image name={`${BACKGROUND_IMAGE}.src`} photos={query && result} />
+    <div className={styles.List}>
+      {isLoaded ? (
+        <Spinner className={styles.Spinner} title="Searching" />
+      ) : (
+        <Image name={`${BACKGROUND_IMAGE}.src`} photos={query && result} />
+      )}
+    </div>
   </Form>
 );
 
@@ -45,20 +66,29 @@ export default compose(
   }),
   withState('query', 'setQuery', ''),
   withState('result', 'setResult', []),
-  withHandlers(({ setResult }) => {
+  withState('isLoaded', 'setLoaded', false),
+  withHandlers(({ setLoaded, setResult }) => {
+    let queryTemp = '';
+
     const changeThrottle = throttle((searchString: string): void => {
       const clientId: string = '37dc7a1a5e94dd2846f791d4b9efe5ee402369548e1b37a7671107772bbb6909';
+
+      setLoaded(true);
 
       fetch(
         `https://api.unsplash.com/search/photos?page=1&query=${searchString}&client_id=${clientId}&w=1920`,
       )
         .then(res => res.json())
         .then(res => {
-          const results = get(res, 'results', []);
-          const formattedResults = results.map(
-            (photo: Object): string => get(photo, 'urls.regular'),
-          );
-          setResult(formattedResults);
+          if (queryTemp === searchString) {
+            const results = get(res, 'results', []);
+            const formattedResults = results.map(
+              (photo: Object): string => get(photo, 'urls.regular'),
+            );
+
+            setLoaded(false);
+            setResult(formattedResults);
+          }
         });
     }, 2000);
 
@@ -67,6 +97,8 @@ export default compose(
         const searchString = get(event, 'target.value', '').trim();
 
         if (searchString !== query) {
+          queryTemp = searchString;
+
           setQuery(searchString);
           changeThrottle(searchString);
         }

@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import { last } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { compose, withHandlers, withState } from 'recompose';
