@@ -1,9 +1,13 @@
+// @flow
 import classNames from 'classnames';
-import React from 'react';
-import { compose, withHandlers } from 'recompose';
+import * as React from 'react';
+import { compose, withHandlers, withState } from 'recompose';
 
 // Styles
 import styles from './Card.scss';
+
+// Type
+import type { BackgroundImageCardType } from '../Image.type';
 
 const VARIANT = {
   IMAGE: 'image',
@@ -11,25 +15,28 @@ const VARIANT = {
 };
 
 const BackgroundImageCard = ({
-  handleClick,
-  isSelected,
   src,
   variant = VARIANT.IMAGE,
-}) => {
+  // Handlers
+  handleClick,
+  handleLoad,
+  // State
+  isLoaded,
+  isSelected,
+}: BackgroundImageCardType): React.Element<'button'> => {
   const rootClassNames = classNames(styles.Root, {
+    [styles.RootIsLoaded]: isLoaded,
     [styles.RootIsSelected]: isSelected,
   });
 
   return (
     <button
-      className={rootClassNames}
-      onClick={handleClick}
+      className={rootClassNames} onClick={handleClick}
       type="button"
     >
       <img
-        alt="Background"
-        className={styles.Image}
-        src={src}
+        alt="Background" className={styles.Image}
+        onLoad={handleLoad} src={src}
       />
 
       <div className={styles.Check} />
@@ -38,9 +45,10 @@ const BackgroundImageCard = ({
 };
 
 export default compose(
+  withState('isLoaded', 'setLoaded', true),
   withHandlers({
-    handleClick: ({ onClick, src }): func =>
-      (event: Object): bool =>
-        onClick && onClick(src),
+    handleClick: ({ onClick, src }): Function => (event: Object): boolean =>
+      onClick && onClick(src),
+    handleLoad: ({ setLoaded }): Function => () => setLoaded(false),
   }),
 )(BackgroundImageCard);

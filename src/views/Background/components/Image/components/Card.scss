@@ -27,6 +27,12 @@
   }
 
   &Is {
+    &Loaded {
+      .Image {
+        opacity: 0;
+      }
+    }
+
     &Selected {
       pointer-events: none;
 
@@ -46,7 +52,7 @@
   left: calc(50% - 16px);
   position: absolute;
   transform: translateY(68px);
-  transition: all .4s;
+  transition: all 0.4s;
   width: 32px;
 
   &:before {
@@ -56,13 +62,13 @@
     height: 100%;
     mask: url('components/Icon/assets/check.svg') no-repeat center center;
     mask-size: 12px 9px;
-    transition: all .2s;
+    transition: all 0.2s;
     width: 100%;
   }
 }
 
 .Image {
   max-width: 100%;
-  max-width: 100%;
   object-fit: contain;
+  transition: all 0.4s;
 }

@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { compose, withHandlers, withState } from 'recompose';
 
 // Components
@@ -49,7 +50,29 @@ const Sidebar = ({
     </div>
 
     <div className={styles.Container}>
-      {children}
+      <TransitionGroup>
+        {React.Children.map(
+          children,
+          (child, index) =>
+            child &&
+            index === currentIndex && (
+              <CSSTransition
+                key={index}
+                classNames={{
+                  enter: styles.ItemAnimateEnter,
+                  enterActive: styles.ItemAnimateEnterActive,
+                  exit: styles.ItemAnimateExit,
+                  exitActive: styles.ItemAnimateExitActive,
+                }}
+                in
+                timeout={{ exit: 400, enter: 600 }}
+                unmountOnExit
+              >
+                {React.cloneElement(child)}
+              </CSSTransition>
+            ),
+        )}
+      </TransitionGroup>
     </div>
   </div>
 );

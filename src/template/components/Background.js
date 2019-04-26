@@ -43,7 +43,7 @@ const TemplateBackground = ({
             <div
               className={styles.Cover}
               style={{
-                backgroundImage: `url(${image})`,
+                backgroundImage: `url(${image.src})`,
                 backgroundSize: 'cover',
               }}
             />

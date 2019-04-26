@@ -1,3 +1,4 @@
+// @flow
 import { get } from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
@@ -8,6 +9,8 @@ import { compose, withHandlers } from 'recompose';
 import Sidebar from 'components/Sidebar';
 
 // Containers
+import ColorForm from './containers/ColorForm';
+import GradientForm from './containers/GradientForm';
 import ImageForm from './containers/ImageForm';
 
 // Data
@@ -18,27 +21,34 @@ import { BACKGROUND } from 'template';
 import { updateWebsiteSection } from 'entities/websites/actions';
 import { getSectionById } from 'entities/websites/selector';
 
+// Type
+import type { BackgroundType } from './Background.type';
+
 const Background = ({
   // Props
   id,
   initialValues,
 
   // Handlers
-  handleChange,
-}) => (
+  handleColorChange,
+  handleGradientChange,
+  handleImageChange,
+}: BackgroundType): React.Element<typeof Sideber> => (
   <Sidebar tabs={TABS} title="Background">
-    <ImageForm onChange={handleChange} />
+    <ImageForm onChange={handleImageChange} />
+    <ColorForm onChange={handleColorChange} />
+    <GradientForm onChange={handleGradientChange} />
   </Sidebar>
 );
 
 const mapStateToProps = (state: Object, { location }) => {
-  const match = matchPath(get(location, 'pathname'), {
+  const match: Object = matchPath(get(location, 'pathname'), {
     path: '/:websiteId/editor/:sectionId/:id?',
   });
 
-  const id = get(match, 'params.id');
-  const websiteId = get(match, 'params.websiteId');
-  const initialValues = getSectionById(state, websiteId, id || BACKGROUND);
+  const id: string = get(match, 'params.id');
+  const websiteId: string = get(match, 'params.websiteId');
+  const initialValues: Object = getSectionById(state, websiteId, id || BACKGROUND);
 
   return {
     id,
@@ -54,25 +64,23 @@ export default compose(
     { updateWebsiteSection },
   ),
   withHandlers({
-    handleChange: ({ id, updateWebsiteSection, websiteId }): func => (
-      value: Object,
-      dispatch: func,
-      { change, ...props },
-      prevValue: Object,
-    ): void => {
-      updateWebsiteSection(websiteId, id || BACKGROUND, value);
-
-      // @todo - temporary shit
-      if (get(value, 'image') !== get(prevValue, 'image')) {
-        dispatch(change('color', 'rgba(255, 255, 255, 0)'));
-        dispatch(
-          change('gradient', {
-            angle: 0,
-            from: 'rgba(255, 255, 255, 0)',
-            to: 'rgba(255, 255, 255, 0)',
-          }),
-        );
-      }
-    },
+    handleColorChange: ({ id, updateWebsiteSection, websiteId }): Function => ({ color }) =>
+      updateWebsiteSection(websiteId, id || BACKGROUND, {
+        color,
+        gradient: undefined,
+        image: undefined,
+      }),
+    handleGradientChange: ({ id, updateWebsiteSection, websiteId }): Function => ({ gradient }) =>
+      updateWebsiteSection(websiteId, id || BACKGROUND, {
+        gradient,
+        color: undefined,
+        image: undefined,
+      }),
+    handleImageChange: ({ id, updateWebsiteSection, websiteId }): Function => ({ image }) =>
+      updateWebsiteSection(websiteId, id || BACKGROUND, {
+        image,
+        color: undefined,
+        gradient: undefined,
+      }),
   }),
 )(Background);

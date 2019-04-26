@@ -4,12 +4,7 @@ import React from 'react';
 
 import styles from './Form.scss';
 
-const Form = ({
-  children,
-  className: classNameProp,
-  error,
-  onSubmit,
-}) => {
+const Form = ({ children, className: classNameProp, error, onSubmit }) => {
   const className = classNames(classNameProp, styles.Root);
 
   return (

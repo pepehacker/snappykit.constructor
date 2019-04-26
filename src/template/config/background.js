@@ -50,5 +50,22 @@ export const BACKGROUND_SCHEMA = (data: BackgroundDataType): object =>
         .matches(TEXT_COLOR.regex, 'Incorrect gradient `COLOR`!')
         .default(get(data, 'gradient.to', 'rgba(255, 255, 255, 1)')),
     }),
-    [BACKGROUND_IMAGE]: string().default(get(data, 'image', null)),
+    [BACKGROUND_IMAGE]: object().shape({
+      [BACKGROUND_COLOR]: string()
+        .matches(TEXT_COLOR.regex, 'Incorrect `COLOR`!')
+        .default(get(data, 'image.color', 'rgba(255, 255, 255, 1)')),
+      [BACKGROUND_GRADIENT]: object().shape({
+        angle: number()
+          .lessThan(360, 'Incorrect gradient angle! Must be less than 360!')
+          .moreThan(0, 'Incorrect gradient angle! Must be more than 0!')
+          .default(get(data, 'image.gradient.angle', 90)),
+        from: string()
+          .matches(TEXT_COLOR.regex, 'Incorrect gradient `COLOR`!')
+          .default(get(data, 'image.gradient.from', 'rgba(255, 255, 255, 1)')),
+        to: string()
+          .matches(TEXT_COLOR.regex, 'Incorrect gradient `COLOR`!')
+          .default(get(data, 'image.gradient.to', 'rgba(255, 255, 255, 1)')),
+      }),
+      src: string().default(get(data, 'image.src', null)),
+    }),
   });

@@ -32,7 +32,9 @@ export default createConfig(1, [
         from: '',
         to: '',
       },
-      image: BACKGROUND_LIST[4],
+      image: {
+        src: BACKGROUND_LIST[4],
+      },
     },
     type: BACKGROUND,
   },

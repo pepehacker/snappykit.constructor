@@ -10,13 +10,13 @@ import { BACKGROUND_LIST } from 'template/config';
 // Styles
 import styles from './Image.scss';
 
-const BackgroundImage = ({ onChange, value }) => (
+const BackgroundImage = ({ onChange, photos = [], value }) => (
   <div className={styles.Root}>
     <div className={styles.List}>
-      {BACKGROUND_LIST.map(
-        (src: string, index: number): func => (
+      {(photos || BACKGROUND_LIST).map(
+        (src: string): func => (
           <Card
-            key={index} isSelected={src === value}
+            key={src} isSelected={src === value}
             onClick={onChange} src={src}
             value={src}
           />

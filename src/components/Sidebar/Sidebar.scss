@@ -40,6 +40,42 @@
   z-index: 2;
 }
 
+.Item {
+  &Animate {
+    &Enter {
+      transition: all 0.4s 0.2s;
+
+      &:not(.ItemAnimateEnterActive) {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      &Active {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    &Exit {
+      left: 24px;
+      position: absolute;
+      top: 40px;
+      transition: all 0.4s;
+      width: calc(100% - 48px);
+
+      &:not(.ItemAnimateExitActive) {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      &Active {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  }
+}
+
 .Tabs {
   margin: 20px 0 0;
   padding: 0 24px;
