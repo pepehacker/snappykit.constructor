@@ -17,6 +17,16 @@
 :global * {
   box-sizing: inherit;
 
+  &[role="button"] {
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   &::after,
   &::before {
     box-sizing: inherit;

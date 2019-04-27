@@ -1,25 +1,20 @@
 .Root {
-  background: #e8e8e8;;
-  border: 0;
-  border-radius: 6px;
   height: 135px;
   opacity: .6;
-  overflow: hidden;
   padding: 0;
   position: relative;
-  transition: all .4s;
+  transition: all 0.4s;
   width: 240px;
-
-  &:focus {
-    outline: none;
-  }
 
   &:hover,
   &IsSelected {
-    box-shadow: 0 24px 48px -24px rgba(0, 0, 0, .4);
-    cursor: pointer;
     opacity: 1;
-    transform: scale(1.07);
+
+    .Card {
+      box-shadow: 0 24px 48px -24px rgba(0, 0, 0, .4);
+      cursor: pointer;
+      opacity: 1;
+    }
 
     .Check {
       transform: translateY(0);
@@ -34,12 +29,56 @@
     }
 
     &Selected {
-      pointer-events: none;
+      &:not(.RootIsPreview) {
+        height: 180px;
+      }
+
+      .Actions {
+        opacity: 1;
+        visibility: visible;
+      }
 
       .Check:before {
         background: #8e8ad8;
       }
+
+      .Card {
+        pointer-events: none;
+        transform: scale(1.07) translateY(-8px);
+      }
     }
+  }
+}
+
+.Actions {
+  display: flex;
+  height: 18px;
+  justify-content: center;
+  margin: 20px 0 0;
+  opacity: 0;
+  transition: all .4s .2s;
+  visibility: hidden;
+
+  & > * {
+    flex: 0 0 50%;
+
+    &:not(:first-child) {
+      border-left: 1px solid #ccc;
+    }
+  }
+}
+
+.Card {
+  background: #e8e8e8;;
+  border-radius: 6px;
+  height: 135px;
+  overflow: hidden;
+  position: relative;
+  transition: all .4s;
+  width: 240px;
+
+  &:focus {
+    outline: none;
   }
 }
 
@@ -71,4 +110,22 @@
   max-width: 100%;
   object-fit: contain;
   transition: all 0.4s;
+}
+
+.Link {
+  align-items: center;
+  display: flex;
+  color: #bfbfc7;
+  font-size: 12px;
+  justify-content: center;
+  letter-spacing: 0.2px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    color: #7e7acc;
+    cursor: pointer;
+  }
 }

@@ -26,12 +26,6 @@ export default createConfig(1, [
   {
     id: BACKGROUND,
     data: {
-      color: '',
-      gradient: {
-        angle: 0,
-        from: '',
-        to: '',
-      },
       image: {
         src: BACKGROUND_LIST[4],
       },

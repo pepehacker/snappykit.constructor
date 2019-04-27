@@ -1,3 +1,4 @@
+import { get } from 'lodash';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -32,10 +33,10 @@ const TemplateBackground = ({
 
       const containerClassNames = classNames(containerClassName, styles.Container);
 
-      const { color, gradient: { angle, from, to } = {}, image } = getSectionById(
-        data,
-        id || BACKGROUND,
-      );
+      const { color, gradient, image } = getSectionById(data, id || BACKGROUND);
+
+      const currentColor = get(image, 'color') || color;
+      const { angle, from, to } = get(image, 'gradient') || gradient || {};
 
       return (
         <div className={rootClassNames}>
@@ -49,11 +50,11 @@ const TemplateBackground = ({
             />
           )}
 
-          {color && (
+          {currentColor && (
             <div
               className={styles.Cover}
               style={{
-                backgroundColor: color,
+                backgroundColor: currentColor,
               }}
             />
           )}

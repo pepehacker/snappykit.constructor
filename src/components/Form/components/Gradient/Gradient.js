@@ -25,6 +25,7 @@ const Gradient = ({
   currentDirection,
   handleFromClick,
   handleToClick,
+  name = 'gradient',
   value,
 }: GradientType): React.Element<'div'> => (
   <div className={styles.Root}>
@@ -54,12 +55,12 @@ const Gradient = ({
     </div>
 
     <div className={styles.Angle}>
-      <Angle label="Angle" name="gradient.angle" />
+      <Angle label="Angle" name={`${name}.angle`} />
     </div>
 
     <div className={styles.Colors}>
-      {currentDirection === DIRECTION.FROM && <Color label="From" name="gradient.from" />}
-      {currentDirection === DIRECTION.TO && <Color label="To" name="gradient.to" />}
+      {currentDirection === DIRECTION.FROM && <Color label="From" name={`${name}.from`} />}
+      {currentDirection === DIRECTION.TO && <Color label="To" name={`${name}.to`} />}
     </div>
   </div>
 );

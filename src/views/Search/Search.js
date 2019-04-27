@@ -49,7 +49,7 @@ const Search = ({
         enterActive: styles.RootAnimateEnterActive,
       }}
       in={!countriesIsFetching && isMounted}
-      timeout={40000}
+      timeout={400}
       unmountOnExit
     >
       {state => (

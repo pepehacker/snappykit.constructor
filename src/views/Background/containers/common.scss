@@ -1,3 +1,50 @@
+.Cancel {
+  display: flex;
+  color: #c4c9d1;
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  padding: 0 12px;
+  transition: all .2s;
+
+  &:before {
+    background: #c4c9d1;
+    content: '';
+    display: block;
+    height: 16px;
+    margin: 0 20px 0 0;
+    mask: url('components/Icon/assets/back.svg') no-repeat center center;
+    mask-size: contain;
+    transition: all .2s;
+    width: 16px;
+  }
+
+  &:hover {
+    color: #8e8ad8;
+
+    &:before {
+      background: #8e8ad8;
+    }
+  }
+}
+
+.Card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 40px 0 0;
+  width: 100%;
+}
+
+.Edit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Form {
+  margin: 40px 0 0;
+}
+
 .Input {
   width: 240px;
 }
@@ -5,6 +52,13 @@
 .List {
   margin: 32px 0 0;
   position: relative;
+}
+
+.Reset {
+  color: #fd918c;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 16px 0 0;
 }
 
 .Search {

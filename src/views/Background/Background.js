@@ -68,13 +68,13 @@ export default compose(
       updateWebsiteSection(websiteId, id || BACKGROUND, {
         color,
         gradient: undefined,
-        image: undefined,
+        image: { src: '' },
       }),
     handleGradientChange: ({ id, updateWebsiteSection, websiteId }): Function => ({ gradient }) =>
       updateWebsiteSection(websiteId, id || BACKGROUND, {
         gradient,
         color: undefined,
-        image: undefined,
+        image: { src: '' },
       }),
     handleImageChange: ({ id, updateWebsiteSection, websiteId }): Function => ({ image }) =>
       updateWebsiteSection(websiteId, id || BACKGROUND, {
