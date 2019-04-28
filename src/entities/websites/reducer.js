@@ -13,9 +13,7 @@ import {
   SAVE_WEBSITE_REQUEST,
   SAVE_WEBSITE_SUCCESS,
   SAVE_WEBSITE_FAILURE,
-
   SET_TEMPLATE_ID,
-
   UPDATE_WEBSITE,
   UPDATE_WEBSITE_SECTION,
 } from './types';
@@ -30,13 +28,12 @@ export default (state = {}, action: Object): Object => {
     case CREATE_WEBSITE:
       return {
         ...state,
-        'new': {
+        new: {
           ...action.payload,
           id: 'new',
           isSupported: true,
         },
       };
-
 
     // Delete
     case DELETE_WEBSITE_REQUEST:
@@ -55,9 +52,8 @@ export default (state = {}, action: Object): Object => {
         [websiteId]: {
           ...website,
           isFetching: false,
-        }
+        },
       };
-
 
     // Save
     case SAVE_WEBSITE_REQUEST:
@@ -84,7 +80,6 @@ export default (state = {}, action: Object): Object => {
           isFetching: false,
         },
       };
-
 
     // Other
     case SET_TEMPLATE_ID:
@@ -113,10 +108,7 @@ export default (state = {}, action: Object): Object => {
             ...get(website, 'data'),
             section: {
               ...get(website, 'data.section'),
-              [sectionId]: {
-                ...get(website, `data.section.${sectionId}`),
-                ...action.payload,
-              },
+              [sectionId]: action.payload,
             },
           },
         },

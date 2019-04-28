@@ -35,9 +35,9 @@ const Background = ({
   handleImageChange,
 }: BackgroundType): React.Element<typeof Sideber> => (
   <Sidebar tabs={TABS} title="Background">
-    <ImageForm onChange={handleImageChange} />
-    <ColorForm onChange={handleColorChange} />
-    <GradientForm onChange={handleGradientChange} />
+    <ImageForm initialValues={initialValues} onChange={handleImageChange} />
+    <ColorForm initialValues={initialValues} onChange={handleColorChange} />
+    <GradientForm initialValues={initialValues} onChange={handleGradientChange} />
   </Sidebar>
 );
 
@@ -68,19 +68,27 @@ export default compose(
       updateWebsiteSection(websiteId, id || BACKGROUND, {
         color,
         gradient: undefined,
-        image: { src: '' },
+        image: undefined,
       }),
     handleGradientChange: ({ id, updateWebsiteSection, websiteId }): Function => ({ gradient }) =>
       updateWebsiteSection(websiteId, id || BACKGROUND, {
         gradient,
         color: undefined,
-        image: { src: '' },
+        image: undefined,
       }),
-    handleImageChange: ({ id, updateWebsiteSection, websiteId }): Function => ({ image }) =>
+    handleImageChange: ({ id, updateWebsiteSection, websiteId }): Function => (
+      { image },
+      dispatch,
+      props,
+      previousValues,
+    ) => {
+      const src = get(image, 'src');
+
       updateWebsiteSection(websiteId, id || BACKGROUND, {
-        image,
         color: undefined,
         gradient: undefined,
-      }),
+        image: src === get(previousValues, 'image.src') ? image : { src: get(image, 'src') },
+      });
+    },
   }),
 )(Background);

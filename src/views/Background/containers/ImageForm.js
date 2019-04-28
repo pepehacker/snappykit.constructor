@@ -114,7 +114,13 @@ export default compose(
   reduxForm({
     form: BACKGROUND_IMAGE_FORM,
   }),
-  withState('editType', 'setEditType', null),
+  withState('editType', 'setEditType', ({ initialValues }) =>
+    has(initialValues, 'image.color')
+      ? BACKGROUND_COLOR
+      : has(initialValues, 'image.gradient')
+        ? BACKGROUND_GRADIENT
+        : null,
+  ),
   withState('query', 'setQuery', ''),
   withState('result', 'setResult', []),
   withState('isEdit', 'setEdit', false),
