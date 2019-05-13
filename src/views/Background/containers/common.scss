@@ -47,6 +47,24 @@
 
 .Input {
   width: 240px;
+
+  & input {
+    &::-webkit-input-placeholder {
+      font-weight: 400;
+    }
+
+    &::-moz-placeholder {
+      font-weight: 400;
+    }
+
+    &:-ms-input-placeholder {
+      font-weight: 400;
+    }
+
+    &:-moz-placeholder {
+      font-weight: 400;
+    }
+  }
 }
 
 .List {

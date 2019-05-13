@@ -1,5 +1,6 @@
 // @flow
 import classNames from 'classnames';
+import { get } from 'lodash';
 import * as React from 'react';
 import { compose, withHandlers, withState } from 'recompose';
 
@@ -21,6 +22,7 @@ const VARIANT = {
 const BackgroundImageCard = ({
   editType,
   src,
+  user,
   variant = VARIANT.IMAGE,
   // Handlers
   handleAddColor,
@@ -46,6 +48,19 @@ const BackgroundImageCard = ({
         alt="Background" className={styles.Image}
         onLoad={handleLoad} src={src}
       />
+
+      {user && (
+        <div className={styles.Author}>
+          <a
+            className={styles.AuthorLink}
+            href={`${get(user, 'link')}?utm_source=snappykit&utm_medium=referra`}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {get(user, 'name')}
+          </a>
+        </div>
+      )}
 
       <div className={styles.Check} />
     </div>

@@ -24,25 +24,42 @@ const BackgroundImage = ({
   onEdit,
   photos = [],
   value,
-}: BackgroundImageType): React.Element<'div'> => (
-  <div className={styles.Root}>
-    <div className={styles.List}>
-      {(photos || BACKGROUND_LIST).map(
-        (src: string): func => (
-          <Card
-            key={src}
-            editType={editType}
-            isSelected={src === value}
-            onClick={onChange}
-            onEdit={onEdit}
-            src={src}
-            value={src}
-          />
-        ),
-      )}
+}: BackgroundImageType): React.Element<'div'> => {
+  const cardProps = {
+    editType,
+    onEdit,
+    onClick: onChange,
+  };
+
+  return (
+    <div className={styles.Root}>
+      <div className={styles.List}>
+        {photos && photos.length > 0
+          ? photos.map(({ id, src, user }) => (
+            <Card
+              {...cardProps}
+              key={id}
+              editType={editType}
+              isSelected={src === value}
+              src={src}
+              user={user}
+              value={src}
+            />
+          ))
+          : BACKGROUND_LIST.map((src: string) => (
+            <Card
+              {...cardProps}
+              key={src}
+              editType={editType}
+              isSelected={src === value}
+              src={src}
+              value={src}
+            />
+          ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default (props: Object) => (
   <Field {...props} withoutLabel>

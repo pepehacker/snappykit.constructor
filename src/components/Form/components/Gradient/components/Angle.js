@@ -28,7 +28,7 @@ const GradientAngle = ({
   min = 0,
   name,
   onChange,
-  value,
+  value = 0,
 }: GradientAngleType): React.Element<'div'> => (
   <div className={styles.Root}>
     <div className={styles.Division}>

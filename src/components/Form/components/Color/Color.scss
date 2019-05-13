@@ -42,12 +42,38 @@
 }
 
 .Hex {
-  color: #c5c9ce;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: .6px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   margin: 16px 0 0;
-  text-transform: uppercase;
+  position: relative;
+  width: 84px;
+
+  &:after {
+    background-image: linear-gradient(to right, rgba(214, 214, 215, 0), #d6d6d7 52%, rgba(214, 214, 215, 0));
+    content: '';
+    display: block;
+    height: 1px;
+    margin: 4px 0 0;
+    width: 100%;
+  }
+
+  & input {
+    background: transparent;
+    border: 0;
+    color: #C5C9CE;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: .6px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 68px;
+
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
 .Hue {

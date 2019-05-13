@@ -80,15 +80,15 @@ const BackgroundImageForm = ({
         <div className={styles.Search}>
           <Input
             className={styles.Input}
-            label="Upload from unsplash"
             name="search"
             onChange={handleChange}
+            placeholder="Search from Unsplash..."
           />
         </div>
 
         <div className={styles.List}>
-          {isLoaded ? (
-            <Spinner className={styles.Spinner} title="Searching" />
+          {query && isLoaded ? (
+            <Spinner className={styles.Spinner} title={`Searching "${query}"...`} />
           ) : (
             <Image
               editType={editType}
@@ -140,8 +140,16 @@ export default compose(
         .then(res => {
           if (queryTemp === searchString) {
             const results = get(res, 'results', []);
+
             const formattedResults = results.map(
-              (photo: Object): string => get(photo, 'urls.regular'),
+              (photo: Object): string => ({
+                id: get(photo, 'id'),
+                src: get(photo, 'urls.regular'),
+                user: {
+                  link: get(photo, 'user.links.html'),
+                  name: get(photo, 'user.name'),
+                },
+              }),
             );
 
             setLoaded(false);
