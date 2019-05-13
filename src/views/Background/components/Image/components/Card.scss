@@ -6,14 +6,16 @@
   transition: all 0.4s;
   width: 240px;
 
-  &:hover,
-  &IsSelected {
-    opacity: 1;
-
+  &:hover:not(.RootIsSelected) {
     .Author {
       opacity: .6;
       visibility: visible;
     }
+  }
+
+  &:hover,
+  &IsSelected {
+    opacity: 1;
 
     .Card {
       box-shadow: 0 24px 48px -24px rgba(0, 0, 0, .4);
@@ -35,10 +37,15 @@
 
     &Selected {
       &:not(.RootIsPreview) {
-        height: 180px;
+        height: 172px;
       }
 
       .Actions {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .Author {
         opacity: 1;
         visibility: visible;
       }
@@ -48,7 +55,6 @@
       }
 
       .Card {
-        pointer-events: none;
         transform: scale(1.07) translateY(-8px);
       }
     }
@@ -59,7 +65,7 @@
   display: flex;
   height: 18px;
   justify-content: center;
-  margin: 20px 0 0;
+  margin: 16px 0 0;
   opacity: 0;
   transition: all .4s .2s;
   visibility: hidden;
@@ -96,6 +102,10 @@
     font-size: 14px;
     font-weight: 400;
     text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 

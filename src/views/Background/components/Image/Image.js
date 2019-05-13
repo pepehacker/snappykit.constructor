@@ -35,12 +35,13 @@ const BackgroundImage = ({
     <div className={styles.Root}>
       <div className={styles.List}>
         {photos && photos.length > 0
-          ? photos.map(({ id, src, user }) => (
+          ? photos.map(({ id, photo, src, user }) => (
             <Card
               {...cardProps}
               key={id}
               editType={editType}
               isSelected={src === value}
+              photo={photo}
               src={src}
               user={user}
               value={src}

@@ -6,10 +6,15 @@ export default (data: Object, config: Object): Object => {
   if (config && data) {
     keys(get(config, 'section', {})).forEach(
       (sectionId: number | string): void => {
+        const defaultData = get(config, `section.${sectionId}.data`);
         const schema = get(config, `section.${sectionId}.schema`);
 
         schema &&
-          set(templateData, `section.${sectionId}`, schema.cast(get(data, `section.${sectionId}`)));
+          set(
+            templateData,
+            `section.${sectionId}`,
+            schema.cast(get(data, `section.${sectionId}`, defaultData)),
+          );
       },
     );
   }

@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import { compose, withHandlers, withState } from 'recompose';
 import { formValueSelector, reduxForm } from 'redux-form';
 
+// API
+import Unsplash from 'api/unsplash';
+
 // Components
 import Form, { Color, Input, Gradient } from 'components/Form';
 import Image, { Card } from '../components/Image';
@@ -129,13 +132,10 @@ export default compose(
     let queryTemp = '';
 
     const changeThrottle = throttle((searchString: string): void => {
-      const clientId: string = '37dc7a1a5e94dd2846f791d4b9efe5ee402369548e1b37a7671107772bbb6909';
-
       setLoaded(true);
 
-      fetch(
-        `https://api.unsplash.com/search/photos?page=1&query=${searchString}&client_id=${clientId}&w=1920`,
-      )
+      Unsplash.search
+        .photos(searchString)
         .then(res => res.json())
         .then(res => {
           if (queryTemp === searchString) {
@@ -144,6 +144,7 @@ export default compose(
             const formattedResults = results.map(
               (photo: Object): string => ({
                 id: get(photo, 'id'),
+                photo,
                 src: get(photo, 'urls.regular'),
                 user: {
                   link: get(photo, 'user.links.html'),

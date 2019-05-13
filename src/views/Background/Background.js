@@ -81,14 +81,11 @@ export default compose(
       dispatch,
       props,
       previousValues,
-    ) => {
-      const src = get(image, 'src');
-
+    ) =>
       updateWebsiteSection(websiteId, id || BACKGROUND, {
         color: undefined,
         gradient: undefined,
-        image: src === get(previousValues, 'image.src') ? image : { src: get(image, 'src') },
-      });
-    },
+        image,
+      }),
   }),
 )(Background);

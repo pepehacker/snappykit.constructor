@@ -4,6 +4,9 @@ import { get } from 'lodash';
 import * as React from 'react';
 import { compose, withHandlers, withState } from 'recompose';
 
+// API
+import Unsplash from 'api/unsplash';
+
 // Styles
 import styles from './Card.scss';
 
@@ -99,8 +102,10 @@ export default compose(
     handleAddColor: ({ onEdit }): Function => (): boolean => onEdit && onEdit(BACKGROUND_COLOR),
     handleAddGradient: ({ onEdit }): Function => (): boolean =>
       onEdit && onEdit(BACKGROUND_GRADIENT),
-    handleClick: ({ onClick, src }): Function => (event: Object): boolean =>
-      onClick && onClick(src),
+    handleClick: ({ onClick, photo, src }): Function => (event: Object): boolean => {
+      photo && Unsplash.photos.downloadPhoto(photo);
+      onClick && onClick(src);
+    },
     handleLoad: ({ setLoaded }): Function => () => setLoaded(false),
   }),
 )(BackgroundImageCard);

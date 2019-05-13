@@ -86,6 +86,7 @@ export default (id: number, sections: Array<ConfigType> = []): Object => {
 
     set(section, `${id}`, {
       id,
+      data,
       exports,
       schema,
       type,
