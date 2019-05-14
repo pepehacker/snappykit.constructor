@@ -18,7 +18,7 @@ import styles from './User.scss';
 
 const LINKS = [
   { icon: 'Website', title: 'Your Websites', to: '/' },
-  { icon: 'Plans', title: 'Plans', to: '/plans' },
+  // { icon: 'Plans', title: 'Plans', to: '/plans' },
   { icon: 'Password', title: 'Change Password', to: '/password' },
 ];
 
