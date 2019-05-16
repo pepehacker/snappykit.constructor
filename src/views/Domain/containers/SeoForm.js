@@ -8,7 +8,7 @@ import Form, { Input, Textarea } from 'components/Form';
 import styles from './SeoForm.scss';
 
 // Utils
-import validate, { max, min, required } from 'utils/validate';
+import validate, { max, required } from 'utils/validate';
 
 const DomainSeoForm = ({ handleSubmit }): Function => (
   <Form onSubmit={handleSubmit}>

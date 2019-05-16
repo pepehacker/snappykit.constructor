@@ -11,7 +11,9 @@ import App from './App';
 import * as serviceWorker from './utils/serviceWorker';
 import createStore from './store';
 
-const history = createBrowserHistory();
+const history = createBrowserHistory({
+  basename: '/kit',
+});
 const store = createStore(history);
 
 // eslint-disable-next-line

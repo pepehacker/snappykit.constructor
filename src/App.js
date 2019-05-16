@@ -46,13 +46,7 @@ export default compose(
   ),
   lifecycle({
     componentDidMount() {
-      const { fetchProfile, token } = this.props;
-
-      if (token) {
-        fetchProfile(2036);
-      }
+      this.props.fetchProfile();
     },
   }),
 )(App);
-
-// bd95e139ac9aed83c895c951bfb947a29ca2d5a9729b5bb8fa

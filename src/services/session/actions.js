@@ -5,26 +5,21 @@ import {
   FETCH_PROFILE_REQUEST,
   FETCH_PROFILE_SUCCESS,
   FETCH_PROFILE_FAILURE,
-
   SET_USER,
 } from './types';
 
 export const fetchProfile = (id: number) => (dispatch: func, getState: func, { api }) => {
   dispatch({ type: FETCH_PROFILE_REQUEST });
 
-  api([
-    {
-      method: 'profile.get',
-      params: { id },
-    },
-    { method: 'subscriptions.get' },
-  ])
+  api([{ method: 'profile.get' }, { method: 'subscriptions.get' }])
     .then(response => {
       const profile = get(response, '0.data', {});
       const subscriptions = get(response, '1.data.response', []);
 
       if (!isEmpty(profile)) {
-        const subscription = subscriptions.filter(({ id }) => id === get(profile, 'subscription_plan_id', 0))[0];
+        const subscription = subscriptions.filter(
+          ({ id }) => id === get(profile, 'subscription_plan_id', 0),
+        )[0];
 
         const user = {
           id,
@@ -40,5 +35,9 @@ export const fetchProfile = (id: number) => (dispatch: func, getState: func, { a
         dispatch({ type: FETCH_PROFILE_SUCCESS });
       }
     })
-    .catch((error: Object) =>  dispatch({ type: FETCH_PROFILE_FAILURE }));
+    .catch((error: Object) => {
+      const status = get(error, 'response.status', 404);
+      status === 401 && window.location.replace('http://snappykit.com');
+      dispatch({ type: FETCH_PROFILE_FAILURE, error: get(error, 'message') });
+    });
 };
