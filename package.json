@@ -148,5 +148,6 @@
     "stylelint-config-standard": "^18.2.0",
     "stylelint-prettier": "^1.0.6",
     "stylelint-scss": "^3.5.4"
-  }
+  },
+  "homepage": "https://snappykit.com/kit"
 }
