@@ -6,6 +6,7 @@
   font-weight: inherit;
   margin: 0;
   padding: 12px;
+  transition: all .2s;
 
   &:focus {
     outline: none;
@@ -13,13 +14,14 @@
 
   &:hover {
     cursor: pointer;
+    opacity: .8;
 
     .Icon {
-      background: #8e8ad8;
+      background: var(--color-primary);
     }
 
     .Title {
-      color: #8e8ad8;
+      color: var(--color-primary);
     }
   }
 
@@ -62,16 +64,12 @@
     &Active {
       pointer-events: none;
 
-      .Cover {
-        filter: drop-shadow(8px 10px 8px rgba(126, 122, 204, .4));
-      }
-
       .Icon {
-        background: #7e7acc;
+        background: var(--color-primary);
       }
 
       .Title {
-        color: #7e7acc;
+        color: var(--color-primary);
       }
     }
   }
@@ -82,14 +80,14 @@
 }
 
 .Icon {
-  background: #bfbfc7;
+  background: var(--color-text-secondary);
   height: 100%;
   mask: no-repeat center center;
   width: 100%;
 }
 
 .Title {
-  color: #bfbfc7;
+  color: var(--color-text-secondary);
   font-size: 12px;
   letter-spacing: .6px;
   margin: 0 0 0 14px;
