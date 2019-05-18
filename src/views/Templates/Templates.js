@@ -5,7 +5,7 @@ import { matchPath } from 'react-router-dom';
 import { compose, withHandlers } from 'recompose';
 
 // Components
-import { Container, Title } from 'views/Editor';
+import Sidebar from 'components/Sidebar';
 
 // Containers
 import Form from './containers/Form';
@@ -14,22 +14,15 @@ import Form from './containers/Form';
 import { setTemplateId } from 'entities/websites/actions';
 import { getWebsiteById } from 'entities/websites/selector';
 
-// Styles
-import styles from './Templates.scss';
-
 const Templates = ({
   // Props
   initialValues,
   // Handlers
   handleChange,
 }) => (
-  <div className={styles.Root}>
-    <Title title="Templates" />
-
-    <Container>
-      <Form initialValues={initialValues} onChange={handleChange} />
-    </Container>
-  </div>
+  <Sidebar title="Templates">
+    <Form initialValues={initialValues} onChange={handleChange} />
+  </Sidebar>
 );
 
 const mapStateToProps = (state: Object, { location }) => {

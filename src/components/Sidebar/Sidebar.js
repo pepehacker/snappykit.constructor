@@ -1,4 +1,5 @@
 // @flow
+import classNames from 'classnames';
 import * as React from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { compose, withHandlers, withState } from 'recompose';
@@ -20,7 +21,11 @@ const Sidebar = ({
   tabs,
   title,
 }: SidebarType): React.Element<'div'> => (
-  <div className={styles.Root}>
+  <div
+    className={classNames(styles.Root, {
+      [styles.RootWithTabs]: tabs && tabs.length > 0,
+    })}
+  >
     <div className={styles.Header}>
       {title && (
         <div className={styles.Title}>
