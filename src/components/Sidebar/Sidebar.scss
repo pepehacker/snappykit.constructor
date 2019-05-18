@@ -24,7 +24,7 @@
   max-height: calc(100% - 28px);
   overflow-x: visible;
   overflow-y: scroll;
-  padding: 40px 24px;
+  padding: 40px 22px;
   position: relative;
   z-index: 1;
 
@@ -51,6 +51,13 @@
   height: 28px;
   position: relative;
   z-index: 2;
+}
+
+.Info {
+  color: #C5C9CE;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .6px;
 }
 
 .Item {
@@ -95,9 +102,12 @@
 }
 
 .Title {
+  align-items: flex-end;
   color: #545e6f;
+  display: flex;
   font-size: 24px;
   font-weight: 400;
+  justify-content: space-between;
   letter-spacing: -0.9px;
   line-height: 28px;
 }

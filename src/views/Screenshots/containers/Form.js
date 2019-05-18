@@ -3,11 +3,9 @@ import { reduxForm } from 'redux-form';
 
 // Components
 import Form from 'components/Form';
-import List from './List';
+import List from '../components/List';
 
-const ScreenshotsForm = ({
-  handleSubmit,
-}) => (
+const ScreenshotsForm = ({ handleSubmit }) => (
   <Form onSubmit={handleSubmit}>
     <List name="items" />
   </Form>

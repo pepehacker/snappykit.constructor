@@ -1,12 +1,12 @@
 .Root {
   background: #e8e8e8;
   border-radius: 4px;
-  transition: all .2s;
+  transition: all .4s;
 
   &:hover {
     // @todo - нормальные тени
     background: #ffffff;
-    box-shadow: 0 24px 40px -20px rgba(0, 0, 0, 0.32);
+    box-shadow: 0 12px 40px -20px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transform: scale(1.1);
   }
