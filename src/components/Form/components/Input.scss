@@ -9,9 +9,14 @@
         height: 40px;
         padding: 0 16px;
 
+        &:hover {
+          background: #ffffff;
+          box-shadow: 0 12px 20px rgba(0, 0, 0, .08);
+        }
+
         &:focus {
           background: #ffffff;
-          box-shadow: 0 5px 16px 0 rgba(0, 0, 0, .06);
+          box-shadow: 0 12px 20px rgba(0, 0, 0, .04);
         }
       }
     }

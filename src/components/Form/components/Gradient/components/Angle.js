@@ -29,56 +29,62 @@ const GradientAngle = ({
   name,
   onChange,
   value = 0,
-}: GradientAngleType): React.Element<'div'> => (
-  <div className={styles.Root}>
-    <div className={styles.Division}>
-      <div className={styles.List}>
-        {generateDivision(min, max, lenght).map((value, index) => {
-          const isPoint = index === 0 || index % (lenght / 4) === 0;
+}: GradientAngleType): React.Element<'div'> => {
+  const percent = (value / max) * 100;
 
-          const valueClassNames = classNames(styles.Value, {
-            [styles.ValueVariantPoint]: isPoint,
-          });
+  return (
+    <div className={styles.Root}>
+      <div className={styles.Division}>
+        <div className={styles.List}>
+          {generateDivision(min, max, lenght).map((value, index) => {
+            const isPoint = index === 0 || index % (lenght / 4) === 0;
 
-          return (
-            <div key={index} className={valueClassNames}>
-              {isPoint && <div className={styles.Point}>
-                {value}
-              </div>}
-            </div>
-          );
-        })}
-      </div>
+            const valueClassNames = classNames(styles.Value, {
+              [styles.ValueVariantPoint]: isPoint,
+            });
 
-      <div
-        className={styles.Angle}
-        style={{
-          left: `calc(${(value / max) * 100}% - 1px)`,
-        }}
-      >
-        <div className={styles.AngleValue}>
-          {value}
+            return (
+              <div key={index} className={valueClassNames}>
+                {isPoint && <div className={styles.Point}>
+                  {value}
+                </div>}
+              </div>
+            );
+          })}
+        </div>
+
+        <div
+          className={styles.Angle}
+          style={{
+            left: `calc(${(value / max) * 100}% - 1px)`,
+          }}
+        >
+          <div className={styles.AngleValue}>
+            {value}
+          </div>
         </div>
       </div>
-    </div>
 
-    <div className={styles.Control}>
-      <input
-        className={styles.Range}
-        id={id}
-        max={max}
-        min={min}
-        name={name}
-        onChange={onChange}
-        style={{
-          left: `calc(${(value / max) * 100}% - 52px)`,
-        }}
-        type="range"
-        value={value}
-      />
+      <div className={styles.Control}>
+        <input
+          className={styles.Range}
+          id={id}
+          max={max}
+          min={min}
+          name={name}
+          onChange={onChange}
+          style={{
+            background: `linear-gradient(to right, #ebebeb ${percent -
+              20}%, #9e9ae2 ${percent}%, #ebebeb ${percent + 20}%)`,
+            left: `calc(${percent}% - 52px)`,
+          }}
+          type="range"
+          value={value}
+        />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default props => (
   <Field {...props}>
