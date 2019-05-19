@@ -6,6 +6,7 @@ export default (data: Object, config: Object, callback: func): Object => {
 
   keys(section).forEach(
     (sectionId: string): void => {
+      const defaultData = get(section, `${sectionId}.data`);
       const schema = get(section, `${sectionId}.schema`);
 
       const field = get(data, sectionId);
@@ -20,9 +21,9 @@ export default (data: Object, config: Object, callback: func): Object => {
           : field instanceof Array
             ? { items: field.filter(Boolean) }
             : field
-        : {};
+        : null;
 
-      set(newData, `section.${sectionId}`, schema.cast(fieldData));
+      set(newData, `section.${sectionId}`, schema.cast(fieldData || defaultData || {}));
     },
   );
 
