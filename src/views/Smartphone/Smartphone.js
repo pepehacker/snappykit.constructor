@@ -5,7 +5,7 @@ import { matchPath } from 'react-router-dom';
 import { compose, withHandlers } from 'recompose';
 
 // Components
-import { Container, Title } from 'views/Editor';
+import Sidebar from 'components/Sidebar';
 
 // Containers
 import Form from './containers/Form';
@@ -17,17 +17,10 @@ import { getSectionById } from 'entities/websites/selector';
 // Template
 import { SMARTPHONE } from 'template/config';
 
-// Styles
-import styles from './Smartphone.scss';
-
 const Smarthpone = ({ initialValues, handleChange }) => (
-  <div className={styles.Root}>
-    <Title title="Smartphone" />
-
-    <Container>
-      <Form initialValues={initialValues} onChange={handleChange} />
-    </Container>
-  </div>
+  <Sidebar title="Smartphone">
+    <Form initialValues={initialValues} onChange={handleChange} />
+  </Sidebar>
 );
 
 const mapStateToProps = (state: Object, { location }) => {

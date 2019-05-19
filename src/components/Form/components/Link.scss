@@ -12,7 +12,7 @@
       box-shadow: 0 5px 16px 0 rgba(0, 0, 0, .06);
 
       &:before {
-        background: #a6a2e9;
+        background: var(--color-primary);
       }
     }
 
@@ -47,7 +47,7 @@
       }
 
       .Plus {
-        background: #9e9ae2;
+        background: rgba(#9E9AE2, .6);
 
         &:before {
           background: #ffffff;
@@ -67,7 +67,7 @@
 .Dropdown {
   background: #ffffff;
   border-radius: 4px;
-  box-shadow: 0 5px 16px 0 rgba(0, 0, 0, .06);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .08);
   height: 0;
   margin: 0;
   opacity: 0;
@@ -77,6 +77,11 @@
     height .15s,
     margin .25s,
     opacity .25s;
+}
+
+.Empty {
+  color: #AEB2BA;
+  font-size: 12px;
 }
 
 .Input {
@@ -160,14 +165,6 @@
     transition: all .2s;
     width: 8px;
   }
-
-  &:focus {
-    outline: none;
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
 }
 
 .Trigger {
@@ -180,9 +177,8 @@
 }
 
 .Link {
-  color: #bfbfc7;
+  color: #AEB2BA;
   font-size: 12px;
-  font-weight: 500;
   letter-spacing: .1px;
   line-height: 16px;
   overflow: hidden;

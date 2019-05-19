@@ -186,7 +186,7 @@
 
 .Save {
   align-items: center;
-  background-image: linear-gradient(248deg, #5e7adb, #8359c1);
+  background: var(--color-primary);
   border: 0;
   border-radius: 32px;
   color: #fff;
@@ -195,23 +195,18 @@
   height: 40px;
   justify-content: center;
   letter-spacing: .75px;
-  opacity: .5;
+  opacity: .8;
   position: relative;
   text-decoration: none;
   transition: all .2s;
   width: 100px;
 
   &:active {
-    opacity: .7;
-  }
-
-  &:focus {
-    outline: none;
+    opacity: .6;
   }
 
   &:hover:not(:active) {
-    cursor: pointer;
-    opacity: .9
+    opacity: 1;
   }
 }
 

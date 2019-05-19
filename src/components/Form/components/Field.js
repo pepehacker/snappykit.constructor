@@ -15,8 +15,8 @@ const FormField = ({ children, className: classNameProps, id, ...props }) => {
 
   return (
     <Field {...props} component={reduxFieldAdapter}>
-      {(props: Object): React.Element<'div'> => {
-        const { error, label, value = '' } = props;
+      {({ label, ...props }): React.Element<'div'> => {
+        const { error, value = '' } = props;
         const length = value.length || 0;
 
         return (

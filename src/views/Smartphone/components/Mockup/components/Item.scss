@@ -8,7 +8,7 @@
 
   &:after {
     animation: spin 1s infinite linear;
-    border: 2px solid #9e9ae2;
+    border: 2px solid var(--color-primary);
     border-radius: 100%;
     border-top-color: transparent;
     height: 24px;
@@ -47,11 +47,11 @@
       pointer-events: none;
 
       &:before {
-        border-color: #9e9ae2;
+        border-color: var(--color-primary);
       }
 
       .Check {
-        background: #8e8ad8;
+        background: var(--color-primary);
       }
     }
 
@@ -82,7 +82,7 @@
 
   &:hover,
   &IsCurrent {
-    box-shadow: 0 24px 40px -20px rgba(0, 0, 0, 0.32);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     opacity: 1;
     transform: scale(1.12);
 

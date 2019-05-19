@@ -13,9 +13,13 @@
   transition: all .2s;
   width: 100%;
 
+  &:hover {
+    background: #ffffff;
+    box-shadow: 0 12px 20px rgba(0, 0, 0, .08);
+  }
+
   &:focus {
     background: #ffffff;
-    box-shadow: 0 5px 16px 0 rgba(0, 0, 0, .06);
-    outline: none;
+    box-shadow: 0 12px 20px rgba(0, 0, 0, .04);
   }
 }

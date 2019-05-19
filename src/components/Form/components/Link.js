@@ -52,7 +52,7 @@ const FormLink = ({
             {label}
           </div>
 
-          {value && (
+          {value ? (
             <a
               className={styles.Link}
               href={`${prefix}${formattedValue}`}
@@ -61,6 +61,8 @@ const FormLink = ({
             >
               {`@${formattedValue}`}
             </a>
+          ) : (
+            <span className={styles.Empty}>No Data</span>
           )}
         </div>
 

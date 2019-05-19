@@ -1,4 +1,5 @@
 @import '~styles/fonts.scss';
+@import '~styles/variables.scss';
 
 :global html {
   box-sizing: border-box;
@@ -30,6 +31,16 @@
   &::after,
   &::before {
     box-sizing: inherit;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+:global button {
+  &:hover {
+    cursor: pointer;
   }
 }
 

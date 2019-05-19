@@ -10,13 +10,9 @@
   transition: all .4s;
   width: 240px;
 
-  &:focus {
-    outline: none;
-  }
-
   &:hover,
   &IsSelected {
-    box-shadow: 0 24px 48px -24px rgba(0, 0, 0, .4);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, .2);
     cursor: pointer;
     opacity: 1;
     transform: scale(1.07);

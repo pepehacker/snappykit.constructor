@@ -9,11 +9,11 @@
 
   &:hover {
     // @todo - нормальные тени
-    box-shadow: 0 24px 40px -20px rgba(0, 0, 0, 0.32);
+    box-shadow: 0 12px 40px -20px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     opacity: 1;
     transform: scale(1.1);
-    transition: transform .2s;
+    transition: transform .4s;
 
     .Delete {
       transform: translateY(0);
@@ -44,15 +44,9 @@
   width: 32px;
   z-index: 2;
 
-  &:focus {
-    outline: none;
-  }
-
   &:hover {
-    cursor: pointer;
-
     .Icon {
-      background: #8e8ad8;
+      background: var(--color-primary);
     }
   }
 }

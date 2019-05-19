@@ -12,28 +12,24 @@
     cursor: pointer;
 
     .Icon {
-      background: #8e8ad8;
+      background: var(--color-primary);
     }
 
     .Title {
-      color: #8e8ad8;
+      color: var(--color-primary);
     }
   }
 
   &Active {
-    box-shadow: inset 4px 0 0 #7e7acc;
+    box-shadow: inset 4px 0 0 var(--color-primary);
     pointer-events: none;
 
-    .Cover {
-      filter: drop-shadow(8px 10px 8px rgba(126, 122, 204, .4));
-    }
-
     .Icon {
-      background: #7e7acc;
+      background: var(--color-primary);
     }
 
     .Title {
-      color: #7e7acc;
+      color: var(--color-primary);
     }
   }
 
@@ -101,7 +97,7 @@
 }
 
 .Icon {
-  background: #bfbfc7;
+  background: var(--color-text-secondary);
   height: 100%;
   mask: no-repeat center center;
   mask-size: contain;
@@ -109,10 +105,10 @@
 }
 
 .Title {
-  color: #bfbfc7;
+  color: var(--color-text-secondary);
   flex: 1 1 auto;
   font-size: 12px;
-  letter-spacing: .5px;
+  letter-spacing: .6px;
   margin: 0 0 0 40px;
 }
 

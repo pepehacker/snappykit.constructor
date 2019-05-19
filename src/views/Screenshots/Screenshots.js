@@ -5,8 +5,10 @@ import { matchPath } from 'react-router-dom';
 import { compose, withHandlers } from 'recompose';
 
 // Components
-import { Container, Title } from 'views/Editor';
-import Form from './components/Form';
+import Sidebar from 'components/Sidebar';
+
+// Containers
+import Form from './containers/Form';
 
 // Entities
 import { updateWebsiteSection } from 'entities/websites/actions';
@@ -15,20 +17,13 @@ import { getSectionById } from 'entities/websites/selector';
 // Template
 import { SCREENSHOTS } from 'template';
 
-// Styles
-import styles from './Screenshots.scss';
-
 const Screenshots = ({ handleChange, id, initialValues }) => (
-  <div className={styles.Root}>
-    <Title info="750x1334" title="Screenshots" />
-
-    <Container>
-      <Form
-        key={id} form={id}
-        initialValues={initialValues} onChange={handleChange}
-      />
-    </Container>
-  </div>
+  <Sidebar info="750x1334" title="Screenshots">
+    <Form
+      key={id} form={id}
+      initialValues={initialValues} onChange={handleChange}
+    />
+  </Sidebar>
 );
 
 const mapStateToProps = (state: Object, { location }): Object => {
