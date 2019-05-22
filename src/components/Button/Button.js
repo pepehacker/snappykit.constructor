@@ -8,16 +8,13 @@ import styles from './Button.scss';
 
 const VARIANT = {
   GRADIENT: 'gradient',
+  GRADIENT_REVERSE: 'gradientReverse',
 };
 
 const Button = ({
   children,
   className,
-  classNames: {
-    root: rootClassName,
-    content: contentClassName,
-    icon: iconClassName,
-  } = {},
+  classNames: { root: rootClassName, content: contentClassName, icon: iconClassName } = {},
   icon,
   onClick,
   type = 'button',
@@ -25,22 +22,15 @@ const Button = ({
 }) => {
   const rootClassNames = classNames(className, rootClassName, styles.Root, {
     [styles.RootVariantGradient]: variant === VARIANT.GRADIENT,
+    [styles.RootVariantGradientReverse]: variant === VARIANT.GRADIENT_REVERSE,
   });
   const contentClassNames = classNames(contentClassName, styles.Content);
   const iconClassNames = classNames(rootClassName, styles.Icon);
 
   return (
-    <button
-      className={rootClassNames}
-      onClick={onClick}
-      type={type}
-    >
+    <button className={rootClassNames} onClick={onClick} type={type}>
       {icon && <i className={iconClassNames} />}
-      {children && (
-        <div className={contentClassNames}>
-          {children}
-        </div>
-      )}
+      {children && <div className={contentClassNames}>{children}</div>}
     </button>
   );
 };
@@ -56,10 +46,7 @@ Button.propTypes = {
   icon: PropTypes.string,
   onClick: PropTypes.func,
   type: PropTypes.string,
-  variant: PropTypes.oneOf([
-    VARIANT.GRADIENT,
-    VARIANT.GRADIENT_SECONDARY,
-  ]),
+  variant: PropTypes.oneOf([VARIANT.GRADIENT, VARIANT.GRADIENT_SECONDARY]),
 };
 
 Button.VARIANT = VARIANT;

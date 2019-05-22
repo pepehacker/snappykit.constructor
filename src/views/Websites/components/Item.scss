@@ -128,19 +128,20 @@
   transition: all .2s;
 
   &:active {
-    color: #9e9ae2;
+    color: var(--color-primary);
     opacity: .8;
   }
 
   &:hover:not(:active) {
-    color: #9e9ae2;
+    color: var(--color-primary);
   }
 
   &External {
-    color: #9e9ae2;
+    color: var(--color-primary);
 
     &:hover {
-      color: #8e8ad8;
+      color: var(--color-primary);
+      opacity: .8;
     }
   }
 }

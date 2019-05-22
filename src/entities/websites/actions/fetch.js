@@ -22,38 +22,35 @@ export default (): Function => (
 ): Object<Promise> => {
   dispatch({ type: FETCH_WEBSITES_REQUEST });
 
-  return api(['websites.getAppList', 'websites.getTemplateList'])
+  return api('websites.getAppList')
     .then(
-      (res: Object): void => {
-        const appList: Array<Object> = get(res, '0.data.results', []);
-        const templateList: Array<Object> = get(res, '1.data.results', []);
+      ({ data }): void => {
+        const appList: Array<Object> = get(data, 'results', []);
 
-        const results: Array<Object> = templateList.map((item: Object) => {
-          const app: Object = appList.filter(({ id }) => id === get(item, 'app_id'))[0];
-          const template: Object = getTemplateById(get(item, 'template_id'));
-
+        const results: Array<Object> = appList.map((item: Object) => {
           let data: Object = {};
+          let templateId = 1;
 
-          if (template) {
-            try {
-              const json = JSON.parse(get(item, 'json', ''));
-              data = convertTemplateData(json, template.config);
-            } catch (e) {
-              // eslint-disable-next-line
-              console.error(`The template (${get(item, 'id')}) is not supported!`);
-            }
+          try {
+            const json = JSON.parse(get(item, 'json', ''));
+            const template = getTemplateById(get(json, 'templateId', 1));
+
+            data = convertTemplateData(json, template.config);
+            templateId = get(json, 'templateId', 1);
+          } catch (e) {
+            // eslint-disable-next-line
+            console.error(`The template (${get(item, 'id')}) is not supported!`);
           }
 
           return {
             data,
-            appId: get(app, 'id'),
+            templateId,
             description: get(item, 'description', ''),
-            domain: get(app, 'domain'),
+            domain: get(item, 'domain'),
             id: get(item, 'id'),
             isSupported: !isEmpty(data),
-            provider: get(app, 'provider', 1),
-            storeId: get(app, 'store_id'),
-            templateId: get(item, 'template_id'),
+            provider: get(item, 'provider', 1),
+            storeId: get(item, 'store_id'),
             title: get(item, 'title', 'Untitled'),
           };
         });

@@ -26,17 +26,19 @@
         background: #f5f5f5;
         border: 1px solid transparent;
         border-radius: 6px;
-        color: #7b7a7a;
+        color: #979797;
         height: 50px;
+        letter-spacing: .3px;
         padding: 0 20px;
 
         &:focus {
-          border-color: #d7d0f2;
-          color: #9a85eb;
+          border-color: rgba(#9E9AE2, .3);
+          color: var(--color-primary);
         }
 
         &:hover:not(:focus) {
           border-color: #eee;
+          color: #7B7A7A;
         }
       }
     }

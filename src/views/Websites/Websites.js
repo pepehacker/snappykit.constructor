@@ -61,7 +61,9 @@ const Websites = ({
                   <Link
                     className={styles.Create} onClick={handleCreate}
                     to="/search"
-                  />
+                  >
+                    Create
+                  </Link>
                 </div>
               </div>
 

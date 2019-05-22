@@ -24,57 +24,26 @@
 
 .Create {
   align-items: center;
-  background: rgba(158, 154, 226, .7);
+  background: rgba(#9E9AE2, .8);
   border-radius: 20px;
-  color: #fff;
+  color: rgba(#FFF, .8);
   display: flex;
   font-size: 14px;
   height: 40px;
   justify-content: center;
-  letter-spacing: .2px;
+  letter-spacing: .75px;
   position: relative;
   text-decoration: none;
+  text-transform: uppercase;
   transition: all .2s;
   width: 100px;
 
   &:active {
-    background: rgba(142, 138, 216, .6);
-
-    &:before {
-      background: rgba(142, 138, 216, .6);
-      filter: 8px;
-      transform: translateY(10px);
-    }
-  }
-
-  &:after {
-    content: 'Create';
-    opacity: .8;
-    position: relative;
-    z-index: 2;
-  }
-
-  &:before {
-    background: rgba(158, 154, 226, .8);
-    border-radius: 20px;
-    content: '';
-    display: block;
-    filter: blur(6px);
-    height: 20px;
-    position: absolute;
-    transition: all .2s;
-    width: 80px;
-    z-index: 1;
+    background: rgba(#9E9AE2, .6);
   }
 
   &:hover:not(:active) {
-    background: rgba(142, 138, 216, .8);
-
-    &:before {
-      background: rgba(142, 138, 216, 1);
-      filter: 8px;
-      transform: translateY(10px);
-    }
+    background: var(--color-primary);
   }
 }
 

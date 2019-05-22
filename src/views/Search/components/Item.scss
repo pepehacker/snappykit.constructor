@@ -1,16 +1,15 @@
 .Root {
   align-items: center;
   display: flex;
+  transition: all .2s;
 
-  &:focus {
-    outline: none;
+  &:active {
+    opacity: .6;
   }
 
   &:hover {
-    cursor: pointer;
-
     .Title {
-      color: #7e7acc;
+      color: var(--color-primary);
     }
   }
 }
@@ -27,6 +26,8 @@
 }
 
 .Left {
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .1);
   flex: 0 0 60px;
   height: 60px;
   width: 60px;
