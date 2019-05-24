@@ -42,8 +42,7 @@ const EditorView = ({
         style={size}
       >
         {scale < 1 && <div className={styles.Scale}>
-          {Math.floor(scale * 100)}
-%
+          {`${Math.floor(scale * 100)}%`}
         </div>}
 
         <TemplateContext.Provider
@@ -54,13 +53,16 @@ const EditorView = ({
             websiteId: get(website, 'id', 'new'),
           }}
         >
-          <Template
-            id={templateId}
+          <div
+            className={styles.Layout}
             style={{
+              minHeight: `${size.height / scale}px`,
+              minWidth: `${size.width / scale}px`,
               transform: `scale(${scale})`,
-              transition: 'all .6s',
             }}
-          />
+          >
+            <Template id={templateId} />
+          </div>
         </TemplateContext.Provider>
       </div>
     </div>

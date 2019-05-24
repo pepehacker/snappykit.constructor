@@ -22,9 +22,9 @@ import styles from './App.scss';
 
 const App = ({ match, user }) => (
   <div className={styles.Root}>
-    {!user && <Spinner title="Fetching user..." />}
-
-    {user && (
+    {!user ? (
+      <Spinner title="Fetching user..." />
+    ) : (
       <Fragment>
         <Switch>
           <Route component={Sandbox} path={url.resolve(match.url, '/sandbox')} />

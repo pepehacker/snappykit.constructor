@@ -67,6 +67,15 @@
         transform: translate(0);
       }
     }
+
+    &Exit {
+      opacity: 1;
+
+      &Active {
+        animation: deleteWebsite .3s linear;
+        opacity: 0;
+      }
+    }
   }
 }
 
@@ -95,4 +104,10 @@
 
 .Wrapper {
   width: 1200px;
+}
+
+@keyframes deleteWebsite {
+  0% { transform: scale(1); }
+  20% { transform: scale(1.1); }
+  100% { transform: scale(.3); }
 }

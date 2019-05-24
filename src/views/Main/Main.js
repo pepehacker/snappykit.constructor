@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Responsive from 'react-responsive';
 import { matchPath, Switch, Route } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { compose, lifecycle } from 'recompose';
+import { compose, lifecycle, withState } from 'recompose';
 import url from 'url';
 
 // Components
@@ -81,6 +81,7 @@ export default compose(
     mapStateToProps,
     { fetchWebsites },
   ),
+  withState('fixLocation', 'setFixLocation', null),
   lifecycle({
     componentDidMount() {
       this.props.fetchWebsites();

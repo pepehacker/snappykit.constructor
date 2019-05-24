@@ -33,7 +33,9 @@ const Websites = ({
 }) => (
   <Fragment>
     {!items || items.length === 0 ? (
-      <Redirect to="/search" />
+      <Fragment>
+        <Redirect to="/search" />
+      </Fragment>
     ) : (
       <CSSTransition
         classNames={{
@@ -72,16 +74,18 @@ const Websites = ({
                   {items.map(
                     (item: Object, index: number): func => (
                       <CSSTransition
-                        key={index}
+                        key={item.id}
                         classNames={{
                           enter: styles.ItemAnimateEnter,
                           enterActive: styles.ItemAnimateEnterActive,
+                          exit: styles.ItemAnimateExit,
+                          exitActive: styles.ItemAnimateExitActive,
                         }}
-                        in={state === 'entered'}
-                        timeout={{ enter: 400 + 100 * item.length, exit: 400 }}
+                        in={state === 'entered' && !item.isDeleted}
+                        timeout={{ enter: 400 + 100 * item.length, exit: 300 }}
                         unmountOnExit
                       >
-                        <div className={styles.Item} style={{ transitionDelay: `${0.1 * index}s` }}>
+                        <div className={styles.Item} style={{ transitionDelay: `${!item.isDeleted ? 0.1 : 0 * index}s` }}>
                           <Item {...item} />
                         </div>
                       </CSSTransition>

@@ -44,7 +44,7 @@ const createWebsite = (websiteId: number | string, website: Object): Function =>
           payload: { ...website, id },
         });
 
-        history.push(`/launch/:${id}`);
+        history.replace(`/launch/:${id}`);
       },
     )
     .catch((error: Object) =>

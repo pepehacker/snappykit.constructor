@@ -29,9 +29,9 @@ const FormSelect = ({
   getLabel,
   handleBlur,
   handleChange,
-  handleClose,
   handleCreate,
   handleFocus,
+  handleTrigger,
 
   // Registers
   registerInput,
@@ -54,9 +54,6 @@ const FormSelect = ({
     <div
       ref={registerRoot}
       className={rootClassNames}
-      onBlur={handleBlur}
-      onFocus={handleFocus}
-      tabIndex={0}
     >
       <div className={styles.Container}>
         <div className={styles.Control}>
@@ -64,7 +61,10 @@ const FormSelect = ({
             ref={registerInput}
             autoComplete="off"
             className={styles.Input}
+            id={id}
+            onBlur={handleBlur}
             onChange={handleChange}
+            onFocus={handleFocus}
             placeholder={isEmpty(value) ? placeholder : ''}
             size={(inputValue.length || 6) + 2}
             type="text"
@@ -72,7 +72,7 @@ const FormSelect = ({
           />
 
           {variant === VARIANT.CONTAINED && (
-            <div className={styles.Trigger} onClick={handleClose} />
+            <div className={styles.Trigger} onClick={handleTrigger} />
           )}
         </div>
       </div>
@@ -140,6 +140,7 @@ FormSelect.propTypes = {
 };
 
 const ComposedFormSelect = compose(
+  withState('isClosed', 'setClose', true),
   withState('isFocused', 'setFocus', false),
   withState('inputValue', 'setInputValue', ''),
   withHandlers(() => {
@@ -147,6 +148,7 @@ const ComposedFormSelect = compose(
     let $root;
 
     return {
+      // Getter
       getLabel: ({ children, value }) => () =>
         typeof value === 'string'
           ? Children.map(children, (child: Object) => child)
@@ -154,39 +156,23 @@ const ComposedFormSelect = compose(
             .map(({ props }) => get(props, 'label'))[0] || ''
           : get(value, 'value', ''),
 
-      // Handlers
-      handleBlur: ({ setFocus, setInputValue }) => (event: Object) => {
-        if (!$root.contains(event.relatedTarget)) {
+      // Handler
+      handleBlur: ({ isClosed, setClose, setFocus, setInputValue }) => (event: SyntheticEvent) => {
+        if (!isClosed && (!event || !$root.contains(event.relatedTarget))) {
           $input.blur();
-
           setFocus(false);
           setInputValue('');
+
+          setTimeout(() => setClose(true), 400);
         }
       },
-      handleChange: ({ setInputValue }) => (event: Object) =>
-        setInputValue(get(event, 'target.value', '')),
-      handleClose: ({ isFocused, setFocus, setInputValue }) => (event: Object) => {
-        if (isFocused) {
-          event.preventDefault();
-          event.stopPropagation();
+      handleFocus: ({ isClosed, setClose, setFocus }) => () => {
+        if (isClosed) {
+          $input.focus();
 
-          $input.blur();
-
-          setFocus(false);
-          setInputValue('');
+          setClose(false);
+          setFocus(true);
         }
-      },
-      handleCreate: ({ onChange, setFocus }) => (itemValue: Object) => {
-        $input.blur();
-        setFocus(false);
-
-        onChange && onChange(itemValue);
-      },
-      handleDelete: ({ onChange, value }) => (itemValue: ?string) =>
-        onChange && onChange(value.filter(({ value }) => value !== itemValue)),
-      handleFocus: ({ setFocus }) => () => {
-        $input.focus();
-        setTimeout(() => setFocus(true), 100);
       },
 
       // Registers
@@ -197,6 +183,22 @@ const ComposedFormSelect = compose(
         $input = node;
       },
     };
+  }),
+  withHandlers({
+    // Handlers
+    handleChange: ({ setInputValue }) => (event: SyntheticEvent) =>
+      setInputValue(get(event, 'target.value', '')),
+    handleCreate: ({ handleBlur, onChange, setFocus, setInputValue }) => (itemValue: Object, event: SyntheticEvent) => {
+      handleBlur();
+      onChange && onChange(itemValue);
+    },
+    handleDelete: ({ onChange, value }) => (itemValue: ?string) =>
+      onChange && onChange(value.filter(({ value }) => value !== itemValue)),
+    handleTrigger: ({ handleBlur, handleFocus, isClosed, isFocused }): Function => (event) => {
+      isFocused
+        ? !isClosed && handleBlur()
+        : isClosed && handleFocus();
+    },
   }),
 )(FormSelect);
 

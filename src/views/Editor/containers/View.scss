@@ -32,6 +32,11 @@
   }
 }
 
+.Layout {
+  display: flex;
+  transition: all .6s;
+}
+
 .Scale {
   background: #fff;
   border-radius: 0 0 0 12px;

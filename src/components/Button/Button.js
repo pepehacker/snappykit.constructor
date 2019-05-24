@@ -46,7 +46,7 @@ Button.propTypes = {
   icon: PropTypes.string,
   onClick: PropTypes.func,
   type: PropTypes.string,
-  variant: PropTypes.oneOf([VARIANT.GRADIENT, VARIANT.GRADIENT_SECONDARY]),
+  variant: PropTypes.oneOf([VARIANT.GRADIENT, VARIANT.GRADIENT_REVERSE]),
 };
 
 Button.VARIANT = VARIANT;
