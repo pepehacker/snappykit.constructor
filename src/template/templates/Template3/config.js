@@ -1,5 +1,3 @@
-import { get } from 'lodash';
-
 // Template
 import {
   // Config
@@ -107,6 +105,7 @@ export default createConfig(3, [
     id: TITLE,
     data: {
       color: 'rgba(255, 255, 255, 1)',
+      style: TEXT_STYLE.LIGHT,
       text: 'Serif Beauty',
     },
     exports: ['text'],

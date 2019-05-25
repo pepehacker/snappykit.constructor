@@ -37,7 +37,7 @@ export const TEXT_FONT_VALUES = values(TEXT_FONT);
 
 // Style
 export const TEXT_STYLE = {
-  LIGHT: '100',
+  LIGHT: '300',
   REGULAR: '400',
   MEDIUM: '500',
   BOLD: '700',

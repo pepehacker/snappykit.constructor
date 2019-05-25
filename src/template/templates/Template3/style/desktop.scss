@@ -1,0 +1,108 @@
+.Root {
+  &Variant {
+    &Desktop {
+      padding: 0 90px;
+
+      .Body {
+        flex: 1 1 auto;
+        max-height: calc(100% - 200px);
+        position: relative;
+      }
+
+      .Container {
+        align-items: flex-end;
+        display: flex;
+        justify-content: center;
+      }
+
+      .Content {
+        display: flex;
+        flex: 0 0 400px;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 400px;
+      }
+
+      .Description {
+        max-height: 78px;
+        margin: 16px 0 0;
+
+        &Text {
+          font-size: 12px;
+          line-height: 26px;
+        }
+
+        &Wrapper {
+          padding: 0 0 0 65px;
+
+          &:before {
+            left: 8px;
+            top: 28px;
+            width: 32px;
+          }
+        }
+      }
+
+      .Footer {
+        flex: 0 0 80px;
+        max-height: 80px;
+        padding: 0 32px;
+      }
+
+      .Header {
+        flex: 0 0 120px;
+        max-height: 120px;
+        padding: 0 32px;
+      }
+
+      .Icon {
+        max-height: 32px;
+      }
+
+      .Screenshots {
+        height: 400px;
+        left: 30px;
+        top: 56px;
+        width: 196px;
+
+        &Item {
+          height: 400px;
+          width: 196px;
+        }
+      }
+
+      .Slider {
+        display: flex;
+        flex: 0 0 440px;
+        justify-content: center;
+        max-width: 440px;
+      }
+
+      .Smartphone {
+        height: 460px;
+        width: 256px;
+      }
+
+      .Store {
+        margin: 40px 0 0;
+      }
+
+      .Title {
+        max-height: 100px;
+
+        &Text {
+          font-size: 78px;
+          letter-spacing: .1px;
+          line-height: 100px;
+        }
+      }
+
+      .Wrapper {
+        height: 400px;
+        max-height: 100%;
+        max-width: 960px;
+        width: 100%;
+      }
+    }
+  }
+}

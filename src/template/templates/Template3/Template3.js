@@ -7,8 +7,8 @@ import {
   Background,
   Icon,
   Policy,
-  // Screenshots,
-  // Smartphone,
+  Screenshots,
+  Smartphone,
   Social,
   Store,
   Text,
@@ -69,7 +69,17 @@ const Template3 = () => (
                   <Store className={styles.Store} />
                 </div>
 
-                <div className={styles.Slider} />
+                <div className={styles.Slider}>
+                  <Smartphone
+                    classNames={{
+                      root: styles.Smartphone,
+                      container: styles.Screenshots,
+                      mockup: styles.SmartphoneMockup,
+                    }}
+                  >
+                    <Screenshots classNames={{ item: styles.ScreenshotsItem }} />
+                  </Smartphone>
+                </div>
               </div>
             </Background>
 

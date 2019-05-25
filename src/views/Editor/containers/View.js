@@ -56,8 +56,10 @@ const EditorView = ({
           <div
             className={styles.Layout}
             style={{
+              maxHeight: `${size.height / scale}px`,
               minHeight: `${size.height / scale}px`,
               minWidth: `${size.width / scale}px`,
+              maxWIdth: `${size.width / scale}px`,
               transform: `scale(${scale})`,
             }}
           >

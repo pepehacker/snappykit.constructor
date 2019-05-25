@@ -1,115 +1,11 @@
+@import './style/desktop.scss';
+@import './style/tablet.scss';
+
 .Root {
   background: #fff;
   display: flex;
   flex-direction: column;
   width: 100%;
-
-  &Variant {
-    &Desktop {
-      padding: 0 90px;
-
-      .Body {
-        flex: 1 1 auto;
-        max-height: calc(100% - 200px);
-        position: relative;
-      }
-
-      .Container {
-        align-items: flex-end;
-        display: flex;
-        justify-content: center;
-      }
-
-      .Content {
-        display: flex;
-        flex: 0 0 400px;
-        flex-direction: column;
-        justify-content: center;
-        max-width: 400px;
-      }
-
-      .Copyright {
-        &Text {
-          font-size: 14px;
-          letter-spacing: .1px;
-        }
-      }
-
-      .Description {
-        max-height: 78px;
-        margin: 16px 0 0;
-
-        &Text {
-          font-size: 12px;
-          line-height: 26px;
-          overflow: hidden;
-        }
-
-        &Wrapper {
-          padding: 0 0 0 65px;
-          position: relative;
-
-          &:before {
-            background: #fff;
-            content: '';
-            display: flex;
-            height: 2px;
-            left: 8px;
-            position: absolute;
-            top: 12px;
-            width: 32px;
-          }
-        }
-      }
-
-      .Footer {
-        align-items: center;
-        display: flex;
-        flex: 0 0 80px;
-        justify-content: space-between;
-        max-height: 80px;
-        padding: 0 32px;
-      }
-
-      .Header {
-        align-items: center;
-        display: flex;
-        flex: 0 0 120px;
-        justify-content: space-between;
-        max-height: 120px;
-        padding: 0 32px;
-      }
-
-      .Icon {
-        max-height: 32px;
-      }
-
-      .Slider {
-        flex: 0 0 440px;
-        max-width: 440px;
-      }
-
-      .Store {
-        margin: 40px 0 0;
-      }
-
-      .Title {
-        max-height: 78px;
-
-        &Text {
-          font-size: 78px;
-          letter-spacing: .1px;
-          line-height: 78px;
-          overflow: hidden;
-        }
-      }
-
-      .Wrapper {
-        height: 400px;
-        max-width: 960px;
-      }
-    }
-  }
 }
 
 .Background {
@@ -135,6 +31,60 @@
 
 .Container {
   width: 100%;
+}
+
+.Copyright {
+  &Text {
+    font-size: 14px;
+    letter-spacing: .1px;
+  }
+}
+
+.Description {
+  &Text {
+    overflow: hidden;
+  }
+
+  &Wrapper {
+    position: relative;
+
+    &:before {
+      background: #fff;
+      content: '';
+      display: flex;
+      height: 2px;
+      position: absolute;
+    }
+  }
+}
+
+.Footer {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Screenshots {
+  overflow: hidden;
+  position: absolute;
+}
+
+.Smartphone {
+  &Mockup {
+    filter: drop-shadow(0 32px 24px rgba(0, 0, 0, .6));
+  }
+}
+
+.Title {
+  &Text {
+    overflow: hidden;
+  }
 }
 
 .Wrapper {
