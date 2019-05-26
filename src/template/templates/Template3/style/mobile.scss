@@ -1,0 +1,194 @@
+.Root {
+  max-height: 100%;
+
+  &Step {
+    &Content {
+      .Content {
+        opacity: 1;
+      }
+
+      .Slider {
+        opacity: 0;
+      }
+
+      .Track {
+        transform: translateX(0);
+      }
+    }
+
+    &Slider {
+      .Content {
+        opacity: 0;
+      }
+
+      .Slider {
+        opacity: 1;
+      }
+
+      .Track {
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+  &Variant {
+    &Mobile {
+      .Body {
+        flex: 1 1 auto;
+        max-height: calc(100% - 128px);
+        position: relative;
+      }
+
+      .Container {
+        align-items: flex-end;
+        display: flex;
+        justify-content: center;
+      }
+
+      .Content {
+        display: flex;
+        flex: 0 0 50%;
+        flex-direction: column;
+        justify-content: center;
+        max-width: calc(50% - 48px);
+        transition: all .4s;
+      }
+
+      .Copyright {
+        &Text {
+          font-size: 12px;
+          letter-spacing: .6px;
+        }
+      }
+
+      .Blur {
+        top: 16px;
+      }
+
+      .Description {
+        margin: 16px 0 0;
+        max-height: 100px;
+
+        &Text {
+          font-size: 12px;
+          letter-spacing: .4px;
+          line-height: 20px;
+        }
+
+        &Wrapper {
+          padding: 0 0 0 32px;
+
+          &:before {
+            height: 1px;
+            left: 4px;
+            top: 26px;
+            width: 16px;
+          }
+        }
+      }
+
+      .Dots {
+        display: flex;
+        bottom: 28px;
+        height: 8px;
+        left: 24px;
+        position: absolute;
+        width: 100%;
+
+        &Item {
+          background: #fff;
+          border-radius: 100%;
+          height: 8px;
+          opacity: .4;
+          transition: all .2s;
+          width: 8px;
+
+          &:hover {
+            cursor: pointer;
+            opacity: .8;
+          }
+
+          &:not(:first-child) {
+            margin: 0 0 0 8px;
+          }
+
+          &Selected {
+            opacity: 1;
+          }
+        }
+      }
+
+      .Footer {
+        flex: 0 0 56px;
+        max-height: 56px;
+        padding: 0 24px;
+      }
+
+      .Header {
+        flex: 0 0 72px;
+        max-height: 72px;
+        padding: 0 24px;
+      }
+
+      .Icon {
+        max-height: 24px;
+      }
+
+      .Screenshots {
+        height: 355px;
+        left: 30px;
+        top: 58px;
+        width: 200px;
+
+        &Item {
+          height: 355px;
+          width: 200px;
+        }
+      }
+
+      .Slider {
+        display: flex;
+        flex: 0 0 50%;
+        justify-content: center;
+        margin: 0 0 0 48px;
+        max-width: calc(50% - 48px);
+        transition: all .4s;
+      }
+
+      .Smartphone {
+        height: 473px;
+        width: 260px;
+      }
+
+      .Store {
+        margin: 32px 0 0;
+      }
+
+      .Title {
+        max-height: 48px;
+
+        &Text {
+          font-size: 36px;
+          letter-spacing: .4px;
+          line-height: 48px;
+        }
+      }
+
+      .Track {
+        display: flex;
+        flex-wrap: nowrap;
+        height: calc(100% - 140px);
+        justify-content: flex-start;
+        position: absolute;
+        transition: all .4s;
+        width: 200%;
+      }
+
+      .Wrapper {
+        height: 100%;
+        padding: 140px 24px 0;
+        width: 100%;
+      }
+    }
+  }
+}

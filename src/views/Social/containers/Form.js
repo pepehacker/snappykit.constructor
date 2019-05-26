@@ -17,7 +17,7 @@ const SocialForm = ({ handleSubmit }) => (
         icon="fa-facebook"
         label="Facebook"
         name={`items.${SOCIAL_FACEBOOK}`}
-        prefix="https://facebook.com/"
+        prefix="https://www.facebook.com/"
       />
 
       <Link
@@ -31,7 +31,7 @@ const SocialForm = ({ handleSubmit }) => (
         icon="fa-instagram"
         label="Instagram"
         name={`items.${SOCIAL_INSTAGRAM}`}
-        prefix="https://instagram.com/"
+        prefix="https://www.instagram.com/"
       />
 
       <Link

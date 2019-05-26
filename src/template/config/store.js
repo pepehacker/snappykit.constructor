@@ -12,7 +12,7 @@ export const STORE_APP_STORE = 'apple';
 export const STORE_APP_STORE_PREFIX = 'https://itunes.apple.com/app/id';
 
 export const STORE_GOOGLE_PLAY = 'play';
-export const STORE_GOOGLE_PLAY_PREFIX = 'http://play.google.com/store/apps/details?id=';
+export const STORE_GOOGLE_PLAY_PREFIX = 'https://play.google.com/store/apps/details?id=';
 
 // Schema
 export const STORE_SCHEMA = (defaults: Object): Object =>

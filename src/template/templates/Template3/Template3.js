@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
+import { compose, withHandlers, withState } from 'recompose';
 
 // Template
 import {
@@ -23,14 +24,21 @@ import {
 // Styles
 import styles from './Template3.scss';
 
-const Template3 = () => (
+const Template3 = ({ handleNext, handlePrev, step }) => (
   <TemplateContext.Consumer>
     {({ view = VIEW.DESKTOP }) => {
-      const rootClassNames = classNames(styles.Root, {
-        [styles.RootVariantDesktop]: view === VIEW.DESKTOP,
-        [styles.RootVariantMobile]: view === VIEW.MOBILE,
-        [styles.RootVariantTablet]: view === VIEW.TABLET,
-      });
+      const rootClassNames = classNames(
+        styles.Root,
+        {
+          [styles.RootVariantDesktop]: view === VIEW.DESKTOP,
+          [styles.RootVariantMobile]: view === VIEW.MOBILE,
+          [styles.RootVariantTablet]: view === VIEW.TABLET,
+        },
+        view === VIEW.MOBILE && {
+          [styles.RootStepContent]: step === 0,
+          [styles.RootStepSlider]: step === 1,
+        },
+      );
 
       return (
         <div className={rootClassNames}>
@@ -47,39 +55,59 @@ const Template3 = () => (
               }}
             >
               <div className={styles.Wrapper}>
-                <div className={styles.Content}>
-                  <Text
-                    classNames={{
-                      root: styles.Title,
-                      text: styles.TitleText,
-                    }}
-                    id={TITLE}
-                  />
-
-                  <div className={styles.DescriptionWrapper}>
+                <div className={styles.Track}>
+                  <div className={styles.Content}>
                     <Text
                       classNames={{
-                        root: styles.Description,
-                        text: styles.DescriptionText,
+                        root: styles.Title,
+                        text: styles.TitleText,
                       }}
-                      id={DESCRIPTION}
+                      id={TITLE}
                     />
+
+                    <div className={styles.DescriptionWrapper}>
+                      <Text
+                        classNames={{
+                          root: styles.Description,
+                          text: styles.DescriptionText,
+                        }}
+                        id={DESCRIPTION}
+                      />
+                    </div>
+
+                    <Store className={styles.Store} />
                   </div>
 
-                  <Store className={styles.Store} />
+                  <div className={styles.Slider}>
+                    <Smartphone
+                      classNames={{
+                        root: styles.Smartphone,
+                        container: styles.Screenshots,
+                        mockup: styles.SmartphoneMockup,
+                      }}
+                    >
+                      <Screenshots classNames={{ item: styles.ScreenshotsItem }} />
+                    </Smartphone>
+                  </div>
                 </div>
 
-                <div className={styles.Slider}>
-                  <Smartphone
-                    classNames={{
-                      root: styles.Smartphone,
-                      container: styles.Screenshots,
-                      mockup: styles.SmartphoneMockup,
-                    }}
-                  >
-                    <Screenshots classNames={{ item: styles.ScreenshotsItem }} />
-                  </Smartphone>
-                </div>
+                {view === VIEW.MOBILE && (
+                  <div className={styles.Dots}>
+                    <div
+                      className={classNames(styles.DotsItem, {
+                        [styles.DotsItemSelected]: step === 0,
+                      })}
+                      onClick={handlePrev}
+                    />
+
+                    <div
+                      className={classNames(styles.DotsItem, {
+                        [styles.DotsItemSelected]: step === 1,
+                      })}
+                      onClick={handleNext}
+                    />
+                  </div>
+                )}
               </div>
             </Background>
 
@@ -96,4 +124,10 @@ const Template3 = () => (
   </TemplateContext.Consumer>
 );
 
-export default Template3;
+export default compose(
+  withState('step', 'setStep', 0),
+  withHandlers({
+    handleNext: ({ setStep, step }): Function => () => setStep(Math.min(step + 1, 1)),
+    handlePrev: ({ setStep, step }): Function => () => setStep(Math.max(step - 1, 0)),
+  }),
+)(Template3);
