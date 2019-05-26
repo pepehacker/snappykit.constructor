@@ -16,11 +16,6 @@ const history = createBrowserHistory({
 });
 const store = createStore(history);
 
-localStorage.setItem(
-  'token',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTA2OTI3MjcsInVzZXJuYW1lIjoidmFueWEwOTVAZ21haWwuY29tIiwidXNlcl9pZCI6MjAzNiwiZW1haWwiOiJ2YW55YTA5NUBnbWFpbC5jb20ifQ.dK9JSjm4aKUBt9w4z__q7SRmVBhAoOVfYytgH3hrmsw',
-);
-
 // eslint-disable-next-line
 Paddle.Setup({ vendor: 21028 });
 
