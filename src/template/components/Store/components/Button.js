@@ -11,7 +11,8 @@ import styles from './Button.scss';
 const StoreButton = ({
   background,
   color,
-  isEditor = true,
+  isEditor,
+  link,
   variant = STORE_APP_STORE,
   view = VIEW.DESKTOP,
 }) => {
@@ -19,6 +20,8 @@ const StoreButton = ({
     [styles.RootViewDesktop]: view === VIEW.DESKTOP,
     [styles.RootViewMobile]: view === VIEW.MOBILE,
     [styles.RootViewTablet]: view === VIEW.TABLET,
+
+    [styles.RootIsView]: !isEditor,
   });
 
   const iconClassNames = classNames(styles.Icon, 'fab', {
@@ -30,7 +33,7 @@ const StoreButton = ({
 
   return (
     <ButtonComponent
-      {...isEditor && { href: '/#' }}
+      {...!isEditor && { href: link }}
       className={rootClassNames}
       style={{ background }}
     >

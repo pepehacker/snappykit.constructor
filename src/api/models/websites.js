@@ -10,6 +10,10 @@ export default {
     method: CONFIG.METHOD.DELETE,
     url: ({ appId }) => `${CONFIG.URL}/core/app/${appId}/`,
   },
+  getApp: {
+    method: CONFIG.METHOD.GET,
+    url: ({ domain }) => `${CONFIG.URL}/public/app/?domain=${domain || window.location.hostname}`,
+  },
   getAppList: {
     method: CONFIG.METHOD.GET,
     url: `${CONFIG.URL}/core/app/`,

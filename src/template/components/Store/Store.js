@@ -40,14 +40,18 @@ const TemplateStore = ({ className, id }) => (
             <div className={styles.Container}>
               {get(items, STORE_APP_STORE) && (
                 <Button
-                  {...props} variant={STORE_APP_STORE}
+                  {...props}
+                  link={get(items, STORE_APP_STORE)}
+                  variant={STORE_APP_STORE}
                   view={view}
                 />
               )}
 
               {get(items, STORE_GOOGLE_PLAY) && (
                 <Button
-                  {...props} variant={STORE_GOOGLE_PLAY}
+                  {...props}
+                  link={get(items, STORE_GOOGLE_PLAY)}
+                  variant={STORE_GOOGLE_PLAY}
                   view={view}
                 />
               )}

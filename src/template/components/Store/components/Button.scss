@@ -6,7 +6,23 @@
   display: flex;
   height: 44px;
   padding: 0 12px 0 16px;
+  text-decoration: none;
+  transition: all .2s;
   width: 100%;
+
+  &Is {
+    &View {
+      &:active {
+        box-shadow: 0 12px 20px 0 rgba(0, 0, 0, .16);
+        opacity: .8;
+      }
+
+      &:hover:not(:active) {
+        box-shadow: 0 12px 20px 0 rgba(0, 0, 0, .16);
+        opacity: .9;
+      }
+    }
+  }
 
   &View {
     &Desktop {

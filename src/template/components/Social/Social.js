@@ -42,8 +42,10 @@ const TemplateSocial = ({ className, id }) => (
                 (id: string): func =>
                   !!items[id] && (
                     <Item
-                      {...items[id]} key={id}
-                      color={color} isEditor={isEditor}
+                      key={id}
+                      color={color}
+                      isEditor={isEditor}
+                      link={items[id]}
                       variant={id}
                     />
                   ),

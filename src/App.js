@@ -14,9 +14,11 @@ import Plans from 'containers/Plans';
 // Ducks
 import { fetchProfile } from 'services/session';
 
+// Template
+import { Sandbox } from 'template';
+
 // Views
 import Main from 'views/Main';
-import Sandbox from 'views/Sandbox';
 
 import styles from './App.scss';
 

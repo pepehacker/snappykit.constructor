@@ -22,6 +22,7 @@ export const TemplateContext = createContext({
 });
 
 export { default } from './Template';
+export { default as Sandbox } from './containers/Sandbox';
 
 // Components
 export { default as Background } from './components/Background';

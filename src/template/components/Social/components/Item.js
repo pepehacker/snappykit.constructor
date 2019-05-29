@@ -29,7 +29,7 @@ const TemplateSocialItem = ({ color, isEditor, link, variant, view }) => {
 
   return (
     <ItemComponent
-      {...isEditor && { href: '/#' }} className={rootClassNames}
+      {...!isEditor && { href: link }} className={rootClassNames}
       style={{ color }}
     >
       <i className={iconClassNames} />
