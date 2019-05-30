@@ -6,11 +6,12 @@ import { Router, Route } from 'react-router-dom';
 // Template
 import { Sandbox } from 'template';
 
-// Styles
-import './App.scss';
-
 // Utils
 import * as serviceWorker from './utils/serviceWorker';
+
+// Styles
+import './App.scss';
+import '@fortawesome/fontawesome-pro/css/all.min.css';
 
 const history = createBrowserHistory();
 

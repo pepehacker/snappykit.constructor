@@ -20,7 +20,9 @@ import { Sandbox } from 'template';
 // Views
 import Main from 'views/Main';
 
+// Styles
 import styles from './App.scss';
+import '@fortawesome/fontawesome-pro/css/all.min.css';
 
 const App = ({ match, user }) => (
   <div className={styles.Root}>
