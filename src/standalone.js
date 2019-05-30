@@ -6,6 +6,9 @@ import { Router, Route } from 'react-router-dom';
 // Template
 import { Sandbox } from 'template';
 
+// Styles
+import './App.scss';
+
 // Utils
 import * as serviceWorker from './utils/serviceWorker';
 

@@ -3,7 +3,11 @@ import { get } from 'lodash';
 
 import models from './models';
 
-const API = (method: Array<string | Object> | string, params: Object = {}) => {
+const API = (
+  method: Array<string | Object> | string,
+  params: Object = {},
+  { noCredentials } = {},
+) => {
   if (!method) {
     return new Promise((resolve: Function) => resolve({ data: {} }));
   }
@@ -18,7 +22,7 @@ const API = (method: Array<string | Object> | string, params: Object = {}) => {
       return model
         ? axios({
           ...(get(model, 'method') !== 'delete' && { data: get(request, 'params', params) }),
-          headers: {
+          headers: !noCredentials && {
             Authorization: `JWT ${token}`,
           },
           method: get(model, 'method', 'get'),

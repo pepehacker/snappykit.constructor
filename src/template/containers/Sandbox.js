@@ -9,13 +9,11 @@ import api from 'api';
 import Template, { convertTemplateData, getTemplateById, TemplateContext } from 'template';
 import { VIEW } from 'template/config';
 
+// Styles
+import styles from './Sandbox.scss';
+
 const TemplateSandbox = ({ app, isLoaded, view }) => (
-  <div
-    style={{
-      minHeight: '100vh',
-      minWidth: '100vw',
-    }}
-  >
+  <div className={styles.Root}>
     <TemplateContext.Provider value={{ ...app, view }}>
       {isLoaded && <Template id={get(app, 'templateId')} />}
     </TemplateContext.Provider>
@@ -50,7 +48,7 @@ export default compose(
           ? 'sjimml.snappykit.com'
           : window.location.hostname;
 
-      api('websites.getApp', { domain }).then(({ data: app }) => {
+      api('websites.getApp', { domain }, { noCredentials: true }).then(({ data: app }) => {
         try {
           const json = JSON.parse(get(app, 'json', ''));
           const template = getTemplateById(get(json, 'templateId', 1));
