@@ -26,7 +26,7 @@ const Template2 = () => (
   <TemplateContext.Consumer>
     {({ view }) => {
       const rootClassNames = classNames(styles.Root, {
-        [styles.RootVariantDesktop]: view === VIEW.DESKTOP,
+        [styles.RootVariantDesktop]: view === VIEW.DESKTOP || view === VIEW.DESKTOP_LARGE,
         [styles.RootVariantMobile]: view === VIEW.MOBILE,
         [styles.RootVariantTablet]: view === VIEW.TABLET,
       });

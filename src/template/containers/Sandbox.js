@@ -1,28 +1,23 @@
-import { get, isEmpty } from 'lodash';
+import { get } from 'lodash';
 import * as React from 'react';
 import { compose, lifecycle, withHandlers, withState } from 'recompose';
 
-// Api
-import api from 'api';
-
 // Template
-import Template, { convertTemplateData, getTemplateById, TemplateContext } from 'template';
+import Template, { TemplateContext } from 'template';
 import { VIEW } from 'template/config';
 
 // Styles
 import styles from './Sandbox.scss';
 
-const TemplateSandbox = ({ app, isLoaded, view }) => (
+const TemplateSandbox = ({ app, view }) => (
   <div className={styles.Root}>
     <TemplateContext.Provider value={{ ...app, view }}>
-      {isLoaded && <Template id={get(app, 'templateId')} />}
+      <Template id={get(app, 'templateId')} />
     </TemplateContext.Provider>
   </div>
 );
 
 export default compose(
-  withState('app', 'setApp', {}),
-  withState('isLoaded', 'setLoad', false),
   withState('view', 'setView', VIEW.DESKTOP),
   withHandlers({
     handleResize: ({ view, setView }): Function => () => {
@@ -32,8 +27,10 @@ export default compose(
         newView = VIEW.MOBILE;
       } else if (window.innerWidth >= 768 && window.innerWidth < 1280) {
         newView = VIEW.TABLET;
-      } else {
+      } else if (window.innerWidth >= 1280 && window.innerWidth < 1920) {
         newView = VIEW.DESKTOP;
+      } else {
+        newView = VIEW.DESKTOP_LARGE;
       }
 
       newView !== view && setView(newView);
@@ -41,35 +38,7 @@ export default compose(
   }),
   lifecycle({
     componentDidMount() {
-      const { handleResize, setApp, setLoad } = this.props;
-
-      const domain =
-        window.location.hostname === 'localhost'
-          ? 'sjimml.snappykit.com'
-          : window.location.hostname;
-
-      api('websites.getApp', { domain }, { noCredentials: true }).then(({ data: app }) => {
-        try {
-          const json = JSON.parse(get(app, 'json', ''));
-          const template = getTemplateById(get(json, 'templateId', 1));
-
-          const data = convertTemplateData(json, template.config);
-          const isSupported = !isEmpty(data);
-
-          setApp({
-            data,
-            isSupported,
-            id: get(app, 'id'),
-            description: get(app, 'description', ''),
-            templateId: get(json, 'templateId', 1),
-            title: get(app, 'title', 'Untitled'),
-          });
-          setLoad(true);
-        } catch (e) {
-          // eslint-disable-next-line
-          console.error(`The template (${get(app, 'id')}) is not supported!`);
-        }
-      });
+      const { handleResize } = this.props;
 
       handleResize();
       window.addEventListener('resize', handleResize);
