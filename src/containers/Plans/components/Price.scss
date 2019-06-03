@@ -113,11 +113,25 @@
 }
 
 .Next {
+  align-items: center;
   background: transparent;
   border: 0;
   color: #7e8899;
+  display: flex;
   font-size: 14px;
   font-weight: 700;
+
+  &:after {
+    background: #7e8899;
+    content: '';
+    display: block;
+    height: 9px;
+    margin: 0 0 0 8px;
+    mask: url('components/Icon/assets/back.svg') no-repeat center center;
+    mask-size: contain;
+    transform: rotate(180deg);
+    width: 16px;
+  }
 }
 
 .Title {

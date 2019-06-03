@@ -1,15 +1,28 @@
 import classNames from 'classnames';
 import { get } from 'lodash';
 import PropTypes from 'prop-types';
-import React from 'react';
+import * as React from 'react';
 import { Portal } from 'react-portal';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
+import { compose, withHandlers } from 'recompose';
 
 // Actions
 import { closeModal } from 'services/modals';
 
 import styles from './Modal.scss';
+
+type ModelType = {
+  children: React.Element<node>,
+  className: string,
+  classNames: {
+    root: string,
+    backdrop: string,
+    container: string,
+  },
+  handleClose: Function,
+  isOpened: boolean,
+};
 
 const Modal = ({
   children,
@@ -22,10 +35,10 @@ const Modal = ({
   handleClose,
   isOpened,
   ...props
-}) => {
-  const rootClassNames = classNames(className, rootClassName, styles.Root);
-  const backdropClassNames = classNames(backdropClassName, styles.Backdrop);
-  const containerClassNames = classNames(containerClassName, styles.Container);
+}: ModelType): React.Element<typeof CSSTransition> => {
+  const rootClassNames: string = classNames(className, rootClassName, styles.Root);
+  const backdropClassNames: string = classNames(backdropClassName, styles.Backdrop);
+  const containerClassNames: string = classNames(containerClassName, styles.Container);
 
   return (
     <CSSTransition
@@ -72,11 +85,15 @@ const mapStateToProps = ({ services }, { id }) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, { id }) => ({
-  handleClose: () => dispatch(closeModal(id)),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+export default compose(
+  connect(
+    mapStateToProps,
+    { closeModal },
+  ),
+  withHandlers({
+    handleClose: ({ closeModal, id, onClose }): Function => () => {
+      closeModal(id);
+      onClose && onClose();
+    },
+  }),
 )(Modal);

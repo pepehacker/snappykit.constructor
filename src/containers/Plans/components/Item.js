@@ -2,6 +2,7 @@
 import { get } from 'lodash';
 import classNames from 'classnames';
 import * as React from 'react';
+import AnimatedNumber from 'react-animated-number';
 import { connect } from 'react-redux';
 import { compose, lifecycle, withHandlers, withProps, withState } from 'recompose';
 
@@ -34,7 +35,7 @@ type PlansItemType = {
 };
 
 const PlansItem = ({
-  cost,
+  cost = 0,
   count,
   features = [],
   id,
@@ -59,7 +60,14 @@ const PlansItem = ({
         </div>
 
         <div className={styles.Price}>
-          {isFetching ? 'LOAD' : cost || 'FREE'}
+          {id === PLAN_LITE ? (
+            'FREE'
+          ) : (
+            <AnimatedNumber
+              component="span" formatValue={n => Math.ceil(n)}
+              value={cost}
+            />
+          )}
           {cost && <span className={styles.Unit}>$</span>}
         </div>
 
