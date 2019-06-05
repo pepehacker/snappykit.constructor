@@ -11,6 +11,7 @@ import type { TabsItemType } from '../Tabs.type';
 
 const TabsItem = ({
   children,
+  info,
   label,
   style,
   value,
@@ -30,9 +31,14 @@ const TabsItem = ({
       className={rootClassNames} onClick={handleClick}
       style={style} type="button"
     >
-      {label && <div className={styles.Label}>
-        {label}
-      </div>}
+      {label && (
+        <div className={styles.Label}>
+          {info && <div className={styles.Info}>
+            {info}
+          </div>}
+          {label}
+        </div>
+      )}
 
       {typeof children === 'function' ? children({ isSelected }) : children}
 

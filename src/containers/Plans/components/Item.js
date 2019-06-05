@@ -18,6 +18,7 @@ import {
   // Price
   PRICE_MIN,
   // Selectors
+  getPeriod,
   getPrice,
 } from '../ducks';
 
@@ -39,6 +40,7 @@ const PlansItem = ({
   count,
   features = [],
   id,
+  period,
   title,
   // Handlers
   handleClick,
@@ -64,8 +66,9 @@ const PlansItem = ({
             'FREE'
           ) : (
             <AnimatedNumber
-              component="span" formatValue={n => Math.ceil(n)}
-              value={cost}
+              component="span"
+              formatValue={n => Math.ceil(n)}
+              value={isFetching ? 1 : period === MONTH ? Math.min(99, cost) : cost / 12}
             />
           )}
           {cost && <span className={styles.Unit}>$</span>}
@@ -99,6 +102,7 @@ const PlansItem = ({
 );
 
 const mapStateToProps: Function = (state: Object) => ({
+  period: getPeriod(state),
   price: getPrice(state),
 });
 
@@ -131,9 +135,9 @@ export default compose(
     componentDidMount() {
       this.props.fetchCost();
     },
-    componentDidUpdate({ price: prevPrice }) {
-      const { fetchCost, price } = this.props;
-      price !== prevPrice && fetchCost();
+    componentDidUpdate({ period: prevPeriod, price: prevPrice }) {
+      const { fetchCost, period, price } = this.props;
+      (price !== prevPrice || period !== prevPeriod) && fetchCost();
     },
   }),
 )(PlansItem);

@@ -22,6 +22,10 @@
         opacity: 1;
         visibility: visible;
       }
+
+      .Label {
+        color: var(--color-primary);
+      }
     }
   }
 }
@@ -36,4 +40,24 @@
   transition: all .2s;
   visibility: hidden;
   width: 100%;
+}
+
+.Info {
+  color: #b3b8c3;
+  font-weight: 500;
+  letter-spacing: .1px;
+  position: absolute;
+  right: 20px;
+  top: -16px;
+}
+
+.Label {
+  color: #7e8899;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  margin: 16px 0 0;
+  padding: 0 20px;
+  position: relative;
+  transition: all .2s;
 }

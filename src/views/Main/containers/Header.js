@@ -42,11 +42,12 @@ const MainHeader = ({
           <div className={styles.Logo}>
             <Link className={styles.LogoLink} to="/">
               <img
-                alt="SnappyKit"
-                className={styles.LogoImage}
+                alt="SnappyKit" className={styles.LogoImage}
                 src={logo}
               />
             </Link>
+
+            <div className={styles.Pro}>PRO</div>
           </div>
         </div>
 
@@ -60,20 +61,16 @@ const MainHeader = ({
           </div>
 
           <div className={styles.Actions}>
-            <Link
-              className={styles.Back}
-              to={step === 2 ? '/search' : '/'}
-            >
+            <Link className={styles.Back} to={step === 2 ? '/search' : '/'}>
               BACK
             </Link>
 
             <button
-              className={styles.Save}
-              onClick={handleSave}
+              className={styles.Save} onClick={handleSave}
               type="button"
             >
               {isFetching && <Spinner />}
-              {step === 2 ? 'NEXT': 'SAVE'}
+              {step === 2 ? 'NEXT' : 'SAVE'}
             </button>
           </div>
         </div>
@@ -98,26 +95,27 @@ const mapStateToProps = (state: Object, { location }) => {
   const searchMatch = matchPath(pathname, { path: '/search' });
 
   // Website
-  const websiteDomainMatch = matchPath(pathname, { path: '/:websiteId/domain'});
-  const websiteEditorMatch = matchPath(pathname, { path: '/:websiteId/editor'});
+  const websiteDomainMatch = matchPath(pathname, { path: '/:websiteId/domain' });
+  const websiteEditorMatch = matchPath(pathname, { path: '/:websiteId/editor' });
   const websiteId = get(websiteDomainMatch || websiteEditorMatch, 'params.websiteId');
   const website = getWebsiteById(state, websiteId);
 
   return {
-    website, websiteId,
+    website,
+    websiteId,
     isFetching: get(website, 'isFetching'),
-    step: launchMatch
-      ? 3 : (editorMatch || domainMatch)
-        ? 2 : searchMatch
-          ? 1 : 0,
+    step: launchMatch ? 3 : editorMatch || domainMatch ? 2 : searchMatch ? 1 : 0,
   };
 };
 
-export default withRouter(compose(
-  connect(mapStateToProps, { saveWebsite }),
-  withHandlers({
-    handleSave: ({ saveWebsite, websiteId }): func =>
-      (event: Object) =>
-        saveWebsite(websiteId),
-  }),
-)(MainHeader));
+export default withRouter(
+  compose(
+    connect(
+      mapStateToProps,
+      { saveWebsite },
+    ),
+    withHandlers({
+      handleSave: ({ saveWebsite, websiteId }): func => (event: Object) => saveWebsite(websiteId),
+    }),
+  )(MainHeader),
+);

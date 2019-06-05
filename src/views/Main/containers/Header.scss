@@ -158,6 +158,8 @@
 }
 
 .Logo {
+  align-items: flex-end;
+  display: flex;
   flex: 0 0 36px;
   height: 36px;
   width: 36px;
@@ -176,6 +178,13 @@
     justify-content: center;
     width: 100%;
   }
+}
+
+.Pro {
+  color: #aeb2ba;
+  font-size: 12px;
+  letter-spacing: .4px;
+  margin: 0 0 6px 10px;
 }
 
 .Right {

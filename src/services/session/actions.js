@@ -28,6 +28,7 @@ export const fetchProfile = (id: number) => (dispatch: func, getState: func, { a
             expireDate: get(profile, 'next_bill_date'),
             name: get(subscription, 'name'),
             limit: subscription ? 3 : 1,
+            isPro: true,
           },
         };
 

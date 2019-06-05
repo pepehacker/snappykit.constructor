@@ -8,23 +8,26 @@ import { CSSTransition } from 'react-transition-group';
 
 // Components
 import Modal from 'components/Modal';
+import Tabs, { Tab } from 'components/Tabs';
 
 // Containers
 import List from './containers/List';
 import PriceList from './containers/PriceList';
 
 // Ducks
-import { getPrice, setPrice, PLANS_MODAL_ID } from './ducks';
+import { getPeriod, getPrice, setPeriod, setPrice, MONTH, YEAR, PLANS_MODAL_ID } from './ducks';
 
 // Styles
 import styles from './Plans.scss';
 
 type PlansType = {
+  handleChange: Function,
   handleClose: Function,
+  period: string,
   price: string,
 };
 
-const Plans = ({ handleClose, price }: PlansType): React.Element<Modal> => (
+const Plans = ({ handleChange, handleClose, period, price }: PlansType): React.Element<Modal> => (
   <Modal id={PLANS_MODAL_ID} onClose={handleClose}>
     {({ isEntered }) => (
       <CSSTransition
@@ -52,6 +55,16 @@ const Plans = ({ handleClose, price }: PlansType): React.Element<Modal> => (
               <PriceList isEntered={state === 'entered'} />
             </div>
 
+            <div className={styles.Period}>
+              <Tabs onChange={handleChange} value={period}>
+                <Tab label="MONTHLY" value={MONTH} />
+                <Tab
+                  info="Save 25%" label="ANNUALLY"
+                  value={YEAR}
+                />
+              </Tabs>
+            </div>
+
             <div className={styles.List}>
               <List key={price} isEntered={state === 'entered' && !!price} />
             </div>
@@ -63,15 +76,17 @@ const Plans = ({ handleClose, price }: PlansType): React.Element<Modal> => (
 );
 
 const mapStateToProps: Function = (state: Object) => ({
+  period: getPeriod(state),
   price: getPrice(state),
 });
 
 export default compose(
   connect(
     mapStateToProps,
-    { setPrice },
+    { setPeriod, setPrice },
   ),
   withHandlers({
     handleClose: ({ setPrice }): Function => () => setPrice(null),
+    handleChange: ({ setPeriod }): Function => (period: string): boolean => setPeriod(period),
   }),
 )(Plans);

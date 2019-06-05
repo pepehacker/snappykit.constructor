@@ -1,8 +1,9 @@
 // @flow
+import { MONTH } from './constants';
 import { SET_PERIOD, SET_PRICE } from './types';
 
 const initialState = {
-  period: null,
+  period: MONTH,
   price: null,
 };
 
