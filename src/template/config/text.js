@@ -32,6 +32,25 @@ export const TEXT_FONT = {
   SOURCE_SANS_PRO: 'Source Sans Pro',
 };
 
+export const TEXT_FONTS_PRO = [
+  TEXT_FONT.ALEGREYA,
+  TEXT_FONT.ALEGREYA_SANS,
+  TEXT_FONT.BARLOW,
+  TEXT_FONT.BARLOW_CONDENSED,
+  TEXT_FONT.CORMORANT_GARAMOND,
+  TEXT_FONT.EB_GARAMOND,
+  TEXT_FONT.EXO,
+  TEXT_FONT.FIRA_SANS,
+  TEXT_FONT.FIRA_SANS_CONDENSED,
+  TEXT_FONT.LATO,
+  TEXT_FONT.LIBRE_FRANKLIN,
+  TEXT_FONT.MONTSERRAT,
+  TEXT_FONT.MULI,
+  TEXT_FONT.NUNITO,
+  TEXT_FONT.OVERPASS,
+  TEXT_FONT.SARABUN,
+  TEXT_FONT.SOURCE_SANS_PRO,
+];
 export const TEXT_FONT_REGEX = new RegExp(`^(${values(TEXT_FONT).join('|')})$`);
 export const TEXT_FONT_VALUES = values(TEXT_FONT);
 
@@ -53,16 +72,16 @@ export const TEXT_STYLE_VALUES = [
 ];
 
 // Schema
-export const TEXT_SCHEMA = (defaults: Object): Object =>
+export const TEXT_SCHEMA = (data: Object, { isPro } = {}): Object =>
   object().shape({
     color: string()
       .matches(TEXT_COLOR.regex, 'Incorrect `COLOR`!')
-      .default(get(defaults, 'color', 'rgba(255, 255, 255, 1)')),
+      .default(get(data, 'color', 'rgba(255, 255, 255, 1)')),
     font: string()
       .matches(TEXT_FONT.regex, 'Incorrect `FONT` name!')
-      .default(get(defaults, 'font', TEXT_FONT.ROBOTO)),
+      .default(get(data, 'font', TEXT_FONT.ROBOTO)),
     style: string()
       .matches(TEXT_STYLE.regex, 'Incorrect `STYLE` value!')
-      .default(get(defaults, 'style', TEXT_STYLE.REGULAR)),
-    text: string().default(get(defaults, 'text', 'Text')),
+      .default(get(data, 'style', TEXT_STYLE.REGULAR)),
+    text: string().default(get(data, 'text', 'Text')),
   });

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import * as React from 'react';
+import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import { reduxForm } from 'redux-form';
 
@@ -7,10 +8,13 @@ import { reduxForm } from 'redux-form';
 import Form, { Color, Select, SelectItem, Textarea } from 'components/Form';
 import Style from '../components/Style';
 
-// Template
-import { TEXT_FONT, TEXT_FONT_VALUES, TEXT_STYLE } from 'template';
+// Services
+import { isPro } from 'services/session';
 
-const TextForm = ({ handleSubmit, withText }) => (
+// Template
+import { TEXT_FONT, TEXT_FONT_VALUES, TEXT_FONTS_PRO, TEXT_STYLE } from 'template';
+
+const TextForm = ({ handleSubmit, isPro, withText }) => (
   <Form onSubmit={handleSubmit}>
     {withText && <Textarea
       label="Text" name="text"
@@ -21,10 +25,15 @@ const TextForm = ({ handleSubmit, withText }) => (
       label="Font" name="font"
       placeholder="Choose a font"
     >
-      {TEXT_FONT_VALUES.map(
-        (name: string): func => (
+      {(isPro
+        ? TEXT_FONT_VALUES
+        : TEXT_FONT_VALUES.sort(name => (TEXT_FONTS_PRO.indexOf(name) > -1 ? 1 : -1))
+      ).map(
+        (name: string): React.Element<typeof SelectItem> => (
           <SelectItem
-            key={name} label={name}
+            key={name}
+            isPro={!isPro && TEXT_FONTS_PRO.indexOf(name) > -1}
+            label={name}
             value={name}
           />
         ),
@@ -41,7 +50,12 @@ TextForm.propTypes = {
   withText: PropTypes.bool,
 };
 
+const mapStateToProps = state => ({
+  isPro: isPro(state),
+});
+
 export default compose(
+  connect(mapStateToProps),
   reduxForm({
     form: 'textForm',
     initialValues: {

@@ -19,7 +19,6 @@ import styles from './Mockup.scss';
 
 const SmartphoneMockup = ({ handleClick, model, style, value }) => (
   <div className={styles.Root}>
-    {console.log(MOCKUP_ITEMS, model, style, value)}
     {get(MOCKUP_ITEMS, `${model}.${style}`, []).map((id: string) => (
       <Mockup id={id} isCurrent={id === value} key={id} model={model} onClick={handleClick} />
     ))}

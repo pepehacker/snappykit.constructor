@@ -1,0 +1,17 @@
+
+.Root {
+  align-items: center;
+  background: #9e9ae2;
+  border-radius: 20px;
+  display: flex;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  height: 20px;
+  justify-content: center;
+  min-width: 36px;
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(#9e9ae2, .8);
+  }
+}

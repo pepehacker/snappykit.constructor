@@ -20,14 +20,17 @@ import { STORE } from 'template';
 // Styles
 import styles from './Store.scss';
 
-const Store = ({ handleChange, id, initialValues }) => (
+const Store = ({ handleChange, id, initialValues, websiteId }) => (
   <div className={styles.Root}>
     <Title title="Store" />
 
     <Container>
       <Form
-        key={id} form={id}
-        initialValues={initialValues} onChange={handleChange}
+        key={id}
+        form={id}
+        initialValues={initialValues}
+        onChange={handleChange}
+        websiteId={websiteId}
       />
     </Container>
   </div>

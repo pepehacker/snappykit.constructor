@@ -157,7 +157,7 @@ export default compose(
             setResult(formattedResults);
           }
         });
-    }, 2000);
+    }, 1000);
 
     return {
       handleCancel: ({ setEdit }): Function => () => setEdit(false),
@@ -168,7 +168,7 @@ export default compose(
           queryTemp = searchString;
 
           setQuery(searchString);
-          changeThrottle(searchString);
+          searchString.trim() !== '' && changeThrottle(searchString);
         }
       },
       handleEdit: ({ change, dispatch, image, setEdit, setEditType }) => (editType: string) => {

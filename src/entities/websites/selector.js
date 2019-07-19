@@ -12,11 +12,6 @@ export const getSectionById = (
 export const getWebsiteCount = (state: Object): number =>
   getWebsiteList(state).filter(({ isDeleted }): boolean => !isDeleted).length;
 
-export const getWebsiteTemplate = (state: Object, id: number | string): Object => {
-  const website = getWebsiteById(state, id);
-  return getTemplateById(get(website, 'templateId'));
-};
-
 export const getWebsiteById = (state: Object, id: number | string): Array<Object> =>
   get(state, `entities.websites.${id}`);
 
@@ -26,6 +21,14 @@ export const getWebsiteList = (state: Object): Array<Object> =>
 export const getWebsiteLogo = (state: Object, id: number | string): string => {
   const website = getWebsiteById(state, id);
   return get(website, 'data.section.icon.src');
+};
+
+export const getWebsiteProvider = (state: Object, id: number | string): number =>
+  get(getWebsiteById(state, id), 'provider', 1);
+
+export const getWebsiteTemplate = (state: Object, id: number | string): Object => {
+  const website = getWebsiteById(state, id);
+  return getTemplateById(get(website, 'templateId'));
 };
 
 export const hasWebsite = (state: Object, id: number | string): boolean =>

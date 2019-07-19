@@ -25,7 +25,7 @@ import styles from './Store.scss';
 
 const TemplateStore = ({ className, id }) => (
   <TemplateContext.Consumer>
-    {({ data, view, websiteId }) => {
+    {({ data, isEditor, view, websiteId }) => {
       const { items, ...props } = getSectionById(data, id || STORE);
 
       const rootClassNames = classNames(className, styles.Root, {
@@ -41,6 +41,7 @@ const TemplateStore = ({ className, id }) => (
               {get(items, STORE_APP_STORE) && (
                 <Button
                   {...props}
+                  isEditor={isEditor}
                   link={get(items, STORE_APP_STORE)}
                   variant={STORE_APP_STORE}
                   view={view}
@@ -50,6 +51,7 @@ const TemplateStore = ({ className, id }) => (
               {get(items, STORE_GOOGLE_PLAY) && (
                 <Button
                   {...props}
+                  isEditor={isEditor}
                   link={get(items, STORE_GOOGLE_PLAY)}
                   variant={STORE_GOOGLE_PLAY}
                   view={view}

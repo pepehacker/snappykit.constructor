@@ -85,7 +85,10 @@ const Websites = ({
                         timeout={{ enter: 400 + 100 * item.length, exit: 300 }}
                         unmountOnExit
                       >
-                        <div className={styles.Item} style={{ transitionDelay: `${!item.isDeleted ? 0.1 : 0 * index}s` }}>
+                        <div
+                          className={styles.Item}
+                          style={{ transitionDelay: `${item.isDeleted ? 0 : 0.1 * index}s` }}
+                        >
                           <Item {...item} />
                         </div>
                       </CSSTransition>

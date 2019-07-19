@@ -17,6 +17,7 @@
   position: absolute;
   top: calc(50% - 16px);
   width: 32px;
+  z-index: 2;
 
   &:focus {
     outline: none;

@@ -8,6 +8,12 @@ import { formValueSelector, reduxForm } from 'redux-form';
 import Form, { Color, Link } from 'components/Form';
 import ColorSwitcher from '../components/ColorSwitcher';
 
+// Entities
+import { getWebsiteProvider } from 'entities/websites';
+
+// Services
+import { isPro } from 'services/session';
+
 // Template
 import {
   STORE_APP_STORE_PREFIX,
@@ -19,7 +25,7 @@ import {
 // Styles
 import styles from './Form.scss';
 
-const StoreForm = ({ handleSubmit, switcher = STORE_BACKGROUND, ...props }) => {
+const StoreForm = ({ handleSubmit, isPro, provider, switcher = STORE_BACKGROUND, ...props }) => {
   const rootClassNames = classNames(styles.Root, {
     [styles.RootCurrentColor]: switcher === STORE_COLOR,
     [styles.RootCurrentBackground]: switcher === STORE_BACKGROUND,
@@ -30,6 +36,7 @@ const StoreForm = ({ handleSubmit, switcher = STORE_BACKGROUND, ...props }) => {
       <div className={styles.Group}>
         <Link
           icon="fa-apple"
+          isPro={!isPro && provider === 2}
           label="App Store"
           name="items.apple"
           prefix={STORE_APP_STORE_PREFIX}
@@ -37,6 +44,7 @@ const StoreForm = ({ handleSubmit, switcher = STORE_BACKGROUND, ...props }) => {
 
         <Link
           icon="fa-google-play"
+          isPro={!isPro && provider === 1}
           label="Google Play"
           name="items.play"
           prefix={STORE_GOOGLE_PLAY_PREFIX}
@@ -56,7 +64,9 @@ const StoreForm = ({ handleSubmit, switcher = STORE_BACKGROUND, ...props }) => {
 };
 
 const selector = formValueSelector('storeForm');
-const mapStateToProps = (state: Object) => ({
+const mapStateToProps: Function = (state: Object, { websiteId }): Object => ({
+  isPro: isPro(state),
+  provider: getWebsiteProvider(state),
   switcher: selector(state, 'switcher'),
 });
 

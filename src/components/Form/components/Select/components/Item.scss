@@ -9,7 +9,7 @@
   padding: 4px 16px 4px 32px;
   transition: all .2s;
 
-  &:hover {
+  &:hover:not(.RootIsPro) {
     background: #f9f9f9;
     cursor: pointer;
   }
@@ -19,5 +19,16 @@
       box-shadow: inset 2px 0 0 #9e9ae2;
       pointer-events: none;
     }
+
+    &Pro {
+
+      .Label {
+        opacity: .4;
+      }
+    }
   }
+}
+
+.Label {
+  flex: 1 1 auto;
 }

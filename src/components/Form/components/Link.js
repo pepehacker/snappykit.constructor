@@ -5,6 +5,7 @@ import { compose, withHandlers, withState } from 'recompose';
 
 // Components
 import { Field } from 'components/Form';
+import Pro from 'components/Pro';
 
 import styles from './Link.scss';
 
@@ -67,7 +68,7 @@ const FormLink = ({
         </div>
 
         {isPro ? (
-          <div className={styles.Pro}>Pro</div>
+          <Pro className={styles.Pro} />
         ) : (
           <button
             className={styles.Plus} onClick={handleReset}
