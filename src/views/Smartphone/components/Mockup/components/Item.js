@@ -1,8 +1,10 @@
 /* eslint-disable */
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
 import React from 'react';
 import { compose, withHandlers, withState } from 'recompose';
+
+// Components
+import Pro from 'components/Pro';
 
 // Entities
 import { SMARTPHONE, SMARTPHONE_MODEL, SMARTPHONE_STYLE } from 'template';
@@ -10,17 +12,42 @@ import { SMARTPHONE, SMARTPHONE_MODEL, SMARTPHONE_STYLE } from 'template';
 // Styles
 import styles from './Item.scss';
 
-const SmartphoneMockupItem = ({ handleClick, handleLoad, id, isCurrent, isLoaded, model }) => {
+type SmartphoneMockupItemPropTypes = {
+  id: number | string,
+  handleClick: SyntheticEvent => void,
+  handleLoad: SyntheticEvent => void,
+  isCurrent: boolean,
+  isLoaded: boolean,
+  isPro: boolean,
+  model: SMARTPHONE_MODEL.IPHONE | SMARTPHONE_MODEL.PIXEL,
+};
+
+const SmartphoneMockupItem = ({
+  id,
+  model,
+  // Handles
+  handleClick,
+  handleLoad,
+  // State
+  isCurrent,
+  isLoaded,
+  isPro,
+}: SmartphoneMockupItemPropTypes): React.Element<'div'> => {
   const className = classNames(styles.Root, {
     [styles.RootIsCurrent]: isCurrent,
     [styles.RootIsLoaded]: isLoaded,
+    [styles.RootIsPro]: isPro,
 
     [styles.RootVariantIphone]: model === SMARTPHONE_MODEL.IPHONE,
     [styles.RootVariantPixel]: model === SMARTPHONE_MODEL.PIXEL,
   });
 
   return (
-    <div className={className} onClick={handleClick} role="button">
+    <div
+      className={className}
+      onClick={isPro ? null : handleClick}
+      role="button"
+    >
       <img
         alt={id}
         className={styles.Preview}
@@ -31,13 +58,10 @@ const SmartphoneMockupItem = ({ handleClick, handleLoad, id, isCurrent, isLoaded
       <div className={styles.Current}>
         <div className={styles.Check} />
       </div>
+
+      {isPro && <Pro className={styles.Pro} />}
     </div>
   );
-};
-
-SmartphoneMockupItem.propTypes = {
-  id: PropTypes.string,
-  isCurrent: PropTypes.bool,
 };
 
 export default compose(

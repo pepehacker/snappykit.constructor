@@ -10,6 +10,17 @@
   }
 
   &Variant {
+    &Form {
+      background: rgba(#9E9AE2, .8);
+      border: 0;
+      border-radius: 4px;
+      color: rgba(#fff, 8);
+      font-size: 14px;
+      font-weight: 500;
+      height: 34px;
+      width: 100%;
+    }
+
     &GradientReverse {
       background: rgba(#9E9AE2, .4);
       border: 0;

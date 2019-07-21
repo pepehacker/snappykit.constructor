@@ -5,35 +5,42 @@ import React from 'react';
 // Components
 import Field from './Field';
 
-// Styles
-import styles from './Textarea.scss';
+// Style
+import style from './Textarea.scss';
 
 const FormTextarea = ({
-  classNames: {
-    textarea: textareaClassName,
-  } = {},
+  className,
+  classNames: { textarea: textareaClassName } = {},
   id,
   name,
   onChange,
+  readOnly,
   type = 'text',
   value,
 }) => {
-  const textareaClassNames = classNames(textareaClassName, styles.Textarea);
+  const rootClassNames: string = classNames(className, style.Root, {
+    [style.RootIsReadOnly]: readOnly,
+  });
+  const textareaClassNames: string = classNames(
+    textareaClassName,
+    style.Textarea,
+  );
 
   return (
-    <div className={styles.Root}>
+    <div className={rootClassNames}>
       <textarea
         autoComplete="off"
         className={textareaClassNames}
         id={id}
         name={name}
         onChange={onChange}
+        readOnly={readOnly}
         type={type}
         value={value}
       />
     </div>
   );
-}
+};
 
 FormTextarea.propTypes = {
   classNames: PropTypes.shape({

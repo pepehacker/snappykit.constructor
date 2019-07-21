@@ -7,6 +7,7 @@ import React from 'react';
 import styles from './Button.scss';
 
 const VARIANT = {
+  FORM: 'form',
   GRADIENT: 'gradient',
   GRADIENT_REVERSE: 'gradientReverse',
 };
@@ -14,13 +15,18 @@ const VARIANT = {
 const Button = ({
   children,
   className,
-  classNames: { root: rootClassName, content: contentClassName, icon: iconClassName } = {},
+  classNames: {
+    root: rootClassName,
+    content: contentClassName,
+    icon: iconClassName,
+  } = {},
   icon,
   onClick,
   type = 'button',
   variant = VARIANT.GRADIENT,
 }) => {
   const rootClassNames = classNames(className, rootClassName, styles.Root, {
+    [styles.RootVariantForm]: variant === VARIANT.FORM,
     [styles.RootVariantGradient]: variant === VARIANT.GRADIENT,
     [styles.RootVariantGradientReverse]: variant === VARIANT.GRADIENT_REVERSE,
   });

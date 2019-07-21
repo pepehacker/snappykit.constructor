@@ -1,3 +1,13 @@
+.Root {
+  &Is {
+    &ReadOnly {
+      .Textarea {
+        pointer-events: none;
+      }
+    }
+  }
+}
+
 .Textarea {
   background: #f0f1f1;
   border: 0;

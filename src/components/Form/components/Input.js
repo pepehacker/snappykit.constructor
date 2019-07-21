@@ -1,61 +1,100 @@
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
 import React from 'react';
+import { compose, withHandlers, withState } from 'recompose';
 
 // Components
 import Field from './Field';
 
-// Styles
-import styles from './Input.scss';
+// Style
+import style from './Input.scss';
 
 const VARIANT = {
   CONTAINED: 'contained',
   FLAT: 'flat',
 };
 
+type FormInputPropTypes = {
+  id: number | string,
+  handleBlur: SyntheticEvent => void,
+  handleFocus: SyntheticEvent => void,
+  isFocused: boolean,
+  name: string,
+  onChange?: SyntheticEvent => void,
+  placeholder?: string,
+  postfix?: string,
+  readOnly?: boolean,
+  type?: string,
+  value?: boolean | number | string,
+  variant?: VARIANT.CONTAINED | VARIANT.FLAT,
+};
+
 const FormInput = ({
   id,
   name,
-  onChange,
   placeholder,
+  postfix,
+  readOnly,
   type = 'text',
   value,
   variant = VARIANT.CONTAINED,
-}) => {
-  const rootClassNames = classNames(styles.Root, {
-    [styles.RootVariantContained]: variant === VARIANT.CONTAINED,
-    [styles.RootVariantFlat]: variant === VARIANT.FLAT,
-  });
+  // Handlers
+  handleBlur,
+  handleFocus,
+  onChange,
+  // State
+  isFocused,
+}: FormInputPropTypes): React.Element<'div'> => {
+  const rootClassNames = classNames(
+    style.Root,
+    {
+      [style.RootVariantContained]: variant === VARIANT.CONTAINED,
+      [style.RootVariantFlat]: variant === VARIANT.FLAT,
+      [style.RootVariantWithPostfix]: !!postfix,
+    },
+    {
+      [style.RootIsFocused]: isFocused,
+      [style.RootIsReadOnly]: readOnly,
+    },
+  );
 
   return (
     <div className={rootClassNames}>
-      <input
-        autoComplete="off"
-        className={styles.Input}
-        id={id}
-        name={name}
-        onChange={onChange}
-        placeholder={placeholder}
-        type={type}
-        value={value}
-      />
+      <div className={style.Cover}>
+        <input
+          autoComplete="off"
+          className={style.Input}
+          id={id}
+          name={name}
+          onBlur={handleBlur}
+          onChange={onChange}
+          onFocus={handleFocus}
+          placeholder={placeholder}
+          readOnly={readOnly}
+          type={type}
+          value={value}
+        />
+
+        {postfix && <div className={style.Postfix}>
+          {postfix}
+        </div>}
+      </div>
     </div>
   );
 };
 
-FormInput.propTypes = {
-  id: PropTypes.string,
-  name: PropTypes.string,
-  onChange: PropTypes.func,
-  type: PropTypes.string,
-  value: PropTypes.string,
-};
-
 FormInput.VARIANT = VARIANT;
+
+const ComposedFormInput = compose(
+  withState('isFocused', 'setFocused', false),
+  withHandlers({
+    handleBlur: ({ setFocused }): Function => (): void => setFocused(false),
+    handleFocus: ({ setFocused }): Function => (): void => setFocused(true),
+  }),
+)(FormInput);
 
 export default ({ variant, ...props }): func => (
   <Field {...props}>
-    <FormInput variant={variant} />
+    <ComposedFormInput variant={variant} />
   </Field>
 );
 export { VARIANT };

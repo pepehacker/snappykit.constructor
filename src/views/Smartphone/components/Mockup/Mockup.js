@@ -1,7 +1,6 @@
 /* eslint-disable */
 import classNames from 'classnames';
 import { get } from 'lodash';
-import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose, withHandlers } from 'recompose';
@@ -14,24 +13,50 @@ import Mockup from './components/Item';
 // Ducks
 import { SMARTPHONE_FORM_ID, MOCKUP_ITEMS } from '../../ducks/constants';
 
+// Services
+import { isPro } from 'services/session';
+
 // Styles
 import styles from './Mockup.scss';
 
-const SmartphoneMockup = ({ handleClick, model, style, value }) => (
+// Template
+import { SMARTPHONE_MODEL, SMARTPHONE_PRO_LIST } from 'template/config';
+
+type SmartphoneMockupPropTypes = {
+  handleClick: SyntheticEvent => void,
+  isPro: boolean,
+  model: SMARTPHONE_MODEL.IPHONE | SMARTPHONE_MODEL.PIXEL,
+  style:
+    | SMARTPHONE_STYLE.CLASSIC
+    | SMARTPHONE_STYLE.CONCEPT
+    | SMARTPHONE_STYLE.FLAT,
+  value: number | string,
+};
+
+const SmartphoneMockup = ({
+  handleClick,
+  isPro,
+  model,
+  style,
+  value,
+}: SmartphoneMockupPropTypes): React.Element<'div'> => (
   <div className={styles.Root}>
     {get(MOCKUP_ITEMS, `${model}.${style}`, []).map((id: string) => (
-      <Mockup id={id} isCurrent={id === value} key={id} model={model} onClick={handleClick} />
+      <Mockup
+        id={id}
+        isCurrent={id === value}
+        isPro={!isPro && SMARTPHONE_PRO_LIST.indexOf(id) > -1}
+        key={id}
+        model={model}
+        onClick={handleClick}
+      />
     ))}
   </div>
 );
 
-SmartphoneMockup.propTypes = {
-  model: PropTypes.string,
-  style: PropTypes.string,
-};
-
 const selector = formValueSelector(SMARTPHONE_FORM_ID);
 const mapStateToProps = (state, { model, style }) => ({
+  isPro: isPro(state),
   model: selector(state, 'model'),
   style: selector(state, 'style'),
 });

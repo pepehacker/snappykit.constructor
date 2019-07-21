@@ -8,8 +8,6 @@ import {
   BACKGROUND_LIST,
   ICON,
   POLICY,
-  POLICY_PRIVACY,
-  POLICY_TERMS,
   SCREENSHOTS,
   SMARTPHONE,
   SMARTPHONE_MOCKUP,
@@ -66,10 +64,6 @@ export default createConfig(2, [
     id: POLICY,
     data: {
       color: 'rgba(117, 117, 127, 1)',
-      items: {
-        [POLICY_PRIVACY]: '123',
-        [POLICY_TERMS]: '456',
-      },
     },
     exports: ['src'],
     type: POLICY,

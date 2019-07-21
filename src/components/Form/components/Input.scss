@@ -1,28 +1,34 @@
 .Root {
   &Variant {
     &Contained {
-      .Input {
+      .Cover {
         background: #f0f1f1;
         border: 0;
         border-radius: 4px;
         color: #aeb2ba;
         height: 40px;
         padding: 0 16px;
+      }
 
-        &:hover {
-          background: #ffffff;
-          box-shadow: 0 12px 20px rgba(0, 0, 0, .08);
+      &:not(.RootIsReadOnly) {
+        .Cover {
+          &:hover {
+            background: #ffffff;
+            box-shadow: 0 12px 20px rgba(0, 0, 0, .08);
+          }
         }
 
-        &:focus {
-          background: #ffffff;
-          box-shadow: 0 12px 20px rgba(0, 0, 0, .04);
+        &.RootIsFocused {
+          .Cover {
+            background: #ffffff;
+            box-shadow: 0 12px 20px rgba(0, 0, 0, .04);
+          }
         }
       }
     }
 
     &Flat {
-      .Input {
+      .Cover {
         background: #f5f5f5;
         border: 1px solid transparent;
         border-radius: 6px;
@@ -30,22 +36,38 @@
         height: 50px;
         letter-spacing: .3px;
         padding: 0 20px;
+      }
 
-        &:focus {
-          border-color: rgba(#9E9AE2, .3);
-          color: var(--color-primary);
+      &:not(.RootIsReadOnly) {
+        .Cover {
+          &:hover {
+            border-color: #eee;
+            color: #7B7A7A;
+          }
         }
 
-        &:hover:not(:focus) {
-          border-color: #eee;
-          color: #7B7A7A;
+        &.RootIsFocused {
+          .Cover {
+            border-color: rgba(#9E9AE2, .3);
+            color: var(--color-primary);
+          }
         }
       }
     }
   }
 }
 
+.Cover {
+  align-items: center;
+  display: flex;
+  transition: all .2s;
+}
+
 .Input {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  flex: 1 1 auto;
   font-family: inherit;
   font-size: 16px;
   font-weight: inherit;
@@ -58,3 +80,11 @@
   }
 }
 
+.Postfix {
+  border-left: 1px solid rgba(0, 0, 0, .1);
+  color: var(--color-primary);
+  flex: 0 0 auto;
+  font-weight: 500;
+  margin: 0 0 0 8px;
+  padding: 0 0 0 8px;
+}

@@ -8,7 +8,11 @@ import {
   SET_USER,
 } from './types';
 
-export const fetchProfile = (id: number) => (dispatch: func, getState: func, { api }) => {
+export const fetchProfile = (id: number) => (
+  dispatch: func,
+  getState: func,
+  { api },
+) => {
   dispatch({ type: FETCH_PROFILE_REQUEST });
 
   api([{ method: 'profile.get' }, { method: 'subscriptions.get' }])
@@ -28,6 +32,7 @@ export const fetchProfile = (id: number) => (dispatch: func, getState: func, { a
             expireDate: get(profile, 'next_bill_date'),
             name: get(subscription, 'name'),
             limit: subscription ? 3 : 1,
+            period: get(subscription, 'billing_type') === 'year' ? 365 : 30,
             isPro: false,
           },
         };

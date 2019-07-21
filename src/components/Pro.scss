@@ -10,6 +10,7 @@
   height: 20px;
   justify-content: center;
   min-width: 36px;
+  transition: all .2s;
 
   &:hover {
     box-shadow: 0 2px 8px rgba(#9e9ae2, .8);

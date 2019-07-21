@@ -32,21 +32,28 @@ const MainHeaderUser = ({
   // State
   isOpened,
 }) => {
-  const className = classNames(styles.Root, {
+  const className: string = classNames(styles.Root, {
     [styles.RootOpened]: isOpened,
   });
 
-  const expireDate = get(user, 'subscription.expireDate');
-  const daysLeft = moment(expireDate).diff(moment(), 'days');
+  const expireDate: string = get(user, 'subscription.expireDate');
+  const daysLeft: number = Math.max(
+    0,
+    moment(expireDate).diff(moment(), 'days'),
+  );
+  const period: number = get(user, 'subscription.period', 30);
 
   return (
     <div
-      ref={rootRef} className={className}
-      onBlur={handleDropdownBlur} tabIndex={0}
+      ref={rootRef}
+      className={className}
+      onBlur={handleDropdownBlur}
+      tabIndex={0}
     >
       <div className={styles.Trigger}>
         <button
-          className={styles.TriggerButton} onClick={handleClick}
+          className={styles.TriggerButton}
+          onClick={handleClick}
           type="button"
         >
           {get(user, 'email')}
@@ -68,14 +75,17 @@ const MainHeaderUser = ({
             <div className={styles.ExpirationProgress}>
               <div
                 className={styles.ExpirationProgressBar}
-                style={{ width: `${(daysLeft * 100) / 365}%` }}
+                style={{ width: `${100 - (daysLeft * 100) / period}%` }}
               />
             </div>
           </div>
 
           <div className={styles.Links}>
             {LINKS.map(({ icon, onClick, title, to }, index) => {
-              const iconClassName = classNames(styles.LinkIcon, styles[`LinkIcon${icon}`]);
+              const iconClassName = classNames(
+                styles.LinkIcon,
+                styles[`LinkIcon${icon}`],
+              );
 
               return (
                 <NavLink

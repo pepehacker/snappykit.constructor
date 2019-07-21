@@ -4,18 +4,29 @@ import React, { cloneElement } from 'react';
 import { compose, withState } from 'recompose';
 import { Field } from 'redux-form';
 
+// Components
+import Pro from 'components/Pro';
+
 // Utils
 import reduxFieldAdapter from '../utils/reduxFieldAdapter';
 
 import styles from './Field.scss';
 
-const FormField = ({ children, className: classNameProps, id, ...props }) => {
-  const className = classNames(classNameProps, styles.Root);
+const FormField = ({
+  children,
+  className: classNameProps,
+  id,
+  isPro,
+  ...props
+}) => {
+  const className = classNames(classNameProps, styles.Root, {
+    [styles.RootIsPro]: isPro,
+  });
   const { max } = props;
 
   return (
     <Field {...props} component={reduxFieldAdapter}>
-      {({ label, ...props }): React.Element<'div'> => {
+      {({ label, readOnly, ...props }): React.Element<'div'> => {
         const { error, value = '' } = props;
         const length = value.length || 0;
 
@@ -35,7 +46,9 @@ const FormField = ({ children, className: classNameProps, id, ...props }) => {
                     </div>
                   )}
 
-                  {!error && max && max - length < max * 0.3 && (
+                  {!error && isPro && <Pro className={styles.Pro} />}
+
+                  {!isPro && !error && max && max - length < max * 0.3 && (
                     <div
                       className={classNames(styles.Max, {
                         [styles.MaxIsEnds]: max - length <= max * 0.1,
@@ -50,8 +63,12 @@ const FormField = ({ children, className: classNameProps, id, ...props }) => {
 
             <div className={styles.Control}>
               {typeof children === 'function'
-                ? children({ ...props, id })
-                : cloneElement(children, { ...props, id })}
+                ? children({ ...props, id, readOnly: readOnly || isPro })
+                : cloneElement(children, {
+                  ...props,
+                  id,
+                  readOnly: readOnly || isPro,
+                })}
             </div>
           </div>
         );

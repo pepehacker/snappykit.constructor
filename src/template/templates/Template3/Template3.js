@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
+import { Swipeable } from 'react-swipeable';
 import { compose, withHandlers, withState } from 'recompose';
 
 // Template
@@ -30,7 +31,8 @@ const Template3 = ({ handleNext, handlePrev, step }) => (
       const rootClassNames = classNames(
         styles.Root,
         {
-          [styles.RootVariantDesktop]: view === VIEW.DESKTOP || view === VIEW.DESKTOP_LARGE,
+          [styles.RootVariantDesktop]:
+            view === VIEW.DESKTOP || view === VIEW.DESKTOP_LARGE,
           [styles.RootVariantMobile]: view === VIEW.MOBILE,
           [styles.RootVariantTablet]: view === VIEW.TABLET,
         },
@@ -54,61 +56,65 @@ const Template3 = ({ handleNext, handlePrev, step }) => (
                 container: styles.Container,
               }}
             >
-              <div className={styles.Wrapper}>
-                <div className={styles.Track}>
-                  <div className={styles.Content}>
-                    <Text
-                      classNames={{
-                        root: styles.Title,
-                        text: styles.TitleText,
-                      }}
-                      id={TITLE}
-                    />
-
-                    <div className={styles.DescriptionWrapper}>
+              <Swipeable onSwipedLeft={handleNext} onSwipedRight={handlePrev}>
+                <div className={styles.Wrapper}>
+                  <div className={styles.Track}>
+                    <div className={styles.Content}>
                       <Text
                         classNames={{
-                          root: styles.Description,
-                          text: styles.DescriptionText,
+                          root: styles.Title,
+                          text: styles.TitleText,
                         }}
-                        id={DESCRIPTION}
+                        id={TITLE}
                       />
+
+                      <div className={styles.DescriptionWrapper}>
+                        <Text
+                          classNames={{
+                            root: styles.Description,
+                            text: styles.DescriptionText,
+                          }}
+                          id={DESCRIPTION}
+                        />
+                      </div>
+
+                      <Store className={styles.Store} />
                     </div>
 
-                    <Store className={styles.Store} />
+                    <div className={styles.Slider}>
+                      <Smartphone
+                        classNames={{
+                          root: styles.Smartphone,
+                          container: styles.Screenshots,
+                          mockup: styles.SmartphoneMockup,
+                        }}
+                      >
+                        <Screenshots
+                          classNames={{ item: styles.ScreenshotsItem }}
+                        />
+                      </Smartphone>
+                    </div>
                   </div>
 
-                  <div className={styles.Slider}>
-                    <Smartphone
-                      classNames={{
-                        root: styles.Smartphone,
-                        container: styles.Screenshots,
-                        mockup: styles.SmartphoneMockup,
-                      }}
-                    >
-                      <Screenshots classNames={{ item: styles.ScreenshotsItem }} />
-                    </Smartphone>
-                  </div>
+                  {view === VIEW.MOBILE && (
+                    <div className={styles.Dots}>
+                      <div
+                        className={classNames(styles.DotsItem, {
+                          [styles.DotsItemSelected]: step === 0,
+                        })}
+                        onClick={handlePrev}
+                      />
+
+                      <div
+                        className={classNames(styles.DotsItem, {
+                          [styles.DotsItemSelected]: step === 1,
+                        })}
+                        onClick={handleNext}
+                      />
+                    </div>
+                  )}
                 </div>
-
-                {view === VIEW.MOBILE && (
-                  <div className={styles.Dots}>
-                    <div
-                      className={classNames(styles.DotsItem, {
-                        [styles.DotsItemSelected]: step === 0,
-                      })}
-                      onClick={handlePrev}
-                    />
-
-                    <div
-                      className={classNames(styles.DotsItem, {
-                        [styles.DotsItemSelected]: step === 1,
-                      })}
-                      onClick={handleNext}
-                    />
-                  </div>
-                )}
-              </div>
+              </Swipeable>
             </Background>
 
             <Background className={styles.Blur} />
@@ -127,7 +133,9 @@ const Template3 = ({ handleNext, handlePrev, step }) => (
 export default compose(
   withState('step', 'setStep', 0),
   withHandlers({
-    handleNext: ({ setStep, step }): Function => () => setStep(Math.min(step + 1, 1)),
-    handlePrev: ({ setStep, step }): Function => () => setStep(Math.max(step - 1, 0)),
+    handleNext: ({ setStep, step }): Function => () =>
+      setStep(Math.min(step + 1, 1)),
+    handlePrev: ({ setStep, step }): Function => () =>
+      setStep(Math.max(step - 1, 0)),
   }),
 )(Template3);
