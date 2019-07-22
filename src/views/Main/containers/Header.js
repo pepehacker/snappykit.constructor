@@ -14,6 +14,9 @@ import User from '../components/User';
 // Entities
 import { getWebsiteById, saveWebsite } from 'entities/websites';
 
+// Services
+import { isPro } from 'services/session';
+
 // Styles
 import logo from '../assets/logo.svg';
 import styles from './Header.scss';
@@ -27,6 +30,7 @@ const MainHeader = ({
 
   // State
   isFetching,
+  isPro,
 }) => {
   const rootClassNames = classNames(styles.Root, {
     [styles.RootIsFetching]: isFetching,
@@ -47,7 +51,7 @@ const MainHeader = ({
               />
             </Link>
 
-            <div className={styles.Pro}>PRO</div>
+            {isPro && <div className={styles.Pro}>PRO</div>}
           </div>
         </div>
 
@@ -104,6 +108,7 @@ const mapStateToProps = (state: Object, { location }) => {
     website,
     websiteId,
     isFetching: get(website, 'isFetching'),
+    isPro: isPro(state),
     step: launchMatch ? 3 : editorMatch || domainMatch ? 2 : searchMatch ? 1 : 0,
   };
 };

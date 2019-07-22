@@ -12,6 +12,7 @@ import { PLANS_MODAL_ID } from 'containers/Plans';
 
 // Services
 import { openModal } from 'services/modals';
+import { isEnded } from 'services/session';
 
 // Styles
 import styles from './User.scss';
@@ -30,6 +31,7 @@ const MainHeaderUser = ({
   handleDropdownBlur,
   handleTriggerPlans,
   // State
+  isEnded,
   isOpened,
 }) => {
   const className: string = classNames(styles.Root, {
@@ -66,19 +68,21 @@ const MainHeaderUser = ({
             {get(user, 'subscription.name')}
           </div>
 
-          <div className={styles.Expiration}>
-            <div className={styles.ExpirationTitle}>
-              {daysLeft}
-              {' days left'}
-            </div>
+          {!isEnded && (
+            <div className={styles.Expiration}>
+              <div className={styles.ExpirationTitle}>
+                {daysLeft}
+                {' days left'}
+              </div>
 
-            <div className={styles.ExpirationProgress}>
-              <div
-                className={styles.ExpirationProgressBar}
-                style={{ width: `${100 - (daysLeft * 100) / period}%` }}
-              />
+              <div className={styles.ExpirationProgress}>
+                <div
+                  className={styles.ExpirationProgressBar}
+                  style={{ width: `${100 - (daysLeft * 100) / period}%` }}
+                />
+              </div>
             </div>
-          </div>
+          )}
 
           <div className={styles.Links}>
             {LINKS.map(({ icon, onClick, title, to }, index) => {
@@ -117,8 +121,9 @@ const MainHeaderUser = ({
   );
 };
 
-const mapStateToProps = ({ services }) => ({
-  user: get(services, 'session.user', {}),
+const mapStateToProps = state => ({
+  isEnded: isEnded(state),
+  user: get(state, 'services.session.user', {}),
 });
 
 export default compose(

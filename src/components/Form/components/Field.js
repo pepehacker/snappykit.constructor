@@ -29,6 +29,12 @@ const FormField = ({
       {({ label, readOnly, ...props }): React.Element<'div'> => {
         const { error, value = '' } = props;
         const length = value.length || 0;
+        const childProps = {
+          ...props,
+          id,
+          isPro,
+          readOnly: readOnly || isPro,
+        };
 
         return (
           <div className={className}>
@@ -63,12 +69,8 @@ const FormField = ({
 
             <div className={styles.Control}>
               {typeof children === 'function'
-                ? children({ ...props, id, readOnly: readOnly || isPro })
-                : cloneElement(children, {
-                  ...props,
-                  id,
-                  readOnly: readOnly || isPro,
-                })}
+                ? children(childProps)
+                : cloneElement(children, childProps)}
             </div>
           </div>
         );

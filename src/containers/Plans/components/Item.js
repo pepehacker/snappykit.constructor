@@ -4,7 +4,13 @@ import classNames from 'classnames';
 import * as React from 'react';
 import AnimatedNumber from 'react-animated-number';
 import { connect } from 'react-redux';
-import { compose, lifecycle, withHandlers, withProps, withState } from 'recompose';
+import {
+  compose,
+  lifecycle,
+  withHandlers,
+  withProps,
+  withState,
+} from 'recompose';
 
 // Ducks
 import {
@@ -22,6 +28,9 @@ import {
   getPrice,
 } from '../ducks';
 
+// Services
+import { getSubscription, getUserEmail } from 'services/session';
+
 // Styles
 import styles from './Item.scss';
 
@@ -29,9 +38,11 @@ type PlansItemType = {
   cost: number,
   count: number,
   id: number,
+  isCurrent: boolean,
   isFetching: boolean,
   features: Array<string>,
-  handleClick: Function,
+  handleCancel: SyntheticEvent => void,
+  handleClick: SyntheticEvent => void,
   title: string,
 };
 
@@ -43,8 +54,10 @@ const PlansItem = ({
   period,
   title,
   // Handlers
+  handleCancel,
   handleClick,
   // State
+  isCurrent,
   isFetching,
 }: PlansItemType): React.Element<'div'> => (
   <div
@@ -68,7 +81,13 @@ const PlansItem = ({
             <AnimatedNumber
               component="span"
               formatValue={n => Math.ceil(n)}
-              value={isFetching ? 1 : period === MONTH ? Math.min(99, cost) : cost / 12}
+              value={
+                isFetching
+                  ? 1
+                  : period === MONTH
+                    ? Math.min(99, cost)
+                    : cost / 12
+              }
             />
           )}
           {cost && <span className={styles.Unit}>$</span>}
@@ -93,18 +112,25 @@ const PlansItem = ({
     </div>
 
     <button
-      className={styles.Button} onClick={handleClick}
+      className={styles.Button}
+      onClick={isCurrent ? handleCancel : handleClick}
       type="button"
     >
-      {cost ? 'BUY' : 'TRY IT'}
+      {cost ? (isCurrent ? 'CANCEL' : 'BUY') : 'TRY IT'}
     </button>
   </div>
 );
 
-const mapStateToProps: Function = (state: Object) => ({
-  period: getPeriod(state),
-  price: getPrice(state),
-});
+const mapStateToProps: Function = (state: Object, { id }) => {
+  const subscription: Object = getSubscription(state);
+  return {
+    subscription,
+    email: getUserEmail(state),
+    isCurrent: id === get(subscription, 'id'),
+    period: getPeriod(state),
+    price: getPrice(state),
+  };
+};
 
 export default compose(
   connect(mapStateToProps),
@@ -115,7 +141,12 @@ export default compose(
   withState('isFetching', 'setFetching', false),
   withHandlers({
     // Fetch cost
-    fetchCost: ({ productId, setCost, setFetching }): Function => (): void => {
+    fetchCost: ({
+      email,
+      productId,
+      setCost,
+      setFetching,
+    }): Function => (): void => {
       if (productId) {
         setFetching(true);
 
@@ -127,9 +158,26 @@ export default compose(
       }
     },
     // Handlers
-    handleClick: ({ productId, setCost }): Function => (event: SyntheticEvent) =>
+    handleCancel: ({
+      email,
+      productId,
+      subscription,
+    }): Function => (): void => {
       // eslint-disable-next-line
-      Paddle.Checkout.open({ product: productId }),
+      Paddle.Checkout.open({
+        override: get(subscription, 'cancelUrl'),
+        successCallback: () => window.location.reload(),
+      });
+    },
+    handleClick: ({ email, productId, setCost }): Function => (
+      event: SyntheticEvent,
+    ) =>
+      // eslint-disable-next-line
+      Paddle.Checkout.open({
+        email,
+        product: productId,
+        successCallback: () => window.location.reload(),
+      }),
   }),
   lifecycle({
     componentDidMount() {
