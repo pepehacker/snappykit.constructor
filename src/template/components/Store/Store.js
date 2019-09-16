@@ -43,7 +43,7 @@ const TemplateStore = ({ className, id }) => (
                   {...props}
                   isEditor={isEditor}
                   link={get(items, STORE_APP_STORE)}
-                  variant={STORE_APP_STORE}
+                  store={STORE_APP_STORE}
                   view={view}
                 />
               )}
@@ -53,7 +53,7 @@ const TemplateStore = ({ className, id }) => (
                   {...props}
                   isEditor={isEditor}
                   link={get(items, STORE_GOOGLE_PLAY)}
-                  variant={STORE_GOOGLE_PLAY}
+                  store={STORE_GOOGLE_PLAY}
                   view={view}
                 />
               )}
