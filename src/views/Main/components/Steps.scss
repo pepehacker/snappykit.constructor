@@ -1,3 +1,5 @@
+@import '~styles/variables.scss';
+
 .Root {
   display: flex;
   height: 100%;
@@ -37,8 +39,8 @@
   width: 32px;
 
   &:before {
-    background: var(--color-primary);
-    border: 2px solid var(--color-white);
+    background: $color-primary;
+    border: 2px solid $color-white;
     border-radius: 100%;
     content: '';
     display: block;
@@ -103,15 +105,15 @@
   &Is {
     &Finished {
       .Index {
-        border: 2px solid var(--color-primary);
+        border: 2px solid $color-primary;
 
         &:before {
-          border-color: var(--color-primary);
+          border-color: $color-primary;
           opacity: .8;
         }
 
         &Content {
-          background: var(--color-primary);
+          background: $color-primary;
           color: transparent;
           opacity: .8;
           transform: scale(1);
@@ -126,13 +128,13 @@
 
     &Selected {
       .IndexContent {
-        background: var(--color-primary);
+        background: $color-primary;
         color: transparent;
         transform: scale(0.35);
       }
 
       .Title {
-        color: var(--color-primary);
+        color: $color-primary;
       }
     }
   }

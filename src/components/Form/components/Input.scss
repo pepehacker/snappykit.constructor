@@ -1,3 +1,5 @@
+@import '~styles/variables.scss';
+
 .Root {
   &Variant {
     &Contained {
@@ -49,7 +51,7 @@
         &.RootIsFocused {
           .Cover {
             border-color: rgba(#9E9AE2, .3);
-            color: var(--color-primary);
+            color: $color-primary;
           }
         }
       }
@@ -82,7 +84,7 @@
 
 .Postfix {
   border-left: 1px solid rgba(0, 0, 0, .1);
-  color: var(--color-primary);
+  color: $color-primary;
   flex: 0 0 auto;
   font-weight: 500;
   margin: 0 0 0 8px;

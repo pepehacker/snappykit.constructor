@@ -1,5 +1,7 @@
+@import '~styles/variables.scss';
+
 .Count {
-  color: var(--color-primary);
+  color: $color-primary;
 }
 
 .Limit {
@@ -15,7 +17,7 @@
   width: 240px;
 
   &Bar {
-    background: var(--color-primary);
+    background: $color-primary;
     border-radius: 6px;
     height: 100%;
     transition: all .4s;

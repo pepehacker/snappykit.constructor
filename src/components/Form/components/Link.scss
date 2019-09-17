@@ -1,3 +1,5 @@
+@import '~styles/variables.scss';
+
 .Root {
   max-width: 100%;
 
@@ -12,7 +14,7 @@
       box-shadow: 0 5px 16px 0 rgba(0, 0, 0, .06);
 
       &:before {
-        background: var(--color-primary);
+        background: $color-primary;
       }
     }
 

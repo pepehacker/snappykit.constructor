@@ -1,3 +1,5 @@
+@import '~styles/variables.scss';
+
 .Root {
   display: flex;
   flex-direction: column;
@@ -110,4 +112,8 @@
   justify-content: space-between;
   letter-spacing: -0.9px;
   line-height: 28px;
+
+  @media #{$desktop-small} {
+    font-size: 16px;
+  }
 }

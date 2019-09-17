@@ -1,3 +1,5 @@
+@import '~styles/variables.scss';
+
 .Root {
   align-items: center;
   box-shadow: none;
@@ -8,28 +10,32 @@
   text-transform: uppercase;
   width: 100%;
 
+  @media #{$desktop-small} {
+    padding: 0 16px 0 39px;
+  }
+
   &:hover:not(&Active) {
     cursor: pointer;
 
     .Icon {
-      background: var(--color-primary);
+      background: $color-primary;
     }
 
     .Title {
-      color: var(--color-primary);
+      color: $color-primary;
     }
   }
 
   &Active {
-    box-shadow: inset 4px 0 0 var(--color-primary);
+    box-shadow: inset 4px 0 0 $color-primary;
     pointer-events: none;
 
     .Icon {
-      background: var(--color-primary);
+      background: $color-primary;
     }
 
     .Title {
-      color: var(--color-primary);
+      color: $color-primary;
     }
   }
 
@@ -94,10 +100,16 @@
   flex: 0 0 20px;
   height: 20px;
   width: 20px;
+
+  @media #{$desktop-small} {
+    flex: 0 0 17px;
+    width: 17px;
+    height: 17px;
+  }
 }
 
 .Icon {
-  background: var(--color-text-secondary);
+  background: $color-text-secondary;
   height: 100%;
   mask: no-repeat center center;
   mask-size: contain;
@@ -105,11 +117,16 @@
 }
 
 .Title {
-  color: var(--color-text-secondary);
+  color: $color-text-secondary;
   flex: 1 1 auto;
   font-size: 12px;
   letter-spacing: .6px;
   margin: 0 0 0 40px;
+
+  @media #{$desktop-small} {
+    font-size: 10px;
+    margin: 0 0 0 30px;
+  }
 }
 
 // Animations

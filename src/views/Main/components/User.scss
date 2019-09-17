@@ -1,3 +1,5 @@
+@import '~styles/variables.scss';
+
 .Root {
   display: flex;
   justify-content: center;
@@ -47,7 +49,7 @@
     position: relative;
 
     &Bar {
-      background: var(--color-primary);
+      background: $color-primary;
       height: 2px;
       left: 0;
       position: absolute;
@@ -72,19 +74,19 @@
   text-decoration: none;
 
   &:active {
-    color: var(--color-primary);
+    color: $color-primary;
     opacity: .8;
 
     .LinkIcon {
-      background: var(--color-primary);
+      background: $color-primary;
     }
   }
 
   &:hover:not(:active) {
-    color: var(--color-primary);
+    color: $color-primary;
 
     .LinkIcon {
-      background: var(--color-primary);
+      background: $color-primary;
     }
   }
 
@@ -94,7 +96,7 @@
 
   &Is {
     &Active {
-      color: var(--color-primary);;
+      color: $color-primary;;
       pointer-events: none;
     }
   }
@@ -132,7 +134,7 @@
 
   &Button {
     align-items: center;
-    background: var(--color-primary);
+    background: $color-primary;
     border: 0;
     color: #ffffff;
     display: flex;
@@ -159,7 +161,7 @@
 }
 
 .Status {
-  color: var(--color-primary);
+  color: $color-primary;
   font-size: 12px;
   letter-spacing: .4px;
   text-transform: uppercase;

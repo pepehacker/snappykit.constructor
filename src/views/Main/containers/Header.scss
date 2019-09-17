@@ -1,3 +1,5 @@
+@import '~styles/variables.scss';
+
 .Root {
   flex: 0 0 100px;
   height: 100px;
@@ -195,7 +197,7 @@
 
 .Save {
   align-items: center;
-  background: var(--color-primary);
+  background: $color-primary;
   border: 0;
   border-radius: 32px;
   color: #fff;

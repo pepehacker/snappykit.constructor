@@ -1,3 +1,5 @@
+@import '~styles/variables.scss';
+
 .Root {
   align-items: center;
   background: transparent;
@@ -17,11 +19,11 @@
     opacity: .8;
 
     .Icon {
-      background: var(--color-primary);
+      background: $color-primary;
     }
 
     .Title {
-      color: var(--color-primary);
+      color: $color-primary;
     }
   }
 
@@ -65,11 +67,11 @@
       pointer-events: none;
 
       .Icon {
-        background: var(--color-primary);
+        background: $color-primary;
       }
 
       .Title {
-        color: var(--color-primary);
+        color: $color-primary;
       }
     }
   }
@@ -80,14 +82,14 @@
 }
 
 .Icon {
-  background: var(--color-text-secondary);
+  background: $color-text-secondary;
   height: 100%;
   mask: no-repeat center center;
   width: 100%;
 }
 
 .Title {
-  color: var(--color-text-secondary);
+  color: $color-text-secondary;
   font-size: 12px;
   letter-spacing: .6px;
   margin: 0 0 0 14px;

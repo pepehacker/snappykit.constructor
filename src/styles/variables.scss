@@ -1,5 +1,12 @@
-:root {
-  --color-primary: #9E9AE2;
-  --color-text-secondary: #BFBFC7;
-  --color-white: #FFF;
-}
+$color-primary: #9e9ae2;
+$color-text-secondary: #bfbfc7;
+$color-white: #fff;
+
+// Media queries
+$desktop-small: 'all and (max-width: 1280px)';
+$tablet-large: 'all and (max-width: 1024px)';
+$tablet-mid: 'all and (max-width: 991px)';
+$tablet-small: 'all and (max-width: 768px)';
+$mobile-large: 'all and (max-width: 568px)';
+$mobile-mid: 'all and (max-width: 425px)';
+$mobile-small: 'all and (max-width: 375px)';

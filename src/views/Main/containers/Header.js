@@ -50,7 +50,6 @@ const MainHeader = ({
                 src={logo}
               />
             </Link>
-
             {isPro && <div className={styles.Pro}>PRO</div>}
           </div>
         </div>

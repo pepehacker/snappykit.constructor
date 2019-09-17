@@ -1,3 +1,5 @@
+@import '~styles/variables.scss';
+
 .Root {
   height: 100%;
   opacity: .6;
@@ -8,7 +10,7 @@
 
   &:after {
     animation: spin 1s infinite linear;
-    border: 2px solid var(--color-primary);
+    border: 2px solid $color-primary;
     border-radius: 100%;
     border-top-color: transparent;
     height: 24px;
@@ -47,11 +49,11 @@
       pointer-events: none;
 
       &:before {
-        border-color: var(--color-primary);
+        border-color: $color-primary;
       }
 
       .Check {
-        background: var(--color-primary);
+        background: $color-primary;
       }
     }
 

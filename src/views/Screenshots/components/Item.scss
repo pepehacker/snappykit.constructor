@@ -1,3 +1,5 @@
+@import '~styles/variables.scss';
+
 .Root {
   background: #d8d8d8;
   border-radius: 3px;
@@ -46,7 +48,7 @@
 
   &:hover {
     .Icon {
-      background: var(--color-primary);
+      background: $color-primary;
     }
   }
 }

@@ -1,3 +1,5 @@
+@import '~styles/variables.scss';
+
 .Root {
   display: flex;
   flex: 1 1 auto;
@@ -43,7 +45,7 @@
   }
 
   &:hover:not(:active) {
-    background: var(--color-primary);
+    background: $color-primary;
   }
 }
 

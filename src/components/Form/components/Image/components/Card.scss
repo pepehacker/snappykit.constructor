@@ -1,3 +1,5 @@
+@import '~styles/variables.scss';
+
 .Root {
   background: transparent;
   border: 0;
@@ -10,6 +12,11 @@
   transition: all .4s;
   width: 240px;
 
+  @media #{$desktop-small} {
+    height: 92px;
+    width: 164px;
+  }
+
   &:hover,
   &IsSelected {
     box-shadow: 0 20px 40px -12px rgba(0, 0, 0, .2);
@@ -19,6 +26,11 @@
 
     .Check {
       transform: translateY(0);
+
+      @media #{$desktop-small} {
+        left: 50%;
+        transform: translateX(-50%) translateY(0);
+      }
     }
   }
 
@@ -45,6 +57,13 @@
   transition: all .4s;
   width: 32px;
 
+  @media #{$desktop-small} {
+    width: 20px;
+    height: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   &:before {
     background: #aeb2ba;
     content: '';
@@ -58,7 +77,6 @@
 }
 
 .Image {
-  max-width: 100%;
   max-width: 100%;
   object-fit: contain;
 }

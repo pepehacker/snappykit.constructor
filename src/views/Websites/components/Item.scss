@@ -1,3 +1,5 @@
+@import '~styles/variables.scss';
+
 .Root {
   background: #fff;
   border-radius: 8px;
@@ -128,19 +130,19 @@
   transition: all .2s;
 
   &:active {
-    color: var(--color-primary);
+    color: $color-primary;
     opacity: .8;
   }
 
   &:hover:not(:active) {
-    color: var(--color-primary);
+    color: $color-primary;
   }
 
   &External {
-    color: var(--color-primary);
+    color: $color-primary;
 
     &:hover {
-      color: var(--color-primary);
+      color: $color-primary;
       opacity: .8;
     }
   }

@@ -1,3 +1,5 @@
+@import '~styles/variables.scss';
+
 .Root {
   display: flex;
   width: 100%;
@@ -64,6 +66,11 @@
   max-width: 272px;
   position: relative;
   width: 100%;
+
+  @media #{$desktop-small} {
+    margin: 0 30px 0 auto;
+    max-width: 164px;
+  }
 
   &Animate {
     &Enter {
