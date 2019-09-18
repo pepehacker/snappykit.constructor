@@ -1,3 +1,5 @@
+@import '~styles/variables.scss';
+
 .Root {
   align-items: center;
   display: flex;
@@ -39,6 +41,11 @@
   height: 80px;
   position: relative;
   width: 80px;
+
+  @media #{$desktop-small} {
+    width: 54px;
+    height: 54px;
+  }
 }
 
 .Refresh {
@@ -54,6 +61,13 @@
   top: calc(50% - 16px);
   width: 32px;
 
+  @media #{$desktop-small} {
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
   &:before {
     background: #aeb2ba;
     content: '';
@@ -63,6 +77,11 @@
     mask-size: contain;
     transition: all .2s;
     width: 14px;
+
+    @media #{$desktop-small} {
+      width: 8px;
+      height: 10px;
+    }
   }
 }
 
