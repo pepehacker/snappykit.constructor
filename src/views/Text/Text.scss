@@ -1,5 +1,11 @@
+@import '~styles/variables.scss';
+
 .Root {
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media #{$desktop-small} {
+    width: 100%;
+  }
 }

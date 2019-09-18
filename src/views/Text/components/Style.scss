@@ -1,3 +1,5 @@
+@import '~styles/variables.scss';
+
 .Root {
   display: flex;
   justify-content: space-between;
@@ -15,6 +17,11 @@
   margin: 6px;
   transition: all .2s;
   width: 52px;
+
+  @media #{$desktop-small} {
+    width: 36px;
+    height: 36px;
+  }
 
   &:focus {
     outline: none;
