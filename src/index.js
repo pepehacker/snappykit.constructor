@@ -11,6 +11,12 @@ import App from './App';
 import * as serviceWorker from './utils/serviceWorker';
 import createStore from './store';
 
+// process.env.NODE_ENV === 'development' &&
+//   localStorage.setItem(
+//     'token',
+//     'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMDM2LCJlbWFpbCI6InZhbnlhMDk1QGdtYWlsLmNvbSIsInVzZXJuYW1lIjoidmFueWEwOTVAZ21haWwuY29tIiwiZXhwIjoxNTc1NTM5MDgyfQ.ulgcg_4II44M37lUh7CVEa7I4XhTrvfsDIhxKZcQOLg',
+//   );
+
 const history = createBrowserHistory({
   basename: '/kit',
 });

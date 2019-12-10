@@ -1,5 +1,13 @@
 {
-  "extends": ["airbnb", "plugin:react/recommended", "prettier", "prettier/react", "react-app"],
+  "extends": [
+    "airbnb",
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/babel",
+    "prettier/flowtype",
+    "prettier/react",
+    "react-app"
+  ],
   "env": {
     "browser": true,
     "es6": true,
@@ -19,9 +27,10 @@
   "plugins": ["jsx-a11y", "prettier", "react"],
   "rules": {
     "indent": [
-      1,
+      0,
       2,
       {
+        "ignoredNodes": ["JSXElement"],
         "SwitchCase": 1
       }
     ],
@@ -46,10 +55,10 @@
     "react/jsx-closing-bracket-location": [1],
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx"] }],
     "react/jsx-first-prop-new-line": [1, "multiline"],
-    "react/jsx-indent": [1, 2, { "checkAttributes": false }],
+    "react/jsx-indent": [2, 2, { "checkAttributes": false }],
     "react/jsx-indent-props": [1, 2],
     "react/jsx-max-props-per-line": [1, { "maximum": 2, "when": "always" }],
-    "react/jsx-one-expression-per-line": [1, { "allow": "literal" }],
+    "react/jsx-one-expression-per-line": [1, { "allow": "single-child" }],
     "react/jsx-sort-props": [1],
     "react/no-array-index-key": "off",
     "react/no-danger": "off",

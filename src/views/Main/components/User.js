@@ -12,7 +12,7 @@ import { PLANS_MODAL_ID } from 'containers/Plans';
 
 // Services
 import { openModal } from 'services/modals';
-import { isEnded } from 'services/session';
+import { isEnded, logout } from 'services/session';
 
 // Styles
 import styles from './User.scss';
@@ -29,6 +29,7 @@ const MainHeaderUser = ({
   // Handlers
   handleClick,
   handleDropdownBlur,
+  handleLogoutClick,
   handleTriggerPlans,
   // State
   isEnded,
@@ -64,9 +65,7 @@ const MainHeaderUser = ({
 
       <div className={styles.Dropdown}>
         <div className={styles.DropdownWrapper}>
-          <div className={styles.Status}>
-            {get(user, 'subscription.name')}
-          </div>
+          <div className={styles.Status}>{get(user, 'subscription.name')}</div>
 
           {!isEnded && (
             <div className={styles.Expiration}>
@@ -102,9 +101,7 @@ const MainHeaderUser = ({
                 >
                   <span className={iconClassName} />
 
-                  <div className={styles.LinkTitle}>
-                    {title}
-                  </div>
+                  <div className={styles.LinkTitle}>{title}</div>
                 </NavLink>
               );
             })}
@@ -112,7 +109,11 @@ const MainHeaderUser = ({
         </div>
 
         <div className={styles.Logout}>
-          <button className={styles.LogoutButton} type="button">
+          <button
+            className={styles.LogoutButton}
+            onClick={handleLogoutClick}
+            type="button"
+          >
             Log Out
           </button>
         </div>
@@ -127,16 +128,14 @@ const mapStateToProps = state => ({
 });
 
 export default compose(
-  connect(
-    mapStateToProps,
-    { openModal },
-  ),
+  connect(mapStateToProps, { logout, openModal }),
   withState('isOpened', 'setOpen', false),
   withState('rootRef', 'setRootRef', createRef()),
   withHandlers({
     handleClick: ({ isOpened, setOpen }) => () => setOpen(!isOpened),
     handleDropdownBlur: ({ rootRef, setOpen }) => event =>
       !rootRef.current.contains(event.relatedTarget) && setOpen(false),
+    handleLogoutClick: ({ logout }) => () => logout(),
     handleTriggerPlans: ({ openModal }): Function => (event: Object): void => {
       event.preventDefault();
       openModal(PLANS_MODAL_ID);

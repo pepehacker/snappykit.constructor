@@ -7,8 +7,11 @@ import { compose, withHandlers } from 'recompose';
 import Button from 'components/Button';
 import Modal from 'components/Modal';
 
+// Containers
+import { PLANS_MODAL_ID } from 'containers/Plans';
+
 // Services
-import { closeModal } from 'services/modals';
+import { closeModal, openModal } from 'services/modals';
 
 // Views
 import { LIMIT_MODAL_ID } from 'views/Websites/ducks';
@@ -16,7 +19,7 @@ import { LIMIT_MODAL_ID } from 'views/Websites/ducks';
 // Styles
 import styles from './Modal.scss';
 
-const WebsitesLimitModal = () => (
+const WebsitesLimitModal = ({ handleClick }) => (
   <Modal id={LIMIT_MODAL_ID}>
     {({ isEntered }) => (
       <CSSTransition
@@ -35,12 +38,10 @@ const WebsitesLimitModal = () => (
             You have created the maximum number of websites.
           </div>
 
-          <div className={styles.Title}>
-            Delete one or choose another plan
-          </div>
+          <div className={styles.Title}>Delete one or choose another plan</div>
 
           <div className={styles.Actions}>
-            <Button className={styles.Link}>
+            <Button className={styles.Link} onClick={handleClick}>
               Plans
             </Button>
           </div>
@@ -51,10 +52,11 @@ const WebsitesLimitModal = () => (
 );
 
 export default compose(
-  connect(null, { closeModal }),
+  connect(null, { closeModal, openModal }),
   withHandlers({
-    handleClick: ({ closeModal }): func =>
-      (event: Object): void =>
-        closeModal(LIMIT_MODAL_ID),
+    handleClick: ({ closeModal, openModal }): func => (event: Object): void => {
+      closeModal(LIMIT_MODAL_ID);
+      openModal(PLANS_MODAL_ID);
+    },
   }),
 )(WebsitesLimitModal);

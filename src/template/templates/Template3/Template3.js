@@ -56,64 +56,66 @@ const Template3 = ({ handleNext, handlePrev, step }) => (
                 container: styles.Container,
               }}
             >
-              <Swipeable onSwipedLeft={handleNext} onSwipedRight={handlePrev}>
-                <div className={styles.Wrapper}>
-                  <div className={styles.Track}>
-                    <div className={styles.Content}>
+              <Swipeable
+                className={styles.Wrapper}
+                onSwipedLeft={handleNext}
+                onSwipedRight={handlePrev}
+              >
+                <div className={styles.Track}>
+                  <div className={styles.Content}>
+                    <Text
+                      classNames={{
+                        root: styles.Title,
+                        text: styles.TitleText,
+                      }}
+                      id={TITLE}
+                    />
+
+                    <div className={styles.DescriptionWrapper}>
                       <Text
                         classNames={{
-                          root: styles.Title,
-                          text: styles.TitleText,
+                          root: styles.Description,
+                          text: styles.DescriptionText,
                         }}
-                        id={TITLE}
+                        id={DESCRIPTION}
                       />
-
-                      <div className={styles.DescriptionWrapper}>
-                        <Text
-                          classNames={{
-                            root: styles.Description,
-                            text: styles.DescriptionText,
-                          }}
-                          id={DESCRIPTION}
-                        />
-                      </div>
-
-                      <Store className={styles.Store} />
                     </div>
 
-                    <div className={styles.Slider}>
-                      <Smartphone
-                        classNames={{
-                          root: styles.Smartphone,
-                          container: styles.Screenshots,
-                          mockup: styles.SmartphoneMockup,
-                        }}
-                      >
-                        <Screenshots
-                          classNames={{ item: styles.ScreenshotsItem }}
-                        />
-                      </Smartphone>
-                    </div>
+                    <Store className={styles.Store} />
                   </div>
 
-                  {view === VIEW.MOBILE && (
-                    <div className={styles.Dots}>
-                      <div
-                        className={classNames(styles.DotsItem, {
-                          [styles.DotsItemSelected]: step === 0,
-                        })}
-                        onClick={handlePrev}
+                  <div className={styles.Slider}>
+                    <Smartphone
+                      classNames={{
+                        root: styles.Smartphone,
+                        container: styles.Screenshots,
+                        mockup: styles.SmartphoneMockup,
+                      }}
+                    >
+                      <Screenshots
+                        classNames={{ item: styles.ScreenshotsItem }}
                       />
-
-                      <div
-                        className={classNames(styles.DotsItem, {
-                          [styles.DotsItemSelected]: step === 1,
-                        })}
-                        onClick={handleNext}
-                      />
-                    </div>
-                  )}
+                    </Smartphone>
+                  </div>
                 </div>
+
+                {view === VIEW.MOBILE && (
+                  <div className={styles.Dots}>
+                    <div
+                      className={classNames(styles.DotsItem, {
+                        [styles.DotsItemSelected]: step === 0,
+                      })}
+                      onClick={handlePrev}
+                    />
+
+                    <div
+                      className={classNames(styles.DotsItem, {
+                        [styles.DotsItemSelected]: step === 1,
+                      })}
+                      onClick={handleNext}
+                    />
+                  </div>
+                )}
               </Swipeable>
             </Background>
 

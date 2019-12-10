@@ -21,6 +21,7 @@ import {
   FETCH_PROFILE_REQUEST,
   FETCH_PROFILE_SUCCESS,
   FETCH_PROFILE_FAILURE,
+  LOGOUT,
   SET_USER,
 } from './types';
 
@@ -87,4 +88,10 @@ export const fetchProfile = (id: number) => (
       status === 401 && window.location.replace('http://snappykit.com');
       dispatch({ type: FETCH_PROFILE_FAILURE, error: get(error, 'message') });
     });
+};
+
+export const logout: Function = () => {
+  localStorage.removeItem('token');
+  window.location.reload();
+  return { type: LOGOUT };
 };
