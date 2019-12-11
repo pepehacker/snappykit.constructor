@@ -1,0 +1,19 @@
+@mixin breakpoint($devices) {
+  @if $devices == mobile {
+    @media only screen and (max-width: 599px) {
+      @content
+    }
+  } @else if $devices == tablet {
+    @media only screen and (min-width: 600px) and (max-width: 1023px) {
+      @content
+    }
+  } @else if $devices == laptop {
+    @media only screen and (min-width: 1024px) and (max-width: 1439px) {
+      @content
+    }
+  } @else if $devices == desktop {
+    @media only screen and (min-width: 1440px) {
+      @content
+    }
+  }
+}

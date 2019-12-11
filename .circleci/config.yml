@@ -24,9 +24,9 @@ jobs:
       #     command: |
       #       yarn test -- --coverage
       - deploy:
-          name: "deploy develop to beta"
+          name: "deploy master to beta"
           command: |
-            if [ "${CIRCLE_BRANCH}" == "develop" ]; then
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
               export TARGET=beta
               yarn build
               sudo apt-get -y -qq update
