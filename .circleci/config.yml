@@ -35,5 +35,5 @@ jobs:
               python3.5 get-pip.py --user
               ~/.local/bin/pip install awscli --upgrade --user
               ~/.local/bin/aws s3 sync ~/project/build s3://any-services.snappykit.constructor --delete
-              ~/.local/bin/aws cloudfront create-invalidation --distribution-id E2NW1D0XBGXS0P --paths '/*'
+              ~/.local/bin/aws cloudfront create-invalidation --distribution-id E3NPWGOQ2PMPOC --paths '/*'
             fi
