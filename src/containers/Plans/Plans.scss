@@ -47,11 +47,11 @@
 
       .List {
         height: 425px;
-        margin: 28px 0 0;
+        margin: 64px 0 0;
         transition: all .4s;
 
-        @include breakpoint(desktop) {
-          margin: 64px 0 0;
+        @include breakpoint(laptop) {
+          height: 290px;
         }
       }
 
@@ -70,6 +70,11 @@
       .Price {
         height: 256px;
         transition: all .4s;
+
+
+        @include breakpoint(laptop) {
+          height: auto;
+        }
       }
     }
   }
@@ -80,6 +85,11 @@
   font-size: 24px;
   font-weight: 900;
   line-height: 32px;
+
+  @include breakpoint(laptop) {
+    font-size: 14px;
+    line-height: 20px;
+  }
 }
 
 .Description {
@@ -88,6 +98,12 @@
   font-weight: 400;
   line-height: 32px;
   margin: 16px 0 0;
+
+  @include breakpoint(laptop) {
+    font-size: 10px;
+    line-height: 22px;
+    margin: 12px 0 0;
+  }
 }
 
 .Header {
@@ -95,12 +111,20 @@
   display: flex;
   flex-direction: column;
   height: 140px;
+
+  @include breakpoint(laptop) {
+    height: auto;
+  }
 }
 
 .List {
   height: 44px;
   margin: 0;
   width: 1200px;
+
+  @include breakpoint(laptop) {
+    width: 780px;
+  }
 }
 
 .Period {
@@ -112,6 +136,10 @@
 
 .Price {
   height: 564px;
+
+  @include breakpoint(laptop) {
+    height: 440px;
+  }
 }
 
 .Title {
@@ -119,6 +147,11 @@
   background-clip: text;
   font-size: 46px;
   font-weight: 900;
-  letter-spacing: -0.2px;
+  letter-spacing: -.2px;
   -webkit-text-fill-color: transparent;
+
+  @include breakpoint(laptop) {
+    font-size: 30px;
+    letter-spacing: 0;
+  }
 }

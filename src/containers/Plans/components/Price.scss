@@ -1,8 +1,10 @@
+@import '~styles/breakpoints';
+
 .Root {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 500px;
+  height: 100%;
   overflow: hidden;
   transition: all .4s;
 
@@ -36,6 +38,10 @@
     &Densed {
       height: 252px;
       transition: all .4s;
+
+      @include breakpoint(laptop) {
+        height: auto;
+      }
 
       &.RootIsSelected {
         transform: translateY(0);
@@ -102,6 +108,12 @@
   margin: 20px 0 0;
   text-align: center;
   transition: all .2s;
+
+  @include breakpoint(laptop) {
+    font-size: 10px;
+    line-height: 20px;
+    margin: 12px 0 0;
+  }
 }
 
 .Icon {
@@ -110,6 +122,11 @@
   filter: drop-shadow(0 16px 12px rgba(0, 0, 0, 0.16));
   height: 200px;
   width: 200px;
+
+  @include breakpoint(laptop) {
+    height: 120px;
+    width: 120px;
+  }
 }
 
 .Next {
@@ -121,6 +138,10 @@
   font-size: 14px;
   font-weight: 700;
 
+  @include breakpoint(laptop) {
+    font-size: 10px;
+  }
+
   &:after {
     background: #7e8899;
     content: '';
@@ -131,6 +152,11 @@
     mask-size: contain;
     transform: rotate(180deg);
     width: 16px;
+
+    @include breakpoint(laptop) {
+      height: 6px;
+      width: 10px;
+    }
   }
 }
 
@@ -138,7 +164,13 @@
   color: #727d8f;
   font-size: 24px;
   font-weight: 900;
-  letter-spacing: -0.1px;
+  letter-spacing: -.1px;
   margin: 40px 0 0;
   transition: all .2s;
+
+  @include breakpoint(laptop) {
+    font-size: 16px;
+    letter-spacing: 0;
+    margin: 28px 0 0;
+  }
 }

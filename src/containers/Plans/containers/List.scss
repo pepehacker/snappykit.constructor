@@ -1,11 +1,21 @@
+@import '~styles/breakpoints';
+
 .Root {
   align-items: center;
   display: flex;
   justify-content: space-around;
   width: 1200px;
 
+  @include breakpoint(laptop) {
+    width: 780px;
+  }
+
   & > * {
     flex: 0 0 270px;
+
+    @include breakpoint(laptop) {
+      flex: 0 0 184px;
+    }
   }
 }
 
