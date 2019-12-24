@@ -1,3 +1,5 @@
+@import '~styles/breakpoints';
+
 .Root {
   align-items: center;
   display: flex;
@@ -23,6 +25,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  @include breakpoint(laptop) {
+    font-size: 8px;
+    letter-spacing: .1px;
+  }
 }
 
 .Left {
@@ -31,6 +38,12 @@
   flex: 0 0 60px;
   height: 60px;
   width: 60px;
+
+  @include breakpoint(laptop) {
+    flex: 0 0 40px;
+    height: 40px;
+    width: 40px;
+  }
 }
 
 .Icon {
@@ -55,4 +68,9 @@
   text-transform: uppercase;
   transition: all .2s;
   white-space: nowrap;
+
+  @include breakpoint(laptop) {
+    font-size: 8px;
+    letter-spacing: .7px;
+  }
 }

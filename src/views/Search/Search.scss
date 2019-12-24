@@ -1,3 +1,5 @@
+@import '~styles/breakpoints';
+
 .Root {
   display: flex;
   flex: 1 1 auto;
@@ -49,6 +51,10 @@
 
 .Form {
   margin: 32px 0 0;
+
+  @include breakpoint(laptop) {
+    margin: 20px 0 0;
+  }
 }
 
 .Description {
@@ -59,6 +65,13 @@
   line-height: 28px;
   margin: 20px 0 0;
   text-align: center;
+
+  @include breakpoint(laptop) {
+    font-size: 11px;
+    letter-spacing: -.22px;
+    line-height: 20px;
+    margin: 16px 0 0;
+  }
 }
 
 .List {
@@ -124,6 +137,10 @@
   position: relative;
   transition: all .2s;
 
+  @include breakpoint(laptop) {
+    height: 260px;
+  }
+
   &Animate {
     &Enter {
       opacity: 0;
@@ -161,10 +178,19 @@
   font-size: 30px;
   letter-spacing: -.6px;
   text-align: center;
+
+  @include breakpoint(laptop) {
+    font-size: 20px;
+    letter-spacing: -.4px;
+  }
 }
 
 .Wrapper {
   width: 540px;
+
+  @include breakpoint(laptop) {
+    width: 368px;
+  }
 }
 
 @keyframes spin {

@@ -1,3 +1,5 @@
+@import '~styles/breakpoints';
+
 .Root {
   &Variant {
     &Contained {
@@ -36,6 +38,10 @@
         height: 50px;
         letter-spacing: .3px;
         padding: 0 20px;
+
+        @include breakpoint(laptop) {
+          height: 34px;
+        }
       }
 
       &:not(.RootIsReadOnly) {
@@ -74,6 +80,11 @@
   letter-spacing: .6px;
   transition: all .2s;
   width: 100%;
+
+  @include breakpoint(laptop) {
+    font-size: 10px;
+    letter-spacing: .2px;
+  }
 
   &:focus {
     outline: none;

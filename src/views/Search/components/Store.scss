@@ -1,3 +1,5 @@
+@import '~styles/breakpoints';
+
 .Root {
   display: flex;
 
@@ -15,6 +17,12 @@
   opacity: .6;
   transition: all .2s;
   width: 60px;
+
+  @include breakpoint(laptop) {
+    flex: 0 0 40px;
+    height: 40px;
+    width: 40px;
+  }
 }
 
 .Store {
@@ -26,6 +34,12 @@
   justify-content: center;
   letter-spacing: .3px;
   transition: all .2s;
+
+  @include breakpoint(laptop) {
+    font-size: 10px;
+    height: 68px;
+    letter-spacing: .2px;
+  }
 
   &:focus {
     outline: none;
