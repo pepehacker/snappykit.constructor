@@ -18,12 +18,16 @@ import Template, { TemplateContext, VIEW } from 'template';
 import styles from './View.scss';
 
 const EditorView = ({
+  isFullscreen,
   scale,
   size,
   templateSize,
   templateId,
   view = VIEW.DESKTOP,
   website,
+
+  // Handlers
+  handleFullscreenTrigger,
 
   // Registes
   registerRoot,
@@ -37,18 +41,11 @@ const EditorView = ({
 
   return (
     <div ref={registerRoot} className={rootClassNames}>
-      <div
-        ref={registerContainer} className={styles.Container}
-        style={size}
-      >
-        {scale < 1 && <div className={styles.Scale}>
-          {`${Math.floor(scale * 100)}%`}
-        </div>}
-
+      <div ref={registerContainer} className={styles.Container} style={size}>
         <TemplateContext.Provider
           value={{
             data: get(website, 'data'),
-            isEditor: true,
+            isEditor: !isFullscreen,
             view,
             websiteId: get(website, 'id', 'new'),
           }}
@@ -66,6 +63,23 @@ const EditorView = ({
             <Template id={templateId} />
           </div>
         </TemplateContext.Provider>
+
+        {scale < 1 && (
+          <div className={styles.Scale}>{`${Math.floor(scale * 100)}%`}</div>
+        )}
+
+        <button
+          className={styles.Fullscreen}
+          onClick={handleFullscreenTrigger}
+          type="button"
+        >
+          <i
+            className={classNames('fal', {
+              'fa-expand-alt': !isFullscreen,
+              'fa-compress-alt': isFullscreen,
+            })}
+          />
+        </button>
       </div>
     </div>
   );
@@ -84,10 +98,8 @@ const mapStateToProps = ({ views, ...state }, { location }) => {
 
 export default withRouter(
   compose(
-    connect(
-      mapStateToProps,
-      { setBusy },
-    ),
+    connect(mapStateToProps, { setBusy }),
+    withState('isFullscreen', 'setFullscreenState', false),
     withState('scale', 'setScale', 1),
     withState('size', 'setSize', {}),
     withState('templateSize', 'setTemplateSize', {}),
@@ -97,6 +109,14 @@ export default withRouter(
 
       return {
         // Updaters
+        handleFullscreenTrigger: ({
+          isFullscreen,
+          setFullscreenState,
+        }) => () => {
+          isFullscreen ? document.exitFullscreen() : $root.requestFullscreen();
+
+          setTimeout(() => setFullscreenState(!isFullscreen), 100);
+        },
         handleResize: ({ setTemplateSize, setScale, setSize, view }): func => (
           event: Object,
         ): void => {
@@ -152,25 +172,35 @@ export default withRouter(
         },
 
         // Updaters
-        updateTemplateSize: ({ templateSize, setTemplateSize }): func => (event: Object) =>
+        updateTemplateSize: ({ templateSize, setTemplateSize }): func => (
+          event: Object,
+        ) =>
           (get(templateSize, 'width') !== $container.firstChild.clientWidth ||
-            get(templateSize, 'height') !== $container.firstChild.clientHeight) &&
+            get(templateSize, 'height') !==
+              $container.firstChild.clientHeight) &&
           setTemplateSize({
             height: $container.firstChild.clientHeight,
             width: $container.firstChild.clientWidth,
           }),
       };
     }),
+    withHandlers({}),
     lifecycle({
       componentDidMount() {
         const { handleResize } = this.props;
         handleResize();
         window.addEventListener('resize', handleResize, false);
       },
-      componentDidUpdate({ view: prevView }) {
-        const { handleResize, updateTemplateSize, view } = this.props;
+      componentDidUpdate({ isFullscreen: prevIsFullscreen, view: prevView }) {
+        const {
+          isFullscreen,
+          handleResize,
+          updateTemplateSize,
+          view,
+        } = this.props;
         // Update container size
-        view !== prevView && handleResize();
+        (view !== prevView || isFullscreen !== prevIsFullscreen) &&
+          handleResize();
         // Update template size
         updateTemplateSize();
       },

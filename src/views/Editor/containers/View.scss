@@ -6,6 +6,35 @@
   justify-content: center;
   max-height: 100%;
   width: 100%;
+
+  &:hover {
+    .Fullscreen {
+      opacity: 1;
+    }
+  }
+
+  &Variant {
+    &Desktop {
+      .Fullscreen {
+        right: 48px;
+        top: 48px;
+      }
+    }
+
+    &Mobile {
+      .Fullscreen {
+        right: 32px;
+        top: 60px;
+      }
+    }
+
+    &Tablet {
+      .Fullscreen {
+        right: 48px;
+        top: 48px;
+      }
+    }
+  }
 }
 
 .Container {
@@ -29,6 +58,35 @@
   &::-webkit-scrollbar {
     display: none;
     opacity: 0;
+  }
+}
+
+.Fullscreen {
+  background: rgba(#000, .4);
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 8px 20px 0 rgba(#000, .2);
+  height: 40px;
+  position: absolute;
+  opacity: 0;
+  right: 70px;
+  top: 70px;
+  transition: all .2s;
+  width: 40px;
+  z-index: 1;
+
+  &:hover {
+    background-color: rgba(#000, .2);
+    box-shadow: 0 6px 9px 0 rgba(#000, .2);
+
+    & > i {
+      color: #000;
+    }
+  }
+
+  & > i {
+    color: #fff;
+    font-size: 20px;
   }
 }
 
