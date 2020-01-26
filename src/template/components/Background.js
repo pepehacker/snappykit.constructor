@@ -31,7 +31,10 @@ const TemplateBackground = ({
         [styles.RootViewTablet]: view === VIEW.TABLET,
       });
 
-      const containerClassNames = classNames(containerClassName, styles.Container);
+      const containerClassNames = classNames(
+        containerClassName,
+        styles.Container,
+      );
 
       const { color, gradient, image } = getSectionById(data, id || BACKGROUND);
 
@@ -68,9 +71,7 @@ const TemplateBackground = ({
             />
           )}
 
-          <div className={containerClassNames}>
-            {children}
-          </div>
+          <div className={containerClassNames}>{children}</div>
         </div>
       );
     }}

@@ -28,8 +28,9 @@ const GradientAngle = ({
   min = 0,
   name,
   onChange,
-  value = 0,
+  value: propValue = 0,
 }: GradientAngleType): React.Element<'div'> => {
+  const value = parseInt(propValue, 10) || 0;
   const percent = (value / max) * 100;
 
   return (
@@ -45,9 +46,7 @@ const GradientAngle = ({
 
             return (
               <div key={index} className={valueClassNames}>
-                {isPoint && <div className={styles.Point}>
-                  {value}
-                </div>}
+                {isPoint && <div className={styles.Point}>{value}</div>}
               </div>
             );
           })}
@@ -59,9 +58,7 @@ const GradientAngle = ({
             left: `calc(${(value / max) * 100}% - 1px)`,
           }}
         >
-          <div className={styles.AngleValue}>
-            {value}
-          </div>
+          <div className={styles.AngleValue}>{value}</div>
         </div>
       </div>
 
@@ -87,7 +84,7 @@ const GradientAngle = ({
 };
 
 export default props => (
-  <Field {...props}>
+  <Field {...props} defaultValue={0}>
     <GradientAngle />
   </Field>
 );

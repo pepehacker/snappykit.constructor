@@ -1,5 +1,7 @@
 // @flow
+// import { get } from 'lodash';
 import * as React from 'react';
+import { compose } from 'recompose';
 import { reduxForm } from 'redux-form';
 
 // Components
@@ -14,6 +16,22 @@ const BackgroundGradientForm = ({ handleSubmit }) => (
   </Form>
 );
 
-export default reduxForm({
-  form: 'backgroundGradientForm',
-})(BackgroundGradientForm);
+export default compose(
+  reduxForm({
+    form: 'backgroundGradientForm',
+  }),
+  // lifecycle({
+  //   componentDidMount() {
+  //     const { change, initialValues } = this.props;
+
+  //     change(
+  //       BACKGROUND_GRADIENT,
+  //       get(initialValues, BACKGROUND_GRADIENT, {
+  //         angle: 0,
+  //         from: 'rgba(94, 122, 219, 0.5)',
+  //         to: 'rgba(131, 89, 193, 0.5)',
+  //       }),
+  //     );
+  //   },
+  // }),
+)(BackgroundGradientForm);

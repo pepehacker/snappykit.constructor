@@ -1,5 +1,7 @@
 // @flow
+// import { get } from 'lodash';
 import * as React from 'react';
+import { compose } from 'recompose';
 import { reduxForm } from 'redux-form';
 
 // Components
@@ -14,6 +16,18 @@ const BackgroundColorForm = ({ handleSubmit }) => (
   </Form>
 );
 
-export default reduxForm({
-  form: 'backgroundColorForm',
-})(BackgroundColorForm);
+export default compose(
+  reduxForm({
+    form: 'backgroundColorForm',
+  }),
+  // lifecycle({
+  //   componentDidMount() {
+  //     const { change, initialValues } = this.props;
+
+  //     change(
+  //       BACKGROUND_COLOR,
+  //       get(initialValues, BACKGROUND_COLOR, 'rgba(94, 122, 219, 0.5)'),
+  //     );
+  //   },
+  // }),
+)(BackgroundColorForm);

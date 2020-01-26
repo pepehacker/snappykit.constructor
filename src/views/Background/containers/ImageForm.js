@@ -20,7 +20,11 @@ import { BACKGROUND_IMAGE_FORM } from '../ducks/constants';
 import styles from './common.scss';
 
 // Template
-import { BACKGROUND_COLOR, BACKGROUND_GRADIENT, BACKGROUND_IMAGE } from 'template';
+import {
+  BACKGROUND_COLOR,
+  BACKGROUND_GRADIENT,
+  BACKGROUND_IMAGE,
+} from 'template';
 
 type BackgroundImageFormType = {
   handleChange: (values: Object) => Function,
@@ -51,22 +55,23 @@ const BackgroundImageForm = ({
     {isEdit ? (
       <div className={styles.Edit}>
         <div
-          className={styles.Cancel} onClick={handleCancel}
-          role="button" tabIndex={0}
+          className={styles.Cancel}
+          onClick={handleCancel}
+          role="button"
+          tabIndex={0}
         >
           BACK TO IMAGES
         </div>
 
         {image && (
           <div className={styles.Card}>
-            <Card
-              isSelected src={get(image, 'src')}
-              variant="preview"
-            />
+            <Card isSelected src={get(image, 'src')} variant="preview" />
 
             <div
-              className={styles.Reset} onClick={handleReset}
-              role="button" tabIndex={0}
+              className={styles.Reset}
+              onClick={handleReset}
+              role="button"
+              tabIndex={0}
             >
               {`Delete ${editType === BACKGROUND_COLOR ? 'Color' : 'Gradient'}`}
             </div>
@@ -74,8 +79,12 @@ const BackgroundImageForm = ({
         )}
 
         <div className={styles.Form}>
-          {editType === BACKGROUND_COLOR && <Color name={`${BACKGROUND_IMAGE}.color`} />}
-          {editType === BACKGROUND_GRADIENT && <Gradient name={`${BACKGROUND_IMAGE}.gradient`} />}
+          {editType === BACKGROUND_COLOR && (
+            <Color name={`${BACKGROUND_IMAGE}.color`} />
+          )}
+          {editType === BACKGROUND_GRADIENT && (
+            <Gradient name={`${BACKGROUND_IMAGE}.gradient`} />
+          )}
         </div>
       </div>
     ) : (
@@ -91,7 +100,10 @@ const BackgroundImageForm = ({
 
         <div className={styles.List}>
           {query && isLoaded ? (
-            <Spinner className={styles.Spinner} title={`Searching "${query}"...`} />
+            <Spinner
+              className={styles.Spinner}
+              title={`Searching "${query}"...`}
+            />
           ) : (
             <Image
               editType={editType}
@@ -121,8 +133,8 @@ export default compose(
     has(initialValues, 'image.color')
       ? BACKGROUND_COLOR
       : has(initialValues, 'image.gradient')
-        ? BACKGROUND_GRADIENT
-        : null,
+      ? BACKGROUND_GRADIENT
+      : null,
   ),
   withState('query', 'setQuery', ''),
   withState('result', 'setResult', []),
@@ -141,17 +153,15 @@ export default compose(
           if (queryTemp === searchString) {
             const results = get(res, 'results', []);
 
-            const formattedResults = results.map(
-              (photo: Object): string => ({
-                id: get(photo, 'id'),
-                photo,
-                src: get(photo, 'urls.regular'),
-                user: {
-                  link: get(photo, 'user.links.html'),
-                  name: get(photo, 'user.name'),
-                },
-              }),
-            );
+            const formattedResults = results.map((photo: Object): string => ({
+              id: get(photo, 'id'),
+              photo,
+              src: get(photo, 'urls.regular'),
+              user: {
+                link: get(photo, 'user.links.html'),
+                name: get(photo, 'user.name'),
+              },
+            }));
 
             setLoaded(false);
             setResult(formattedResults);
@@ -161,7 +171,9 @@ export default compose(
 
     return {
       handleCancel: ({ setEdit }): Function => () => setEdit(false),
-      handleChange: ({ query, setQuery, setResult }): Function => (event: SyntheticEvent): void => {
+      handleChange: ({ query, setQuery, setResult }): Function => (
+        event: SyntheticEvent,
+      ): void => {
         const searchString = get(event, 'target.value', '').trim();
 
         if (searchString !== query) {
@@ -171,7 +183,9 @@ export default compose(
           searchString.trim() !== '' && changeThrottle(searchString);
         }
       },
-      handleEdit: ({ change, dispatch, image, setEdit, setEditType }) => (editType: string) => {
+      handleEdit: ({ change, dispatch, image, setEdit, setEditType }) => (
+        editType: string,
+      ) => {
         setEdit(true);
         setEditType(editType);
 
@@ -182,14 +196,20 @@ export default compose(
               editType === BACKGROUND_COLOR
                 ? 'rgba(131, 89, 193, 0.5)'
                 : {
-                  angle: 0,
-                  from: 'rgba(94, 122, 219, 0.5)',
-                  to: 'rgba(131, 89, 193, 0.5)',
-                },
+                    angle: 0,
+                    from: 'rgba(94, 122, 219, 0.5)',
+                    to: 'rgba(131, 89, 193, 0.5)',
+                  },
             ),
           );
       },
-      handleReset: ({ change, dispatch, image, setEdit, setEditType }) => () => {
+      handleReset: ({
+        change,
+        dispatch,
+        image,
+        setEdit,
+        setEditType,
+      }) => () => {
         dispatch(change(BACKGROUND_IMAGE, { src: get(image, 'src') }));
 
         setEdit(false);
@@ -197,4 +217,14 @@ export default compose(
       },
     };
   }),
+  // lifecycle({
+  //   componentDidMount() {
+  //     const { change, initialValues } = this.props;
+
+  //     change(
+  //       BACKGROUND_IMAGE,
+  //       get(initialValues, BACKGROUND_IMAGE, { src: BACKGROUND_LIST[0] }),
+  //     );
+  //   },
+  // }),
 )(BackgroundImageForm);

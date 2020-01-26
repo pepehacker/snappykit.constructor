@@ -41,7 +41,10 @@ const Gradient = ({
       <div
         className={styles.Gradient}
         style={{
-          backgroundImage: `linear-gradient(to right, ${get(value, 'from')}, ${get(value, 'to')})`,
+          backgroundImage: `linear-gradient(to right, ${get(
+            value,
+            'from',
+          )}, ${get(value, 'to')})`,
         }}
       />
 
@@ -59,8 +62,12 @@ const Gradient = ({
     </div>
 
     <div className={styles.Colors}>
-      {currentDirection === DIRECTION.FROM && <Color label="From" name={`${name}.from`} />}
-      {currentDirection === DIRECTION.TO && <Color label="To" name={`${name}.to`} />}
+      {currentDirection === DIRECTION.FROM && (
+        <Color label="From" name={`${name}.from`} />
+      )}
+      {currentDirection === DIRECTION.TO && (
+        <Color label="To" name={`${name}.to`} />
+      )}
     </div>
   </div>
 );
@@ -70,7 +77,8 @@ const ComposedGradient = compose(
   withHandlers({
     handleFromClick: ({ setCurrentDirection }): Function => () =>
       setCurrentDirection(DIRECTION.FROM),
-    handleToClick: ({ setCurrentDirection }): Function => () => setCurrentDirection(DIRECTION.TO),
+    handleToClick: ({ setCurrentDirection }): Function => () =>
+      setCurrentDirection(DIRECTION.TO),
   }),
 )(Gradient);
 

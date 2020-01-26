@@ -1,5 +1,5 @@
 // @flow
-import { get } from 'lodash';
+import { get, values } from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import { matchPath } from 'react-router-dom';
@@ -37,7 +37,10 @@ const Background = ({
   <Sidebar tabs={TABS} title="Background">
     <ImageForm initialValues={initialValues} onChange={handleImageChange} />
     <ColorForm initialValues={initialValues} onChange={handleColorChange} />
-    <GradientForm initialValues={initialValues} onChange={handleGradientChange} />
+    <GradientForm
+      initialValues={initialValues}
+      onChange={handleGradientChange}
+    />
   </Sidebar>
 );
 
@@ -48,7 +51,11 @@ const mapStateToProps = (state: Object, { location }) => {
 
   const id: string = get(match, 'params.id');
   const websiteId: string = get(match, 'params.websiteId');
-  const initialValues: Object = getSectionById(state, websiteId, id || BACKGROUND);
+  const initialValues: Object = getSectionById(
+    state,
+    websiteId,
+    id || BACKGROUND,
+  );
 
   return {
     id,
@@ -59,23 +66,36 @@ const mapStateToProps = (state: Object, { location }) => {
 };
 
 export default compose(
-  connect(
-    mapStateToProps,
-    { updateWebsiteSection },
-  ),
+  connect(mapStateToProps, { updateWebsiteSection }),
   withHandlers({
-    handleColorChange: ({ id, updateWebsiteSection, websiteId }): Function => ({ color }) =>
+    handleColorChange: ({ id, updateWebsiteSection, websiteId }): Function => ({
+      color,
+    }) =>
       updateWebsiteSection(websiteId, id || BACKGROUND, {
         color,
         gradient: undefined,
         image: undefined,
       }),
-    handleGradientChange: ({ id, updateWebsiteSection, websiteId }): Function => ({ gradient }) =>
+    handleGradientChange: ({
+      id,
+      updateWebsiteSection,
+      websiteId,
+    }): Function => ({ gradient }) => {
+      const propSize: number = values(gradient).length;
+
       updateWebsiteSection(websiteId, id || BACKGROUND, {
-        gradient,
+        gradient:
+          propSize < 3
+            ? {
+                angel: gradient.angel || 0,
+                from: gradient.from || 'rgba(255, 255, 255, 0)',
+                to: gradient.to || 'rgba(255, 255, 255, 0)',
+              }
+            : gradient,
         color: undefined,
         image: undefined,
-      }),
+      });
+    },
     handleImageChange: ({ id, updateWebsiteSection, websiteId }): Function => (
       { image },
       dispatch,
