@@ -8,11 +8,11 @@
       @content
     }
   } @else if $devices == laptop {
-    @media only screen and (min-width: 1024px) and (max-width: 1439px) {
+    @media only screen and (min-width: 1024px) and (max-width: 1440px) {
       @content
     }
   } @else if $devices == desktop {
-    @media only screen and (min-width: 1440px) {
+    @media only screen and (min-width: 1441px) {
       @content
     }
   }
