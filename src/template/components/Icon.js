@@ -28,7 +28,7 @@ const TemplateIcon = ({
     {({ data, view, websiteId }) => {
       const { src } = getSectionById(data, id || ICON);
 
-      const rootClassNames = classNames(className, styles.Root, {
+      const rootClassNames = classNames(className, rootClassName, styles.Root, {
         [styles.RootViewDesktop]: view === VIEW.DESKTOP,
         [styles.RootViewMobile]: view === VIEW.MOBILE,
         [styles.RootViewTablet]: view === VIEW.TABLET,
@@ -40,10 +40,7 @@ const TemplateIcon = ({
         <div className={rootClassNames}>
           <Link to={`/${websiteId}/editor/icon${(id && `/${id}`) || ''}`}>
             <div className={styles.Container}>
-              <img
-                alt="Icon logo" className={iconClassNames}
-                src={src}
-              />
+              <img alt="Icon logo" className={iconClassNames} src={src} />
             </div>
           </Link>
         </div>

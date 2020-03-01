@@ -1,0 +1,15 @@
+.Root {
+  display: flex;
+}
+
+.Wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+
+  &Container {
+    display: flex;
+    width: 1200px;
+  }
+}

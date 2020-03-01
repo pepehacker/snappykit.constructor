@@ -1,0 +1,129 @@
+.Root {
+  overflow: scroll;
+}
+
+.Copyright {
+  max-height: 16px;
+
+  &Text {
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 16px;
+    overflow: hidden;
+  }
+}
+
+.Description {
+  max-height: 72px;
+
+  &Text {
+    font-size: 12px;
+    line-height: 24px;
+    overflow: hidden;
+  }
+}
+
+.Download {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+
+  & > * {
+    max-width: 400px;
+    text-align: center;
+  }
+
+  .Title {
+    margin: 52px 0 0;
+  }
+}
+
+.Footer {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  height: 140px;
+  justify-content: space-between;
+  max-width: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.Icon {
+  align-items: center;
+  background: #fff;
+  border-radius: 28px;
+  box-shadow: 0 20px 32px -12px rgba(0, 0, 0, .6);
+  display: flex;
+  justify-self: center;
+  height: 128px;
+  width: 128px;
+}
+
+.Number {
+  left: -60px;
+  max-height: 260px;
+  position: absolute !important;
+  top: -88px;
+
+  &Text {
+    font-size: 220px;
+    overflow: hidden;
+  }
+}
+
+.Section {
+  background: #f00;
+}
+
+.Step {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 80px;
+  width: 100%;
+
+  &Info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+
+    & > * {
+      max-width: 400px;
+    }
+  }
+
+  .Description {
+    margin: 80px 0 0;
+  }
+}
+
+.Store {
+  margin: 52px 0 0;
+}
+
+.SubTitle {
+  max-height: 28px;
+
+  &Text {
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 3.3px;
+    overflow: hidden;
+  }
+}
+
+.Title {
+  max-height: 66px;
+
+  &Text {
+    font-size: 40px;
+    letter-spacing: .7px;
+    line-height: 66px;
+    overflow: hidden;
+  }
+
+}

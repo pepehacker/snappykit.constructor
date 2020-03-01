@@ -31,32 +31,45 @@ const BackgroundImage = ({
     onClick: onChange,
   };
 
+  const isUnsplash: boolean = value.indexOf('unsplash.com') !== -1;
+
   return (
     <div className={styles.Root}>
       <div className={styles.List}>
+        {isUnsplash && !photos && (
+          <Card
+            {...cardProps}
+            editType={editType}
+            isSelected
+            photo={value}
+            src={value}
+            value={value}
+          />
+        )}
+
         {photos && photos.length > 0
           ? photos.map(({ id, photo, src, user }) => (
-            <Card
-              {...cardProps}
-              key={id}
-              editType={editType}
-              isSelected={src === value}
-              photo={photo}
-              src={src}
-              user={user}
-              value={src}
-            />
-          ))
+              <Card
+                {...cardProps}
+                key={id}
+                editType={editType}
+                isSelected={src === value}
+                photo={photo}
+                src={src}
+                user={user}
+                value={src}
+              />
+            ))
           : BACKGROUND_LIST.map((src: string) => (
-            <Card
-              {...cardProps}
-              key={src}
-              editType={editType}
-              isSelected={src === value}
-              src={src}
-              value={src}
-            />
-          ))}
+              <Card
+                {...cardProps}
+                key={src}
+                editType={editType}
+                isSelected={src === value}
+                src={src}
+                value={src}
+              />
+            ))}
       </div>
     </div>
   );

@@ -26,15 +26,6 @@
   },
   "plugins": ["jsx-a11y", "prettier", "react"],
   "rules": {
-    "indent": [
-      0,
-      2,
-      {
-        "ignoredNodes": ["JSXElement"],
-        "SwitchCase": 1
-      }
-    ],
-
     "no-bitwise": "off",
     "no-nested-ternary": "off",
     "no-shadow": "off",
@@ -57,9 +48,7 @@
       "extensions": [".js", ".jsx"]
     }],
     "react/jsx-first-prop-new-line": [1, "multiline"],
-    "react/jsx-indent": [2, 2, {
-      "checkAttributes": false
-    }],
+
     "react/jsx-indent-props": [1, 2],
     "react/jsx-max-props-per-line": [1, {
       "maximum": 3,
