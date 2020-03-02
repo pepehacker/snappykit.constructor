@@ -73,6 +73,12 @@ export default createConfig(6, [
     type: TEXT,
   },
   {
+    id: 'step1_screenshots',
+    exports: ['items'],
+    link: SCREENSHOTS,
+    type: SCREENSHOTS,
+  },
+  {
     id: 'step1_subtitle',
     data: {
       color: 'rgba(60, 105, 220, 1)',
@@ -115,6 +121,12 @@ export default createConfig(6, [
       text: '2',
     },
     type: TEXT,
+  },
+  {
+    id: 'step2_screenshots',
+    exports: ['items'],
+    link: SCREENSHOTS,
+    type: SCREENSHOTS,
   },
   {
     id: 'step2_subtitle',
@@ -161,6 +173,12 @@ export default createConfig(6, [
     type: TEXT,
   },
   {
+    id: 'step3_screenshots',
+    exports: ['items'],
+    link: SCREENSHOTS,
+    type: SCREENSHOTS,
+  },
+  {
     id: 'step3_subtitle',
     data: {
       color: 'rgba(60, 105, 220, 1)',
@@ -179,11 +197,36 @@ export default createConfig(6, [
     type: TEXT,
   },
   {
+    id: 'intro_background',
+    data: {
+      image: {
+        gradient: {
+          angle: 180,
+          from: 'rgba(39, 43, 52, .4)',
+          to: 'rgba(39, 43, 52, 1)',
+        },
+        src:
+          'https://images.unsplash.com/photo-1536599018102-9f803c140fc1?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjY4NjM0fQ',
+      },
+    },
+    type: BACKGROUND,
+  },
+  {
     id: COPYRIGHT,
     data: {
       color: 'rgba(255, 255, 255, .4)',
       style: TEXT_STYLE.MEDIUM,
       text: '©2018 SnappyKit',
+    },
+    exports: ['text'],
+    type: TEXT,
+  },
+  {
+    id: DESCRIPTION,
+    data: {
+      color: 'rgba(60, 105, 220, 1)',
+      style: TEXT_STYLE.REGULAR,
+      text: 'Behance App',
     },
     exports: ['text'],
     type: TEXT,
@@ -196,6 +239,19 @@ export default createConfig(6, [
     },
     exports: ['src'],
     type: ICON,
+  },
+  {
+    id: SCREENSHOTS,
+    exports: ['items'],
+    type: SCREENSHOTS,
+  },
+  {
+    id: SMARTPHONE,
+    data: {
+      mockup: SMARTPHONE_MOCKUP.CONCEPT_SILVER_LINE,
+    },
+    exports: ['mockup'],
+    type: SMARTPHONE,
   },
   {
     id: SOCIAL,
@@ -218,8 +274,8 @@ export default createConfig(6, [
     id: TITLE,
     data: {
       color: 'rgba(255, 255, 255, 1)',
-      style: TEXT_STYLE.LIGHT,
-      text: 'Serif Beauty',
+      style: TEXT_STYLE.MEDIUM,
+      text: 'Gmix APP allows you to find love all over the globe.',
     },
     exports: ['text'],
     type: TEXT,

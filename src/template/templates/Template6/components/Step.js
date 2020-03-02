@@ -1,10 +1,12 @@
+import classNames from 'classnames';
 import * as React from 'react';
 
 // Components
 import Section from './Section';
 
 // Styles
-import styles from '../Template6.scss';
+import styles from './Step.scss';
+import commonStyles from '../Template6.scss';
 
 // Template
 import {
@@ -13,10 +15,18 @@ import {
   Text,
 } from 'template';
 
-const Template6Step = ({ id }) => (
+const Template6Step = ({ id, reversed }) => (
   <Section id={id}>
-    <div className={styles.Step}>
-      <div className={styles.StepInfo}>
+    <div
+      className={classNames(styles.Root, { [styles.RootIsReversed]: reversed })}
+    >
+      <Screenshots
+        classNames={{ root: styles.Screenshots }}
+        id={`${id}_screenshots`}
+        variant="solo"
+      />
+
+      <div className={styles.Info}>
         <Text
           classNames={{ root: styles.Number, text: styles.NumberText }}
           id={`${id}_number`}
@@ -24,21 +34,24 @@ const Template6Step = ({ id }) => (
 
         <Text
           classNames={{
-            root: styles.SubTitle,
-            text: styles.SubTitleText,
+            root: commonStyles.SubTitle,
+            text: commonStyles.SubTitleText,
           }}
           id={`${id}_subtitle`}
         />
 
         <Text
-          classNames={{ root: styles.Title, text: styles.TitleText }}
+          classNames={{
+            root: commonStyles.Title,
+            text: commonStyles.TitleText,
+          }}
           id={`${id}_title`}
         />
 
         <Text
           classNames={{
-            root: styles.Description,
-            text: styles.DescriptionText,
+            root: classNames(styles.Description, commonStyles.Description),
+            text: commonStyles.DescriptionText,
           }}
           id={`${id}_description`}
         />

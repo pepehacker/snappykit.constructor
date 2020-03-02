@@ -41,10 +41,19 @@ type ConfigType = {
 export default (id: number, sections: Array<ConfigType> = []): Object => {
   let hasTitle = false;
 
-  const ALLOW_TYPES = [BACKGROUND, ICON, POLICY, SCREENSHOTS, SMARTPHONE, SOCIAL, STORE, TEXT];
+  const ALLOW_TYPES = [
+    BACKGROUND,
+    ICON,
+    POLICY,
+    SCREENSHOTS,
+    SMARTPHONE,
+    SOCIAL,
+    STORE,
+    TEXT,
+  ];
   const section = {};
 
-  sections.forEach(({ id, data, exports = [], type }) => {
+  sections.forEach(({ id, data, exports = [], link, type }) => {
     let schema;
 
     // Check type allow
@@ -88,6 +97,7 @@ export default (id: number, sections: Array<ConfigType> = []): Object => {
       id,
       data,
       exports,
+      link,
       schema,
       type,
     });

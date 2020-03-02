@@ -12,6 +12,7 @@ import {
   // Components
   Icon,
   Policy,
+  Screenshots,
   Smartphone,
   Social,
   Store,
@@ -28,8 +29,46 @@ const Template6 = () => (
   <TemplateContext.Consumer>
     {({ size, view = VIEW.DESKTOP }) => (
       <div className={styles.Root}>
+        <Section id="intro">
+          <header className={styles.Header}>
+            <Icon classNames={{ icon: styles.HeaderIcon }} />
+            <Policy className={styles.Policy} />
+          </header>
+
+          <div className={styles.Intro}>
+            <div className={styles.Content}>
+              <Text
+                classNames={{
+                  root: styles.SubTitle,
+                  text: styles.SubTitleText,
+                }}
+                id={DESCRIPTION}
+              />
+
+              <Text
+                classNames={{
+                  root: styles.Title,
+                  text: styles.TitleText,
+                }}
+                id={TITLE}
+              />
+
+              <Store className={styles.Store} />
+            </div>
+
+            <Smartphone
+              classNames={{
+                root: styles.Smartphone,
+                container: styles.SmartphoneContainer,
+              }}
+            >
+              <Screenshots classNames={{ root: styles.Screenshots }} />
+            </Smartphone>
+          </div>
+        </Section>
+
         <Step id="step1" />
-        <Step id="step2" />
+        <Step id="step2" reversed />
         <Step id="step3" />
 
         <Section id="download">

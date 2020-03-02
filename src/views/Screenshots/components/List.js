@@ -14,12 +14,9 @@ import styles from './List.scss';
 const ScreenshotList = ({ handleCreate, handleDelete, value, ...props }) => (
   <div className={styles.Root}>
     <Create onCreate={handleCreate} />
-
+    {console.log(value)}
     {(value || []).map((image: string, index: number) => (
-      <Item
-        key={index} index={index}
-        onDelete={handleDelete} value={image}
-      />
+      <Item key={index} index={index} onDelete={handleDelete} value={image} />
     ))}
   </div>
 );
@@ -30,7 +27,8 @@ const ComposedScreenshotList = compose(
     handleCreate: ({ onChange, value }) => (itemValue: string) =>
       onChange && onChange([itemValue, ...value]),
     handleDelete: ({ onChange, value }) => (itemValue: string) =>
-      onChange && onChange(value.filter((image: string) => image !== itemValue)),
+      onChange &&
+      onChange(value.filter((image: string) => image !== itemValue)),
     onSortEnd: ({ onChange, value }) => ({ oldIndex = 0, newIndex = 0 }) =>
       onChange && onChange(arrayMove(value, oldIndex, newIndex)),
   }),

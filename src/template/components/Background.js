@@ -3,6 +3,9 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+// Components
+import Link from './Link';
+
 // Template
 import {
   // Constants
@@ -43,33 +46,35 @@ const TemplateBackground = ({
 
       return (
         <div className={rootClassNames}>
-          {image && (
-            <div
-              className={styles.Cover}
-              style={{
-                backgroundImage: `url(${image.src})`,
-                backgroundSize: 'cover',
-              }}
-            />
-          )}
+          <Link to={`/${websiteId}/editor/background${(id && `/${id}`) || ''}`}>
+            {image && (
+              <div
+                className={styles.Cover}
+                style={{
+                  backgroundImage: `url(${image.src})`,
+                  backgroundSize: 'cover',
+                }}
+              />
+            )}
 
-          {currentColor && (
-            <div
-              className={styles.Cover}
-              style={{
-                backgroundColor: currentColor,
-              }}
-            />
-          )}
+            {currentColor && (
+              <div
+                className={styles.Cover}
+                style={{
+                  backgroundColor: currentColor,
+                }}
+              />
+            )}
 
-          {from && to && (
-            <div
-              className={styles.Cover}
-              style={{
-                backgroundImage: `linear-gradient(${angle}deg, ${from}, ${to})`,
-              }}
-            />
-          )}
+            {from && to && (
+              <div
+                className={styles.Cover}
+                style={{
+                  backgroundImage: `linear-gradient(${angle}deg, ${from}, ${to})`,
+                }}
+              />
+            )}
+          </Link>
 
           <div className={containerClassNames}>{children}</div>
         </div>

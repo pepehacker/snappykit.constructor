@@ -6,7 +6,12 @@ export default (data: Object, config: Object): Object => {
   if (config && data) {
     keys(get(config, 'section', {})).forEach(
       (sectionId: number | string): void => {
-        const defaultData = get(config, `section.${sectionId}.data`);
+        const link = get(config, `section.${sectionId}.link`);
+
+        const defaultData = link
+          ? get(data, `section.${link}`)
+          : get(config, `section.${sectionId}.data`);
+
         const schema = get(config, `section.${sectionId}.schema`);
 
         schema &&

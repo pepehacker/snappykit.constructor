@@ -51,6 +51,27 @@
   width: 100%;
 }
 
+.Header {
+  align-items: center;
+  display: flex;
+  height: 140px;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  &Icon {
+    align-items: center;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 20px 32px -12px rgba(0, 0, 0, .6);
+    display: flex;
+    height: 40px;
+    justify-self: center;
+    width: 40px;
+  }
+}
+
 .Icon {
   align-items: center;
   background: #fff;
@@ -62,42 +83,28 @@
   width: 128px;
 }
 
-.Number {
-  left: -60px;
-  max-height: 260px;
-  position: absolute !important;
-  top: -88px;
-
-  &Text {
-    font-size: 220px;
-    overflow: hidden;
-  }
-}
-
-.Section {
-  background: #f00;
-}
-
-.Step {
+.Intro {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 0 80px;
+  padding: 0 100px;
   width: 100%;
+}
 
-  &Info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
+.Screenshots {
+  height: 420px;
+  width: 236px;
+}
 
-    & > * {
-      max-width: 400px;
-    }
-  }
+.Smartphone {
+  height: 560px;
+  width: 272px;
 
-  .Description {
-    margin: 80px 0 0;
+  &Container {
+    height: 420px;
+    left: 18px;
+    top: 70px;
+    width: 236px;
   }
 }
 
