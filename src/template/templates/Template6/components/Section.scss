@@ -1,0 +1,33 @@
+.Root {
+  display: flex;
+
+  &Variant {
+    &Mobile {
+      .Wrapper {
+        &Container {
+          width: 100%;
+        }
+      }
+    }
+
+    &Tablet {
+      .Wrapper {
+        &Container {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.Wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+
+  &Container {
+    display: flex;
+    width: 1200px;
+  }
+}

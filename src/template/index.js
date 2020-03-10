@@ -5,12 +5,15 @@ import { createContext } from 'react';
 import * as Template1 from './templates/Template1';
 import * as Template2 from './templates/Template2';
 import * as Template3 from './templates/Template3';
+import * as Template6 from './templates/Template6';
 
-export const TEMPLATES = [Template1, Template2, Template3].map(({ config, ...props }) => ({
-  ...props,
-  config,
-  id: get(config, 'id'),
-}));
+export const TEMPLATES = [Template1, Template2, Template3, Template6].map(
+  ({ config, ...props }) => ({
+    ...props,
+    config,
+    id: get(config, 'id'),
+  }),
+);
 
 export const getFirstTemplate = (): Object => TEMPLATES[0];
 

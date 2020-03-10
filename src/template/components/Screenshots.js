@@ -25,10 +25,12 @@ const TemplateScreenshots = ({
   classNames: { root: rootClassName, item: itemClassName } = {},
   id,
   settings,
+  variant,
 }) => (
   <TemplateContext.Consumer>
     {({ data, isEditor, view, websiteId }) => {
       const { items } = getSectionById(data, id || SCREENSHOTS);
+      const source = (items || [])[0];
 
       const rootClassNames = classNames(className, rootClassName, styles.Root, {
         [styles.RootViewDesktop]: view === VIEW.DESKTOP,
@@ -36,33 +38,35 @@ const TemplateScreenshots = ({
         [styles.RootViewTablet]: view === VIEW.TABLET,
       });
 
-      const itemClassNames = classNames(itemClassName, styles.Item);
+      // const itemClassNames = classNames(itemClassName, styles.Item);
 
-      const sliderSettings = {
-        arrows: false,
-        draggable: false,
-        dots: false,
-        infinite: false,
-        swipe: false,
-        ...settings,
-      };
+      // const sliderSettings = {
+      //   arrows: false,
+      //   draggable: false,
+      //   dots: false,
+      //   infinite: false,
+      //   swipe: false,
+      //   ...settings,
+      // };
 
       return (
         <div className={rootClassNames}>
-          <Link to={`/${websiteId}/editor/screenshots${(id && `/${id}`) || ''}`}>
+          <Link
+            to={`/${websiteId}/editor/screenshots${(id && `/${id}`) || ''}`}
+          >
             <div className={styles.Container}>
-              <Slider {...sliderSettings} className={styles.Slider}>
-                {(items || []).map(
-                  (source: stirng, index: number): func => (
-                    <div key={index} className={itemClassNames}>
-                      <img
-                        alt="Screenshot" className={styles.Image}
-                        src={source}
-                      />
-                    </div>
-                  ),
-                )}
-              </Slider>
+              <img alt="Screenshot" className={styles.Image} src={source} />
+              {/* <Slider {...sliderSettings} className={styles.Slider}>
+                {(items || []).map((source: stirng, index: number): func => (
+                  <div key={index} className={itemClassNames}>
+                    <img
+                      alt="Screenshot"
+                      className={styles.Image}
+                      src={source}
+                    />
+                  </div>
+                ))}
+              </Slider> */}
             </div>
           </Link>
         </div>

@@ -38,7 +38,7 @@ const EditorView = ({
     [styles.RootVariantMobile]: view === VIEW.MOBILE,
     [styles.RootVariantTablet]: view === VIEW.TABLET,
   });
-
+  console.log(size, scale);
   return (
     <div ref={registerRoot} className={rootClassNames}>
       <div ref={registerContainer} className={styles.Container} style={size}>
@@ -46,6 +46,10 @@ const EditorView = ({
           value={{
             data: get(website, 'data'),
             isEditor: !isFullscreen,
+            size: {
+              height: size.height / scale,
+              width: size.width / scale,
+            },
             view,
             websiteId: get(website, 'id', 'new'),
           }}
@@ -56,7 +60,7 @@ const EditorView = ({
               maxHeight: `${size.height / scale}px`,
               minHeight: `${size.height / scale}px`,
               minWidth: `${size.width / scale}px`,
-              maxWIdth: `${size.width / scale}px`,
+              maxWidth: `${size.width / scale}px`,
               transform: `scale(${scale})`,
             }}
           >
@@ -117,7 +121,7 @@ export default withRouter(
 
           setTimeout(() => setFullscreenState(!isFullscreen), 100);
         },
-        handleResize: ({ setTemplateSize, setScale, setSize, view }): func => (
+        handleResize: ({ setScale, setSize, setTemplateSize, view }): func => (
           event: Object,
         ): void => {
           if ($root) {

@@ -2,6 +2,15 @@
   display: flex;
   overflow: hidden;
   position: relative;
+
+  & > a {
+    display: flex;
+    flex: 1 1 auto;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+  }
 }
 
 .Container {
@@ -18,4 +27,11 @@
   transition: all .4s;
   width: 100%;
   z-index: 1;
+}
+
+.Wrapper {
+  display: flex;
+  flex: 1 1 auto;
+  overflow: hidden;
+  position: relative;
 }

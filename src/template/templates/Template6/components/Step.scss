@@ -1,0 +1,109 @@
+.Root {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 100px;
+  width: 100%;
+
+  &Is {
+    &Reversed {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &Variant {
+    &Mobile {
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 24px;
+
+      .Description {
+        margin: 40px 0 0;
+      }
+
+      .Info {
+        margin: 64px 0 0;
+      }
+
+      .Number {
+        left: -8px;
+        top: -32px;
+
+        &Text {
+          font-size: 100px;
+          line-height: 100px;
+        }
+      }
+
+      .Screenshots {
+        height: 188px !important;
+        width: 106px !important;
+      }
+
+      .SubTitle,
+      .Title {
+        margin: 0 20px;
+      }
+    }
+
+    &Tablet {
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 120px;
+
+      .Description {
+        margin: 48px 0 0;
+      }
+
+      .Info {
+        margin: 120px 0 0;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      .Number {
+        left: -64px;
+        top: -112px;
+      }
+
+      .Screenshots {
+        height: 468px !important;
+        width: 264px !important;
+      }
+    }
+  }
+}
+
+.Description {
+  margin: 80px 0 0;
+}
+
+.Number {
+  left: -60px;
+  max-height: 260px;
+  position: absolute !important;
+  top: -88px;
+
+  &Text {
+    font-size: 220px;
+    overflow: hidden;
+  }
+}
+
+.Info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+
+  & > * {
+    max-width: 400px;
+  }
+}
+
+.Screenshots {
+  box-shadow: 0 64px 24px -32px rgba(0, 0, 0, .6);
+  height: 534px !important;
+  width: 301px !important;
+}
+
