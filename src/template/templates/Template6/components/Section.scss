@@ -1,5 +1,23 @@
 .Root {
   display: flex;
+
+  &Variant {
+    &Mobile {
+      .Wrapper {
+        &Container {
+          width: 100%;
+        }
+      }
+    }
+
+    &Tablet {
+      .Wrapper {
+        &Container {
+          width: 100%;
+        }
+      }
+    }
+  }
 }
 
 .Wrapper {

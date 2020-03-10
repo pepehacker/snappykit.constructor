@@ -10,6 +10,68 @@
       flex-direction: row-reverse;
     }
   }
+
+  &Variant {
+    &Mobile {
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 24px;
+
+      .Description {
+        margin: 40px 0 0;
+      }
+
+      .Info {
+        margin: 64px 0 0;
+      }
+
+      .Number {
+        left: -8px;
+        top: -32px;
+
+        &Text {
+          font-size: 100px;
+          line-height: 100px;
+        }
+      }
+
+      .Screenshots {
+        height: 188px !important;
+        width: 106px !important;
+      }
+
+      .SubTitle,
+      .Title {
+        margin: 0 20px;
+      }
+    }
+
+    &Tablet {
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 120px;
+
+      .Description {
+        margin: 48px 0 0;
+      }
+
+      .Info {
+        margin: 120px 0 0;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      .Number {
+        left: -64px;
+        top: -112px;
+      }
+
+      .Screenshots {
+        height: 468px !important;
+        width: 264px !important;
+      }
+    }
+  }
 }
 
 .Description {

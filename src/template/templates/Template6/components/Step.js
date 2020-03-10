@@ -12,52 +12,63 @@ import commonStyles from '../Template6.scss';
 import {
   // Components
   Screenshots,
+  TemplateContext,
   Text,
+  VIEW,
 } from 'template';
 
 const Template6Step = ({ id, reversed }) => (
-  <Section id={id}>
-    <div
-      className={classNames(styles.Root, { [styles.RootIsReversed]: reversed })}
-    >
-      <Screenshots
-        classNames={{ root: styles.Screenshots }}
-        id={`${id}_screenshots`}
-        variant="solo"
-      />
+  <TemplateContext.Consumer>
+    {({ size, view = VIEW.DESKTOP }) => (
+      <Section id={id}>
+        <div
+          className={classNames(styles.Root, {
+            [styles.RootVariantDesktop]: view === VIEW.DESKTOP,
+            [styles.RootVariantMobile]: view === VIEW.MOBILE,
+            [styles.RootVariantTablet]: view === VIEW.TABLET,
+            [styles.RootIsReversed]: reversed,
+          })}
+        >
+          <Screenshots
+            classNames={{ root: styles.Screenshots }}
+            id={`${id}_screenshots`}
+            variant="solo"
+          />
 
-      <div className={styles.Info}>
-        <Text
-          classNames={{ root: styles.Number, text: styles.NumberText }}
-          id={`${id}_number`}
-        />
+          <div className={styles.Info}>
+            <Text
+              classNames={{ root: styles.Number, text: styles.NumberText }}
+              id={`${id}_number`}
+            />
 
-        <Text
-          classNames={{
-            root: commonStyles.SubTitle,
-            text: commonStyles.SubTitleText,
-          }}
-          id={`${id}_subtitle`}
-        />
+            <Text
+              classNames={{
+                root: classNames(styles.SubTitle, commonStyles.SubTitle),
+                text: commonStyles.SubTitleText,
+              }}
+              id={`${id}_subtitle`}
+            />
 
-        <Text
-          classNames={{
-            root: commonStyles.Title,
-            text: commonStyles.TitleText,
-          }}
-          id={`${id}_title`}
-        />
+            <Text
+              classNames={{
+                root: classNames(styles.Title, commonStyles.Title),
+                text: commonStyles.TitleText,
+              }}
+              id={`${id}_title`}
+            />
 
-        <Text
-          classNames={{
-            root: classNames(styles.Description, commonStyles.Description),
-            text: commonStyles.DescriptionText,
-          }}
-          id={`${id}_description`}
-        />
-      </div>
-    </div>
-  </Section>
+            <Text
+              classNames={{
+                root: classNames(styles.Description, commonStyles.Description),
+                text: commonStyles.DescriptionText,
+              }}
+              id={`${id}_description`}
+            />
+          </div>
+        </div>
+      </Section>
+    )}
+  </TemplateContext.Consumer>
 );
 
 export default Template6Step;

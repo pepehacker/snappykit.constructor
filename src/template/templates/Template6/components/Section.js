@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import * as React from 'react';
 
 // Styles
@@ -9,7 +10,14 @@ import { Background, TemplateContext, VIEW } from 'template';
 const Template6Section = ({ children, id }) => (
   <TemplateContext.Consumer>
     {({ size, view = VIEW.DESKTOP }) => (
-      <div className={styles.Root} style={{ ...size }}>
+      <div
+        className={classNames(styles.Root, {
+          [styles.RootVariantDesktop]: view === VIEW.DESKTOP,
+          [styles.RootVariantMobile]: view === VIEW.MOBILE,
+          [styles.RootVariantTablet]: view === VIEW.TABLET,
+        })}
+        style={{ ...size }}
+      >
         <Background
           classNames={{
             root: styles.Wrapper,

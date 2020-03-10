@@ -31,7 +31,7 @@ export default createConfig(6, [
     id: 'download_description',
     data: {
       color: 'rgba(123, 129, 144, 1)',
-      style: TEXT_STYLE.BOLD,
+      style: TEXT_STYLE.MEDIUM,
       text:
         'The search based on the interests of users and personal media content.  Gmix APP allows you to find love all over the globe.',
     },
@@ -57,7 +57,7 @@ export default createConfig(6, [
     id: 'step1_description',
     data: {
       color: 'rgba(123, 129, 144, 1)',
-      style: TEXT_STYLE.BOLD,
+      style: TEXT_STYLE.MEDIUM,
       text:
         'Gmix APP allows you to find love all over the globe. The search process is based on the interests of users and personal media content. After searching you can select person which you  liked and start chatting interests. ',
     },
@@ -107,7 +107,7 @@ export default createConfig(6, [
     id: 'step2_description',
     data: {
       color: 'rgba(123, 129, 144, 1)',
-      style: TEXT_STYLE.BOLD,
+      style: TEXT_STYLE.MEDIUM,
       text:
         'Gmix APP allows you to find love all over the globe. The search process is based on the interests of users and personal media content. After searching you can select person which you  liked and start chatting interests. ',
     },
@@ -157,7 +157,7 @@ export default createConfig(6, [
     id: 'step3_description',
     data: {
       color: 'rgba(123, 129, 144, 1)',
-      style: TEXT_STYLE.BOLD,
+      style: TEXT_STYLE.MEDIUM,
       text:
         'Gmix APP allows you to find love all over the globe. The search process is based on the interests of users and personal media content. After searching you can select person which you  liked and start chatting interests. ',
     },

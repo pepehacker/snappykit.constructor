@@ -1,0 +1,95 @@
+.Root {
+  &Variant {
+    &Mobile {
+      .Content {
+        margin: 36px 0 0;
+        width: 100%;
+      }
+
+      .Description {
+        max-height: 80px;
+
+        &Text {
+          font-size: 12px;
+          line-height: 20px;
+          overflow: hidden;
+        }
+      }
+
+      .Download {
+        padding: 0 24px;
+        width: 100%;
+
+        .Description {
+          margin: 20px 0 0;
+        }
+
+        .Store {
+          margin: 40px 0 0;
+        }
+      }
+
+      .Footer {
+        bottom: 36px;
+        flex-direction: column;
+        height: 64px;
+      }
+
+      .Header {
+        height: 72px;
+        padding: 0 24px;
+      }
+
+      .Icon {
+        height: 108px;
+        width: 108px;
+      }
+
+      .Intro {
+        flex-direction: column-reverse;
+        justify-content: center;
+        padding: 0 24px;
+
+        .Title {
+          max-height: 64px;
+        }
+      }
+
+
+      .Smartphone {
+        height: 248px;
+        width: 120px;
+
+        &Container {
+          height: 188px;
+          left: 8px;
+          top: 32px;
+          width: 104px;
+        }
+      }
+
+      .Store {
+        margin: 20px 0 0;
+      }
+
+      .SubTitle {
+        max-height: 20px;
+
+        &Text {
+          font-size: 14px;
+          letter-spacing: 1px;
+          line-height: 20px;
+        }
+      }
+
+      .Title {
+        max-height: 32px;
+
+        &Text {
+          font-size: 22px;
+          line-height: 32px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,75 @@
+.Root {
+  &Variant {
+    &Tablet {
+      .Content {
+        margin: 62px 0 0;
+        width: 100%;
+      }
+
+      .Description {
+        max-height: 96px;
+
+        &Text {
+          font-size: 14px;
+          line-height: 32px;
+          overflow: hidden;
+        }
+      }
+
+      .Download {
+        .Description {
+          margin: 12px 0 0;
+        }
+      }
+
+      .Footer {
+        height: 100px;
+        padding: 0 40px;
+      }
+
+      .Header {
+        height: 100px;
+        padding: 0 40px;
+      }
+
+      .Icon {
+        height: 148px;
+        width: 148px;
+      }
+
+      .Intro {
+        flex-direction: column-reverse;
+        justify-content: center;
+        padding: 0 120px;
+
+        .Title {
+          max-height: 112px;
+        }
+      }
+
+      .Smartphone {
+        height: 480px;
+        width: 236px;
+
+        &Container {
+          height: 364px;
+          left: 18px;
+          top: 58px;
+          width: 200px;
+        }
+      }
+
+      .Store {
+        margin: 32px 0 0;
+      }
+
+      .Title {
+        max-height: 56px;
+
+        &Text {
+          line-height: 56px;
+        }
+      }
+    }
+  }
+}

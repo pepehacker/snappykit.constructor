@@ -1,3 +1,7 @@
+@import './styles/mobile.scss';
+@import './styles/tablet.scss';
+
+
 .Root {
   overflow: scroll;
 }
@@ -91,11 +95,6 @@
   width: 100%;
 }
 
-.Screenshots {
-  height: 420px;
-  width: 236px;
-}
-
 .Smartphone {
   height: 560px;
   width: 272px;
@@ -124,12 +123,12 @@
 }
 
 .Title {
-  max-height: 66px;
+  max-height: 64px;
 
   &Text {
     font-size: 40px;
     letter-spacing: .7px;
-    line-height: 66px;
+    line-height: 64px;
     overflow: hidden;
   }
 

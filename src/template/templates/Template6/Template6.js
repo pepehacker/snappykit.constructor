@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import * as React from 'react';
 
 // Components
@@ -28,7 +29,14 @@ import {
 const Template6 = () => (
   <TemplateContext.Consumer>
     {({ size, view = VIEW.DESKTOP }) => (
-      <div className={styles.Root}>
+      <div
+        className={classNames(styles.Root, {
+          [styles.RootVariantDesktop]:
+            view === VIEW.DESKTOP || view === VIEW.DESKTOP_LARGE,
+          [styles.RootVariantMobile]: view === VIEW.MOBILE,
+          [styles.RootVariantTablet]: view === VIEW.TABLET,
+        })}
+      >
         <Section id="intro">
           <header className={styles.Header}>
             <Icon classNames={{ icon: styles.HeaderIcon }} />
