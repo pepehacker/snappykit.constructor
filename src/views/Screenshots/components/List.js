@@ -14,7 +14,6 @@ import styles from './List.scss';
 const ScreenshotList = ({ handleCreate, handleDelete, value, ...props }) => (
   <div className={styles.Root}>
     <Create onCreate={handleCreate} />
-    {console.log(value)}
     {(value || []).map((image: string, index: number) => (
       <Item key={index} index={index} onDelete={handleDelete} value={image} />
     ))}

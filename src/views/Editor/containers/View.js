@@ -38,7 +38,7 @@ const EditorView = ({
     [styles.RootVariantMobile]: view === VIEW.MOBILE,
     [styles.RootVariantTablet]: view === VIEW.TABLET,
   });
-  console.log(size, scale);
+
   return (
     <div ref={registerRoot} className={rootClassNames}>
       <div ref={registerContainer} className={styles.Container} style={size}>
