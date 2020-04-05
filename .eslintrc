@@ -50,7 +50,6 @@
     "react/jsx-first-prop-new-line": [1, "multiline"],
 
     "react/jsx-indent-props": [1, 2],
-
     "react/jsx-one-expression-per-line": [1, {
       "allow": "single-child"
     }],

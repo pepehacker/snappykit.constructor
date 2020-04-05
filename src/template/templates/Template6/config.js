@@ -2,9 +2,8 @@
 import {
   // Config
   BACKGROUND,
-  // BACKGROUND_LIST,
   ICON,
-  // POLICY,
+  ICON,
   SCREENSHOTS,
   SMARTPHONE,
   SMARTPHONE_MOCKUP,
