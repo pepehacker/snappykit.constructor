@@ -11,6 +11,18 @@
     width: 100%;
     z-index: 1;
   }
+
+  &Is {
+    &Focused {
+      .Container {
+        cursor: pointer;
+      }
+
+      .Focus {
+        opacity: .8;
+      }
+    }
+  }
 }
 
 .Container {
@@ -27,6 +39,20 @@
   transition: all .4s;
   width: 100%;
   z-index: 1;
+}
+
+.Focus {
+  background: url('https://i.pinimg.com/originals/b9/a4/48/b9a4481726e1700279ae5b69cdde8146.png') repeat left top;
+  background-size: 6%;
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  transition: all .4s;
+  width: 100%;
+  z-index: 2;
 }
 
 .Wrapper {

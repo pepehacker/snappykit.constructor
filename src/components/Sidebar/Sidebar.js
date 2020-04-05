@@ -31,23 +31,19 @@ const Sidebar = ({
         <div className={styles.Title}>
           {title}
 
-          {info && <div className={styles.Info}>
-            {info}
-          </div>}
+          {info && <div className={styles.Info}>{info}</div>}
         </div>
       )}
 
       {tabs && tabs.length > 0 && (
         <div className={styles.Tabs}>
           <Tabs
-            className={styles.Tabs} onChange={handleChange}
+            className={styles.Tabs}
+            onChange={handleChange}
             value={currentIndex}
           >
             {tabs.map((item, index) => (
-              <Tab
-                {...item} key={index}
-                value={index}
-              />
+              <Tab {...item} key={index} value={index} />
             ))}
           </Tabs>
         </div>
@@ -83,8 +79,13 @@ const Sidebar = ({
 );
 
 export default compose(
-  withState('currentIndex', 'setCurrentIndex', 0),
+  withState(
+    'currentIndex',
+    'setCurrentIndex',
+    ({ currentIndex = 0 }) => currentIndex,
+  ),
   withHandlers({
-    handleChange: ({ setCurrentIndex }): Function => (index: number) => setCurrentIndex(index),
+    handleChange: ({ setCurrentIndex }): Function => (index: number) =>
+      setCurrentIndex(index),
   }),
 )(Sidebar);

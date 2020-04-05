@@ -11,7 +11,13 @@ import styles from './Sandbox.scss';
 
 const TemplateSandbox = ({ app, view }) => (
   <div className={styles.Root}>
-    <TemplateContext.Provider value={{ ...app, view }}>
+    <TemplateContext.Provider
+      value={{
+        ...app,
+        size: { height: window.innerHeight, width: window.innerWidth },
+        view,
+      }}
+    >
       <Template id={get(app, 'templateId')} />
     </TemplateContext.Provider>
   </div>

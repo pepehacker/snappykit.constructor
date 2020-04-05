@@ -13,9 +13,6 @@ import Form, { Color, Input, Gradient } from 'components/Form';
 import Image, { Card } from '../components/Image';
 import Spinner from 'components/Spinner';
 
-// Ducks
-import { BACKGROUND_IMAGE_FORM } from '../ducks/constants';
-
 // Styles
 import styles from './common.scss';
 
@@ -118,17 +115,18 @@ const BackgroundImageForm = ({
   </Form>
 );
 
-const selector: Function = formValueSelector(BACKGROUND_IMAGE_FORM);
-const mapStateToProps = (state: Object) => ({
-  image: selector(state, 'image'),
-  query: selector(state, 'search'),
-});
+const mapStateToProps = (state: Object, { id }) => {
+  const selector: Function = formValueSelector(`background_image_form_${id}`);
+
+  return {
+    image: selector(state, 'image'),
+    query: selector(state, 'search'),
+  };
+};
 
 export default compose(
   connect(mapStateToProps),
-  reduxForm({
-    form: BACKGROUND_IMAGE_FORM,
-  }),
+  reduxForm(),
   withState('editType', 'setEditType', ({ initialValues }) =>
     has(initialValues, 'image.color')
       ? BACKGROUND_COLOR
@@ -148,8 +146,8 @@ export default compose(
 
       Unsplash.search
         .photos(searchString)
-        .then(res => res.json())
-        .then(res => {
+        .then((res) => res.json())
+        .then((res) => {
           if (queryTemp === searchString) {
             const results = get(res, 'results', []);
 

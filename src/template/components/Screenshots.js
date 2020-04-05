@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Slider from 'react-slick';
+// import Slider from 'react-slick';
 
 // Components
 import Link from './Link';

@@ -38,7 +38,7 @@ const EditorView = ({
     [styles.RootVariantMobile]: view === VIEW.MOBILE,
     [styles.RootVariantTablet]: view === VIEW.TABLET,
   });
-  console.log(size, scale);
+
   return (
     <div ref={registerRoot} className={rootClassNames}>
       <div ref={registerContainer} className={styles.Container} style={size}>
@@ -113,6 +113,8 @@ export default withRouter(
 
       return {
         // Updaters
+        handleFullscreenExit: ({ setFullscreenState }) => () =>
+          setFullscreenState(false),
         handleFullscreenTrigger: ({
           isFullscreen,
           setFullscreenState,
@@ -191,8 +193,14 @@ export default withRouter(
     withHandlers({}),
     lifecycle({
       componentDidMount() {
-        const { handleResize } = this.props;
+        const { handleFullscreenExit, handleResize } = this.props;
         handleResize();
+
+        document.addEventListener(
+          'fullscreenchange',
+          handleFullscreenExit,
+          false,
+        );
         window.addEventListener('resize', handleResize, false);
       },
       componentDidUpdate({ isFullscreen: prevIsFullscreen, view: prevView }) {
