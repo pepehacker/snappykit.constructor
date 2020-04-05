@@ -3,7 +3,6 @@ import {
   // Config
   BACKGROUND,
   ICON,
-  ICON,
   SCREENSHOTS,
   SMARTPHONE,
   SMARTPHONE_MOCKUP,
