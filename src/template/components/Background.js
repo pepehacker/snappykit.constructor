@@ -1,10 +1,8 @@
 import { get } from 'lodash';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React from 'react';
-
-// Components
-import Link from './Link';
+import * as React from 'react';
+import { withRouter } from 'react-router-dom';
 
 // Template
 import {
@@ -25,28 +23,68 @@ const TemplateBackground = ({
   classNames: { root: rootClassName, container: containerClassName } = {},
   children,
   id,
-}) => (
-  <TemplateContext.Consumer>
-    {({ data, view, websiteId }) => {
-      const rootClassNames = classNames(className, rootClassName, styles.Root, {
-        [styles.RootViewDesktop]: view === VIEW.DESKTOP,
-        [styles.RootViewMobile]: view === VIEW.MOBILE,
-        [styles.RootViewTablet]: view === VIEW.TABLET,
-      });
+  history,
+  location,
+}) => {
+  const [isFocused, setFocusState] = React.useState(false);
+  let focusTimeout = null;
 
-      const containerClassNames = classNames(
-        containerClassName,
-        styles.Container,
-      );
+  return (
+    <TemplateContext.Consumer>
+      {({ data, isEditor, view, websiteId }) => {
+        const rootClassNames = classNames(
+          className,
+          rootClassName,
+          styles.Root,
+          {
+            [styles.RootViewDesktop]: view === VIEW.DESKTOP,
+            [styles.RootViewMobile]: view === VIEW.MOBILE,
+            [styles.RootViewTablet]: view === VIEW.TABLET,
+          },
+          {
+            [styles.RootIsFocused]: isFocused,
+          },
+        );
 
-      const { color, gradient, image } = getSectionById(data, id || BACKGROUND);
+        const containerClassNames = classNames(
+          containerClassName,
+          styles.Container,
+        );
 
-      const currentColor = get(image, 'color') || color;
-      const { angle, from, to } = get(image, 'gradient') || gradient || {};
+        const { color, gradient, image } = getSectionById(
+          data,
+          id || BACKGROUND,
+        );
 
-      return (
-        <div className={rootClassNames}>
-          <Link to={`/${websiteId}/editor/background${(id && `/${id}`) || ''}`}>
+        const currentColor = get(image, 'color') || color;
+        const { angle, from, to } = get(image, 'gradient') || gradient || {};
+
+        const handleClick = () => {
+          const url = `/${websiteId}/editor/background${
+            (id && `/${id}`) || ''
+          }`;
+
+          const isSelected: boolean = location.pathname === url;
+          isEditor && isFocused && !isSelected && history.push(url);
+        };
+
+        const handleMove = (event) => {
+          if (!isFocused) {
+            setFocusState(true);
+          }
+
+          clearTimeout(focusTimeout);
+
+          focusTimeout = setTimeout(() => setFocusState(false), 1000);
+        };
+
+        return (
+          <div
+            className={rootClassNames}
+            onClick={handleClick}
+            onMouseLeave={isEditor ? () => setFocusState(false) : null}
+            onMouseMove={isEditor ? handleMove : null}
+          >
             {image && (
               <div
                 className={styles.Cover}
@@ -56,7 +94,6 @@ const TemplateBackground = ({
                 }}
               />
             )}
-
             {currentColor && (
               <div
                 className={styles.Cover}
@@ -65,7 +102,6 @@ const TemplateBackground = ({
                 }}
               />
             )}
-
             {from && to && (
               <div
                 className={styles.Cover}
@@ -74,14 +110,16 @@ const TemplateBackground = ({
                 }}
               />
             )}
-          </Link>
 
-          <div className={containerClassNames}>{children}</div>
-        </div>
-      );
-    }}
-  </TemplateContext.Consumer>
-);
+            {isEditor && <div className={styles.Focus} />}
+
+            <div className={containerClassNames}>{children}</div>
+          </div>
+        );
+      }}
+    </TemplateContext.Consumer>
+  );
+};
 
 TemplateBackground.propTypes = {
   className: PropTypes.string,
@@ -89,4 +127,4 @@ TemplateBackground.propTypes = {
   id: PropTypes.string,
 };
 
-export default TemplateBackground;
+export default withRouter(TemplateBackground);

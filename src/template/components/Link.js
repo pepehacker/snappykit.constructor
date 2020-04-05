@@ -9,11 +9,7 @@ import { TemplateContext } from 'template';
 // Styles
 import styles from './Link.scss';
 
-const TemplateLink = ({
-  children,
-  className,
-  to,
-}) => (
+const TemplateLink = ({ children, className, to }) => (
   <TemplateContext.Consumer>
     {({ isEditor }) => {
       const rootClassNames = classNames(className, styles.Root);
@@ -22,14 +18,16 @@ const TemplateLink = ({
         <NavLink
           activeClassName={styles.RootIsActive}
           className={rootClassNames}
+          onClick={(event) => event.stopPropagation()}
+          onMouseMove={(event) => event.stopPropagation()}
           to={to}
         >
           <div className={styles.Border} />
-          <div className={styles.Content}>
-            {children}
-          </div>
+          <div className={styles.Content}>{children}</div>
         </NavLink>
-      ) : children;
+      ) : (
+        children
+      );
     }}
   </TemplateContext.Consumer>
 );

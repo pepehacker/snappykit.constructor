@@ -17,9 +17,7 @@ const BackgroundColorForm = ({ handleSubmit }) => (
 );
 
 export default compose(
-  reduxForm({
-    form: 'backgroundColorForm',
-  }),
+  reduxForm(),
   // lifecycle({
   //   componentDidMount() {
   //     const { change, initialValues } = this.props;
