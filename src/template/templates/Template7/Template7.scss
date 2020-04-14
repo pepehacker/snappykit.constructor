@@ -1,0 +1,74 @@
+@import './styles/laptop.scss';
+
+.Root {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+.About {
+  display: flex;
+  flex-direction: column;
+
+  &List {
+    display: flex;
+    justify-content: space-between;
+
+    & > * {
+      flex: 0 0 292px;
+    }
+  }
+}
+
+.Common {
+  &Container {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.Description {
+  &Text {
+    overflow: hidden;
+  }
+}
+
+.Intro {
+  &Container {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.Slogan {
+  position: relative;
+
+  &Text {
+    text-transform: uppercase;
+  }
+}
+
+.Smartphone {
+  height: 476px;
+  width: 236px;
+
+  &Container {
+    height: 356px;
+    left: 18px;
+    top: 59px;
+    width: 200px;
+  }
+}
+
+.Title {
+  &Text {
+    overflow: hidden;
+  }
+}
+
+.Wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}

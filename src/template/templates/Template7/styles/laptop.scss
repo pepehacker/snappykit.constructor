@@ -1,0 +1,95 @@
+.Root {
+  &Variant {
+    &Laptop {
+      .About {
+        align-items: flex-start;
+        padding: 92px 0;
+
+        &List {
+          margin: 12px 0 0;
+        }
+
+        .Description {
+          max-height: 120px;
+        }
+      }
+
+      .Description {
+        max-height: 48px;
+
+        &Text {
+          font-size: 12px;
+          line-height: 24px;
+        }
+      }
+
+      .Intro {
+        .Description {
+          margin: 4px 0 0;
+        }
+
+        .Content {
+          margin: 80px 0 0 260px;
+        }
+
+        .Smartphone {
+          height: 512px;
+          width: 252px;
+
+          &Container {
+            height: 385px;
+            left: 19px;
+            top: 63px;
+            width: 215px;
+          }
+        }
+
+        .Title {
+          &Text {
+            font-size: 48px;
+          }
+        }
+      }
+
+      .Slogan {
+        max-height: 24px;
+        top: 12px;
+
+        &Text {
+          font-size: 12px;
+          line-height: 24px;
+        }
+      }
+
+      .Smartphone {
+        height: 476px;
+        width: 236px;
+
+        &Container {
+          height: 356px;
+          left: 18px;
+          top: 59px;
+          width: 200px;
+        }
+      }
+
+      .Store {
+        margin: 32px 0 0;
+      }
+
+      .Title {
+        max-height: 62px;
+
+        &Text {
+          font-size: 38px;
+          letter-spacing: .4px;
+          line-height: 60px;
+        }
+      }
+
+      .Wrapper {
+        max-width: 1200px;
+      }
+    }
+  }
+}
