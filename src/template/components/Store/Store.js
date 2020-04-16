@@ -36,7 +36,10 @@ const TemplateStore = ({ className, id }) => (
 
       return (
         <div className={rootClassNames}>
-          <Link to={`/${websiteId}/editor/store${(id && `/${id}`) || ''}`}>
+          <Link
+            exact
+            to={`/${websiteId}/editor/store${(id && `/${id}`) || ''}`}
+          >
             <div className={styles.Container}>
               {get(items, STORE_APP_STORE) && (
                 <Button

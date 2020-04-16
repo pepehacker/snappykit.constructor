@@ -41,8 +41,9 @@ const Template7 = () => (
                 root: styles.Smartphone,
                 container: styles.SmartphoneContainer,
               }}
+              id="intro_smartphone"
             >
-              <Screenshots />
+              <Screenshots id="intro_screenshots" />
             </Smartphone>
 
             <div className={styles.Content}>
@@ -75,10 +76,7 @@ const Template7 = () => (
           </div>
         </Background>
 
-        <Background
-          classNames={{ container: styles.CommonContainer }}
-          id="common_background"
-        >
+        <div className={styles.Common}>
           <div className={classNames(styles.About, styles.Wrapper)}>
             <Text
               classNames={{
@@ -97,19 +95,127 @@ const Template7 = () => (
             />
 
             <div className={styles.AboutList}>
-              {[1, 2, 3].map((index) => (
+              {[1, 2, 3].map(index => (
                 <Text
-                  key={index}               
+                  key={index}
                   classNames={{
                     root: styles.Description,
                     text: styles.DescriptionText,
-                  }} id={`about_text_${index}`}
+                  }}
+                  id={`about_text_${index}`}
                 />
               ))}
-
             </div>
           </div>
-        </Background>
+
+          <div className={styles.Hr} />
+
+          <div className={classNames(styles.Preview, styles.Wrapper)}>
+            <Smartphone
+              classNames={{
+                root: styles.Smartphone,
+                container: styles.SmartphoneContainer,
+              }}
+              id="preview_smartphone"
+            >
+              <Screenshots id="preview_screenshots" />
+            </Smartphone>
+
+            <div className={styles.Content}>
+              <Text
+                classNames={{
+                  root: styles.Slogan,
+                  text: styles.SloganText,
+                }}
+                id="preview_slogan"
+              />
+
+              <Text
+                classNames={{
+                  root: styles.Title,
+                  text: styles.TitleText,
+                }}
+                id="preview_title"
+              />
+
+              <div className={styles.PreviewGrid}>
+                {[1, 2, 3, 4].map(index => (
+                  <div key={index} className={styles.PreviewItem}>
+                    <Text
+                      classNames={{
+                        root: styles.PreviewTitle,
+                        text: styles.PreviewTitleText,
+                      }}
+                      id={`preview_${index}_title`}
+                    />
+
+                    <Text
+                      classNames={{
+                        root: styles.PreviewDescription,
+                        text: styles.PreviewDescriptionText,
+                      }}
+                      id={`preview_${index}_description`}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.Hr} />
+
+          <div className={classNames(styles.Quote, styles.Wrapper)}>
+            <Text
+              classNames={{
+                root: styles.QuoteTitle,
+                text: styles.QuoteTitleText,
+              }}
+              id="quote_title"
+            />
+
+            <Text
+              classNames={{
+                root: styles.QuoteAuthor,
+                text: styles.QuoteAuthorText,
+              }}
+              id="quote_author"
+            />
+          </div>
+
+          <div className={styles.Hr} />
+
+          <div className={classNames(styles.Download, styles.Wrapper)}>
+            <div className={styles.Content}>
+              <Text
+                classNames={{
+                  root: styles.Title,
+                  text: styles.TitleText,
+                }}
+                id="download_title"
+              />
+
+              <Text
+                classNames={{
+                  root: styles.Description,
+                  text: styles.DescriptionText,
+                }}
+                id="download_description"
+              />
+
+              <Store className={styles.Store} id="download_store" />
+            </div>
+
+            <Smartphone
+              classNames={{
+                root: styles.Smartphone,
+                container: styles.SmartphoneContainer,
+              }}
+              id="download_smartphone"
+            >
+              <Screenshots id="download_screenshots" />
+            </Smartphone>
+          </div>
+        </div>
       </div>
     )}
   </TemplateContext.Consumer>

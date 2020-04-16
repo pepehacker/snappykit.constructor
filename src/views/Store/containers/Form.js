@@ -25,7 +25,13 @@ import {
 // Styles
 import styles from './Form.scss';
 
-const StoreForm = ({ handleSubmit, isPro, provider, switcher = STORE_BACKGROUND, ...props }) => {
+const StoreForm = ({
+  handleSubmit,
+  isPro,
+  provider,
+  switcher = STORE_BACKGROUND,
+  ...props
+}) => {
   const rootClassNames = classNames(styles.Root, {
     [styles.RootCurrentColor]: switcher === STORE_COLOR,
     [styles.RootCurrentBackground]: switcher === STORE_BACKGROUND,
@@ -63,12 +69,18 @@ const StoreForm = ({ handleSubmit, isPro, provider, switcher = STORE_BACKGROUND,
   );
 };
 
-const selector = formValueSelector('storeForm');
-const mapStateToProps: Function = (state: Object, { websiteId }): Object => ({
-  isPro: isPro(state),
-  provider: getWebsiteProvider(state),
-  switcher: selector(state, 'switcher'),
-});
+const mapStateToProps: Function = (
+  state: Object,
+  { form, websiteId },
+): Object => {
+  const selector = formValueSelector(form);
+
+  return {
+    isPro: isPro(state),
+    provider: getWebsiteProvider(state),
+    switcher: selector(state, 'switcher'),
+  };
+};
 
 export default compose(
   connect(mapStateToProps),

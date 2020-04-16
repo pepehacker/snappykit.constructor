@@ -21,10 +21,11 @@
 }
 
 .Common {
-  &Container {
-    display: flex;
-    justify-content: center;
-  }
+  align-items: center;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .Description {
@@ -33,10 +34,62 @@
   }
 }
 
+.Hr {
+  background-image: linear-gradient(to right, rgba(250, 250, 250, 0) 3%, #b4b5b5 50%, rgba(250, 250, 250, 0));
+  height: 1px;
+  width: 100%;
+}
+
 .Intro {
   &Container {
     display: flex;
     justify-content: center;
+  }
+}
+
+.Preview {
+  &Description {
+    &Text {
+      overflow: hidden;
+      word-break: normal !important;
+    }
+  }
+
+  &Grid {
+    & > *:nth-child(odd) {
+      align-items: flex-end;
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+    }
+  }
+
+  &Title {
+    &Text {
+      overflow: hidden;
+      text-transform: uppercase;
+      word-break: normal !important;
+    }
+  }
+}
+
+.Quote {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 786px !important;
+
+  &Author {
+    &Text {
+      overflow: hidden;
+      text-transform: uppercase;
+    }
+  }
+
+  &Title {
+    &Text {
+      overflow: hidden;
+    }
   }
 }
 

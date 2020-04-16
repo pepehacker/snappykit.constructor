@@ -9,7 +9,7 @@ import { TemplateContext } from 'template';
 // Styles
 import styles from './Link.scss';
 
-const TemplateLink = ({ children, className, to }) => (
+const TemplateLink = ({ children, className, exact, to }) => (
   <TemplateContext.Consumer>
     {({ isEditor }) => {
       const rootClassNames = classNames(className, styles.Root);
@@ -18,8 +18,9 @@ const TemplateLink = ({ children, className, to }) => (
         <NavLink
           activeClassName={styles.RootIsActive}
           className={rootClassNames}
-          onClick={(event) => event.stopPropagation()}
-          onMouseMove={(event) => event.stopPropagation()}
+          exact={exact}
+          onClick={event => event.stopPropagation()}
+          onMouseMove={event => event.stopPropagation()}
           to={to}
         >
           <div className={styles.Border} />

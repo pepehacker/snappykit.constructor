@@ -27,7 +27,7 @@ const Store = ({ handleChange, id, initialValues, websiteId }) => (
     <Container>
       <Form
         key={id}
-        form={id}
+        form={`storeForm_${id}`}
         initialValues={initialValues}
         onChange={handleChange}
         websiteId={websiteId}
@@ -54,7 +54,8 @@ export default compose(
     { updateWebsiteSection },
   ),
   withHandlers({
-    handleChange: ({ id, updateWebsiteSection, websiteId }): func => (value: Object): void =>
-      updateWebsiteSection(websiteId, id || STORE, value),
+    handleChange: ({ id, updateWebsiteSection, websiteId }): func => (
+      value: Object,
+    ): void => updateWebsiteSection(websiteId, id || STORE, value),
   }),
 )(Store);

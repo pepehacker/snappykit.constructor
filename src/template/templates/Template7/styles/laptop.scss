@@ -23,6 +23,15 @@
         }
       }
 
+      .Download {
+        margin: 200px 0 80px;
+
+        .Content {
+          margin: 0 260px 0 0;
+          width: 400px;
+        }
+      }
+
       .Intro {
         .Description {
           margin: 4px 0 0;
@@ -51,6 +60,72 @@
         }
       }
 
+      .Preview {
+        margin: 140px 0;
+
+        &Grid {
+          display: grid;
+          margin: 12px 0;
+
+          grid-template-columns: repeat(2, 1fr);
+          grid-column-gap: 60px;
+          grid-row-gap: 80px;
+          grid-template-rows: repeat(2, 1fr);
+        }
+
+        &Description {
+          margin: 8px 0 0;
+          max-height: 72px;
+
+          &Text {
+            font-size: 12px;
+            line-height: 24px;
+          }
+        }
+
+        &Title {
+          max-height: 32px;
+
+          &Text {
+            font-size: 12px;
+            line-height: 32px;
+          }
+        }
+
+        .Content {
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+          margin: 0 0 0 200px;
+          width: 480px;
+        }
+      }
+
+      .Quote {
+        margin: 84px 0;
+
+        &Author {
+          margin: 20px 0 0;
+          max-height: 16px;
+
+          &Text {
+            font-size: 12px;
+            letter-spacing: 1.7px;
+            line-height: 16px;
+          }
+        }
+
+        &Title {
+          text-align: center;
+          max-height: 120px;
+
+          &Text {
+            font-size: 26px;
+            line-height: 40px;
+          }
+        }
+      }
+
       .Slogan {
         max-height: 24px;
         top: 12px;
@@ -62,6 +137,8 @@
       }
 
       .Smartphone {
+        border-radius: 40px;
+        box-shadow: 0 5px 34px 0 rgba(0, 0, 0, .06);
         height: 476px;
         width: 236px;
 
