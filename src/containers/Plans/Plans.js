@@ -15,7 +15,15 @@ import List from './containers/List';
 import PriceList from './containers/PriceList';
 
 // Ducks
-import { getPeriod, getPrice, setPeriod, setPrice, MONTH, YEAR, PLANS_MODAL_ID } from './ducks';
+import {
+  getPeriod,
+  getPrice,
+  setPeriod,
+  setPrice,
+  MONTH,
+  YEAR,
+  PLANS_MODAL_ID
+} from './ducks';
 
 // Styles
 import styles from './Plans.scss';
@@ -24,30 +32,37 @@ type PlansType = {
   handleChange: Function,
   handleClose: Function,
   period: string,
-  price: string,
+  price: string
 };
 
-const Plans = ({ handleChange, handleClose, period, price }: PlansType): React.Element<Modal> => (
+const Plans = ({
+  handleChange,
+  handleClose,
+  period,
+  price
+}: PlansType): React.Element<Modal> => (
   <Modal id={PLANS_MODAL_ID} onClose={handleClose}>
     {({ isEntered }) => (
       <CSSTransition
         classNames={{
           enter: styles.RootAnimateEnter,
-          enterActive: styles.RootAnimateEnterActive,
+          enterActive: styles.RootAnimateEnterActive
         }}
         in={isEntered}
         timeout={400}
         unmountOnExit
       >
-        {state => (
+        {(state) => (
           <div
             className={classNames(styles.Root, {
-              [styles.RootWithPrice]: !!price,
+              [styles.RootWithPrice]: !!price
             })}
           >
             <div className={styles.Header}>
               <div className={styles.Title}>Pricing & Plans</div>
-              <div className={styles.Description}>Freedom of cost. Pay as you can.</div>
+              <div className={styles.Description}>
+                Freedom of cost. Pay as you can.
+              </div>
               <div className={styles.Choose}>Choose one of this:</div>
             </div>
 
@@ -58,10 +73,7 @@ const Plans = ({ handleChange, handleClose, period, price }: PlansType): React.E
             <div className={styles.Period}>
               <Tabs onChange={handleChange} value={period}>
                 <Tab label="MONTHLY" value={MONTH} />
-                <Tab
-                  info="Save 25%" label="ANNUALLY"
-                  value={YEAR}
-                />
+                <Tab info="Save 25%" label="ANNUALLY" value={YEAR} />
               </Tabs>
             </div>
 
@@ -77,16 +89,14 @@ const Plans = ({ handleChange, handleClose, period, price }: PlansType): React.E
 
 const mapStateToProps: Function = (state: Object) => ({
   period: getPeriod(state),
-  price: getPrice(state),
+  price: getPrice(state)
 });
 
 export default compose(
-  connect(
-    mapStateToProps,
-    { setPeriod, setPrice },
-  ),
+  connect(mapStateToProps, { setPeriod, setPrice }),
   withHandlers({
     handleClose: ({ setPrice }): Function => () => setPrice(null),
-    handleChange: ({ setPeriod }): Function => (period: string): boolean => setPeriod(period),
-  }),
+    handleChange: ({ setPeriod }): Function => (period: string): boolean =>
+      setPeriod(period)
+  })
 )(Plans);

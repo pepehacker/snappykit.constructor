@@ -16,21 +16,21 @@ import style from './common.scss';
 import validate, { max, required } from 'utils/validate';
 
 type DomainPrivacyFormPropTypes = {
-  handleSubmit: SyntheticEvent => void,
-  isPro: boolean,
+  handleSubmit: (SyntheticEvent) => void,
+  isPro: boolean
 };
 
-const DomainSeoForm = ({ handleSubmit, isPro }: DomainPrivacyFormPropTypes): React.Element<typeof Form> => (
+const DomainSeoForm = ({
+  handleSubmit,
+  isPro
+}: DomainPrivacyFormPropTypes): React.Element<typeof Form> => (
   <Form onSubmit={handleSubmit}>
     <div className={style.Group}>
-      <Input
-        isPro={!isPro} label="Title"
-        max={100} name="title"
-      />
+      <Input isPro={!isPro} label="Title" max={100} name="title" />
 
       <Textarea
         classNames={{
-          textarea: style.Textarea,
+          textarea: style.Textarea
         }}
         isPro={!isPro}
         label="Description"
@@ -40,7 +40,7 @@ const DomainSeoForm = ({ handleSubmit, isPro }: DomainPrivacyFormPropTypes): Rea
 
       <Textarea
         classNames={{
-          textarea: style.Textarea,
+          textarea: style.Textarea
         }}
         isPro={!isPro}
         label="Keywords"
@@ -51,8 +51,8 @@ const DomainSeoForm = ({ handleSubmit, isPro }: DomainPrivacyFormPropTypes): Rea
   </Form>
 );
 
-const mapStateToProps: Function = state => ({
-  isPro: isPro(state),
+const mapStateToProps: Function = (state) => ({
+  isPro: isPro(state)
 });
 
 export default compose(
@@ -62,7 +62,7 @@ export default compose(
     validate: validate({
       description: [max(200, 'Max 200 letters!')],
       keywords: [max(400, 'Max 400 letters!')],
-      title: [required(), max(100, 'Max 100 letters!')],
-    }),
-  }),
+      title: [required(), max(100, 'Max 100 letters!')]
+    })
+  })
 )(DomainSeoForm);

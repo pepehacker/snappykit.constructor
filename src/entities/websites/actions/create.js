@@ -7,7 +7,7 @@ import {
   STORE_APP_STORE_PREFIX,
   STORE_GOOGLE_PLAY_PREFIX,
   // Selectors
-  getFirstTemplate,
+  getFirstTemplate
 } from 'template';
 
 // Types
@@ -16,7 +16,7 @@ import { CREATE_WEBSITE } from '../types';
 export default ({ storeId, provider, ...values }): func => (
   dispatch: func,
   getState: func,
-  { api, history },
+  { api, history }
 ): Object<Promise> => {
   const { config, id: templateId } = getFirstTemplate();
   const { description, logo, title } = values;
@@ -36,16 +36,18 @@ export default ({ storeId, provider, ...values }): func => (
           store: {
             items: {
               [provider]: `${
-                provider === STORE_APP_STORE ? STORE_APP_STORE_PREFIX : STORE_GOOGLE_PLAY_PREFIX
-              }${storeId}`,
-            },
-          },
+                provider === STORE_APP_STORE
+                  ? STORE_APP_STORE_PREFIX
+                  : STORE_GOOGLE_PLAY_PREFIX
+              }${storeId}`
+            }
+          }
         },
-        config,
+        config
       ),
       isFetching: false,
-      provider: provider === STORE_APP_STORE ? 1 : 2,
-    },
+      provider: provider === STORE_APP_STORE ? 1 : 2
+    }
   });
 
   history.push('/new/editor/templates');

@@ -24,27 +24,22 @@ const SearchForm = ({ countries, handleSubmit }) => (
 
     <div className={styles.Controls}>
       <Select
-        name="country" placeholder="Choose a country"
+        name="country"
+        placeholder="Choose a country"
         variant={VARIANT.FLAT}
       >
         {countries.map(({ id, name }) => (
-          <SelectItem
-            key={id} label={name}
-            value={id}
-          />
+          <SelectItem key={id} label={name} value={id} />
         ))}
       </Select>
 
-      <Input
-        name="name" placeholder="App name"
-        variant={VARIANT.FLAT}
-      />
+      <Input name="name" placeholder="App name" variant={VARIANT.FLAT} />
     </div>
   </Form>
 );
 
 const mapStateToProps = (state: Object) => ({
-  countries: getCountryList(state),
+  countries: getCountryList(state)
 });
 
 export default compose(
@@ -52,6 +47,6 @@ export default compose(
   reduxForm({
     form: SEARCH_FORM_ID,
     // destroyOnUnmount: false,
-    enableReinitialize: true,
-  }),
+    enableReinitialize: true
+  })
 )(SearchForm);

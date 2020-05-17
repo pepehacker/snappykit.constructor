@@ -31,12 +31,12 @@ const EditorView = ({
 
   // Registes
   registerRoot,
-  registerContainer,
+  registerContainer
 }) => {
   const rootClassNames = classNames(styles.Root, {
     [styles.RootVariantDesktop]: view === VIEW.DESKTOP,
     [styles.RootVariantMobile]: view === VIEW.MOBILE,
-    [styles.RootVariantTablet]: view === VIEW.TABLET,
+    [styles.RootVariantTablet]: view === VIEW.TABLET
   });
 
   return (
@@ -48,10 +48,10 @@ const EditorView = ({
             isEditor: !isFullscreen,
             size: {
               height: size.height / scale,
-              width: size.width / scale,
+              width: size.width / scale
             },
             view,
-            websiteId: get(website, 'id', 'new'),
+            websiteId: get(website, 'id', 'new')
           }}
         >
           <div
@@ -61,7 +61,7 @@ const EditorView = ({
               minHeight: `${size.height / scale}px`,
               minWidth: `${size.width / scale}px`,
               maxWidth: `${size.width / scale}px`,
-              transform: `scale(${scale})`,
+              transform: `scale(${scale})`
             }}
           >
             <Template id={templateId} />
@@ -80,7 +80,7 @@ const EditorView = ({
           <i
             className={classNames('fal', {
               'fa-expand-alt': !isFullscreen,
-              'fa-compress-alt': isFullscreen,
+              'fa-compress-alt': isFullscreen
             })}
           />
         </button>
@@ -96,7 +96,7 @@ const mapStateToProps = ({ views, ...state }, { location }) => {
   return {
     ...get(views, 'editor'),
     website,
-    templateId: get(website, 'templateId'),
+    templateId: get(website, 'templateId')
   };
 };
 
@@ -117,14 +117,14 @@ export default withRouter(
           setFullscreenState(false),
         handleFullscreenTrigger: ({
           isFullscreen,
-          setFullscreenState,
+          setFullscreenState
         }) => () => {
           isFullscreen ? document.exitFullscreen() : $root.requestFullscreen();
 
           setTimeout(() => setFullscreenState(!isFullscreen), 100);
         },
         handleResize: ({ setScale, setSize, setTemplateSize, view }): func => (
-          event: Object,
+          event: Object
         ): void => {
           if ($root) {
             let newSize;
@@ -137,28 +137,28 @@ export default withRouter(
               case VIEW.DESKTOP:
                 newSize = {
                   height: Math.min(720, (rootWidth / 16) * 9),
-                  width: Math.min(1280, rootWidth),
+                  width: Math.min(1280, rootWidth)
                 };
                 newScale = newSize.width / 1280;
                 break;
               case VIEW.MOBILE:
                 newSize = {
                   height: Math.min(667, rootHeight),
-                  width: Math.min(375, (rootHeight / 16) * 9),
+                  width: Math.min(375, (rootHeight / 16) * 9)
                 };
                 newScale = newSize.width / 375;
                 break;
               case VIEW.TABLET:
                 newSize = {
                   height: Math.min(1024, rootHeight),
-                  width: Math.min(768, (rootHeight / 16) * 12),
+                  width: Math.min(768, (rootHeight / 16) * 12)
                 };
                 newScale = newSize.width / 768;
                 break;
               default:
                 newSize = {
                   height: rootHeight,
-                  width: rootWidth,
+                  width: rootWidth
                 };
                 newScale = 1;
                 break;
@@ -179,15 +179,15 @@ export default withRouter(
 
         // Updaters
         updateTemplateSize: ({ templateSize, setTemplateSize }): func => (
-          event: Object,
+          event: Object
         ) =>
           (get(templateSize, 'width') !== $container.firstChild.clientWidth ||
             get(templateSize, 'height') !==
               $container.firstChild.clientHeight) &&
           setTemplateSize({
             height: $container.firstChild.clientHeight,
-            width: $container.firstChild.clientWidth,
-          }),
+            width: $container.firstChild.clientWidth
+          })
       };
     }),
     withHandlers({}),
@@ -199,7 +199,7 @@ export default withRouter(
         document.addEventListener(
           'fullscreenchange',
           handleFullscreenExit,
-          false,
+          false
         );
         window.addEventListener('resize', handleResize, false);
       },
@@ -208,7 +208,7 @@ export default withRouter(
           isFullscreen,
           handleResize,
           updateTemplateSize,
-          view,
+          view
         } = this.props;
         // Update container size
         (view !== prevView || isFullscreen !== prevIsFullscreen) &&
@@ -218,7 +218,7 @@ export default withRouter(
       },
       componentWillUnmount() {
         window.removeEventListener('resize', this.props.handleResize, false);
-      },
-    }),
-  )(EditorView),
+      }
+    })
+  )(EditorView)
 );

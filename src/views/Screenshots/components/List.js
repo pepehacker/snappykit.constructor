@@ -29,8 +29,8 @@ const ComposedScreenshotList = compose(
       onChange &&
       onChange(value.filter((image: string) => image !== itemValue)),
     onSortEnd: ({ onChange, value }) => ({ oldIndex = 0, newIndex = 0 }) =>
-      onChange && onChange(arrayMove(value, oldIndex, newIndex)),
-  }),
+      onChange && onChange(arrayMove(value, oldIndex, newIndex))
+  })
 )(SortableContainer(ScreenshotList));
 
 export default (props: Object) => (

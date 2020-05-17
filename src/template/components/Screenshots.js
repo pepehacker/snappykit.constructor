@@ -13,7 +13,7 @@ import {
   // Provider
   TemplateContext,
   // Selectors
-  getSectionById,
+  getSectionById
 } from 'template';
 
 // Styles
@@ -24,7 +24,7 @@ const TemplateScreenshots = ({
   classNames: { root: rootClassName, item: itemClassName } = {},
   id,
   settings,
-  variant,
+  variant
 }) => (
   <TemplateContext.Consumer>
     {({ data, isEditor, view, websiteId }) => {
@@ -34,7 +34,7 @@ const TemplateScreenshots = ({
       const rootClassNames = classNames(className, rootClassName, styles.Root, {
         [styles.RootViewDesktop]: view === VIEW.DESKTOP,
         [styles.RootViewMobile]: view === VIEW.MOBILE,
-        [styles.RootViewTablet]: view === VIEW.TABLET,
+        [styles.RootViewTablet]: view === VIEW.TABLET
       });
 
       // const itemClassNames = classNames(itemClassName, styles.Item);
@@ -77,9 +77,9 @@ const TemplateScreenshots = ({
 TemplateScreenshots.propTypes = {
   className: PropTypes.string,
   classNames: PropTypes.shape({
-    root: PropTypes.string,
+    root: PropTypes.string
   }),
-  id: PropTypes.string,
+  id: PropTypes.string
 };
 
 export default TemplateScreenshots;

@@ -20,7 +20,7 @@ import styles from './common.scss';
 import {
   BACKGROUND_COLOR,
   BACKGROUND_GRADIENT,
-  BACKGROUND_IMAGE,
+  BACKGROUND_IMAGE
 } from 'template';
 
 type BackgroundImageFormType = {
@@ -29,7 +29,7 @@ type BackgroundImageFormType = {
   handleSubmit: (values: Object) => Function,
   isLoaded: boolean,
   query: string,
-  result: Array<string>,
+  result: Array<string>
 };
 
 const BackgroundImageForm = ({
@@ -46,7 +46,7 @@ const BackgroundImageForm = ({
   handleReset,
   // State
   isEdit,
-  isLoaded,
+  isLoaded
 }: BackgroundImageFormType): React.Element<typeof Form> => (
   <Form onSubmit={handleSubmit}>
     {isEdit ? (
@@ -120,7 +120,7 @@ const mapStateToProps = (state: Object, { id }) => {
 
   return {
     image: selector(state, 'image'),
-    query: selector(state, 'search'),
+    query: selector(state, 'search')
   };
 };
 
@@ -132,7 +132,7 @@ export default compose(
       ? BACKGROUND_COLOR
       : has(initialValues, 'image.gradient')
       ? BACKGROUND_GRADIENT
-      : null,
+      : null
   ),
   withState('query', 'setQuery', ''),
   withState('result', 'setResult', []),
@@ -157,8 +157,8 @@ export default compose(
               src: get(photo, 'urls.regular'),
               user: {
                 link: get(photo, 'user.links.html'),
-                name: get(photo, 'user.name'),
-              },
+                name: get(photo, 'user.name')
+              }
             }));
 
             setLoaded(false);
@@ -170,7 +170,7 @@ export default compose(
     return {
       handleCancel: ({ setEdit }): Function => () => setEdit(false),
       handleChange: ({ query, setQuery, setResult }): Function => (
-        event: SyntheticEvent,
+        event: SyntheticEvent
       ): void => {
         const searchString = get(event, 'target.value', '').trim();
 
@@ -182,7 +182,7 @@ export default compose(
         }
       },
       handleEdit: ({ change, dispatch, image, setEdit, setEditType }) => (
-        editType: string,
+        editType: string
       ) => {
         setEdit(true);
         setEditType(editType);
@@ -196,9 +196,9 @@ export default compose(
                 : {
                     angle: 0,
                     from: 'rgba(94, 122, 219, 0.5)',
-                    to: 'rgba(131, 89, 193, 0.5)',
-                  },
-            ),
+                    to: 'rgba(131, 89, 193, 0.5)'
+                  }
+            )
           );
       },
       handleReset: ({
@@ -206,15 +206,15 @@ export default compose(
         dispatch,
         image,
         setEdit,
-        setEditType,
+        setEditType
       }) => () => {
         dispatch(change(BACKGROUND_IMAGE, { src: get(image, 'src') }));
 
         setEdit(false);
         setEditType(null);
-      },
+      }
     };
-  }),
+  })
   // lifecycle({
   //   componentDidMount() {
   //     const { change, initialValues } = this.props;

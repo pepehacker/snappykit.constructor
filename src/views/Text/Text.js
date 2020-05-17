@@ -35,7 +35,7 @@ const Text = ({ id, initialValues, handleChange, websiteId, withText }) => (
 
 const mapStateToProps = (state: Object, { location }) => {
   const match = matchPath(get(location, 'pathname'), {
-    path: '/:websiteId/editor/:sectionId/:id?',
+    path: '/:websiteId/editor/:sectionId/:id?'
   });
 
   const id = get(match, 'params.id');
@@ -46,17 +46,15 @@ const mapStateToProps = (state: Object, { location }) => {
     id,
     initialValues,
     websiteId,
-    withText: id && get(initialValues, 'text') !== undefined,
+    withText: id && get(initialValues, 'text') !== undefined
   };
 };
 
 export default compose(
-  connect(
-    mapStateToProps,
-    { updateWebsiteSection },
-  ),
+  connect(mapStateToProps, { updateWebsiteSection }),
   withHandlers({
-    handleChange: ({ id, updateWebsiteSection, websiteId }): func => (value: Object): void =>
-      updateWebsiteSection(websiteId, id, value),
-  }),
+    handleChange: ({ id, updateWebsiteSection, websiteId }): func => (
+      value: Object
+    ): void => updateWebsiteSection(websiteId, id, value)
+  })
 )(Text);

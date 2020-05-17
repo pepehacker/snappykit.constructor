@@ -18,9 +18,9 @@ export default (data: Object, config: Object): Object => {
           set(
             templateData,
             `section.${sectionId}`,
-            schema.cast(get(data, `section.${sectionId}`, defaultData)),
+            schema.cast(get(data, `section.${sectionId}`, defaultData))
           );
-      },
+      }
     );
   }
 

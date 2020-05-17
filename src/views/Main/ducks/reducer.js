@@ -2,11 +2,11 @@
 import {
   FETCH_WEBSITES_REQUEST,
   FETCH_WEBSITES_SUCCESS,
-  FETCH_WEBSITES_FAILURE,
+  FETCH_WEBSITES_FAILURE
 } from 'entities/websites/types';
 
 const initialValues = {
-  isFetching: true,
+  isFetching: true
 };
 
 export default (state = initialValues, action: Object) => {

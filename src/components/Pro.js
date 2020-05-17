@@ -13,25 +13,25 @@ import { openModal } from 'services/modals';
 import style from './Pro.scss';
 
 const VARIANT = {
-  DEFAULT: 'default',
+  DEFAULT: 'default'
 };
 
 type ProPropTypes = {
   className: string,
-  handleClick: SyntheticEvent => void,
+  handleClick: (SyntheticEvent) => void,
   title: string,
-  variant: VARIANT.DEFAULT,
+  variant: VARIANT.DEFAULT
 };
 
 const Pro = ({
   className,
   handleClick,
   title = 'Pro',
-  variant = VARIANT.DEFAULT,
+  variant = VARIANT.DEFAULT
 }: ProPropTypes): React.Element<'div'> => (
   <div
     className={classNames(className, style.Root, {
-      [style.RootVariantDefault]: variant === VARIANT.DEFAULT,
+      [style.RootVariantDefault]: variant === VARIANT.DEFAULT
     })}
     onClick={handleClick}
     role="button"
@@ -42,11 +42,9 @@ const Pro = ({
 );
 
 export default compose(
-  connect(
-    null,
-    { openModal },
-  ),
+  connect(null, { openModal }),
   withHandlers({
-    handleClick: ({ openModal }): Function => (): void => openModal(PLANS_MODAL_ID),
-  }),
+    handleClick: ({ openModal }): Function => (): void =>
+      openModal(PLANS_MODAL_ID)
+  })
 )(Pro);

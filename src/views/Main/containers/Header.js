@@ -30,13 +30,13 @@ const MainHeader = ({
 
   // State
   isFetching,
-  isPro,
+  isPro
 }) => {
   const rootClassNames = classNames(styles.Root, {
     [styles.RootIsFetching]: isFetching,
     [styles.RootWithActions]: !!website,
     [styles.RootWithSteps]: !!step,
-    [styles.RootWithTitle]: !!website,
+    [styles.RootWithTitle]: !!website
   });
 
   return (
@@ -45,10 +45,7 @@ const MainHeader = ({
         <div className={styles.Left}>
           <div className={styles.Logo}>
             <Link className={styles.LogoLink} to="/">
-              <img
-                alt="SnappyKit" className={styles.LogoImage}
-                src={logo}
-              />
+              <img alt="SnappyKit" className={styles.LogoImage} src={logo} />
             </Link>
 
             {isPro && <div className={styles.Pro}>PRO</div>}
@@ -56,9 +53,7 @@ const MainHeader = ({
         </div>
 
         <div className={styles.Center}>
-          <div className={styles.Title}>
-            {get(website, 'title')}
-          </div>
+          <div className={styles.Title}>{get(website, 'title')}</div>
 
           <div className={styles.Steps}>
             <Steps step={step} />
@@ -69,10 +64,7 @@ const MainHeader = ({
               BACK
             </Link>
 
-            <button
-              className={styles.Save} onClick={handleSave}
-              type="button"
-            >
+            <button className={styles.Save} onClick={handleSave} type="button">
               {isFetching && <Spinner />}
               {step === 2 ? 'NEXT' : 'SAVE'}
             </button>
@@ -99,9 +91,16 @@ const mapStateToProps = (state: Object, { location }) => {
   const searchMatch = matchPath(pathname, { path: '/search' });
 
   // Website
-  const websiteDomainMatch = matchPath(pathname, { path: '/:websiteId/domain' });
-  const websiteEditorMatch = matchPath(pathname, { path: '/:websiteId/editor' });
-  const websiteId = get(websiteDomainMatch || websiteEditorMatch, 'params.websiteId');
+  const websiteDomainMatch = matchPath(pathname, {
+    path: '/:websiteId/domain'
+  });
+  const websiteEditorMatch = matchPath(pathname, {
+    path: '/:websiteId/editor'
+  });
+  const websiteId = get(
+    websiteDomainMatch || websiteEditorMatch,
+    'params.websiteId'
+  );
   const website = getWebsiteById(state, websiteId);
 
   return {
@@ -109,18 +108,16 @@ const mapStateToProps = (state: Object, { location }) => {
     websiteId,
     isFetching: get(website, 'isFetching'),
     isPro: isPro(state),
-    step: launchMatch ? 3 : editorMatch || domainMatch ? 2 : searchMatch ? 1 : 0,
+    step: launchMatch ? 3 : editorMatch || domainMatch ? 2 : searchMatch ? 1 : 0
   };
 };
 
 export default withRouter(
   compose(
-    connect(
-      mapStateToProps,
-      { saveWebsite },
-    ),
+    connect(mapStateToProps, { saveWebsite }),
     withHandlers({
-      handleSave: ({ saveWebsite, websiteId }): func => (event: Object) => saveWebsite(websiteId),
-    }),
-  )(MainHeader),
+      handleSave: ({ saveWebsite, websiteId }): func => (event: Object) =>
+        saveWebsite(websiteId)
+    })
+  )(MainHeader)
 );

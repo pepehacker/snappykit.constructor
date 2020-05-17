@@ -11,8 +11,8 @@ export const TEMPLATES = [Template1, Template2, Template3, Template6].map(
   ({ config, ...props }) => ({
     ...props,
     config,
-    id: get(config, 'id'),
-  }),
+    id: get(config, 'id')
+  })
 );
 
 export const getFirstTemplate = (): Object => TEMPLATES[0];
@@ -21,7 +21,7 @@ export const getTemplateById = (id: number): Object =>
   TEMPLATES.filter(({ id: templateId }) => templateId === id)[0] || {};
 
 export const TemplateContext = createContext({
-  websiteId: 'new',
+  websiteId: 'new'
 });
 
 export { default } from './Template';

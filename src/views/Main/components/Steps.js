@@ -10,7 +10,7 @@ const MainHeaderSteps = ({ step }) => (
   <CSSTransition
     classNames={{
       enter: styles.RootAnimateEnter,
-      enterActive: styles.RootAnimateEnterActive,
+      enterActive: styles.RootAnimateEnterActive
     }}
     in={!!step}
     timeout={400}
@@ -18,39 +18,36 @@ const MainHeaderSteps = ({ step }) => (
   >
     {(state: string) => (
       <div className={styles.Root}>
-        {STEPS.map(
-          (title: string, index: number): func => {
-            const stepClassNames = classNames(styles.Step, {
-              [styles.StepIsFinished]: step > index + 1,
-              [styles.StepIsSelected]: step === index + 1,
-            });
+        {STEPS.map((title: string, index: number): func => {
+          const stepClassNames = classNames(styles.Step, {
+            [styles.StepIsFinished]: step > index + 1,
+            [styles.StepIsSelected]: step === index + 1
+          });
 
-            return (
-              <CSSTransition
-                key={index}
-                classNames={{
-                  enter: styles.StepAnimateEnter,
-                  enterActive: styles.StepAnimateEnterActive,
-                }}
-                in={state === 'entered'}
-                timeout={{ enter: 700, exit: 0 }}
-                unmountOnExit
+          return (
+            <CSSTransition
+              key={index}
+              classNames={{
+                enter: styles.StepAnimateEnter,
+                enterActive: styles.StepAnimateEnterActive
+              }}
+              in={state === 'entered'}
+              timeout={{ enter: 700, exit: 0 }}
+              unmountOnExit
+            >
+              <div
+                className={stepClassNames}
+                style={{ transitionDelay: `${0.1 * index}s` }}
               >
-                <div className={stepClassNames} style={{ transitionDelay: `${0.1 * index}s` }}>
-                  <div className={styles.Index}>
-                    <div className={styles.IndexContent}>
-                      {index + 1}
-                    </div>
-                  </div>
-
-                  <div className={styles.Title}>
-                    {title}
-                  </div>
+                <div className={styles.Index}>
+                  <div className={styles.IndexContent}>{index + 1}</div>
                 </div>
-              </CSSTransition>
-            );
-          },
-        )}
+
+                <div className={styles.Title}>{title}</div>
+              </div>
+            </CSSTransition>
+          );
+        })}
       </div>
     )}
   </CSSTransition>

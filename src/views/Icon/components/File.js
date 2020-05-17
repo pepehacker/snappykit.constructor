@@ -10,22 +10,11 @@ import { Field } from 'components/Form';
 // Styles
 import styles from './File.scss';
 
-const IconField = ({
-  handleChange,
-  name,
-  value,
-}) => (
+const IconField = ({ handleChange, name, value }) => (
   <div className={styles.Root}>
     <div className={styles.Preview}>
-      <label
-        className={styles.Label}
-        htmlFor={name}
-      >
-        <img
-          alt="Icon Logo"
-          className={styles.Icon}
-          src={value}
-        />
+      <label className={styles.Label} htmlFor={name}>
+        <img alt="Icon Logo" className={styles.Icon} src={value} />
 
         <div className={styles.Refresh} />
 
@@ -39,9 +28,7 @@ const IconField = ({
       </label>
     </div>
 
-    <div className={styles.Title}>
-      123
-    </div>
+    <div className={styles.Title}>123</div>
   </div>
 );
 
@@ -53,23 +40,22 @@ const ComposedIconField = compose(
       if (file) {
         new ImageCompressor(file, {
           height: 1334,
-          quality: .8,
+          quality: 0.8,
           width: 750,
           success: (result) => {
             const reader = new FileReader();
 
             reader.readAsDataURL(result);
             reader.onload = () => onChange && onChange(reader.result);
-          },
+          }
         });
       }
-    },
+    }
   })
 )(IconField);
 
-export default props => (
+export default (props) => (
   <Field {...props}>
     <ComposedIconField />
   </Field>
 );
-

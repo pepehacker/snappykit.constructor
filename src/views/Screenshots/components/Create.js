@@ -7,14 +7,9 @@ import ImageCompressor from 'image-compressor.js';
 // Styles
 import styles from './Create.scss';
 
-const ScreenshotsCreate = ({
-  handleChange,
-}) => (
+const ScreenshotsCreate = ({ handleChange }) => (
   <div className={styles.Root}>
-    <label
-      className={styles.Label}
-      htmlFor="screenshotsUpload"
-    >
+    <label className={styles.Label} htmlFor="screenshotsUpload">
       <div className={styles.Icon} />
     </label>
 
@@ -36,16 +31,16 @@ export default compose(
       if (file) {
         new ImageCompressor(file, {
           height: 1334,
-          quality: .8,
+          quality: 0.8,
           width: 750,
           success: (result) => {
             const reader = new FileReader();
 
             reader.readAsDataURL(result);
             reader.onload = () => onCreate && onCreate(reader.result);
-          },
+          }
         });
       }
-    },
+    }
   })
 )(ScreenshotsCreate);

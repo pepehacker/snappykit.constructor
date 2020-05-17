@@ -20,15 +20,17 @@ import { SCREENSHOTS } from 'template';
 const Screenshots = ({ handleChange, id, initialValues }) => (
   <Sidebar info="750x1334" title="Screenshots">
     <Form
-      key={id} form={id}
-      initialValues={initialValues} onChange={handleChange}
+      key={id}
+      form={id}
+      initialValues={initialValues}
+      onChange={handleChange}
     />
   </Sidebar>
 );
 
 const mapStateToProps = (state: Object, { location }): Object => {
   const match = matchPath(get(location, 'pathname'), {
-    path: '/:websiteId/editor/:sectionId/:id?',
+    path: '/:websiteId/editor/:sectionId/:id?'
   });
 
   const id = get(match, 'params.id');
@@ -39,12 +41,10 @@ const mapStateToProps = (state: Object, { location }): Object => {
 };
 
 export default compose(
-  connect(
-    mapStateToProps,
-    { updateWebsiteSection },
-  ),
+  connect(mapStateToProps, { updateWebsiteSection }),
   withHandlers({
-    handleChange: ({ id, updateWebsiteSection, websiteId }): func => (value: Object): void =>
-      updateWebsiteSection(websiteId, id || SCREENSHOTS, value),
-  }),
+    handleChange: ({ id, updateWebsiteSection, websiteId }): func => (
+      value: Object
+    ): void => updateWebsiteSection(websiteId, id || SCREENSHOTS, value)
+  })
 )(Screenshots);

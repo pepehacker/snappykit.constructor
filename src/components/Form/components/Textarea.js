@@ -16,14 +16,14 @@ const FormTextarea = ({
   onChange,
   readOnly,
   type = 'text',
-  value,
+  value
 }) => {
   const rootClassNames: string = classNames(className, style.Root, {
-    [style.RootIsReadOnly]: readOnly,
+    [style.RootIsReadOnly]: readOnly
   });
   const textareaClassNames: string = classNames(
     textareaClassName,
-    style.Textarea,
+    style.Textarea
   );
 
   return (
@@ -44,13 +44,13 @@ const FormTextarea = ({
 
 FormTextarea.propTypes = {
   classNames: PropTypes.shape({
-    textarea: PropTypes.string,
+    textarea: PropTypes.string
   }),
   id: PropTypes.string,
   name: PropTypes.string,
   onChange: PropTypes.func,
   type: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.string
 };
 
 export default (props: Object) => (

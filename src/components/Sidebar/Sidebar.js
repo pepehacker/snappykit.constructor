@@ -19,11 +19,11 @@ const Sidebar = ({
   info,
   handleChange,
   tabs,
-  title,
+  title
 }: SidebarType): React.Element<'div'> => (
   <div
     className={classNames(styles.Root, {
-      [styles.RootWithTabs]: tabs && tabs.length > 0,
+      [styles.RootWithTabs]: tabs && tabs.length > 0
     })}
   >
     <div className={styles.Header}>
@@ -63,7 +63,7 @@ const Sidebar = ({
                   enter: styles.ItemAnimateEnter,
                   enterActive: styles.ItemAnimateEnterActive,
                   exit: styles.ItemAnimateExit,
-                  exitActive: styles.ItemAnimateExitActive,
+                  exitActive: styles.ItemAnimateExitActive
                 }}
                 in
                 timeout={{ exit: 400, enter: 600 }}
@@ -71,7 +71,7 @@ const Sidebar = ({
               >
                 {React.cloneElement(child)}
               </CSSTransition>
-            ),
+            )
         )}
       </TransitionGroup>
     </div>
@@ -82,10 +82,10 @@ export default compose(
   withState(
     'currentIndex',
     'setCurrentIndex',
-    ({ currentIndex = 0 }) => currentIndex,
+    ({ currentIndex = 0 }) => currentIndex
   ),
   withHandlers({
     handleChange: ({ setCurrentIndex }): Function => (index: number) =>
-      setCurrentIndex(index),
-  }),
+      setCurrentIndex(index)
+  })
 )(Sidebar);

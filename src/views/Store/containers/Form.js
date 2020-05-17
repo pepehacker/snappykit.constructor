@@ -19,16 +19,22 @@ import {
   STORE_APP_STORE_PREFIX,
   STORE_GOOGLE_PLAY_PREFIX,
   STORE_BACKGROUND,
-  STORE_COLOR,
+  STORE_COLOR
 } from 'template';
 
 // Styles
 import styles from './Form.scss';
 
-const StoreForm = ({ handleSubmit, isPro, provider, switcher = STORE_BACKGROUND, ...props }) => {
+const StoreForm = ({
+  handleSubmit,
+  isPro,
+  provider,
+  switcher = STORE_BACKGROUND,
+  ...props
+}) => {
   const rootClassNames = classNames(styles.Root, {
     [styles.RootCurrentColor]: switcher === STORE_COLOR,
-    [styles.RootCurrentBackground]: switcher === STORE_BACKGROUND,
+    [styles.RootCurrentBackground]: switcher === STORE_BACKGROUND
   });
 
   return (
@@ -67,10 +73,10 @@ const selector = formValueSelector('storeForm');
 const mapStateToProps: Function = (state: Object, { websiteId }): Object => ({
   isPro: isPro(state),
   provider: getWebsiteProvider(state),
-  switcher: selector(state, 'switcher'),
+  switcher: selector(state, 'switcher')
 });
 
 export default compose(
   connect(mapStateToProps),
-  reduxForm({ form: 'storeForm' }),
+  reduxForm({ form: 'storeForm' })
 )(StoreForm);

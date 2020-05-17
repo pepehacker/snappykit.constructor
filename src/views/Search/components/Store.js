@@ -13,11 +13,11 @@ import styles from './Store.scss';
 
 const SearchStore = ({ handleClick, value }) => {
   const appleClassNames = classNames(styles.Store, styles.StoreVariantApple, {
-    [styles.StoreIsActive]: value === STORE_APPLE_ID,
+    [styles.StoreIsActive]: value === STORE_APPLE_ID
   });
 
   const googleClassNames = classNames(styles.Store, styles.StoreVariantGoogle, {
-    [styles.StoreIsActive]: value === STORE_GOOGLE_ID,
+    [styles.StoreIsActive]: value === STORE_GOOGLE_ID
   });
 
   return (
@@ -47,8 +47,9 @@ const SearchStore = ({ handleClick, value }) => {
 
 const ComposedSearchStore = compose(
   withHandlers({
-    handleClick: ({ onChange }): func => (store: string): void => onChange && onChange(store),
-  }),
+    handleClick: ({ onChange }): func => (store: string): void =>
+      onChange && onChange(store)
+  })
 )(SearchStore);
 
 export default (props: Object) => (

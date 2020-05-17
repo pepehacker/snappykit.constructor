@@ -10,7 +10,7 @@ import {
   // Price
   PRICE_AVERAGE,
   PRICE_MAX,
-  PRICE_MIN,
+  PRICE_MIN
 } from '../ducks';
 
 const FEATURES = [
@@ -21,7 +21,7 @@ const FEATURES = [
   'No Snappykit’s brand ads',
   'Terms of use',
   'Privacy policy',
-  'Add the second app link',
+  'Add the second app link'
 ];
 
 export default [
@@ -32,10 +32,10 @@ export default [
       'App website',
       '4 website templates',
       'Search from App Store',
-      'Search from Google Play',
+      'Search from Google Play'
     ],
     productIds: 0,
-    title: 'LITE',
+    title: 'LITE'
   },
   {
     id: PLAN_BASIC,
@@ -45,15 +45,15 @@ export default [
       [MONTH]: {
         [PRICE_MIN]: 551696,
         [PRICE_AVERAGE]: 551701,
-        [PRICE_MAX]: 551704,
+        [PRICE_MAX]: 551704
       },
       [YEAR]: {
         [PRICE_MIN]: 551707,
         [PRICE_AVERAGE]: 551710,
-        [PRICE_MAX]: 551713,
-      },
+        [PRICE_MAX]: 551713
+      }
     },
-    title: 'BASIC',
+    title: 'BASIC'
   },
   {
     id: PLAN_PRO,
@@ -63,15 +63,15 @@ export default [
       [MONTH]: {
         [PRICE_MIN]: 551699,
         [PRICE_AVERAGE]: 551702,
-        [PRICE_MAX]: 551705,
+        [PRICE_MAX]: 551705
       },
       [YEAR]: {
         [PRICE_MIN]: 551708,
         [PRICE_AVERAGE]: 551711,
-        [PRICE_MAX]: 551714,
-      },
+        [PRICE_MAX]: 551714
+      }
     },
-    title: 'PRO',
+    title: 'PRO'
   },
   {
     id: PLAN_AGENCY,
@@ -81,14 +81,14 @@ export default [
       [MONTH]: {
         [PRICE_MIN]: 551700,
         [PRICE_AVERAGE]: 551703,
-        [PRICE_MAX]: 551706,
+        [PRICE_MAX]: 551706
       },
       [YEAR]: {
         [PRICE_MIN]: 551709,
         [PRICE_AVERAGE]: 551712,
-        [PRICE_MAX]: 551715,
-      },
+        [PRICE_MAX]: 551715
+      }
     },
-    title: 'AGENCY',
-  },
+    title: 'AGENCY'
+  }
 ];

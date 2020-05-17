@@ -13,13 +13,22 @@ import { Field } from 'components/Form';
 import { getSectionById } from 'entities/websites/selector';
 
 // Template
-import { StoreButton, STORE, STORE_APP_STORE, STORE_BACKGROUND, STORE_COLOR } from 'template';
+import {
+  StoreButton,
+  STORE,
+  STORE_APP_STORE,
+  STORE_BACKGROUND,
+  STORE_COLOR
+} from 'template';
 
 // Styles
 import styles from './ColorSwitcher.scss';
 
 const StoreColorSwitcher = ({ background, color, handleClick }) => {
-  const backgroundClassNames = classNames(styles.Trigger, styles.TriggerBackground);
+  const backgroundClassNames = classNames(
+    styles.Trigger,
+    styles.TriggerBackground
+  );
   const textClassNames = classNames(styles.Trigger, styles.TriggerText);
 
   return (
@@ -33,7 +42,8 @@ const StoreColorSwitcher = ({ background, color, handleClick }) => {
         />
 
         <StoreButton
-          background={background} color={color}
+          background={background}
+          color={color}
           variant={STORE_APP_STORE}
         />
 
@@ -50,12 +60,12 @@ const StoreColorSwitcher = ({ background, color, handleClick }) => {
 
 StoreColorSwitcher.propTypes = {
   background: PropTypes.string,
-  color: PropTypes.string,
+  color: PropTypes.string
 };
 
 const mapStateToProps = (state: Object, { location }): Object => {
   const match = matchPath(get(location, 'pathname'), {
-    path: '/:websiteId/editor/:sectionId/:id?',
+    path: '/:websiteId/editor/:sectionId/:id?'
   });
 
   const id = get(match, 'params.id');
@@ -64,7 +74,7 @@ const mapStateToProps = (state: Object, { location }): Object => {
   return {
     ...getSectionById(state, websiteId, id || STORE),
     id,
-    websiteId,
+    websiteId
   };
 };
 
@@ -72,9 +82,10 @@ const ComposedStoreColorSwitcher = withRouter(
   compose(
     connect(mapStateToProps),
     withHandlers({
-      handleClick: ({ onChange }) => (value: string) => onChange && onChange(value),
-    }),
-  )(StoreColorSwitcher),
+      handleClick: ({ onChange }) => (value: string) =>
+        onChange && onChange(value)
+    })
+  )(StoreColorSwitcher)
 );
 
 export default (props: Object) => (

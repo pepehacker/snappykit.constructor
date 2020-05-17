@@ -28,13 +28,16 @@ const reducer = combineReducers({
   entities,
   form,
   services,
-  views,
+  views
 });
 
 export default (history: Object) =>
   createStore(
     reducer,
     composeEnhancers(
-      applyMiddleware(formMiddleware, thunkMiddleware.withExtraArgument({ api, history, schema })),
-    ),
+      applyMiddleware(
+        formMiddleware,
+        thunkMiddleware.withExtraArgument({ api, history, schema })
+      )
+    )
   );

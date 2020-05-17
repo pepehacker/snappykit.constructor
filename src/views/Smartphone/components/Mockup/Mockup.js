@@ -23,14 +23,14 @@ import styles from './Mockup.scss';
 import { SMARTPHONE_MODEL, SMARTPHONE_PRO_LIST } from 'template/config';
 
 type SmartphoneMockupPropTypes = {
-  handleClick: SyntheticEvent => void,
+  handleClick: (SyntheticEvent) => void,
   isPro: boolean,
   model: SMARTPHONE_MODEL.IPHONE | SMARTPHONE_MODEL.PIXEL,
   style:
     | SMARTPHONE_STYLE.CLASSIC
     | SMARTPHONE_STYLE.CONCEPT
     | SMARTPHONE_STYLE.FLAT,
-  value: number | string,
+  value: number | string
 };
 
 const SmartphoneMockup = ({
@@ -38,7 +38,7 @@ const SmartphoneMockup = ({
   isPro,
   model,
   style,
-  value,
+  value
 }: SmartphoneMockupPropTypes): React.Element<'div'> => (
   <div className={styles.Root}>
     {get(MOCKUP_ITEMS, `${model}.${style}`, []).map((id: string) => (
@@ -58,17 +58,17 @@ const selector = formValueSelector(SMARTPHONE_FORM_ID);
 const mapStateToProps = (state, { model, style }) => ({
   isPro: isPro(state),
   model: selector(state, 'model'),
-  style: selector(state, 'style'),
+  style: selector(state, 'style')
 });
 
 const ComposedSmartphoneMockup = compose(
   connect(mapStateToProps),
   withHandlers({
-    handleClick: ({ onChange }) => value => onChange && onChange(value),
-  }),
+    handleClick: ({ onChange }) => (value) => onChange && onChange(value)
+  })
 )(SmartphoneMockup);
 
-export default props => (
+export default (props) => (
   <Field {...props}>
     <ComposedSmartphoneMockup />
   </Field>

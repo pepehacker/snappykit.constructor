@@ -10,5 +10,5 @@ export default {
   profile,
   store,
   subscriptions,
-  websites,
+  websites
 };

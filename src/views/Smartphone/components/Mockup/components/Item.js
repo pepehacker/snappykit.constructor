@@ -14,12 +14,12 @@ import styles from './Item.scss';
 
 type SmartphoneMockupItemPropTypes = {
   id: number | string,
-  handleClick: SyntheticEvent => void,
-  handleLoad: SyntheticEvent => void,
+  handleClick: (SyntheticEvent) => void,
+  handleLoad: (SyntheticEvent) => void,
   isCurrent: boolean,
   isLoaded: boolean,
   isPro: boolean,
-  model: SMARTPHONE_MODEL.IPHONE | SMARTPHONE_MODEL.PIXEL,
+  model: SMARTPHONE_MODEL.IPHONE | SMARTPHONE_MODEL.PIXEL
 };
 
 const SmartphoneMockupItem = ({
@@ -31,7 +31,7 @@ const SmartphoneMockupItem = ({
   // State
   isCurrent,
   isLoaded,
-  isPro,
+  isPro
 }: SmartphoneMockupItemPropTypes): React.Element<'div'> => {
   const className = classNames(styles.Root, {
     [styles.RootIsCurrent]: isCurrent,
@@ -39,7 +39,7 @@ const SmartphoneMockupItem = ({
     [styles.RootIsPro]: isPro,
 
     [styles.RootVariantIphone]: model === SMARTPHONE_MODEL.IPHONE,
-    [styles.RootVariantPixel]: model === SMARTPHONE_MODEL.PIXEL,
+    [styles.RootVariantPixel]: model === SMARTPHONE_MODEL.PIXEL
   });
 
   return (
@@ -68,6 +68,6 @@ export default compose(
   withState('isLoaded', 'setLoad', true),
   withHandlers({
     handleClick: ({ id, onClick }) => () => onClick && onClick(id),
-    handleLoad: ({ setLoad }) => () => setLoad && setLoad(false),
-  }),
+    handleLoad: ({ setLoad }) => () => setLoad && setLoad(false)
+  })
 )(SmartphoneMockupItem);

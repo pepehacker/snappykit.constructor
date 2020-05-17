@@ -13,7 +13,7 @@ import styles from './Select.scss';
 
 const VARIANT = {
   CONTAINED: 'contained',
-  FLAT: 'flat',
+  FLAT: 'flat'
 };
 
 const FormSelect = ({
@@ -39,7 +39,7 @@ const FormSelect = ({
 
   // State
   inputValue,
-  isFocused,
+  isFocused
 }) => {
   const rootClassNames = classNames(styles.Root, {
     [styles.RootIsFocused]: !!isFocused,
@@ -47,14 +47,11 @@ const FormSelect = ({
 
     // Variant
     [styles.RootVariantFlat]: variant === VARIANT.FLAT,
-    [styles.RootVariantContained]: variant === VARIANT.CONTAINED,
+    [styles.RootVariantContained]: variant === VARIANT.CONTAINED
   });
 
   return (
-    <div
-      ref={registerRoot}
-      className={rootClassNames}
-    >
+    <div ref={registerRoot} className={rootClassNames}>
       <div className={styles.Container}>
         <div className={styles.Control}>
           <input
@@ -82,36 +79,38 @@ const FormSelect = ({
           enter: styles.DropdownAnimateEnter,
           enterActive: styles.DropdownAnimateEnterActive,
           exit: styles.DropdownAnimateExit,
-          exitActive: styles.DropdownAnimateExitActive,
+          exitActive: styles.DropdownAnimateExitActive
         }}
         in={children && isFocused}
         timeout={400}
         unmountOnExit
       >
         <div className={styles.Dropdown}>
-          {placeholder && <div className={styles.Placeholder}>
-            {placeholder}
-          </div>}
+          {placeholder && (
+            <div className={styles.Placeholder}>{placeholder}</div>
+          )}
 
           <div className={styles.List}>
             {typeof children === 'function'
               ? children({
-                inputValue: inputValue.toLowerCase(),
-                onClick: handleCreate,
-                value: get(value, 'value'),
-              })
+                  inputValue: inputValue.toLowerCase(),
+                  onClick: handleCreate,
+                  value: get(value, 'value')
+                })
               : Children.map(
-                children,
-                child =>
-                  child &&
+                  children,
+                  (child) =>
+                    child &&
                     get(child, 'props.label')
                       .toLowerCase()
                       .indexOf(inputValue.toLowerCase()) > -1 &&
                     cloneElement(child, {
-                      isCurrent: get(child, 'props.value') === get(value, 'value', value),
-                      onClick: handleCreate,
-                    }),
-              )}
+                      isCurrent:
+                        get(child, 'props.value') ===
+                        get(value, 'value', value),
+                      onClick: handleCreate
+                    })
+                )}
           </div>
         </div>
       </CSSTransition>
@@ -128,15 +127,15 @@ FormSelect.propTypes = {
     PropTypes.arrayOf(
       PropTypes.shape({
         label: PropTypes.string,
-        value: PropTypes.string,
-      }),
+        value: PropTypes.string
+      })
     ),
     PropTypes.shape({
       label: PropTypes.string,
-      value: PropTypes.string,
+      value: PropTypes.string
     }),
-    PropTypes.string,
-  ]),
+    PropTypes.string
+  ])
 };
 
 const ComposedFormSelect = compose(
@@ -152,12 +151,14 @@ const ComposedFormSelect = compose(
       getLabel: ({ children, value }) => () =>
         typeof value === 'string'
           ? Children.map(children, (child: Object) => child)
-            .filter(({ props }) => get(props, 'value') === value)
-            .map(({ props }) => get(props, 'label'))[0] || ''
+              .filter(({ props }) => get(props, 'value') === value)
+              .map(({ props }) => get(props, 'label'))[0] || ''
           : get(value, 'value', ''),
 
       // Handler
-      handleBlur: ({ isClosed, setClose, setFocus, setInputValue }) => (event: SyntheticEvent) => {
+      handleBlur: ({ isClosed, setClose, setFocus, setInputValue }) => (
+        event: SyntheticEvent
+      ) => {
         if (!isClosed && (!event || !$root.contains(event.relatedTarget))) {
           $input.blur();
           setFocus(false);
@@ -181,31 +182,35 @@ const ComposedFormSelect = compose(
       },
       registerInput: () => (node: HTMLElement) => {
         $input = node;
-      },
+      }
     };
   }),
   withHandlers({
     // Handlers
     handleChange: ({ setInputValue }) => (event: SyntheticEvent) =>
       setInputValue(get(event, 'target.value', '')),
-    handleCreate: ({ handleBlur, onChange, setFocus, setInputValue }) => (itemValue: Object, event: SyntheticEvent) => {
+    handleCreate: ({ handleBlur, onChange, setFocus, setInputValue }) => (
+      itemValue: Object,
+      event: SyntheticEvent
+    ) => {
       handleBlur();
       onChange && onChange(itemValue);
     },
     handleDelete: ({ onChange, value }) => (itemValue: ?string) =>
       onChange && onChange(value.filter(({ value }) => value !== itemValue)),
-    handleTrigger: ({ handleBlur, handleFocus, isClosed, isFocused }): Function => (event) => {
+    handleTrigger: ({
+      handleBlur,
+      handleFocus,
+      isClosed,
       isFocused
-        ? !isClosed && handleBlur()
-        : isClosed && handleFocus();
-    },
-  }),
+    }): Function => (event) => {
+      isFocused ? !isClosed && handleBlur() : isClosed && handleFocus();
+    }
+  })
 )(FormSelect);
 
 export default ({ children, ...props }) => (
   <Field {...props}>
-    <ComposedFormSelect>
-      {children}
-    </ComposedFormSelect>
+    <ComposedFormSelect>{children}</ComposedFormSelect>
   </Field>
 );

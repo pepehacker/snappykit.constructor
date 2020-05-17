@@ -12,41 +12,41 @@ export default [
   {
     Component: Background,
     id: 'background',
-    path: '/background',
+    path: '/background'
   },
   {
     Component: Icon,
     id: 'icon',
-    path: '/icon',
+    path: '/icon'
   },
   {
     Component: Screenshots,
     id: 'screenshots',
-    path: '/screenshots',
+    path: '/screenshots'
   },
   {
     Component: Smartphone,
     id: 'smartphone',
-    path: '/smartphone',
+    path: '/smartphone'
   },
   {
     Component: Social,
     id: 'social',
-    path: '/social',
+    path: '/social'
   },
   {
     Component: Store,
     id: 'store',
-    path: '/store',
+    path: '/store'
   },
   {
     Component: Templates,
     id: 'templates',
-    path: '/templates',
+    path: '/templates'
   },
   {
     Component: Text,
     id: 'text',
-    path: '/text/:fieldId',
-  },
+    path: '/text/:fieldId'
+  }
 ];

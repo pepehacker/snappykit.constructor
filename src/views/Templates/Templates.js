@@ -18,7 +18,7 @@ const Templates = ({
   // Props
   initialValues,
   // Handlers
-  handleChange,
+  handleChange
 }) => (
   <Sidebar title="Templates">
     <Form initialValues={initialValues} onChange={handleChange} />
@@ -27,7 +27,7 @@ const Templates = ({
 
 const mapStateToProps = (state: Object, { location }) => {
   const match = matchPath(get(location, 'pathname'), {
-    path: '/:websiteId/editor/templates',
+    path: '/:websiteId/editor/templates'
   });
 
   const websiteId = get(match, 'params.websiteId');
@@ -36,18 +36,16 @@ const mapStateToProps = (state: Object, { location }) => {
   return {
     websiteId,
     initialValues: {
-      templateId: get(website, 'templateId'),
-    },
+      templateId: get(website, 'templateId')
+    }
   };
 };
 
 export default compose(
-  connect(
-    mapStateToProps,
-    { setTemplateId },
-  ),
+  connect(mapStateToProps, { setTemplateId }),
   withHandlers({
-    handleChange: ({ setTemplateId, websiteId }): func => ({ templateId }): void =>
-      setTemplateId(websiteId, templateId),
-  }),
+    handleChange: ({ setTemplateId, websiteId }): func => ({
+      templateId
+    }): void => setTemplateId(websiteId, templateId)
+  })
 )(Templates);

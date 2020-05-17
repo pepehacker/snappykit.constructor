@@ -14,14 +14,13 @@ import {
   // Save
   SAVE_WEBSITE_REQUEST,
   SAVE_WEBSITE_SUCCESS,
-  SAVE_WEBSITE_FAILURE,
+  SAVE_WEBSITE_FAILURE
 } from '../types';
 
-const createWebsite = (websiteId: number | string, website: Object): Function => (
-  dispatch: Function,
-  getState: Function,
-  { api, history },
-) => {
+const createWebsite = (
+  websiteId: number | string,
+  website: Object
+): Function => (dispatch: Function, getState: Function, { api, history }) => {
   const state = getState();
 
   return api('websites.create', {
@@ -29,51 +28,54 @@ const createWebsite = (websiteId: number | string, website: Object): Function =>
     domain: null,
     json: JSON.stringify({
       ...get(website, 'data', {}),
-      templateId: get(website, 'templateId', 1),
+      templateId: get(website, 'templateId', 1)
     }),
-    store_id: `${get(website, 'storeId')}${getUserId(state)}`,
+    store_id: `${get(website, 'storeId')}${getUserId(state)}`
   })
-    .then(
-      ({ data }): void => {
-        const id = get(data, 'id');
+    .then(({ data }): void => {
+      const id = get(data, 'id');
 
-        dispatch({ type: DELETE_WEBSITE_SUCCESS, websiteId: 'new' });
-        dispatch({
-          type: SAVE_WEBSITE_SUCCESS,
-          websiteId: id,
-          payload: { ...website, id },
-        });
+      dispatch({ type: DELETE_WEBSITE_SUCCESS, websiteId: 'new' });
+      dispatch({
+        type: SAVE_WEBSITE_SUCCESS,
+        websiteId: id,
+        payload: { ...website, id }
+      });
 
-        history.replace(`/launch/:${id}`);
-      },
-    )
+      history.replace(`/launch/:${id}`);
+    })
     .catch((error: Object) =>
-      dispatch({ type: SAVE_WEBSITE_FAILURE, error: get(error, 'message'), websiteId: 'new' }),
+      dispatch({
+        type: SAVE_WEBSITE_FAILURE,
+        error: get(error, 'message'),
+        websiteId: 'new'
+      })
     );
 };
 
-const updateWebsite = (websiteId: number | string, website: Object): Function => (
-  dispatch: Function,
-  getState: Function,
-  { api },
-) =>
+const updateWebsite = (
+  websiteId: number | string,
+  website: Object
+): Function => (dispatch: Function, getState: Function, { api }) =>
   api('websites.update', {
     ...website,
     appId: websiteId,
     json: JSON.stringify({
       ...get(website, 'data', {}),
-      templateId: get(website, 'templateId', 1),
-    }),
+      templateId: get(website, 'templateId', 1)
+    })
   })
-    .then((): void => dispatch({ type: SAVE_WEBSITE_SUCCESS, websiteId, payload: website }))
+    .then((): void =>
+      dispatch({ type: SAVE_WEBSITE_SUCCESS, websiteId, payload: website })
+    )
     .catch((error: Object) =>
-      dispatch({ type: SAVE_WEBSITE_FAILURE, error: get(error, 'message') }),
+      dispatch({ type: SAVE_WEBSITE_FAILURE, error: get(error, 'message') })
     );
 
 export default (websiteId: number | string): Function => (
   dispatch: Function,
   getState: Function,
-  { api, history },
+  { api, history }
 ) => {
   const state: Object = getState();
 

@@ -7,5 +7,5 @@ export type TabsItemType = {
   icon: string,
   isSelected: boolean,
   label: string,
-  value: number | string,
+  value: number | string
 };

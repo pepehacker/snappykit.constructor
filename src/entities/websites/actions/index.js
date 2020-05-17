@@ -4,15 +4,23 @@ import { get } from 'lodash';
 import { getWebsiteById } from '../selector';
 
 // Templates
-import { convertTemplateData, getTemplateExportData, getTemplateById } from 'template';
+import {
+  convertTemplateData,
+  getTemplateExportData,
+  getTemplateById
+} from 'template';
 
 // Types
-import { SET_TEMPLATE_ID, UPDATE_WEBSITE, UPDATE_WEBSITE_SECTION } from '../types';
+import {
+  SET_TEMPLATE_ID,
+  UPDATE_WEBSITE,
+  UPDATE_WEBSITE_SECTION
+} from '../types';
 
-export const setTemplateId = (websiteId: number | string, templateId: number | string): func => (
-  dispatch: func,
-  getState: func,
-) => {
+export const setTemplateId = (
+  websiteId: number | string,
+  templateId: number | string
+): func => (dispatch: func, getState: func) => {
   const state = getState();
   const website = getWebsiteById(state, websiteId);
 
@@ -27,22 +35,25 @@ export const setTemplateId = (websiteId: number | string, templateId: number | s
         templateId,
         websiteId,
         type: SET_TEMPLATE_ID,
-        payload: convertTemplateData(oldData, config),
+        payload: convertTemplateData(oldData, config)
       });
     }
   }
 };
 
-export const updateWebsite = (websiteId: number | string, payload: Object): Object => ({
+export const updateWebsite = (
+  websiteId: number | string,
+  payload: Object
+): Object => ({
   type: UPDATE_WEBSITE,
   websiteId,
-  payload,
+  payload
 });
 
 export const updateWebsiteSection = (
   websiteId: number | string,
   sectionId: string,
-  payload: Object,
+  payload: Object
 ): func => (dispatch: func, getState: func) => {
   const state = getState();
   const website = getWebsiteById(state, websiteId);
@@ -54,7 +65,7 @@ export const updateWebsiteSection = (
       type: UPDATE_WEBSITE_SECTION,
       sectionId,
       websiteId,
-      payload: schema.cast(payload),
+      payload: schema.cast(payload)
     });
 };
 

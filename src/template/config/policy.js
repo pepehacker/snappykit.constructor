@@ -11,6 +11,6 @@ export const POLICY_TERMS = 'terms';
 export const POLICY_SCHEMA = (defaults: Object) =>
   TEXT_SCHEMA(defaults).concat(
     object().shape({
-      text: false,
-    }),
+      text: false
+    })
   );

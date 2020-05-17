@@ -11,13 +11,13 @@ import {
   DELETE_WEBSITE_REQUEST,
   DELETE_WEBSITE_SUCCESS,
   DELETE_WEBSITE_FAILURE,
-  UPDATE_WEBSITE,
+  UPDATE_WEBSITE
 } from '../types';
 
 export default ({ id: websiteId }): func => (
   dispatch: func,
   getState: func,
-  { api },
+  { api }
 ): Object<Promise> => {
   dispatch({ type: DELETE_WEBSITE_REQUEST, websiteId });
   dispatch(closeModal(CONFIRM_MODAL_ID));
@@ -25,21 +25,22 @@ export default ({ id: websiteId }): func => (
   return websiteId === 'new'
     ? dispatch({ type: DELETE_WEBSITE_SUCCESS, websiteId })
     : api('websites.delete', { appId: websiteId })
-      .then(
-        (data: Object): void => {
+        .then((data: Object): void => {
           dispatch({
             type: UPDATE_WEBSITE,
             websiteId,
-            payload: { isDeleted: true, isFetching: false },
+            payload: { isDeleted: true, isFetching: false }
           });
 
           setTimeout(() => {
             dispatch({ type: DELETE_WEBSITE_SUCCESS, websiteId });
           }, 400);
-        },
-      )
-      .catch(
-        (error: Object): void =>
-          dispatch({ type: DELETE_WEBSITE_FAILURE, websiteId, error: get(error, 'message') }),
-      );
+        })
+        .catch((error: Object): void =>
+          dispatch({
+            type: DELETE_WEBSITE_FAILURE,
+            websiteId,
+            error: get(error, 'message')
+          })
+        );
 };

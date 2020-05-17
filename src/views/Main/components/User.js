@@ -20,7 +20,7 @@ import styles from './User.scss';
 const LINKS = [
   { icon: 'Website', title: 'Your Websites', to: '/' },
   { icon: 'Plans', title: 'Plans', to: '/plans' },
-  { icon: 'Password', title: 'Change Password', to: '/password' },
+  { icon: 'Password', title: 'Change Password', to: '/password' }
 ];
 
 const MainHeaderUser = ({
@@ -33,16 +33,16 @@ const MainHeaderUser = ({
   handleTriggerPlans,
   // State
   isEnded,
-  isOpened,
+  isOpened
 }) => {
   const className: string = classNames(styles.Root, {
-    [styles.RootOpened]: isOpened,
+    [styles.RootOpened]: isOpened
   });
 
   const expireDate: string = get(user, 'subscription.expireDate');
   const daysLeft: number = Math.max(
     0,
-    moment(expireDate).diff(moment(), 'days'),
+    moment(expireDate).diff(moment(), 'days')
   );
   const period: number = get(user, 'subscription.period', 30);
 
@@ -87,7 +87,7 @@ const MainHeaderUser = ({
             {LINKS.map(({ icon, onClick, title, to }, index) => {
               const iconClassName = classNames(
                 styles.LinkIcon,
-                styles[`LinkIcon${icon}`],
+                styles[`LinkIcon${icon}`]
               );
 
               return (
@@ -122,9 +122,9 @@ const MainHeaderUser = ({
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isEnded: isEnded(state),
-  user: get(state, 'services.session.user', {}),
+  user: get(state, 'services.session.user', {})
 });
 
 export default compose(
@@ -133,12 +133,12 @@ export default compose(
   withState('rootRef', 'setRootRef', createRef()),
   withHandlers({
     handleClick: ({ isOpened, setOpen }) => () => setOpen(!isOpened),
-    handleDropdownBlur: ({ rootRef, setOpen }) => event =>
+    handleDropdownBlur: ({ rootRef, setOpen }) => (event) =>
       !rootRef.current.contains(event.relatedTarget) && setOpen(false),
     handleLogoutClick: ({ logout }) => () => logout(),
     handleTriggerPlans: ({ openModal }): Function => (event: Object): void => {
       event.preventDefault();
       openModal(PLANS_MODAL_ID);
-    },
-  }),
+    }
+  })
 )(MainHeaderUser);

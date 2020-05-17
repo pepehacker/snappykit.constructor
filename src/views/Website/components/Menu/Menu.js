@@ -9,9 +9,7 @@ import generateMenu from './utils/generateMenu';
 
 import styles from './Menu.scss';
 
-const WebsiteMenu = ({
-  websiteId,
-}) => (
+const WebsiteMenu = ({ websiteId }) => (
   <div className={styles.Root}>
     <div className={styles.List}>
       {generateMenu(websiteId).map(({ id, ...item }) => (
@@ -22,10 +20,7 @@ const WebsiteMenu = ({
 );
 
 WebsiteMenu.propTypes = {
-  websiteId: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]),
+  websiteId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 export default WebsiteMenu;

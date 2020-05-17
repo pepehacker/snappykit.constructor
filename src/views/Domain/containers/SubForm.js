@@ -20,22 +20,22 @@ import style from './common.scss';
 import validate, { matches, required } from 'utils/validate';
 
 type DomaiSubFormPropTypes = {
-  handleSubmit: SyntheticEvent => void,
-  isPro: boolean,
+  handleSubmit: (SyntheticEvent) => void,
+  isPro: boolean
 };
 
 const DomaiSubForm = ({
   handleSubmit,
-  isPro,
+  isPro
 }: DomaiSubFormPropTypes): React.Element<typeof Form> => (
   <Form onSubmit={handleSubmit}>
     <Input
-      format={value => value && value.replace('.snappykit.com', '')}
+      format={(value) => value && value.replace('.snappykit.com', '')}
       isPro={!isPro}
       label="Subdomain"
       max={100}
       name="domain"
-      parser={value => value && `${value}.snappykit.com`}
+      parser={(value) => value && `${value}.snappykit.com`}
       postfix=".snappykit.com"
     />
 
@@ -47,8 +47,8 @@ const DomaiSubForm = ({
   </Form>
 );
 
-const mapStateToProps: Function = state => ({
-  isPro: isPro(state),
+const mapStateToProps: Function = (state) => ({
+  isPro: isPro(state)
 });
 
 export default compose(
@@ -58,8 +58,8 @@ export default compose(
     validate: validate({
       domain: [
         required(),
-        matches(/^[A-z0-9]{6}\.snappykit\.com$/, 'Invalid subdomain!'),
-      ],
-    }),
-  }),
+        matches(/^[A-z0-9]{6}\.snappykit\.com$/, 'Invalid subdomain!')
+      ]
+    })
+  })
 )(DomaiSubForm);

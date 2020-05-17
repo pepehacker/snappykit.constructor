@@ -9,9 +9,12 @@ const Form = ({
   className: classNameProp,
   classNames: { root: rootClassName, container: containerClassName } = {},
   error,
-  onSubmit,
+  onSubmit
 }) => (
-  <form className={classNames(classNameProp, rootClassName, styles.Root)} onSubmit={onSubmit}>
+  <form
+    className={classNames(classNameProp, rootClassName, styles.Root)}
+    onSubmit={onSubmit}
+  >
     <div className={classNames(containerClassName, styles.Container)}>
       {children}
     </div>
@@ -21,7 +24,7 @@ const Form = ({
 Form.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  onSubmit: PropTypes.func,
+  onSubmit: PropTypes.func
 };
 
 export default Form;

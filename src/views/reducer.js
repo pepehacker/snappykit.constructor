@@ -10,7 +10,7 @@ const viewsReducer = combineReducers({
   editor,
   main,
   search,
-  screenshots,
+  screenshots
 });
 
 export default (state = {}, action: Object) => {

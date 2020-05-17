@@ -15,7 +15,7 @@ const TemplateSandbox = ({ app, view }) => (
       value={{
         ...app,
         size: { height: window.innerHeight, width: window.innerWidth },
-        view,
+        view
       }}
     >
       <Template id={get(app, 'templateId')} />
@@ -40,7 +40,7 @@ export default compose(
       }
 
       newView !== view && setView(newView);
-    },
+    }
   }),
   lifecycle({
     componentDidMount() {
@@ -51,6 +51,6 @@ export default compose(
     },
     componentWillUnmount() {
       window.removeEventListener('resize', this.props.handleResize);
-    },
-  }),
+    }
+  })
 )(TemplateSandbox);

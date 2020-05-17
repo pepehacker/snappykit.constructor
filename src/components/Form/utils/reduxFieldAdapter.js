@@ -4,5 +4,5 @@ export default ({ children, input, meta: { error, touched }, ...props }) =>
     ...props,
     error,
     touched,
-    value: input.value || props.defaultValue || '',
+    value: input.value || props.defaultValue || ''
   });

@@ -15,7 +15,7 @@ type BackgroundImageType = {
   onChange: (event: Object) => Function,
   onEdit: (variant: string) => Function,
   photos: Array<string>,
-  value: any,
+  value: any
 };
 
 const BackgroundImage = ({
@@ -23,12 +23,12 @@ const BackgroundImage = ({
   onChange,
   onEdit,
   photos = [],
-  value,
+  value
 }: BackgroundImageType): React.Element<'div'> => {
   const cardProps = {
     editType,
     onEdit,
-    onClick: onChange,
+    onClick: onChange
   };
 
   const isUnsplash: boolean = value.indexOf('unsplash.com') !== -1;

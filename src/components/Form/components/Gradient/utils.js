@@ -2,7 +2,7 @@
 export const generateDivision = (
   min: number = 0,
   max: number = 180,
-  length: number = 16,
+  length: number = 16
 ): Array<number> => {
   const result = [];
 

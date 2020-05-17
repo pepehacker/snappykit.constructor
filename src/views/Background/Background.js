@@ -33,7 +33,7 @@ const Background = ({
   // Handlers
   handleColorChange,
   handleGradientChange,
-  handleImageChange,
+  handleImageChange
 }: BackgroundType): React.Element<typeof Sideber> => (
   <Sidebar currentIndex={currentIndex} tabs={TABS} title="Background">
     <ImageForm
@@ -59,7 +59,7 @@ const Background = ({
 
 const mapStateToProps = (state: Object, { location }) => {
   const match: Object = matchPath(get(location, 'pathname'), {
-    path: '/:websiteId/editor/background/:id?',
+    path: '/:websiteId/editor/background/:id?'
   });
 
   const id: string = get(match, 'params.id');
@@ -72,7 +72,7 @@ const mapStateToProps = (state: Object, { location }) => {
     initialValues,
     currentIndex: initialValues.image ? 0 : initialValues.color ? 1 : 2,
     websiteId,
-    withText: id && get(initialValues, 'text') !== undefined,
+    withText: id && get(initialValues, 'text') !== undefined
   };
 };
 
@@ -80,17 +80,17 @@ export default compose(
   connect(mapStateToProps, { updateWebsiteSection }),
   withHandlers({
     handleColorChange: ({ id, updateWebsiteSection, websiteId }): Function => ({
-      color,
+      color
     }) =>
       updateWebsiteSection(websiteId, id || BACKGROUND, {
         color,
         gradient: undefined,
-        image: undefined,
+        image: undefined
       }),
     handleGradientChange: ({
       id,
       updateWebsiteSection,
-      websiteId,
+      websiteId
     }): Function => ({ gradient }) => {
       const propSize: number = values(gradient).length;
 
@@ -100,24 +100,24 @@ export default compose(
             ? {
                 angel: gradient.angel || 0,
                 from: gradient.from || 'rgba(255, 255, 255, 0)',
-                to: gradient.to || 'rgba(255, 255, 255, 0)',
+                to: gradient.to || 'rgba(255, 255, 255, 0)'
               }
             : gradient,
         color: undefined,
-        image: undefined,
+        image: undefined
       });
     },
     handleImageChange: ({ id, updateWebsiteSection, websiteId }): Function => (
       { image },
       dispatch,
       props,
-      previousValues,
+      previousValues
     ) =>
       image &&
       updateWebsiteSection(websiteId, id || BACKGROUND, {
         color: undefined,
         gradient: undefined,
-        image,
-      }),
-  }),
+        image
+      })
+  })
 )(Background);

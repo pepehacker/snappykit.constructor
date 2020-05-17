@@ -6,7 +6,7 @@ import models from './models';
 const API = (
   method: Array<string | Object> | string,
   params: Object = {},
-  { noCredentials } = {},
+  { noCredentials } = {}
 ) => {
   if (!method) {
     return new Promise((resolve: Function) => resolve({ data: {} }));
@@ -21,14 +21,21 @@ const API = (
 
       return model
         ? axios({
-          ...(get(model, 'method') !== 'delete' && { data: get(request, 'params', params) }),
-          headers: !noCredentials && {
-            Authorization: `JWT ${token}`,
-          },
-          method: get(model, 'method', 'get'),
-          url: typeof url === 'function' ? url(get(request, 'params', params)) : url,
-        })
-        : new Promise((resolve: func, reject: func) => reject(new Error('Undefined method!')));
+            ...(get(model, 'method') !== 'delete' && {
+              data: get(request, 'params', params)
+            }),
+            headers: !noCredentials && {
+              Authorization: `JWT ${token}`
+            },
+            method: get(model, 'method', 'get'),
+            url:
+              typeof url === 'function'
+                ? url(get(request, 'params', params))
+                : url
+          })
+        : new Promise((resolve: func, reject: func) =>
+            reject(new Error('Undefined method!'))
+          );
     });
 
   return batch.length > 1 ? axios.all(batch) : batch[0];

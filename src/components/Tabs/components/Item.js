@@ -20,22 +20,22 @@ const TabsItem = ({
   handleClick,
 
   // State
-  isSelected,
+  isSelected
 }: TabsItemType) => {
   const rootClassNames: Object = classNames(styles.Root, {
-    [styles.RootIsSelected]: !!isSelected,
+    [styles.RootIsSelected]: !!isSelected
   });
 
   return (
     <button
-      className={rootClassNames} onClick={handleClick}
-      style={style} type="button"
+      className={rootClassNames}
+      onClick={handleClick}
+      style={style}
+      type="button"
     >
       {label && (
         <div className={styles.Label}>
-          {info && <div className={styles.Info}>
-            {info}
-          </div>}
+          {info && <div className={styles.Info}>{info}</div>}
           {label}
         </div>
       )}
@@ -50,6 +50,6 @@ const TabsItem = ({
 export default compose(
   withHandlers({
     handleClick: ({ onClick, value }): func => (event: Object): void =>
-      onClick && onClick(value, event),
-  }),
+      onClick && onClick(value, event)
+  })
 )(TabsItem);

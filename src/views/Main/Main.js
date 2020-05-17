@@ -47,15 +47,24 @@ const Main = ({ isFetching, location, match, pageId }) => (
                     enter: styles.ContainerAnimateEnter,
                     enterDone: styles.ContainerAnimateEnterDone,
                     exit: styles.ContainerAnimateExit,
-                    exitActive: styles.ContainerAnimateExitActive,
+                    exitActive: styles.ContainerAnimateExitActive
                   }}
                   timeout={{ enter: 400, exit: 400 }}
                   unmountOnExit
                 >
                   <Switch>
-                    <Route component={Search} path={url.resolve(match.url, '/search')} />
-                    <Route component={Website} path={url.resolve(match.url, '/:websiteId')} />
-                    <Route component={Websites} path={url.resolve(match.url, '/')} />
+                    <Route
+                      component={Search}
+                      path={url.resolve(match.url, '/search')}
+                    />
+                    <Route
+                      component={Website}
+                      path={url.resolve(match.url, '/:websiteId')}
+                    />
+                    <Route
+                      component={Websites}
+                      path={url.resolve(match.url, '/')}
+                    />
                   </Switch>
                 </CSSTransition>
               </TransitionGroup>
@@ -72,19 +81,16 @@ const mapStateToProps = ({ views }, { location }) => {
 
   return {
     isFetching: get(views, 'main.isFetching'),
-    pageId: get(match, 'params.pageId', 'main'),
+    pageId: get(match, 'params.pageId', 'main')
   };
 };
 
 export default compose(
-  connect(
-    mapStateToProps,
-    { fetchWebsites },
-  ),
+  connect(mapStateToProps, { fetchWebsites }),
   withState('fixLocation', 'setFixLocation', null),
   lifecycle({
     componentDidMount() {
       this.props.fetchWebsites();
-    },
-  }),
+    }
+  })
 )(Main);

@@ -59,6 +59,6 @@
     "react/prop-types": "off",
     "react/require-default-props": "off",
 
-    "prettier/prettier": "off"
+    "prettier/prettier": [1]
   }
 }

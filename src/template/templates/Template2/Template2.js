@@ -16,7 +16,7 @@ import {
   TITLE,
   VIEW,
   // Provider
-  TemplateContext,
+  TemplateContext
 } from 'template';
 
 // Styles
@@ -26,16 +26,17 @@ const Template2 = () => (
   <TemplateContext.Consumer>
     {({ view }) => {
       const rootClassNames = classNames(styles.Root, {
-        [styles.RootVariantDesktop]: view === VIEW.DESKTOP || view === VIEW.DESKTOP_LARGE,
+        [styles.RootVariantDesktop]:
+          view === VIEW.DESKTOP || view === VIEW.DESKTOP_LARGE,
         [styles.RootVariantMobile]: view === VIEW.MOBILE,
-        [styles.RootVariantTablet]: view === VIEW.TABLET,
+        [styles.RootVariantTablet]: view === VIEW.TABLET
       });
 
       return (
         <Background
           classNames={{
             root: rootClassNames,
-            container: styles.Container,
+            container: styles.Container
           }}
         >
           <header className={styles.Header}>
@@ -49,7 +50,7 @@ const Template2 = () => (
             <Text
               classNames={{
                 root: styles.Title,
-                text: styles.TitleText,
+                text: styles.TitleText
               }}
               id={TITLE}
             />
@@ -57,7 +58,7 @@ const Template2 = () => (
             <Text
               classNames={{
                 root: styles.Description,
-                text: styles.DescriptionText,
+                text: styles.DescriptionText
               }}
               id={DESCRIPTION}
             />
@@ -71,7 +72,7 @@ const Template2 = () => (
             <Text
               classNames={{
                 root: styles.Copyright,
-                text: styles.CopyrightText,
+                text: styles.CopyrightText
               }}
               id={COPYRIGHT}
             />

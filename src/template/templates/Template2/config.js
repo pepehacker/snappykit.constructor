@@ -18,7 +18,7 @@ import {
   // Common
   COPYRIGHT,
   DESCRIPTION,
-  TITLE,
+  TITLE
 } from 'template/config';
 import { createConfig } from 'template/utils';
 
@@ -27,67 +27,67 @@ export default createConfig(2, [
     id: BACKGROUND,
     data: {
       image: {
-        src: BACKGROUND_LIST[1],
-      },
+        src: BACKGROUND_LIST[1]
+      }
     },
-    type: BACKGROUND,
+    type: BACKGROUND
   },
   {
     id: COPYRIGHT,
     data: {
       color: 'rgba(255, 255, 255, .4)',
-      text: '©2018 Enlight',
+      text: '©2018 Enlight'
     },
     exports: ['text'],
-    type: TEXT,
+    type: TEXT
   },
   {
     id: DESCRIPTION,
     data: {
       color: 'rgba(255, 255, 255, .8)',
       text:
-        'The most comprehensive, highest quality photo editing app so powerful and user-friendly it’ll be the last photo app you ever download.',
+        'The most comprehensive, highest quality photo editing app so powerful and user-friendly it’ll be the last photo app you ever download.'
     },
     exports: ['text'],
-    type: TEXT,
+    type: TEXT
   },
   {
     id: ICON,
     data: {
       src:
-        'https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/44/88/0d/44880de1-a4ca-1c1d-39bb-2ee7548a3e70/source/512x512bb.jpg',
+        'https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/44/88/0d/44880de1-a4ca-1c1d-39bb-2ee7548a3e70/source/512x512bb.jpg'
     },
     exports: ['src'],
-    type: ICON,
+    type: ICON
   },
   {
     id: POLICY,
     data: {
-      color: 'rgba(117, 117, 127, 1)',
+      color: 'rgba(117, 117, 127, 1)'
     },
     exports: ['src'],
-    type: POLICY,
+    type: POLICY
   },
   {
     id: SOCIAL,
     exports: ['items'],
-    type: SOCIAL,
+    type: SOCIAL
   },
   {
     id: STORE,
     data: {
       background: 'rgba(255, 255, 255, 1)',
-      color: 'rgba(112, 101, 252, 1)',
+      color: 'rgba(112, 101, 252, 1)'
     },
     exports: ['items'],
-    type: STORE,
+    type: STORE
   },
   {
     id: TITLE,
     data: {
-      text: 'Enlight Photofox.',
+      text: 'Enlight Photofox.'
     },
     exports: ['text'],
-    type: TEXT,
-  },
+    type: TEXT
+  }
 ]);

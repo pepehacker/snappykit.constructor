@@ -14,26 +14,26 @@ const StoreButton = ({
   isEditor,
   link,
   variant = STORE_APP_STORE,
-  view = VIEW.DESKTOP,
+  view = VIEW.DESKTOP
 }) => {
   const rootClassNames = classNames(styles.Root, {
     [styles.RootViewDesktop]: view === VIEW.DESKTOP,
     [styles.RootViewMobile]: view === VIEW.MOBILE,
     [styles.RootViewTablet]: view === VIEW.TABLET,
 
-    [styles.RootIsView]: !isEditor,
+    [styles.RootIsView]: !isEditor
   });
 
   const iconClassNames = classNames(styles.Icon, 'fab', {
     'fa-apple': variant === STORE_APP_STORE,
-    'fa-google-play': variant === STORE_GOOGLE_PLAY,
+    'fa-google-play': variant === STORE_GOOGLE_PLAY
   });
 
   const ButtonComponent = isEditor ? 'div' : 'a';
 
   return (
     <ButtonComponent
-      {...!isEditor && { href: link }}
+      {...(!isEditor && { href: link })}
       className={rootClassNames}
       style={{ background }}
     >
@@ -60,7 +60,7 @@ StoreButton.propTypes = {
   color: PropTypes.string,
   isEditor: PropTypes.bool,
   variant: PropTypes.oneOf([STORE_APP_STORE, STORE_GOOGLE_PLAY]),
-  view: PropTypes.oneOf([VIEW.DESKTOP, VIEW.MOBILE, VIEW.TABLET]),
+  view: PropTypes.oneOf([VIEW.DESKTOP, VIEW.MOBILE, VIEW.TABLET])
 };
 
 export default StoreButton;

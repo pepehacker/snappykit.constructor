@@ -36,23 +36,23 @@ const Search = ({
   // State
   appsIsFetching,
   countriesIsFetching,
-  isMounted,
+  isMounted
 }) => {
   const rootClassNames = classNames(styles.Root, {
-    [styles.RootIsFetching]: appsIsFetching,
+    [styles.RootIsFetching]: appsIsFetching
   });
 
   return (
     <CSSTransition
       classNames={{
         enter: styles.RootAnimateEnter,
-        enterActive: styles.RootAnimateEnterActive,
+        enterActive: styles.RootAnimateEnterActive
       }}
       in={!countriesIsFetching && isMounted}
       timeout={400}
       unmountOnExit
     >
-      {state => (
+      {(state) => (
         <div className={rootClassNames}>
           <div className={styles.Wrapper}>
             <div className={styles.Title}>App search</div>
@@ -65,7 +65,9 @@ const Search = ({
             <div className={styles.Form}>
               <Form
                 // Phucking redux-form destroy bug
-                initialValues={isMounted ? { country: 'US', store: STORE_APPLE_ID } : {}}
+                initialValues={
+                  isMounted ? { country: 'US', store: STORE_APPLE_ID } : {}
+                }
                 onChange={handleChange}
               />
             </div>
@@ -75,7 +77,7 @@ const Search = ({
                 enter: styles.ResultAnimateEnter,
                 enterActive: styles.ResultAnimateEnterActive,
                 exit: styles.ResultAnimateExit,
-                exitActive: styles.ResultAnimateExitActive,
+                exitActive: styles.ResultAnimateExitActive
               }}
               in={!!query}
               timeout={400}
@@ -90,11 +92,9 @@ const Search = ({
 
                 {result && result.length > 0 && (
                   <div className={styles.List}>
-                    {result.map(
-                      (item: Object): func => (
-                        <Item {...item} key={item.id} />
-                      ),
-                    )}
+                    {result.map((item: Object): func => (
+                      <Item {...item} key={item.id} />
+                    ))}
                   </div>
                 )}
               </div>
@@ -108,32 +108,30 @@ const Search = ({
 
 const mapStateToProps = (state: Object): Object => ({
   ...getSearchView(state),
-  countries: getCountryList(state),
+  countries: getCountryList(state)
 });
 
 export default compose(
-  connect(
-    mapStateToProps,
-    {
-      createWebsite,
-      fetchCountries,
-      search,
-      setQuery,
-    },
-  ),
+  connect(mapStateToProps, {
+    createWebsite,
+    fetchCountries,
+    search,
+    setQuery
+  }),
   withState('isMounted', 'setMounted', false),
-  withHandlers(
-    ({ search }): Object => {
-      const changeThrottle = throttle((values: Object): void => search(values), 2000);
+  withHandlers(({ search }): Object => {
+    const changeThrottle = throttle(
+      (values: Object): void => search(values),
+      2000
+    );
 
-      return {
-        handleChange: ({ setQuery }): func => (values: Object) => {
-          setQuery(get(values, 'name'));
-          return changeThrottle(values);
-        },
-      };
-    },
-  ),
+    return {
+      handleChange: ({ setQuery }): func => (values: Object) => {
+        setQuery(get(values, 'name'));
+        return changeThrottle(values);
+      }
+    };
+  }),
   lifecycle({
     componentDidMount() {
       const { countries, fetchCountries, setMounted } = this.props;
@@ -143,6 +141,6 @@ export default compose(
     },
     componentWillUnmount() {
       this.props.setQuery('');
-    },
-  }),
+    }
+  })
 )(Search);

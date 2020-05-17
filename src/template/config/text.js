@@ -5,7 +5,7 @@ export const TEXT = 'text';
 
 // Color
 export const TEXT_COLOR = {
-  regex: /^(#([\da-f]{3}){1,2}|(rgb|hsl)a\((\d{1,3}%?,\s?){3}(1|0?\.\d+)\)|(rgb|hsl)\(\d{1,3}%?(,\s?\d{1,3}%?){2}\))$/,
+  regex: /^(#([\da-f]{3}){1,2}|(rgb|hsl)a\((\d{1,3}%?,\s?){3}(1|0?\.\d+)\)|(rgb|hsl)\(\d{1,3}%?(,\s?\d{1,3}%?){2}\))$/
 };
 
 // Font
@@ -29,7 +29,7 @@ export const TEXT_FONT = {
   ROBOTO: 'Roboto',
   ROBOTO_CONDENSED: 'Roboto Condensed',
   SARABUN: 'Sarabun',
-  SOURCE_SANS_PRO: 'Source Sans Pro',
+  SOURCE_SANS_PRO: 'Source Sans Pro'
 };
 
 export const TEXT_FONTS_PRO = [
@@ -49,7 +49,7 @@ export const TEXT_FONTS_PRO = [
   TEXT_FONT.NUNITO,
   TEXT_FONT.OVERPASS,
   TEXT_FONT.SARABUN,
-  TEXT_FONT.SOURCE_SANS_PRO,
+  TEXT_FONT.SOURCE_SANS_PRO
 ];
 export const TEXT_FONT_REGEX = new RegExp(`^(${values(TEXT_FONT).join('|')})$`);
 export const TEXT_FONT_VALUES = values(TEXT_FONT);
@@ -59,16 +59,18 @@ export const TEXT_STYLE = {
   LIGHT: '300',
   REGULAR: '400',
   MEDIUM: '500',
-  BOLD: '700',
+  BOLD: '700'
 };
 
-export const TEXT_STYLE_REGEX = new RegExp(`^(${values(TEXT_STYLE).join('|')})$`);
+export const TEXT_STYLE_REGEX = new RegExp(
+  `^(${values(TEXT_STYLE).join('|')})$`
+);
 
 export const TEXT_STYLE_VALUES = [
   { label: 'light', value: TEXT_STYLE.LIGHT },
   { label: 'regular', value: TEXT_STYLE.REGULAR },
   { label: 'medium', value: TEXT_STYLE.MEDIUM },
-  { label: 'bold', value: TEXT_STYLE.BOLD },
+  { label: 'bold', value: TEXT_STYLE.BOLD }
 ];
 
 // Schema
@@ -83,5 +85,5 @@ export const TEXT_SCHEMA = (data: Object, { isPro } = {}): Object =>
     style: string()
       .matches(TEXT_STYLE.regex, 'Incorrect `STYLE` value!')
       .default(get(data, 'style', TEXT_STYLE.REGULAR)),
-    text: string().default(get(data, 'text', 'Text')),
+    text: string().default(get(data, 'text', 'Text'))
   });

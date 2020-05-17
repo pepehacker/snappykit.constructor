@@ -35,7 +35,7 @@ const TemplateLink = ({ children, className, to }) => (
 TemplateLink.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  to: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired
 };
 
 export default TemplateLink;

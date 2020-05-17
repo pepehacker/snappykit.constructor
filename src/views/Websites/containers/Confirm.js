@@ -35,14 +35,12 @@ const WebsitesConfirm = ({ handleClose, handleSubmit }) => (
 );
 
 const ComposedWebsitesConfirm = compose(
-  connect(
-    null,
-    { closeModal },
-  ),
+  connect(null, { closeModal }),
   withHandlers({
-    handleClose: ({ closeModal }): func => (event: Object): void => closeModal(CONFIRM_MODAL_ID),
+    handleClose: ({ closeModal }): func => (event: Object): void =>
+      closeModal(CONFIRM_MODAL_ID)
   }),
-  reduxForm({ form: CONFIRM_FORM_ID }),
+  reduxForm({ form: CONFIRM_FORM_ID })
 )(WebsitesConfirm);
 
 const WebsitesConfirmModal = () => (
@@ -51,7 +49,7 @@ const WebsitesConfirmModal = () => (
       <CSSTransition
         classNames={{
           enter: styles.RootAnimateEnter,
-          enterActive: styles.RootAnimateEnterActive,
+          enterActive: styles.RootAnimateEnterActive
         }}
         in={isEntered}
         timeout={600}

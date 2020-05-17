@@ -8,7 +8,7 @@ export type SidebarType = {
   tabs: Array<{
     icon: string,
     title: string,
-    value: string,
+    value: string
   }>,
-  title: number | string,
+  title: number | string
 };

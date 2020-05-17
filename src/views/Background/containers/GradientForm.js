@@ -17,7 +17,7 @@ const BackgroundGradientForm = ({ handleSubmit }) => (
 );
 
 export default compose(
-  reduxForm(),
+  reduxForm()
   // lifecycle({
   //   componentDidMount() {
   //     const { change, initialValues } = this.props;

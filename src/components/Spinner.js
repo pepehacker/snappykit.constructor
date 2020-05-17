@@ -7,8 +7,12 @@ import styles from './Spinner.scss';
 
 const Spinner = ({
   className,
-  classNames: { root: rootClassName, spinner: spinnerClassName, title: titleClassName } = {},
-  title,
+  classNames: {
+    root: rootClassName,
+    spinner: spinnerClassName,
+    title: titleClassName
+  } = {},
+  title
 }) => {
   const rootClassNames = classNames(className, rootClassName, styles.Root);
   const spinnerClassNames = classNames(spinnerClassName, styles.Spinner);
@@ -18,9 +22,7 @@ const Spinner = ({
     <div className={rootClassNames}>
       <div className={spinnerClassNames} />
 
-      {title && <div className={titleClassNames}>
-        {title}
-      </div>}
+      {title && <div className={titleClassNames}>{title}</div>}
     </div>
   );
 };
@@ -30,9 +32,9 @@ Spinner.propTypes = {
   classNames: PropTypes.shape({
     root: PropTypes.string,
     spinner: PropTypes.string,
-    title: PropTypes.string,
+    title: PropTypes.string
   }),
-  title: PropTypes.string,
+  title: PropTypes.string
 };
 
 export default Spinner;

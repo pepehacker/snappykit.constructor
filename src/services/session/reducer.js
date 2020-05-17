@@ -1,7 +1,7 @@
 import { LOGOUT, SET_USER } from './types';
 
 const initialState = {
-  user: null,
+  user: null
 };
 
 export default (state = initialState, action: Object) => {

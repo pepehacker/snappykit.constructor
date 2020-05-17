@@ -14,7 +14,7 @@ import {
   Screenshots,
   TemplateContext,
   Text,
-  VIEW,
+  VIEW
 } from 'template';
 
 const Template6Step = ({ id, reversed }) => (
@@ -26,7 +26,7 @@ const Template6Step = ({ id, reversed }) => (
             [styles.RootVariantDesktop]: view === VIEW.DESKTOP,
             [styles.RootVariantMobile]: view === VIEW.MOBILE,
             [styles.RootVariantTablet]: view === VIEW.TABLET,
-            [styles.RootIsReversed]: reversed,
+            [styles.RootIsReversed]: reversed
           })}
         >
           <Screenshots
@@ -44,7 +44,7 @@ const Template6Step = ({ id, reversed }) => (
             <Text
               classNames={{
                 root: classNames(styles.SubTitle, commonStyles.SubTitle),
-                text: commonStyles.SubTitleText,
+                text: commonStyles.SubTitleText
               }}
               id={`${id}_subtitle`}
             />
@@ -52,7 +52,7 @@ const Template6Step = ({ id, reversed }) => (
             <Text
               classNames={{
                 root: classNames(styles.Title, commonStyles.Title),
-                text: commonStyles.TitleText,
+                text: commonStyles.TitleText
               }}
               id={`${id}_title`}
             />
@@ -60,7 +60,7 @@ const Template6Step = ({ id, reversed }) => (
             <Text
               classNames={{
                 root: classNames(styles.Description, commonStyles.Description),
-                text: commonStyles.DescriptionText,
+                text: commonStyles.DescriptionText
               }}
               id={`${id}_description`}
             />
