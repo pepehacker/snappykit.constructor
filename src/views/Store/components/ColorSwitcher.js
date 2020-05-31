@@ -70,7 +70,7 @@ const mapStateToProps = (state: Object, { location }): Object => {
 
   const id = get(match, 'params.id');
   const websiteId = get(match, 'params.websiteId');
-  console.log(id);
+
   return {
     ...getSectionById(state, websiteId, id || STORE),
     id,

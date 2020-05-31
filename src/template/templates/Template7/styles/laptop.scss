@@ -32,6 +32,17 @@
         }
       }
 
+      .Header {
+        margin: 40px 0 0;
+        max-width: 1200px;
+
+        &Icon {
+          border-radius: 8px;
+          height: 40px;
+          width: 40px;
+        }
+      }
+
       .Intro {
         .Description {
           margin: 4px 0 0;
@@ -58,6 +69,14 @@
             font-size: 48px;
           }
         }
+
+        .Wrapper {
+          padding: 40px 0 0;
+        }
+      }
+
+      .Policy {
+        margin: 0 120px 0 0;
       }
 
       .Preview {
@@ -138,7 +157,7 @@
 
       .Smartphone {
         border-radius: 40px;
-        box-shadow: 0 5px 34px 0 rgba(0, 0, 0, .06);
+        box-shadow: 0 5px 34px 0 rgba(0, 0, 0, 0.06);
         height: 476px;
         width: 236px;
 
@@ -159,7 +178,7 @@
 
         &Text {
           font-size: 38px;
-          letter-spacing: .4px;
+          letter-spacing: 0.4px;
           line-height: 60px;
         }
       }

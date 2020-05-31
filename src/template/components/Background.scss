@@ -3,13 +3,10 @@
   overflow: hidden;
   position: relative;
 
-  & > a {
-    display: flex;
-    flex: 1 1 auto;
-    height: 100%;
-    position: absolute;
-    width: 100%;
-    z-index: 1;
+  &:hover {
+    .Link {
+      opacity: 1;
+    }
   }
 
   &Is {
@@ -42,18 +39,23 @@
   z-index: 1;
 }
 
-.Focus {
-  background: url('https://i.pinimg.com/originals/b9/a4/48/b9a4481726e1700279ae5b69cdde8146.png') repeat left top;
-  background-size: 6%;
-  cursor: pointer;
-  height: 100%;
-  left: 0;
+.Link {
+  background: rgba(0, 0, 0, .8);
+  border-radius: 0 8px 0 0;
+  bottom: 0;
+  color: #fff;
   opacity: 0;
+  padding: 8px 16px;
   position: absolute;
-  top: 0;
-  transition: all .4s;
-  width: 100%;
-  z-index: 2;
+  text-decoration: none;
+  transition: all .2s;
+  z-index: 10;
+
+  &Is {
+    &Selected {
+      pointer-events: none;
+    }
+  }
 }
 
 .Wrapper {

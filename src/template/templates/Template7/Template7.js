@@ -35,6 +35,15 @@ const Template7 = () => (
           classNames={{ root: styles.Intro, container: styles.IntroContainer }}
           id="intro_background"
         >
+          <header className={styles.Header}>
+            <Icon classNames={{ icon: styles.HeaderIcon }} />
+
+            <div className={styles.HeaderRight}>
+              <Policy className={styles.Policy} />
+              <Social />
+            </div>
+          </header>
+
           <div className={styles.Wrapper} style={{ height: size.height }}>
             <Smartphone
               classNames={{
@@ -215,6 +224,20 @@ const Template7 = () => (
               <Screenshots id="download_screenshots" />
             </Smartphone>
           </div>
+
+          <footer className={styles.Footer}>
+            <div className={styles.Wrapper}>
+              <Text
+                classNames={{
+                  root: styles.Coopyright,
+                  text: styles.CopyrightText,
+                }}
+                id={COPYRIGHT}
+              />
+
+              <Policy />
+            </div>
+          </footer>
         </div>
       </div>
     )}

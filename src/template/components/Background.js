@@ -2,7 +2,7 @@ import { get } from 'lodash';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import * as React from 'react';
-import { withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 
 // Template
 import {
@@ -18,6 +18,9 @@ import {
 // Styles
 import styles from './Background.scss';
 
+// Utils
+import { capitalize } from 'utils/string';
+
 const TemplateBackground = ({
   className,
   classNames: { root: rootClassName, container: containerClassName } = {},
@@ -27,7 +30,6 @@ const TemplateBackground = ({
   location,
 }) => {
   const [isFocused, setFocusState] = React.useState(false);
-  let focusTimeout = null;
 
   return (
     <TemplateContext.Consumer>
@@ -59,31 +61,10 @@ const TemplateBackground = ({
         const currentColor = get(image, 'color') || color;
         const { angle, from, to } = get(image, 'gradient') || gradient || {};
 
-        const handleClick = () => {
-          const url = `/${websiteId}/editor/background${
-            (id && `/${id}`) || ''
-          }`;
-
-          const isSelected: boolean = location.pathname === url;
-          isEditor && isFocused && !isSelected && history.push(url);
-        };
-
-        const handleMove = (event) => {
-          if (!isFocused) {
-            setFocusState(true);
-          }
-
-          clearTimeout(focusTimeout);
-
-          focusTimeout = setTimeout(() => setFocusState(false), 1000);
-        };
-
         return (
           <div
             className={rootClassNames}
-            onClick={handleClick}
             onMouseLeave={isEditor ? () => setFocusState(false) : null}
-            onMouseMove={isEditor ? handleMove : null}
           >
             {image && (
               <div
@@ -111,9 +92,18 @@ const TemplateBackground = ({
               />
             )}
 
-            {isEditor && <div className={styles.Focus} />}
-
             <div className={containerClassNames}>{children}</div>
+
+            {isEditor && (
+              <NavLink
+                activeClassName={styles.LinkIsSelected}
+                className={styles.Link}
+                to={`/${websiteId}/editor/background/${(id && `${id}`) ||
+                  BACKGROUND}`}
+              >
+                {capitalize(id.replace('_', ' '))}
+              </NavLink>
+            )}
           </div>
         );
       }}

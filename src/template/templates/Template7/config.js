@@ -298,6 +298,16 @@ export default createConfig(7, [
     type: TEXT,
   },
   {
+    id: COPYRIGHT,
+    data: {
+      color: 'rgba(107, 107, 107, .4)',
+      style: TEXT_STYLE.MEDIUM,
+      text: '©2020 SnappyKit',
+    },
+    exports: ['text'],
+    type: TEXT,
+  },
+  {
     id: DESCRIPTION,
     data: {
       color: 'rgba(255, 255, 255, .7)',
@@ -309,9 +319,22 @@ export default createConfig(7, [
     type: TEXT,
   },
   {
+    id: ICON,
+    exports: ['src'],
+    type: ICON,
+  },
+  {
     id: SCREENSHOTS,
     exports: ['items'],
     type: SCREENSHOTS,
+  },
+  {
+    id: SOCIAL,
+    data: {
+      color: 'rgba(255, 255, 255, 1)',
+    },
+    exports: ['items'],
+    type: SOCIAL,
   },
   {
     id: STORE,

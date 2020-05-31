@@ -19,8 +19,6 @@ const TemplateLink = ({ children, className, exact, to }) => (
           activeClassName={styles.RootIsActive}
           className={rootClassNames}
           exact={exact}
-          onClick={event => event.stopPropagation()}
-          onMouseMove={event => event.stopPropagation()}
           to={to}
         >
           <div className={styles.Border} />
