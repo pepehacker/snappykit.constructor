@@ -1,4 +1,6 @@
 @import './styles/laptop.scss';
+@import './styles/mobile.scss';
+@import './styles/tablet.scss';
 
 .Root {
   overflow-x: hidden;
@@ -13,10 +15,6 @@
   &List {
     display: flex;
     justify-content: space-between;
-
-    & > * {
-      flex: 0 0 292px;
-    }
   }
 }
 
@@ -54,6 +52,7 @@
 }
 
 .Header {
+  align-items: center;
   display: flex;
   justify-content: space-between;
   position: absolute;
@@ -113,7 +112,6 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  max-width: 786px !important;
 
   &Author {
     &Text {

@@ -1,0 +1,190 @@
+.Root {
+  &Variant {
+    &Tablet {
+      .About {
+        align-items: flex-start;
+        padding: 96px 0;
+
+        &List {
+          flex-direction: column;
+
+          & > * {
+            margin: 64px 0 0;
+
+            &:first-child {
+              margin: 16px 0 0;
+            }
+          }
+        }
+
+        .Description {
+          max-height: 96px;
+
+          &Text {
+            line-height: 32px;
+          }
+        }
+      }
+
+      .Download {
+        flex-direction: column-reverse;
+        margin: 120px 0 80px;
+
+        .Content {
+          margin: 60px 0 0;
+        }
+      }
+
+      .Description {
+        max-height: 64px;
+
+        &Text {
+          font-size: 14px;
+          line-height: 32px;
+        }
+      }
+
+      .Footer {
+        .Wrapper {
+          max-width: 100%;
+          padding: 0 40px;
+        }
+      }
+
+      .Header {
+        margin: 20px 0 0;
+        padding: 0 40px;
+        width: 100%;
+
+        &Icon {
+          border-radius: 8px;
+          height: 40px;
+          width: 40px;
+        }
+      }
+
+      .Intro {
+        .Content {
+          margin: 60px 0 0;
+        }
+
+        .Wrapper {
+          flex-direction: column;
+          padding: 160px 0 0;
+        }
+      }
+
+      .Policy {
+        margin: 0 80px 0 0;
+      }
+
+      .Preview {
+        flex-direction: column;
+        margin: 92px 0 112px;
+
+        &Description {
+          margin: 8px 0 0;
+          max-height: 96px;
+
+          &Text {
+            font-size: 14px;
+            line-height: 32px;
+          }
+        }
+
+        &Grid {
+          display: grid;
+          margin: 16px 0;
+
+          grid-template-columns: repeat(2, 1fr);
+          grid-column-gap: 56px;
+          grid-row-gap: 36px;
+          grid-template-rows: repeat(2, 1fr);
+        }
+
+        &Title {
+          max-height: 32px;
+
+          &Text {
+            font-size: 14px;
+            line-height: 32px;
+          }
+        }
+
+        .Content {
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+          margin: 72px 0 0;
+        }
+      }
+
+      .Quote {
+        margin: 116px 0;
+
+        &Author {
+          margin: 20px 0 0;
+          max-height: 16px;
+
+          &Text {
+            font-size: 14px;
+            letter-spacing: 2px;
+            line-height: 16px;
+          }
+        }
+
+        &Title {
+          text-align: center;
+          max-height: 144px;
+
+          &Text {
+            font-size: 22px;
+            line-height: 36px;
+          }
+        }
+      }
+
+      .Slogan {
+        max-height: 24px;
+        top: 12px;
+
+        &Text {
+          font-size: 14px;
+          line-height: 24px;
+        }
+      }
+
+      .Smartphone {
+        border-radius: 40px;
+        box-shadow: 0 5px 34px 0 rgba(0, 0, 0, 0.06);
+        height: 408px;
+        width: 200px;
+
+        &Container {
+          height: 356px;
+          left: 14px;
+          top: 51px;
+          width: 172px;
+        }
+      }
+
+      .Store {
+        margin: 40px 0 0;
+      }
+
+      .Title {
+        max-height: 62px;
+
+        &Text {
+          font-size: 38px;
+          letter-spacing: 0.4px;
+          line-height: 62px;
+        }
+      }
+
+      .Wrapper {
+        max-width: 500px;
+      }
+    }
+  }
+}

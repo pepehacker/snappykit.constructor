@@ -29,6 +29,8 @@ const Template7 = () => (
       <div
         className={classNames(styles.Root, {
           [styles.RootVariantLaptop]: view === VIEW.DESKTOP,
+          [styles.RootVariantMobile]: view === VIEW.MOBILE,
+          [styles.RootVariantTablet]: view === VIEW.TABLET,
         })}
       >
         <Background
