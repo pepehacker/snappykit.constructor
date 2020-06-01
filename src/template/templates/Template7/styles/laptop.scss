@@ -1,0 +1,196 @@
+.Root {
+  &Variant {
+    &Laptop {
+      .About {
+        align-items: flex-start;
+        padding: 92px 0;
+
+        &List {
+          margin: 12px 0 0;
+
+          & > * {
+            flex: 0 0 292px;
+          }
+        }
+
+        .Description {
+          max-height: 120px;
+        }
+      }
+
+      .Description {
+        max-height: 48px;
+
+        &Text {
+          font-size: 12px;
+          line-height: 24px;
+        }
+      }
+
+      .Download {
+        margin: 200px 0 80px;
+
+        .Content {
+          margin: 0 260px 0 0;
+          width: 400px;
+        }
+      }
+
+      .Header {
+        margin: 40px 0 0;
+        max-width: 1200px;
+
+        &Icon {
+          border-radius: 8px;
+          height: 40px;
+          width: 40px;
+        }
+      }
+
+      .Intro {
+        .Description {
+          margin: 4px 0 0;
+        }
+
+        .Content {
+          margin: 80px 0 0 260px;
+        }
+
+        .Smartphone {
+          height: 512px;
+          width: 252px;
+
+          &Container {
+            height: 385px;
+            left: 19px;
+            top: 63px;
+            width: 215px;
+          }
+        }
+
+        .Title {
+          &Text {
+            font-size: 48px;
+          }
+        }
+
+        .Wrapper {
+          padding: 40px 0 0;
+        }
+      }
+
+      .Policy {
+        margin: 0 120px 0 0;
+      }
+
+      .Preview {
+        margin: 140px 0;
+
+        &Grid {
+          display: grid;
+          margin: 12px 0;
+
+          grid-template-columns: repeat(2, 1fr);
+          grid-column-gap: 60px;
+          grid-row-gap: 80px;
+          grid-template-rows: repeat(2, 1fr);
+        }
+
+        &Description {
+          margin: 8px 0 0;
+          max-height: 72px;
+
+          &Text {
+            font-size: 12px;
+            line-height: 24px;
+          }
+        }
+
+        &Title {
+          max-height: 32px;
+
+          &Text {
+            font-size: 12px;
+            line-height: 32px;
+          }
+        }
+
+        .Content {
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+          margin: 0 0 0 200px;
+          width: 480px;
+        }
+      }
+
+      .Quote {
+        margin: 84px 0;
+        max-width: 786px !important;
+
+        &Author {
+          margin: 20px 0 0;
+          max-height: 16px;
+
+          &Text {
+            font-size: 12px;
+            letter-spacing: 1.7px;
+            line-height: 16px;
+          }
+        }
+
+        &Title {
+          text-align: center;
+          max-height: 120px;
+
+          &Text {
+            font-size: 26px;
+            line-height: 40px;
+          }
+        }
+      }
+
+      .Slogan {
+        max-height: 24px;
+        top: 12px;
+
+        &Text {
+          font-size: 12px;
+          line-height: 24px;
+        }
+      }
+
+      .Smartphone {
+        border-radius: 40px;
+        box-shadow: 0 5px 34px 0 rgba(0, 0, 0, .06);
+        height: 476px;
+        width: 236px;
+
+        &Container {
+          height: 356px;
+          left: 18px;
+          top: 59px;
+          width: 200px;
+        }
+      }
+
+      .Store {
+        margin: 32px 0 0;
+      }
+
+      .Title {
+        max-height: 62px;
+
+        &Text {
+          font-size: 38px;
+          letter-spacing: .4px;
+          line-height: 60px;
+        }
+      }
+
+      .Wrapper {
+        max-width: 1200px;
+      }
+    }
+  }
+}

@@ -18,7 +18,7 @@ import {
   STORE,
   STORE_APP_STORE,
   STORE_BACKGROUND,
-  STORE_COLOR
+  STORE_COLOR,
 } from 'template';
 
 // Styles
@@ -27,7 +27,7 @@ import styles from './ColorSwitcher.scss';
 const StoreColorSwitcher = ({ background, color, handleClick }) => {
   const backgroundClassNames = classNames(
     styles.Trigger,
-    styles.TriggerBackground
+    styles.TriggerBackground,
   );
   const textClassNames = classNames(styles.Trigger, styles.TriggerText);
 
@@ -83,9 +83,9 @@ const ComposedStoreColorSwitcher = withRouter(
     connect(mapStateToProps),
     withHandlers({
       handleClick: ({ onChange }) => (value: string) =>
-        onChange && onChange(value)
-    })
-  )(StoreColorSwitcher)
+        onChange && onChange(value),
+    }),
+  )(StoreColorSwitcher),
 );
 
 export default (props: Object) => (

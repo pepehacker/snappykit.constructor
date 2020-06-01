@@ -69,12 +69,18 @@ const StoreForm = ({
   );
 };
 
-const selector = formValueSelector('storeForm');
-const mapStateToProps: Function = (state: Object, { websiteId }): Object => ({
-  isPro: isPro(state),
-  provider: getWebsiteProvider(state),
-  switcher: selector(state, 'switcher')
-});
+const mapStateToProps: Function = (
+  state: Object,
+  { form, websiteId },
+): Object => {
+  const selector = formValueSelector(form);
+
+  return {
+    isPro: isPro(state),
+    provider: getWebsiteProvider(state),
+    switcher: selector(state, 'switcher'),
+  };
+};
 
 export default compose(
   connect(mapStateToProps),

@@ -1,0 +1,205 @@
+.Root {
+  &Variant {
+    &Mobile {
+      .About {
+        align-items: flex-start;
+        margin: 60px 0;
+
+        &List {
+          flex-direction: column;
+
+          & > * {
+            margin: 40px 0 0;
+
+            &:first-child {
+              margin: 12px 0 0;
+            }
+          }
+        }
+
+        .Description {
+          max-height: 100px;
+        }
+      }
+
+      .Description {
+        max-height: 60px;
+
+        &Text {
+          font-size: 12px;
+          line-height: 20px;
+        }
+      }
+
+      .Download {
+        flex-direction: column-reverse;
+        margin: 44px 0 24px;
+
+        .Content {
+          margin: 20px 0 0;
+        }
+      }
+
+      .Footer {
+        .Wrapper {
+          flex-direction: column;
+          max-width: 100%;
+        }
+      }
+
+      .Header {
+        margin: 20px 0 0;
+        padding: 0 24px;
+        width: 100%;
+
+        &Icon {
+          border-radius: 8px;
+          height: 40px;
+          width: 40px;
+        }
+      }
+
+      .Intro {
+        .Content {
+          margin: 36px 0 0;
+        }
+
+        .Smartphone {
+          border-radius: 40px;
+          box-shadow: 0 3px 21px 0 rgba(0, 0, 0, 0.06);
+          height: 248px;
+          width: 122px;
+
+          &Container {
+            height: 356px;
+            left: 9px;
+            top: 31px;
+            width: 104px;
+          }
+        }
+
+        .Wrapper {
+          flex-direction: column;
+          padding: 160px 0 0;
+        }
+      }
+
+      .Quote {
+        margin: 56px 0;
+
+        &Author {
+          margin: 20px 0 0;
+          max-height: 16px;
+
+          &Text {
+            font-size: 14px;
+            letter-spacing: 2px;
+            line-height: 16px;
+          }
+        }
+
+        &Title {
+          text-align: center;
+
+          &Text {
+            font-size: 18px;
+            letter-spacing: -0.07px;
+            line-height: 30px;
+          }
+        }
+      }
+
+      .Preview {
+        flex-direction: column;
+        margin: 60px 0;
+
+        &Description {
+          margin: 2px 0 0;
+          max-height: 60px;
+
+          &Text {
+            font-size: 12px;
+            line-height: 20px;
+          }
+        }
+
+        &Grid {
+          display: grid;
+          margin: 20px 0;
+
+          grid-template-columns: repeat(1, 200px);
+          grid-row-gap: 32px;
+          grid-template-rows: repeat(4, 1fr);
+
+          & > * {
+            align-items: center !important;
+            display: flex;
+            flex-direction: column;
+            text-align: center !important;
+          }
+        }
+
+        &Title {
+          max-height: 32px;
+
+          &Text {
+            font-size: 12px;
+            letter-spacing: 1.6px;
+            line-height: 32px;
+          }
+        }
+
+        .Content {
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+          margin: 40px 0 0;
+        }
+      }
+
+      .Slogan {
+        max-height: 16px;
+        top: 0;
+
+        &Text {
+          font-size: 12px;
+          letter-spacing: 1.6px;
+          line-height: 16px;
+        }
+      }
+
+      .Smartphone {
+        border-radius: 40px;
+        box-shadow: 0 3px 21px 0 rgba(0, 0, 0, 0.06);
+        height: 220px;
+        width: 108px;
+
+        &Container {
+          height: 356px;
+          left: 7px;
+          top: 27px;
+          width: 94px;
+        }
+      }
+
+      .Store {
+        margin: 24px 0 0;
+      }
+
+      .Title {
+        max-height: 36px;
+
+        &Text {
+          font-size: 28px;
+          letter-spacing: -0.2px;
+          line-height: 36px;
+        }
+      }
+
+      .Wrapper {
+        max-width: 100%;
+        padding: 0 24px;
+      }
+    }
+  }
+}

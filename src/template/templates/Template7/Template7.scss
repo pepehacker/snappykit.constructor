@@ -1,0 +1,161 @@
+@import './styles/laptop.scss';
+@import './styles/mobile.scss';
+@import './styles/tablet.scss';
+
+.Root {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+.About {
+  display: flex;
+  flex-direction: column;
+
+  &List {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.Common {
+  align-items: center;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.Copyright {
+  &Text {
+    overflow: hidden;
+  }
+}
+
+.Description {
+  &Text {
+    overflow: hidden;
+  }
+}
+
+.Footer {
+  align-items: center;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  height: 120px;
+  justify-content: center;
+  width: 100%;
+
+  & > div {
+    justify-content: space-between;
+  }
+}
+
+.Header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  &Right {
+    display: flex;
+  }
+}
+
+.Hr {
+  background-image: linear-gradient(
+    to right,
+    rgba(250, 250, 250, 0) 3%,
+    #b4b5b5 50%,
+    rgba(250, 250, 250, 0)
+  );
+  height: 1px;
+  width: 100%;
+}
+
+.Intro {
+  &Container {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.Preview {
+  &Description {
+    &Text {
+      overflow: hidden;
+      word-break: normal !important;
+    }
+  }
+
+  &Grid {
+    & > *:nth-child(odd) {
+      align-items: flex-end;
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+    }
+  }
+
+  &Title {
+    &Text {
+      overflow: hidden;
+      text-transform: uppercase;
+      word-break: normal !important;
+    }
+  }
+}
+
+.Quote {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  &Author {
+    &Text {
+      overflow: hidden;
+      text-transform: uppercase;
+    }
+  }
+
+  &Title {
+    &Text {
+      overflow: hidden;
+    }
+  }
+}
+
+.Slogan {
+  position: relative;
+
+  &Text {
+    text-transform: uppercase;
+  }
+}
+
+.Smartphone {
+  height: 476px;
+  width: 236px;
+
+  &Container {
+    height: 356px;
+    left: 18px;
+    top: 59px;
+    width: 200px;
+  }
+}
+
+.Title {
+  &Text {
+    overflow: hidden;
+  }
+}
+
+.Wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
