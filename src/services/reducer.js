@@ -8,7 +8,7 @@ import session from './session';
 const servicesReducer = combineReducers({
   modals,
   palette,
-  session,
+  session
 });
 
 export default (state = {}, action: Object) => {

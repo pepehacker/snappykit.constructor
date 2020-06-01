@@ -13,7 +13,7 @@ const FormPalette = ({ colors, handleClick, handleCreate, value }) => (
   <div className={styles.Root}>
     {colors.map((color, index) => {
       const className = classNames(styles.Color, {
-        [styles.ColorIsCurrent]: value === color,
+        [styles.ColorIsCurrent]: value === color
       });
 
       return (
@@ -27,26 +27,23 @@ const FormPalette = ({ colors, handleClick, handleCreate, value }) => (
       );
     })}
 
-    <button
-      className={styles.Create} onClick={handleCreate}
-      type="button"
-    />
+    <button className={styles.Create} onClick={handleCreate} type="button" />
   </div>
 );
 
 const mapStateToProps = ({ services }) => ({
-  colors: get(services, 'palette.items', []),
+  colors: get(services, 'palette.items', [])
 });
 
 const ComposedFormPalette = compose(
   connect(mapStateToProps),
   withHandlers({
-    handleClick: ({ onChange }) => value => onChange && onChange(value),
-    handleCreate: () => () => console.log('Create new color!'), // eslint-disable-line
-  }),
+    handleClick: ({ onChange }) => (value) => onChange && onChange(value),
+    handleCreate: () => () => console.log('Create new color!') // eslint-disable-line
+  })
 )(FormPalette);
 
-export default props => (
+export default (props) => (
   <Field {...props}>
     <ComposedFormPalette />
   </Field>

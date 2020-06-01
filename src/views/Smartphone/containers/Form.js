@@ -14,31 +14,19 @@ import { SMARTPHONE_MODEL, SMARTPHONE_STYLE } from 'template';
 
 const SmartphoneForm = ({ handleSubmit, model, style }) => (
   <Form onSubmit={handleSubmit}>
-    <Select
-      label="Model" name="model"
-      placeholder="Choose a model"
-    >
+    <Select label="Model" name="model" placeholder="Choose a model">
       {get(SMARTPHONE_MODEL, 'values', []).map(
         ({ label, value: itemValue }): func => (
-          <SelectItem
-            key={itemValue} label={label}
-            value={itemValue}
-          />
-        ),
+          <SelectItem key={itemValue} label={label} value={itemValue} />
+        )
       )}
     </Select>
 
-    <Select
-      label="Style" name="style"
-      placeholder="Choose a style"
-    >
+    <Select label="Style" name="style" placeholder="Choose a style">
       {get(SMARTPHONE_STYLE, 'values', []).map(
         ({ label, value: itemValue }): func => (
-          <SelectItem
-            key={itemValue} label={label}
-            value={itemValue}
-          />
-        ),
+          <SelectItem key={itemValue} label={label} value={itemValue} />
+        )
       )}
     </Select>
 
@@ -47,5 +35,5 @@ const SmartphoneForm = ({ handleSubmit, model, style }) => (
 );
 
 export default reduxForm({
-  form: SMARTPHONE_FORM_ID,
+  form: SMARTPHONE_FORM_ID
 })(SmartphoneForm);

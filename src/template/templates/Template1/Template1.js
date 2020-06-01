@@ -17,7 +17,7 @@ import {
   COPYRIGHT,
   DESCRIPTION,
   TITLE,
-  VIEW,
+  VIEW
 } from 'template';
 
 // Styles
@@ -27,16 +27,17 @@ const Template1 = () => (
   <TemplateContext.Consumer>
     {({ view = VIEW.DESKTOP }) => {
       const rootClassNames = classNames(styles.Root, {
-        [styles.RootVariantDesktop]: view === VIEW.DESKTOP || view === VIEW.DESKTOP_LARGE,
+        [styles.RootVariantDesktop]:
+          view === VIEW.DESKTOP || view === VIEW.DESKTOP_LARGE,
         [styles.RootVariantMobile]: view === VIEW.MOBILE,
-        [styles.RootVariantTablet]: view === VIEW.TABLET,
+        [styles.RootVariantTablet]: view === VIEW.TABLET
       });
 
       return (
         <Background
           classNames={{
             root: rootClassNames,
-            container: styles.Container,
+            container: styles.Container
           }}
         >
           <header className={styles.Header}>
@@ -49,7 +50,7 @@ const Template1 = () => (
               <Text
                 classNames={{
                   root: styles.Title,
-                  text: styles.TitleText,
+                  text: styles.TitleText
                 }}
                 id={TITLE}
               />
@@ -57,7 +58,7 @@ const Template1 = () => (
               <Text
                 classNames={{
                   root: styles.Description,
-                  text: styles.DescriptionText,
+                  text: styles.DescriptionText
                 }}
                 id={DESCRIPTION}
               />
@@ -70,7 +71,7 @@ const Template1 = () => (
                 classNames={{
                   root: styles.Smartphone,
                   container: styles.Screenshots,
-                  mockup: styles.SmartphoneMockup,
+                  mockup: styles.SmartphoneMockup
                 }}
               >
                 <Screenshots classNames={{ item: styles.ScreenshotsItem }} />
@@ -84,7 +85,7 @@ const Template1 = () => (
             <Text
               classNames={{
                 root: styles.Copyright,
-                text: styles.CopyrightText,
+                text: styles.CopyrightText
               }}
               id={COPYRIGHT}
             />

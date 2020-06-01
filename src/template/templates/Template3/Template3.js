@@ -19,7 +19,7 @@ import {
   COPYRIGHT,
   DESCRIPTION,
   TITLE,
-  VIEW,
+  VIEW
 } from 'template';
 
 // Styles
@@ -34,12 +34,12 @@ const Template3 = ({ handleNext, handlePrev, step }) => (
           [styles.RootVariantDesktop]:
             view === VIEW.DESKTOP || view === VIEW.DESKTOP_LARGE,
           [styles.RootVariantMobile]: view === VIEW.MOBILE,
-          [styles.RootVariantTablet]: view === VIEW.TABLET,
+          [styles.RootVariantTablet]: view === VIEW.TABLET
         },
         view === VIEW.MOBILE && {
           [styles.RootStepContent]: step === 0,
-          [styles.RootStepSlider]: step === 1,
-        },
+          [styles.RootStepSlider]: step === 1
+        }
       );
 
       return (
@@ -53,7 +53,7 @@ const Template3 = ({ handleNext, handlePrev, step }) => (
             <Background
               classNames={{
                 root: styles.Background,
-                container: styles.Container,
+                container: styles.Container
               }}
             >
               <Swipeable
@@ -66,7 +66,7 @@ const Template3 = ({ handleNext, handlePrev, step }) => (
                     <Text
                       classNames={{
                         root: styles.Title,
-                        text: styles.TitleText,
+                        text: styles.TitleText
                       }}
                       id={TITLE}
                     />
@@ -75,7 +75,7 @@ const Template3 = ({ handleNext, handlePrev, step }) => (
                       <Text
                         classNames={{
                           root: styles.Description,
-                          text: styles.DescriptionText,
+                          text: styles.DescriptionText
                         }}
                         id={DESCRIPTION}
                       />
@@ -89,7 +89,7 @@ const Template3 = ({ handleNext, handlePrev, step }) => (
                       classNames={{
                         root: styles.Smartphone,
                         container: styles.Screenshots,
-                        mockup: styles.SmartphoneMockup,
+                        mockup: styles.SmartphoneMockup
                       }}
                     >
                       <Screenshots
@@ -103,14 +103,14 @@ const Template3 = ({ handleNext, handlePrev, step }) => (
                   <div className={styles.Dots}>
                     <div
                       className={classNames(styles.DotsItem, {
-                        [styles.DotsItemSelected]: step === 0,
+                        [styles.DotsItemSelected]: step === 0
                       })}
                       onClick={handlePrev}
                     />
 
                     <div
                       className={classNames(styles.DotsItem, {
-                        [styles.DotsItemSelected]: step === 1,
+                        [styles.DotsItemSelected]: step === 1
                       })}
                       onClick={handleNext}
                     />
@@ -138,6 +138,6 @@ export default compose(
     handleNext: ({ setStep, step }): Function => () =>
       setStep(Math.min(step + 1, 1)),
     handlePrev: ({ setStep, step }): Function => () =>
-      setStep(Math.max(step - 1, 0)),
-  }),
+      setStep(Math.max(step - 1, 0))
+  })
 )(Template3);

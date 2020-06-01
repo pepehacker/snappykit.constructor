@@ -15,7 +15,7 @@ import {
   SAVE_WEBSITE_FAILURE,
   SET_TEMPLATE_ID,
   UPDATE_WEBSITE,
-  UPDATE_WEBSITE_SECTION,
+  UPDATE_WEBSITE_SECTION
 } from './types';
 
 export default (state = {}, action: Object): Object => {
@@ -31,8 +31,8 @@ export default (state = {}, action: Object): Object => {
         new: {
           ...action.payload,
           id: 'new',
-          isSupported: true,
-        },
+          isSupported: true
+        }
       };
 
     // Delete
@@ -41,8 +41,8 @@ export default (state = {}, action: Object): Object => {
         ...state,
         [websiteId]: {
           ...website,
-          isFetching: true,
-        },
+          isFetching: true
+        }
       };
     case DELETE_WEBSITE_SUCCESS:
       return omit(state, websiteId);
@@ -51,8 +51,8 @@ export default (state = {}, action: Object): Object => {
         ...state,
         [websiteId]: {
           ...website,
-          isFetching: false,
-        },
+          isFetching: false
+        }
       };
 
     // Save
@@ -61,24 +61,24 @@ export default (state = {}, action: Object): Object => {
         ...state,
         [websiteId]: {
           ...website,
-          isFetching: true,
-        },
+          isFetching: true
+        }
       };
     case SAVE_WEBSITE_FAILURE:
       return {
         ...state,
         [websiteId]: {
           ...website,
-          isFetching: false,
-        },
+          isFetching: false
+        }
       };
     case SAVE_WEBSITE_SUCCESS:
       return {
         ...state,
         [websiteId]: {
           ...action.payload,
-          isFetching: false,
-        },
+          isFetching: false
+        }
       };
 
     // Other
@@ -88,16 +88,16 @@ export default (state = {}, action: Object): Object => {
         [websiteId]: {
           ...website,
           data: action.payload,
-          templateId: action.templateId,
-        },
+          templateId: action.templateId
+        }
       };
     case UPDATE_WEBSITE:
       return {
         ...state,
         [websiteId]: {
           ...website,
-          ...action.payload,
-        },
+          ...action.payload
+        }
       };
     case UPDATE_WEBSITE_SECTION:
       return {
@@ -108,10 +108,10 @@ export default (state = {}, action: Object): Object => {
             ...get(website, 'data'),
             section: {
               ...get(website, 'data.section'),
-              [sectionId]: action.payload,
-            },
-          },
-        },
+              [sectionId]: action.payload
+            }
+          }
+        }
       };
     default:
       return state;

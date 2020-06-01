@@ -9,11 +9,11 @@ import Pro from 'components/Pro';
 import style from './Item.scss';
 
 type FormSelectItemPropTypes = {
-  handleClick: SyntheticEvent => void,
+  handleClick: (SyntheticEvent) => void,
   isCurrent: boolean,
   isPro: boolean,
   label: string,
-  value: number | string,
+  value: number | string
 };
 
 const FormSelectItem = ({
@@ -25,21 +25,21 @@ const FormSelectItem = ({
 
   // State
   isCurrent,
-  isPro,
+  isPro
 }: FormSelectItemPropTypes): React.Element<'div'> => {
   const rootClassNames = classNames(style.Root, {
     [style.RootIsCurrent]: isCurrent,
-    [style.RootIsPro]: isPro,
+    [style.RootIsPro]: isPro
   });
 
   return (
     <div
-      className={rootClassNames} onClick={isPro ? null : handleClick}
-      role="button" tabIndex={0}
+      className={rootClassNames}
+      onClick={isPro ? null : handleClick}
+      role="button"
+      tabIndex={0}
     >
-      <div className={style.Label}>
-        {label}
-      </div>
+      <div className={style.Label}>{label}</div>
       {isPro && <Pro className={style.Pro} />}
     </div>
   );
@@ -47,8 +47,9 @@ const FormSelectItem = ({
 
 export default compose(
   withHandlers({
-    handleClick: ({ label, onClick, value }) => (event: Object) => onClick && onClick(value, event),
-  }),
+    handleClick: ({ label, onClick, value }) => (event: Object) =>
+      onClick && onClick(value, event)
+  })
 )(FormSelectItem);
 
 export type { FormSelectItemPropTypes };

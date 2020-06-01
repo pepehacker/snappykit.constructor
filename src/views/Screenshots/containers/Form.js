@@ -12,5 +12,5 @@ const ScreenshotsForm = ({ handleSubmit }) => (
 );
 
 export default reduxForm({
-  form: 'screenshotsFotm',
+  form: 'screenshotsFotm'
 })(ScreenshotsForm);

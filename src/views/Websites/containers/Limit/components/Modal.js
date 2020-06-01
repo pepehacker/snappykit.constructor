@@ -25,7 +25,7 @@ const WebsitesLimitModal = ({ handleClick }) => (
       <CSSTransition
         classNames={{
           enter: styles.RootAnimateEnter,
-          enterActive: styles.RootAnimateEnterActive,
+          enterActive: styles.RootAnimateEnterActive
         }}
         in={isEntered}
         timeout={700}
@@ -57,6 +57,6 @@ export default compose(
     handleClick: ({ closeModal, openModal }): func => (event: Object): void => {
       closeModal(LIMIT_MODAL_ID);
       openModal(PLANS_MODAL_ID);
-    },
-  }),
+    }
+  })
 )(WebsitesLimitModal);

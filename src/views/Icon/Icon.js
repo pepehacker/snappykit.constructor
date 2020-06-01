@@ -26,8 +26,10 @@ const Icon = ({ handleChange, id, initialValues }) => (
 
     <Container>
       <Form
-        key={id} form={id}
-        initialValues={initialValues} onChange={handleChange}
+        key={id}
+        form={id}
+        initialValues={initialValues}
+        onChange={handleChange}
       />
     </Container>
   </div>
@@ -35,7 +37,7 @@ const Icon = ({ handleChange, id, initialValues }) => (
 
 const mapStateToProps = (state: Object, { location }): Object => {
   const match = matchPath(get(location, 'pathname'), {
-    path: '/:websiteId/editor/:sectionId/:id?',
+    path: '/:websiteId/editor/:sectionId/:id?'
   });
 
   const id = get(match, 'params.id');
@@ -46,12 +48,10 @@ const mapStateToProps = (state: Object, { location }): Object => {
 };
 
 export default compose(
-  connect(
-    mapStateToProps,
-    { updateWebsiteSection },
-  ),
+  connect(mapStateToProps, { updateWebsiteSection }),
   withHandlers({
-    handleChange: ({ id, updateWebsiteSection, websiteId }): func => (value: Object): void =>
-      updateWebsiteSection(websiteId, id || ICON, value),
-  }),
+    handleChange: ({ id, updateWebsiteSection, websiteId }): func => (
+      value: Object
+    ): void => updateWebsiteSection(websiteId, id || ICON, value)
+  })
 )(Icon);

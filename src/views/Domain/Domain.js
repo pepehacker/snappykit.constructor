@@ -21,7 +21,7 @@ import styles from './Domain.scss';
 const Domain = ({
   handleChange,
   seoInitialValues,
-  subInitialValues,
+  subInitialValues
 }): React.Element<'div'> => (
   <div>
     <div className={styles.Section}>
@@ -45,7 +45,7 @@ const Domain = ({
 
 const mapStateToProps = (state: Object, { location }): Object => {
   const match: Object = matchPath(get(location, 'pathname'), {
-    path: '/:websiteId/domain',
+    path: '/:websiteId/domain'
   });
 
   const websiteId: number | string = get(match, 'params.websiteId');
@@ -56,22 +56,19 @@ const mapStateToProps = (state: Object, { location }): Object => {
     websiteId,
     seoInitialValues: {
       description: get(website, 'description'),
-      title: get(website, 'title'),
+      title: get(website, 'title')
     },
     subInitialValues: {
-      domain: get(website, 'domain'),
-    },
+      domain: get(website, 'domain')
+    }
   };
 };
 
 export default compose(
-  connect(
-    mapStateToProps,
-    { updateWebsite },
-  ),
+  connect(mapStateToProps, { updateWebsite }),
   withHandlers({
     handleChange: ({ updateWebsite, websiteId }): Function => (
-      values: Object,
-    ): void => updateWebsite(websiteId, values),
-  }),
+      values: Object
+    ): void => updateWebsite(websiteId, values)
+  })
 )(Domain);

@@ -8,7 +8,7 @@ import {
   SOCIAL_INSTAGRAM,
   SOCIAL_TWITTER,
   SOCIAL_VK,
-  VIEW,
+  VIEW
 } from 'template/config';
 
 // Styles
@@ -19,8 +19,7 @@ const TemplateSocialItem = ({ color, isEditor, link, variant, view }) => {
     [styles.RootViewDesktop]: view === VIEW.DESKTOP,
     [styles.RootViewMobile]: view === VIEW.MOBILE,
     [styles.RootViewTablet]: view === VIEW.TABLET,
-
-    [styles.RootIsNotEditor]: !isEditor,
+    [styles.RootIsNotEditor]: !isEditor
   });
 
   const iconClassNames = classNames(styles.Icon, 'fab', `fa-${variant}`);

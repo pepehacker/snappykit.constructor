@@ -44,6 +44,7 @@
     "postcss-loader": "3.0.0",
     "postcss-preset-env": "6.0.6",
     "postcss-safe-parser": "4.0.1",
+    "prettier": "^2.0.5",
     "react": "^16.5.2",
     "react-addons-css-transition-group": "^15.6.2",
     "react-animated-number": "^0.4.4",
@@ -85,9 +86,20 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "flow": "flow",
-    "lint": "eslint src/**/*.js",
-    "test": "node scripts/test.js",
-    "precommit": "pretty-quick --staged"
+    "format": "prettier --write",
+    "lint": "eslint  --fix src/**/*.js",
+    "test": "node scripts/test.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "yarn lint",
+      "yarn format"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"

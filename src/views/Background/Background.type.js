@@ -9,8 +9,8 @@ export type BackgroundType = {
     gradient: {
       angle: number,
       from: string,
-      to: string,
+      to: string
     },
-    image: string,
-  },
+    image: string
+  }
 };

@@ -60,12 +60,12 @@ const StoreColorSwitcher = ({ background, color, handleClick }) => {
 
 StoreColorSwitcher.propTypes = {
   background: PropTypes.string,
-  color: PropTypes.string,
+  color: PropTypes.string
 };
 
 const mapStateToProps = (state: Object, { location }): Object => {
   const match = matchPath(get(location, 'pathname'), {
-    path: '/:websiteId/editor/:sectionId/:id?',
+    path: '/:websiteId/editor/:sectionId/:id?'
   });
 
   const id = get(match, 'params.id');
@@ -74,7 +74,7 @@ const mapStateToProps = (state: Object, { location }): Object => {
   return {
     ...getSectionById(state, websiteId, id || STORE),
     id,
-    websiteId,
+    websiteId
   };
 };
 

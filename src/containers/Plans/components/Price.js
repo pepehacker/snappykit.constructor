@@ -14,7 +14,7 @@ type PlansPriceType = {
   id: string,
   isDensed: boolean,
   isSelected: boolean,
-  title: string,
+  title: string
 };
 
 const PlansPrice: React.Element<'div'> = ({
@@ -23,7 +23,7 @@ const PlansPrice: React.Element<'div'> = ({
   id,
   isDensed,
   isSelected,
-  title,
+  title
 }: PlansPriceType) => {
   const rootClassNames = classNames(styles.Root, {
     [styles.RootIsDensed]: isDensed,
@@ -31,22 +31,20 @@ const PlansPrice: React.Element<'div'> = ({
 
     [styles.RootVariantAverage]: id === PRICE_AVERAGE,
     [styles.RootVariantMax]: id === PRICE_MAX,
-    [styles.RootVariantMin]: id === PRICE_MIN,
+    [styles.RootVariantMin]: id === PRICE_MIN
   });
 
   return (
     <div
-      className={rootClassNames} onClick={handleClick}
-      role="button" tabIndex={0}
+      className={rootClassNames}
+      onClick={handleClick}
+      role="button"
+      tabIndex={0}
     >
       <div className={styles.Icon} />
-      <div className={styles.Title}>
-        {title}
-      </div>
+      <div className={styles.Title}>{title}</div>
 
-      <div className={styles.Description}>
-        {description}
-      </div>
+      <div className={styles.Description}>{description}</div>
 
       <div className={styles.Actions}>
         <button className={styles.Next} type="button">
@@ -59,6 +57,7 @@ const PlansPrice: React.Element<'div'> = ({
 
 export default compose(
   withHandlers({
-    handleClick: ({ id, onClick }): Function => (): boolean => onClick && onClick(id),
-  }),
+    handleClick: ({ id, onClick }): Function => (): boolean =>
+      onClick && onClick(id)
+  })
 )(PlansPrice);

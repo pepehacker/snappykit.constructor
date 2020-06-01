@@ -10,20 +10,15 @@ import { TEMPLATES } from 'template';
 const TemplatesForm = ({ handleSubmit }) => (
   <Form onSubmit={handleSubmit}>
     <Image name="templateId">
-      {TEMPLATES.map(
-        ({ id, preview }): func => (
-          <ImageCard
-            key={id} src={preview}
-            value={id}
-          />
-        ),
-      )}
+      {TEMPLATES.map(({ id, preview }): func => (
+        <ImageCard key={id} src={preview} value={id} />
+      ))}
     </Image>
   </Form>
 );
 
 export default reduxForm({
   form: 'templatesForm',
-  destroyOnUnmount: false,
+  destroyOnUnmount: false
   // enableReinitialize: true,
 })(TemplatesForm);

@@ -10,7 +10,7 @@ const EditorAvailable = ({ isAvailable }) => (
       enter: styles.RootAnimateEnter,
       enterActive: styles.RootAnimateEnterActive,
       exit: styles.RootAnimateExit,
-      exitActive: styles.RootAnimateExitActive,
+      exitActive: styles.RootAnimateExitActive
     }}
     in={!isAvailable}
     timeout={{ enter: 600, exit: 400 }}

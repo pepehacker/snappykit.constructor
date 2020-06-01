@@ -9,7 +9,7 @@ import styles from './Button.scss';
 const VARIANT = {
   FORM: 'form',
   GRADIENT: 'gradient',
-  GRADIENT_REVERSE: 'gradientReverse',
+  GRADIENT_REVERSE: 'gradientReverse'
 };
 
 const Button = ({
@@ -18,17 +18,17 @@ const Button = ({
   classNames: {
     root: rootClassName,
     content: contentClassName,
-    icon: iconClassName,
+    icon: iconClassName
   } = {},
   icon,
   onClick,
   type = 'button',
-  variant = VARIANT.GRADIENT,
+  variant = VARIANT.GRADIENT
 }) => {
   const rootClassNames = classNames(className, rootClassName, styles.Root, {
     [styles.RootVariantForm]: variant === VARIANT.FORM,
     [styles.RootVariantGradient]: variant === VARIANT.GRADIENT,
-    [styles.RootVariantGradientReverse]: variant === VARIANT.GRADIENT_REVERSE,
+    [styles.RootVariantGradientReverse]: variant === VARIANT.GRADIENT_REVERSE
   });
   const contentClassNames = classNames(contentClassName, styles.Content);
   const iconClassNames = classNames(rootClassName, styles.Icon);
@@ -47,12 +47,12 @@ Button.propTypes = {
   classNames: PropTypes.shape({
     root: PropTypes.string,
     content: PropTypes.string,
-    icon: PropTypes.string,
+    icon: PropTypes.string
   }),
   icon: PropTypes.string,
   onClick: PropTypes.func,
   type: PropTypes.string,
-  variant: PropTypes.oneOf([VARIANT.GRADIENT, VARIANT.GRADIENT_REVERSE]),
+  variant: PropTypes.oneOf([VARIANT.GRADIENT, VARIANT.GRADIENT_REVERSE])
 };
 
 Button.VARIANT = VARIANT;

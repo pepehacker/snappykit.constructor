@@ -20,7 +20,7 @@ const FormField = ({
   ...props
 }) => {
   const className = classNames(classNameProps, styles.Root, {
-    [styles.RootIsPro]: isPro,
+    [styles.RootIsPro]: isPro
   });
   const { max } = props;
 
@@ -33,7 +33,7 @@ const FormField = ({
           ...props,
           id,
           isPro,
-          readOnly: readOnly || isPro,
+          readOnly: readOnly || isPro
         };
 
         return (
@@ -57,7 +57,7 @@ const FormField = ({
                   {!isPro && !error && max && max - length < max * 0.3 && (
                     <div
                       className={classNames(styles.Max, {
-                        [styles.MaxIsEnds]: max - length <= max * 0.1,
+                        [styles.MaxIsEnds]: max - length <= max * 0.1
                       })}
                     >
                       {max - length}
@@ -85,7 +85,7 @@ FormField.propTypes = {
   label: PropTypes.string,
   info: PropTypes.string,
   name: PropTypes.string.isRequired,
-  value: PropTypes.string,
+  value: PropTypes.string
 };
 
 export default compose(withState('id', 'setId', ({ name }) => name))(FormField);

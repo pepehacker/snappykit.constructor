@@ -38,7 +38,7 @@ const Store = ({ handleChange, id, initialValues, websiteId }) => (
 
 const mapStateToProps = (state: Object, { location }): Object => {
   const match = matchPath(get(location, 'pathname'), {
-    path: '/:websiteId/editor/:sectionId/:id?',
+    path: '/:websiteId/editor/:sectionId/:id?'
   });
 
   const id = get(match, 'params.id');
@@ -49,10 +49,7 @@ const mapStateToProps = (state: Object, { location }): Object => {
 };
 
 export default compose(
-  connect(
-    mapStateToProps,
-    { updateWebsiteSection },
-  ),
+  connect(mapStateToProps, { updateWebsiteSection }),
   withHandlers({
     handleChange: ({ id, updateWebsiteSection, websiteId }): func => (
       value: Object,

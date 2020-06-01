@@ -10,20 +10,20 @@ import { Field } from 'components/Form';
 // Styles
 import styles from './Image.scss';
 
-const Image = ({
-  children,
-  className,
-  handleClick,
-  value,
-}) => {
+const Image = ({ children, className, handleClick, value }) => {
   const rootClassNames = classNames(className, styles.Root);
 
   return (
     <div className={rootClassNames}>
-      {Children.map(children, child => child && cloneElement(child, {
-        isSelected: get(child, 'props.value') === value,
-        onClick: handleClick,
-      }))}
+      {Children.map(
+        children,
+        (child) =>
+          child &&
+          cloneElement(child, {
+            isSelected: get(child, 'props.value') === value,
+            onClick: handleClick
+          })
+      )}
     </div>
   );
 };
@@ -34,22 +34,19 @@ Image.propTypes = {
   value: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.number,
-    PropTypes.string,
-  ]),
+    PropTypes.string
+  ])
 };
 
 const ComposedImage = compose(
   withHandlers({
-    handleClick: ({ onChange }): func =>
-      (value: Object): void =>
-        onChange && onChange(value),
-  }),
+    handleClick: ({ onChange }): func => (value: Object): void =>
+      onChange && onChange(value)
+  })
 )(Image);
 
 export default ({ children, ...props }): func => (
   <Field {...props}>
-    <ComposedImage>
-      {children}
-    </ComposedImage>
+    <ComposedImage>{children}</ComposedImage>
   </Field>
 );

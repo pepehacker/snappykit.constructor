@@ -20,55 +20,54 @@ import styles from './PriceList.scss';
 type PlansPriceListType = {
   handleClick: Function,
   isEntered: boolean,
-  price: string,
+  price: string
 };
 
 const PlansPriceList = ({
   isEntered,
   handleClick,
-  price,
+  price
 }: PlansPriceListType): React.Element<'div'> => (
   <div
     className={classNames(styles.Root, {
-      [styles.RootHasPrice]: !!price,
+      [styles.RootHasPrice]: !!price
     })}
   >
-    {PRICES.map(
-      (item: Object, index: number): React.Element<Price> => (
-        <CSSTransition
-          key={index}
-          classNames={{
-            enter: styles.ItemAnimateEnter,
-            enterActive: styles.ItemAnimateEnterActive,
-          }}
-          in={isEntered}
-          timeout={600}
-          unmountOnExit
+    {PRICES.map((item: Object, index: number): React.Element<Price> => (
+      <CSSTransition
+        key={index}
+        classNames={{
+          enter: styles.ItemAnimateEnter,
+          enterActive: styles.ItemAnimateEnterActive
+        }}
+        in={isEntered}
+        timeout={600}
+        unmountOnExit
+      >
+        <div
+          className={styles.Item}
+          style={{ transitionDelay: `${0.1 * index}s` }}
         >
-          <div className={styles.Item} style={{ transitionDelay: `${0.1 * index}s` }}>
-            <Price
-              {...item}
-              isDensed={!!price}
-              isSelected={price === item.id}
-              onClick={handleClick}
-            />
-          </div>
-        </CSSTransition>
-      ),
-    )}
+          <Price
+            {...item}
+            isDensed={!!price}
+            isSelected={price === item.id}
+            onClick={handleClick}
+          />
+        </div>
+      </CSSTransition>
+    ))}
   </div>
 );
 
 const mapStateToProps: Function = (state: Object) => ({
-  price: getPrice(state),
+  price: getPrice(state)
 });
 
 export default compose(
-  connect(
-    mapStateToProps,
-    { setPrice },
-  ),
+  connect(mapStateToProps, { setPrice }),
   withHandlers({
-    handleClick: ({ setPrice }): Function => (price: string): void => setPrice(price),
-  }),
+    handleClick: ({ setPrice }): Function => (price: string): void =>
+      setPrice(price)
+  })
 )(PlansPriceList);

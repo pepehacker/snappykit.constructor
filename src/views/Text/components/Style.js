@@ -16,9 +16,13 @@ import styles from './Style.scss';
 const TextStyle = ({ handleClick, value }) => (
   <div className={styles.Root}>
     {TEXT_STYLE_VALUES.map(({ label, value: styleValue }) => {
-      const className = classNames(styles.Style, styles[`StyleVariant${capitalize(label)}`], {
-        [styles.StyleIsCurrent]: value === styleValue,
-      });
+      const className = classNames(
+        styles.Style,
+        styles[`StyleVariant${capitalize(label)}`],
+        {
+          [styles.StyleIsCurrent]: value === styleValue
+        }
+      );
 
       return (
         <button
@@ -36,11 +40,11 @@ const TextStyle = ({ handleClick, value }) => (
 
 const ComposedTextStyle = compose(
   withHandlers({
-    handleClick: ({ onChange }) => value => onChange && onChange(value),
-  }),
+    handleClick: ({ onChange }) => (value) => onChange && onChange(value)
+  })
 )(TextStyle);
 
-export default props => (
+export default (props) => (
   <Field {...props}>
     <ComposedTextStyle />
   </Field>

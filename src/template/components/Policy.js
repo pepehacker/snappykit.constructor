@@ -16,7 +16,7 @@ import {
   // Provider
   TemplateContext,
   // Selectors
-  getSectionById,
+  getSectionById
 } from 'template';
 
 // Styles
@@ -24,8 +24,12 @@ import styles from './Policy.scss';
 
 const TemplatePolicy = ({
   className,
-  classNames: { root: rootClassName, container: containerClassName, link: linkClassName } = {},
-  id,
+  classNames: {
+    root: rootClassName,
+    container: containerClassName,
+    link: linkClassName
+  } = {},
+  id
 }) => (
   <TemplateContext.Consumer>
     {({ data, isEditor, view, websiteId }) => {
@@ -35,10 +39,13 @@ const TemplatePolicy = ({
         [styles.RootViewDesktop]: view === VIEW.DESKTOP,
         [styles.RootViewMobile]: view === VIEW.MOBILE,
 
-        [styles.RootIsNotEditor]: !isEditor,
+        [styles.RootIsNotEditor]: !isEditor
       });
 
-      const containerClassNames = classNames(containerClassName, styles.Container);
+      const containerClassNames = classNames(
+        containerClassName,
+        styles.Container
+      );
       const linkClassNames = classNames(linkClassName, styles.Link);
 
       return (
@@ -50,12 +57,16 @@ const TemplatePolicy = ({
                 style={{
                   color,
                   fontFamily: `'${font}', sans-serif`,
-                  fontWeight: style,
+                  fontWeight: style
                 }}
               >
-                {get(items, POLICY_PRIVACY) && <div className={linkClassNames}>Privacy</div>}
+                {get(items, POLICY_PRIVACY) && (
+                  <div className={linkClassNames}>Privacy</div>
+                )}
 
-                {get(items, POLICY_TERMS) && <div className={linkClassNames}>Terms</div>}
+                {get(items, POLICY_TERMS) && (
+                  <div className={linkClassNames}>Terms</div>
+                )}
               </div>
             </Link>
           )}
@@ -67,7 +78,7 @@ const TemplatePolicy = ({
 
 TemplatePolicy.propTypes = {
   className: PropTypes.string,
-  id: PropTypes.string,
+  id: PropTypes.string
 };
 
 export default TemplatePolicy;

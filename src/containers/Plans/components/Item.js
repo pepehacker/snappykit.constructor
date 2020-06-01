@@ -9,7 +9,7 @@ import {
   lifecycle,
   withHandlers,
   withProps,
-  withState,
+  withState
 } from 'recompose';
 
 // Ducks
@@ -25,7 +25,7 @@ import {
   PRICE_MIN,
   // Selectors
   getPeriod,
-  getPrice,
+  getPrice
 } from '../ducks';
 
 // Services
@@ -41,9 +41,9 @@ type PlansItemType = {
   isCurrent: boolean,
   isFetching: boolean,
   features: Array<string>,
-  handleCancel: SyntheticEvent => void,
-  handleClick: SyntheticEvent => void,
-  title: string,
+  handleCancel: (SyntheticEvent) => void,
+  handleClick: (SyntheticEvent) => void,
+  title: string
 };
 
 const PlansItem = ({
@@ -58,21 +58,19 @@ const PlansItem = ({
   handleClick,
   // State
   isCurrent,
-  isFetching,
+  isFetching
 }: PlansItemType): React.Element<'div'> => (
   <div
     className={classNames(styles.Root, {
       [styles.RootVariantAgency]: id === PLAN_AGENCY,
       [styles.RootVariantBasic]: id === PLAN_BASIC,
       [styles.RootVariantLite]: id === PLAN_LITE,
-      [styles.RootVariantPro]: id === PLAN_PRO,
+      [styles.RootVariantPro]: id === PLAN_PRO
     })}
   >
     <div className={styles.Content}>
       <div className={styles.Info}>
-        <div className={styles.Title}>
-          {title}
-        </div>
+        <div className={styles.Title}>{title}</div>
 
         <div className={styles.Price}>
           {id === PLAN_LITE ? (
@@ -80,31 +78,29 @@ const PlansItem = ({
           ) : (
             <AnimatedNumber
               component="span"
-              formatValue={n => Math.ceil(n)}
+              formatValue={(n) => Math.ceil(n)}
               value={
                 isFetching
                   ? 1
                   : period === MONTH
-                    ? Math.min(99, cost)
-                    : cost / 12
+                  ? Math.min(99, cost)
+                  : cost / 12
               }
             />
           )}
           {cost && <span className={styles.Unit}>$</span>}
         </div>
 
-        <div className={styles.Count}>
-          {`${count} WEBSITE`}
-        </div>
+        <div className={styles.Count}>{`${count} WEBSITE`}</div>
 
         <div className={styles.List}>
-          {features.map(
-            (feature: string, index: number): React.Element<'div'> => (
-              <div key={index} className={styles.Item}>
-                {feature}
-              </div>
-            ),
-          )}
+          {features.map((feature: string, index: number): React.Element<
+            'div'
+          > => (
+            <div key={index} className={styles.Item}>
+              {feature}
+            </div>
+          ))}
         </div>
       </div>
 
@@ -128,14 +124,14 @@ const mapStateToProps: Function = (state: Object, { id }) => {
     email: getUserEmail(state),
     isCurrent: id === get(subscription, 'id'),
     period: getPeriod(state),
-    price: getPrice(state),
+    price: getPrice(state)
   };
 };
 
 export default compose(
   connect(mapStateToProps),
   withProps(({ period = MONTH, price = PRICE_MIN, productIds }) => ({
-    productId: get(productIds, `${period}.${price}`),
+    productId: get(productIds, `${period}.${price}`)
   })),
   withState('cost', 'setCost', null),
   withState('isFetching', 'setFetching', false),
@@ -145,7 +141,7 @@ export default compose(
       email,
       productId,
       setCost,
-      setFetching,
+      setFetching
     }): Function => (): void => {
       if (productId) {
         setFetching(true);
@@ -161,23 +157,23 @@ export default compose(
     handleCancel: ({
       email,
       productId,
-      subscription,
+      subscription
     }): Function => (): void => {
       // eslint-disable-next-line
       Paddle.Checkout.open({
         override: get(subscription, 'cancelUrl'),
-        successCallback: () => window.location.reload(),
+        successCallback: () => window.location.reload()
       });
     },
     handleClick: ({ email, productId, setCost }): Function => (
-      event: SyntheticEvent,
+      event: SyntheticEvent
     ) =>
       // eslint-disable-next-line
       Paddle.Checkout.open({
         email,
         product: productId,
-        successCallback: () => window.location.reload(),
-      }),
+        successCallback: () => window.location.reload()
+      })
   }),
   lifecycle({
     componentDidMount() {
@@ -186,6 +182,6 @@ export default compose(
     componentDidUpdate({ period: prevPeriod, price: prevPrice }) {
       const { fetchCost, period, price } = this.props;
       (price !== prevPrice || period !== prevPeriod) && fetchCost();
-    },
-  }),
+    }
+  })
 )(PlansItem);

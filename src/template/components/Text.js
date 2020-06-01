@@ -13,7 +13,7 @@ import {
   // Provider
   TemplateContext,
   // Selectors
-  getSectionById,
+  getSectionById
 } from 'template';
 
 // Styles
@@ -22,7 +22,7 @@ import styles from './Text.scss';
 const TemplateText = ({
   className,
   classNames: { root: rootClassName, text: textClassName } = {},
-  id,
+  id
 }) => (
   <TemplateContext.Consumer>
     {({ data, view, websiteId }) => {
@@ -31,7 +31,7 @@ const TemplateText = ({
       const rootClassNames = classNames(className, rootClassName, styles.Root, {
         [styles.RootViewDesktop]: view === VIEW.DESKTOP,
         [styles.RootViewMobile]: view === VIEW.MOBILE,
-        [styles.RootViewTablet]: view === VIEW.TABLET,
+        [styles.RootViewTablet]: view === VIEW.TABLET
       });
 
       const textClassNames = classNames(textClassName, styles.Text);
@@ -42,13 +42,11 @@ const TemplateText = ({
           style={{
             color,
             fontFamily: `'${font}', sans-serif`,
-            fontWeight: style,
+            fontWeight: style
           }}
         >
           <Link to={`/${websiteId}/editor/text${(id && `/${id}`) || ''}`}>
-            <div className={textClassNames}>
-              {text}
-            </div>
+            <div className={textClassNames}>{text}</div>
           </Link>
         </div>
       );
@@ -60,9 +58,9 @@ TemplateText.propTypes = {
   className: PropTypes.string,
   classNames: PropTypes.shape({
     root: PropTypes.string,
-    text: PropTypes.string,
+    text: PropTypes.string
   }),
-  id: PropTypes.string,
+  id: PropTypes.string
 };
 
 export default TemplateText;

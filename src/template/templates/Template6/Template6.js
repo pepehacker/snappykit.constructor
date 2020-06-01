@@ -23,7 +23,7 @@ import {
   COPYRIGHT,
   DESCRIPTION,
   TITLE,
-  VIEW,
+  VIEW
 } from 'template';
 
 const Template6 = () => (
@@ -34,7 +34,7 @@ const Template6 = () => (
           [styles.RootVariantDesktop]:
             view === VIEW.DESKTOP || view === VIEW.DESKTOP_LARGE,
           [styles.RootVariantMobile]: view === VIEW.MOBILE,
-          [styles.RootVariantTablet]: view === VIEW.TABLET,
+          [styles.RootVariantTablet]: view === VIEW.TABLET
         })}
       >
         <Section id="intro">
@@ -48,7 +48,7 @@ const Template6 = () => (
               <Text
                 classNames={{
                   root: styles.SubTitle,
-                  text: styles.SubTitleText,
+                  text: styles.SubTitleText
                 }}
                 id={DESCRIPTION}
               />
@@ -56,7 +56,7 @@ const Template6 = () => (
               <Text
                 classNames={{
                   root: styles.Title,
-                  text: styles.TitleText,
+                  text: styles.TitleText
                 }}
                 id={TITLE}
               />
@@ -67,7 +67,7 @@ const Template6 = () => (
             <Smartphone
               classNames={{
                 root: styles.Smartphone,
-                container: styles.SmartphoneContainer,
+                container: styles.SmartphoneContainer
               }}
             >
               <Screenshots classNames={{ root: styles.Screenshots }} />
@@ -91,7 +91,7 @@ const Template6 = () => (
             <Text
               classNames={{
                 root: styles.Description,
-                text: styles.DescriptionText,
+                text: styles.DescriptionText
               }}
               id="download_description"
             />
@@ -102,7 +102,7 @@ const Template6 = () => (
               <Text
                 classNames={{
                   root: styles.Coopyright,
-                  text: styles.CopyrightText,
+                  text: styles.CopyrightText
                 }}
                 id={COPYRIGHT}
               />

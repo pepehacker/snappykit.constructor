@@ -13,7 +13,12 @@ import { isPro } from 'services/session';
 import styles from './Form.scss';
 
 // Template
-import { SOCIAL_FACEBOOK, SOCIAL_INSTAGRAM, SOCIAL_TWITTER, SOCIAL_VK } from 'template';
+import {
+  SOCIAL_FACEBOOK,
+  SOCIAL_INSTAGRAM,
+  SOCIAL_TWITTER,
+  SOCIAL_VK
+} from 'template';
 
 const SocialForm = ({ handleSubmit, isPro }) => (
   <Form onSubmit={handleSubmit}>
@@ -42,8 +47,10 @@ const SocialForm = ({ handleSubmit, isPro }) => (
       />
 
       <Link
-        icon="fa-vk" label="Vkontakte"
-        name={`items.${SOCIAL_VK}`} prefix="https://vk.com/"
+        icon="fa-vk"
+        label="Vkontakte"
+        name={`items.${SOCIAL_VK}`}
+        prefix="https://vk.com/"
       />
     </div>
 
@@ -52,12 +59,12 @@ const SocialForm = ({ handleSubmit, isPro }) => (
 );
 
 const mapStateToProps: Function = (state: Object): Object => ({
-  isPro: isPro(state),
+  isPro: isPro(state)
 });
 
 export default compose(
   connect(mapStateToProps),
   reduxForm({
-    form: 'socialForm',
-  }),
+    form: 'socialForm'
+  })
 )(SocialForm);

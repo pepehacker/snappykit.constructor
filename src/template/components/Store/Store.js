@@ -17,7 +17,7 @@ import {
   // Provider
   TemplateContext,
   // Selectors
-  getSectionById,
+  getSectionById
 } from 'template';
 
 // Styles
@@ -31,7 +31,7 @@ const TemplateStore = ({ className, id }) => (
       const rootClassNames = classNames(className, styles.Root, {
         [styles.RootViewDesktop]: view === VIEW.DESKTOP,
         [styles.RootViewMobile]: view === VIEW.MOBILE,
-        [styles.RootViewTablet]: view === VIEW.TABLET,
+        [styles.RootViewTablet]: view === VIEW.TABLET
       });
 
       return (
@@ -70,7 +70,7 @@ const TemplateStore = ({ className, id }) => (
 
 TemplateStore.propTypes = {
   className: PropTypes.string,
-  id: PropTypes.string,
+  id: PropTypes.string
 };
 
 export default TemplateStore;

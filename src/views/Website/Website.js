@@ -27,12 +27,12 @@ const Website = ({
 
   // State
   isEditable,
-  isMounted,
+  isMounted
 }) => (
   <CSSTransition
     classNames={{
       enter: styles.RootAnimateEnter,
-      enterActive: styles.RootAnimateEnterActive,
+      enterActive: styles.RootAnimateEnterActive
     }}
     in={isMounted}
     timeout={1600}
@@ -44,7 +44,9 @@ const Website = ({
       <div className={styles.Menu}>
         <Menu websiteId={websiteId} />
 
-        <div className={styles.Copyright}>© 2018 Snappykit. All rights reserved</div>
+        <div className={styles.Copyright}>
+          © 2018 Snappykit. All rights reserved
+        </div>
       </div>
 
       {isEditable && websiteId && (
@@ -61,8 +63,8 @@ const Website = ({
 
 Website.propTypes = {
   match: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-  }).isRequired,
+    url: PropTypes.string.isRequired
+  }).isRequired
 };
 
 const mapStateToProps = (state: Object, { match }) => {
@@ -70,7 +72,7 @@ const mapStateToProps = (state: Object, { match }) => {
 
   return {
     websiteId,
-    isEditable: isEditable(state, websiteId),
+    isEditable: isEditable(state, websiteId)
   };
 };
 
@@ -80,6 +82,6 @@ export default compose(
   lifecycle({
     componentDidMount() {
       this.props.setMounted(true);
-    },
-  }),
+    }
+  })
 )(Website);

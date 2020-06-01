@@ -35,8 +35,8 @@ api('websites.getApp', { domain }, { noCredentials: true }).then(
 
       const fonts = uniq(
         values(get(data, 'section', {})).map((section: Object): string =>
-          get(section, 'font'),
-        ),
+          get(section, 'font')
+        )
       )
         .filter((font: string): boolean => !!font)
         .map((font: string): string => font.replace(' ', '+'));
@@ -47,7 +47,7 @@ api('websites.getApp', { domain }, { noCredentials: true }).then(
         id: get(app, 'id'),
         description: get(app, 'description', ''),
         templateId: get(json, 'templateId', 1),
-        title: get(app, 'title', 'Untitled'),
+        title: get(app, 'title', 'Untitled')
       };
 
       ReactDOM.render(
@@ -55,7 +55,7 @@ api('websites.getApp', { domain }, { noCredentials: true }).then(
           <Helmet>
             <link
               href={`https://fonts.googleapis.com/css?family=${fonts.join(
-                '|',
+                '|'
               )}:300,400,500,700`}
               rel="stylesheet"
             />
@@ -76,13 +76,13 @@ api('websites.getApp', { domain }, { noCredentials: true }).then(
             />
           </Router>
         </Fragment>,
-        document.getElementById('root'),
+        document.getElementById('root')
       );
     } catch (e) {
       // eslint-disable-next-line
       console.error(`The template (${get(app, 'id')}) is not supported!`);
     }
-  },
+  }
 );
 
 // If you want your app to work offline and load faster, you can change

@@ -4,7 +4,7 @@ export default {
     DELETE: 'delete',
     PATCH: 'patch',
     POST: 'post',
-    PUT: 'put',
+    PUT: 'put'
   },
-  URL: 'https://api.snappykit.com/v1/api',
+  URL: 'https://api.snappykit.com/v1/api'
 };

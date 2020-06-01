@@ -10,7 +10,7 @@ import { UPDATE_ENTITIES } from './types';
 
 const modelsReducer = combineReducers({
   countries,
-  websites,
+  websites
 });
 
 export default (state = {}, action: Object) => {

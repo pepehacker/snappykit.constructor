@@ -5,27 +5,14 @@ import { compose, withHandlers } from 'recompose';
 // Styles
 import styles from './Card.scss';
 
-const ImageCard = ({
-  handleClick,
-  isSelected,
-  src,
-  value,
-}) => {
+const ImageCard = ({ handleClick, isSelected, src, value }) => {
   const rootClassNames = classNames(styles.Root, {
-    [styles.RootIsSelected]: isSelected,
+    [styles.RootIsSelected]: isSelected
   });
 
   return (
-    <button
-      className={rootClassNames}
-      onClick={handleClick}
-      type="button"
-    >
-      <img
-        alt={value}
-        className={styles.Image}
-        src={src}
-      />
+    <button className={rootClassNames} onClick={handleClick} type="button">
+      <img alt={value} className={styles.Image} src={src} />
 
       <div className={styles.Check} />
     </button>
@@ -34,8 +21,7 @@ const ImageCard = ({
 
 export default compose(
   withHandlers({
-    handleClick: ({ onClick , value }): func =>
-      (event: Object): bool =>
-        onClick && onClick(value),
-  }),
+    handleClick: ({ onClick, value }): func => (event: Object): boolean =>
+      onClick && onClick(value)
+  })
 )(ImageCard);

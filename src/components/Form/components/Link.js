@@ -29,29 +29,31 @@ const FormLink = ({
   registerDropdown,
 
   // State
-  isOpened,
+  isOpened
 }) => {
   const rootClassNames = classNames(styles.Root, {
     [styles.RootIsFilled]: !!value,
     [styles.RootIsOpened]: !!isOpened,
-    [styles.RootIsPro]: !!isPro,
+    [styles.RootIsPro]: !!isPro
   });
 
   const iconClassNames = classNames(styles.Icon, 'fab', icon);
-  const formattedValue = value.replace(prefix, '').replace(/[^0-9a-zA-Z.-]/gi, '');
+  const formattedValue = value
+    .replace(prefix, '')
+    .replace(/[^0-9a-zA-Z.-]/gi, '');
 
   return (
     <div className={rootClassNames}>
       <div
-        className={styles.Trigger} onClick={handleTriggerClick}
-        role="button" tabIndex={0}
+        className={styles.Trigger}
+        onClick={handleTriggerClick}
+        role="button"
+        tabIndex={0}
       >
         <i className={iconClassNames} />
 
         <div className={styles.Info}>
-          <div className={styles.Label}>
-            {label}
-          </div>
+          <div className={styles.Label}>{label}</div>
 
           {value ? (
             <a
@@ -70,10 +72,7 @@ const FormLink = ({
         {isPro ? (
           <Pro className={styles.Pro} />
         ) : (
-          <button
-            className={styles.Plus} onClick={handleReset}
-            type="button"
-          />
+          <button className={styles.Plus} onClick={handleReset} type="button" />
         )}
       </div>
 
@@ -104,7 +103,7 @@ FormLink.propTypes = {
   isPro: PropTypes.bool,
   label: PropTypes.string,
   name: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.string
 };
 
 const ComposedFormLink = compose(
@@ -115,7 +114,7 @@ const ComposedFormLink = compose(
 
     return {
       handleDropdownBlur: ({ onChange, prefix, setBusy, setOpen, value }) => (
-        event: Object,
+        event: Object
       ): void => {
         if (!dropdownRef.contains(event.relatedTarget)) {
           setBusy(true);
@@ -125,7 +124,11 @@ const ComposedFormLink = compose(
 
           if (value && onChange) {
             prefix
-              ? onChange(`${prefix}${value.replace(prefix, '').replace(/[^0-9a-zA-Z.-]/gi, '')}`)
+              ? onChange(
+                  `${prefix}${value
+                    .replace(prefix, '')
+                    .replace(/[^0-9a-zA-Z.-]/gi, '')}`
+                )
               : onChange(value);
           }
         }
@@ -138,15 +141,19 @@ const ComposedFormLink = compose(
           onChange && onChange('');
         }
       },
-      handleTriggerClick: ({ isBusied, isOpened, isPro, setOpen }): func => (): boolean =>
-        !isBusied && !isPro && setOpen(!isOpened),
+      handleTriggerClick: ({
+        isBusied,
+        isOpened,
+        isPro,
+        setOpen
+      }): func => (): boolean => !isBusied && !isPro && setOpen(!isOpened),
 
       // Registers
       registerDropdown: () => (node: HTMLElement): void => {
         dropdownRef = node;
-      },
+      }
     };
-  }),
+  })
 )(FormLink);
 
 export default ({ label, ...props }) => (

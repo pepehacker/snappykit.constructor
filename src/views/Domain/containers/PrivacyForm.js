@@ -19,19 +19,19 @@ import styles from './common.scss';
 import validate, { max } from 'utils/validate';
 
 type DomainPrivacyFormPropTypes = {
-  handleSubmit: SyntheticEvent => void,
-  isPro: boolean,
+  handleSubmit: (SyntheticEvent) => void,
+  isPro: boolean
 };
 
 const DomainPrivacyForm = ({
   handleSubmit,
-  isPro,
+  isPro
 }: DomainPrivacyFormPropTypes): React.Element<typeof Form> => (
   <Form onSubmit={handleSubmit}>
     <div className={styles.Group}>
       <Textarea
         classNames={{
-          textarea: styles.Textarea,
+          textarea: styles.Textarea
         }}
         isPro={!isPro}
         label="Terms of use"
@@ -41,7 +41,7 @@ const DomainPrivacyForm = ({
 
       <Textarea
         classNames={{
-          textarea: styles.Textarea,
+          textarea: styles.Textarea
         }}
         isPro={!isPro}
         label="Privacy policy"
@@ -52,8 +52,8 @@ const DomainPrivacyForm = ({
   </Form>
 );
 
-const mapStateToProps: Function = state => ({
-  isPro: isPro(state),
+const mapStateToProps: Function = (state) => ({
+  isPro: isPro(state)
 });
 
 export default compose(
@@ -62,7 +62,7 @@ export default compose(
     form: PRIVACY_FORM_ID,
     validate: validate({
       privacy: [max(100000, 'Max 100k letters!')],
-      terms: [max(100000, 'Max 100k letters!')],
-    }),
-  }),
+      terms: [max(100000, 'Max 100k letters!')]
+    })
+  })
 )(DomainPrivacyForm);

@@ -7,7 +7,9 @@ import styles from './Oops.scss';
 const Oops = () => (
   <div className={styles.Root}>
     <div className={styles.Content}>
-      <div className={styles.Title}>Now you can use only the desktop version.</div>
+      <div className={styles.Title}>
+        Now you can use only the desktop version.
+      </div>
 
       <div className={styles.Actions}>
         <a className={styles.Link} href="/">
@@ -16,10 +18,7 @@ const Oops = () => (
       </div>
     </div>
 
-    <img
-      alt="Oops" className={styles.Oops}
-      src={oops}
-    />
+    <img alt="Oops" className={styles.Oops} src={oops} />
   </div>
 );
 

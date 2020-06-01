@@ -7,5 +7,5 @@ export type BackgroundImageCardType = {
   isLoaded: boolean,
   isSelected: boolean,
   src: string,
-  variant: string,
+  variant: string
 };

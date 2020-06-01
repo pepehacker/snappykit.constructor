@@ -4,7 +4,7 @@ import { combineReducers } from 'redux';
 import { reducer as plans } from './Plans';
 
 const containersReducer = combineReducers({
-  plans,
+  plans
 });
 
 export default (state = {}, action: Object) => {

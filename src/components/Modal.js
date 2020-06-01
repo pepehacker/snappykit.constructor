@@ -18,10 +18,10 @@ type ModelType = {
   classNames: {
     root: string,
     backdrop: string,
-    container: string,
+    container: string
   },
   handleClose: Function,
-  isOpened: boolean,
+  isOpened: boolean
 };
 
 const Modal = ({
@@ -30,15 +30,25 @@ const Modal = ({
   classNames: {
     root: rootClassName,
     backdrop: backdropClassName,
-    container: containerClassName,
+    container: containerClassName
   } = {},
   handleClose,
   isOpened,
   ...props
 }: ModelType): React.Element<typeof CSSTransition> => {
-  const rootClassNames: string = classNames(className, rootClassName, styles.Root);
-  const backdropClassNames: string = classNames(backdropClassName, styles.Backdrop);
-  const containerClassNames: string = classNames(containerClassName, styles.Container);
+  const rootClassNames: string = classNames(
+    className,
+    rootClassName,
+    styles.Root
+  );
+  const backdropClassNames: string = classNames(
+    backdropClassName,
+    styles.Backdrop
+  );
+  const containerClassNames: string = classNames(
+    containerClassName,
+    styles.Container
+  );
 
   return (
     <CSSTransition
@@ -47,7 +57,7 @@ const Modal = ({
         enterActive: styles.RootAnimateEnterActive,
         enterDone: styles.RootAnimateEnterDone,
         exit: styles.RootAnimateExit,
-        exitActive: styles.RootAnimateExitActive,
+        exitActive: styles.RootAnimateExitActive
       }}
       in={isOpened}
       timeout={200}
@@ -73,7 +83,7 @@ const Modal = ({
 Modal.propTypes = {
   children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   handleClose: PropTypes.func,
-  isOpened: PropTypes.bool,
+  isOpened: PropTypes.bool
 };
 
 const mapStateToProps = ({ services }, { id }) => {
@@ -81,19 +91,16 @@ const mapStateToProps = ({ services }, { id }) => {
 
   return {
     ...modal,
-    isOpened: !!modal,
+    isOpened: !!modal
   };
 };
 
 export default compose(
-  connect(
-    mapStateToProps,
-    { closeModal },
-  ),
+  connect(mapStateToProps, { closeModal }),
   withHandlers({
     handleClose: ({ closeModal, id, onClose }): Function => () => {
       closeModal(id);
       onClose && onClose();
-    },
-  }),
+    }
+  })
 )(Modal);

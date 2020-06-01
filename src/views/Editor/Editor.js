@@ -29,17 +29,17 @@ const Editor = ({
   websiteId,
   // State
   isAvailable,
-  isMounted,
+  isMounted
 }) => {
   const rootClassNames = classNames(styles.Root, {
-    [styles.RootIsNotAvailable]: !isAvailable,
+    [styles.RootIsNotAvailable]: !isAvailable
   });
 
   return (
     <CSSTransition
       classNames={{
         enter: styles.RootAnimateEnter,
-        enterActive: styles.RootAnimateEnterActive,
+        enterActive: styles.RootAnimateEnterActive
       }}
       in={isMounted}
       timeout={700}
@@ -66,21 +66,24 @@ const Editor = ({
                 enter: styles.SidebarAnimateEnter,
                 enterActive: styles.SidebarAnimateEnterActive,
                 exit: styles.SidebarAnimateExit,
-                exitActive: styles.SidebarAnimateExitActive,
+                exitActive: styles.SidebarAnimateExitActive
               }}
               timeout={{ enter: 600, exit: 400 }}
               unmountOnExit
             >
-              {state => (
+              {(state) => (
                 <Switch location={location}>
                   {ROUTES.map(({ Component, exact, id, path }) => (
                     <Route
                       key={id}
                       path={url(match.url, path)}
-                      render={props => <Component
-                        {...props} state={state}
-                        websiteId={websiteId}
-                      />}
+                      render={(props) => (
+                        <Component
+                          {...props}
+                          state={state}
+                          websiteId={websiteId}
+                        />
+                      )}
                     />
                   ))}
                 </Switch>
@@ -95,13 +98,13 @@ const Editor = ({
 
 Editor.propTypes = {
   match: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-  }).isRequired,
+    url: PropTypes.string.isRequired
+  }).isRequired
 };
 
 const mapStateToProps = (state: Object, { location }): Object => {
   const match = matchPath(get(location, 'pathname'), {
-    path: '/:websiteId/editor/:sectionId/:id?',
+    path: '/:websiteId/editor/:sectionId/:id?'
   });
 
   const id = get(match, 'params.id');
@@ -114,17 +117,15 @@ const mapStateToProps = (state: Object, { location }): Object => {
     id,
     isAvailable:
       sectionId === 'templates' ||
-      values(get(config, 'section')).filter(({ type }) => type === sectionId).length > 0,
+      values(get(config, 'section')).filter(({ type }) => type === sectionId)
+        .length > 0,
     sectionId,
-    websiteId,
+    websiteId
   };
 };
 
 export default compose(
-  connect(
-    mapStateToProps,
-    null,
-  ),
+  connect(mapStateToProps, null),
   withState('isMounted', 'setMounted', false),
   withState('debugLocation', 'setDebugLocation', false),
   lifecycle({
@@ -137,6 +138,6 @@ export default compose(
       if (!id && sectionId === 'text') {
         history.replace(`/${websiteId}/editor/text/title`);
       }
-    },
-  }),
+    }
+  })
 )(Editor);

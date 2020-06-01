@@ -4,7 +4,7 @@ import { SET_PERIOD, SET_PRICE } from './types';
 
 const initialState = {
   period: MONTH,
-  price: null,
+  price: null
 };
 
 export default (state: Object = initialState, action: Object): Object => {
@@ -12,12 +12,12 @@ export default (state: Object = initialState, action: Object): Object => {
     case SET_PERIOD:
       return {
         ...state,
-        period: action.period,
+        period: action.period
       };
     case SET_PRICE:
       return {
         ...state,
-        price: action.price,
+        price: action.price
       };
     default:
       return state;

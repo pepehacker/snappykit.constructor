@@ -13,7 +13,7 @@ import {
   // Provider
   TemplateContext,
   // Selectors
-  getSectionById,
+  getSectionById
 } from 'template';
 
 // Styles
@@ -22,8 +22,12 @@ import styles from './Smartphone.scss';
 const TemplateSmartphone = ({
   children,
   className,
-  classNames: { root: rootClassName, container: containerClassName, mockup: mockupClassName } = {},
-  id,
+  classNames: {
+    root: rootClassName,
+    container: containerClassName,
+    mockup: mockupClassName
+  } = {},
+  id
 }) => (
   <TemplateContext.Consumer>
     {({ data, view, websiteId }) => {
@@ -32,10 +36,13 @@ const TemplateSmartphone = ({
       const rootClassNames = classNames(className, rootClassName, styles.Root, {
         [styles.RootViewDesktop]: view === VIEW.DESKTOP,
         [styles.RootViewMobile]: view === VIEW.MOBILE,
-        [styles.RootViewTablet]: view === VIEW.TABLET,
+        [styles.RootViewTablet]: view === VIEW.TABLET
       });
 
-      const containerClassNames = classNames(containerClassName, styles.Container);
+      const containerClassNames = classNames(
+        containerClassName,
+        styles.Container
+      );
       const mockupClassNames = classNames(mockupClassName, styles.Mockup);
 
       return (
@@ -47,14 +54,12 @@ const TemplateSmartphone = ({
             <div
               className={mockupClassNames}
               style={{
-                backgroundImage: `url(${require(`assets/mockup/${model}/${mockup}.png`)})` /* eslint-disable-line */,
+                backgroundImage: `url(${require(`assets/mockup/${model}/${mockup}.png`)})` /* eslint-disable-line */
               }}
             />
           </Link>
 
-          {children && <div className={containerClassNames}>
-            {children}
-          </div>}
+          {children && <div className={containerClassNames}>{children}</div>}
         </div>
       );
     }}
@@ -67,9 +72,9 @@ TemplateSmartphone.propTypes = {
   classNames: PropTypes.shape({
     root: PropTypes.string,
     container: PropTypes.string,
-    mockup: PropTypes.string,
+    mockup: PropTypes.string
   }),
-  id: PropTypes.string,
+  id: PropTypes.string
 };
 
 export default TemplateSmartphone;

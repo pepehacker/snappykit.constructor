@@ -1,7 +1,12 @@
 /* eslint-disable */
 import React, { Component } from 'react';
 import { CustomPicker, CustomPointer } from 'react-color';
-import { Alpha, EditableInput, Hue, Saturation } from 'react-color/lib/components/common';
+import {
+  Alpha,
+  EditableInput,
+  Hue,
+  Saturation
+} from 'react-color/lib/components/common';
 import { compose, withHandlers } from 'recompose';
 
 // Components
@@ -20,7 +25,10 @@ const FormColor = ({ onChange, value }) => {
     <div className={styles.Root}>
       <div className={styles.Section}>
         <div className={styles.Preview}>
-          <div className={styles.Color} style={{ background: `rgba(${r}, ${g}, ${b}, ${a})` }} />
+          <div
+            className={styles.Color}
+            style={{ background: `rgba(${r}, ${g}, ${b}, ${a})` }}
+          />
 
           <div className={styles.Hex}>
             <EditableInput onChange={onChange} value={hex} />
@@ -47,8 +55,10 @@ const FormColor = ({ onChange, value }) => {
 
 const ComposedFormColor = CustomPicker(FormColor);
 
-export default props => (
+export default (props) => (
   <Field {...props} format={colorFormat} parse={colorParse}>
-    {({ onChange, ...fieldProps }) => <ComposedFormColor {...fieldProps} onChange={onChange} />}
+    {({ onChange, ...fieldProps }) => (
+      <ComposedFormColor {...fieldProps} onChange={onChange} />
+    )}
   </Field>
 );

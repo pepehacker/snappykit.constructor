@@ -8,5 +8,5 @@ export const VIEW = {
   DESKTOP: 'desktop',
   DESKTOP_LARGE: 'desktop-large',
   MOBILE: 'mobile',
-  TABLET: 'tablet',
+  TABLET: 'tablet'
 };

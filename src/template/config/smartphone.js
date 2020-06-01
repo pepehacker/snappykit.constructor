@@ -36,18 +36,18 @@ export const SMARTPHONE_MOCKUP = {
 
   FLAT_BLACK: 'flat-black',
   FLAT_BLUE: 'flat-blue',
-  FLAT_WHITE: 'flat-white',
+  FLAT_WHITE: 'flat-white'
 };
 
 // Model
 export const SMARTPHONE_MODEL = {
   IPHONE: 'iphone',
-  PIXEL: 'pixel',
+  PIXEL: 'pixel'
 };
 
 SMARTPHONE_MODEL.values = [
   { label: 'iPhone', value: SMARTPHONE_MODEL.IPHONE },
-  { label: 'Pixel', value: SMARTPHONE_MODEL.PIXEL },
+  { label: 'Pixel', value: SMARTPHONE_MODEL.PIXEL }
 ];
 
 // PRO
@@ -75,20 +75,20 @@ export const SMARTPHONE_PRO_LIST = [
 
   SMARTPHONE_MOCKUP.FLAT_BLACK,
   SMARTPHONE_MOCKUP.FLAT_BLUE,
-  SMARTPHONE_MOCKUP.FLAT_WHITE,
+  SMARTPHONE_MOCKUP.FLAT_WHITE
 ];
 
 // Style
 export const SMARTPHONE_STYLE = {
   CLASSIC: 'classic',
   CONCEPT: 'concept',
-  FLAT: 'flat',
+  FLAT: 'flat'
 };
 
 SMARTPHONE_STYLE.values = [
   { label: 'Classic', value: SMARTPHONE_STYLE.CLASSIC },
   { label: 'Concept', value: SMARTPHONE_STYLE.CONCEPT },
-  { label: 'Flat', value: SMARTPHONE_STYLE.FLAT },
+  { label: 'Flat', value: SMARTPHONE_STYLE.FLAT }
 ];
 
 // Schema
@@ -97,19 +97,19 @@ export const SMARTPHONE_SCHEMA = (defaults: Object): Object =>
     mockup: string()
       .matches(
         new RegExp(`/^(${values(SMARTPHONE_MOCKUP).join('|')})$/`),
-        'Incorrect `SMARTPHONE` ID!',
+        'Incorrect `SMARTPHONE` ID!'
       )
       .default(get(defaults, 'mockup', SMARTPHONE_MOCKUP.FLAT_SILVER)),
     model: string()
       .matches(
         new RegExp(`/^(${values(SMARTPHONE_MODEL).join('|')})$/`),
-        'Incorrect `SMARTPHONE MODEL` ID!',
+        'Incorrect `SMARTPHONE MODEL` ID!'
       )
       .default(get(defaults, 'model', SMARTPHONE_MODEL.IPHONE)),
     style: string()
       .matches(
         new RegExp(`/^(${values(SMARTPHONE_STYLE).join('|')})$/`),
-        'Incorrect `SMARTPHONE STYLE` ID!',
+        'Incorrect `SMARTPHONE STYLE` ID!'
       )
-      .default(get(defaults, 'style', SMARTPHONE_STYLE.FLAT)),
+      .default(get(defaults, 'style', SMARTPHONE_STYLE.FLAT))
   });

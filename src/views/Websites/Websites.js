@@ -29,7 +29,7 @@ const Websites = ({
   // Handlers
   handleCreate,
   // State
-  isMounted,
+  isMounted
 }) => (
   <Fragment>
     {!items || items.length === 0 ? (
@@ -40,7 +40,7 @@ const Websites = ({
       <CSSTransition
         classNames={{
           enter: styles.RootAnimateEnter,
-          enterActive: styles.RootAnimateEnterActive,
+          enterActive: styles.RootAnimateEnterActive
         }}
         in={isMounted}
         timeout={600}
@@ -61,7 +61,8 @@ const Websites = ({
 
                 <div className={styles.Actions}>
                   <Link
-                    className={styles.Create} onClick={handleCreate}
+                    className={styles.Create}
+                    onClick={handleCreate}
                     to="/search"
                   >
                     Create
@@ -71,29 +72,31 @@ const Websites = ({
 
               {items && items.length > 0 && (
                 <div className={styles.List}>
-                  {items.map(
-                    (item: Object, index: number): func => (
-                      <CSSTransition
-                        key={item.id}
-                        classNames={{
-                          enter: styles.ItemAnimateEnter,
-                          enterActive: styles.ItemAnimateEnterActive,
-                          exit: styles.ItemAnimateExit,
-                          exitActive: styles.ItemAnimateExitActive,
+                  {items.map((item: Object, index: number): func => (
+                    <CSSTransition
+                      key={item.id}
+                      classNames={{
+                        enter: styles.ItemAnimateEnter,
+                        enterActive: styles.ItemAnimateEnterActive,
+                        exit: styles.ItemAnimateExit,
+                        exitActive: styles.ItemAnimateExitActive
+                      }}
+                      in={state === 'entered' && !item.isDeleted}
+                      timeout={{ enter: 400 + 100 * item.length, exit: 300 }}
+                      unmountOnExit
+                    >
+                      <div
+                        className={styles.Item}
+                        style={{
+                          transitionDelay: `${
+                            item.isDeleted ? 0 : 0.1 * index
+                          }s`
                         }}
-                        in={state === 'entered' && !item.isDeleted}
-                        timeout={{ enter: 400 + 100 * item.length, exit: 300 }}
-                        unmountOnExit
                       >
-                        <div
-                          className={styles.Item}
-                          style={{ transitionDelay: `${item.isDeleted ? 0 : 0.1 * index}s` }}
-                        >
-                          <Item {...item} />
-                        </div>
-                      </CSSTransition>
-                    ),
-                  )}
+                        <Item {...item} />
+                      </div>
+                    </CSSTransition>
+                  ))}
                 </div>
               )}
             </div>
@@ -106,27 +109,26 @@ const Websites = ({
 
 const mapStateToProps = (state: Object): Object => ({
   items: getWebsiteList(state),
-  limit: getSubscriptionLimit(state),
+  limit: getSubscriptionLimit(state)
 });
 
 export default compose(
-  connect(
-    mapStateToProps,
-    { openModal },
-  ),
+  connect(mapStateToProps, { openModal }),
   withState('isMounted', 'setMounted', false),
   withHandlers({
-    handleCreate: ({ items, limit, openModal }): func => (event: Object): void => {
+    handleCreate: ({ items, limit, openModal }): func => (
+      event: Object
+    ): void => {
       if (items.length >= limit) {
         event.preventDefault();
         openModal(LIMIT_MODAL_ID);
       }
-    },
+    }
   }),
   lifecycle({
     componentDidMount() {
       const { items, setMounted } = this.props;
       items && items.length > 0 && setMounted(true);
-    },
-  }),
+    }
+  })
 )(Websites);

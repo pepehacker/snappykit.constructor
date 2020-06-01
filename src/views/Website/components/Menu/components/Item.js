@@ -14,14 +14,14 @@ const ICON = {
   SOCIAL: 'social',
   STORE: 'store',
   TEMPLATES: 'templates',
-  TEXT: 'text',
+  TEXT: 'text'
 };
 
 const WebsiteMenuItem = ({
   className: classNameProp,
   icon = ICON.TEMPLATES,
   title,
-  to,
+  to
 }) => {
   const className = classNames(classNameProp, styles.Root, {
     [styles.RootIconBackground]: icon === ICON.BACKGROUND,
@@ -32,22 +32,16 @@ const WebsiteMenuItem = ({
     [styles.RootIconSocial]: icon === ICON.SOCIAL,
     [styles.RootIconStore]: icon === ICON.STORE,
     [styles.RootIconTemplates]: icon === ICON.TEMPLATES,
-    [styles.RootIconText]: icon === ICON.TEXT,
+    [styles.RootIconText]: icon === ICON.TEXT
   });
 
   return (
-    <NavLink
-      activeClassName={styles.RootActive}
-      className={className}
-      to={to}
-    >
+    <NavLink activeClassName={styles.RootActive} className={className} to={to}>
       <div className={styles.Cover}>
         <div className={styles.Icon} />
       </div>
 
-      <div className={styles.Title}>
-        {title}
-      </div>
+      <div className={styles.Title}>{title}</div>
     </NavLink>
   );
 };
@@ -56,7 +50,7 @@ WebsiteMenuItem.propTypes = {
   className: PropTypes.string,
   icon: PropTypes.string,
   title: PropTypes.string,
-  to: PropTypes.string,
+  to: PropTypes.string
 };
 
 WebsiteMenuItem.ICON = ICON;

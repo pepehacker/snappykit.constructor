@@ -15,7 +15,7 @@ import {
   // Provider
   TemplateContext,
   // Selectors
-  getSectionById,
+  getSectionById
 } from 'template';
 
 // Styles
@@ -31,7 +31,7 @@ const TemplateSocial = ({ className, id }) => (
         [styles.RootViewMobile]: view === VIEW.MOBILE,
         [styles.RootViewTablet]: view === VIEW.TABLET,
 
-        [styles.RootIsNotEditor]: !isEditor,
+        [styles.RootIsNotEditor]: !isEditor
       });
 
       return (
@@ -48,7 +48,7 @@ const TemplateSocial = ({ className, id }) => (
                       link={items[id]}
                       variant={id}
                     />
-                  ),
+                  )
               )}
             </div>
           </Link>
@@ -60,7 +60,7 @@ const TemplateSocial = ({ className, id }) => (
 
 TemplateSocial.propTypes = {
   className: PropTypes.string,
-  id: PropTypes.string,
+  id: PropTypes.string
 };
 
 export default TemplateSocial;

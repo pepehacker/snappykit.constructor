@@ -12,13 +12,13 @@ import styles from './Gradient.scss';
 
 const DIRECTION = {
   FROM: 'from',
-  TO: 'to',
+  TO: 'to'
 };
 
 type GradientType = {
   currentDirection: string,
   handleFromClick: Function,
-  handleToClick: Function,
+  handleToClick: Function
 };
 
 const Gradient = ({
@@ -26,7 +26,7 @@ const Gradient = ({
   handleFromClick,
   handleToClick,
   name = 'gradient',
-  value,
+  value
 }: GradientType): React.Element<'div'> => (
   <div className={styles.Root}>
     <div className={styles.Preview}>
@@ -43,8 +43,8 @@ const Gradient = ({
         style={{
           backgroundImage: `linear-gradient(to right, ${get(
             value,
-            'from',
-          )}, ${get(value, 'to')})`,
+            'from'
+          )}, ${get(value, 'to')})`
         }}
       />
 
@@ -78,11 +78,11 @@ const ComposedGradient = compose(
     handleFromClick: ({ setCurrentDirection }): Function => () =>
       setCurrentDirection(DIRECTION.FROM),
     handleToClick: ({ setCurrentDirection }): Function => () =>
-      setCurrentDirection(DIRECTION.TO),
-  }),
+      setCurrentDirection(DIRECTION.TO)
+  })
 )(Gradient);
 
-export default props => (
+export default (props) => (
   <Field {...props} label={undefined}>
     <ComposedGradient />
   </Field>

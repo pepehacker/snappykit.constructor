@@ -12,7 +12,8 @@ export const STORE_APP_STORE = 'apple';
 export const STORE_APP_STORE_PREFIX = 'https://itunes.apple.com/app/id';
 
 export const STORE_GOOGLE_PLAY = 'play';
-export const STORE_GOOGLE_PLAY_PREFIX = 'https://play.google.com/store/apps/details?id=';
+export const STORE_GOOGLE_PLAY_PREFIX =
+  'https://play.google.com/store/apps/details?id=';
 
 // Schema
 export const STORE_SCHEMA = (defaults: Object): Object =>
@@ -30,8 +31,8 @@ export const STORE_SCHEMA = (defaults: Object): Object =>
       [STORE_GOOGLE_PLAY]: string()
         .matches(
           /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})/,
-          'Incorrect `GOOGLE PLAY` URL!',
+          'Incorrect `GOOGLE PLAY` URL!'
         )
-        .default(get(defaults, `items.${STORE_GOOGLE_PLAY}`)),
-    }),
+        .default(get(defaults, `items.${STORE_GOOGLE_PLAY}`))
+    })
   });

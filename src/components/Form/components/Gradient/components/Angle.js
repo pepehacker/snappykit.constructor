@@ -18,7 +18,7 @@ type GradientAngleType = {
   min: number,
   name: string,
   onChange: Function,
-  value: number,
+  value: number
 };
 
 const GradientAngle = ({
@@ -28,7 +28,7 @@ const GradientAngle = ({
   min = 0,
   name,
   onChange,
-  value: propValue = 0,
+  value: propValue = 0
 }: GradientAngleType): React.Element<'div'> => {
   const value = parseInt(propValue, 10) || 0;
   const percent = (value / max) * 100;
@@ -41,7 +41,7 @@ const GradientAngle = ({
             const isPoint = index === 0 || index % (lenght / 4) === 0;
 
             const valueClassNames = classNames(styles.Value, {
-              [styles.ValueVariantPoint]: isPoint,
+              [styles.ValueVariantPoint]: isPoint
             });
 
             return (
@@ -55,7 +55,7 @@ const GradientAngle = ({
         <div
           className={styles.Angle}
           style={{
-            left: `calc(${(value / max) * 100}% - 1px)`,
+            left: `calc(${(value / max) * 100}% - 1px)`
           }}
         >
           <div className={styles.AngleValue}>{value}</div>
@@ -71,9 +71,10 @@ const GradientAngle = ({
           name={name}
           onChange={onChange}
           style={{
-            background: `linear-gradient(to right, #ebebeb ${percent -
-              20}%, #9e9ae2 ${percent}%, #ebebeb ${percent + 20}%)`,
-            left: `calc(${percent}% - 52px)`,
+            background: `linear-gradient(to right, #ebebeb ${
+              percent - 20
+            }%, #9e9ae2 ${percent}%, #ebebeb ${percent + 20}%)`,
+            left: `calc(${percent}% - 52px)`
           }}
           type="range"
           value={value}
@@ -83,7 +84,7 @@ const GradientAngle = ({
   );
 };
 
-export default props => (
+export default (props) => (
   <Field {...props} defaultValue={0}>
     <GradientAngle />
   </Field>

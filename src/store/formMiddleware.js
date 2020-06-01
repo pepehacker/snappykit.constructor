@@ -2,7 +2,7 @@ import { actionTypes } from 'redux-form';
 
 const state = {};
 
-export default () => next => action => {
+export default () => (next) => (action) => {
   switch (action.type) {
     case actionTypes.DESTROY:
       state[action.meta.form] = (state[action.meta.form] || 0) - 1;

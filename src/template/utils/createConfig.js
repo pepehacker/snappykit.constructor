@@ -28,14 +28,14 @@ import {
   TEXT,
   TEXT_SCHEMA,
   // Common
-  TITLE,
+  TITLE
 } from '../config';
 
 type ConfigType = {
   id: number | string,
   data: Object,
   exports: Array<'string'>,
-  type: string,
+  type: string
 };
 
 export default (id: number, sections: Array<ConfigType> = []): Object => {
@@ -49,7 +49,7 @@ export default (id: number, sections: Array<ConfigType> = []): Object => {
     SMARTPHONE,
     SOCIAL,
     STORE,
-    TEXT,
+    TEXT
   ];
   const section = {};
 
@@ -99,7 +99,7 @@ export default (id: number, sections: Array<ConfigType> = []): Object => {
       exports,
       link,
       schema,
-      type,
+      type
     });
   });
 
@@ -109,6 +109,6 @@ export default (id: number, sections: Array<ConfigType> = []): Object => {
 
   return {
     id,
-    section,
+    section
   };
 };

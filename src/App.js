@@ -31,7 +31,10 @@ const App = ({ match, user }) => (
     ) : (
       <Fragment>
         <Switch>
-          <Route component={Sandbox} path={url.resolve(match.url, '/sandbox')} />
+          <Route
+            component={Sandbox}
+            path={url.resolve(match.url, '/sandbox')}
+          />
           <Route component={Main} path={url.resolve(match.url, '/')} />
         </Switch>
 
@@ -44,13 +47,10 @@ const App = ({ match, user }) => (
 const mapStateToProps = ({ services }) => get(services, 'session');
 
 export default compose(
-  connect(
-    mapStateToProps,
-    { fetchProfile },
-  ),
+  connect(mapStateToProps, { fetchProfile }),
   lifecycle({
     componentDidMount() {
       this.props.fetchProfile();
-    },
-  }),
+    }
+  })
 )(App);

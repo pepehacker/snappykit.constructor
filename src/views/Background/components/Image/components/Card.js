@@ -19,7 +19,7 @@ import type { BackgroundImageCardType } from '../Image.type';
 const VARIANT = {
   IMAGE: 'image',
   PREVIEW: 'preview',
-  UPLOAD: 'upload',
+  UPLOAD: 'upload'
 };
 
 const BackgroundImageCard = ({
@@ -34,29 +34,36 @@ const BackgroundImageCard = ({
   handleLoad,
   // State
   isLoaded,
-  isSelected,
+  isSelected
 }: BackgroundImageCardType): React.Element<'button'> => (
   <div
     className={classNames(styles.Root, {
       [styles.RootIsLoaded]: isLoaded,
       [styles.RootIsPreview]: variant === VARIANT.PREVIEW,
-      [styles.RootIsSelected]: isSelected,
+      [styles.RootIsSelected]: isSelected
     })}
   >
     <div
-      className={styles.Card} onClick={handleClick}
-      role="button" tabIndex={0}
+      className={styles.Card}
+      onClick={handleClick}
+      role="button"
+      tabIndex={0}
     >
       <img
-        alt="Background" className={styles.Image}
-        onLoad={handleLoad} src={src}
+        alt="Background"
+        className={styles.Image}
+        onLoad={handleLoad}
+        src={src}
       />
 
       {user && (
         <div className={styles.Author}>
           <a
             className={styles.AuthorLink}
-            href={`${get(user, 'link')}?utm_source=snappykit&utm_medium=referra`}
+            href={`${get(
+              user,
+              'link'
+            )}?utm_source=snappykit&utm_medium=referra`}
             rel="noopener noreferrer"
             target="_blank"
           >
@@ -74,8 +81,10 @@ const BackgroundImageCard = ({
           <React.Fragment>
             {(!editType || editType === BACKGROUND_COLOR) && (
               <div
-                className={styles.Link} onClick={handleAddColor}
-                role="button" tabIndex={0}
+                className={styles.Link}
+                onClick={handleAddColor}
+                role="button"
+                tabIndex={0}
               >
                 {`${editType ? 'Edit' : 'Add'} Color`}
               </div>
@@ -83,8 +92,10 @@ const BackgroundImageCard = ({
 
             {(!editType || editType === BACKGROUND_GRADIENT) && (
               <div
-                className={styles.Link} onClick={handleAddGradient}
-                role="button" tabIndex={0}
+                className={styles.Link}
+                onClick={handleAddGradient}
+                role="button"
+                tabIndex={0}
               >
                 {`${editType ? 'Edit' : 'Add'} Gradient`}
               </div>
@@ -99,13 +110,16 @@ const BackgroundImageCard = ({
 export default compose(
   withState('isLoaded', 'setLoaded', true),
   withHandlers({
-    handleAddColor: ({ onEdit }): Function => (): boolean => onEdit && onEdit(BACKGROUND_COLOR),
+    handleAddColor: ({ onEdit }): Function => (): boolean =>
+      onEdit && onEdit(BACKGROUND_COLOR),
     handleAddGradient: ({ onEdit }): Function => (): boolean =>
       onEdit && onEdit(BACKGROUND_GRADIENT),
-    handleClick: ({ onClick, photo, src }): Function => (event: Object): boolean => {
+    handleClick: ({ onClick, photo, src }): Function => (
+      event: Object
+    ): boolean => {
       photo && Unsplash.photos.downloadPhoto(photo);
       onClick && onClick(src);
     },
-    handleLoad: ({ setLoaded }): Function => () => setLoaded(false),
-  }),
+    handleLoad: ({ setLoaded }): Function => () => setLoaded(false)
+  })
 )(BackgroundImageCard);

@@ -14,14 +14,14 @@ const Template6Section = ({ children, id }) => (
         className={classNames(styles.Root, {
           [styles.RootVariantDesktop]: view === VIEW.DESKTOP,
           [styles.RootVariantMobile]: view === VIEW.MOBILE,
-          [styles.RootVariantTablet]: view === VIEW.TABLET,
+          [styles.RootVariantTablet]: view === VIEW.TABLET
         })}
         style={{ ...size }}
       >
         <Background
           classNames={{
             root: styles.Wrapper,
-            container: styles.WrapperContainer,
+            container: styles.WrapperContainer
           }}
           id={`${id}_background`}
         >

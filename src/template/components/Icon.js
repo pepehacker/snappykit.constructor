@@ -13,7 +13,7 @@ import {
   // Provider
   TemplateContext,
   // Selectors
-  getSectionById,
+  getSectionById
 } from 'template';
 
 // Styles
@@ -22,7 +22,7 @@ import styles from './Icon.scss';
 const TemplateIcon = ({
   className,
   classNames: { root: rootClassName, icon: iconClassName } = {},
-  id,
+  id
 }) => (
   <TemplateContext.Consumer>
     {({ data, view, websiteId }) => {
@@ -31,7 +31,7 @@ const TemplateIcon = ({
       const rootClassNames = classNames(className, rootClassName, styles.Root, {
         [styles.RootViewDesktop]: view === VIEW.DESKTOP,
         [styles.RootViewMobile]: view === VIEW.MOBILE,
-        [styles.RootViewTablet]: view === VIEW.TABLET,
+        [styles.RootViewTablet]: view === VIEW.TABLET
       });
 
       const iconClassNames = classNames(iconClassName, styles.Icon);
@@ -52,9 +52,9 @@ const TemplateIcon = ({
 TemplateIcon.propTypes = {
   className: PropTypes.string,
   data: PropTypes.shape({
-    icon: PropTypes.string,
+    icon: PropTypes.string
   }),
-  id: PropTypes.string,
+  id: PropTypes.string
 };
 
 export default TemplateIcon;

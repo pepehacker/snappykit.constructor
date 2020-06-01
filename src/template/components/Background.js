@@ -12,7 +12,7 @@ import {
   // Provider
   TemplateContext,
   // Selector
-  getSectionById,
+  getSectionById
 } from 'template';
 
 // Styles
@@ -27,7 +27,7 @@ const TemplateBackground = ({
   children,
   id,
   history,
-  location,
+  location
 }) => {
   const [isFocused, setFocusState] = React.useState(false);
 
@@ -41,21 +41,21 @@ const TemplateBackground = ({
           {
             [styles.RootViewDesktop]: view === VIEW.DESKTOP,
             [styles.RootViewMobile]: view === VIEW.MOBILE,
-            [styles.RootViewTablet]: view === VIEW.TABLET,
+            [styles.RootViewTablet]: view === VIEW.TABLET
           },
           {
-            [styles.RootIsFocused]: isFocused,
-          },
+            [styles.RootIsFocused]: isFocused
+          }
         );
 
         const containerClassNames = classNames(
           containerClassName,
-          styles.Container,
+          styles.Container
         );
 
         const { color, gradient, image } = getSectionById(
           data,
-          id || BACKGROUND,
+          id || BACKGROUND
         );
 
         const currentColor = get(image, 'color') || color;
@@ -71,7 +71,7 @@ const TemplateBackground = ({
                 className={styles.Cover}
                 style={{
                   backgroundImage: `url(${image.src})`,
-                  backgroundSize: 'cover',
+                  backgroundSize: 'cover'
                 }}
               />
             )}
@@ -79,7 +79,7 @@ const TemplateBackground = ({
               <div
                 className={styles.Cover}
                 style={{
-                  backgroundColor: currentColor,
+                  backgroundColor: currentColor
                 }}
               />
             )}
@@ -87,7 +87,7 @@ const TemplateBackground = ({
               <div
                 className={styles.Cover}
                 style={{
-                  backgroundImage: `linear-gradient(${angle}deg, ${from}, ${to})`,
+                  backgroundImage: `linear-gradient(${angle}deg, ${from}, ${to})`
                 }}
               />
             )}
@@ -114,7 +114,7 @@ const TemplateBackground = ({
 TemplateBackground.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
-  id: PropTypes.string,
+  id: PropTypes.string
 };
 
 export default withRouter(TemplateBackground);

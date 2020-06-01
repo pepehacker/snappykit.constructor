@@ -6,23 +6,25 @@ export default (data: Object, config: Object, force: boolean): Object => {
   const websiteData = { ...data };
 
   if (data && section) {
-    keys(section).forEach(
-      (sectionId: number | string): void => {
-        const exportedFields = get(section, `${sectionId}.exports`, []);
+    keys(section).forEach((sectionId: number | string): void => {
+      const exportedFields = get(section, `${sectionId}.exports`, []);
 
-        if (exportedFields && exportedFields.length > 0) {
-          const exportedData = {};
+      if (exportedFields && exportedFields.length > 0) {
+        const exportedData = {};
 
-          exportedFields.forEach((fieldId: number | string) => {
-            set(exportedData, fieldId, get(data, `section.${sectionId}.${fieldId}`));
-          });
+        exportedFields.forEach((fieldId: number | string) => {
+          set(
+            exportedData,
+            fieldId,
+            get(data, `section.${sectionId}.${fieldId}`)
+          );
+        });
 
-          set(result, `section.${sectionId}`, exportedData);
-        }
+        set(result, `section.${sectionId}`, exportedData);
+      }
 
-        unset(websiteData, `section.${sectionId}`);
-      },
-    );
+      unset(websiteData, `section.${sectionId}`);
+    });
   }
 
   return force ? result : merge(result, websiteData);
