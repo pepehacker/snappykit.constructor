@@ -17,7 +17,7 @@ export const TEMPLATES = [
 ].map(({ config, ...props }) => ({
   ...props,
   config,
-  id: get(config, 'id'),
+  id: get(config, 'id')
 }));
 
 export const getFirstTemplate = (): Object => TEMPLATES[0];
