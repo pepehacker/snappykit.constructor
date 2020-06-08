@@ -25,7 +25,7 @@ const TemplateBackground = ({
   className,
   classNames: { root: rootClassName, container: containerClassName } = {},
   children,
-  id,
+  id = BACKGROUND,
   history,
   location
 }) => {
@@ -98,8 +98,7 @@ const TemplateBackground = ({
               <NavLink
                 activeClassName={styles.LinkIsSelected}
                 className={styles.Link}
-                to={`/${websiteId}/editor/background/${(id && `${id}`) ||
-                  BACKGROUND}`}
+                to={`/${websiteId}/editor/background/${id}`}
               >
                 {capitalize(id.replace('_', ' '))}
               </NavLink>
