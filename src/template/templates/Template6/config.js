@@ -222,7 +222,7 @@ export default createConfig(6, [
   {
     id: DESCRIPTION,
     data: {
-      color: 'rgba(60, 105, 220, 1)',
+      color: 'rgba(255, 255, 255, 1)',
       style: TEXT_STYLE.REGULAR,
       text: 'Behance App'
     },
@@ -271,7 +271,7 @@ export default createConfig(6, [
   {
     id: TITLE,
     data: {
-      color: 'rgba(255, 255, 255, 1)',
+      color: 'rgba(60, 105, 220, 1)',
       style: TEXT_STYLE.MEDIUM,
       text: 'Gmix APP allows you to find love all over the globe.'
     },

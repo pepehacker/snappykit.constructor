@@ -71,14 +71,14 @@ const StoreForm = ({
 
 const mapStateToProps: Function = (
   state: Object,
-  { form, websiteId },
+  { form, websiteId }
 ): Object => {
   const selector = formValueSelector(form);
 
   return {
     isPro: isPro(state),
     provider: getWebsiteProvider(state),
-    switcher: selector(state, 'switcher'),
+    switcher: selector(state, 'switcher')
   };
 };
 

@@ -2,7 +2,6 @@
   &Variant {
     &Tablet {
       .About {
-        align-items: flex-start;
         padding: 96px 0;
 
         &List {
@@ -156,7 +155,7 @@
 
       .Smartphone {
         border-radius: 40px;
-        box-shadow: 0 5px 34px 0 rgba(0, 0, 0, 0.06);
+        box-shadow: 0 5px 34px 0 rgba(0, 0, 0, .06);
         height: 408px;
         width: 200px;
 
@@ -177,7 +176,7 @@
 
         &Text {
           font-size: 38px;
-          letter-spacing: 0.4px;
+          letter-spacing: .4px;
           line-height: 62px;
         }
       }

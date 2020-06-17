@@ -75,8 +75,6 @@ const MainHeader = ({
           <User />
         </div>
       </div>
-
-      <div className={styles.Shadow} />
     </div>
   );
 };

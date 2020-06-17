@@ -33,6 +33,7 @@
         bottom: 36px;
         flex-direction: column;
         height: 64px;
+        padding: 0 24px;
       }
 
       .Header {
@@ -54,7 +55,6 @@
           max-height: 64px;
         }
       }
-
 
       .Smartphone {
         height: 248px;
@@ -83,7 +83,7 @@
       }
 
       .Title {
-        max-height: 32px;
+        max-height: 64px;
 
         &Text {
           font-size: 22px;

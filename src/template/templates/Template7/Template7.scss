@@ -9,12 +9,15 @@
 }
 
 .About {
+  align-items: center;
   display: flex;
   flex-direction: column;
+  max-width: 480px !important;
+  width: calc(100% - 40px) !important;
 
-  &List {
-    display: flex;
-    justify-content: space-between;
+  .Description {
+    margin: 12px 0 0;
+    text-align: center;
   }
 }
 
@@ -91,6 +94,8 @@
   }
 
   &Grid {
+    background: url('./assets/bg.svg') no-repeat 54% 100%;
+
     & > *:nth-child(odd) {
       align-items: flex-end;
       display: flex;

@@ -20,7 +20,7 @@ import {
   COPYRIGHT,
   DESCRIPTION,
   TITLE,
-  VIEW,
+  VIEW
 } from 'template';
 
 const Template7 = () => (
@@ -30,7 +30,7 @@ const Template7 = () => (
         className={classNames(styles.Root, {
           [styles.RootVariantLaptop]: view === VIEW.DESKTOP,
           [styles.RootVariantMobile]: view === VIEW.MOBILE,
-          [styles.RootVariantTablet]: view === VIEW.TABLET,
+          [styles.RootVariantTablet]: view === VIEW.TABLET
         })}
       >
         <Background
@@ -50,7 +50,7 @@ const Template7 = () => (
             <Smartphone
               classNames={{
                 root: styles.Smartphone,
-                container: styles.SmartphoneContainer,
+                container: styles.SmartphoneContainer
               }}
               id="intro_smartphone"
             >
@@ -61,7 +61,7 @@ const Template7 = () => (
               <Text
                 classNames={{
                   root: styles.Slogan,
-                  text: styles.SloganText,
+                  text: styles.SloganText
                 }}
                 id="intro_slogan"
               />
@@ -69,7 +69,7 @@ const Template7 = () => (
               <Text
                 classNames={{
                   root: styles.Title,
-                  text: styles.TitleText,
+                  text: styles.TitleText
                 }}
                 id={TITLE}
               />
@@ -77,7 +77,7 @@ const Template7 = () => (
               <Text
                 classNames={{
                   root: styles.Description,
-                  text: styles.DescriptionText,
+                  text: styles.DescriptionText
                 }}
                 id={DESCRIPTION}
               />
@@ -92,7 +92,7 @@ const Template7 = () => (
             <Text
               classNames={{
                 root: styles.Slogan,
-                text: styles.SloganText,
+                text: styles.SloganText
               }}
               id="about_slogan"
             />
@@ -100,23 +100,18 @@ const Template7 = () => (
             <Text
               classNames={{
                 root: styles.Title,
-                text: styles.TitleText,
+                text: styles.TitleText
               }}
               id="about_title"
             />
 
-            <div className={styles.AboutList}>
-              {[1, 2, 3].map(index => (
-                <Text
-                  key={index}
-                  classNames={{
-                    root: styles.Description,
-                    text: styles.DescriptionText,
-                  }}
-                  id={`about_text_${index}`}
-                />
-              ))}
-            </div>
+            <Text
+              classNames={{
+                root: styles.Description,
+                text: styles.DescriptionText
+              }}
+              id="about_text"
+            />
           </div>
 
           <div className={styles.Hr} />
@@ -125,7 +120,7 @@ const Template7 = () => (
             <Smartphone
               classNames={{
                 root: styles.Smartphone,
-                container: styles.SmartphoneContainer,
+                container: styles.SmartphoneContainer
               }}
               id="preview_smartphone"
             >
@@ -136,7 +131,7 @@ const Template7 = () => (
               <Text
                 classNames={{
                   root: styles.Slogan,
-                  text: styles.SloganText,
+                  text: styles.SloganText
                 }}
                 id="preview_slogan"
               />
@@ -144,18 +139,18 @@ const Template7 = () => (
               <Text
                 classNames={{
                   root: styles.Title,
-                  text: styles.TitleText,
+                  text: styles.TitleText
                 }}
                 id="preview_title"
               />
 
               <div className={styles.PreviewGrid}>
-                {[1, 2, 3, 4].map(index => (
+                {[1, 2, 3, 4].map((index) => (
                   <div key={index} className={styles.PreviewItem}>
                     <Text
                       classNames={{
                         root: styles.PreviewTitle,
-                        text: styles.PreviewTitleText,
+                        text: styles.PreviewTitleText
                       }}
                       id={`preview_${index}_title`}
                     />
@@ -163,7 +158,7 @@ const Template7 = () => (
                     <Text
                       classNames={{
                         root: styles.PreviewDescription,
-                        text: styles.PreviewDescriptionText,
+                        text: styles.PreviewDescriptionText
                       }}
                       id={`preview_${index}_description`}
                     />
@@ -179,7 +174,7 @@ const Template7 = () => (
             <Text
               classNames={{
                 root: styles.QuoteTitle,
-                text: styles.QuoteTitleText,
+                text: styles.QuoteTitleText
               }}
               id="quote_title"
             />
@@ -187,7 +182,7 @@ const Template7 = () => (
             <Text
               classNames={{
                 root: styles.QuoteAuthor,
-                text: styles.QuoteAuthorText,
+                text: styles.QuoteAuthorText
               }}
               id="quote_author"
             />
@@ -200,7 +195,7 @@ const Template7 = () => (
               <Text
                 classNames={{
                   root: styles.Title,
-                  text: styles.TitleText,
+                  text: styles.TitleText
                 }}
                 id="download_title"
               />
@@ -208,7 +203,7 @@ const Template7 = () => (
               <Text
                 classNames={{
                   root: styles.Description,
-                  text: styles.DescriptionText,
+                  text: styles.DescriptionText
                 }}
                 id="download_description"
               />
@@ -219,7 +214,7 @@ const Template7 = () => (
             <Smartphone
               classNames={{
                 root: styles.Smartphone,
-                container: styles.SmartphoneContainer,
+                container: styles.SmartphoneContainer
               }}
               id="download_smartphone"
             >
@@ -232,7 +227,7 @@ const Template7 = () => (
               <Text
                 classNames={{
                   root: styles.Coopyright,
-                  text: styles.CopyrightText,
+                  text: styles.CopyrightText
                 }}
                 id={COPYRIGHT}
               />

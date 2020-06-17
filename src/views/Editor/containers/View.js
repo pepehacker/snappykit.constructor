@@ -119,7 +119,13 @@ export default withRouter(
           isFullscreen,
           setFullscreenState
         }) => () => {
-          isFullscreen ? document.exitFullscreen() : $root.requestFullscreen();
+          isFullscreen
+            ? document.webkitExitFullscreen
+              ? document.webkitExitFullscreen()
+              : document.exitFullscreen()
+            : $root.webkitRequestFullscreen
+            ? $root.webkitRequestFullscreen()
+            : $root.requestFullscreen();
 
           setTimeout(() => setFullscreenState(!isFullscreen), 100);
         },
@@ -197,10 +203,17 @@ export default withRouter(
         handleResize();
 
         document.addEventListener(
+          'webkitfullscreenchange',
+          handleFullscreenExit,
+          false
+        );
+
+        document.addEventListener(
           'fullscreenchange',
           handleFullscreenExit,
           false
         );
+
         window.addEventListener('resize', handleResize, false);
       },
       componentDidUpdate({ isFullscreen: prevIsFullscreen, view: prevView }) {

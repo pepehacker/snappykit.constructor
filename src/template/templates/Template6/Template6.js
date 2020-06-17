@@ -50,7 +50,7 @@ const Template6 = () => (
                   root: styles.SubTitle,
                   text: styles.SubTitleText
                 }}
-                id={DESCRIPTION}
+                id={TITLE}
               />
 
               <Text
@@ -58,7 +58,7 @@ const Template6 = () => (
                   root: styles.Title,
                   text: styles.TitleText
                 }}
-                id={TITLE}
+                id={DESCRIPTION}
               />
 
               <Store className={styles.Store} />

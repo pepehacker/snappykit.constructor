@@ -52,7 +52,7 @@ export default compose(
   connect(mapStateToProps, { updateWebsiteSection }),
   withHandlers({
     handleChange: ({ id, updateWebsiteSection, websiteId }): func => (
-      value: Object,
-    ): void => updateWebsiteSection(websiteId, id || STORE, value),
-  }),
+      value: Object
+    ): void => updateWebsiteSection(websiteId, id || STORE, value)
+  })
 )(Store);

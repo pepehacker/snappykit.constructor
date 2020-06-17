@@ -28,7 +28,7 @@ const TemplateSocialItem = ({ color, isEditor, link, variant, view }) => {
 
   return (
     <ItemComponent
-      {...!isEditor && { href: link }}
+      {...(!isEditor && { href: link })}
       className={rootClassNames}
       style={{ color }}
     >
@@ -45,9 +45,9 @@ TemplateSocialItem.propTypes = {
     SOCIAL_FACEBOOK,
     SOCIAL_INSTAGRAM,
     SOCIAL_TWITTER,
-    SOCIAL_VK,
+    SOCIAL_VK
   ]),
-  view: PropTypes.oneOf([VIEW.DESKTOP, VIEW.MOBILE, VIEW.TABLET]),
+  view: PropTypes.oneOf([VIEW.DESKTOP, VIEW.MOBILE, VIEW.TABLET])
 };
 
 export default TemplateSocialItem;

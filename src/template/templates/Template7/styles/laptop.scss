@@ -2,7 +2,6 @@
   &Variant {
     &Laptop {
       .About {
-        align-items: flex-start;
         padding: 92px 0;
 
         &List {
@@ -59,7 +58,7 @@
 
         .Smartphone {
           border-radius: 40px;
-          box-shadow: 0 3px 21px 0 rgba(0, 0, 0, 0.06);
+          box-shadow: 0 3px 21px 0 rgba(0, 0, 0, .06);
           flex: 0 0 252px;
           height: 512px;
           width: 252px;
@@ -167,7 +166,7 @@
 
       .Smartphone {
         border-radius: 40px;
-        box-shadow: 0 5px 34px 0 rgba(0, 0, 0, 0.06);
+        box-shadow: 0 5px 34px 0 rgba(0, 0, 0, .06);
         height: 476px;
         width: 236px;
 
@@ -188,7 +187,7 @@
 
         &Text {
           font-size: 38px;
-          letter-spacing: 0.4px;
+          letter-spacing: .4px;
           line-height: 60px;
         }
       }
