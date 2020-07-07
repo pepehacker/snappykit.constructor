@@ -1,4 +1,35 @@
+.Root {
+  position: relative;
+}
+
 .Icon {
   max-height: 100%;
   max-width: 100%;
+}
+
+.Powered {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 15px;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  font-size: 14px;
+  font-weight: 400;
+  height: 30px;
+  padding: 0 14px;
+  position: absolute;
+  right: -200px;
+  text-decoration: none;
+  top: calc(50% - 15px);
+  transition: all 0.2s;
+  width: 176px;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 1);
+  }
+
+  strong {
+    font-weight: 600;
+  }
 }

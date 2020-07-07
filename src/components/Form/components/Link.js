@@ -40,7 +40,7 @@ const FormLink = ({
   const iconClassNames = classNames(styles.Icon, 'fab', icon);
   const formattedValue = value
     .replace(prefix, '')
-    .replace(/[^0-9a-zA-Z.-]/gi, '');
+    .replace(/[^0-9a-zA-Z.-_]/gi, '');
 
   return (
     <div className={rootClassNames}>

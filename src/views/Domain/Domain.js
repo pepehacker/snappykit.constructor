@@ -23,7 +23,7 @@ const Domain = ({
   seoInitialValues,
   subInitialValues
 }): React.Element<'div'> => (
-  <div>
+  <div className={styles.Root}>
     <div className={styles.Section}>
       <Title>Domain</Title>
 

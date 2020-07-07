@@ -25,7 +25,7 @@ const TemplateIcon = ({
   id
 }) => (
   <TemplateContext.Consumer>
-    {({ data, view, websiteId }) => {
+    {({ data, isEditor, view, websiteId }) => {
       const { src } = getSectionById(data, id || ICON);
 
       const rootClassNames = classNames(className, rootClassName, styles.Root, {
@@ -43,6 +43,18 @@ const TemplateIcon = ({
               <img alt="Icon logo" className={iconClassNames} src={src} />
             </div>
           </Link>
+
+          {!isEditor && (
+            <a
+              className={styles.Powered}
+              href="https://snappykit.com"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Powered by&nbsp;
+              <strong>Snappykit</strong>
+            </a>
+          )}
         </div>
       );
     }}
