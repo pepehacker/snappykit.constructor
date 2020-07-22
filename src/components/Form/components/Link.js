@@ -37,10 +37,8 @@ const FormLink = ({
     [styles.RootIsPro]: !!isPro
   });
 
+  const formattedValue = value.replace(new RegExp(prefix), '');
   const iconClassNames = classNames(styles.Icon, 'fab', icon);
-  const formattedValue = value
-    .replace(prefix, '')
-    .replace(/[^0-9a-zA-Z.-_]/gi, '');
 
   return (
     <div className={rootClassNames}>
@@ -58,11 +56,11 @@ const FormLink = ({
           {value ? (
             <a
               className={styles.Link}
-              href={`${prefix}${formattedValue}`}
+              href={value}
               rel="noopener noreferrer"
               target="_blank"
             >
-              {`@${formattedValue}`}
+              {formattedValue === value ? value : `@${formattedValue}`}
             </a>
           ) : (
             <span className={styles.Empty}>No Data</span>
@@ -113,7 +111,7 @@ const ComposedFormLink = compose(
     let dropdownRef;
 
     return {
-      handleDropdownBlur: ({ onChange, prefix, setBusy, setOpen, value }) => (
+      handleDropdownBlur: ({ onChange, setBusy, setOpen, value }) => (
         event: Object
       ): void => {
         if (!dropdownRef.contains(event.relatedTarget)) {
@@ -123,13 +121,7 @@ const ComposedFormLink = compose(
           setTimeout(() => setBusy(false), 200);
 
           if (value && onChange) {
-            prefix
-              ? onChange(
-                  `${prefix}${value
-                    .replace(prefix, '')
-                    .replace(/[^0-9a-zA-Z.-]/gi, '')}`
-                )
-              : onChange(value);
+            onChange(value);
           }
         }
       },

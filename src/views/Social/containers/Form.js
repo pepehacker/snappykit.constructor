@@ -28,7 +28,7 @@ const SocialForm = ({ handleSubmit, isPro }) => (
         isPro={!isPro}
         label="Facebook"
         name={`items.${SOCIAL_FACEBOOK}`}
-        prefix="https://www.facebook.com/"
+        prefix="^(https?:\/\/)(www.)?facebook.com\/"
       />
 
       <Link
@@ -36,21 +36,21 @@ const SocialForm = ({ handleSubmit, isPro }) => (
         isPro={!isPro}
         label="Twitter"
         name={`items.${SOCIAL_TWITTER}`}
-        prefix="https://twitter.com/"
+        prefix="^(https?:\/\/)(www.)?twitter.com\/"
       />
 
       <Link
         icon="fa-instagram"
         label="Instagram"
         name={`items.${SOCIAL_INSTAGRAM}`}
-        prefix="https://www.instagram.com/"
+        prefix="^(https?:\/\/)(www.)?instagram.com\/"
       />
 
       <Link
         icon="fa-vk"
         label="Vkontakte"
         name={`items.${SOCIAL_VK}`}
-        prefix="https://vk.com/"
+        prefix="^(https?:\/\/)(www.)?vk.com\/"
       />
     </div>
 

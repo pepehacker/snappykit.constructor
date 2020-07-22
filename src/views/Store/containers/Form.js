@@ -15,12 +15,7 @@ import { getWebsiteProvider } from 'entities/websites';
 import { isPro } from 'services/session';
 
 // Template
-import {
-  STORE_APP_STORE_PREFIX,
-  STORE_GOOGLE_PLAY_PREFIX,
-  STORE_BACKGROUND,
-  STORE_COLOR
-} from 'template';
+import { STORE_BACKGROUND, STORE_COLOR } from 'template';
 
 // Styles
 import styles from './Form.scss';
@@ -45,7 +40,7 @@ const StoreForm = ({
           isPro={!isPro && provider === 2}
           label="App Store"
           name="items.apple"
-          prefix={STORE_APP_STORE_PREFIX}
+          prefix="^(https?:\/\/)?itunes.apple.com\/app\/id"
         />
 
         <Link
@@ -53,7 +48,7 @@ const StoreForm = ({
           isPro={!isPro && provider === 1}
           label="Google Play"
           name="items.play"
-          prefix={STORE_GOOGLE_PLAY_PREFIX}
+          prefix="^(https?:\/\/)?play.google.com/store/apps/details?id='"
         />
       </div>
 
