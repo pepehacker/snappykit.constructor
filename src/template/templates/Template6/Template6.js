@@ -20,6 +20,7 @@ import {
   Text,
   TemplateContext,
   // Config
+  BACKGROUND,
   COPYRIGHT,
   DESCRIPTION,
   TITLE,
@@ -37,7 +38,7 @@ const Template6 = () => (
           [styles.RootVariantTablet]: view === VIEW.TABLET
         })}
       >
-        <Section id="intro">
+        <Section backgroundId={BACKGROUND} id="intro">
           <header className={styles.Header}>
             <Icon classNames={{ icon: styles.HeaderIcon }} />
             <Policy className={styles.Policy} />

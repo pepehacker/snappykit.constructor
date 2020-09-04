@@ -7,19 +7,22 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { compose, withHandlers, withState } from 'recompose';
 
+// Components
+import Button from 'components/Button';
+
 // Containers
 import { PLANS_MODAL_ID } from 'containers/Plans';
 
 // Services
 import { openModal } from 'services/modals';
-import { isEnded, logout } from 'services/session';
+import { isEnded, isPro, logout } from 'services/session';
 
 // Styles
 import styles from './User.scss';
 
 const LINKS = [
-  { icon: 'Website', title: 'Your Websites', to: '/' },
   { icon: 'Plans', title: 'Plans', to: '/plans' },
+  { icon: 'Website', title: 'My Collection', to: '/' },
   { icon: 'Password', title: 'Change Password', to: '/password' }
 ];
 
@@ -33,7 +36,8 @@ const MainHeaderUser = ({
   handleTriggerPlans,
   // State
   isEnded,
-  isOpened
+  isOpened,
+  isPro
 }) => {
   const className: string = classNames(styles.Root, {
     [styles.RootOpened]: isOpened
@@ -67,7 +71,7 @@ const MainHeaderUser = ({
         <div className={styles.DropdownWrapper}>
           <div className={styles.Status}>{get(user, 'subscription.name')}</div>
 
-          {!isEnded && (
+          {isPro ? (
             <div className={styles.Expiration}>
               <div className={styles.ExpirationTitle}>
                 {daysLeft}
@@ -81,6 +85,14 @@ const MainHeaderUser = ({
                 />
               </div>
             </div>
+          ) : (
+            <Button
+              className={styles.Pro}
+              onClick={handleTriggerPlans}
+              variant="form"
+            >
+              Get PRO
+            </Button>
           )}
 
           <div className={styles.Links}>
@@ -124,6 +136,7 @@ const MainHeaderUser = ({
 
 const mapStateToProps = (state) => ({
   isEnded: isEnded(state),
+  isPro: isPro(state),
   user: get(state, 'services.session.user', {})
 });
 

@@ -26,7 +26,7 @@ export default createConfig(7, [
     type: BACKGROUND
   },
   {
-    id: 'intro_background',
+    id: BACKGROUND,
     data: {
       image: {
         color: 'rgba(63, 41, 90, .49)',

@@ -17,6 +17,7 @@ import {
   Text,
   TemplateContext,
   // Config
+  BACKGROUND,
   COPYRIGHT,
   DESCRIPTION,
   TITLE,
@@ -35,7 +36,7 @@ const Template7 = () => (
       >
         <Background
           classNames={{ root: styles.Intro, container: styles.IntroContainer }}
-          id="intro_background"
+          id={BACKGROUND}
         >
           <header className={styles.Header}>
             <Icon classNames={{ icon: styles.HeaderIcon }} />

@@ -7,7 +7,7 @@ import styles from './Section.scss';
 // Template
 import { Background, TemplateContext, VIEW } from 'template';
 
-const Template6Section = ({ children, id }) => (
+const Template6Section = ({ children, backgroundId, id }) => (
   <TemplateContext.Consumer>
     {({ size, view = VIEW.DESKTOP }) => (
       <div
@@ -23,7 +23,7 @@ const Template6Section = ({ children, id }) => (
             root: styles.Wrapper,
             container: styles.WrapperContainer
           }}
-          id={`${id}_background`}
+          id={backgroundId || `${id}_background`}
         >
           {children}
         </Background>

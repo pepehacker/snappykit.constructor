@@ -28,7 +28,7 @@ const Domain = ({
       <Title>Domain</Title>
 
       <div className={styles.Group}>
-        <SubForm initialValues={subInitialValues} />
+        <SubForm initialValues={subInitialValues} onChange={handleChange} />
         <PrivacyForm />
       </div>
     </div>

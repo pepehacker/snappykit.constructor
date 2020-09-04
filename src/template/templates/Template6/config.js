@@ -195,7 +195,7 @@ export default createConfig(6, [
     type: TEXT
   },
   {
-    id: 'intro_background',
+    id: BACKGROUND,
     data: {
       image: {
         gradient: {

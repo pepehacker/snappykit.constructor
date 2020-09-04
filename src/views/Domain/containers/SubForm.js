@@ -4,7 +4,7 @@ import { compose } from 'recompose';
 import { reduxForm } from 'redux-form';
 
 // Components
-import Button from 'components/Button';
+// import Button from 'components/Button';
 import Form, { Input } from 'components/Form';
 
 // Ducks
@@ -14,7 +14,7 @@ import { SUB_FORM_ID } from '../ducks';
 import { isPro } from 'services/session';
 
 // Styles
-import style from './common.scss';
+// import style from './common.scss';
 
 // Utils
 import validate, { matches, required } from 'utils/validate';
@@ -31,19 +31,19 @@ const DomaiSubForm = ({
   <Form onSubmit={handleSubmit}>
     <Input
       format={(value) => value && value.replace('.snappykit.com', '')}
-      isPro={!isPro}
+      // isPro={!isPro}
       label="Subdomain"
       max={100}
       name="domain"
-      parser={(value) => value && `${value}.snappykit.com`}
+      parse={(value) => value && `${value}.snappykit.com`}
       postfix=".snappykit.com"
     />
 
-    <div className={style.Actions}>
+    {/* <div className={style.Actions}>
       <Button type="submit" variant="form">
         Add Domain
       </Button>
-    </div>
+    </div> */}
   </Form>
 );
 
