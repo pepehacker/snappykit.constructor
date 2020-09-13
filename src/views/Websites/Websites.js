@@ -1,3 +1,4 @@
+import { get } from 'lodash';
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
@@ -93,7 +94,7 @@ const Websites = ({
                           }s`
                         }}
                       >
-                        <Item {...item} />
+                        <Item {...item} domainFree={get(item, 'domain_free')} />
                       </div>
                     </CSSTransition>
                   ))}

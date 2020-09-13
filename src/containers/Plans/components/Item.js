@@ -171,6 +171,7 @@ export default compose(
       // eslint-disable-next-line
       Paddle.Checkout.open({
         email,
+        passthrough: email,
         product: productId,
         successCallback: () => window.location.reload()
       })

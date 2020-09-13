@@ -21,22 +21,37 @@ const Button = ({
     icon: iconClassName
   } = {},
   icon,
+  loaded,
   onClick,
   type = 'button',
   variant = VARIANT.GRADIENT
 }) => {
-  const rootClassNames = classNames(className, rootClassName, styles.Root, {
-    [styles.RootVariantForm]: variant === VARIANT.FORM,
-    [styles.RootVariantGradient]: variant === VARIANT.GRADIENT,
-    [styles.RootVariantGradientReverse]: variant === VARIANT.GRADIENT_REVERSE
-  });
+  const rootClassNames = classNames(
+    className,
+    rootClassName,
+    styles.Root,
+    {
+      [styles.RootVariantForm]: variant === VARIANT.FORM,
+      [styles.RootVariantGradient]: variant === VARIANT.GRADIENT,
+      [styles.RootVariantGradientReverse]: variant === VARIANT.GRADIENT_REVERSE
+    },
+    {
+      [styles.RootIsLoaded]: !!loaded
+    }
+  );
   const contentClassNames = classNames(contentClassName, styles.Content);
   const iconClassNames = classNames(rootClassName, styles.Icon);
 
   return (
     <button className={rootClassNames} onClick={onClick} type={type}>
-      {icon && <i className={iconClassNames} />}
-      {children && <div className={contentClassNames}>{children}</div>}
+      {loaded ? (
+        <i className={classNames(styles.Loader, 'far fa-spinner-third')} />
+      ) : (
+        <>
+          {icon && <i className={iconClassNames} />}
+          {children && <div className={contentClassNames}>{children}</div>}
+        </>
+      )}
     </button>
   );
 };
@@ -50,9 +65,14 @@ Button.propTypes = {
     icon: PropTypes.string
   }),
   icon: PropTypes.string,
+  loaded: PropTypes.bool,
   onClick: PropTypes.func,
   type: PropTypes.string,
-  variant: PropTypes.oneOf([VARIANT.GRADIENT, VARIANT.GRADIENT_REVERSE])
+  variant: PropTypes.oneOf([
+    VARIANT.FORM,
+    VARIANT.GRADIENT,
+    VARIANT.GRADIENT_REVERSE
+  ])
 };
 
 Button.VARIANT = VARIANT;

@@ -46,6 +46,7 @@ export default (): Function => (
           templateId,
           description: get(item, 'description', ''),
           domain: get(item, 'domain'),
+          domain_free: get(item, 'domain_free'),
           id: get(item, 'id'),
           isSupported: !isEmpty(data),
           provider: get(item, 'provider', 1),

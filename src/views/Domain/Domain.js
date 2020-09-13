@@ -21,14 +21,19 @@ import styles from './Domain.scss';
 const Domain = ({
   handleChange,
   seoInitialValues,
-  subInitialValues
+  subInitialValues,
+  websiteId
 }): React.Element<'div'> => (
   <div className={styles.Root}>
     <div className={styles.Section}>
       <Title>Domain</Title>
 
       <div className={styles.Group}>
-        <SubForm initialValues={subInitialValues} onChange={handleChange} />
+        <SubForm
+          applyChanges={handleChange}
+          initialValues={subInitialValues}
+          websiteId={websiteId}
+        />
         <PrivacyForm />
       </div>
     </div>
@@ -59,7 +64,8 @@ const mapStateToProps = (state: Object, { location }): Object => {
       title: get(website, 'title')
     },
     subInitialValues: {
-      domain: get(website, 'domain')
+      domain: get(website, 'domain'),
+      domain_free: get(website, 'domain_free')
     }
   };
 };

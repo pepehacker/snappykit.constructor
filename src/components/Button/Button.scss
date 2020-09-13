@@ -1,5 +1,5 @@
 .Root {
-  transition: all .2s;
+  transition: all 0.2s;
 
   &:focus {
     outline: none;
@@ -9,9 +9,16 @@
     cursor: pointer;
   }
 
+  &Is {
+    &Loaded {
+      opacity: 0.8;
+      pointer-events: none;
+    }
+  }
+
   &Variant {
     &Form {
-      background: rgba(#9E9AE2, .8);
+      background: rgba(#9e9ae2, 0.8);
       border: 0;
       border-radius: 4px;
       color: rgba(#fff, 8);
@@ -22,17 +29,17 @@
     }
 
     &GradientReverse {
-      background: rgba(#9E9AE2, .4);
+      background: rgba(#9e9ae2, 0.4);
       border: 0;
       border-radius: 32px;
-      box-shadow: 0 8px 12px rgba(#9E9AE2, .6);
+      box-shadow: 0 8px 12px rgba(#9e9ae2, 0.6);
       min-height: 40px;
       min-width: 78px;
       position: relative;
 
       &:after {
         background: transparent;
-        border: 6px solid rgba(#9E9AE2, .5);
+        border: 6px solid rgba(#9e9ae2, 0.5);
         border-radius: 40px;
         content: '';
         display: block;
@@ -40,7 +47,7 @@
         left: -6px;
         position: absolute;
         top: -6px;
-        transition: all .2s;
+        transition: all 0.2s;
         width: calc(100% + 12px);
         z-index: -1;
       }
@@ -50,7 +57,7 @@
         box-shadow: none;
 
         &:after {
-          background: rgba(#9E9AE2, .6);
+          background: rgba(#9e9ae2, 0.6);
           border-color: transparent;
         }
       }
@@ -60,30 +67,30 @@
         box-shadow: none;
 
         &:after {
-          background: rgba(#9E9AE2, 1);
+          background: rgba(#9e9ae2, 1);
           border-color: transparent;
         }
       }
 
       .Content {
-        color: rgba(255, 255, 255, .8);
+        color: rgba(255, 255, 255, 0.8);
         font-size: 14px;
         font-weight: 600;
-        letter-spacing: .4px;
+        letter-spacing: 0.4px;
       }
     }
 
     &Gradient {
-      background: rgba(#9E9AE2, .8);
+      background: rgba(#9e9ae2, 0.8);
       border: 0;
       border-radius: 32px;
-      box-shadow: 0 8px 12px rgba(#9E9AE2, .6);
+      box-shadow: 0 8px 12px rgba(#9e9ae2, 0.6);
       min-height: 40px;
       min-width: 78px;
       position: relative;
 
       &:after {
-        border: 6px solid rgba(#9E9AE2, .2);
+        border: 6px solid rgba(#9e9ae2, 0.2);
         border-radius: 40px;
         content: '';
         display: block;
@@ -91,26 +98,26 @@
         left: -6px;
         position: absolute;
         top: -6px;
-        transition: all .2s;
+        transition: all 0.2s;
         width: calc(100% + 12px);
         z-index: -1;
       }
 
       &:active {
-        background: rgba(#9E9AE2, .6);
-        box-shadow: 0 8px 12px rgba(#9E9AE2, .4);
+        background: rgba(#9e9ae2, 0.6);
+        box-shadow: 0 8px 12px rgba(#9e9ae2, 0.4);
       }
 
       &:hover:not(:active) {
-        background: rgba(#9E9AE2, 1);
-        box-shadow: 0 8px 12px rgba(#9E9AE2, .8);
+        background: rgba(#9e9ae2, 1);
+        box-shadow: 0 8px 12px rgba(#9e9ae2, 0.8);
       }
 
       .Content {
-        color: rgba(255, 255, 255, .8);
+        color: rgba(255, 255, 255, 0.8);
         font-size: 14px;
         font-weight: 600;
-        letter-spacing: .4px;
+        letter-spacing: 0.4px;
       }
     }
   }
@@ -118,4 +125,18 @@
 
 .Content {
   font-family: inherit;
+}
+
+.Loader {
+  animation: spin 0.8s linear infinite;
+  font-size: 20px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

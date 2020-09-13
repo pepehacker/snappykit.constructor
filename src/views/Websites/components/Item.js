@@ -23,6 +23,8 @@ import styles from './Item.scss';
 const WebsitesItem = ({
   description,
   domain,
+  domainFree,
+
   id,
   isNew,
   logo,
@@ -33,7 +35,9 @@ const WebsitesItem = ({
 
   // State
   isFetching,
-  isSupported
+  isSupported,
+
+  ...props
 }) => {
   const rootClassNames = classNames(styles.Root, {
     [styles.RootIsFetching]: isFetching,
@@ -77,7 +81,7 @@ const WebsitesItem = ({
             {!isNew && (
               <a
                 className={classNames(styles.Link, styles.LinkExternal)}
-                href={`https://${domain}`}
+                href={`https://${domain || domainFree}`}
                 rel="noopener noreferrer"
                 target="_blank"
               >
