@@ -12,8 +12,8 @@ import {
   SUBSCRIPTION_LITE_LIMIT,
   SUBSCRIPTION_PRO,
   SUBSCRIPTION_PRO_LIMIT,
-  SUBSCRIPTION_PRO_LIST,
-  SUBSCRIPTION_LIST
+  SUBSCRIPTION_PRO_LIST
+  // SUBSCRIPTION_LIST
 } from './constants';
 
 // Types
@@ -74,7 +74,7 @@ export const fetchProfile = (id: number) => (
               : SUBSCRIPTION_BASIC_LIMIT,
             period: get(subscription, 'billing_type') === 'year' ? 365 : 30,
             isEnded,
-            isPro: !isEnded && SUBSCRIPTION_LIST.indexOf(subscriptionId) > -1,
+            isPro: get(profile, 'is_payed'), // !isEnded && SUBSCRIPTION_LIST.indexOf(subscriptionId) > -1,
             updateUrl: get(profile, 'update_url')
           }
         };
