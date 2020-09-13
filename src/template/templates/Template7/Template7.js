@@ -29,7 +29,8 @@ const Template7 = () => (
     {({ size, view = VIEW.DESKTOP }) => (
       <div
         className={classNames(styles.Root, {
-          [styles.RootVariantLaptop]: view === VIEW.DESKTOP,
+          [styles.RootVariantLaptop]:
+            view === VIEW.DESKTOP || view === VIEW.DESKTOP_LARGE,
           [styles.RootVariantMobile]: view === VIEW.MOBILE,
           [styles.RootVariantTablet]: view === VIEW.TABLET
         })}
