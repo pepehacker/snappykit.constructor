@@ -35,48 +35,58 @@ const VARIANT = {
 
 const DomaiSubForm = ({
   handleSubmit,
+  initialValues,
   isPro,
   onSubmit,
   submitting,
   ...props
-}: DomaiSubFormPropTypes): React.Element<typeof Form> => (
-  <Form onSubmit={handleSubmit}>
-    <Input
-      format={(value) => value && value.replace('.snappykit.com', '')}
-      // isPro={!isPro}
-      label="Subdomain"
-      name="domain_free"
-      parse={(value) => value && `${value}.snappykit.com`}
-      postfix=".snappykit.com"
-    />
+}: DomaiSubFormPropTypes): React.Element<typeof Form> => {
+  const domain = get(initialValues, 'domain');
+  const hasDomain = typeof domain === 'string' && domain.trim() !== '';
 
-    <div className={style.Actions}>
-      <Button
-        loaded={submitting}
-        onClick={handleSubmit((values) =>
-          onSubmit(values.domain_free, VARIANT.DOMAIN_FREE, props)
-        )}
-        variant="form"
-      >
-        Add Subdomain
-      </Button>
-    </div>
+  return (
+    <Form onSubmit={handleSubmit}>
+      <Input
+        format={(value) => value && value.replace('.snappykit.com', '')}
+        label="Subdomain"
+        name="domain_free"
+        parse={(value) => value && `${value}.snappykit.com`}
+        postfix=".snappykit.com"
+        readOnly={isPro && hasDomain}
+      />
 
-    <Input isPro={!isPro} label="Domain" name="domain" />
+      {(!hasDomain || !isPro) && (
+        <div className={style.Actions}>
+          <Button
+            loaded={submitting}
+            onClick={handleSubmit((values) =>
+              onSubmit(values.domain_free, VARIANT.DOMAIN_FREE, props)
+            )}
+            variant="form"
+          >
+            Add Subdomain
+          </Button>
+        </div>
+      )}
 
-    <div className={style.Actions}>
-      <Button
-        loaded={submitting}
-        onClick={handleSubmit((values) =>
-          onSubmit(values.domain, VARIANT.DOMAIN, props)
-        )}
-        variant="form"
-      >
-        Add Domain
-      </Button>
-    </div>
-  </Form>
-);
+      <Input isPro={!isPro} label="Domain" name="domain" />
+
+      {isPro && (
+        <div className={style.Actions}>
+          <Button
+            loaded={submitting}
+            onClick={handleSubmit((values) =>
+              onSubmit(values.domain, VARIANT.DOMAIN, props)
+            )}
+            variant="form"
+          >
+            Add Domain
+          </Button>
+        </div>
+      )}
+    </Form>
+  );
+};
 
 const mapStateToProps: Function = (state) => ({
   isPro: isPro(state)

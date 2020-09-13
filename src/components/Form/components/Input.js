@@ -14,6 +14,7 @@ const VARIANT = {
 };
 
 type FormInputPropTypes = {
+  disabled: boolean,
   id: number | string,
   handleBlur: (SyntheticEvent) => void,
   handleFocus: (SyntheticEvent) => void,
@@ -29,6 +30,7 @@ type FormInputPropTypes = {
 };
 
 const FormInput = ({
+  disabled,
   id,
   name,
   placeholder,
@@ -52,6 +54,7 @@ const FormInput = ({
       [style.RootVariantWithPostfix]: !!postfix
     },
     {
+      [style.RootIsDisabled]: disabled,
       [style.RootIsFocused]: isFocused,
       [style.RootIsReadOnly]: readOnly
     }
@@ -63,6 +66,7 @@ const FormInput = ({
         <input
           autoComplete="off"
           className={style.Input}
+          disabled={disabled}
           id={id}
           name={name}
           onBlur={handleBlur}
