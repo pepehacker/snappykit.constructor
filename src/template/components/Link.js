@@ -22,6 +22,7 @@ const TemplateLink = ({ children, className, exact, to }) => (
           to={to}
         >
           <div className={styles.Border} />
+          <div className={styles.Black} />
           <div className={styles.Content}>{children}</div>
         </NavLink>
       ) : (

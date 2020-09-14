@@ -142,7 +142,7 @@ export default withRouter(
             switch (view) {
               case VIEW.DESKTOP:
                 newSize = {
-                  height: Math.min(720, (rootWidth / 16) * 9),
+                  height: Math.min(720, rootHeight, (rootWidth / 16) * 9),
                   width: Math.min(1280, rootWidth)
                 };
                 newScale = newSize.width / 1280;
