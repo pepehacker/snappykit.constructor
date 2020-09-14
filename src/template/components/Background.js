@@ -2,7 +2,7 @@ import { get } from 'lodash';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import * as React from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
+import { matchPath, withRouter } from 'react-router-dom';
 
 // Template
 import {
@@ -18,9 +18,6 @@ import {
 // Styles
 import styles from './Background.scss';
 
-// Utils
-import { capitalize } from 'utils/string';
-
 const TemplateBackground = ({
   className,
   classNames: { root: rootClassName, container: containerClassName } = {},
@@ -29,84 +26,97 @@ const TemplateBackground = ({
   history,
   location
 }) => {
-  const [isFocused, setFocusState] = React.useState(false);
+  const { data, isEditor, view, websiteId } = React.useContext(TemplateContext);
+
+  const { isFocused } = React.useMemo(() => {
+    const isFocused = matchPath(location.pathname, {
+      path: `/${websiteId}/editor/background${
+        id !== BACKGROUND ? `/${id}` : ''
+      }`
+    });
+
+    return { isFocused };
+  }, [id, location, websiteId]);
+
+  const handleContainerClick = React.useCallback(
+    (event) => {
+      const elements = document.elementsFromPoint(event.clientX, event.clientY);
+
+      let hasLink = false;
+
+      elements.forEach((element) => {
+        if (element.tagName === 'A') {
+          hasLink = true;
+        }
+      });
+
+      !isFocused &&
+        !hasLink &&
+        history.push(
+          `/${websiteId}/editor/background${id !== BACKGROUND ? `/${id}` : ''}`
+        );
+    },
+    [isFocused]
+  );
+
+  const { color, gradient, image } = getSectionById(data, id || BACKGROUND);
+
+  const currentColor = get(image, 'color') || color;
+  const { angle, from, to } = get(image, 'gradient') || gradient || {};
 
   return (
-    <TemplateContext.Consumer>
-      {({ data, isEditor, view, websiteId }) => {
-        const rootClassNames = classNames(
-          className,
-          rootClassName,
-          styles.Root,
-          {
-            [styles.RootViewDesktop]: view === VIEW.DESKTOP,
-            [styles.RootViewMobile]: view === VIEW.MOBILE,
-            [styles.RootViewTablet]: view === VIEW.TABLET
-          },
-          {
-            [styles.RootIsFocused]: isFocused
-          }
-        );
+    <div
+      className={classNames(
+        className,
+        rootClassName,
+        styles.Root,
+        {
+          [styles.RootViewDesktop]: view === VIEW.DESKTOP,
+          [styles.RootViewMobile]: view === VIEW.MOBILE,
+          [styles.RootViewTablet]: view === VIEW.TABLET
+        },
+        {
+          [styles.RootIsFocused]: isFocused
+        }
+      )}
+    >
+      {image && (
+        <div
+          className={styles.Cover}
+          style={{
+            backgroundImage: `url(${image.src})`,
+            backgroundSize: 'cover'
+          }}
+        />
+      )}
 
-        const containerClassNames = classNames(
-          containerClassName,
-          styles.Container
-        );
+      {currentColor && (
+        <div
+          className={styles.Cover}
+          style={{
+            backgroundColor: currentColor
+          }}
+        />
+      )}
 
-        const { color, gradient, image } = getSectionById(
-          data,
-          id || BACKGROUND
-        );
+      {from && to && (
+        <div
+          className={styles.Cover}
+          style={{
+            backgroundImage: `linear-gradient(${angle}deg, ${from}, ${to})`
+          }}
+        />
+      )}
 
-        const currentColor = get(image, 'color') || color;
-        const { angle, from, to } = get(image, 'gradient') || gradient || {};
+      {isEditor && <div className={styles.Hover} />}
 
-        return (
-          <div
-            className={rootClassNames}
-            onMouseLeave={isEditor ? () => setFocusState(false) : null}
-          >
-            {image && (
-              <div
-                className={styles.Cover}
-                style={{
-                  backgroundImage: `url(${image.src})`,
-                  backgroundSize: 'cover'
-                }}
-              />
-            )}
-            {currentColor && (
-              <div
-                className={styles.Cover}
-                style={{
-                  backgroundColor: currentColor
-                }}
-              />
-            )}
-            {from && to && (
-              <div
-                className={styles.Cover}
-                style={{
-                  backgroundImage: `linear-gradient(${angle}deg, ${from}, ${to})`
-                }}
-              />
-            )}
-
-            <div className={containerClassNames}>{children}</div>
-
-            {isEditor && (
-              <NavLink
-                activeClassName={styles.LinkIsSelected}
-                className={styles.Link}
-                to={`/${websiteId}/editor/background/${id}`}
-              >
-                {capitalize(id.replace('_', ' '))}
-              </NavLink>
-            )}
-          </div>
-        );
-      }}
-    </TemplateContext.Consumer>
+      <div
+        className={classNames(containerClassName, styles.Container)}
+        onClick={isEditor ? handleContainerClick : null}
+      >
+        {children}
+      </div>
+    </div>
   );
 };
 
