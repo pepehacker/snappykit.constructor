@@ -4,6 +4,7 @@
 
 .Container {
   position: absolute;
+  z-index: 1;
 }
 
 .Link {
@@ -11,6 +12,7 @@
   position: absolute;
   top: 0;
   width: 100%;
+  z-index: 2;
 }
 
 .Mockup {

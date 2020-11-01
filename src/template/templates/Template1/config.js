@@ -84,7 +84,7 @@ export default createConfig(1, [
   {
     id: SMARTPHONE,
     data: {
-      mockup: SMARTPHONE_MOCKUP.FLAT_IPHONE_SILVER
+      mockup: 'iphone-11-glass-black'
     },
     exports: ['mockup'],
     type: SMARTPHONE

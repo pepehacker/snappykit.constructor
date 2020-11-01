@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { get } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -9,6 +10,7 @@ import Link from './Link';
 import {
   // Config
   SMARTPHONE,
+  SMARTPHONE_MOCKUP,
   VIEW,
   // Provider
   TemplateContext,
@@ -31,7 +33,10 @@ const TemplateSmartphone = ({
 }) => (
   <TemplateContext.Consumer>
     {({ data, view, websiteId }) => {
-      const { mockup, model } = getSectionById(data, id || SMARTPHONE);
+      const { src } =
+        SMARTPHONE_MOCKUP[
+          get(getSectionById(data, id || SMARTPHONE), 'mockup')
+        ] || {};
 
       const rootClassNames = classNames(className, rootClassName, styles.Root, {
         [styles.RootViewDesktop]: view === VIEW.DESKTOP,
@@ -43,6 +48,7 @@ const TemplateSmartphone = ({
         containerClassName,
         styles.Container
       );
+
       const mockupClassNames = classNames(mockupClassName, styles.Mockup);
 
       return (
@@ -54,7 +60,7 @@ const TemplateSmartphone = ({
             <div
               className={mockupClassNames}
               style={{
-                backgroundImage: `url(${require(`assets/mockup/${model}/${mockup}.png`)})` /* eslint-disable-line */
+                backgroundImage: `url(${src})` /* eslint-disable-line */
               }}
             />
           </Link>

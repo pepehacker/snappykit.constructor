@@ -10,16 +10,23 @@ import Sidebar from 'components/Sidebar';
 // Containers
 import Form from './containers/Form';
 
+// Ducks
+import { SMARTPHONE_FORM_ID } from './ducks/constants';
+
 // Entities
 import { updateWebsiteSection } from 'entities/websites/actions';
 import { getSectionById } from 'entities/websites/selector';
 
 // Template
-import { SMARTPHONE } from 'template/config';
+import { SMARTPHONE, SMARTPHONE_MOCKUP } from 'template/config';
 
-const Smarthpone = ({ initialValues, handleChange }) => (
+const Smarthpone = ({ id, initialValues, handleChange }) => (
   <Sidebar title="Smartphone">
-    <Form initialValues={initialValues} onChange={handleChange} />
+    <Form
+      form={`${SMARTPHONE_FORM_ID}-${id}`}
+      initialValues={initialValues}
+      onChange={handleChange}
+    />
   </Sidebar>
 );
 
@@ -31,9 +38,20 @@ const mapStateToProps = (state: Object, { location }) => {
   const id = get(match, 'params.id');
   const websiteId = get(match, 'params.websiteId');
 
+  const mockupId = get(
+    getSectionById(state, websiteId, id || SMARTPHONE),
+    'mockup'
+  );
+
+  const { model, style } = SMARTPHONE_MOCKUP[mockupId] || {};
+
   return {
     id,
-    initialValues: getSectionById(state, websiteId, id || SMARTPHONE),
+    initialValues: {
+      mockup: mockupId,
+      model,
+      style
+    },
     websiteId
   };
 };
@@ -42,12 +60,12 @@ export default compose(
   connect(mapStateToProps, { updateWebsiteSection }),
   withHandlers({
     handleChange: ({ id, updateWebsiteSection, websiteId }): func => (
-      values,
+      { mockup },
       dispatch,
       props,
       prevValue
     ): void =>
-      get(values, 'mockup') !== get(prevValue, 'mockup') &&
-      updateWebsiteSection(websiteId, id || SMARTPHONE, values)
+      mockup !== get(prevValue, 'mockup') &&
+      updateWebsiteSection(websiteId, id || SMARTPHONE, { mockup })
   })
 )(Smarthpone);

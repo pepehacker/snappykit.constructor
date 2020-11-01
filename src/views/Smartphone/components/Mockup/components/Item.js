@@ -7,7 +7,12 @@ import { compose, withHandlers, withState } from 'recompose';
 import Pro from 'components/Pro';
 
 // Entities
-import { SMARTPHONE, SMARTPHONE_MODEL, SMARTPHONE_STYLE } from 'template';
+import {
+  SMARTPHONE,
+  SMARTPHONE_MOCKUP,
+  SMARTPHONE_MODEL,
+  SMARTPHONE_STYLE
+} from 'template';
 
 // Styles
 import styles from './Item.scss';
@@ -24,15 +29,15 @@ type SmartphoneMockupItemPropTypes = {
 
 const SmartphoneMockupItem = ({
   id,
-  model,
   // Handles
   handleClick,
   handleLoad,
   // State
   isCurrent,
-  isLoaded,
-  isPro
+  isLoaded
 }: SmartphoneMockupItemPropTypes): React.Element<'div'> => {
+  const { model, isPro, src } = SMARTPHONE_MOCKUP[id];
+
   const className = classNames(styles.Root, {
     [styles.RootIsCurrent]: isCurrent,
     [styles.RootIsLoaded]: isLoaded,
@@ -48,12 +53,7 @@ const SmartphoneMockupItem = ({
       onClick={isPro ? null : handleClick}
       role="button"
     >
-      <img
-        alt={id}
-        className={styles.Preview}
-        onLoad={handleLoad}
-        src={require(`assets/mockup/${model}/${id}.png`)}
-      />
+      <img alt={id} className={styles.Preview} onLoad={handleLoad} src={src} />
 
       <div className={styles.Current}>
         <div className={styles.Check} />

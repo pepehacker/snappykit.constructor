@@ -1,9 +1,9 @@
 .Root {
   height: 100%;
-  opacity: .6;
+  opacity: 0.6;
   overflow: hidden;
   position: relative;
-  transition: all .2s;
+  transition: all 0.2s;
   width: 100%;
 
   &:after {
@@ -25,7 +25,7 @@
     height: 100%;
     left: 0;
     top: 0;
-    transition: all .2s;
+    transition: all 0.2s;
     width: 100%;
   }
 
@@ -78,7 +78,7 @@
 
       &:not(.RootIsCurrent) {
         .Preview {
-          opacity: .6;
+          opacity: 0.6;
         }
       }
     }
@@ -96,7 +96,6 @@
 
   &:hover:not(.RootIsPro),
   &IsCurrent {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     opacity: 1;
     transform: scale(1.12);
 
@@ -112,7 +111,7 @@
   height: 10px;
   mask: url('components/Icon/assets/check.svg') no-repeat center center;
   mask-size: contain;
-  transition: all .2s;
+  transition: all 0.2s;
   width: 13px;
 }
 
@@ -121,7 +120,6 @@
   background: #ffffff;
   border-radius: 100%;
   bottom: 40px;
-  box-shadow: 0 7px 14px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   height: 32px;
   justify-content: center;
@@ -129,7 +127,7 @@
   opacity: 0;
   position: absolute;
   transform: translateY(56px);
-  transition: all .2s;
+  transition: all 0.2s;
   width: 32px;
 }
 
@@ -137,7 +135,7 @@
   max-height: 100%;
   max-width: 100%;
   opacity: 1;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
 .Pro {
@@ -147,6 +145,10 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

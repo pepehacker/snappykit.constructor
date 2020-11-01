@@ -7,7 +7,6 @@ import {
   POLICY,
   SCREENSHOTS,
   SMARTPHONE,
-  SMARTPHONE_MOCKUP,
   SOCIAL,
   STORE,
   TEXT,
@@ -79,7 +78,7 @@ export default createConfig(3, [
   {
     id: SMARTPHONE,
     data: {
-      mockup: SMARTPHONE_MOCKUP.CONCEPT_SILVER_LINE
+      mockup: 'iphone-11-glass-black'
     },
     exports: ['mockup'],
     type: SMARTPHONE

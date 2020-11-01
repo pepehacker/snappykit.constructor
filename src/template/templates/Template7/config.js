@@ -5,7 +5,6 @@ import {
   ICON,
   SCREENSHOTS,
   SMARTPHONE,
-  SMARTPHONE_MOCKUP,
   SOCIAL,
   STORE,
   TEXT,
@@ -55,7 +54,7 @@ export default createConfig(7, [
   {
     id: 'intro_smartphone',
     data: {
-      mockup: SMARTPHONE_MOCKUP.CLASSIC_SILVER
+      mockup: 'iphone-11-glass-black'
     },
     exports: ['mockup'],
     type: SMARTPHONE
@@ -100,7 +99,7 @@ export default createConfig(7, [
   {
     id: 'preview_smartphone',
     data: {
-      mockup: SMARTPHONE_MOCKUP.CONCEPT_SILVER_GLASS
+      mockup: 'iphone-11-glass-black'
     },
     exports: ['mockup'],
     type: SMARTPHONE
@@ -239,7 +238,7 @@ export default createConfig(7, [
   {
     id: 'download_smartphone',
     data: {
-      mockup: SMARTPHONE_MOCKUP.CONCEPT_SILVER_GLASS
+      mockup: 'iphone-11-glass-black'
     },
     exports: ['mockup'],
     type: SMARTPHONE

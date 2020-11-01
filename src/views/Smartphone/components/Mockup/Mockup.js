@@ -1,6 +1,6 @@
 /* eslint-disable */
 import classNames from 'classnames';
-import { get } from 'lodash';
+import { keys, get } from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose, withHandlers } from 'recompose';
@@ -20,7 +20,7 @@ import { isPro } from 'services/session';
 import styles from './Mockup.scss';
 
 // Template
-import { SMARTPHONE_MODEL, SMARTPHONE_PRO_LIST } from 'template/config';
+import { SMARTPHONE_MOCKUP } from 'template/config';
 
 type SmartphoneMockupPropTypes = {
   handleClick: (SyntheticEvent) => void,
@@ -39,27 +39,40 @@ const SmartphoneMockup = ({
   model,
   style,
   value
-}: SmartphoneMockupPropTypes): React.Element<'div'> => (
-  <div className={styles.Root}>
-    {get(MOCKUP_ITEMS, `${model}.${style}`, []).map((id: string) => (
-      <Mockup
-        id={id}
-        isCurrent={id === value}
-        isPro={!isPro && SMARTPHONE_PRO_LIST.indexOf(id) > -1}
-        key={id}
-        model={model}
-        onClick={handleClick}
-      />
-    ))}
-  </div>
-);
+}: SmartphoneMockupPropTypes): React.Element<'div'> => {
+  const list = React.useMemo(
+    () =>
+      keys(SMARTPHONE_MOCKUP).filter(
+        (id) =>
+          SMARTPHONE_MOCKUP[id].model === model &&
+          SMARTPHONE_MOCKUP[id].style === style
+      ),
+    [model, style]
+  );
 
-const selector = formValueSelector(SMARTPHONE_FORM_ID);
-const mapStateToProps = (state, { model, style }) => ({
-  isPro: isPro(state),
-  model: selector(state, 'model'),
-  style: selector(state, 'style')
-});
+  return (
+    <div className={styles.Root}>
+      {list.map((id: string) => (
+        <Mockup
+          id={id}
+          isCurrent={id === value}
+          key={id}
+          onClick={handleClick}
+        />
+      ))}
+    </div>
+  );
+};
+
+const mapStateToProps = (state, { form, model, style }) => {
+  const selector = formValueSelector(form || SMARTPHONE_FORM_ID);
+
+  return {
+    isPro: isPro(state),
+    model: selector(state, 'model'),
+    style: selector(state, 'style')
+  };
+};
 
 const ComposedSmartphoneMockup = compose(
   connect(mapStateToProps),
@@ -68,8 +81,8 @@ const ComposedSmartphoneMockup = compose(
   })
 )(SmartphoneMockup);
 
-export default (props) => (
+export default ({ form, ...props }) => (
   <Field {...props}>
-    <ComposedSmartphoneMockup />
+    <ComposedSmartphoneMockup form={form} />
   </Field>
 );
