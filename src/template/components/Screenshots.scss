@@ -3,6 +3,10 @@
   width: 100%;
 }
 
+.Container {
+  height: 100%;
+}
+
 .Image {
   height: 100%;
   object-fit: cover;
@@ -15,21 +19,6 @@
   }
 }
 
-.Slider {
-  :global .slick-list {
-    .slick-slide {
-      opacity: .3;
-      transform: scale(.9) translateX(30%);
-      transition: all .2s;
-
-      &.slick-active {
-        opacity: 1;
-        transform: scale(1) translateX(0);
-      }
-    }
-
-    .slick-track {
-      display: flex;
-    }
-  }
+.Link {
+  height: 100%;
 }

@@ -44,19 +44,6 @@
         }
       }
 
-      .Screenshots {
-        height: 400px;
-        left: 16px;
-        position: absolute;
-        top: 64px;
-        width: 228px;
-
-        &Item {
-          height: 400px;
-          width: 228px;
-        }
-      }
-
       .Store {
         margin: 60px 0 0;
       }
@@ -86,19 +73,6 @@
           font-size: 12px;
           line-height: 20px;
           overflow: hidden;
-        }
-      }
-
-      .Screenshots {
-        height: 187px;
-        left: 7px;
-        position: absolute;
-        top: 30px;
-        width: 107px;
-
-        &Item {
-          height: 187px;
-          width: 107px;
         }
       }
 
@@ -139,6 +113,12 @@
         min-width: 768px;
         padding: 36px;
       }
+
+      .Smartphone {
+        height: 353px;
+        position: relative;
+        width: 173px;
+      }
     }
 
     &Desktop,
@@ -156,29 +136,6 @@
           font-size: 12px;
           line-height: 26px;
           overflow: hidden;
-        }
-      }
-
-      .Screenshots {
-        height: 268px;
-        left: 10px;
-        position: absolute;
-        top: 42px;
-        width: 152px;
-
-        &Item {
-          height: 268px;
-          width: 152px;
-        }
-      }
-
-      .Smartphone {
-        height: 353px;
-        position: relative;
-        width: 173px;
-
-        &Mockup {
-          filter: drop-shadow(0 32px 24px rgba(0, 0, 0, .6));
         }
       }
 

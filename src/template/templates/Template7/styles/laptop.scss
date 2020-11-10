@@ -57,18 +57,9 @@
         }
 
         .Smartphone {
-          border-radius: 40px;
-          box-shadow: 0 3px 21px 0 rgba(0, 0, 0, .06);
           flex: 0 0 252px;
           height: 512px;
           width: 252px;
-
-          &Container {
-            height: 385px;
-            left: 19px;
-            top: 63px;
-            width: 215px;
-          }
         }
 
         .Title {
@@ -165,17 +156,8 @@
       }
 
       .Smartphone {
-        border-radius: 40px;
-        box-shadow: 0 5px 34px 0 rgba(0, 0, 0, .06);
         height: 476px;
         width: 236px;
-
-        &Container {
-          height: 356px;
-          left: 18px;
-          top: 59px;
-          width: 200px;
-        }
       }
 
       .Store {
@@ -187,7 +169,7 @@
 
         &Text {
           font-size: 38px;
-          letter-spacing: .4px;
+          letter-spacing: 0.4px;
           line-height: 60px;
         }
       }

@@ -1,9 +1,48 @@
 .Root {
   position: relative;
+
+  &Model {
+    &IPhone {
+      &11 {
+        .Container {
+          padding: 20px 18px 32px;
+        }
+      }
+
+      &11Pro {
+        .Container {
+          padding: 14px 16px 28px;
+        }
+      }
+
+      &SE {
+        .Container {
+          padding: 58px 20px 70px;
+        }
+      }
+    }
+
+    &GalaxyS20 {
+      .Container {
+        padding: 8px 20px 26px;
+      }
+    }
+
+    &Pixel4 {
+      .Container {
+        padding: 28px 18px 26px;
+      }
+    }
+  }
 }
 
 .Container {
+  height: 100%;
+  left: 0;
+  padding: 20px 18px 32px;
   position: absolute;
+  top: 0;
+  width: 100%;
   z-index: 1;
 }
 

@@ -134,18 +134,6 @@
         max-height: 24px;
       }
 
-      .Screenshots {
-        height: 355px;
-        left: 30px;
-        top: 58px;
-        width: 200px;
-
-        &Item {
-          height: 355px;
-          width: 200px;
-        }
-      }
-
       .Slider {
         display: flex;
         flex: 0 0 50%;
@@ -157,7 +145,7 @@
 
       .Smartphone {
         bottom: -60px;
-        height: 473px;
+        height: 524px;
         position: absolute;
         width: 260px;
       }

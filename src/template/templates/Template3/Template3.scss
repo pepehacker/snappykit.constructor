@@ -42,7 +42,7 @@
 .Copyright {
   &Text {
     font-size: 14px;
-    letter-spacing: .1px;
+    letter-spacing: 0.1px;
   }
 }
 
@@ -76,13 +76,9 @@
   justify-content: space-between;
 }
 
-.Screenshots {
-  position: absolute;
-}
-
 .Smartphone {
   &Mockup {
-    filter: drop-shadow(0 32px 24px rgba(0, 0, 0, .6));
+    filter: drop-shadow(0 32px 24px rgba(0, 0, 0, 0.6));
   }
 }
 

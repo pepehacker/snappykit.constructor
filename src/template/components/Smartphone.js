@@ -11,6 +11,7 @@ import {
   // Config
   SMARTPHONE,
   SMARTPHONE_MOCKUP,
+  SMARTPHONE_MODEL,
   VIEW,
   // Provider
   TemplateContext,
@@ -33,16 +34,29 @@ const TemplateSmartphone = ({
 }) => (
   <TemplateContext.Consumer>
     {({ data, view, websiteId }) => {
-      const { src } =
+      const { model, src } =
         SMARTPHONE_MOCKUP[
           get(getSectionById(data, id || SMARTPHONE), 'mockup')
         ] || {};
 
-      const rootClassNames = classNames(className, rootClassName, styles.Root, {
-        [styles.RootViewDesktop]: view === VIEW.DESKTOP,
-        [styles.RootViewMobile]: view === VIEW.MOBILE,
-        [styles.RootViewTablet]: view === VIEW.TABLET
-      });
+      const rootClassNames = classNames(
+        className,
+        rootClassName,
+        styles.Root,
+        {
+          [styles.RootViewDesktop]: view === VIEW.DESKTOP,
+          [styles.RootViewMobile]: view === VIEW.MOBILE,
+          [styles.RootViewTablet]: view === VIEW.TABLET
+        },
+        {
+          [styles.RootModelIPhone11]: model === SMARTPHONE_MODEL.IPHONE_11,
+          [styles.RootModelIPhone11Pro]:
+            model === SMARTPHONE_MODEL.IPHONE_11_PRO,
+          [styles.RootModelIPhoneSE]: model === SMARTPHONE_MODEL.IPHONE_SE,
+          [styles.RootModelGalaxyS20]: model === SMARTPHONE_MODEL.GALAXY_S20,
+          [styles.RootModelPixel4]: model === SMARTPHONE_MODEL.PIXEL_4
+        }
+      );
 
       const containerClassNames = classNames(
         containerClassName,

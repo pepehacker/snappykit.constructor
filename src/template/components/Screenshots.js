@@ -37,35 +37,14 @@ const TemplateScreenshots = ({
         [styles.RootViewTablet]: view === VIEW.TABLET
       });
 
-      // const itemClassNames = classNames(itemClassName, styles.Item);
-
-      // const sliderSettings = {
-      //   arrows: false,
-      //   draggable: false,
-      //   dots: false,
-      //   infinite: false,
-      //   swipe: false,
-      //   ...settings,
-      // };
-
       return (
         <div className={rootClassNames}>
           <Link
+            className={styles.Link}
             to={`/${websiteId}/editor/screenshots${(id && `/${id}`) || ''}`}
           >
             <div className={styles.Container}>
               <img alt="Screenshot" className={styles.Image} src={source} />
-              {/* <Slider {...sliderSettings} className={styles.Slider}>
-                {(items || []).map((source: stirng, index: number): func => (
-                  <div key={index} className={itemClassNames}>
-                    <img
-                      alt="Screenshot"
-                      className={styles.Image}
-                      src={source}
-                    />
-                  </div>
-                ))}
-              </Slider> */}
             </div>
           </Link>
         </div>
