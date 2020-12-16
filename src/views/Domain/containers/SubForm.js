@@ -55,24 +55,6 @@ const DomaiSubForm = ({
         <div>
           <Input isPro={!isPro} label="Domain" name="domain" />
 
-          <div className={style.Ns}>
-            <div className={style.NsTitle}>
-              Enter NS servers at registar (
-              <span className={style.Guide} onClick={handleClick}>
-                Do not know how?
-              </span>
-              ):
-            </div>
-
-            <div className={style.NsDescription}>
-              NS1: ns1.digitalocean.com
-              <br />
-              NS2: ns2.digitalocean.com
-              <br />
-              NS3: ns3.digitalocean.com
-            </div>
-          </div>
-
           {isPro && (
             <>
               <div className={style.Actions}>
@@ -85,6 +67,24 @@ const DomaiSubForm = ({
                 >
                   Add Domain
                 </Button>
+              </div>
+
+              <div className={style.Ns}>
+                <div className={style.NsTitle}>
+                  Enter NS servers at registar (
+                  <span className={style.Guide} onClick={handleClick}>
+                    Do not know how?
+                  </span>
+                  ):
+                </div>
+
+                <div className={style.NsDescription}>
+                  NS1: ns1.digitalocean.com
+                  <br />
+                  NS2: ns2.digitalocean.com
+                  <br />
+                  NS3: ns3.digitalocean.com
+                </div>
               </div>
             </>
           )}
