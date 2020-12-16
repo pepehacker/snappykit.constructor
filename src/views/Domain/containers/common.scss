@@ -16,6 +16,32 @@
   }
 }
 
+.Guide {
+  color: #9e9ae2;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.Ns {
+  margin: 28px 0 0;
+
+  &Description {
+    color: #aeb2ba;
+    font-size: 14px;
+    letter-spacing: .6px;
+    line-height: 20px;
+    margin: 16px 0 0;
+  }
+
+  &Title {
+    color: #c5c9ce;
+    font-size: 12px;
+    letter-spacing: .24px;
+  }
+}
+
 .Textarea {
   height: 300px;
 

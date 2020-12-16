@@ -5,9 +5,11 @@ import { matchPath } from 'react-router-dom';
 import { compose, withHandlers } from 'recompose';
 
 // Components
+import Modal from 'components/Modal';
 import { Title } from 'views/Editor';
 
 // Containers
+import Guide from './containers/Guide';
 import PrivacyForm from './containers/PrivacyForm';
 import SeoForm from './containers/SeoForm';
 import SubForm from './containers/SubForm';
@@ -27,15 +29,16 @@ const Domain = ({
   <div className={styles.Root}>
     <div className={styles.Section}>
       <Title>Domain</Title>
+      <SubForm
+        applyChanges={handleChange}
+        initialValues={subInitialValues}
+        websiteId={websiteId}
+      />
+    </div>
 
-      <div className={styles.Group}>
-        <SubForm
-          applyChanges={handleChange}
-          initialValues={subInitialValues}
-          websiteId={websiteId}
-        />
-        <PrivacyForm />
-      </div>
+    <div className={styles.Section}>
+      <Title>Terms & Conditions</Title>
+      <PrivacyForm />
     </div>
 
     <div className={styles.Section}>
@@ -45,6 +48,10 @@ const Domain = ({
         <SeoForm initialValues={seoInitialValues} onChange={handleChange} />
       </div>
     </div>
+
+    <Modal id="domainGuide">
+      <Guide />
+    </Modal>
   </div>
 );
 
