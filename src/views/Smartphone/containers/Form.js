@@ -20,10 +20,10 @@ const SMARTPHONE_MODEL_LIST = [
     label: 'iPhone 11 Pro',
     value: SMARTPHONE_MODEL.IPHONE_11_PRO
   },
-  {
-    label: 'iPhone SE',
-    value: SMARTPHONE_MODEL.IPHONE_SE
-  },
+  // {
+  //   label: 'iPhone SE',
+  //   value: SMARTPHONE_MODEL.IPHONE_SE
+  // },
   {
     label: 'Galaxy S20',
     value: SMARTPHONE_MODEL.GALAXY_S20
@@ -42,11 +42,11 @@ const SMARTPHONE_STYLE_LIST = [
   {
     label: 'Glass',
     value: SMARTPHONE_STYLE.GLASS
-  },
-  {
-    label: 'Line',
-    value: SMARTPHONE_STYLE.LINE
   }
+  // {
+  //   label: 'Line',
+  //   value: SMARTPHONE_STYLE.LINE
+  // }
 ];
 
 const SmartphoneForm = ({ handleSubmit, form, model, style }) => (

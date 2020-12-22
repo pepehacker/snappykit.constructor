@@ -5,14 +5,14 @@
 
   &:hover {
     .Hover {
-      opacity: 0.8;
+      opacity: 0.6;
     }
   }
 
   &Is {
     &Focused {
       .Hover {
-        opacity: 0.8;
+        opacity: 0.6;
       }
     }
   }
@@ -40,8 +40,7 @@
 }
 
 .Hover {
-  background: url('https://i.stack.imgur.com/QoWYn.png');
-  background-size: 100px 50px;
+  background: #000;
   height: 100%;
   left: 0;
   opacity: 0;

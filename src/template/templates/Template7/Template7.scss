@@ -3,9 +3,14 @@
 @import './styles/tablet.scss';
 
 .Root {
-  overflow-x: hidden;
-  overflow-y: scroll;
-  width: 100%;
+  max-width: 100%;
+
+  &With {
+    &Scroll {
+      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+  }
 }
 
 .About {

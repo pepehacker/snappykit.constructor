@@ -33,7 +33,7 @@ export default compose(
         newView = VIEW.MOBILE;
       } else if (window.innerWidth >= 768 && window.innerWidth < 1280) {
         newView = VIEW.TABLET;
-      } else if (window.innerWidth >= 1280 && window.innerWidth < 1920) {
+      } else if (window.innerWidth >= 1280 && window.innerWidth <= 1920) {
         newView = VIEW.DESKTOP;
       } else {
         newView = VIEW.DESKTOP_LARGE;

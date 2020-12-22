@@ -36,7 +36,7 @@ export default createConfig(7, [
     type: BACKGROUND
   },
   {
-    id: 'intro_screenshots',
+    id: SCREENSHOTS,
     exports: ['items'],
     link: SCREENSHOTS,
     type: SCREENSHOTS
@@ -52,7 +52,7 @@ export default createConfig(7, [
     type: TEXT
   },
   {
-    id: 'intro_smartphone',
+    id: SMARTPHONE,
     data: {
       mockup: 'iphone-11-glass-black'
     },

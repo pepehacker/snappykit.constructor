@@ -19,16 +19,16 @@ export default ({ storeId, provider, ...values }): func => (
   { api, history }
 ): Object<Promise> => {
   const { config, id: templateId } = getFirstTemplate();
-  const { description, logo, title } = values;
+  const { logo } = values;
 
   dispatch({
     type: CREATE_WEBSITE,
     payload: {
-      description,
+      description: 'Create a stunning website for your mobile app',
       logo,
       templateId,
       storeId,
-      title,
+      title: 'Snappykit',
       data: createTemplateData(
         {
           ...values,

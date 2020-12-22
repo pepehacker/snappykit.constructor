@@ -10,7 +10,6 @@ import { Title } from 'views/Editor';
 
 // Containers
 import Guide from './containers/Guide';
-import PrivacyForm from './containers/PrivacyForm';
 import SeoForm from './containers/SeoForm';
 import SubForm from './containers/SubForm';
 
@@ -36,10 +35,10 @@ const Domain = ({
       />
     </div>
 
-    <div className={styles.Section}>
+    {/* <div className={styles.Section}>
       <Title>Terms & Conditions</Title>
       <PrivacyForm />
-    </div>
+    </div> */}
 
     <div className={styles.Section}>
       <Title>SEO</Title>

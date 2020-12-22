@@ -14,6 +14,9 @@ import Form, { Input } from 'components/Form';
 // Ducks
 import { SUB_FORM_ID } from '../ducks';
 
+// Entities
+import { saveWebsite } from 'entities/websites';
+
 // Services
 import { openModal } from 'services/modals';
 import { isPro } from 'services/session';
@@ -43,8 +46,8 @@ const DomaiSubForm = ({
   submitting,
   ...props
 }: DomaiSubFormPropTypes): React.Element<typeof Form> => {
-  const domain = get(initialValues, 'domain');
-  const hasDomain = typeof domain === 'string' && domain.trim() !== '';
+  // const domain = get(initialValues, 'domain');
+  // const hasDomain = typeof domain === 'string' && domain.trim() !== '';
 
   // Handlers
   const handleClick = React.useCallback(() => openModal('domainGuide'), []);
@@ -97,22 +100,19 @@ const DomaiSubForm = ({
             name="domain_free"
             parse={(value) => value && `${value}.snappykit.com`}
             postfix=".snappykit.com"
-            readOnly={isPro && hasDomain}
           />
 
-          {(!hasDomain || !isPro) && (
-            <div className={style.Actions}>
-              <Button
-                loaded={submitting}
-                onClick={handleSubmit((values) =>
-                  onSubmit(values.domain_free, VARIANT.DOMAIN_FREE, props)
-                )}
-                variant="form"
-              >
-                Add Subdomain
-              </Button>
-            </div>
-          )}
+          <div className={style.Actions}>
+            <Button
+              loaded={submitting}
+              onClick={handleSubmit((values) =>
+                onSubmit(values.domain_free, VARIANT.DOMAIN_FREE, props)
+              )}
+              variant="form"
+            >
+              Add Subdomain
+            </Button>
+          </div>
         </div>
       </div>
     </Form>
@@ -124,10 +124,10 @@ const mapStateToProps: Function = (state) => ({
 });
 
 export default compose(
-  connect(mapStateToProps, { openModal }),
+  connect(mapStateToProps, { openModal, saveWebsite }),
   reduxForm({
     form: SUB_FORM_ID,
-    onSubmit: (value, type, { applyChanges, websiteId }) =>
+    onSubmit: (value, type, { applyChanges, saveWebsite, websiteId }) =>
       api('websites.getApp', { domain: value }, { noCredentials: true })
         .then(({ data }) => {
           const id = get(data, 'id');
@@ -152,6 +152,7 @@ export default compose(
                   ? { domain: value }
                   : { domain_free: value }
               );
+              saveWebsite(websiteId);
               break;
           }
         }),

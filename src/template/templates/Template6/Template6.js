@@ -29,9 +29,9 @@ import {
 
 const Template6 = () => (
   <TemplateContext.Consumer>
-    {({ size, view = VIEW.DESKTOP }) => (
+    {({ isEditor, size, view = VIEW.DESKTOP }) => (
       <div
-        className={classNames(styles.Root, {
+        className={classNames(styles.Root, isEditor && styles.RootWithScroll, {
           [styles.RootVariantDesktop]:
             view === VIEW.DESKTOP || view === VIEW.DESKTOP_LARGE,
           [styles.RootVariantMobile]: view === VIEW.MOBILE,

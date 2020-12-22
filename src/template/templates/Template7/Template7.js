@@ -20,15 +20,17 @@ import {
   BACKGROUND,
   COPYRIGHT,
   DESCRIPTION,
+  SCREENSHOTS,
+  SMARTPHONE,
   TITLE,
   VIEW
 } from 'template';
 
 const Template7 = () => (
   <TemplateContext.Consumer>
-    {({ size, view = VIEW.DESKTOP }) => (
+    {({ isEditor, size, view = VIEW.DESKTOP }) => (
       <div
-        className={classNames(styles.Root, {
+        className={classNames(styles.Root, isEditor && styles.RootWithScroll, {
           [styles.RootVariantLaptop]:
             view === VIEW.DESKTOP || view === VIEW.DESKTOP_LARGE,
           [styles.RootVariantMobile]: view === VIEW.MOBILE,
@@ -54,9 +56,9 @@ const Template7 = () => (
                 root: styles.Smartphone,
                 container: styles.SmartphoneContainer
               }}
-              id="intro_smartphone"
+              id={SMARTPHONE}
             >
-              <Screenshots id="intro_screenshots" />
+              <Screenshots id={SCREENSHOTS} />
             </Smartphone>
 
             <div className={styles.Content}>
