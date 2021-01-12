@@ -19,6 +19,8 @@ import {
 // Styles
 import styles from './Screenshots.scss';
 
+import img from 'assets/upload-screenshot.jpg';
+
 const TemplateScreenshots = ({
   className,
   classNames: { root: rootClassName, item: itemClassName } = {},
@@ -29,7 +31,7 @@ const TemplateScreenshots = ({
   <TemplateContext.Consumer>
     {({ data, isEditor, view, websiteId }) => {
       const { items } = getSectionById(data, id || SCREENSHOTS);
-      const source = (items || [])[0];
+      const source = (items || [])[0] || img;
 
       const rootClassNames = classNames(className, rootClassName, styles.Root, {
         [styles.RootViewDesktop]: view === VIEW.DESKTOP,

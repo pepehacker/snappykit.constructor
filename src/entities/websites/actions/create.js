@@ -33,6 +33,7 @@ export default ({ storeId, provider, ...values }): func => (
         {
           ...values,
           icon: { src: logo },
+          screenshots: [],
           store: {
             items: {
               [provider]: `${
