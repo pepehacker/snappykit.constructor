@@ -59,6 +59,10 @@
       .Smartphone {
         height: 248px;
         width: 120px;
+
+        &Container {
+          padding: 12px 10px 18px !important;
+        }
       }
 
       .Store {

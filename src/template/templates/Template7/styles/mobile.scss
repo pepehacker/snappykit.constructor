@@ -70,7 +70,7 @@
 
         .Wrapper {
           flex-direction: column;
-          padding: 160px 0 0;
+          padding: 160px 24px 0;
         }
       }
 
@@ -93,7 +93,7 @@
 
           &Text {
             font-size: 18px;
-            letter-spacing: -0.07px;
+            letter-spacing: -.07px;
             line-height: 30px;
           }
         }
@@ -162,6 +162,10 @@
       .Smartphone {
         height: 220px;
         width: 108px;
+
+        &Container {
+          padding: 10px 8px 14px !important;
+        }
       }
 
       .Store {
@@ -173,7 +177,7 @@
 
         &Text {
           font-size: 28px;
-          letter-spacing: -0.2px;
+          letter-spacing: -.2px;
           line-height: 36px;
         }
       }

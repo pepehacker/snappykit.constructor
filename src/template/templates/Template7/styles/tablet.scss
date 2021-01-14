@@ -156,6 +156,10 @@
       .Smartphone {
         height: 408px;
         width: 200px;
+
+        &Container {
+          padding: 18px 16px 28px !important;
+        }
       }
 
       .Store {
@@ -167,7 +171,7 @@
 
         &Text {
           font-size: 38px;
-          letter-spacing: .4px;
+          letter-spacing: 0.4px;
           line-height: 62px;
         }
       }

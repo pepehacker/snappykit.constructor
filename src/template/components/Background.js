@@ -76,6 +76,7 @@ const TemplateBackground = ({
           [styles.RootViewTablet]: view === VIEW.TABLET
         },
         {
+          [styles.RootIsEditor]: isEditor,
           [styles.RootIsFocused]: isFocused
         }
       )}
