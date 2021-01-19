@@ -13,12 +13,7 @@ import { isPro } from 'services/session';
 import styles from './Form.scss';
 
 // Template
-import {
-  SOCIAL_FACEBOOK,
-  SOCIAL_INSTAGRAM,
-  SOCIAL_TWITTER,
-  SOCIAL_VK
-} from 'template';
+import { SOCIAL_FACEBOOK, SOCIAL_INSTAGRAM, SOCIAL_TWITTER } from 'template';
 
 const SocialForm = ({ handleSubmit, isPro }) => (
   <Form onSubmit={handleSubmit}>
@@ -46,12 +41,12 @@ const SocialForm = ({ handleSubmit, isPro }) => (
         prefix="^(https?:\/\/)(www.)?instagram.com\/"
       />
 
-      <Link
+      {/* <Link
         icon="fa-vk"
         label="Vkontakte"
         name={`items.${SOCIAL_VK}`}
         prefix="^(https?:\/\/)(www.)?vk.com\/"
-      />
+      /> */}
     </div>
 
     <Color label="Color" name="color" />

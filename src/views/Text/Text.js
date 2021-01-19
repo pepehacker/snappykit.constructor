@@ -5,7 +5,7 @@ import { matchPath } from 'react-router-dom';
 import { compose, withHandlers } from 'recompose';
 
 // Components
-import { Container, Title } from 'views/Editor';
+import Sidebar from 'components/Sidebar';
 
 // Containers
 import Form from './containers/Form';
@@ -14,23 +14,16 @@ import Form from './containers/Form';
 import { updateWebsiteSection } from 'entities/websites/actions';
 import { getSectionById } from 'entities/websites/selector';
 
-// Styles
-import styles from './Text.scss';
-
 const Text = ({ id, initialValues, handleChange, websiteId, withText }) => (
-  <div className={styles.Root}>
-    <Title title="Text" />
-
-    <Container>
-      <Form
-        key={id}
-        form={id}
-        initialValues={initialValues}
-        onChange={handleChange}
-        withText={withText}
-      />
-    </Container>
-  </div>
+  <Sidebar title="Text">
+    <Form
+      key={id}
+      form={id}
+      initialValues={initialValues}
+      onChange={handleChange}
+      withText={withText}
+    />
+  </Sidebar>
 );
 
 const mapStateToProps = (state: Object, { location }) => {

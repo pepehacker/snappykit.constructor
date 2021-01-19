@@ -8,7 +8,7 @@ export const SOCIAL = 'social';
 export const SOCIAL_FACEBOOK = 'facebook';
 export const SOCIAL_INSTAGRAM = 'instagram';
 export const SOCIAL_TWITTER = 'twitter';
-export const SOCIAL_VK = 'vk';
+// export const SOCIAL_VK = 'vk';
 
 // Schema
 export const SOCIAL_SCHEMA = (defaults: Object) =>
@@ -34,12 +34,12 @@ export const SOCIAL_SCHEMA = (defaults: Object) =>
           /^(https:\/\/twitter.com\/)?([a-zA-Z0-9_]{2,20})$/,
           'Incorrect `Twitter` URL!'
         )
-        .default(get(defaults, SOCIAL_TWITTER)),
-      [SOCIAL_VK]: string()
-        .matches(
-          /^(https:\/\/vk.com\/)?(id|club)?([a-zA-Z0-9_]{2,20})$/,
-          'Incorrect `VK` URL!'
-        )
-        .default(get(defaults, SOCIAL_VK))
+        .default(get(defaults, SOCIAL_TWITTER))
+      // [SOCIAL_VK]: string()
+      //   .matches(
+      //     /^(https:\/\/vk.com\/)?(id|club)?([a-zA-Z0-9_]{2,20})$/,
+      //     'Incorrect `VK` URL!'
+      //   )
+      //   .default(get(defaults, SOCIAL_VK))
     })
   });

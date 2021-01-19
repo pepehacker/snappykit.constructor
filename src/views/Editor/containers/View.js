@@ -200,7 +200,6 @@ export default withRouter(
     lifecycle({
       componentDidMount() {
         const { handleFullscreenExit, handleResize } = this.props;
-        handleResize();
 
         document.addEventListener(
           'webkitfullscreenchange',
@@ -215,6 +214,8 @@ export default withRouter(
         );
 
         window.addEventListener('resize', handleResize, false);
+
+        setTimeout(handleResize, 0);
       },
       componentDidUpdate({ isFullscreen: prevIsFullscreen, view: prevView }) {
         const {

@@ -2,7 +2,7 @@ import { get } from 'lodash';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import * as React from 'react';
-import { matchPath, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 // Template
 import {
@@ -28,36 +28,34 @@ const TemplateBackground = ({
 }) => {
   const { data, isEditor, view, websiteId } = React.useContext(TemplateContext);
 
-  const { isFocused } = React.useMemo(() => {
-    const isFocused = matchPath(location.pathname, {
-      path: `/${websiteId}/editor/background${
-        id !== BACKGROUND ? `/${id}` : ''
-      }`
+  // @todo - выделять, если открыт текущий фон
+  // const { isFocused } = React.useMemo(() => {
+  //   const isFocused = matchPath(location.pathname, {
+  //     path: `/${websiteId}/editor/background${
+  //       id !== BACKGROUND ? `/${id}` : ''
+  //     }`
+  //   });
+
+  //   return { isFocused };
+  // }, [id, location, websiteId]);
+
+  const handleContainerClick = React.useCallback((event) => {
+    const elements = document.elementsFromPoint(event.clientX, event.clientY);
+
+    let hasLink = false;
+
+    elements.forEach((element) => {
+      if (element.tagName === 'A') {
+        hasLink = true;
+      }
     });
 
-    return { isFocused };
-  }, [id, location, websiteId]);
-
-  const handleContainerClick = React.useCallback(
-    (event) => {
-      const elements = document.elementsFromPoint(event.clientX, event.clientY);
-
-      let hasLink = false;
-
-      elements.forEach((element) => {
-        if (element.tagName === 'A') {
-          hasLink = true;
-        }
-      });
-
-      !isFocused &&
-        !hasLink &&
-        history.push(
-          `/${websiteId}/editor/background${id !== BACKGROUND ? `/${id}` : ''}`
-        );
-    },
-    [isFocused]
-  );
+    // !isFocused &&
+    !hasLink &&
+      history.push(
+        `/${websiteId}/editor/background${id !== BACKGROUND ? `/${id}` : ''}`
+      );
+  });
 
   const { color, gradient, image } = getSectionById(data, id || BACKGROUND);
 
@@ -76,8 +74,8 @@ const TemplateBackground = ({
           [styles.RootViewTablet]: view === VIEW.TABLET
         },
         {
-          [styles.RootIsEditor]: isEditor,
-          [styles.RootIsFocused]: isFocused
+          [styles.RootIsEditor]: isEditor
+          // [styles.RootIsFocused]: isFocused
         }
       )}
     >

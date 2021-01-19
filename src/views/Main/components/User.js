@@ -22,8 +22,8 @@ import styles from './User.scss';
 
 const LINKS = [
   { icon: 'Plans', title: 'Plans', to: '/plans' },
-  { icon: 'Website', title: 'My Collection', to: '/' },
-  { icon: 'Password', title: 'Change Password', to: '/password' }
+  { icon: 'Website', title: 'My Collection', to: '/' }
+  // { icon: 'Password', title: 'Change Password', to: '/password' }
 ];
 
 const MainHeaderUser = ({
