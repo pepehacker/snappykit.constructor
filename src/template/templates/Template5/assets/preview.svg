@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1000 567" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(4.16667,0,0,4.16667,0,0)">
+        <g id="_5---Sketch---Violet---240" serif:id="5---Sketch---Violet---240">
+            <rect id="Background" x="0" y="0" width="240" height="136" style="fill:rgb(155,147,242);"/>
+            <g id="Rectangle-Copy-9" transform="matrix(1,0,0,1,13.75,19.3562)">
+                <path d="M0.25,0.644L212.25,0.644L212.25,98.644L0.25,98.644L0.25,0.644Z" style="fill:white;"/>
+            </g>
+            <g id="Phone" transform="matrix(1,0,0,1,136.125,37.1062)">
+                <g id="Rectangle-Copy-91" serif:id="Rectangle-Copy-9" opacity="0.4">
+                    <path id="path-2" d="M7.125,0.894L37.625,0.894C41.077,0.894 43.875,3.692 43.875,7.144L43.875,80.894L0.875,80.894L0.875,7.144C0.875,3.692 3.673,0.894 7.125,0.894Z" style="fill:rgb(155,147,242);"/>
+                    <path id="path-21" serif:id="path-2" d="M7.125,0.894L37.625,0.894C41.077,0.894 43.875,3.692 43.875,7.144L43.875,80.894L0.875,80.894L0.875,7.144C0.875,3.692 3.673,0.894 7.125,0.894Z" style="fill:url(#_Linear1);"/>
+                </g>
+                <g id="Mask">
+                    <path id="path-4" d="M11.223,3.394C11.552,3.394 11.819,3.661 11.819,3.991C11.85,4.549 11.959,4.903 12.132,5.226C12.336,5.607 12.635,5.906 13.017,6.11C13.398,6.314 13.827,6.423 14.57,6.423L30.18,6.423C30.923,6.423 31.352,6.314 31.733,6.11C32.115,5.906 32.414,5.607 32.618,5.226C32.791,4.903 32.896,4.545 32.931,3.991C32.931,3.661 33.198,3.394 33.527,3.394L36.492,3.394C38.19,3.394 38.806,3.571 39.426,3.903C40.047,4.235 40.534,4.722 40.866,5.343C41.198,5.964 41.375,6.579 41.375,8.277L41.375,80.894L3.375,80.894L3.375,8.277C3.375,6.579 3.552,5.964 3.884,5.343C4.216,4.722 4.703,4.235 5.324,3.903C5.944,3.571 6.56,3.394 8.258,3.394L11.223,3.394Z" style="fill:rgb(155,147,242);"/>
+                    <path id="path-41" serif:id="path-4" d="M11.223,3.394C11.552,3.394 11.819,3.661 11.819,3.991C11.85,4.549 11.959,4.903 12.132,5.226C12.336,5.607 12.635,5.906 13.017,6.11C13.398,6.314 13.827,6.423 14.57,6.423L30.18,6.423C30.923,6.423 31.352,6.314 31.733,6.11C32.115,5.906 32.414,5.607 32.618,5.226C32.791,4.903 32.896,4.545 32.931,3.991C32.931,3.661 33.198,3.394 33.527,3.394L36.492,3.394C38.19,3.394 38.806,3.571 39.426,3.903C40.047,4.235 40.534,4.722 40.866,5.343C41.198,5.964 41.375,6.579 41.375,8.277L41.375,80.894L3.375,80.894L3.375,8.277C3.375,6.579 3.552,5.964 3.884,5.343C4.216,4.722 4.703,4.235 5.324,3.903C5.944,3.571 6.56,3.394 8.258,3.394L11.223,3.394Z" style="fill:url(#_Linear2);"/>
+                </g>
+            </g>
+            <g id="Group" transform="matrix(1,0,0,1,20,124)">
+                <g opacity="0.6">
+                    <path id="Rectangle-Copy-7" d="M12,1C12,0.448 11.552,0 11,0L1,0C0.448,0 0,0.448 0,1C0,1.552 0.448,2 1,2L11,2C11.552,2 12,1.552 12,1Z" style="fill:white;"/>
+                    <path id="Rectangle-Copy-8" d="M28,1C28,0.448 27.552,0 27,0L17,0C16.448,0 16,0.448 16,1C16,1.552 16.448,2 17,2L27,2C27.552,2 28,1.552 28,1Z" style="fill:white;"/>
+                </g>
+            </g>
+            <path id="Rectangle-Copy-12" d="M220,125C220,124.448 219.552,124 219,124L199,124C198.448,124 198,124.448 198,125C198,125.552 198.448,126 199,126L219,126C219.552,126 220,125.552 220,125Z" style="fill:white;fill-opacity:0.6;"/>
+            <g id="Group-10" transform="matrix(1,0,0,1,37,64)">
+                <g opacity="0.8">
+                    <path id="Rectangle-Copy" d="M3.5,0L34.5,0C36.433,-0 38,1.567 38,3.5C38,5.433 36.433,7 34.5,7L3.5,7C1.567,7 0,5.433 0,3.5C-0,1.567 1.567,0 3.5,0Z" style="fill:rgb(155,147,242);"/>
+                    <path id="Rectangle-Copy-10" d="M44.5,0L50.5,0C52.433,0 54,1.567 54,3.5C54,5.433 52.433,7 50.5,7L44.5,7C42.567,7 41,5.433 41,3.5C41,1.567 42.567,0 44.5,0Z" style="fill:rgb(155,147,242);"/>
+                </g>
+            </g>
+            <g id="Group-8" transform="matrix(1,0,0,1,45,77)">
+                <g opacity="0.8">
+                    <path id="Rectangle-Copy-2" d="M1,0L34,0C34.552,-0 35,0.448 35,1C35,1.552 34.552,2 34,2L1,2C0.448,2 0,1.552 0,1C-0,0.448 0.448,0 1,0Z" style="fill:rgb(155,147,242);"/>
+                    <path id="Rectangle-Copy-14" d="M39,0L51,0C51.552,-0 52,0.448 52,1C52,1.552 51.552,2 51,2L39,2C38.448,2 38,1.552 38,1C38,0.448 38.448,0 39,0Z" style="fill:rgb(155,147,242);"/>
+                    <path id="Rectangle-Copy-3" d="M1,5L19,5C19.552,5 20,5.448 20,6C20,6.552 19.552,7 19,7L1,7C0.448,7 0,6.552 0,6C-0,5.448 0.448,5 1,5Z" style="fill:rgb(155,147,242);"/>
+                    <path id="Rectangle-Copy-13" d="M24,5L48,5C48.552,5 49,5.448 49,6C49,6.552 48.552,7 48,7L24,7C23.448,7 23,6.552 23,6C23,5.448 23.448,5 24,5Z" style="fill:rgb(155,147,242);"/>
+                    <path id="Rectangle-Copy-4" d="M1,10L43,10C43.552,10 44,10.448 44,11C44,11.552 43.552,12 43,12L1,12C0.448,12 0,11.552 0,11C-0,10.448 0.448,10 1,10Z" style="fill:rgb(155,147,242);"/>
+                </g>
+            </g>
+            <g id="Group-9" transform="matrix(1,0,0,1,37,94)">
+                <path id="Rectangle-Copy-5" d="M22,1.25C22,0.56 21.44,0 20.75,0L1.25,0C0.56,0 0,0.56 0,1.25L0,5.75C0,6.44 0.56,7 1.25,7L20.75,7C21.44,7 22,6.44 22,5.75L22,1.25Z" style="fill:rgb(155,147,242);"/>
+                <path id="Rectangle-Copy-6" d="M48,1.25C48,0.56 47.44,0 46.75,0L27.25,0C26.56,0 26,0.56 26,1.25L26,5.75C26,6.44 26.56,7 27.25,7L46.75,7C47.44,7 48,6.44 48,5.75L48,1.25Z" style="fill:rgb(155,147,242);"/>
+            </g>
+            <path id="Rectangle" d="M23.879,8.364L25.636,10.121C26.121,10.607 26.121,11.393 25.636,11.879L23.879,13.636C23.393,14.121 22.607,14.121 22.121,13.636L20.364,11.879C19.879,11.393 19.879,10.607 20.364,10.121L22.121,8.364C22.607,7.879 23.393,7.879 23.879,8.364Z" style="fill:white;fill-opacity:0.8;"/>
+            <g id="Group-6" transform="matrix(1,0,0,1,202,9)">
+                <g opacity="0.6">
+                    <circle id="Oval" cx="2" cy="2" r="2" style="fill:white;"/>
+                    <circle id="Oval-Copy" cx="9" cy="2" r="2" style="fill:white;"/>
+                    <circle id="Oval-Copy-2" cx="16" cy="2" r="2" style="fill:white;"/>
+                </g>
+            </g>
+        </g>
+    </g>
+    <defs>
+        <linearGradient id="_Linear1" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(2.44929e-15,40,-40,2.44929e-15,22.375,40.8938)"><stop offset="0" style="stop-color:white;stop-opacity:0"/><stop offset="1" style="stop-color:white;stop-opacity:0.8"/></linearGradient>
+        <linearGradient id="_Linear2" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(2.37275e-15,38.75,-38.75,2.37275e-15,22.375,42.1438)"><stop offset="0" style="stop-color:white;stop-opacity:0"/><stop offset="1" style="stop-color:white;stop-opacity:0.5"/></linearGradient>
+    </defs>
+</svg>

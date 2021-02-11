@@ -4,14 +4,14 @@ import { createContext } from 'react';
 // Templates
 import * as Template1 from './templates/Template1';
 import * as Template2 from './templates/Template2';
-import * as Template3 from './templates/Template3';
+import * as Template5 from './templates/Template5';
 import * as Template6 from './templates/Template6';
 import * as Template7 from './templates/Template7';
 
 export const TEMPLATES = [
   Template1,
   Template2,
-  Template3,
+  Template5,
   Template6,
   Template7
 ].map(({ config, ...props }) => ({

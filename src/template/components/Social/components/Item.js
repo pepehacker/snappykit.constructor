@@ -7,7 +7,7 @@ import {
   SOCIAL_FACEBOOK,
   SOCIAL_INSTAGRAM,
   SOCIAL_TWITTER,
-  SOCIAL_VK,
+  // SOCIAL_VK,
   VIEW
 } from 'template/config';
 
@@ -44,8 +44,8 @@ TemplateSocialItem.propTypes = {
   variant: PropTypes.oneOf([
     SOCIAL_FACEBOOK,
     SOCIAL_INSTAGRAM,
-    SOCIAL_TWITTER,
-    SOCIAL_VK
+    SOCIAL_TWITTER
+    // SOCIAL_VK
   ]),
   view: PropTypes.oneOf([VIEW.DESKTOP, VIEW.MOBILE, VIEW.TABLET])
 };

@@ -23,9 +23,9 @@ import {
 } from 'template';
 
 // Styles
-import styles from './Template3.scss';
+import styles from './Template5.scss';
 
-const Template3 = ({ handleNext, handlePrev, step }) => (
+const Template5 = ({ handleNext, handlePrev, step }) => (
   <TemplateContext.Consumer>
     {({ view = VIEW.DESKTOP }) => {
       const rootClassNames = classNames(
@@ -140,4 +140,4 @@ export default compose(
     handlePrev: ({ setStep, step }): Function => () =>
       setStep(Math.max(step - 1, 0))
   })
-)(Template3);
+)(Template5);

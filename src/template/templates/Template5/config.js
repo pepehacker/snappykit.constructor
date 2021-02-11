@@ -18,7 +18,7 @@ import {
 } from 'template/config';
 import { createConfig } from 'template/utils';
 
-export default createConfig(3, [
+export default createConfig(5, [
   {
     id: BACKGROUND,
     data: {

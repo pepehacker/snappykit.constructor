@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1000 567" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(4.16667,0,0,4.16667,0,0)">
+        <g id="_2---Sketch---Violet---240" serif:id="2---Sketch---Violet---240">
+            <rect id="Background" x="0" y="0" width="240" height="136" style="fill:rgb(155,147,242);"/>
+            <path id="Rectangle" d="M23.879,8.364L25.636,10.121C26.121,10.607 26.121,11.393 25.636,11.879L23.879,13.636C23.393,14.121 22.607,14.121 22.121,13.636L20.364,11.879C19.879,11.393 19.879,10.607 20.364,10.121L22.121,8.364C22.607,7.879 23.393,7.879 23.879,8.364Z" style="fill:white;fill-opacity:0.8;"/>
+            <path id="Rectangle-Copy-9" d="M132,51.5C132,48.464 129.536,46 126.5,46L113.5,46C110.464,46 108,48.464 108,51.5L108,64.5C108,67.536 110.464,70 113.5,70L126.5,70C129.536,70 132,67.536 132,64.5L132,51.5Z" style="fill:white;"/>
+            <g id="Group" transform="matrix(1,0,0,1,192,10.0782)">
+                <g opacity="0.6">
+                    <path id="Rectangle-Copy-7" d="M12,1C12,0.448 11.552,0 11,0L1,0C0.448,0 0,0.448 0,1C0,1.552 0.448,2 1,2L11,2C11.552,2 12,1.552 12,1Z" style="fill:white;"/>
+                    <path id="Rectangle-Copy-8" d="M28,1C28,0.448 27.552,0 27,0L17,0C16.448,0 16,0.448 16,1C16,1.552 16.448,2 17,2L27,2C27.552,2 28,1.552 28,1Z" style="fill:white;"/>
+                </g>
+            </g>
+            <path id="Rectangle-Copy-12" d="M220,125C220,124.448 219.552,124 219,124L199,124C198.448,124 198,124.448 198,125C198,125.552 198.448,126 199,126L219,126C219.552,126 220,125.552 220,125Z" style="fill:white;fill-opacity:0.6;"/>
+            <g id="Rectangle-Copy" transform="matrix(1,0,0,1,105,76.8148)">
+                <path d="M30,2.185C30,1.081 29.104,0.185 28,0.185L2,0.185C0.896,0.185 0,1.081 0,2.185C0,3.289 0.896,4.185 2,4.185L28,4.185C29.104,4.185 30,3.289 30,2.185Z" style="fill:white;"/>
+            </g>
+            <g id="Group-4" transform="matrix(1,0,0,1,88.375,83.3704)">
+                <g opacity="0.8">
+                    <path id="Rectangle-Copy-2" d="M40.625,0.63L61.625,0.63C62.177,0.63 62.625,1.077 62.625,1.63C62.625,2.182 62.177,2.63 61.625,2.63L40.625,2.63C40.073,2.63 39.625,2.182 39.625,1.63C39.625,1.077 40.073,0.63 40.625,0.63Z" style="fill:white;"/>
+                    <path id="Rectangle-Copy-10" d="M1.625,0.63L35.625,0.63C36.177,0.63 36.625,1.077 36.625,1.63C36.625,2.182 36.177,2.63 35.625,2.63L1.625,2.63C1.073,2.63 0.625,2.182 0.625,1.63C0.625,1.077 1.073,0.63 1.625,0.63Z" style="fill:white;"/>
+                    <path id="Rectangle-Copy-3" d="M5.625,5.63L57.625,5.63C58.177,5.63 58.625,6.077 58.625,6.63C58.625,7.182 58.177,7.63 57.625,7.63L5.625,7.63C5.073,7.63 4.625,7.182 4.625,6.63C4.625,6.077 5.073,5.63 5.625,5.63Z" style="fill:white;"/>
+                </g>
+            </g>
+            <g id="Group-3" transform="matrix(1,0,0,1,95.875,97.2222)">
+                <path id="Rectangle-Copy-5" d="M22.125,4.278C22.125,2.346 20.557,0.778 18.625,0.778L3.625,0.778C1.693,0.778 0.125,2.346 0.125,4.278C0.125,6.209 1.693,7.778 3.625,7.778L18.625,7.778C20.557,7.778 22.125,6.209 22.125,4.278Z" style="fill:white;"/>
+                <path id="Rectangle-Copy-6" d="M48.125,4.278C48.125,2.346 46.557,0.778 44.625,0.778L29.625,0.778C27.693,0.778 26.125,2.346 26.125,4.278C26.125,6.209 27.693,7.778 29.625,7.778L44.625,7.778C46.557,7.778 48.125,6.209 48.125,4.278Z" style="fill:white;"/>
+            </g>
+            <g id="Group-6" transform="matrix(1,0,0,1,20,123)">
+                <g opacity="0.6">
+                    <circle id="Oval" cx="2" cy="2" r="2" style="fill:white;"/>
+                    <circle id="Oval-Copy" cx="9" cy="2" r="2" style="fill:white;"/>
+                    <circle id="Oval-Copy-2" cx="16" cy="2" r="2" style="fill:white;"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
