@@ -39,7 +39,12 @@ const createWebsite = (
       dispatch({
         type: SAVE_WEBSITE_SUCCESS,
         websiteId: id,
-        payload: { ...website, id }
+        payload: {
+          ...website,
+          id,
+          domain: data.domain,
+          domain_free: data.domain_free
+        }
       });
 
       history.replace(`/launch/:${id}`);

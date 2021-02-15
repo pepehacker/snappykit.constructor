@@ -46,6 +46,7 @@ api('websites.getApp', { domain }, { noCredentials: true }).then(
         isSupported,
         id: get(app, 'id'),
         description: get(app, 'description', ''),
+        isPro: get(app, 'is_pro', false),
         templateId: get(json, 'templateId', 1),
         title: get(app, 'title', 'Untitled')
       };
