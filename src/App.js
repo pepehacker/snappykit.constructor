@@ -32,6 +32,7 @@ const App = ({ match, setPro, user }) => {
   const MAX_TRY = 10;
 
   // State
+  // eslint-disable-next-line no-unused-vars
   const [counter, setCounter] = useState(0);
   const [isLoaded, setLoadState] = useState(
     !!window.localStorage.getItem('syncPro')
@@ -41,19 +42,13 @@ const App = ({ match, setPro, user }) => {
   useEffect(() => {
     const syncPro = setInterval(() => {
       api({ method: 'profile.get' }).then(({ data }) => {
-        if (data.is_payed) {
-          window.localStorage.removeItem('syncPro');
-
-          clearInterval(syncPro);
-
-          setLoadState(false);
-          setPro();
-        }
-
         setCounter((counter) => {
-          if (counter >= MAX_TRY) {
+          if (data.is_payed || counter >= MAX_TRY) {
             clearInterval(syncPro);
             setLoadState(false);
+
+            data.is_payed && setPro();
+            window.localStorage.removeItem('syncPro');
           }
 
           return counter + 1;
