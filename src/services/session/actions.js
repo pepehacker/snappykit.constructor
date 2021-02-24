@@ -22,6 +22,7 @@ import {
   FETCH_PROFILE_SUCCESS,
   FETCH_PROFILE_FAILURE,
   LOGOUT,
+  SET_PRO,
   SET_USER
 } from './types';
 
@@ -89,6 +90,10 @@ export const fetchProfile = (id: number) => (
       dispatch({ type: FETCH_PROFILE_FAILURE, error: get(error, 'message') });
     });
 };
+
+export const setPro = () => ({
+  type: SET_PRO
+});
 
 export const logout: Function = () => {
   localStorage.removeItem('token');

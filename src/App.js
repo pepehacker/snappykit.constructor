@@ -1,9 +1,12 @@
 import { get } from 'lodash';
-import React, { Fragment } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { compose, lifecycle } from 'recompose';
 import url from 'url';
+
+// Api
+import api from 'api';
 
 // Components
 import Spinner from 'components/Spinner';
@@ -12,7 +15,7 @@ import Spinner from 'components/Spinner';
 import Plans from 'containers/Plans';
 
 // Ducks
-import { fetchProfile } from 'services/session';
+import { fetchProfile, setPro } from 'services/session';
 
 // Template
 import { Sandbox } from 'template';
@@ -24,30 +27,68 @@ import Main from 'views/Main';
 import styles from './App.scss';
 import '@fortawesome/fontawesome-pro/css/all.min.css';
 
-const App = ({ match, user }) => (
-  <div className={styles.Root}>
-    {!user ? (
-      <Spinner title="Fetching user..." />
-    ) : (
-      <Fragment>
-        <Switch>
-          <Route
-            component={Sandbox}
-            path={url.resolve(match.url, '/sandbox')}
-          />
-          <Route component={Main} path={url.resolve(match.url, '/')} />
-        </Switch>
+const App = ({ match, setPro, user }) => {
+  // Setup
+  const MAX_TRY = 10;
 
-        <Plans />
-      </Fragment>
-    )}
-  </div>
-);
+  // State
+  const [counter, setCounter] = useState(0);
+  const [isLoaded, setLoadState] = useState(
+    !!window.localStorage.getItem('syncPro')
+  );
+
+  // Effects
+  useEffect(() => {
+    const syncPro = setInterval(() => {
+      api({ method: 'profile.get' }).then(({ data }) => {
+        if (data.is_payed) {
+          window.localStorage.removeItem('syncPro');
+
+          clearInterval(syncPro);
+
+          setLoadState(false);
+          setPro();
+        }
+
+        setCounter((counter) => {
+          if (counter >= MAX_TRY) {
+            clearInterval(syncPro);
+            setLoadState(false);
+          }
+
+          return counter + 1;
+        });
+      });
+    }, 1000);
+  }, []);
+
+  return (
+    <div className={styles.Root}>
+      {!user || isLoaded ? (
+        <Spinner
+          title={isLoaded ? 'Sync subscription...' : 'Fetching user...'}
+        />
+      ) : (
+        <>
+          <Switch>
+            <Route
+              component={Sandbox}
+              path={url.resolve(match.url, '/sandbox')}
+            />
+            <Route component={Main} path={url.resolve(match.url, '/')} />
+          </Switch>
+
+          <Plans />
+        </>
+      )}
+    </div>
+  );
+};
 
 const mapStateToProps = ({ services }) => get(services, 'session');
 
 export default compose(
-  connect(mapStateToProps, { fetchProfile }),
+  connect(mapStateToProps, { fetchProfile, setPro }),
   lifecycle({
     componentDidMount() {
       this.props.fetchProfile();

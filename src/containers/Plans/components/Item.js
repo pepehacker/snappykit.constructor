@@ -173,7 +173,10 @@ export default compose(
         email,
         passthrough: email,
         product: productId,
-        successCallback: () => window.location.reload()
+        successCallback: () => {
+          window.localStorage.setItem('syncPro', true);
+          window.location.reload();
+        }
       })
   }),
   lifecycle({
