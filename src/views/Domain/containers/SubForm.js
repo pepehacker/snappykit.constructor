@@ -93,27 +93,30 @@ const DomaiSubForm = ({
           )}
         </div>
 
-        <div>
-          <Input
-            format={(value) => value && value.replace('.snappykit.com', '')}
-            label="Subdomain"
-            name="domain_free"
-            parse={(value) => value && `${value}.snappykit.com`}
-            postfix=".snappykit.com"
-          />
+        {!isPro && (
+          <div>
+            <Input
+              disabled={isPro}
+              format={(value) => value && value.replace('.snappykit.com', '')}
+              label="Subdomain"
+              name="domain_free"
+              parse={(value) => value && `${value}.snappykit.com`}
+              postfix=".snappykit.com"
+            />
 
-          <div className={style.Actions}>
-            <Button
-              loaded={submitting}
-              onClick={handleSubmit((values) =>
-                onSubmit(values.domain_free, VARIANT.DOMAIN_FREE, props)
-              )}
-              variant="form"
-            >
-              Add Subdomain
-            </Button>
+            <div className={style.Actions}>
+              <Button
+                loaded={submitting}
+                onClick={handleSubmit((values) =>
+                  onSubmit(values.domain_free, VARIANT.DOMAIN_FREE, props)
+                )}
+                variant="form"
+              >
+                Add Subdomain
+              </Button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </Form>
   );
@@ -165,7 +168,7 @@ export default compose(
       ],
       domain_free: [
         required(),
-        matches(/^[A-z0-9]{6}\.snappykit\.com$/, 'Invalid subdomain!')
+        matches(/^[A-z0-9]{1,12}\.snappykit\.com$/, 'Invalid subdomain!')
       ]
     })
   })
