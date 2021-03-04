@@ -5,6 +5,7 @@ import { get } from 'lodash';
 import {
   // Config
   BACKGROUND,
+  BACKGROUND_MODE,
   BACKGROUND_LIST,
   ICON,
   POLICY,
@@ -28,7 +29,8 @@ export default createConfig(1, [
     data: {
       image: {
         src: BACKGROUND_LIST[4]
-      }
+      },
+      mode: BACKGROUND_MODE.IMAGE
     },
     type: BACKGROUND
   },

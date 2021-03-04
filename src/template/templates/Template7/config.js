@@ -2,6 +2,7 @@
 import {
   // Config
   BACKGROUND,
+  BACKGROUND_MODE,
   ICON,
   SCREENSHOTS,
   SMARTPHONE,
@@ -20,7 +21,8 @@ export default createConfig(7, [
   {
     id: 'common_background',
     data: {
-      color: 'rgba(255, 255, 255, 1)'
+      color: 'rgba(255, 255, 255, 1)',
+      mode: BACKGROUND_MODE.COLOR
     },
     type: BACKGROUND
   },
@@ -31,7 +33,8 @@ export default createConfig(7, [
         color: 'rgba(63, 41, 90, .49)',
         src:
           'https://images.unsplash.com/photo-1504556106489-6d450910aeb3?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjY4NjM0fQ'
-      }
+      },
+      mode: BACKGROUND_MODE.IMAGE
     },
     type: BACKGROUND
   },

@@ -85,7 +85,11 @@ export default compose(
     ({ currentIndex = 0 }) => currentIndex
   ),
   withHandlers({
-    handleChange: ({ setCurrentIndex }): Function => (index: number) =>
-      setCurrentIndex(index)
+    handleChange: ({ onChange, setCurrentIndex }): Function => (
+      index: number
+    ) => {
+      setCurrentIndex(index);
+      onChange && onChange(index);
+    }
   })
 )(Sidebar);

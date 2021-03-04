@@ -22,6 +22,12 @@ export const BACKGROUND_COLOR = 'color';
 export const BACKGROUND_GRADIENT = 'gradient';
 export const BACKGROUND_IMAGE = 'image';
 
+export const BACKGROUND_MODE = {
+  COLOR: 'COLOR',
+  GRADIENT: 'GRADIENT',
+  IMAGE: 'IMAGE'
+};
+
 export const BACKGROUND_LIST = [
   require('assets/backgrounds/d-1.png'),
   require('assets/backgrounds/d-2.png'),

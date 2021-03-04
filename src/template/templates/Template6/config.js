@@ -2,6 +2,7 @@
 import {
   // Config
   BACKGROUND,
+  BACKGROUND_MODE,
   ICON,
   SCREENSHOTS,
   SMARTPHONE,
@@ -20,7 +21,8 @@ export default createConfig(6, [
   {
     id: 'download_background',
     data: {
-      color: 'rgba(39, 43, 52, 1)'
+      color: 'rgba(39, 43, 52, 1)',
+      mode: BACKGROUND_MODE.COLOR
     },
     type: BACKGROUND
   },
@@ -46,7 +48,8 @@ export default createConfig(6, [
   {
     id: 'step1_background',
     data: {
-      color: 'rgba(32, 35, 42, 1)'
+      color: 'rgba(32, 35, 42, 1)',
+      mode: BACKGROUND_MODE.COLOR
     },
     type: BACKGROUND
   },
@@ -96,7 +99,8 @@ export default createConfig(6, [
   {
     id: 'step2_background',
     data: {
-      color: 'rgba(32, 35, 42, 1)'
+      color: 'rgba(32, 35, 42, 1)',
+      mode: BACKGROUND_MODE.COLOR
     },
     type: BACKGROUND
   },
@@ -146,7 +150,8 @@ export default createConfig(6, [
   {
     id: 'step3_background',
     data: {
-      color: 'rgba(32, 35, 42, 1)'
+      color: 'rgba(32, 35, 42, 1)',
+      mode: BACKGROUND_MODE.COLOR
     },
     type: BACKGROUND
   },
@@ -204,7 +209,8 @@ export default createConfig(6, [
         },
         src:
           'https://images.unsplash.com/photo-1536599018102-9f803c140fc1?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjY4NjM0fQ'
-      }
+      },
+      mode: BACKGROUND_MODE.IMAGE
     },
     type: BACKGROUND
   },

@@ -2,6 +2,7 @@
 import {
   // Config
   BACKGROUND,
+  BACKGROUND_MODE,
   BACKGROUND_LIST,
   ICON,
   POLICY,
@@ -24,7 +25,8 @@ export default createConfig(5, [
     data: {
       image: {
         src: BACKGROUND_LIST[1]
-      }
+      },
+      mode: BACKGROUND_MODE.IMAGE
     },
     type: BACKGROUND
   },

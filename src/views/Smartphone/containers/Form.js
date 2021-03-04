@@ -24,10 +24,10 @@ const SMARTPHONE_MODEL_LIST = [
   //   label: 'iPhone SE',
   //   value: SMARTPHONE_MODEL.IPHONE_SE
   // },
-  {
-    label: 'Galaxy S20',
-    value: SMARTPHONE_MODEL.GALAXY_S20
-  },
+  // {
+  //   label: 'Galaxy S20',
+  //   value: SMARTPHONE_MODEL.GALAXY_S20
+  // },
   {
     label: 'Pixel 4',
     value: SMARTPHONE_MODEL.PIXEL_4
@@ -38,11 +38,11 @@ const SMARTPHONE_STYLE_LIST = [
   {
     label: 'Flat',
     value: SMARTPHONE_STYLE.FLAT
-  },
-  {
-    label: 'Glass',
-    value: SMARTPHONE_STYLE.GLASS
   }
+  // {
+  //   label: 'Glass',
+  //   value: SMARTPHONE_STYLE.GLASS
+  // }
   // {
   //   label: 'Line',
   //   value: SMARTPHONE_STYLE.LINE

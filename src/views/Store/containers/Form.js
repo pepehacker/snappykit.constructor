@@ -40,7 +40,6 @@ const StoreForm = ({
           isPro={!isPro && provider === 2}
           label="App Store"
           name="items.apple"
-          prefix="^(https?:\/\/)?itunes.apple.com\/app\/id"
         />
 
         <Link
@@ -48,7 +47,6 @@ const StoreForm = ({
           isPro={!isPro && provider === 1}
           label="Google Play"
           name="items.play"
-          prefix="^(https?:\/\/)?play.google.com/store/apps/details?id='"
         />
       </div>
 

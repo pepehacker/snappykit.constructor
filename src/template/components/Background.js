@@ -8,6 +8,7 @@ import { withRouter } from 'react-router-dom';
 import {
   // Constants
   BACKGROUND,
+  BACKGROUND_MODE,
   VIEW,
   // Provider
   TemplateContext,
@@ -57,10 +58,13 @@ const TemplateBackground = ({
       );
   });
 
-  const { color, gradient, image } = getSectionById(data, id || BACKGROUND);
+  const { color, gradient, image, mode } = getSectionById(
+    data,
+    id || BACKGROUND
+  );
 
-  const currentColor = get(image, 'color') || color;
-  const { angle, from, to } = get(image, 'gradient') || gradient || {};
+  const { angle, from, to } =
+    (mode === BACKGROUND_MODE.IMAGE ? get(image, 'gradient') : gradient) || {};
 
   return (
     <div
@@ -79,7 +83,7 @@ const TemplateBackground = ({
         }
       )}
     >
-      {image && (
+      {mode === BACKGROUND_MODE.IMAGE && image && (
         <div
           className={styles.Cover}
           style={{
@@ -89,23 +93,27 @@ const TemplateBackground = ({
         />
       )}
 
-      {currentColor && (
+      {((mode === BACKGROUND_MODE.COLOR && color) ||
+        (mode === BACKGROUND_MODE.IMAGE && image && image.color)) && (
         <div
           className={styles.Cover}
           style={{
-            backgroundColor: currentColor
+            backgroundColor:
+              mode === BACKGROUND_MODE.COLOR ? color : image.color
           }}
         />
       )}
 
-      {from && to && (
-        <div
-          className={styles.Cover}
-          style={{
-            backgroundImage: `linear-gradient(${angle}deg, ${from}, ${to})`
-          }}
-        />
-      )}
+      {(mode === BACKGROUND_MODE.GRADIENT || mode === BACKGROUND_MODE.IMAGE) &&
+        from &&
+        to && (
+          <div
+            className={styles.Cover}
+            style={{
+              backgroundImage: `linear-gradient(${angle}deg, ${from}, ${to})`
+            }}
+          />
+        )}
 
       {isEditor && <div className={styles.Hover} />}
 
