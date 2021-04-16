@@ -20,6 +20,7 @@ const Button = ({
     content: contentClassName,
     icon: iconClassName
   } = {},
+  disabled,
   icon,
   loaded,
   onClick,
@@ -36,6 +37,7 @@ const Button = ({
       [styles.RootVariantGradientReverse]: variant === VARIANT.GRADIENT_REVERSE
     },
     {
+      [styles.RootIsDisabled]: disabled,
       [styles.RootIsLoaded]: !!loaded
     }
   );
@@ -43,7 +45,12 @@ const Button = ({
   const iconClassNames = classNames(rootClassName, styles.Icon);
 
   return (
-    <button className={rootClassNames} onClick={onClick} type={type}>
+    <button
+      className={rootClassNames}
+      disabled={disabled}
+      onClick={onClick}
+      type={type}
+    >
       {loaded ? (
         <i className={classNames(styles.Loader, 'far fa-spinner-third')} />
       ) : (

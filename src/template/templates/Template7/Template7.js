@@ -28,14 +28,18 @@ import {
 
 const Template7 = () => (
   <TemplateContext.Consumer>
-    {({ isEditor, size, view = VIEW.DESKTOP }) => (
+    {({ isEditor, isFullscreen, size, view = VIEW.DESKTOP }) => (
       <div
-        className={classNames(styles.Root, isEditor && styles.RootWithScroll, {
-          [styles.RootVariantLaptop]:
-            view === VIEW.DESKTOP || view === VIEW.DESKTOP_LARGE,
-          [styles.RootVariantMobile]: view === VIEW.MOBILE,
-          [styles.RootVariantTablet]: view === VIEW.TABLET
-        })}
+        className={classNames(
+          styles.Root,
+          (isEditor || isFullscreen) && styles.RootWithScroll,
+          {
+            [styles.RootVariantLaptop]:
+              view === VIEW.DESKTOP || view === VIEW.DESKTOP_LARGE,
+            [styles.RootVariantMobile]: view === VIEW.MOBILE,
+            [styles.RootVariantTablet]: view === VIEW.TABLET
+          }
+        )}
       >
         <Background
           classNames={{ root: styles.Intro, container: styles.IntroContainer }}

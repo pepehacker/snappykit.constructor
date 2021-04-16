@@ -61,7 +61,7 @@ const createWebsite = (
 const updateWebsite = (
   websiteId: number | string,
   website: Object
-): Function => (dispatch: Function, getState: Function, { api }) =>
+): Function => (dispatch: Function, getState: Function, { api, history }) =>
   api('websites.update', {
     ...website,
     appId: websiteId,
@@ -70,9 +70,10 @@ const updateWebsite = (
       templateId: get(website, 'templateId', 1)
     })
   })
-    .then((): void =>
-      dispatch({ type: SAVE_WEBSITE_SUCCESS, websiteId, payload: website })
-    )
+    .then((): void => {
+      dispatch({ type: SAVE_WEBSITE_SUCCESS, websiteId, payload: website });
+      history.replace(`/launch/:${websiteId}`);
+    })
     .catch((error: Object) =>
       dispatch({ type: SAVE_WEBSITE_FAILURE, error: get(error, 'message') })
     );

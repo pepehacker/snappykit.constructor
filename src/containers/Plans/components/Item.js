@@ -21,8 +21,6 @@ import {
   PLAN_BASIC,
   PLAN_LITE,
   PLAN_PRO,
-  // Price
-  PRICE_MIN,
   // Selectors
   getPeriod,
   getPrice
@@ -107,13 +105,15 @@ const PlansItem = ({
       <div className={styles.Cover} />
     </div>
 
-    <button
-      className={styles.Button}
-      onClick={isCurrent ? handleCancel : handleClick}
-      type="button"
-    >
-      {cost ? (isCurrent ? 'CANCEL' : 'BUY') : 'TRY IT'}
-    </button>
+    {cost && (
+      <button
+        className={styles.Button}
+        onClick={isCurrent ? handleCancel : handleClick}
+        type="button"
+      >
+        {isCurrent ? 'CANCEL' : 'BUY'}
+      </button>
+    )}
   </div>
 );
 
@@ -130,8 +130,8 @@ const mapStateToProps: Function = (state: Object, { id }) => {
 
 export default compose(
   connect(mapStateToProps),
-  withProps(({ period = MONTH, price = PRICE_MIN, productIds }) => ({
-    productId: get(productIds, `${period}.${price}`)
+  withProps(({ period = MONTH, productIds }) => ({
+    productId: get(productIds, period)
   })),
   withState('cost', 'setCost', null),
   withState('isFetching', 'setFetching', false),

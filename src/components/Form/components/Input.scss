@@ -48,13 +48,13 @@
         .Cover {
           &:hover {
             border-color: #eee;
-            color: #7B7A7A;
+            color: #7b7a7a;
           }
         }
 
         &.RootIsFocused {
           .Cover {
-            border-color: rgba(#9E9AE2, .3);
+            border-color: rgba(#9e9ae2, .3);
             color: var(--color-primary);
           }
         }
@@ -88,6 +88,10 @@
 
   &:focus {
     outline: none;
+  }
+
+  &::placeholder {
+    color: rgba(0, 0, 0, .1);
   }
 }
 

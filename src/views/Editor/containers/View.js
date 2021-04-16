@@ -46,6 +46,7 @@ const EditorView = ({
           value={{
             data: get(website, 'data'),
             isEditor: !isFullscreen,
+            isFullscreen,
             size: {
               height: size.height / scale,
               width: size.width / scale

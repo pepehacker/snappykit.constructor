@@ -29,14 +29,18 @@ import {
 
 const Template6 = () => (
   <TemplateContext.Consumer>
-    {({ isEditor, size, view = VIEW.DESKTOP }) => (
+    {({ isEditor, isFullscreen, size, view = VIEW.DESKTOP }) => (
       <div
-        className={classNames(styles.Root, isEditor && styles.RootWithScroll, {
-          [styles.RootVariantDesktop]:
-            view === VIEW.DESKTOP || view === VIEW.DESKTOP_LARGE,
-          [styles.RootVariantMobile]: view === VIEW.MOBILE,
-          [styles.RootVariantTablet]: view === VIEW.TABLET
-        })}
+        className={classNames(
+          styles.Root,
+          (isEditor || isFullscreen) && styles.RootWithScroll,
+          {
+            [styles.RootVariantDesktop]:
+              view === VIEW.DESKTOP || view === VIEW.DESKTOP_LARGE,
+            [styles.RootVariantMobile]: view === VIEW.MOBILE,
+            [styles.RootVariantTablet]: view === VIEW.TABLET
+          }
+        )}
       >
         <Section backgroundId={BACKGROUND} id="intro">
           <header className={styles.Header}>

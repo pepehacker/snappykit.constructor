@@ -12,7 +12,6 @@ import Tabs, { Tab } from 'components/Tabs';
 
 // Containers
 import List from './containers/List';
-import PriceList from './containers/PriceList';
 
 // Ducks
 import {
@@ -60,14 +59,7 @@ const Plans = ({
           >
             <div className={styles.Header}>
               <div className={styles.Title}>Pricing & Plans</div>
-              <div className={styles.Description}>
-                Freedom of cost. Pay as you can.
-              </div>
               <div className={styles.Choose}>Choose one of this:</div>
-            </div>
-
-            <div className={styles.Price}>
-              <PriceList isEntered={state === 'entered'} />
             </div>
 
             <div className={styles.Period}>
@@ -78,7 +70,7 @@ const Plans = ({
             </div>
 
             <div className={styles.List}>
-              <List key={price} isEntered={state === 'entered' && !!price} />
+              <List key={price} isEntered={state === 'entered'} />
             </div>
           </div>
         )}

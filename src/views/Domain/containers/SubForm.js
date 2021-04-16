@@ -44,11 +44,9 @@ const DomaiSubForm = ({
   onSubmit,
   openModal,
   submitting,
+  valid,
   ...props
 }: DomaiSubFormPropTypes): React.Element<typeof Form> => {
-  // const domain = get(initialValues, 'domain');
-  // const hasDomain = typeof domain === 'string' && domain.trim() !== '';
-
   // Handlers
   const handleClick = React.useCallback(() => openModal('domainGuide'), []);
 
@@ -56,12 +54,18 @@ const DomaiSubForm = ({
     <Form onSubmit={handleSubmit}>
       <div className={style.Group}>
         <div>
-          <Input isPro={!isPro} label="Domain" name="domain" />
+          <Input
+            isPro={!isPro}
+            label="Domain"
+            name="domain"
+            placeholder="example.com"
+          />
 
           {isPro && (
             <>
               <div className={style.Actions}>
                 <Button
+                  disabled={!valid}
                   loaded={submitting}
                   onClick={handleSubmit((values) =>
                     onSubmit(values.domain, VARIANT.DOMAIN, props)
@@ -106,6 +110,7 @@ const DomaiSubForm = ({
 
             <div className={style.Actions}>
               <Button
+                disabled={!valid}
                 loaded={submitting}
                 onClick={handleSubmit((values) =>
                   onSubmit(values.domain_free, VARIANT.DOMAIN_FREE, props)
@@ -162,7 +167,7 @@ export default compose(
     validate: validate({
       domain: [
         matches(
-          /(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]/,
+          /^(?!:\/\/)([a-zA-Z0-9]+\.)?[a-zA-Z0-9][a-zA-Z0-9-]+\.[a-zA-Z]{2,6}?$/,
           'Invalid domain!'
         )
       ],

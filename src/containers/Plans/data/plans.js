@@ -6,11 +6,7 @@ import {
   PLAN_AGENCY,
   PLAN_BASIC,
   PLAN_LITE,
-  PLAN_PRO,
-  // Price
-  PRICE_AVERAGE,
-  PRICE_MAX,
-  PRICE_MIN
+  PLAN_PRO
 } from '../ducks';
 
 const FEATURES = [
@@ -42,16 +38,8 @@ export default [
     count: 3,
     features: FEATURES,
     productIds: {
-      [MONTH]: {
-        [PRICE_MIN]: 551696,
-        [PRICE_AVERAGE]: 551701,
-        [PRICE_MAX]: 551704
-      },
-      [YEAR]: {
-        [PRICE_MIN]: 551707,
-        [PRICE_AVERAGE]: 551710,
-        [PRICE_MAX]: 551713
-      }
+      [MONTH]: 650296,
+      [YEAR]: 650302
     },
     title: 'BASIC'
   },
@@ -60,16 +48,8 @@ export default [
     count: 9,
     features: FEATURES,
     productIds: {
-      [MONTH]: {
-        [PRICE_MIN]: 551699,
-        [PRICE_AVERAGE]: 551702,
-        [PRICE_MAX]: 551705
-      },
-      [YEAR]: {
-        [PRICE_MIN]: 551708,
-        [PRICE_AVERAGE]: 551711,
-        [PRICE_MAX]: 551714
-      }
+      [MONTH]: 650297,
+      [YEAR]: 650303
     },
     title: 'PRO'
   },
@@ -78,16 +58,8 @@ export default [
     count: 45,
     features: FEATURES,
     productIds: {
-      [MONTH]: {
-        [PRICE_MIN]: 551700,
-        [PRICE_AVERAGE]: 551703,
-        [PRICE_MAX]: 551706
-      },
-      [YEAR]: {
-        [PRICE_MIN]: 551709,
-        [PRICE_AVERAGE]: 551712,
-        [PRICE_MAX]: 551715
-      }
+      [MONTH]: 650299,
+      [YEAR]: 650304
     },
     title: 'AGENCY'
   }
