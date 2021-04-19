@@ -1,4 +1,4 @@
-export const SUBSCRIPTION_AGENCY = 'AGENCY';
+export const SUBSCRIPTION_AGENCY = 'TEAM';
 export const SUBSCRIPTION_AGENCY_LIMIT = 45;
 export const SUBSCRIPTION_AGENCY_LIST = [
   518028,
@@ -10,7 +10,9 @@ export const SUBSCRIPTION_AGENCY_LIST = [
   551706,
   551709,
   551712,
-  551715
+  551715,
+  650299,
+  650304
 ];
 
 export const SUBSCRIPTION_BASIC = 'BASIC';
@@ -25,7 +27,9 @@ export const SUBSCRIPTION_BASIC_LIST = [
   551704,
   551707,
   551710,
-  551713
+  551713,
+  650302,
+  650296
 ];
 
 export const SUBSCRIPTION_LITE = 'LITE';
@@ -43,7 +47,9 @@ export const SUBSCRIPTION_PRO_LIST = [
   551705,
   551708,
   551711,
-  551714
+  551714,
+  650297,
+  650303
 ];
 
 export const SUBSCRIPTION_LIST = [

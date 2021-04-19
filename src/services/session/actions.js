@@ -1,5 +1,4 @@
 import { get, isEmpty } from 'lodash';
-import moment from 'moment';
 
 // Constants
 import {
@@ -8,6 +7,7 @@ import {
   SUBSCRIPTION_AGENCY_LIST,
   SUBSCRIPTION_BASIC,
   SUBSCRIPTION_BASIC_LIMIT,
+  SUBSCRIPTION_BASIC_LIST,
   SUBSCRIPTION_LITE,
   SUBSCRIPTION_LITE_LIMIT,
   SUBSCRIPTION_PRO,
@@ -43,14 +43,35 @@ export const fetchProfile = (id: number) => (
           ({ id }) => id === get(profile, 'subscription_plan_id', 0)
         )[0];
 
-        const isEnded: boolean =
-          !subscription ||
-          (subscription &&
-            Math.max(
-              0,
-              moment(get(subscription, 'expireDate')).diff(moment(), 'days')
-            ) === 0);
+        const isPayed = profile.is_payed;
+
         const subscriptionId: string = get(subscription, 'id');
+        const name =
+          SUBSCRIPTION_BASIC_LIST.indexOf(subscriptionId) > -1
+            ? SUBSCRIPTION_BASIC
+            : SUBSCRIPTION_PRO_LIST.indexOf(subscriptionId) > -1
+            ? SUBSCRIPTION_PRO
+            : SUBSCRIPTION_AGENCY_LIST.indexOf(subscriptionId)
+            ? SUBSCRIPTION_AGENCY
+            : SUBSCRIPTION_LITE;
+
+        let limit = SUBSCRIPTION_LITE_LIMIT;
+
+        if (isPayed) {
+          switch (name) {
+            case SUBSCRIPTION_AGENCY:
+              limit = SUBSCRIPTION_AGENCY_LIMIT;
+              break;
+            case SUBSCRIPTION_BASIC:
+              limit = SUBSCRIPTION_BASIC_LIMIT;
+              break;
+            case SUBSCRIPTION_PRO:
+              limit = SUBSCRIPTION_PRO_LIMIT;
+              break;
+            default:
+              break;
+          }
+        }
 
         const user: Object = {
           id: get(profile, 'id'),
@@ -59,22 +80,10 @@ export const fetchProfile = (id: number) => (
             id: subscriptionId,
             cancelUrl: get(profile, 'cancel_url'),
             expireDate: get(profile, 'next_bill_date'),
-            name: isEnded
-              ? SUBSCRIPTION_LITE
-              : SUBSCRIPTION_AGENCY_LIST.indexOf(subscriptionId) > -1
-              ? SUBSCRIPTION_AGENCY
-              : SUBSCRIPTION_PRO_LIST.indexOf(subscriptionId) > -1
-              ? SUBSCRIPTION_PRO
-              : SUBSCRIPTION_BASIC,
-            limit: isEnded
-              ? SUBSCRIPTION_LITE_LIMIT
-              : SUBSCRIPTION_AGENCY.indexOf(subscriptionId) > -1
-              ? SUBSCRIPTION_AGENCY_LIMIT
-              : SUBSCRIPTION_PRO.indexOf(subscriptionId) > -1
-              ? SUBSCRIPTION_PRO_LIMIT
-              : SUBSCRIPTION_BASIC_LIMIT,
+            name,
+            limit,
             period: get(subscription, 'billing_type') === 'year' ? 365 : 30,
-            isEnded,
+            isEnded: !isPayed,
             isPro: get(profile, 'is_payed'), // !isEnded && SUBSCRIPTION_LIST.indexOf(subscriptionId) > -1,
             updateUrl: get(profile, 'update_url')
           }

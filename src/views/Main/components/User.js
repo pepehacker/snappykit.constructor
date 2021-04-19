@@ -69,7 +69,9 @@ const MainHeaderUser = ({
 
       <div className={styles.Dropdown}>
         <div className={styles.DropdownWrapper}>
-          <div className={styles.Status}>{isPro ? 'PRO' : 'LITE'}</div>
+          <div className={styles.Status}>
+            {get(user, 'subscription.name', 'LITE')}
+          </div>
 
           {isPro ? (
             <div className={styles.Expiration}>
