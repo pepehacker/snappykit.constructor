@@ -16,18 +16,20 @@ import {
 import {
   // Interval
   MONTH,
-  // Plans
-  PLAN_AGENCY,
-  PLAN_BASIC,
-  PLAN_LITE,
-  PLAN_PRO,
   // Selectors
   getPeriod,
   getPrice
 } from '../ducks';
 
 // Services
-import { getSubscription, getUserEmail } from 'services/session';
+import { getSubscription, getUserEmail, isPayed } from 'services/session';
+
+import {
+  SUBSCRIPTION_AGENCY,
+  SUBSCRIPTION_BASIC,
+  SUBSCRIPTION_LITE,
+  SUBSCRIPTION_PRO
+} from 'services/session/constants';
 
 // Styles
 import styles from './Item.scss';
@@ -56,14 +58,15 @@ const PlansItem = ({
   handleClick,
   // State
   isCurrent,
-  isFetching
+  isFetching,
+  isPayed
 }: PlansItemType): React.Element<'div'> => (
   <div
     className={classNames(styles.Root, {
-      [styles.RootVariantAgency]: id === PLAN_AGENCY,
-      [styles.RootVariantBasic]: id === PLAN_BASIC,
-      [styles.RootVariantLite]: id === PLAN_LITE,
-      [styles.RootVariantPro]: id === PLAN_PRO
+      [styles.RootVariantAgency]: id === SUBSCRIPTION_AGENCY,
+      [styles.RootVariantBasic]: id === SUBSCRIPTION_BASIC,
+      [styles.RootVariantLite]: id === SUBSCRIPTION_LITE,
+      [styles.RootVariantPro]: id === SUBSCRIPTION_PRO
     })}
   >
     <div className={styles.Content}>
@@ -71,7 +74,7 @@ const PlansItem = ({
         <div className={styles.Title}>{title}</div>
 
         <div className={styles.Price}>
-          {id === PLAN_LITE ? (
+          {id === SUBSCRIPTION_LITE ? (
             'FREE'
           ) : (
             <AnimatedNumber
@@ -111,7 +114,7 @@ const PlansItem = ({
         onClick={isCurrent ? handleCancel : handleClick}
         type="button"
       >
-        {isCurrent ? 'CANCEL' : 'BUY'}
+        {isCurrent ? 'CANCEL' : isPayed ? 'CHANGE' : 'BUY'}
       </button>
     )}
   </div>
@@ -119,10 +122,12 @@ const PlansItem = ({
 
 const mapStateToProps: Function = (state: Object, { id }) => {
   const subscription: Object = getSubscription(state);
+
   return {
     subscription,
     email: getUserEmail(state),
-    isCurrent: id === get(subscription, 'id'),
+    isCurrent: id === get(subscription, 'name'),
+    isPayed: isPayed(state),
     period: getPeriod(state),
     price: getPrice(state)
   };

@@ -15,7 +15,7 @@ import { PLANS_MODAL_ID } from 'containers/Plans';
 
 // Services
 import { openModal } from 'services/modals';
-import { isEnded, isPro, logout } from 'services/session';
+import { isPro, logout } from 'services/session';
 
 // Styles
 import styles from './User.scss';
@@ -35,7 +35,6 @@ const MainHeaderUser = ({
   handleLogoutClick,
   handleTriggerPlans,
   // State
-  isEnded,
   isOpened,
   isPro
 }) => {
@@ -137,7 +136,6 @@ const MainHeaderUser = ({
 };
 
 const mapStateToProps = (state) => ({
-  isEnded: isEnded(state),
   isPro: isPro(state),
   user: get(state, 'services.session.user', {})
 });

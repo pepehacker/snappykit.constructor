@@ -160,7 +160,7 @@ export default compose(
                   ? { domain: value }
                   : { domain_free: value }
               );
-              saveWebsite(websiteId);
+              saveWebsite(websiteId, false);
               break;
           }
         }),

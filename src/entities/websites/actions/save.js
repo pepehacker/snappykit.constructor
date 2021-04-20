@@ -60,7 +60,8 @@ const createWebsite = (
 
 const updateWebsite = (
   websiteId: number | string,
-  website: Object
+  website: Object,
+  redirect: boolean = true
 ): Function => (dispatch: Function, getState: Function, { api, history }) =>
   api('websites.update', {
     ...website,
@@ -72,13 +73,13 @@ const updateWebsite = (
   })
     .then((): void => {
       dispatch({ type: SAVE_WEBSITE_SUCCESS, websiteId, payload: website });
-      history.replace(`/launch/:${websiteId}`);
+      redirect && history.replace(`/launch/:${websiteId}`);
     })
     .catch((error: Object) =>
       dispatch({ type: SAVE_WEBSITE_FAILURE, error: get(error, 'message') })
     );
 
-export default (websiteId: number | string): Function => (
+export default (websiteId: number | string, redirect: boolean): Function => (
   dispatch: Function,
   getState: Function,
   { api, history }
@@ -88,5 +89,5 @@ export default (websiteId: number | string): Function => (
   const method = websiteId === 'new' ? createWebsite : updateWebsite;
 
   dispatch({ type: SAVE_WEBSITE_REQUEST, websiteId });
-  dispatch(method(websiteId, getWebsiteById(state, websiteId)));
+  dispatch(method(websiteId, getWebsiteById(state, websiteId), redirect));
 };

@@ -12,8 +12,8 @@ export const getSubscription = (state: Object): Object =>
 export const getSubscriptionLimit = (state: Object): number =>
   get(state, 'services.session.user.subscription.limit', 0);
 
-export const isEnded = (state: Object): number =>
-  get(state, 'services.session.user.subscription.isEnd');
+export const isPayed = (state: Object): number =>
+  get(state, 'services.session.user.subscription.isPayed', false);
 
 export const isPro = (state: Object): number =>
-  get(state, 'services.session.user.subscription.isPro');
+  get(state, 'services.session.user.subscription.isPayed', false);

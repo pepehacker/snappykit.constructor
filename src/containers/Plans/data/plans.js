@@ -1,41 +1,44 @@
 import {
   // Interval
   MONTH,
-  YEAR,
-  // Plans
-  PLAN_AGENCY,
-  PLAN_BASIC,
-  PLAN_LITE,
-  PLAN_PRO
+  YEAR
 } from '../ducks';
+
+import {
+  SUBSCRIPTION_AGENCY,
+  SUBSCRIPTION_BASIC,
+  SUBSCRIPTION_LITE,
+  SUBSCRIPTION_PRO
+} from 'services/session/constants';
 
 const FEATURES = [
   'All Lite plan features',
   'All website templates',
   'Custom domain',
   'Unlimited traffic',
+  'SEO settings',
+  'All smartphones',
   'No Snappykit’s brand ads',
-  'Terms of use',
-  'Privacy policy',
-  'Add the second app link'
+  'Add second app link'
 ];
 
 export default [
   {
-    id: PLAN_LITE,
+    id: SUBSCRIPTION_LITE,
     count: 1,
     features: [
       'App website',
-      '4 website templates',
-      'Search from App Store',
-      'Search from Google Play'
+      'Custom subdomain',
+      '500 monthly visits',
+      'SSL certificate',
+      '4 website templates'
     ],
     productIds: 0,
     title: 'LITE'
   },
   {
-    id: PLAN_BASIC,
-    count: 3,
+    id: SUBSCRIPTION_BASIC,
+    count: 1,
     features: FEATURES,
     productIds: {
       [MONTH]: 650296,
@@ -44,8 +47,8 @@ export default [
     title: 'BASIC'
   },
   {
-    id: PLAN_PRO,
-    count: 9,
+    id: SUBSCRIPTION_PRO,
+    count: 3,
     features: FEATURES,
     productIds: {
       [MONTH]: 650297,
@@ -54,8 +57,8 @@ export default [
     title: 'PRO'
   },
   {
-    id: PLAN_AGENCY,
-    count: 45,
+    id: SUBSCRIPTION_AGENCY,
+    count: 9,
     features: FEATURES,
     productIds: {
       [MONTH]: 650299,

@@ -3,7 +3,7 @@
   opacity: .6;
   padding: 0;
   position: relative;
-  transition: all 0.4s;
+  transition: all .4s;
   width: 240px;
 
   &:hover:not(.RootIsSelected) {
@@ -110,8 +110,9 @@
 }
 
 .Card {
-  background: #e8e8e8;;
+  background: #e8e8e8;
   border-radius: 6px;
+  clip-path: content-box;
   height: 135px;
   overflow: hidden;
   position: relative;
@@ -132,7 +133,7 @@
   left: calc(50% - 16px);
   position: absolute;
   transform: translateY(92px);
-  transition: all 0.4s;
+  transition: all .4s;
   width: 32px;
 
   &:before {
@@ -142,7 +143,7 @@
     height: 100%;
     mask: url('components/Icon/assets/check.svg') no-repeat center center;
     mask-size: 12px 9px;
-    transition: all 0.2s;
+    transition: all .2s;
     width: 100%;
   }
 }
@@ -150,7 +151,7 @@
 .Image {
   max-width: 100%;
   object-fit: contain;
-  transition: all 0.4s;
+  transition: all .4s;
 }
 
 .Link {
@@ -159,7 +160,7 @@
   color: #bfbfc7;
   font-size: 12px;
   justify-content: center;
-  letter-spacing: 0.2px;
+  letter-spacing: .2px;
 
   &:focus {
     outline: none;

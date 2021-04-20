@@ -83,8 +83,7 @@ export const fetchProfile = (id: number) => (
             name,
             limit,
             period: get(subscription, 'billing_type') === 'year' ? 365 : 30,
-            isEnded: !isPayed,
-            isPro: get(profile, 'is_payed'), // !isEnded && SUBSCRIPTION_LIST.indexOf(subscriptionId) > -1,
+            isPayed,
             updateUrl: get(profile, 'update_url')
           }
         };
