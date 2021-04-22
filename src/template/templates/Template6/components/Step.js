@@ -43,14 +43,6 @@ const Template6Step = ({ id, reversed }) => (
 
             <Text
               classNames={{
-                root: classNames(styles.SubTitle, commonStyles.SubTitle),
-                text: commonStyles.SubTitleText
-              }}
-              id={`${id}_subtitle`}
-            />
-
-            <Text
-              classNames={{
                 root: classNames(styles.Title, commonStyles.Title),
                 text: commonStyles.TitleText
               }}

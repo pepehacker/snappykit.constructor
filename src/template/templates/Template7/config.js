@@ -57,7 +57,7 @@ export default createConfig(7, [
   {
     id: SMARTPHONE,
     data: {
-      mockup: 'iphone-11-glass-black'
+      mockup: 'iphone-11-flat-black'
     },
     exports: ['mockup'],
     type: SMARTPHONE
@@ -102,7 +102,7 @@ export default createConfig(7, [
   {
     id: 'preview_smartphone',
     data: {
-      mockup: 'iphone-11-glass-black'
+      mockup: 'iphone-11-flat-black'
     },
     exports: ['mockup'],
     type: SMARTPHONE
@@ -241,7 +241,7 @@ export default createConfig(7, [
   {
     id: 'download_smartphone',
     data: {
-      mockup: 'iphone-11-glass-black'
+      mockup: 'iphone-11-flat-black'
     },
     exports: ['mockup'],
     type: SMARTPHONE

@@ -79,15 +79,6 @@ export default createConfig(6, [
     type: SCREENSHOTS
   },
   {
-    id: 'step1_subtitle',
-    data: {
-      color: 'rgba(60, 105, 220, 1)',
-      style: TEXT_STYLE.REGULAR,
-      text: 'Gmix Allows'
-    },
-    type: TEXT
-  },
-  {
     id: 'step1_title',
     data: {
       color: 'rgba(255, 255, 255, 1)',
@@ -99,7 +90,7 @@ export default createConfig(6, [
   {
     id: 'step2_background',
     data: {
-      color: 'rgba(32, 35, 42, 1)',
+      color: 'rgba(39, 43, 52, 1)',
       mode: BACKGROUND_MODE.COLOR
     },
     type: BACKGROUND
@@ -128,15 +119,6 @@ export default createConfig(6, [
     exports: ['items'],
     link: SCREENSHOTS,
     type: SCREENSHOTS
-  },
-  {
-    id: 'step2_subtitle',
-    data: {
-      color: 'rgba(60, 105, 220, 1)',
-      style: TEXT_STYLE.REGULAR,
-      text: 'Gmix Allows'
-    },
-    type: TEXT
   },
   {
     id: 'step2_title',
@@ -179,15 +161,6 @@ export default createConfig(6, [
     exports: ['items'],
     link: SCREENSHOTS,
     type: SCREENSHOTS
-  },
-  {
-    id: 'step3_subtitle',
-    data: {
-      color: 'rgba(60, 105, 220, 1)',
-      style: TEXT_STYLE.REGULAR,
-      text: 'Gmix Allows'
-    },
-    type: TEXT
   },
   {
     id: 'step3_title',
@@ -251,7 +224,7 @@ export default createConfig(6, [
   {
     id: SMARTPHONE,
     data: {
-      mockup: 'iphone-11-glass-black'
+      mockup: 'iphone-11-flat-black'
     },
     exports: ['mockup'],
     type: SMARTPHONE
