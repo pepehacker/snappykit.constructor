@@ -45,7 +45,7 @@
 
         &Text {
           font-size: 12px;
-          letter-spacing: .6px;
+          letter-spacing: 0.6px;
         }
       }
 
@@ -59,7 +59,6 @@
           max-height: 60px;
         }
       }
-
 
       .Icon {
         border-radius: 24px;
@@ -166,13 +165,13 @@
 }
 
 .Description {
-  min-height: 32px;
+  min-height: 34px;
   margin: 20px 0 0;
-  max-height: 96px;
+  max-height: 102px;
 
   &Text {
-    font-size: 14px;
-    line-height: 32px;
+    font-size: 16px;
+    line-height: 34px;
     overflow: hidden;
     text-align: center;
   }

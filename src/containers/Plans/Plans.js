@@ -12,6 +12,7 @@ import Tabs, { Tab } from 'components/Tabs';
 
 // Containers
 import List from './containers/List';
+import Status from './containers/Status';
 
 // Ducks
 import {
@@ -72,6 +73,8 @@ const Plans = ({
             <div className={styles.List}>
               <List key={price} isEntered={state === 'entered'} />
             </div>
+
+            <Status />
           </div>
         )}
       </CSSTransition>

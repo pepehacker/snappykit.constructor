@@ -2,6 +2,7 @@
 import {
   // Config
   BACKGROUND,
+  BACKGROUND_LIST,
   BACKGROUND_MODE,
   ICON,
   SCREENSHOTS,
@@ -9,6 +10,7 @@ import {
   SOCIAL,
   STORE,
   TEXT,
+  TEXT_FONT,
   TEXT_STYLE,
   // Common
   COPYRIGHT,
@@ -29,10 +31,11 @@ export default createConfig(6, [
   {
     id: 'download_description',
     data: {
-      color: 'rgba(123, 129, 144, 1)',
+      color: 'rgba(255, 255, 255, .8)',
+      font: TEXT_FONT.MONTSERRAT,
       style: TEXT_STYLE.MEDIUM,
       text:
-        'The search based on the interests of users and personal media content.  Gmix APP allows you to find love all over the globe.'
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
     },
     type: TEXT
   },
@@ -40,8 +43,9 @@ export default createConfig(6, [
     id: 'download_title',
     data: {
       color: 'rgba(255, 255, 255, 1)',
-      style: TEXT_STYLE.BOLD,
-      text: 'Download the App'
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
+      text: 'Download The App'
     },
     type: TEXT
   },
@@ -56,10 +60,11 @@ export default createConfig(6, [
   {
     id: 'step1_description',
     data: {
-      color: 'rgba(123, 129, 144, 1)',
+      color: 'rgba(255, 255, 255, .8)',
+      font: TEXT_FONT.MONTSERRAT,
       style: TEXT_STYLE.MEDIUM,
       text:
-        'Gmix APP allows you to find love all over the globe. The search process is based on the interests of users and personal media content. After searching you can select person which you  liked and start chatting interests. '
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea'
     },
     type: TEXT
   },
@@ -67,7 +72,8 @@ export default createConfig(6, [
     id: 'step1_number',
     data: {
       color: 'rgba(36, 39, 48, 1)',
-      style: TEXT_STYLE.LIGHT,
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
       text: '1'
     },
     type: TEXT
@@ -82,7 +88,8 @@ export default createConfig(6, [
     id: 'step1_title',
     data: {
       color: 'rgba(255, 255, 255, 1)',
-      style: TEXT_STYLE.BOLD,
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
       text: 'Love all over'
     },
     type: TEXT
@@ -98,10 +105,11 @@ export default createConfig(6, [
   {
     id: 'step2_description',
     data: {
-      color: 'rgba(123, 129, 144, 1)',
+      color: 'rgba(255, 255, 255, .8)',
+      font: TEXT_FONT.MONTSERRAT,
       style: TEXT_STYLE.MEDIUM,
       text:
-        'Gmix APP allows you to find love all over the globe. The search process is based on the interests of users and personal media content. After searching you can select person which you  liked and start chatting interests. '
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea'
     },
     type: TEXT
   },
@@ -109,7 +117,8 @@ export default createConfig(6, [
     id: 'step2_number',
     data: {
       color: 'rgba(36, 39, 48, 1)',
-      style: TEXT_STYLE.LIGHT,
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
       text: '2'
     },
     type: TEXT
@@ -124,7 +133,8 @@ export default createConfig(6, [
     id: 'step2_title',
     data: {
       color: 'rgba(255, 255, 255, 1)',
-      style: TEXT_STYLE.BOLD,
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
       text: 'Love all over'
     },
     type: TEXT
@@ -140,10 +150,11 @@ export default createConfig(6, [
   {
     id: 'step3_description',
     data: {
-      color: 'rgba(123, 129, 144, 1)',
+      color: 'rgba(255, 255, 255, .8)',
+      font: TEXT_FONT.MONTSERRAT,
       style: TEXT_STYLE.MEDIUM,
       text:
-        'Gmix APP allows you to find love all over the globe. The search process is based on the interests of users and personal media content. After searching you can select person which you  liked and start chatting interests. '
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea'
     },
     type: TEXT
   },
@@ -151,7 +162,8 @@ export default createConfig(6, [
     id: 'step3_number',
     data: {
       color: 'rgba(36, 39, 48, 1)',
-      style: TEXT_STYLE.LIGHT,
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
       text: '3'
     },
     type: TEXT
@@ -166,7 +178,8 @@ export default createConfig(6, [
     id: 'step3_title',
     data: {
       color: 'rgba(255, 255, 255, 1)',
-      style: TEXT_STYLE.BOLD,
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
       text: 'Love all over'
     },
     type: TEXT
@@ -180,8 +193,7 @@ export default createConfig(6, [
           from: 'rgba(39, 43, 52, .4)',
           to: 'rgba(39, 43, 52, 1)'
         },
-        src:
-          'https://images.unsplash.com/photo-1536599018102-9f803c140fc1?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjY4NjM0fQ'
+        src: BACKGROUND_LIST[3]
       },
       mode: BACKGROUND_MODE.IMAGE
     },
@@ -191,6 +203,7 @@ export default createConfig(6, [
     id: COPYRIGHT,
     data: {
       color: 'rgba(255, 255, 255, .4)',
+      font: TEXT_FONT.MONTSERRAT,
       style: TEXT_STYLE.MEDIUM,
       text: '©2018 SnappyKit'
     },
@@ -201,7 +214,8 @@ export default createConfig(6, [
     id: DESCRIPTION,
     data: {
       color: 'rgba(255, 255, 255, 1)',
-      style: TEXT_STYLE.REGULAR,
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
       text: 'Behance App'
     },
     exports: ['text'],
@@ -250,6 +264,7 @@ export default createConfig(6, [
     id: TITLE,
     data: {
       color: 'rgba(60, 105, 220, 1)',
+      font: TEXT_FONT.MONTSERRAT,
       style: TEXT_STYLE.MEDIUM,
       text: 'Gmix APP allows you to find love all over the globe.'
     },

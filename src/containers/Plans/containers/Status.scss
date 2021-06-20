@@ -1,0 +1,41 @@
+.Root {
+  align-items: center;
+  background: #fff;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  padding: 80px 40px 48px;
+}
+
+.Actions {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0 0;
+  width: 100%;
+
+  & > * {
+    width: calc(100% - 80px);
+  }
+}
+
+.Description {
+  color: #7e8898;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 20px 0 0;
+}
+
+.Icon {
+  background: url("../assets/status.svg") no-repeat center center / contain;
+  height: 180px;
+  width: 180px;
+}
+
+.Title {
+  color: #9a96f9;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 32px;
+  margin: 48px 0 0;
+  text-shadow: 0 6px 6px rgba(#9a96f9, 0.2), 0 6px 4px rgba(#9a96f9, 0.3);
+}

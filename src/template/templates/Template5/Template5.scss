@@ -1,6 +1,6 @@
-@import './style/desktop.scss';
-@import './style/mobile.scss';
-@import './style/tablet.scss';
+@import "./style/desktop.scss";
+@import "./style/mobile.scss";
+@import "./style/tablet.scss";
 
 .Root {
   background: #fff;
@@ -42,7 +42,7 @@
 .Copyright {
   &Text {
     font-size: 14px;
-    letter-spacing: .1px;
+    letter-spacing: 0.1px;
   }
 }
 
@@ -55,8 +55,8 @@
     position: relative;
 
     &:before {
-      background: #fff;
-      content: '';
+      background: #2a3345;
+      content: "";
       display: flex;
       height: 2px;
       position: absolute;

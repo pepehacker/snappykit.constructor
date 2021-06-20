@@ -29,14 +29,11 @@ export const BACKGROUND_MODE = {
 };
 
 export const BACKGROUND_LIST = [
-  require('assets/backgrounds/d-1.png'),
-  require('assets/backgrounds/d-2.png'),
-  require('assets/backgrounds/d-3.png'),
-  require('assets/backgrounds/d-4.png'),
-  require('assets/backgrounds/w-1.png'),
-  require('assets/backgrounds/w-2.png'),
-  require('assets/backgrounds/w-3.png'),
-  require('assets/backgrounds/w-4.png')
+  require('assets/backgrounds/bg-1.webp'),
+  require('assets/backgrounds/bg-2.webp'),
+  require('assets/backgrounds/bg-3.webp'),
+  require('assets/backgrounds/bg-4.webp'),
+  require('assets/backgrounds/bg-5.webp')
 ];
 
 export const BACKGROUND_SCHEMA = (data: BackgroundDataType): object =>

@@ -1,6 +1,3 @@
-/* eslint-disable */
-import { get } from 'lodash';
-
 // Template
 import {
   // Config
@@ -9,12 +6,10 @@ import {
   BACKGROUND_LIST,
   ICON,
   POLICY,
-  SCREENSHOTS,
-  SMARTPHONE,
-  SMARTPHONE_MOCKUP,
   SOCIAL,
   STORE,
   TEXT,
+  TEXT_FONT,
   TEXT_STYLE,
   // Common
   COPYRIGHT,
@@ -46,7 +41,9 @@ export default createConfig(2, [
   {
     id: DESCRIPTION,
     data: {
-      color: 'rgba(255, 255, 255, .8)',
+      color: 'rgba(42, 51, 69, 1)',
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
       text:
         'The most comprehensive, highest quality photo editing app so powerful and user-friendly it’ll be the last photo app you ever download.'
     },
@@ -72,14 +69,17 @@ export default createConfig(2, [
   },
   {
     id: SOCIAL,
+    data: {
+      color: 'rgba(42, 51, 69, 1)'
+    },
     exports: ['items'],
     type: SOCIAL
   },
   {
     id: STORE,
     data: {
-      background: 'rgba(255, 255, 255, 1)',
-      color: 'rgba(112, 101, 252, 1)'
+      background: 'rgba(42, 51, 69, 1)',
+      color: 'rgba(255, 255, 255, 1)'
     },
     exports: ['items'],
     type: STORE
@@ -87,6 +87,9 @@ export default createConfig(2, [
   {
     id: TITLE,
     data: {
+      color: 'rgba(42, 51, 69, 1)',
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
       text: 'Enlight Photofox.'
     },
     exports: ['text'],

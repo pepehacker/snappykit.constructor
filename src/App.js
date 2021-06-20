@@ -27,13 +27,13 @@ import Main from 'views/Main';
 import styles from './App.scss';
 import '@fortawesome/fontawesome-pro/css/all.min.css';
 
-const App = ({ match, setPro, user }) => {
+const App = ({ fetchProfile, match, setPro, user }) => {
   // Setup
   const MAX_TRY = 10;
 
   // State
   // eslint-disable-next-line no-unused-vars
-  const [counter, setCounter] = useState(0);
+  const [, setCounter] = useState(0);
   const [isLoaded, setLoadState] = useState(
     !!window.localStorage.getItem('syncPro')
   );
@@ -47,7 +47,11 @@ const App = ({ match, setPro, user }) => {
             clearInterval(syncPro);
             setLoadState(false);
 
-            data.is_payed && setPro();
+            if (data.is_payed) {
+              fetchProfile();
+              setPro();
+            }
+
             window.localStorage.removeItem('syncPro');
           }
 

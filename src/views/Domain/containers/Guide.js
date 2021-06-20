@@ -5,25 +5,30 @@ import style from './Guide.scss';
 
 const DomainGuide = () => (
   <div className={style.Root}>
-    <div className={style.Title}>Where and how to specify name servers</div>
+    <div className={style.Title}>How to add a domain?</div>
 
     <ol className={style.Steps}>
-      <li>Go to the DNS Management page;</li>
-      <li>On the DNS Management page, under Nameservers, click Change.</li>
-      <li>Under Choose your new nameserver type, select Custom.</li>
+      <li>Add your domain on Snappykit</li>
+
       <li>
-        Enter the custom nameservers your hosting provider gave you and click
-        Save.
+        Go to the website where you purchased the domain, in the domain settings
+        (DNS servers)
+      </li>
+
+      <li>
+        Specify our Name Servers on the side of the domain provider:
+        <ul className={style.NS}>
+          <li>ns1.digitalocean.com</li>
+          <li>ns2.digitalocean.com</li>
+          <li>ns3.digitalocean.com</li>
+        </ul>
+      </li>
+
+      <li>
+        That&apos;s all. Within 24 hours, the website will be available. Usually
+        2-8 hours.
       </li>
     </ol>
-
-    <div className={style.Description}>
-      After updating your nameservers, allow 4 to 8 hours for other networks to
-      access information for .com and .net domain names, and allow 24 to 48
-      hours for other networks to access information for all other domain
-      extensions. If you have difficulty, contact our 24/7 technical support
-      team for assistance.
-    </div>
   </div>
 );
 

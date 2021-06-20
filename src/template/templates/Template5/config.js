@@ -11,6 +11,7 @@ import {
   SOCIAL,
   STORE,
   TEXT,
+  TEXT_FONT,
   TEXT_STYLE,
   // Common
   COPYRIGHT,
@@ -24,7 +25,7 @@ export default createConfig(5, [
     id: BACKGROUND,
     data: {
       image: {
-        src: BACKGROUND_LIST[1]
+        src: BACKGROUND_LIST[2]
       },
       mode: BACKGROUND_MODE.IMAGE
     },
@@ -43,7 +44,9 @@ export default createConfig(5, [
   {
     id: DESCRIPTION,
     data: {
-      color: 'rgba(255, 255, 255, 1)',
+      color: 'rgba(42, 51, 69, 1)',
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
       text:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.'
     },
@@ -88,7 +91,7 @@ export default createConfig(5, [
   {
     id: SOCIAL,
     data: {
-      color: 'rgba(107, 107, 107, 1)'
+      color: 'rgba(42, 51, 69, 1)'
     },
     exports: ['items'],
     type: SOCIAL
@@ -96,8 +99,8 @@ export default createConfig(5, [
   {
     id: STORE,
     data: {
-      background: 'rgba(255, 255, 255, 1)',
-      color: 'rgba(182, 124, 193, 1)'
+      background: 'rgba(42, 51, 69, 1)',
+      color: 'rgba(255, 255, 255, 1)'
     },
     exports: ['items'],
     type: STORE
@@ -105,8 +108,9 @@ export default createConfig(5, [
   {
     id: TITLE,
     data: {
-      color: 'rgba(255, 255, 255, 1)',
-      style: TEXT_STYLE.LIGHT,
+      color: 'rgba(42, 51, 69, 1)',
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
       text: 'Serif Beauty'
     },
     exports: ['text'],

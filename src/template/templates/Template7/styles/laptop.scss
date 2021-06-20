@@ -13,16 +13,16 @@
         }
 
         .Description {
-          max-height: 120px;
+          max-height: 102px;
         }
       }
 
       .Description {
-        max-height: 48px;
+        max-height: 102px;
 
         &Text {
-          font-size: 12px;
-          line-height: 24px;
+          font-size: 16px;
+          line-height: 34px;
         }
       }
 
@@ -165,12 +165,11 @@
       }
 
       .Title {
-        max-height: 62px;
+        max-height: 112px;
 
         &Text {
-          font-size: 38px;
-          letter-spacing: 0.4px;
-          line-height: 60px;
+          font-size: 46px;
+          line-height: 56px;
         }
       }
 

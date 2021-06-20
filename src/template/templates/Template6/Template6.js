@@ -23,13 +23,12 @@ import {
   BACKGROUND,
   COPYRIGHT,
   DESCRIPTION,
-  TITLE,
   VIEW
 } from 'template';
 
 const Template6 = () => (
   <TemplateContext.Consumer>
-    {({ isEditor, isFullscreen, size, view = VIEW.DESKTOP }) => (
+    {({ isEditor, isFullscreen, view = VIEW.DESKTOP }) => (
       <div
         className={classNames(
           styles.Root,
@@ -50,14 +49,6 @@ const Template6 = () => (
 
           <div className={styles.Intro}>
             <div className={styles.Content}>
-              <Text
-                classNames={{
-                  root: styles.SubTitle,
-                  text: styles.SubTitleText
-                }}
-                id={TITLE}
-              />
-
               <Text
                 classNames={{
                   root: styles.Title,

@@ -2,6 +2,7 @@
 import {
   // Config
   BACKGROUND,
+  BACKGROUND_LIST,
   BACKGROUND_MODE,
   ICON,
   SCREENSHOTS,
@@ -9,6 +10,7 @@ import {
   SOCIAL,
   STORE,
   TEXT,
+  TEXT_FONT,
   TEXT_STYLE,
   // Common
   COPYRIGHT,
@@ -30,9 +32,7 @@ export default createConfig(7, [
     id: BACKGROUND,
     data: {
       image: {
-        color: 'rgba(63, 41, 90, .49)',
-        src:
-          'https://images.unsplash.com/photo-1504556106489-6d450910aeb3?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjY4NjM0fQ'
+        src: BACKGROUND_LIST[4]
       },
       mode: BACKGROUND_MODE.IMAGE
     },
@@ -44,16 +44,7 @@ export default createConfig(7, [
     link: SCREENSHOTS,
     type: SCREENSHOTS
   },
-  {
-    id: 'intro_slogan',
-    data: {
-      color: 'rgba(255, 255, 255, .7)',
-      style: TEXT_STYLE.MEDIUM,
-      text: 'Our Favorite'
-    },
-    exports: ['text'],
-    type: TEXT
-  },
+
   {
     id: SMARTPHONE,
     data: {
@@ -63,21 +54,12 @@ export default createConfig(7, [
     type: SMARTPHONE
   },
   {
-    id: 'about_slogan',
-    data: {
-      color: 'rgba(180, 181, 181, 1)',
-      style: TEXT_STYLE.MEDIUM,
-      text: 'Our Favorite'
-    },
-    exports: ['text'],
-    type: TEXT
-  },
-  {
     id: 'about_title',
     data: {
       color: 'rgba(82, 85, 87, 1)',
-      style: TEXT_STYLE.BOLD,
-      text: 'About Gmix'
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
+      text: 'About App'
     },
     exports: ['text'],
     type: TEXT
@@ -85,10 +67,11 @@ export default createConfig(7, [
   {
     id: 'about_text',
     data: {
-      color: 'rgba(123, 129, 144, 1)',
+      color: 'rgba(82, 85, 87, .8)',
+      font: TEXT_FONT.MONTSERRAT,
       style: TEXT_STYLE.MEDIUM,
       text:
-        'Gmix APP allows you to find love all over the globe. The search process is based on the interests of users and personal media content. After searching you can select person which you liked and start chatting on the interests. '
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
     },
     exports: ['text'],
     type: TEXT
@@ -110,7 +93,7 @@ export default createConfig(7, [
   {
     id: 'preview_slogan',
     data: {
-      color: 'rgba(180, 181, 181, 1)',
+      color: 'rgba(42, 51, 69, .8)',
       style: TEXT_STYLE.MEDIUM,
       text: 'Our Favorite'
     },
@@ -121,7 +104,8 @@ export default createConfig(7, [
     id: 'preview_title',
     data: {
       color: 'rgba(82, 85, 87, 1)',
-      style: TEXT_STYLE.BOLD,
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
       text: 'Preview Gmix'
     },
     exports: ['text'],
@@ -130,10 +114,11 @@ export default createConfig(7, [
   {
     id: 'preview_1_description',
     data: {
-      color: 'rgba(123, 129, 144, 1)',
-      style: TEXT_STYLE.REGULAR,
+      color: 'rgba(42, 51, 69, .8)',
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
       text:
-        'Gmix APP allows you to find love. The search process is based on the users and personal media.'
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'
     },
     exports: ['text'],
     type: TEXT
@@ -141,9 +126,10 @@ export default createConfig(7, [
   {
     id: 'preview_1_title',
     data: {
-      color: 'rgba(126, 128, 129, 1)',
-      style: TEXT_STYLE.BOLD,
-      text: 'our favorite serif'
+      color: 'rgba(42, 51, 69, 1)',
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
+      text: 'DISCOVER OUR APP'
     },
     exports: ['text'],
     type: TEXT
@@ -151,10 +137,11 @@ export default createConfig(7, [
   {
     id: 'preview_2_description',
     data: {
-      color: 'rgba(123, 129, 144, 1)',
-      style: TEXT_STYLE.REGULAR,
+      color: 'rgba(42, 51, 69, .8)',
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
       text:
-        'Gmix APP allows you to find love. The search process is based on the users and personal media.'
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'
     },
     exports: ['text'],
     type: TEXT
@@ -162,9 +149,10 @@ export default createConfig(7, [
   {
     id: 'preview_2_title',
     data: {
-      color: 'rgba(126, 128, 129, 1)',
-      style: TEXT_STYLE.BOLD,
-      text: 'our favorite serif'
+      color: 'rgba(42, 51, 69, 1)',
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
+      text: 'DISCOVER OUR APP'
     },
     exports: ['text'],
     type: TEXT
@@ -172,10 +160,11 @@ export default createConfig(7, [
   {
     id: 'preview_3_description',
     data: {
-      color: 'rgba(123, 129, 144, 1)',
-      style: TEXT_STYLE.REGULAR,
+      color: 'rgba(42, 51, 69, .8)',
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
       text:
-        'Gmix APP allows you to find love. The search process is based on the users and personal media.'
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'
     },
     exports: ['text'],
     type: TEXT
@@ -183,9 +172,10 @@ export default createConfig(7, [
   {
     id: 'preview_3_title',
     data: {
-      color: 'rgba(126, 128, 129, 1)',
-      style: TEXT_STYLE.BOLD,
-      text: 'our favorite serif'
+      color: 'rgba(42, 51, 69, 1)',
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
+      text: 'DISCOVER OUR APP'
     },
     exports: ['text'],
     type: TEXT
@@ -193,10 +183,11 @@ export default createConfig(7, [
   {
     id: 'preview_4_description',
     data: {
-      color: 'rgba(123, 129, 144, 1)',
-      style: TEXT_STYLE.REGULAR,
+      color: 'rgba(42, 51, 69, .8)',
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
       text:
-        'Gmix APP allows you to find love. The search process is based on the users and personal media.'
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'
     },
     exports: ['text'],
     type: TEXT
@@ -204,9 +195,10 @@ export default createConfig(7, [
   {
     id: 'preview_4_title',
     data: {
-      color: 'rgba(126, 128, 129, 1)',
-      style: TEXT_STYLE.BOLD,
-      text: 'our favorite serif'
+      color: 'rgba(42, 51, 69, 1)',
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
+      text: 'DISCOVER OUR APP'
     },
     exports: ['text'],
     type: TEXT
@@ -214,9 +206,10 @@ export default createConfig(7, [
   {
     id: 'quote_author',
     data: {
-      color: 'rgba(164, 167, 169, 1)',
-      style: TEXT_STYLE.BOLD,
-      text: 'Crystal Studio'
+      color: 'rgba(82, 85, 87, 1)',
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
+      text: 'Snappykit'
     },
     exports: ['text'],
     type: TEXT
@@ -224,8 +217,9 @@ export default createConfig(7, [
   {
     id: 'quote_title',
     data: {
-      color: 'rgba(67, 71, 73, 1)',
-      style: TEXT_STYLE.BOLD,
+      color: 'rgba(42, 51, 69, .8)',
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
       text:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.'
     },
@@ -249,7 +243,7 @@ export default createConfig(7, [
   {
     id: 'download_store',
     data: {
-      background: 'rgba(45, 63, 100, 1)',
+      background: 'rgba(42, 51, 69, 1)',
       color: 'rgba(255, 255, 255, 1)'
     },
     exports: ['items'],
@@ -259,7 +253,7 @@ export default createConfig(7, [
   {
     id: 'download_description',
     data: {
-      color: 'rgba(123, 129, 144, 1)',
+      color: 'rgba(42, 51, 69, 1)',
       style: TEXT_STYLE.BOLD,
       text:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.'
@@ -270,9 +264,10 @@ export default createConfig(7, [
   {
     id: 'download_title',
     data: {
-      color: 'rgba(82, 85, 87, 1)',
-      style: TEXT_STYLE.BOLD,
-      text: 'Download Gmix App'
+      color: 'rgba(42, 51, 69, 1)',
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
+      text: 'Download The App'
     },
     exports: ['text'],
     type: TEXT
@@ -282,6 +277,7 @@ export default createConfig(7, [
     data: {
       color: 'rgba(107, 107, 107, .4)',
       style: TEXT_STYLE.MEDIUM,
+
       text: '©2020 SnappyKit'
     },
     exports: ['text'],
@@ -290,8 +286,9 @@ export default createConfig(7, [
   {
     id: DESCRIPTION,
     data: {
-      color: 'rgba(255, 255, 255, .7)',
-      style: TEXT_STYLE.BOLD,
+      color: 'rgba(255, 255, 255, .8)',
+      style: TEXT_STYLE.MEDIUM,
+
       text:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     },
@@ -329,7 +326,7 @@ export default createConfig(7, [
     id: TITLE,
     data: {
       color: 'rgba(255, 255, 255, 1)',
-      style: TEXT_STYLE.BOLD,
+      style: TEXT_STYLE.MEDIUM,
       text: 'Our Favorite Site'
     },
     exports: ['text'],

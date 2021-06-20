@@ -99,14 +99,6 @@ const Template7 = () => (
           <div className={classNames(styles.About, styles.Wrapper)}>
             <Text
               classNames={{
-                root: styles.Slogan,
-                text: styles.SloganText
-              }}
-              id="about_slogan"
-            />
-
-            <Text
-              classNames={{
                 root: styles.Title,
                 text: styles.TitleText
               }}

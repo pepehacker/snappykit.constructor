@@ -22,6 +22,7 @@ import {
 } from '../ducks';
 
 // Services
+import { openModal } from 'services/modals';
 import { getSubscription, getUserEmail, isPayed } from 'services/session';
 
 import {
@@ -134,7 +135,7 @@ const mapStateToProps: Function = (state: Object, { id }) => {
 };
 
 export default compose(
-  connect(mapStateToProps),
+  connect(mapStateToProps, { openModal }),
   withProps(({ period = MONTH, productIds }) => ({
     productId: get(productIds, period)
   })),
@@ -170,7 +171,7 @@ export default compose(
         successCallback: () => window.location.reload()
       });
     },
-    handleClick: ({ email, productId, setCost }): Function => (
+    handleClick: ({ email, openModal, productId, setCost }): Function => (
       event: SyntheticEvent
     ) =>
       // eslint-disable-next-line
@@ -179,8 +180,7 @@ export default compose(
         passthrough: email,
         product: productId,
         successCallback: () => {
-          window.localStorage.setItem('syncPro', true);
-          window.location.reload();
+          openModal('subStatus');
         }
       })
   }),

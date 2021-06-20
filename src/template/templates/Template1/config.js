@@ -11,10 +11,10 @@ import {
   POLICY,
   SCREENSHOTS,
   SMARTPHONE,
-  SMARTPHONE_MOCKUP,
   SOCIAL,
   STORE,
   TEXT,
+  TEXT_FONT,
   TEXT_STYLE,
   // Common
   COPYRIGHT,
@@ -28,7 +28,7 @@ export default createConfig(1, [
     id: BACKGROUND,
     data: {
       image: {
-        src: BACKGROUND_LIST[4]
+        src: BACKGROUND_LIST[0]
       },
       mode: BACKGROUND_MODE.IMAGE
     },
@@ -37,7 +37,7 @@ export default createConfig(1, [
   {
     id: COPYRIGHT,
     data: {
-      color: 'rgba(117, 117, 127, .6)',
+      color: 'rgba(42, 51, 69, .4)',
       style: TEXT_STYLE.MEDIUM,
       text: '© 2018 ANCHOR FM INC'
     },
@@ -47,7 +47,9 @@ export default createConfig(1, [
   {
     id: DESCRIPTION,
     data: {
-      color: 'rgba(117, 117, 127, .8)',
+      color: 'rgba(42, 51, 69, 1)',
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
       text:
         'Anchor lets you record or capture ANY audio, right from your phone. It’s the easiest way to make a podcast or radio show, ever. No experience necessary (and it’s 100% free).'
     },
@@ -93,8 +95,9 @@ export default createConfig(1, [
   },
   {
     id: SOCIAL,
+
     data: {
-      color: 'rgba(117, 117, 127, 1)'
+      color: 'rgba(42, 51, 69, 1)'
     },
     exports: ['items'],
     type: SOCIAL
@@ -102,8 +105,8 @@ export default createConfig(1, [
   {
     id: STORE,
     data: {
-      background: 'rgba(255, 255, 255, 1)',
-      color: 'rgba(117, 117, 127, 1)'
+      background: 'rgba(42, 51, 69, 1)',
+      color: 'rgba(255, 255, 255, 1)'
     },
     exports: ['items'],
     type: STORE
@@ -111,7 +114,9 @@ export default createConfig(1, [
   {
     id: TITLE,
     data: {
-      color: 'rgba(117, 117, 127, 1)',
+      color: 'rgba(42, 51, 69, 1)',
+      font: TEXT_FONT.MONTSERRAT,
+      style: TEXT_STYLE.MEDIUM,
       text: 'Make cool audio, right from your phone.'
     },
     exports: ['text'],
