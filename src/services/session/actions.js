@@ -51,7 +51,7 @@ export const fetchProfile = (id: number) => (
             ? SUBSCRIPTION_BASIC
             : SUBSCRIPTION_PRO_LIST.indexOf(subscriptionId) > -1
             ? SUBSCRIPTION_PRO
-            : SUBSCRIPTION_AGENCY_LIST.indexOf(subscriptionId)
+            : SUBSCRIPTION_AGENCY_LIST.indexOf(subscriptionId) > -1
             ? SUBSCRIPTION_AGENCY
             : SUBSCRIPTION_LITE;
 
@@ -83,6 +83,7 @@ export const fetchProfile = (id: number) => (
             name,
             limit,
             period: get(subscription, 'billing_type') === 'year' ? 365 : 30,
+            periodType: get(subscription, 'billing_type'),
             isPayed,
             updateUrl: get(profile, 'update_url')
           }

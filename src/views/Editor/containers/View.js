@@ -11,6 +11,9 @@ import { setBusy } from '../ducks/actions';
 // Entities
 import { getWebsiteById } from 'entities/websites';
 
+// Services
+import { isPro } from 'services/session';
+
 // Templates
 import Template, { TemplateContext, VIEW } from 'template';
 
@@ -19,6 +22,7 @@ import styles from './View.scss';
 
 const EditorView = ({
   isFullscreen,
+  isPro,
   scale,
   size,
   templateSize,
@@ -47,6 +51,7 @@ const EditorView = ({
             data: get(website, 'data'),
             isEditor: !isFullscreen,
             isFullscreen,
+            isPro,
             size: {
               height: size.height / scale,
               width: size.width / scale
@@ -96,6 +101,7 @@ const mapStateToProps = ({ views, ...state }, { location }) => {
 
   return {
     ...get(views, 'editor'),
+    isPro: isPro(state),
     website,
     templateId: get(website, 'templateId')
   };

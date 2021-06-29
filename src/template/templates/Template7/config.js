@@ -94,6 +94,7 @@ export default createConfig(7, [
     id: 'preview_slogan',
     data: {
       color: 'rgba(42, 51, 69, .8)',
+      font: TEXT_FONT.MONTSERRAT,
       style: TEXT_STYLE.MEDIUM,
       text: 'Our Favorite'
     },
@@ -254,6 +255,7 @@ export default createConfig(7, [
     id: 'download_description',
     data: {
       color: 'rgba(42, 51, 69, 1)',
+      font: TEXT_FONT.MONTSERRAT,
       style: TEXT_STYLE.BOLD,
       text:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.'
@@ -276,8 +278,8 @@ export default createConfig(7, [
     id: COPYRIGHT,
     data: {
       color: 'rgba(107, 107, 107, .4)',
+      font: TEXT_FONT.MONTSERRAT,
       style: TEXT_STYLE.MEDIUM,
-
       text: '©2020 SnappyKit'
     },
     exports: ['text'],
@@ -287,8 +289,8 @@ export default createConfig(7, [
     id: DESCRIPTION,
     data: {
       color: 'rgba(255, 255, 255, .8)',
+      font: TEXT_FONT.MONTSERRAT,
       style: TEXT_STYLE.MEDIUM,
-
       text:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     },
@@ -326,6 +328,7 @@ export default createConfig(7, [
     id: TITLE,
     data: {
       color: 'rgba(255, 255, 255, 1)',
+      font: TEXT_FONT.MONTSERRAT,
       style: TEXT_STYLE.MEDIUM,
       text: 'Our Favorite Site'
     },

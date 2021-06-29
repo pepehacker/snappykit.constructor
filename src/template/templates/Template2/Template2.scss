@@ -45,7 +45,7 @@
 
         &Text {
           font-size: 12px;
-          letter-spacing: 0.6px;
+          letter-spacing: .6px;
         }
       }
 
@@ -195,7 +195,7 @@
 
 .Icon {
   background: #1a1a1e;
-  box-shadow: 0 30px 40px 0 rgba(0, 0, 0, 0.6);
+  box-shadow: 0 30px 40px 0 rgba(0, 0, 0, .6);
 }
 
 .Policy {
@@ -209,13 +209,13 @@
 
 .Title {
   margin: 40px 0 0;
+  max-height: 112px;
 
   &Text {
-    font-size: 28px;
-    line-height: 40px;
-    min-height: 40px;
+    font-size: 46px;
+    line-height: 56px;
+    min-height: 56px;
     text-align: center;
     overflow: hidden;
-    white-space: nowrap;
   }
 }

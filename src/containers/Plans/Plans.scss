@@ -10,15 +10,15 @@
     &Enter {
       &Active {
         .Choose {
-          transition-delay: 0.2s;
+          transition-delay: .2s;
         }
 
         .Description {
-          transition-delay: 0.1s;
+          transition-delay: .1s;
         }
 
         .Period {
-          transition-delay: 0.3s;
+          transition-delay: .3s;
         }
 
         .Choose,
@@ -27,7 +27,7 @@
         .Title {
           opacity: 1 !important;
           transform: translateY(0) !important;
-          transition-duration: 0.4s;
+          transition-duration: .4s;
           transition-property: all;
         }
       }
@@ -83,11 +83,13 @@
 .List {
   height: 425px;
   margin: 64px 0 0;
-  transition: all 0.4s;
+  transition: all .4s;
   width: 1200px;
 
   @include breakpoint(laptop) {
+    display: flex;
     height: 290px;
+    justify-content: center;
   }
 }
 
@@ -96,7 +98,7 @@
   margin: 24px 0 0;
   opacity: 1;
   visibility: visible;
-  transition: all 0.4s;
+  transition: all .4s;
 
   @include breakpoint(desktop) {
     margin: 60px 0 0;
@@ -108,7 +110,7 @@
   background-clip: text;
   font-size: 46px;
   font-weight: 900;
-  letter-spacing: -0.2px;
+  letter-spacing: -.2px;
   -webkit-text-fill-color: transparent;
 
   @include breakpoint(laptop) {

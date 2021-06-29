@@ -15,7 +15,10 @@ type PlansListType = {
   isEntered: boolean
 };
 
-const PlansList = ({ isEntered }: PlansListType): React.Element<'div'> => (
+const PlansList = ({
+  isEntered,
+  period
+}: PlansListType): React.Element<'div'> => (
   <div className={styles.Root}>
     {PLANS.map((plan: Object, index: number): React.Element<typeof Plan> => (
       <CSSTransition

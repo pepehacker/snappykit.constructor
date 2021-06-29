@@ -122,12 +122,15 @@ const PlansItem = ({
 );
 
 const mapStateToProps: Function = (state: Object, { id }) => {
+  const period = getPeriod(state);
   const subscription: Object = getSubscription(state);
 
   return {
     subscription,
     email: getUserEmail(state),
-    isCurrent: id === get(subscription, 'name'),
+    isCurrent:
+      id === get(subscription, 'name') &&
+      period === get(subscription, 'periodType'),
     isPayed: isPayed(state),
     period: getPeriod(state),
     price: getPrice(state)
@@ -168,19 +171,25 @@ export default compose(
       // eslint-disable-next-line
       Paddle.Checkout.open({
         override: get(subscription, 'cancelUrl'),
-        successCallback: () => window.location.reload()
+        successCallback: () => {
+          openModal('subStatus', { data: { cancel: true } });
+        }
       });
     },
-    handleClick: ({ email, openModal, productId, setCost }): Function => (
-      event: SyntheticEvent
-    ) =>
+    handleClick: ({
+      email,
+      openModal,
+      productId,
+      setCost,
+      subscription
+    }): Function => (event: SyntheticEvent) =>
       // eslint-disable-next-line
       Paddle.Checkout.open({
         email,
         passthrough: email,
         product: productId,
         successCallback: () => {
-          openModal('subStatus');
+          openModal('subStatus', { data: { success: true } });
         }
       })
   }),

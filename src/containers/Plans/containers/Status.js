@@ -15,20 +15,28 @@ const PlansStatus = ({ closeModal }) => {
 
   return (
     <Modal id="subStatus">
-      <div className={styles.Root}>
-        <div className={styles.Icon} />
-        <h2 className={styles.Title}>Subscription Cancelled</h2>
+      {({ data }) => (
+        <div className={styles.Root}>
+          <div className={styles.Icon} />
+          <h2 className={styles.Title}>
+            {data.success && 'Thank You!'}
+            {data.cancel && 'Subscription Cancelled'}
+          </h2>
 
-        <div className={styles.Description}>
-          You have successfully cancelled your subscription
-        </div>
+          <div className={styles.Description}>
+            {data.success &&
+              'We are excited you have chosen us to grow your app.'}
 
-        <div className={styles.Actions}>
-          <Button onClick={handleCloseClick} variant="gradient">
-            Close
-          </Button>
+            {data.cancel && 'You have successfully cancelled your subscription'}
+          </div>
+
+          <div className={styles.Actions}>
+            <Button onClick={handleCloseClick} variant="gradient">
+              Close
+            </Button>
+          </div>
         </div>
-      </div>
+      )}
     </Modal>
   );
 };
