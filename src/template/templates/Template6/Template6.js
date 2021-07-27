@@ -23,6 +23,7 @@ import {
   BACKGROUND,
   COPYRIGHT,
   DESCRIPTION,
+  TITLE,
   VIEW
 } from 'template';
 
@@ -53,6 +54,14 @@ const Template6 = () => (
                 classNames={{
                   root: styles.Title,
                   text: styles.TitleText
+                }}
+                id={TITLE}
+              />
+
+              <Text
+                classNames={{
+                  root: styles.Description,
+                  text: styles.DescriptionText
                 }}
                 id={DESCRIPTION}
               />

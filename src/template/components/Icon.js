@@ -35,7 +35,7 @@ const TemplateIcon = ({
       });
 
       const iconClassNames = classNames(iconClassName, styles.Icon);
-      console.log(isEditor, isPro);
+
       return (
         <div className={rootClassNames}>
           <Link to={`/${websiteId}/editor/icon${(id && `/${id}`) || ''}`}>

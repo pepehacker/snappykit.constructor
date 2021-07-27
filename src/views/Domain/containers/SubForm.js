@@ -97,7 +97,7 @@ const DomaiSubForm = ({
           )}
         </div>
 
-        {!isPro && (
+        {/* {!isPro && (
           <div>
             <Input
               disabled={isPro}
@@ -121,7 +121,7 @@ const DomaiSubForm = ({
               </Button>
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </Form>
   );

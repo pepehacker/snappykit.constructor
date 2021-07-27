@@ -13,7 +13,6 @@ import {
 
 const FEATURES = [
   'All Lite plan features',
-  'All website templates',
   'Custom domain',
   'Unlimited traffic',
   'SEO settings',
@@ -26,13 +25,7 @@ export default [
   {
     id: SUBSCRIPTION_LITE,
     count: 1,
-    features: [
-      'App website',
-      'Custom subdomain',
-      '500 monthly visits',
-      'SSL certificate',
-      '4 website templates'
-    ],
+    features: ['App website', '500 monthly visits', 'SSL certificate'],
     productIds: 0,
     title: 'LITE'
   },
