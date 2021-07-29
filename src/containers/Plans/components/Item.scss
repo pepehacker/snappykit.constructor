@@ -14,9 +14,13 @@
   }
 
   &:hover {
+    background: linear-gradient(to bottom left, #5f7bdb, #7e5ec8);
+    box-shadow: 0 20px 40px rgba(146, 130, 213, .4);
+
     .Button {
       background: #fff;
       border-color: #fff;
+      box-shadow: none;
     }
 
     .Cover {
@@ -37,88 +41,15 @@
       color: #fff;
     }
   }
-
-  &Variant {
-    &Agency {
-      &:hover {
-        background-image: linear-gradient(196deg, #5b36b7, #b57ae4);
-        box-shadow: 0 20px 40px 0 rgba(170, 113, 222, 0.4);
-
-        .Button {
-          box-shadow: 0 6px 14px 0 rgba(178, 119, 217, 0.4);
-          color: #8455cc;
-        }
-      }
-
-      .Count,
-      .Price,
-      .Unit {
-        color: #8455cc;
-      }
-    }
-
-    &Basic {
-      &:hover {
-        background-image: linear-gradient(196deg, #ff589e, #ffaa67);
-        box-shadow: 0 20px 40px 0 rgba(255, 159, 111, 0.4);
-
-        .Button {
-          box-shadow: 0 6px 14px 0 rgba(255, 163, 107, 0.4);
-          color: #ffa36b;
-        }
-      }
-
-      .Count,
-      .Price,
-      .Unit {
-        color: #e96484;
-      }
-    }
-
-    &Lite {
-      &:hover {
-        background-image: linear-gradient(196deg, #4ce366, #4bd9a5);
-        box-shadow: 0 20px 40px 0 rgba(76, 218, 156, 0.4);
-
-        .Button {
-          box-shadow: 0 6px 14px 0 rgba(87, 214, 157, 0.4);
-          color: #57d69d;
-        }
-      }
-
-      .Count,
-      .Price,
-      .Unit {
-        color: #76dca0;
-      }
-    }
-
-    &Pro {
-      &:hover {
-        background-image: linear-gradient(196deg, #3072ff, #3ecbff);
-        box-shadow: 0 20px 40px 0 rgba(60, 190, 255, 0.4);
-
-        .Button {
-          box-shadow: 0 6px 14px 0 rgba(73, 193, 245, 0.4);
-          color: #49c1f5;
-        }
-      }
-
-      .Count,
-      .Price,
-      .Unit {
-        color: #467cd8;
-      }
-    }
-  }
 }
 
 .Button {
   background: transparent;
-  border: 2px solid #d9e0eb;
+  border: 2px solid rgba(154, 150, 249, .6);
   border-radius: 32px;
   bottom: -20px;
-  color: #cfd8e5;
+  box-shadow: inset 0 0 0 2px rgba(154, 150, 249, .2);
+  color: #9a96f9;
   cursor: pointer;
   font-family: inherit;
   font-size: 14px;
@@ -129,7 +60,6 @@
   transition: all .2s;
   width: 120px;
   z-index: 10;
-
 
   @include breakpoint(laptop) {
     font-size: 10px;
@@ -157,10 +87,14 @@
 }
 
 .Cover {
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(216, 216, 216, 0) 97%);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, .1) 0%,
+    rgba(216, 216, 216, 0) 97%
+  );
   border-radius: 400px / 180px;
   bottom: -28%;
-  box-shadow: 0 6px 60px 0 rgba(0, 0, 0, 0.14);
+  box-shadow: 0 6px 60px 0 rgba(0, 0, 0, .14);
   height: 100%;
   left: -50%;
   opacity: 0;
@@ -228,7 +162,7 @@
 }
 
 .Price {
-  color: #fff;
+  color: #9a96f9;
   font-size: 40px;
   letter-spacing: -.4px;
   margin: 24px 0 0;
@@ -256,7 +190,7 @@
 }
 
 .Unit {
-  color: #fff;
+  color: #9a96f9;
   font-size: 22px;
   font-weight: 400;
   letter-spacing: -.22px;
