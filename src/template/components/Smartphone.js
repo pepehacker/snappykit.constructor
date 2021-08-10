@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 // Components
+import Smartphone from 'components/Smartphone';
 import Link from './Link';
 
 // Template
@@ -63,20 +64,13 @@ const TemplateSmartphone = ({
         styles.Container
       );
 
-      const mockupClassNames = classNames(mockupClassName, styles.Mockup);
-
       return (
         <div className={rootClassNames}>
           <Link
             className={styles.Link}
             to={`/${websiteId}/editor/smartphone${(id && `/${id}`) || ''}`}
           >
-            <div
-              className={mockupClassNames}
-              style={{
-                backgroundImage: `url(${src})` /* eslint-disable-line */
-              }}
-            />
+            <Smartphone />
           </Link>
 
           {children && <div className={containerClassNames}>{children}</div>}
