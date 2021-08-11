@@ -1,17 +1,17 @@
 import React from 'react';
 
 // Components
-import Pattern from '../components/Pattern';
+import Pattern from '../../components/Pattern';
 
-const COLOR = {
+export const IPHONE_12_PRO_FLAT_COLOR = {
   GRAPHITE: '#41413E',
   GOLD: '#CEB48C',
   PACIFIC_BLUE: '#233A4A',
   SILVER: '#A7AAA3'
 };
 
-const IPhone12Pro = ({
-  color = COLOR.SILVER,
+const SmartphoneIPhone12ProFlat = ({
+  color = IPHONE_12_PRO_FLAT_COLOR.SILVER,
   src = 'https://www.idownloadblog.com/wp-content/uploads/2020/10/Resonance_Blue_Dark-428w-926h@3xiphone.png'
 }) => (
   <svg
@@ -90,4 +90,4 @@ const IPhone12Pro = ({
   </svg>
 );
 
-export default IPhone12Pro;
+export default SmartphoneIPhone12ProFlat;

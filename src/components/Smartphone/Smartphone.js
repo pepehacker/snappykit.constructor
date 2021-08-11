@@ -1,9 +1,11 @@
 import React from 'react';
 
-// Variants
-import IPhone12 from './variants/IPhone-12';
-import IPhone12Pro from './variants/IPhone-12-pro';
+// Models
+import GalaxyS20 from './models/GalaxyS20';
+import IPhone12 from './models/IPhone12';
+import IPhone12Pro from './models/IPhone12Pro';
+import Pixel from './models/Pixel';
 
-const Smartphone = () => <IPhone12 />;
+const Smartphone = () => <Pixel />;
 
 export default Smartphone;

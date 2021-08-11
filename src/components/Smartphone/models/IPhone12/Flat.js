@@ -1,9 +1,9 @@
 import React from 'react';
 
 // Components
-import Pattern from '../components/Pattern';
+import Pattern from '../../components/Pattern';
 
-const COLOR = {
+export const IPHONE_12_FLAT_COLOR = {
   BLACK: '#1D1E1E',
   BLUE: '#21385A',
   GREEN: '#91A48E',
@@ -11,8 +11,8 @@ const COLOR = {
   WHITE: '#D2CFCA'
 };
 
-const IPhone12Pro = ({
-  color = COLOR.RED,
+const SmartphoneIPhone12Flat = ({
+  color = IPHONE_12_FLAT_COLOR.RED,
   src = 'https://wallpaper.dog/large/20468464.jpg'
 }) => (
   <svg
@@ -113,4 +113,4 @@ const IPhone12Pro = ({
   </svg>
 );
 
-export default IPhone12Pro;
+export default SmartphoneIPhone12Flat;
