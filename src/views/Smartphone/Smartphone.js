@@ -18,7 +18,7 @@ import { updateWebsiteSection } from 'entities/websites/actions';
 import { getSectionById } from 'entities/websites/selector';
 
 // Template
-import { SMARTPHONE, SMARTPHONE_MOCKUP } from 'template/config';
+import { SMARTPHONE } from 'template/config';
 
 const Smarthpone = ({ id, initialValues, handleChange }) => (
   <Sidebar title="Smartphone">
@@ -30,7 +30,7 @@ const Smarthpone = ({ id, initialValues, handleChange }) => (
   </Sidebar>
 );
 
-const mapStateToProps = (state: Object, { location }) => {
+const mapStateToProps = (state, { location }) => {
   const match = matchPath(get(location, 'pathname'), {
     path: '/:websiteId/editor/:sectionId/:id?'
   });
@@ -38,20 +38,11 @@ const mapStateToProps = (state: Object, { location }) => {
   const id = get(match, 'params.id');
   const websiteId = get(match, 'params.websiteId');
 
-  const mockupId = get(
-    getSectionById(state, websiteId, id || SMARTPHONE),
-    'mockup'
-  );
-
-  const { model, style } = SMARTPHONE_MOCKUP[mockupId] || {};
+  const initialValues = getSectionById(state, websiteId, id || SMARTPHONE);
 
   return {
     id,
-    initialValues: {
-      mockup: mockupId,
-      model,
-      style
-    },
+    initialValues,
     websiteId
   };
 };
@@ -59,13 +50,13 @@ const mapStateToProps = (state: Object, { location }) => {
 export default compose(
   connect(mapStateToProps, { updateWebsiteSection }),
   withHandlers({
-    handleChange: ({ id, updateWebsiteSection, websiteId }): func => (
-      { mockup },
+    handleChange: ({ id, updateWebsiteSection, websiteId }) => (
+      values,
       dispatch,
       props,
       prevValue
-    ): void =>
-      mockup !== get(prevValue, 'mockup') &&
-      updateWebsiteSection(websiteId, id || SMARTPHONE, { mockup })
+    ) =>
+      // mockup !== get(prevValue, 'mockup') &&
+      updateWebsiteSection(websiteId, id || SMARTPHONE, values)
   })
 )(Smarthpone);

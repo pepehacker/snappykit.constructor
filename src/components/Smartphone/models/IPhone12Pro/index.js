@@ -8,3 +8,4 @@ const SmartphoneIPhone12 = ({ color, src, style = 'FLAT' }) => (
 );
 
 export default SmartphoneIPhone12;
+export * from './Flat';
