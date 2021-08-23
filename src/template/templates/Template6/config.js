@@ -1,4 +1,6 @@
 // Template
+import { SMARTPHONE_MODEL, SMARTPHONE_STYLE } from 'components/Smartphone';
+
 import {
   // Config
   BACKGROUND,
@@ -238,9 +240,11 @@ export default createConfig(6, [
   {
     id: SMARTPHONE,
     data: {
-      mockup: 'iphone-11-flat-black'
+      color: 'rgba(255, 255, 255, 1)',
+      model: SMARTPHONE_MODEL.IPHONE_12,
+      style: SMARTPHONE_STYLE.FLAT
     },
-    exports: ['mockup'],
+    exports: ['color', 'model', 'style'],
     type: SMARTPHONE
   },
   {

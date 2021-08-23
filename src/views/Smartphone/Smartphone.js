@@ -50,13 +50,7 @@ const mapStateToProps = (state, { location }) => {
 export default compose(
   connect(mapStateToProps, { updateWebsiteSection }),
   withHandlers({
-    handleChange: ({ id, updateWebsiteSection, websiteId }) => (
-      values,
-      dispatch,
-      props,
-      prevValue
-    ) =>
-      // mockup !== get(prevValue, 'mockup') &&
+    handleChange: ({ id, updateWebsiteSection, websiteId }) => (values) =>
       updateWebsiteSection(websiteId, id || SMARTPHONE, values)
   })
 )(Smarthpone);

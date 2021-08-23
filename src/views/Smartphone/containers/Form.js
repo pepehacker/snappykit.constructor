@@ -3,7 +3,11 @@ import { reduxForm } from 'redux-form';
 
 // Components
 import Form, { Color, Select, SelectItem } from 'components/Form';
-import { SMARTPHONE_MODEL, SMARTPHONE_STYLE } from 'components/Smartphone';
+import {
+  SMARTPHONE_COLOR,
+  SMARTPHONE_MODEL,
+  SMARTPHONE_STYLE
+} from 'components/Smartphone';
 
 import Palette from '../components/Palette';
 
@@ -19,7 +23,7 @@ const SMARTPHONE_MODEL_LIST = [
 
 const SMARTPHONE_STYLE_LIST = [{ label: 'Flat', value: SMARTPHONE_STYLE.FLAT }];
 
-const SmartphoneForm = ({ handleSubmit, form, model, style }) => (
+const SmartphoneForm = ({ handleSubmit, initialValues: { model, style } }) => (
   <Form onSubmit={handleSubmit}>
     <Select label="Model" name="model" placeholder="Choose a model">
       {SMARTPHONE_MODEL_LIST.map(({ label, value }) => (
@@ -33,7 +37,8 @@ const SmartphoneForm = ({ handleSubmit, form, model, style }) => (
       ))}
     </Select>
 
-    <Palette name="color" />
+    <Palette colors={SMARTPHONE_COLOR[model][style]} name="color" />
+
     <Color name="color" />
   </Form>
 );

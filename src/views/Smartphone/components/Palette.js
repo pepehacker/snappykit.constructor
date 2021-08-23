@@ -3,24 +3,24 @@ import { compose, withHandlers } from 'recompose';
 
 // Components
 import { Field } from 'components/Form';
-import { IPHONE_12_PRO_FLAT_COLOR } from 'components/Smartphone/models/IPhone12Pro';
 
 // Styles
 import styles from './Palette.scss';
 
-const SmartphonePalette = ({ handleItemClick }) => (
+const SmartphonePalette = ({ colors = {}, handleItemClick }) => (
   <div className={styles.Root}>
-    {Object.keys(IPHONE_12_PRO_FLAT_COLOR).map((key) => (
+    {Object.keys(colors).map((key) => (
       <div
         key={key}
         className={styles.Item}
+        data-color={colors[key]}
         onClick={handleItemClick}
         role="button"
         tabIndex={0}
       >
         <div
           className={styles.Cover}
-          style={{ backgroundColor: IPHONE_12_PRO_FLAT_COLOR[key] }}
+          style={{ backgroundColor: colors[key] }}
         />
 
         <div className={styles.Title}>{key.replace('_', ' ')}</div>
