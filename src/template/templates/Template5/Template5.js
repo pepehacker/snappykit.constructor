@@ -9,7 +9,6 @@ import {
   Background,
   Icon,
   Policy,
-  Screenshots,
   Smartphone,
   Social,
   Store,
@@ -91,11 +90,7 @@ const Template5 = ({ handleNext, handlePrev, step }) => (
                         container: styles.Screenshots,
                         mockup: styles.SmartphoneMockup
                       }}
-                    >
-                      <Screenshots
-                        classNames={{ item: styles.ScreenshotsItem }}
-                      />
-                    </Smartphone>
+                    />
                   </div>
                 </div>
 

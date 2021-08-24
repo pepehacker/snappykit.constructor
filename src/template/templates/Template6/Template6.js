@@ -13,7 +13,6 @@ import {
   // Components
   Icon,
   Policy,
-  Screenshots,
   Smartphone,
   Social,
   Store,
@@ -74,9 +73,7 @@ const Template6 = () => (
                 root: styles.Smartphone,
                 container: styles.SmartphoneContainer
               }}
-            >
-              <Screenshots classNames={{ root: styles.Screenshots }} />
-            </Smartphone>
+            />
           </div>
         </Section>
 

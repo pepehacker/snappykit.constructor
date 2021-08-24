@@ -3,9 +3,7 @@ import React from 'react';
 // Styles
 import Flat, { IPHONE_12_FLAT_COLOR } from './Flat';
 
-const SmartphoneIPhone12 = ({ color, src, style = 'FLAT' }) => (
-  <Flat color={color} src={src} />
-);
+const SmartphoneIPhone12 = (props) => <Flat {...props} />;
 
 export default SmartphoneIPhone12;
 

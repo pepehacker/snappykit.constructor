@@ -7,23 +7,29 @@ import Smartphone from 'components/Smartphone';
 import Link from './Link';
 
 // Template
-import { SMARTPHONE, TemplateContext, getSectionById } from 'template';
+import {
+  SCREENSHOTS,
+  SMARTPHONE,
+  TemplateContext,
+  getSectionById
+} from 'template';
 
 // Styles
 import styles from './Smartphone.scss';
 
 const TemplateSmartphone = ({
   className,
-  classNames: {
-    root: rootClassName,
-    container: containerClassName,
-    mockup: mockupClassName
-  } = {},
-  id
+  classNames: { root: rootClassName } = {},
+  id,
+  screenshotsId
 }) => (
   <TemplateContext.Consumer>
     {({ data, websiteId }) => {
       const { color, model, style } = getSectionById(data, id || SMARTPHONE);
+
+      const {
+        items: [src]
+      } = getSectionById(data, screenshotsId || SCREENSHOTS);
 
       return (
         <div className={classNames(className, rootClassName, styles.Root)}>
@@ -31,10 +37,21 @@ const TemplateSmartphone = ({
             className={styles.Link}
             to={`/${websiteId}/editor/smartphone${(id && `/${id}`) || ''}`}
           >
-            <Smartphone color={color} model={model} style={style} />
+            <Smartphone
+              color={color}
+              id={id}
+              model={model}
+              src={src}
+              style={style}
+            />
           </Link>
 
-          {/* {children && <div className={containerClassNames}>{children}</div>} */}
+          <Link
+            className={styles.Screenshots}
+            to={`/${websiteId}/editor/screenshots${
+              (screenshotsId && `/${screenshotsId}`) || ''
+            }`}
+          />
         </div>
       );
     }}

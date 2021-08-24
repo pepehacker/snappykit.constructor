@@ -3,9 +3,7 @@ import React from 'react';
 // Styles
 import Flat, { PIXEL_FLAT_COLOR } from './Flat';
 
-const SmartphonePixel = ({ color, src, style = 'FLAT' }) => (
-  <Flat color={color} src={src} />
-);
+const SmartphonePixel = (props) => <Flat {...props} />;
 
 export default SmartphonePixel;
 

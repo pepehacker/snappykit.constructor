@@ -7,7 +7,6 @@ import {
   Background,
   Icon,
   Policy,
-  Screenshots,
   Smartphone,
   Social,
   Store,
@@ -73,9 +72,7 @@ const Template1 = () => (
                   container: styles.Screenshots,
                   mockup: styles.SmartphoneMockup
                 }}
-              >
-                <Screenshots classNames={{ item: styles.ScreenshotsItem }} />
-              </Smartphone>
+              />
             </div>
           </div>
 

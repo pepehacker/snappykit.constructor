@@ -1,10 +1,10 @@
 import React from 'react';
 
-const SmartphonePattern = ({ src }) => (
+const SmartphonePattern = ({ id, src }) => (
   <defs>
     <pattern
       height="100%"
-      id="image"
+      id={`${id}_image`}
       patternUnits="userSpaceOnUse"
       width="100%"
     >

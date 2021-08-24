@@ -10,7 +10,6 @@ import {
   Background,
   Icon,
   Policy,
-  Screenshots,
   Smartphone,
   Social,
   Store,
@@ -61,9 +60,8 @@ const Template7 = () => (
                 container: styles.SmartphoneContainer
               }}
               id={SMARTPHONE}
-            >
-              <Screenshots id={SCREENSHOTS} />
-            </Smartphone>
+              screenshotsId={SCREENSHOTS}
+            />
 
             <div className={styles.Content}>
               <Text
@@ -123,9 +121,8 @@ const Template7 = () => (
                 container: styles.SmartphoneContainer
               }}
               id="preview_smartphone"
-            >
-              <Screenshots id="preview_screenshots" />
-            </Smartphone>
+              screenshotsId="preview_screenshots"
+            />
 
             <div className={styles.Content}>
               <Text
@@ -217,9 +214,8 @@ const Template7 = () => (
                 container: styles.SmartphoneContainer
               }}
               id="download_smartphone"
-            >
-              <Screenshots id="download_screenshots" />
-            </Smartphone>
+              screenshotsId="download_screenshots"
+            />
           </div>
 
           <footer className={styles.Footer}>
