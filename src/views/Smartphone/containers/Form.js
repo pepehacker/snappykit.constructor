@@ -17,11 +17,11 @@ import { SMARTPHONE_FORM_ID } from '../ducks/constants';
 const SMARTPHONE_MODEL_LIST = [
   { label: 'IPhone 12', value: SMARTPHONE_MODEL.IPHONE_12 },
   { label: 'IPhone 12 Pro', value: SMARTPHONE_MODEL.IPHONE_12_PRO },
-  { label: 'Galaxy S20', value: SMARTPHONE_MODEL.GALAXY_S20 },
+  // { label: 'Galaxy S20', value: SMARTPHONE_MODEL.GALAXY_S20 },
   { label: 'Pixel 4', value: SMARTPHONE_MODEL.PIXEL_4 }
 ];
 
-const SMARTPHONE_STYLE_LIST = [{ label: 'Flat', value: SMARTPHONE_STYLE.FLAT }];
+// const SMARTPHONE_STYLE_LIST = [{ label: 'Flat', value: SMARTPHONE_STYLE.FLAT }];
 
 const SmartphoneForm = ({ handleSubmit, initialValues: { model, style } }) => (
   <Form onSubmit={handleSubmit}>
@@ -31,13 +31,16 @@ const SmartphoneForm = ({ handleSubmit, initialValues: { model, style } }) => (
       ))}
     </Select>
 
-    <Select label="Style" name="style" placeholder="Choose a style">
+    {/* <Select label="Style" name="style" placeholder="Choose a style">
       {SMARTPHONE_STYLE_LIST.map(({ label, value }) => (
         <SelectItem key={value} label={label} value={value} />
       ))}
-    </Select>
+    </Select> */}
 
-    <Palette colors={SMARTPHONE_COLOR[model][style]} name="color" />
+    <Palette
+      colors={SMARTPHONE_COLOR[model][SMARTPHONE_STYLE.FLAT]}
+      name="color"
+    />
 
     <Color name="color" />
   </Form>

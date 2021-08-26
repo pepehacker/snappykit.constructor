@@ -23,7 +23,8 @@ import {
   FETCH_PROFILE_FAILURE,
   LOGOUT,
   SET_PRO,
-  SET_USER
+  SET_USER,
+  SET_SUBSCRIPTION
 } from './types';
 
 export const fetchProfile = (id: number) => (
@@ -102,6 +103,14 @@ export const fetchProfile = (id: number) => (
 
 export const setPro = () => ({
   type: SET_PRO
+});
+
+export const cancelSubscription = () => ({
+  payload: {
+    limit: SUBSCRIPTION_LITE_LIMIT,
+    name: SUBSCRIPTION_LITE
+  },
+  type: SET_SUBSCRIPTION
 });
 
 export const logout: Function = () => {

@@ -23,7 +23,12 @@ import {
 
 // Services
 import { openModal } from 'services/modals';
-import { getSubscription, getUserEmail, isPayed } from 'services/session';
+import {
+  cancelSubscription,
+  getSubscription,
+  getUserEmail,
+  isPayed
+} from 'services/session';
 
 import {
   SUBSCRIPTION_AGENCY,
@@ -138,7 +143,7 @@ const mapStateToProps: Function = (state: Object, { id }) => {
 };
 
 export default compose(
-  connect(mapStateToProps, { openModal }),
+  connect(mapStateToProps, { cancelSubscription, openModal }),
   withProps(({ period = MONTH, productIds }) => ({
     productId: get(productIds, period)
   })),
@@ -146,43 +151,29 @@ export default compose(
   withState('isFetching', 'setFetching', false),
   withHandlers({
     // Fetch cost
-    fetchCost: ({
-      email,
-      productId,
-      setCost,
-      setFetching
-    }): Function => (): void => {
+    fetchCost: ({ email, productId, setCost, setFetching }) => () => {
       if (productId) {
         setFetching(true);
 
         // eslint-disable-next-line
-        Paddle.Product.Price('gross', productId, 1, (price: string = '') => {
+        Paddle.Product.Price('gross', productId, 1, (price = '') => {
           setFetching(false);
           setCost(parseInt(price.replace('US$', ''), 10));
         });
       }
     },
     // Handlers
-    handleCancel: ({
-      email,
-      productId,
-      subscription
-    }): Function => (): void => {
+    handleCancel: ({ cancelSubscription, subscription }) => () => {
       // eslint-disable-next-line
       Paddle.Checkout.open({
         override: get(subscription, 'cancelUrl'),
         successCallback: () => {
+          cancelSubscription();
           openModal('subStatus', { data: { cancel: true } });
         }
       });
     },
-    handleClick: ({
-      email,
-      openModal,
-      productId,
-      setCost,
-      subscription
-    }): Function => (event: SyntheticEvent) =>
+    handleClick: ({ email, openModal, productId }) => () =>
       // eslint-disable-next-line
       Paddle.Checkout.open({
         email,

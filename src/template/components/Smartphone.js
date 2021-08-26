@@ -2,6 +2,9 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+// Assets
+import uploadScreenshotsImg from 'assets/upload-screenshot.jpg';
+
 // Components
 import Smartphone from 'components/Smartphone';
 import Link from './Link';
@@ -41,7 +44,7 @@ const TemplateSmartphone = ({
               color={color}
               id={id}
               model={model}
-              src={src}
+              src={src || uploadScreenshotsImg}
               style={style}
             />
           </Link>

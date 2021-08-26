@@ -1,4 +1,4 @@
-import { LOGOUT, SET_PRO, SET_USER } from './types';
+import { LOGOUT, SET_PRO, SET_SUBSCRIPTION, SET_USER } from './types';
 
 const initialState = {
   user: null
@@ -14,6 +14,14 @@ export default (state = initialState, action: Object) => {
         user: {
           ...state.user,
           subscription: { ...state.user.subscription, isPro: true }
+        }
+      };
+    case SET_SUBSCRIPTION:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          subscription: action.payload
         }
       };
     case SET_USER:
