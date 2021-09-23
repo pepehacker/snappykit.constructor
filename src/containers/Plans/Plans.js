@@ -70,6 +70,21 @@ const Plans = ({
               </Tabs>
             </div>
 
+            <div className={styles.Coupon}>
+              <div className={styles.CouponNumber}>50</div>
+
+              <div className={styles.CouponInfo}>
+                Special offer for our beta testers
+                <br />
+                50% discount on all plans.
+              </div>
+
+              <div className={styles.CouponCode}>
+                <div>CODE:</div>
+                <div>BETA50</div>
+              </div>
+            </div>
+
             <div className={styles.List}>
               <List key={price} isEntered={state === 'entered'} />
             </div>

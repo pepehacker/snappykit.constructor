@@ -10,29 +10,32 @@
     &Enter {
       &Active {
         .Choose {
-          transition-delay: .2s;
+          transition-delay: 0.2s;
         }
 
         .Description {
-          transition-delay: .1s;
+          transition-delay: 0.1s;
         }
 
+        .Coupon,
         .Period {
-          transition-delay: .3s;
+          transition-delay: 0.3s;
         }
 
         .Choose,
+        .Coupon,
         .Description,
         .Period,
         .Title {
           opacity: 1 !important;
           transform: translateY(0) !important;
-          transition-duration: .4s;
+          transition-duration: 0.4s;
           transition-property: all;
         }
       }
 
       .Choose,
+      .Coupon,
       .Description,
       .Period,
       .Title {
@@ -55,6 +58,63 @@
   }
 }
 
+.Coupon {
+  align-items: center;
+  background: url('./assets/coupon-background.png') no-repeat center center /
+    contain;
+  display: flex;
+  height: 160px;
+  margin: 20px 0 0;
+  padding: 0 40px 36px;
+  width: 588px;
+
+  &Code {
+    flex: 0 0 100px;
+
+    & > div {
+      &:nth-child(1) {
+        color: #b3b8c3;
+        font-size: 14px;
+      }
+
+      &:nth-child(2) {
+        color: #424c5c;
+        font-size: 16px;
+        margin: 4px 0 0;
+      }
+    }
+  }
+
+  &Info {
+    color: #7e8899;
+    flex: 1 1 auto;
+    font-size: 16px;
+    line-height: 28px;
+    margin: 0 32px;
+  }
+
+  &Number {
+    align-items: center;
+    background: linear-gradient(232deg, #5e7adb 0, #8359c1 100%);
+    border-radius: 100%;
+    color: #fff;
+    display: flex;
+    flex: 0 0 60px;
+    font-size: 20px;
+    font-weight: bold;
+    height: 60px;
+    justify-content: center;
+    width: 60px;
+
+    &:before {
+      color: rgba(#fff, 0.2);
+      content: '%';
+      font-size: 48px;
+      position: absolute;
+    }
+  }
+}
+
 .Description {
   color: #7a8a9a;
   font-size: 16px;
@@ -73,7 +133,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 140px;
+  height: 88px;
 
   @include breakpoint(laptop) {
     height: auto;
@@ -83,7 +143,7 @@
 .List {
   height: 425px;
   margin: 64px 0 0;
-  transition: all .4s;
+  transition: all 0.4s;
   width: 1200px;
 
   @include breakpoint(laptop) {
@@ -98,10 +158,10 @@
   margin: 24px 0 0;
   opacity: 1;
   visibility: visible;
-  transition: all .4s;
+  transition: all 0.4s;
 
   @include breakpoint(desktop) {
-    margin: 60px 0 0;
+    margin: 40px 0 0;
   }
 }
 
@@ -110,7 +170,7 @@
   background-clip: text;
   font-size: 46px;
   font-weight: 900;
-  letter-spacing: -.2px;
+  letter-spacing: -0.2px;
   -webkit-text-fill-color: transparent;
 
   @include breakpoint(laptop) {
